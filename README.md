@@ -55,7 +55,6 @@
 > - http://mirrors.nju.edu.cn/
 ---
 ##### sudo flatpak remote-modify flathub --url=https://mirror.sjtu.edu.cn/flathub
-##### sh <(curl -q https://platform.activestate.com/dl/cli/_pdli01/install.sh) -c'state activate --default ii00-org/Perl-5.36.0-Linux-CentOS' `aa123@qq.com aaa000000 https://platform.activestate.com/ii00`
 ##### ` https://dl.google.com/linux/direct/google-chrome-{stable unstable}_current_{amd64.deb x86_64.rpm} `
 
 > ##### $\color{#00b330}{ APT }$
@@ -176,9 +175,7 @@ export LESS=-R #debian
 function Euniq(){
 	export $2="$(echo "$1" |tr : "\n"|sort|uniq|tr "\n" : |sed -n 's/:$//p')"
 }
-Euniq $PERL5LIB PERL5LIB
 Euniq $PATH PATH
-Euniq $PERL_LOCAL_LIB_ROOT PERL_LOCAL_LIB_ROOT
 ```
 
 ##### ` echo 'PS1="\[\e[1;32m\]\u\[\e[0;33m\]@\[\e[0;32m\]\h \[\e[1;33m\]\W \[\e[1;35m\]? \[\e[0m\]"' >> /root/.bashrc `
