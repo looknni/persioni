@@ -4,11 +4,47 @@
 >> - sed -i '$a\vm.swappiness=20' /etc/sysctl.conf#sysctl -p
 ---
 > ## $\color{#FF0000}{ HTTP[S] }$
->> is a professional lyrics search network [musicenc](https://www.musicenc.com/) .#Yandex offers internet search and other services like [yandex](https://yandex.com/) .#Any bug fixes for a stable [kernel.org](https://www.kernel.org/) .#the computational intelligence engine by [wolframalpha](https://www.wolframalpha.com/) [@git-scm](https://git-scm.com/) [@md5hashing](https://md5hashing.net/) [@md5calc](https://md5calc.com/) .# New Bootable USB Solution [ventoy](https://www.ventoy.net/en/index.html) .# debian release,unofficial [cdimage-debian](https://cdimage.debian.org/images/) .# a flexible, fast and multiplatform multimedia framework [gstreamer](https://gstreamer.freedesktop.org/) .# ibus-libpinyin ibus-table-wubi [ibus-libpinyin](https://github.com/libpinyin/ibus-libpinyin) .# lspci -v [realtek-network-interface-controllers](https://www.realtek.com/en/component/zoo/category/network-interface-controllers-10-100-1000m-gigabit-ethernet-pci-express-software) [@B560M-PRO](https://us.msi.com/Motherboard/B560M-PRO/support) [@magnet](https://yaurl302.top/DDWzy3oGkI?_=003) [@feijisu](http://fjisu.top/) {antiX sparkylinux} [@tempmail](https://tempmail.plus/en)
+>> - is a professional lyrics search network [musicenc](https://www.musicenc.com/) 
+>> .#Yandex offers internet search and other services like [yandex](https://yandex.com/)
+>> .#Any bug fixes for a stable [kernel.org](https://www.kernel.org/)
+>> .#the computational intelligence engine by [wolframalpha](https://www.wolframalpha.com/)
+>> [@git-scm](https://git-scm.com/)
+>> [@md5hashing](https://md5hashing.net/)
+>> [@md5calc](https://md5calc.com/)
+>> .# New Bootable USB Solution [ventoy](https://www.ventoy.net/en/index.html)
+>> .# debian release,unofficial [cdimage-debian](https://cdimage.debian.org/images/)
+>> .# a flexible, fast and multiplatform multimedia framework [gstreamer](https://gstreamer.freedesktop.org/)
+>> .# ibus-libpinyin ibus-table-wubi [ibus-libpinyin](https://github.com/libpinyin/ibus-libpinyin)
+>> .# lspci -v [realtek-network-interface-controllers](https://www.realtek.com/en/component/zoo/category/network-interface-controllers-10-100-1000m-gigabit-ethernet-pci-express-software)
+>> [@B560M-PRO](https://us.msi.com/Motherboard/B560M-PRO/support)
+>> [@magnet](https://yaurl302.top/DDWzy3oGkI?_=003)
+>> [@feijisu](http://fjisu.top/) {antiX sparkylinux}
+>> [@tempmail](https://tempmail.plus/en)
+>> .# Google Chrome. Google's web browser. Virtual DJ. The most complete free software for DJs. uTorrent [apk](https://www.malavida.com/en)
 ---
->> (Ubuntu) Server at breed.hackpascal.net Port 443 [breed-hackpascal](https://breed.hackpascal.net/) .#takes security very seriously. We handle all security problems [debian-security](https://www.debian.org/security/) .#So instead of downloading packages/software one by one from random sites [packages-debian](https://packages.debian.org/) .#is a very powerful boot loader [gnu-grub](https://ftp.gnu.org/gnu/) [@tracker-debian-kernel](https://tracker.debian.org/pkg/linux) .#is being actively developed with frequent releases and has an ever growing list of features [virtualbox](https://download.virtualbox.org/virtualbox/) .#an Advanced Penetration Testing Linux [kali-tools](https://www.kali.org/tools/) .#is the largest collection of repositories and packages for Linux and Unix operating systems [packages-for-linux-and-unix](https://pkgs.org/) .#To get a Chrome Extension source code [google-crx](https://crxdl.com/) .#is an open-source enterprise operating system designed to be 100% bug-for-bug compatible with Red Hat Enterprise Linux® [rocky](https://download.rockylinux.org/pub/rocky/) .#An Open Source, community owned and governed, forever-free enterprise [alma](https://almalinux.org/) .#shares open source news and reviews of Linux and BSD based operating systems [distrowatch](https://distrowatch.com/) .#is available free of charge and comes with the source code [freebsd](https://www.freebsd.org/) [@c++Referenc](https://cppreference.com/) .#The author and holder of the copyright of the software is Alexander L. Roshal [rarla](https://www.rarlab.com/)
+>> - (Ubuntu) Server at breed.hackpascal.net Port 443 [breed-hackpascal](https://breed.hackpascal.net/)
+>> .#takes security very seriously. We handle all security problems [debian-security](https://www.debian.org/security/)
+>> .#So instead of downloading packages/software one by one from random sites [packages-debian](https://packages.debian.org/)
+>> .#is a very powerful boot loader [gnu-grub](https://ftp.gnu.org/gnu/)
+>> [@tracker-debian-kernel](https://tracker.debian.org/pkg/linux)
+>> .#is being actively developed with frequent releases and has an ever growing list of features [virtualbox](https://download.virtualbox.org/virtualbox/)
+>> .#an Advanced Penetration Testing Linux [kali-tools](https://www.kali.org/tools/)
+>> .#is the largest collection of repositories and packages for Linux and Unix operating systems [packages-for-linux-and-unix](https://pkgs.org/)
+>> .#To get a Chrome Extension source code [google-crx](https://crxdl.com/)
+>> .#is an open-source enterprise operating system designed to be 100% bug-for-bug compatible with Red Hat Enterprise Linux® [rocky](https://download.rockylinux.org/pub/rocky/)
+>> .#An Open Source, community owned and governed, forever-free enterprise [alma](https://almalinux.org/)
+>> .#shares open source news and reviews of Linux and BSD based operating systems [distrowatch](https://distrowatch.com/)
+>> .#is available free of charge and comes with the source code [freebsd](https://www.freebsd.org/)
+>> [@c++Referenc](https://cppreference.com/)
+>> .#The author and holder of the copyright of the software is Alexander L. Roshal [rarla](https://www.rarlab.com/)
 ---
->> is developed by an independent community [flatpak](https://flatpak.org/setup) .#is often called a "programmer's editor [vim](https://ftp.nluug.nl/pub/vim/unix/) .#The GNU Image Manipulation Program [gimp](https://download.gimp.org/gimp/) .#are the same as those on Mac and Linux - install man pages on your phone and read them in one session while experimenting with them in another [termux](https://f-droid.org/en/packages/com.termux/) [@gnu-command](https://www.gnu.org/software/) .#celebrates the birthday of our Elephant-headed Lord Ganesha [Komodo](https://downloads.activestate.com/) .#Try these free learning resources from the Perl community [METACPAN](https://metacpan.org/) .#Continuously delivered distro that tracks just ahead of Red Hat Enterprise Linux (RHEL) development [centos-stream](https://mirror.stream.centos.org/)
+>> - is developed by an independent community [flatpak](https://flatpak.org/setup)
+>> .#is often called a "programmer's editor [vim](https://ftp.nluug.nl/pub/vim/unix/)
+>> .#The GNU Image Manipulation Program [gimp](https://download.gimp.org/gimp/)
+>> .#are the same as those on Mac and Linux - install man pages on your phone and read them in one session while experimenting with them in another [termux](https://f-droid.org/en/packages/com.termux/)
+>> [@gnu-command](https://www.gnu.org/software/)
+>> .#Try these free learning resources from the Perl community [METACPAN](https://metacpan.org/)
+>> .#Continuously delivered distro that tracks just ahead of Red Hat Enterprise Linux (RHEL) development [centos-stream](https://mirror.stream.centos.org/)
 ---
 > ##### $\color{#00e63e}{ SOURCES }$ `#debian{stable testing unstable}`
 > - https://mirrors.huaweicloud.com
