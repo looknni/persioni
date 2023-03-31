@@ -1,8 +1,7 @@
 ## $\color{#FF00FF}{ CONFIG }$
 
 > ##### git config --global user.
->> user.email   user.signingKey
->> user.name    user.useConfigOnly
+>> user.email user.signingKey user.name user.useConfigOnly
 --- 
 ##### git config --list
 
@@ -34,9 +33,7 @@ and the -b flag will be ignored.
 ##### gpg --list-secret-keys --keyid-format=long/short
 ##### gpg --list-sigs/--list-sig/--list-signatures
 > ##### gpg --armor/--armour --export xxxxxxxxxxxx
->> --expert                 --export-options         --export-secret-subkeys
->> --export                 --export-ownertrust      --export-ssh-key
->> --export-filter          --export-secret-keys 
+>> --expert --export-options --export-secret-subkeys --export --export-ownertrust --export-ssh-key --export-filter --export-secret-keys 
 ---
 ##### gpg --send-keys xxxxxxxxxxx
 ##### git config --global commit.gpgsign true
@@ -66,7 +63,7 @@ and the -b flag will be ignored.
 ##### git reflog expire --expire=now --all
 ##### git gc --aggressive --prune=now
 > ##### git reflog delete HEAD@{32} HEAD@{31}
-> delete   expire   show
+>> delete   expire   show
 ---
 ##### git log --all --oneline --graph
 ##### git show-branch --more --all

@@ -57,26 +57,6 @@ function Batfun(){
 	fi
 	unset tmm
 }
-function Bluevim(){
-	bluevim=`locate "colors/blue.vim" | sort | awk 'NR==1{print $1}'`
-	Batfun ${bluevim}
-cat > $bluevim << "EOF"
-set background=dark
-hi clear
-if exists("syntax_on")
-  syntax reset
-endif
-let g:colors_name = "blue"
-
-hi DiffChange	guibg=darkGreen		guifg=black	ctermbg=darkGreen	ctermfg=black
-hi DiffText		guibg=olivedrab		guifg=black		ctermbg=lightGreen	ctermfg=black
-hi DiffAdd		guibg=slateblue		guifg=black		ctermbg=blue		ctermfg=black
-hi DiffDelete   guibg=coral			guifg=black	ctermbg=cyan		ctermfg=black
-hi Folded		guibg=orange		guifg=black		ctermbg=yellow		ctermfg=black
-hi FoldColumn	guibg=gray30		guifg=black	ctermbg=gray		ctermfg=black
-hi cIf0			guifg=gray			ctermfg=gray
-EOF
-}
 function Ddrc(){
 	vimrcpath="/home/$lognamen/.vimrc"
 	bashrcpath="/root/.bashrc"
@@ -92,7 +72,7 @@ export LESS_TERMCAP_mb=$'\E[01;35m'
 export LESS_TERMCAP_md=$'\E[01;35m'
 export LESS_TERMCAP_me=$'\E[0m'
 export LESS_TERMCAP_se=$'\E[0m'
-export LESS_TERMCAP_so=$'\E[01;37;40m'
+export LESS_TERMCAP_so=$'\E[01;37;42m'
 export LESS_TERMCAP_ue=$'\E[0m'
 export LESS_TERMCAP_us=$'\E[01;32m'
 export GROFF_NO_SGR=1 #redhat
@@ -131,16 +111,10 @@ lognamen=`logname`
 aptsources="/etc/apt/sources.list"
 Batfun ${aptsources}
 cat > $aptsources << "EOF"
-deb http://mirrors.ustc.edu.cn/debian/ bullseye main
-deb-src http://mirrors.ustc.edu.cn/debian/ bullseye main
-
-deb http://mirrors.ustc.edu.cn/debian-security bullseye-security main
-deb-src http://mirrors.ustc.edu.cn/debian-security bullseye-security main
-
-# bullseye-updates, to get updates before a point release is made;
-# see https://www.debian.org/doc/manuals/debian-reference/ch02.en.html#_updates_and_backports
-deb http://mirrors.ustc.edu.cn/debian/ bullseye-updates main
-deb-src http://mirrors.ustc.edu.cn/debian/ bullseye-updates main
+deb https://repo.huaweicloud.com/debian/ bullseye main contrib non-free
+deb https://repo.huaweicloud.com/debian/ bullseye-updates main contrib non-free
+deb https://repo.huaweicloud.com/debian/ bullseye-backports main contrib non-free
+deb https://repo.huaweicloud.com/debian-security bullseye-security main contrib non-free
 EOF
 	echo "Acquire::http::Pipeline-Depth \"0\";" > /etc/apt/apt.conf.d/99nopipelining
 apt update -y
@@ -152,7 +126,6 @@ nmap net-tools tcpdump audacity inkscape gimp krita audacity libreoffice \
 libpam-tmpdir opendnssec -y
 	`updatedb`
 	Tests "#c3dhcHBpbmVzcwo" /etc/sysctl.conf '$a\#c3dhcHBpbmVzcwo\nvm.swappiness=20'
-Bluevim
 Ddrc
 geditlang=`locate "language-specs/powershell.lang"|sort -r`
 Tests "\*\.psd1;\*;\*\.\*" $geditlang 's:*.psd1:&;*;*.*:g'
@@ -205,6 +178,7 @@ unset -v lognamen
 apt install flatpak -y
 apt install gnome-software-plugin-flatpak -y
 flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
+flatpak remote-modify flathub --url=https://mirror.sjtu.edu.cn/flathub
 fi
 
 echo -e "+++++++++++++RPM++++++++++++\n"
@@ -214,18 +188,9 @@ if [ -n "$osrpm" ];then
 unset -v osrpm	
 lognamen=`logname`
 osversion=`awk 'NR==1{print $4}' /etc/redhat-release`
-if [ ${osversion%.*} == "8" ];then
-	sed -e 's|^mirrorlist=|#mirrorlist=|g' \
-    -e 's|^#baseurl=http://dl.rockylinux.org/$contentdir|baseurl=https://mirrors.ustc.edu.cn/rocky|g' \
-    -i.bak \
-    /etc/yum.repos.d/Rocky-AppStream.repo \
-    /etc/yum.repos.d/Rocky-BaseOS.repo \
-    /etc/yum.repos.d/Rocky-Extras.repo \
-    /etc/yum.repos.d/Rocky-PowerTools.repo	
-fi
 if [ ${osversion%.*} == "9" ];then
-	sed -e 's|^mirrorlist=|#mirrorlist=|g' \
-    -e 's|^#baseurl=http://dl.rockylinux.org/$contentdir|baseurl=https://mirrors.ustc.edu.cn/rocky|g' \
+sed -e 's|^mirrorlist=|#mirrorlist=|g' \
+    -e 's|^#baseurl=http://dl.rockylinux.org/$contentdir|baseurl=https://mirrors.aliyun.com/rockylinux|g' \
     -i.bak \
     /etc/yum.repos.d/rocky-extras.repo \
     /etc/yum.repos.d/rocky.repo
@@ -237,7 +202,6 @@ yum install vim-X11.x86_64 ibus.x86_64 gcc-c++ cmake bison ncurses ncurses-devel
 
 `updatedb`
 	Tests "#c3dhcHBpbmVzcwo" /etc/sysctl.conf '$a\#c3dhcHBpbmVzcwo\nvm.swappiness=20'
-Bluevim
 Ddrc
 geditlang=`locate "language-specs/powershell.lang"|sort -r`
 Tests "\*\.psd1;\*;\*\.\*" $geditlang 's:*.psd1:&;*;*.*:g'
@@ -262,4 +226,5 @@ unset -v defaultgr
 yum remove firefox.x86_64 -y
 yum install flatpak -y
 flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
+flatpak remote-modify flathub --url=https://mirror.sjtu.edu.cn/flathub
 fi
