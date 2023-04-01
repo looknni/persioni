@@ -59,10 +59,10 @@
 
 > ##### $\color{#00b330}{ APT }$
 ```
-vim kaffeine qbittorrent audacious calc wcalc git gitk traceroute locate mtr \
+vim kaffeine qbittorrent audacious git traceroute locate mtr \
 fcitx fcitx-table-compose fcitx-googlepinyin fcitx-dbus-status fcitx-table-wubi \
 wget bash-completion obs-studio gnome-shell-extension-dashtodock dnsutils aptitude \
-nmap net-tools tcpdump audacity inkscape gimp krita audacity libreoffice \
+nmap tcpdump audacity inkscape gimp krita audacity libreoffice \
 libpam-tmpdir opendnssec rsync firmware-realtek
 ```
 
@@ -142,7 +142,7 @@ endif
 
 #### ` sed -i 's:*.psd1:&;*;*.*:g' /usr/share/gtksourceview-4/language-specs/powershell.lang `
 
-> ~~sudo dpkg-reconfigure locales~~
+> ~~sudo dpkg-reconfigure [locales][console-setup]~~
 >> - im-config
 >> - /etc/locale.gen >> en_GB.UFT-8 UFT-8
 ---
