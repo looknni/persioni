@@ -1,5 +1,5 @@
 > ## $\color{#FF00FF}{ PARTITION }$
->> - /biosboot ~1M-1024K.../boot/efi ~100M.../boot ~512M.../ ~(max|0.3max).../boot ~512M . /home  ~(0.6max).. /usr . /var . /opt . /tmp
+>> - /biosboot ~1M-1024K.../boot/efi ~100M.../boot ~512M.../ ~(max|0.3max).../swap ~1GM . /home  ~(0.6max).. /usr . /var . /opt . /tmp
 >> - sudo blkid `/etc/default/grub /etc/fstab /boot/grub2/grub.cfg /boot/load/*`
 >> - sed -i '$a\vm.swappiness=20' /etc/sysctl.conf#sysctl -p
 ---
