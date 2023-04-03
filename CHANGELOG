@@ -9,3 +9,4 @@ lsattr -l [-RVadlpv]
 chattr [-pRVf] [-+=aAcCdDeijPsStTuFx]
 scp -P port [-r ~/file] hostname@remote:~/file #.ssh/,700 authorized_keys,600
 # 30 28 33 40 33 38 26 28::a.5
+# sh bash csh tcsh ksh zsh
