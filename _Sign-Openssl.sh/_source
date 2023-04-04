@@ -21,9 +21,11 @@
 ./_Sign-Openssl.sh/SH/SED.sed.tar
 ./_Sign-Openssl.sh/SH/SearchCp.sh.tar
 ./_Sign-Openssl.sh/SH/SSHClient.sh.tar
-./_Sign-Openssl.sh/SH/journal.ods.tar
-./_Sign-Openssl.sh/SH/TestOpenssl.sh.tar
 ./_Sign-Openssl.sh/SH/UEncrypt.pl.tar
+./_Sign-Openssl.sh/SH/TestOpenssl.sh.tar
+./_Sign-Openssl.sh/SH/journal.ods.tar
+./_Sign-Openssl.sh/SH/Tbase.pl.tar
+./_Sign-Openssl.sh/SH/Tbase.sh.tar
 ./_Sign-Openssl.sh/.gitignore.tar
 ./_Sign-Openssl.sh/CHANGELOG.tar
 ./_Sign-Openssl.sh/.gitlab-ci.yml.tar
@@ -31,4 +33,3 @@
 ./_Sign-Openssl.sh/CONTRIBUTING.md.tar
 ./_Sign-Openssl.sh/LICENSE.sh.tar
 ./_Sign-Openssl.sh/README.md.tar
-./_Sign-Openssl.sh/stat-LICENSE.tar

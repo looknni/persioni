@@ -29,6 +29,7 @@
 ./SH/SSHClient.sh
 ./SH/SearchCp.sh
 ./SH/TestOpenssl.sh
-./SH/journal.ods
 ./SH/UEncrypt.pl
-./stat-LICENSE
+./SH/journal.ods
+./SH/Tbase.pl
+./SH/Tbase.sh
