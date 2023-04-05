@@ -55,6 +55,7 @@
 > - http://mirrors.nju.edu.cn/
 ---
 ##### sudo flatpak remote-modify flathub --url=https://mirror.sjtu.edu.cn/flathub
+##### on flatpak error fonts @cp -r /etc/fonts/* org.example.com/config/fontconfig
 ##### ` https://dl.google.com/linux/direct/google-chrome-{stable unstable}_current_{amd64.deb x86_64.rpm} `
 
 > ##### $\color{#00b330}{ APT }$
