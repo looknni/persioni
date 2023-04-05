@@ -62,11 +62,11 @@ for($a=0;$a<scalar(@dicsk);$a++){
 }
 my @numk=split(" ",@ARGV[0]);
 foreach (@numk){
-        print @dicsk[$_];
+        print @dicsk[$_]." ";
 }
-print "\n.........\n";
+print "\n".`echo "$ARGV[0]" |md5sum`;
 my $cc;
 foreach (@numk){
         $cc .= %codek{$_}." ";
 }
-print $cc;
+print $cc."\n";
