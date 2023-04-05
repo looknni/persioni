@@ -4,7 +4,7 @@ print "help: perl $0 '\@ARGV[0]'\n\@ARGV[0],'string'\n\n";
 =pod
 This is perl 5, version 36, subversion 0 (v5.36.0) built for
 =cut
-my @dicsk=('A'..'Z','a'..'z',0..99,'AA'..'ZZ','aA'..'zZ','Aa'..'Zz');
+my @dicsk=('A'..'Z','a'..'z',0..99,'AA'..'ZZ','aA'..'zZ','Aa'..'Zz','aa'..'zz');
 foreach (100..41008){
 push @dicsk,$_;
 }
