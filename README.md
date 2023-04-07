@@ -161,7 +161,7 @@ endif
 >> + virsh net-undefine default
 >> + virsh net-destroy default
 ---
-##### ` echo 'PS1="\[\e[0;32m\]\A \[\e[1;33m\]\u\[\e[0;35m\]@\[\e[0;32m\]\h \[\e[1;33m\]\W \[\e[1;31m\]? \[\e[0m\]"' >> ~/.bashrc `
+##### ` echo "PS1='\[\e[0;32m\]\A \[\e[1;33m\]\u\[\e[0;35m\]@\[\e[0;32m\]\h \[\e[1;33m\]\W \[\e[1;31m\]? \[\e[0m\]'" >> ~/.bashrc `
 ``` 
 export HISTTIMEFORMAT='%F %T]$ '
 export LESS_TERMCAP_mb=$'\E[01;35m'
@@ -174,7 +174,7 @@ export LESS_TERMCAP_us=$'\E[01;32m'
 export GROFF_NO_SGR=1 #redhat
 export LESS=-R #debian
 ```
-##### ` echo 'PS1="\[\e[1;32m\]\u\[\e[0;33m\]@\[\e[0;32m\]\h \[\e[1;33m\]\W \[\e[1;35m\]? \[\e[0m\]"' >> /root/.bashrc `
+##### ` echo "PS1='\[\e[1;32m\]\u\[\e[0;33m\]@\[\e[0;32m\]\h \[\e[1;33m\]\W \[\e[1;35m\]? \[\e[0m\]'" >> /root/.bashrc `
 #### ` sed -i 's/GRUB_CMDLINE_LINUX=\"/GRUB_CMDLINE_LINUX=\"nouveau.modeset=1 /g ' /etc/default/grub @nouveau.modeset=0|1 #rd.driver.blacklist=nouveau `
 ##### ` yum remove $(rpm -qa | grep kernel | grep -v $(uname -r)) `
 ##### ` dracut -f /boot/initramfs-$(uname -r).img $(uname -r) ` #Create new initramfs image
