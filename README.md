@@ -1,5 +1,5 @@
 > ## $\color{#FF00FF}{ PARTITION }$
->> - /biosboot ~($\lim_{31k\rightarrow\infty}1M$).../boot/efi ~(1M+ $\sum_{i=6M}^n$ System+40M).../boot ~(300M+ $\sum_{i=100M}^n$ Kernel).../ ~($\frac{\infty}{0.29}$).../swap ~($\sqrt[i=2]{RAM}$) . /home  ~($\frac{\infty}{0.69}$).. /usr . /var . /opt . /tmp
+>> - /biosboot ~($\lim_{31k\rightarrow\infty}1M$).../boot/efi ~($\sum_{i=6M}^{n=system} {i \times n+1M+40M}$).../boot ~($\sum_{i=100M}^{n=kernel} {i \times n+200M}$).../ ~($\frac{\infty}{0.29}$).../swap ~($\sqrt[i=2]{RAM}$) . /home  ~($\frac{\infty}{0.69}$).. /usr . /var . /opt . /tmp
 >> - sudo blkid `/etc/default/grub /etc/fstab /boot/grub2/grub.cfg /boot/load/*`
 >> - sed -i '$a\vm.swappiness=20' /etc/sysctl.conf#sysctl -p
 ---
