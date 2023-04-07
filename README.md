@@ -45,6 +45,7 @@
 >> [@gnu-command](https://www.gnu.org/software/)
 >> .#Try these free learning resources from the Perl community [METACPAN](https://metacpan.org/)
 >> .#Continuously delivered distro that tracks just ahead of Red Hat Enterprise Linux (RHEL) development [centos-stream](https://mirror.stream.centos.org/)
+>> [@websclone](https://www.ooopn.com/)
 ---
 > ##### $\color{#00e63e}{ SOURCES }$ `#debian{stable testing unstable}`
 > - https://mirrors.huaweicloud.com
@@ -172,13 +173,7 @@ export LESS_TERMCAP_ue=$'\E[0m'
 export LESS_TERMCAP_us=$'\E[01;32m'
 export GROFF_NO_SGR=1 #redhat
 export LESS=-R #debian
-#last redhat
-function Euniq(){
-	export $2="$(echo "$1" |tr : "\n"|sort|uniq|tr "\n" : |sed -n 's/:$//p')"
-}
-Euniq $PATH PATH
 ```
-
 ##### ` echo 'PS1="\[\e[1;32m\]\u\[\e[0;33m\]@\[\e[0;32m\]\h \[\e[1;33m\]\W \[\e[1;35m\]? \[\e[0m\]"' >> /root/.bashrc `
 #### ` sed -i 's/GRUB_CMDLINE_LINUX=\"/GRUB_CMDLINE_LINUX=\"nouveau.modeset=1 /g ' /etc/default/grub @nouveau.modeset=0|1 #rd.driver.blacklist=nouveau `
 ##### ` yum remove $(rpm -qa | grep kernel | grep -v $(uname -r)) `
