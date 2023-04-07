@@ -1,9 +1,9 @@
-> ## $\color{#FF00FF}{ PARTITION }$
->> - /biosboot ~($\lim_{31k\rightarrow\infty}1M$).../boot/efi ~($\sum_{i=6M}^{n=system} {i \times n+1M+40M}$).../boot ~($\sum_{i=100M}^{n=kernel} {i \times n+200M}$).../ ~($\frac{\infty}{0.29}$).../swap ~($\sqrt[i=2]{RAM}$) . /home  ~($\frac{\infty}{0.69}$).. /usr . /var . /opt . /tmp
->> - sudo blkid `/etc/default/grub /etc/fstab /boot/grub2/grub.cfg /boot/load/*`
+> ## $\color{#FF00FF}\angle^{PARTITION}$
+>> - /biosboot ~($\lim_{31k\rightarrow\infty}1M$).../boot/efi ~($\sum_{i=6M}^{n=system} {i \times n+1M+40M}$).../boot ~($\sum_{i=100M}^{n=kernel} {i \times n+200M}$).../ ~($\frac{\infty}{0.29}$).../swap ~($\sqrt[i=3]{RAM}$) . /home  ~($\frac{\infty}{0.69}$).. /usr . /var . /opt . /tmp
+>> - sudo blkid $\int_{/etc/default/grub}^{/etc/fstab}\int_{/boot/grub2/grub.cfg}^{/boot/load/* }$
 >> - sed -i '$a\vm.swappiness=20' /etc/sysctl.conf#sysctl -p
 ---
-> ## $\color{#FF0000}{ HTTP[S] }$
+> ## $\color{#FF0000}\infty^{HTTP[S]}$
 >> - is a professional lyrics search network [musicenc](https://www.musicenc.com/) 
 >> .#Yandex offers internet search and other services like [yandex](https://yandex.com/)
 >> .#Any bug fixes for a stable [kernel.org](https://www.kernel.org/)
@@ -47,7 +47,7 @@
 >> .#Continuously delivered distro that tracks just ahead of Red Hat Enterprise Linux (RHEL) development [centos-stream](https://mirror.stream.centos.org/)
 >> [@websclone](https://www.ooopn.com/)
 ---
-> ##### $\color{#00e63e}{ SOURCES }$ `#debian{stable testing unstable}`
+> ##### $\color{#00e63e}\bot^{SOURCES}$ #debian$\oint_{testing}^{stable}\int_{unstable}$
 > - https://mirrors.huaweicloud.com
 > - https://mirrors.tuna.tsinghua.edu.cn
 > - https://mirrors.aliyun.com
@@ -57,9 +57,9 @@
 ---
 ##### sudo flatpak remote-modify flathub --url=https://mirror.sjtu.edu.cn/flathub
 ##### on flatpak error fonts @cp -r /etc/fonts/* org.example.com/config/fontconfig
-##### ` https://dl.google.com/linux/direct/google-chrome-{stable unstable}_current_{amd64.deb x86_64.rpm} `
+##### https://dl.google.com/linux/direct/google-chrome- $\iiint_{beta}^{stable}\int_{unstable}$ \_current\_ $\iint_{amd64.deb}^{x86\_64.rpm}$
 
-> ##### $\color{#00b330}{ APT }$
+> ##### $\color{#00b330}\approx{APT}$
 ```
 vim kaffeine qbittorrent audacious git traceroute locate mtr \
 fcitx fcitx-table-compose fcitx-googlepinyin fcitx-dbus-status fcitx-table-wubi \
@@ -68,7 +68,7 @@ nmap tcpdump audacity inkscape gimp krita audacity libreoffice \
 libpam-tmpdir opendnssec rsync firmware-realtek
 ```
 
-> ##### $\color{#00cc37}{ YUM[RPM][DNF] }$
+> ##### $\color{#00cc37}\approx{YUM_[RPM]^[DNF]}$
 ```
 epel-release.noarch epel-next-release.noarch gcc-c++ cmake bison ncurses ncurses-devel libaio \
 gnome-shell-extension-dash-to-dock.noarch gnome-extensions-app.x86_64 gnome-tweaks.noarch ibus.x86_64 \
@@ -76,7 +76,7 @@ aide rear fapolicyd usbguard openscap openscap-scanner scap-security-guide \
 fastfetch-bash-completion.noarch im-chooser.x86_64 xnview alsa xxhash
 ```
 
-> ##### $\color{#0000FF}{ PKG }$
+> ##### $\color{#0000FF}\in^{PKG}$
 ```
 xorg gnome zh-auto-cn-l10n zh-ibus-libpinyin
   
@@ -109,14 +109,13 @@ xft*autoHint:  true
 xterm*scrollBar: true
 ```
 
-## $\color{#FF7D00}{ TOOLS }$
+## $\color{#FF7D00}\supset^{TOOLS}$
 
 > ##### /usr/share/vim/vim82/colors/blue.vim
 > - hi Normal	guifg=yellow	guibg=darkBlue	ctermfg=yellow	ctermbg=none
 
 > ##### ~/.vimrc 
->> - /usr/share/vim/vimrc#debian
->> - /etc/vimrc#centos
+>> - $\coprod_{/usr/share/vim/vimrc@debian}^{/etc/vimrc@centos}$
 ```
 syntax on
 set hlsearch
@@ -149,8 +148,7 @@ endif
 >> - /etc/locale.gen >> en_GB.UFT-8 UFT-8
 ---
 > ##### sudo update-grub
->> - UEFI-based system:grub2-mkconfig -o /boot/efi/EFI/centos/grub.cfg
->> - Legacy system:/boot/grub2/grub.cfg
+>> - $\infty_{grub2-mkconfig\ -o\ /boot/efi/EFI/centos/grub.cfg}^{/boot/grub2/grub.cfg}$
 ---
 ##### ` systemctl enable systemd-resolved.service ` #debian
 ##### ` systemctl disable accounts-daemon.service avahi-daemon.service ` #centos
@@ -158,8 +156,7 @@ endif
 >> + WaylandEnable=false DefaultSession=gnome-xorg.desktop #fedora
 ---
 > ##### yum install libvirt-client
->> + virsh net-undefine default
->> + virsh net-destroy default
+>> + $\prod_{virsh net-undefine default}^{virsh net-destroy default}$
 ---
 ##### ` echo "PS1='\[\e[0;32m\]\A \[\e[1;33m\]\u\[\e[0;35m\]@\[\e[0;32m\]\h \[\e[1;33m\]\W \[\e[1;31m\]? \[\e[0m\]'" >> ~/.bashrc `
 ``` 
@@ -180,7 +177,7 @@ export LESS=-R #debian
 ##### ` dracut -f /boot/initramfs-$(uname -r).img $(uname -r) ` #Create new initramfs image
 ##### ` systemctl --user mask tracker-extract.service tracker-miner-fs.service tracker-store.service tracker-writeback.service ` #debian
 
-> #### $\color{#00ff85}{ CPAN }$
+> #### $\color{#00ff85}\notin^{CPAN}$
 ```
 o conf auto_commit 1
 o conf prerequisites_policy follow
@@ -197,7 +194,7 @@ install CPAN
 o conf init
 ```
 ---
-> ## $\color{#FF6347}{ /etc/hosts }$
+> ## $\color{#FF6347}\bigcap^{ /etc/hosts }$
 ```
 #127.0.0.1 localhost hostname
 #127.0.1.1 hostname
@@ -224,7 +221,7 @@ ff02::E ip6-rsvp-encapsulation
 #ff05::2 ip6-allrouters-localscope-site
 ```
 ---
-> ## $\color{#E9967A}{ /etc/NetworkManager/NetworkManager.conf }$
+> ## $\color{#E9967A}\bigcup^{ /etc/NetworkManager/NetworkManager.conf }$
 ```
 [main]
 plugins=ifupdown,keyfile
@@ -243,8 +240,8 @@ uri=
 interval=0
 ```
 ---
-> ## $\color{#FF4500}{ /etc/systemd/resolved.conf }$
-> + systemctl restart systemd-resolved.service && resolvectl
+> ## $\color{#FF4500}\bigvee^{ /etc/systemd/resolved.conf }$
+> + $\emptyset_{systemctl\ restart\ systemd-resolved.service}^{resolvectl}$
 ```
 DNS= 2606:4700:4700::1001 2606:4700:4700::1111 2001:4860:4860::8888 2001:4860:4860::8844 2620:fe::9 2620:fe::fe:9 2a09:: 2a11:: 2620:119:53::53 2620:119:35::35 2001:dc7:1000::1 240c:f:1:22::6 2001:de4::101 2001:de4::102 2001:da8:8000:1:202:120:2:100 2001:da8:8000:1:202:120:2:101 2001:da8:ff:305:20c:29ff:fe1f:a92a 2a02:6b8::feed:ff 2a02:6b8:0:1::feed:ff 2a02:6b8::feed:bad 2a02:6b8:0:1::feed:bad 2620:fe::fe 2620:fe::9 2620:0:ccc::2 2620:0:ccd::2
 FallbackDNS= 1.2.4.8 223.5.5.5 5.5.5.223 223.6.6.6 180.76.76.76 119.29.29.29 52.80.66.66 101.226.4.6 218.30.118.6 123.125.81.6 140.207.198.6 1.1.1.1 1.0.0.1 8.8.8.8 8.8.4.4 9.9.9.9 185.222.222.222 185.184.222.222 208.67.222.222 208.67.220.220 178.79.131.110 119.29.29.29
