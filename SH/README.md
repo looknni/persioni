@@ -1,18 +1,18 @@
 ## $\color{#FF00FF}{ CONFIG }$
 
 > ##### git config --global user.
->> user.email user.signingKey user.name user.useConfigOnly
+>> $\int_{user.email}^{user.signingKey}\int_{user.name}^{user.useConfigOnly}$
 --- 
 ##### git config --list
 
-> ##### ssh-keygen -a 100 -b 4096 -t dsa/ecdsa/ecdsa-sk/ed25519/ed25519-sk/rsa -C commit [-f output_keyfile]
->> -a rounds
+> ##### ssh-keygen -a 1 -b 1024 -t $\int_{dsa}^{ecdsa}\int_{ecdsa-sk}^{ed25519-sk}\int_{ed25519}^{rsa}$ -C commit [-f output_keyfile]
+>> - -a rounds
 >>> When saving a private key, this option specifies the number of
 KDF (key derivation function, currently bcrypt_pbkdf(3)) rounds
 used.  Higher numbers result in slower passphrase verification
 and increased resistance to brute-force password cracking (should
 the keys be stolen).  The default is 16 rounds. 
->> -b bits
+>> - -b bits
 >>> Specifies the number of bits in the key to create.  For RSA keys,
 the minimum size is 1024 bits and the default is 3072 bits.  Gen‐
 erally, 3072 bits is considered sufficient.  DSA keys must be ex‐
@@ -24,31 +24,26 @@ fail.  ECDSA-SK, Ed25519 and Ed25519-SK keys have a fixed length
 and the -b flag will be ignored. 
 ---  
 > ##### ssh -T git@github.com
->> -4  -A  -c  -e  -F  -i  -k  -L  -n  -O  -Q  -S  -v  -W  -y 
->> -6  -b  -C  -E  -g  -I  -K  -m  -N  -p  -R  -t  -V  -x  -Y 
->> -a  -B  -D  -f  -G  -J  -l  -M  -o  -q  -s  -T  -w  -X
+>> $\iiint_{-4}^{-A} {c_{e}^F i_{k}^L n_{O}^Q  S_{v}^W y}\iint_{-6}^{-b} {C_{E}^g I_{K}^m  N_{p}^R  t_{V}^x Y}\int_{-a}^{-B} {D_{f}^G J_{l}^M o_{q}^s T_{w}^X}$
 >>> -T      Disable pseudo-terminal allocation.
 ---
 ##### gpg --full-generate-key
-##### gpg --list-secret-keys --keyid-format=long/short
-##### gpg --list-sigs/--list-sig/--list-signatures
-> ##### gpg --armor/--armour --export xxxxxxxxxxxx
->> --expert --export-options --export-secret-subkeys --export --export-ownertrust --export-ssh-key --export-filter --export-secret-keys 
+##### gpg --list-secret-keys --keyid-format= $\int_{long}^{short}$
+##### gpg $\int_{--list-sigs}^{--list-sig}\int_{--list-signatures}$
+> ##### gpg $\int_{--armor}^{--armour}$ --export xxxxxxxxxxxx
+>> $\iint_{--expert}^{--export-options}\int_{--export-secret-subkeys}^{--export}\int_{--export-ownertrust}^{--export-ssh-key}\int_{--export-filter}^{--export-secret-keys}$
 ---
 ##### gpg --send-keys xxxxxxxxxxx
 ##### git config --global commit.gpgsign true
 ##### git config --global user.signingkey key
 
-> ##### git ls-files
-> ##### git status 
->> stage    stash    status
+> $\iiint_{ls-files}^{status} {git_{stage}^{stash}}$
 ---
 ##### git branch -dr main `# git push origin --delete branch`
 > ##### git remote add gitlab git@github.com:looknnn/program
->> add            prune          rename         set-head       show 
->> get-url        remove         set-branches   set-url        update 
+>> $\int_{add}^{prune}\int_{rename}^{set-head}\int_{show}^{get-url}\int_{remove}^{set-branches}\int_{set-url}^{update}$ 
 ---
-##### git push -uf origin main `#-u,--set-upstream && -f,--force`
+##### git push -uf origin main $\int_{-u}^{--set-upstream}\int_{-f}^{--force}$
 ---
 ## $\color{#0000FF}{EDIT}$
   

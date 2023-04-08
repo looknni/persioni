@@ -21,10 +21,9 @@
 ./SH/D
 ./SH/Format_t.pl
 ./SH/Function-Perl.md
-./SH/KEYWORD_PERL.pm
+./SH/README.md
 ./SH/PERL.pm
 ./SH/R
-./SH/README.md
 ./SH/SED.sed
 ./SH/SSHClient.sh
 ./SH/SearchCp.sh
