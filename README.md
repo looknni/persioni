@@ -1,8 +1,8 @@
 > ## $\color{#FF00FF}\angle^{PARTITION}$
->> - /biosboot ~($\lim_{31k\rightarrow\infty}1M$).../boot/efi ~($\sum_{i=6M}^{n=system} {i \times n+1M+40M}$).../boot ~($\sum_{i=100M}^{n=kernel} {i \times n+200M}$).../ ~($\frac{\infty}{0.29}$).../swap ~($\sqrt[i=3]{RAM}$) . /home  ~($\frac{\infty}{0.69}$).. /usr . /var . /opt . /tmp
+>> - /biosboot ~($\displaystyle\lim_{31k\rightarrow\infty}1M$).../boot/efi ~($\displaystyle\sum_{i=6M}^{n=system} {i \times n+1M+40M}$).../boot ~($\displaystyle\sum_{i=100M}^{n=kernel} {i \times n+200M}$).../ ~($\frac{\infty}{0.29}$).../swap ~($\sqrt[i=3]{RAM}$) . /home  ~($\frac{\infty}{0.69}$).. /usr . /var . /opt . /tmp
 >> - sudo blkid $\int_{/etc/default/grub}^{/etc/fstab}\int_{/boot/grub2/grub.cfg}^{/boot/load/* }$
 >> - sed -i '$a\vm.swappiness=20' /etc/sysctl.conf#sysctl -p
->> - $\int_{{2820076477}^{16}}^{{140177258}^{9}}\int_{s^S}^{m^M}\int_{h_{mac}}^{echo_{2}}$ $\lim_{16 \rightarrow 20 \rightarrow 32 \rightarrow 63 \rightarrow \infty}^{\infty \rightarrow looknni}$
+>> - $\oint_{{2820076477}^{16}}^{{140177258}^{9}}\sum_{s^S}^{m^M}\prod_{h_{mac}}^{echo_{2}}$ $\lim_{16 \rightarrow 20 \rightarrow 32 \rightarrow 63 \rightarrow \infty}^{\infty \rightarrow looknni}$
 ---
 > ## $\color{#FF0000}\infty^{HTTP[S]}$
 >> - is a professional lyrics search network [musicenc](https://www.musicenc.com/) 
@@ -57,8 +57,8 @@
 > - http://mirrors.nju.edu.cn/
 ---
 ##### sudo flatpak remote-modify flathub --url=https://mirror.sjtu.edu.cn/flathub
-##### on flatpak error fonts @cp -r /etc/fonts/* org.example.com/config/fontconfig
-##### https://dl.google.com/linux/direct/google-chrome- $\iiint_{beta}^{stable}\int_{unstable}$ \_current\_ $\iint_{amd64.deb}^{x86\_64.rpm}$
+##### on flatpak error fonts ? cp -r /etc/fonts/* org.example.com/config/fontconfig
+##### `https://dl.google.com/linux/direct/google-chrome-` $\iiint_{beta}^{stable}\int_{unstable}$ \_current\_ $\iint_{amd64.deb}^{x86\_64.rpm}$
 
 > ##### $\color{#00b330}\approx{APT}$
 ```
