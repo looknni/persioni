@@ -61,21 +61,20 @@
 
 > ##### $\color{#00b330}\approx{APT}$
 ```
-vim kaffeine qbittorrent audacious git traceroute locate mtr \
+vim-gtk3 kaffeine qbittorrent audacious git traceroute locate mtr \
 fcitx fcitx-table-compose fcitx-googlepinyin fcitx-dbus-status fcitx-table-wubi \
 wget bash-completion obs-studio gnome-shell-extension-dashtodock dnsutils aptitude \
 nmap tcpdump audacity inkscape gimp krita audacity libreoffice \
 libpam-tmpdir opendnssec rsync firmware-realtek
 ```
 
-> ##### $\color{#00cc37}\approx{YUM_[RPM]^[DNF]}$
+> ##### $\color{#00cc37}\approx{YUM_{RPM}^{DNF}}$
 ```
 epel-release.noarch epel-next-release.noarch gcc-c++ cmake bison ncurses ncurses-devel libaio \
 gnome-shell-extension-dash-to-dock.noarch gnome-extensions-app.x86_64 gnome-tweaks.noarch ibus.x86_64 \
 aide rear fapolicyd usbguard openscap openscap-scanner scap-security-guide \
 fastfetch-bash-completion.noarch im-chooser.x86_64 xnview alsa xxhash
 ```
-
 > ##### $\color{#0000FF}\in^{PKG}$
 ```
 xorg gnome zh-auto-cn-l10n zh-ibus-libpinyin
@@ -108,7 +107,6 @@ xft*antiAlias:  true
 xft*autoHint:  true
 xterm*scrollBar: true
 ```
-
 ## $\color{#FF7D00}\supset^{TOOLS}$
 
 > ##### /usr/share/vim/vim82/colors/blue.vim
@@ -137,14 +135,14 @@ endif
 
 > ##### yum groupinstall 'Server with GUI' 
 >> - systemctl set-default graphical.target 
->> - debian.tasksel
+>> $\int_{debian.tasksel}$
 ---
 ##### ` dpkg -l | grep ^rc | awk '{print $2}' | sudo xargs dpkg -P `
 
 #### ` sed -i 's:*.psd1:&;*;*.*:g' /usr/share/gtksourceview-4/language-specs/powershell.lang `
 
 > ~~sudo dpkg-reconfigure [locales][console-setup]~~
->> - im-config
+>> $\int_{im-config}$
 >> - /etc/locale.gen >> en_GB.UFT-8 UFT-8
 ---
 > ##### sudo update-grub
@@ -153,7 +151,7 @@ endif
 ##### ` systemctl enable systemd-resolved.service ` #debian
 ##### ` systemctl disable accounts-daemon.service avahi-daemon.service ` #centos
 > ##### /etc/gdm/custom.conf
->> + WaylandEnable=false DefaultSession=gnome-xorg.desktop #fedora
+>> + $\int_{WaylandEnable=false}^{DefaultSession=gnome-xorg.desktop}$ #fedora
 ---
 > ##### yum install libvirt-client
 >> + $\prod_{virsh net-undefine default}^{virsh net-destroy default}$

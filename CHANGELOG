@@ -10,3 +10,4 @@ chattr [-pRVf] [-+=aAcCdDeijPsStTuFx]
 scp -P port [-r ~/file] hostname@remote:~/file #.ssh/,700 authorized_keys,600
 # 30 28 33 40 33 38 26 28::$n{m..s}
 # sh bash csh tcsh ksh zsh
+# 2820076477@16
