@@ -1,125 +1,130 @@
-#### REQ
-    openssl genrsa -out private.key 4096 #
-    openssl req -new -key private.key -out generate.csr -sha256
-    [openssl req -newkey rsa:4096 -nodes -keyout private.key -out generate.csr]
-    openssl req -in generate.csr -text [-verify] [-noout]
-    openssl req -x509 -days 365 -in generate.csr -signkey private.key -out new.crt
-    openssl dhparam -out dhparams.pem 2048
-#### GENPKEY
-    openssl genpkey -algorithm RSA[X25519][ED448] -out private.key [-aes-128-cbc] [[-pkeyopt rsa_keygen_bits:4096] [-pkeyopt rsa_keygen_pubexp:3]] [-pass pass: ]
-#### DSA
-    openssl genpkey -genparam -algorithm DSA -out dsap.pem [-pkeyopt pbits:2048] [-pkeyopt qbits:224] [-pkeyopt digest:SHA256] [-pkeyopt gindex:1] [-text]
-    [openssl genpkey -paramfile dsap.pem -out dsakey.pem] # Generate DSA key from parameters
-#### DH
-    openssl genpkey -algorithm [[DH -out dhkey.pem -pkeyopt group:ffdhe4096] [DHX -out dhkey.pem -pkeyopt dh_rfc5114:3]]
-    [openssl genpkey -paramfile dhp.pem -out dhkey.pem] # Generate a DH key using a DH parameters
-    openssl genpkey -genparam -algorithm [[DH -out dhp.pem -pkeyopt [[group:ffdhe2048][dh_paramgen_prime_len:2048][dh_paramgen_type:1]]] [DHX -out dhp.pem -pkeyopt dh_rfc5114:2]]
-    openssl genpkey -genparam -algorithm DHX -out dhp.pem -text [-pkeyopt pbits:2048] [-pkeyopt qbits:224] [-pkeyopt digest:SHA256] [-pkeyopt gindex:1] [-pkeyopt dh_paramgen_type:2]
-#### EC
-    openssl genpkey -genparam -algorithm EC -out ecp.pem -pkeyopt [ec_paramgen_curve:secp384r1] [ec_param_enc:named_curve]
-    openssl genpkey -paramfile ecp.pem -out eckey.pem # Generate EC key from parameters
-    openssl genpkey -algorithm EC -out eckey.pem -pkeyopt ec_paramgen_curve:P-384 -pkeyopt ec_param_enc:named_curve # Generate EC key directly
-#### PKEY
-    openssl pkey -in private.key [-passin pass: ] [-text [-out public.key]]
-#### DGST
-    openssl genrsa -out private.key 4096
-    openssl pkey[rsa] -in private.key -putout -out public.key #
-    openssl dgst -sha256 -sign [private.key] -out outfile.signature data.file
-    openssl dgst -sha256 [-prverify private.key][-verify public.key] -signature outfile.signature data.file
-#### openssl base64 -in private.key -out opublic.key [-pass pass:1] #
-    aes-128-ctr  aes-128-ecb aes-128-ofb aes-192-cbc aes-192-cfb
-    aes-192-cfb1  aes-192-cfb8 aes-192-ctr aes-192-ecb aes-192-ofb
-    aes-256-cbc  aes-256-cfb aes-256-cfb1 aes-256-cfb8 aes-256-ctr
-    aes-256-ecb  aes-256-ofb aes128 aes128-wrap aes192
-    aes192-wrap  aes256 aes256-wrap aria-128-cbc aria-128-cfb
-    aria-128-cfb1  aria-128-cfb8 aria-128-ctr aria-128-ecb aria-128-ofb
-    aria-192-cbc  aria-192-cfb aria-192-cfb1 aria-192-cfb8 aria-192-ctr
-    aria-192-ecb  aria-192-ofb aria-256-cbc aria-256-cfb aria-256-cfb1
-    aria-256-cfb8  aria-256-ctr aria-256-ecb aria-256-ofb aria128
-    aria192  aria256 base64 camellia-128-cbc camellia-128-cfb
-    camellia-128-cfb1  camellia-128-cfb8 camellia-128-ctr camellia-128-ecb camellia-128-ofb
-    camellia-192-cbc  camellia-192-cfb camellia-192-cfb1 camellia-192-cfb8 camellia-192-ctr
-    camellia-192-ecb  camellia-192-ofb camellia-256-cbc camellia-256-cfb camellia-256-cfb1
-    camellia-256-cfb8  camellia-256-ctr camellia-256-ecb camellia-256-ofb camellia128
-    camellia192  camellia256 chacha20 des-ede des-ede-cbc
-    des-ede-cfb  des-ede-ecb des-ede-ofb des-ede3 des-ede3-cbc
-    des-ede3-cfb  des-ede3-cfb1 des-ede3-cfb8 des-ede3-ecb des-ede3-ofb
-    des3  des3-wrap dsa enc id-aes128-wrap
-    id-aes128-wrap-pad  id-aes192-wrap id-aes192-wrap-pad id-aes256-wrap id-aes256-wrap-pad
-    id-smime-alg-CMS3DESwrap  smime
+# Contributing to looknni
 
-### $\color{#FF00FF}{Standard-commands}$ `@@` openssl
+First off, thanks for taking the time to contribute! ❤️
 
-    asn1parse         ca                ciphers           cmp
-    cms               crl               crl2pkcs7         dgst
-    dhparam           dsa               dsaparam          ec
-    ecparam           enc               engine            errstr
-    fipsinstall       gendsa            genpkey           genrsa
-    help              info              kdf               list
-    mac               nseq              ocsp              passwd
-    pkcs12            pkcs7             pkcs8             pkey
-    pkeyparam         pkeyutl           prime             rand
-    rehash            req               rsa               rsautl
-    s_client          s_server          s_time            sess_id
-    smime             speed             spkac             srp
-    storeutl          ts                verify            version
-    x509
+All types of contributions are encouraged and valued. See the [Table of Contents](#table-of-contents) for different ways to help and details about how this project handles them. Please make sure to read the relevant section before making your contribution. It will make it a lot easier for us maintainers and smooth out the experience for all involved. The community looks forward to your contributions. 🎉
 
-### Message Digest commands (see the $\color{#FF00FF}{dgst}$ command for more details) $\color{#0000FF}{@@}$ ` openssl dgst [-e] ... `
+> And if you like the project, but just don't have time to contribute, that's fine. There are other easy ways to support the project and show your appreciation, which we would also be very happy about:
+> - Star the project
+> - Tweet about it
+> - Refer this project in your project's readme
+> - Mention the project at local meetups and tell your friends/colleagues
 
-    -*                 -keyform           -r                 -sha512-256
-    -binary            -list              -rand              -shake128
-    -blake2b512        -mac               -rmd160            -shake256
-    -blake2s256        -macopt            -sha1              -sign
-    -c                 -md2               -sha224            -signature
-    -d                 -md4               -sha256            -sigopt
-    -debug             -md5               -sha3-224          -sm3
-    -engine            -out               -sha3-256          -verify
-    -engine_impl       -passin            -sha3-384          -writerand
-    -fips-fingerprint  -propquery         -sha3-512          -xoflen
-    -help              -provider          -sha384
-    -hex               -provider-path     -sha512
-    -hmac              -prverify          -sha512-224
+<!-- omit in toc -->
+## Table of Contents
 
-### Cipher commands (see the $\color{#FF00FF}{enc}$ command for more details) $\color{#FF0000}{@@}$ ` openssl enc [-e][-d] ... -salt -in filename -out newfilename [[-pass [pass: ][file: ]] -pbkdf2p[-iter 3]`
+- [Code of Conduct](#code-of-conduct)
+- [I Have a Question](#i-have-a-question)
+- [I Want To Contribute](#i-want-to-contribute)
+  - [Reporting Bugs](#reporting-bugs)
+  - [Suggesting Enhancements](#suggesting-enhancements)
+  - [Your First Code Contribution](#your-first-code-contribution)
+  - [Improving The Documentation](#improving-the-documentation)
+- [Styleguides](#styleguides)
+  - [Commit Messages](#commit-messages)
+- [Join The Project Team](#join-the-project-team)
 
-    -*              -ciphers        -iv             -out            -salt
-    -A              -d              -k              -p              -v
-    -K              -debug          -kfile          -pass           -writerand
-    -P              -e              -list           -pbkdf2         -z
-    -S              -engine         -md             -propquery
-    -a              -help           -none           -provider
-    -base64         -in             -nopad          -provider-path
-    -bufsize        -iter           -nosalt         -rand
 
-    -aes-128-cbc -aes-128-cfb -aes-128-cfb1 -aes-128-cfb8
-    -aes-128-ctr  -aes-128-ecb -aes-128-ofb -aes-192-cbc -aes-192-cfb
-    -aes-192-cfb1  -aes-192-cfb8 -aes-192-ctr -aes-192-ecb -aes-192-ofb
-    -aes-256-cbc  -aes-256-cfb -aes-256-cfb1 -aes-256-cfb8 -aes-256-ctr
-    -aes-256-ecb  -aes-256-ofb -aes128 -aes192 -aes256
-    -aria-128-cbc  -aria-128-cfb -aria-128-cfb1 -aria-128-cfb8 -aria-128-ctr
-    -aria-128-ecb  -aria-128-ofb -aria-192-cbc -aria-192-cfb -aria-192-cfb1
-    -aria-192-cfb8  -aria-192-ctr -aria-192-ecb -aria-192-ofb -aria-256-cbc
-    -aria-256-cfb  -aria-256-cfb1 -aria-256-cfb8 -aria-256-ctr -aria-256-ecb
-    -aria-256-ofb  -aria128 -aria192 -aria256 -camellia-128-cbc
-    -camellia-128-cfb  -camellia-128-cfb1 -camellia-128-cfb8 -camellia-128-ctr -camellia-128-ecb
-    -camellia-128-ofb  -camellia-192-cbc -camellia-192-cfb -camellia-192-cfb1 -camellia-192-cfb8
-    -camellia-192-ctr  -camellia-192-ecb -camellia-192-ofb -camellia-256-cbc -camellia-256-cfb
-    -camellia-256-cfb1  -camellia-256-cfb8 -camellia-256-ctr -camellia-256-ecb -camellia-256-ofb
-    -camellia128  -camellia192 -camellia256 -chacha20 -des-ede
-    -des-ede-cbc  -des-ede-cfb -des-ede-ecb -des-ede-ofb -des-ede3
-    -des-ede3-cbc  -des-ede3-cfb -des-ede3-cfb1 -des-ede3-cfb8 -des-ede3-ecb
-    -des-ede3-ofb  -des3 -id-aes128-wrap-pad -id-aes192-wrap-pad -id-aes256-wrap-pad
-    -sm4  -sm4-cbc -sm4-cfb -sm4-ctr -sm4-ecb
-    -sm4-ofb
-    -aes128-wrap -aes192-wrap -aes256-wrap
-    -bf  -bf-cbc -bf-cfb -bf-ecb -bf-ofb
-    -blowfish  -cast -cast-cbc -cast5-cbc -cast5-cfb
-    -cast5-ecb  -cast5-ofb -des -des-cbc -des-cfb
-    -des-cfb1  -des-cfb8 -des-ecb -des-ofb -des3-wrap
-    -desx  -desx-cbc -id-aes128-wrap -id-aes192-wrap -id-aes256-wrap
-    -id-smime-alg-CMS3DESwrap  -idea -idea-cbc -idea-cfb -idea-ecb
-    -idea-ofb  -rc2 -rc2-128 -rc2-40 -rc2-40-cbc
-    -rc2-64  -rc2-64-cbc -rc2-cbc -rc2-cfb -rc2-ecb
-    -rc2-ofb  -rc4 -rc4-40 -seed -seed-cbc
-    -seed-cfb  -seed-ecb -seed-ofb
+## Code of Conduct
+
+This project and everyone participating in it is governed by the
+By participating, you are expected to uphold this code. Please report unacceptable behavior
+to <looknnniii@outlook.com>.
+
+## I Have a Question
+
+> If you want to ask a question, we assume that you have read the available [Documentation](https://gitlab.com/looknnn).
+
+Before you ask a question, it is best to search for existing [Issues](https://gitlab.com/looknnn) that might help you. In case you have found a suitable issue and still need clarification, you can write your question in this issue. It is also advisable to search the internet for answers first.
+
+If you then still feel the need to ask a question and need clarification, we recommend the following:
+
+- Open an [Issue](https://gitlab.com/looknnn).
+- Provide as much context as you can about what you're running into.
+- Provide project and platform versions (nodejs, npm, etc), depending on what seems relevant.
+
+We will then take care of the issue as soon as possible.
+
+<!--
+You might want to create a separate issue tag for questions and include it in this description. People should then tag their issues accordingly.
+
+Depending on how large the project is, you may want to outsource the questioning, e.g. to Stack Overflow or Gitter. You may add additional contact and information possibilities:
+- IRC
+- Slack
+- Gitter
+- Stack Overflow tag
+- Blog
+- FAQ
+- Roadmap
+- E-Mail List
+- Forum
+-->
+
+## I Want To Contribute
+
+> ### Legal Notice <!-- omit in toc -->
+> When contributing to this project, you must agree that you have authored 100% of the content, that you have the necessary rights to the content and that the content you contribute may be provided under the project license.
+
+### Reporting Bugs
+
+<!-- omit in toc -->
+#### Before Submitting a Bug Report
+
+A good bug report shouldn't leave others needing to chase you up for more information. Therefore, we ask you to investigate carefully, collect information and describe the issue in detail in your report. Please complete the following steps in advance to help us fix any potential bug as fast as possible.
+
+- Make sure that you are using the latest version.
+- Determine if your bug is really a bug and not an error on your side e.g. using incompatible environment components/versions (Make sure that you have read the [documentation](https://gitlab.com/looknnn). If you are looking for support, you might want to check [this section](#i-have-a-question)).
+- To see if other users have experienced (and potentially already solved) the same issue you are having, check if there is not already a bug report existing for your bug or error in the .
+- Also make sure to search the internet (including Stack Overflow) to see if users outside of the GitHub community have discussed the issue.
+- Collect information about the bug:
+  - Stack trace (Traceback)
+  - OS, Platform and Version (Windows, Linux, macOS, x86, ARM)
+  - Version of the interpreter, compiler, SDK, runtime environment, package manager, depending on what seems relevant.
+  - Possibly your input and the output
+  - Can you reliably reproduce the issue? And can you also reproduce it with older versions?
+
+<!-- omit in toc -->
+#### How Do I Submit a Good Bug Report?
+
+> You must never report security related issues, vulnerabilities or bugs including sensitive information to the issue tracker, or elsewhere in public. Instead sensitive bugs must be sent by email to <looknnniii@outlook.com>.
+<!-- You may add a PGP key to allow the messages to be sent encrypted as well. -->
+
+We use GitHub issues to track bugs and errors. If you run into an issue with the project:
+
+- Open an [Issue](https://gitlab.com/looknnn). (Since we can't be sure at this point whether it is a bug or not, we ask you not to talk about a bug yet and not to label the issue.)
+- Explain the behavior you would expect and the actual behavior.
+- Please provide as much context as possible and describe the *reproduction steps* that someone else can follow to recreate the issue on their own. This usually includes your code. For good bug reports you should isolate the problem and create a reduced test case.
+- Provide the information you collected in the previous section.
+
+Once it's filed:
+
+- The project team will label the issue accordingly.
+- A team member will try to reproduce the issue with your provided steps. If there are no reproduction steps or no obvious way to reproduce the issue, the team will ask you for those steps and mark the issue as `needs-repro`. Bugs with the `needs-repro` tag will not be addressed until they are reproduced.
+- If the team is able to reproduce the issue, it will be marked `needs-fix`, as well as possibly other tags (such as `critical`), and the issue will be left to be [implemented by someone](#your-first-code-contribution).
+
+<!-- You might want to create an issue template for bugs and errors that can be used as a guide and that defines the structure of the information to be included. If you do so, reference it here in the description. -->
+
+
+### Suggesting Enhancements
+
+This section guides you through submitting an enhancement suggestion for looknnn, **including completely new features and minor improvements to existing functionality**. Following these guidelines will help maintainers and the community to understand your suggestion and find related suggestions.
+
+<!-- omit in toc -->
+#### Before Submitting an Enhancement
+
+- Make sure that you are using the latest version.
+- Read the [documentation](https://gitlab.com/looknnn) carefully and find out if the functionality is already covered, maybe by an individual configuration.
+- Perform a [search](https://gitlab.com/looknnn) to see if the enhancement has already been suggested. If it has, add a comment to the existing issue instead of opening a new one.
+- Find out whether your idea fits with the scope and aims of the project. It's up to you to make a strong case to convince the project's developers of the merits of this feature. Keep in mind that we want features that will be useful to the majority of our users and not just a small subset. If you're just targeting a minority of users, consider writing an add-on/plugin library.
+
+<!-- omit in toc -->
+#### How Do I Submit a Good Enhancement Suggestion?
+
+Enhancement suggestions are tracked as [GitHub issues](https://gitlab.com/looknnn).
+
+- Use a **clear and descriptive title** for the issue to identify the suggestion.
+- Provide a **step-by-step description of the suggested enhancement** in as many details as possible.
+- **Describe the current behavior** and **explain which behavior you expected to see instead** and why. At this point you can also tell which alternatives do not work for you.
+- **Explain why this enhancement would be useful** to most looknnn users. You may also want to point out the other projects that solved it better and which could serve as inspiration.
+
+<!-- You might want to create an issue template for enhancement suggestions that can be used as a guide and that defines the structure of the information to be included. If you do so, reference it here in the description. -->
