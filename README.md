@@ -1,5 +1,5 @@
 > ## $\color{#FF00FF}\angle^{PARTITION}$
->> - /biosboot ~($\displaystyle\lim_{31k\rightarrow\infty}1M$).../boot/efi ~($\displaystyle\sum_{i=6M}^{n=system} {i \times n+1M+40M}$).../boot ~($\displaystyle\sum_{i=100M}^{n=kernel} {i \times n+200M}$).../ ~($\frac{\infty}{0.29}$).../swap ~($\sqrt[i=3]{RAM}$) . /home  ~($\frac{\infty}{0.69}$).. /usr . /var . /opt . /tmp
+>> - /biosboot ~($\displaystyle\lim_{31k\rightarrow\infty}1M$).../boot/efi ~($\displaystyle\sum_{i \to 6M}^{n \to system} {i \times n+1M+40M}$).../boot ~($\displaystyle\sum_{i \to 100M}^{n \to kernel} {i \times n+200M}$).../ ~($\frac{\infty}{0.29}$).../swap ~($\sqrt[i \to 3]{RAM}$) . /home  ~($\frac{\infty}{0.69}$).. /usr . /var . /opt . /tmp
 >> - sudo blkid $\int_{/etc/default/grub}^{/etc/fstab}\int_{/boot/grub2/grub.cfg}^{/boot/load/* }$
 >> - sed -i '$a\vm.swappiness=20' /etc/sysctl.conf#sysctl -p
 >> - $\oint_{{2820076477}^{16}}^{{140177258}^{9}}\displaystyle\sum_{s^S}^{m^M}\displaystyle\prod_{h_{mac}}^{echo_{2}}$ $\displaystyle\lim_{16 \rightarrow 20 \rightarrow 32 \rightarrow 63 \rightarrow \infty}^{\infty \rightarrow looknni}$
