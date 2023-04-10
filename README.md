@@ -136,15 +136,14 @@ endif
 
 > ##### yum groupinstall 'Server with GUI' 
 >> - systemctl set-default graphical.target 
->> $\int_{debian.tasksel}$
+>> $\oint_{debian.tasksel}$
 ---
 ##### ` dpkg -l | grep ^rc | awk '{print $2}' | sudo xargs dpkg -P `
 
 #### ` sed -i 's:*.psd1:&;*;*.*:g' /usr/share/gtksourceview-4/language-specs/powershell.lang `
 
 > ~~sudo dpkg-reconfigure [locales][console-setup]~~
->> $\int_{im-config}$
->> - /etc/locale.gen >> en_GB.UFT-8 UFT-8
+>> $\oint_{im-config}$
 ---
 > ##### sudo update-grub
 >> - $\infty_{grub2-mkconfig\ -o\ /boot/efi/EFI/centos/grub.cfg}^{/boot/grub2/grub.cfg}$
