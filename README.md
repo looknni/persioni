@@ -58,7 +58,7 @@
 ---
 ##### sudo flatpak remote-modify flathub --url=https://mirror.sjtu.edu.cn/flathub
 ##### on flatpak error fonts ? cp -r /etc/fonts/* org.example.com/config/fontconfig
-##### `https://dl.google.com/linux/direct/google-chrome-` $\iiint_{beta_{unstable}}^{stable}$ \_current\_ $\iint_{amd64.deb}^{x86 \_ 64.rpm}$
+##### `https://dl.google.com/linux/direct/google-chrome-` $\iiint_{beta_{unstable}}^{stable}$ \_current\_ $\iint_{amd64.deb}^{x86_{64.rpm}}$
 
 > ##### $\color{#00b330}\lambda^{APT}$
 ```
