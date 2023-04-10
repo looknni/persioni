@@ -48,7 +48,7 @@
     id-aes128-wrap-pad  id-aes192-wrap id-aes192-wrap-pad id-aes256-wrap id-aes256-wrap-pad
     id-smime-alg-CMS3DESwrap  smime
 
-### $\color{#FF00FF}{Standard-commands}$ `@@` openssl
+### $\color{#FF00FF}{Standard \ commands}$ `?` openssl
 
     asn1parse         ca                ciphers           cmp
     cms               crl               crl2pkcs7         dgst
@@ -65,7 +65,7 @@
     storeutl          ts                verify            version
     x509
 
-### Message Digest commands (see the $\color{#FF00FF}{dgst}$ command for more details) $\color{#0000FF}{@@}$ ` openssl dgst [-e] ... `
+### Message Digest commands (see the $\color{#FF00FF}{dgst}$ command for more details) $\color{#0000FF}{?}$ ` openssl dgst [-e] ... `
 
     -*                 -keyform           -r                 -sha512-256
     -binary            -list              -rand              -shake128
@@ -81,7 +81,7 @@
     -hex               -provider-path     -sha512
     -hmac              -prverify          -sha512-224
 
-### Cipher commands (see the $\color{#FF00FF}{enc}$ command for more details) $\color{#FF0000}{@@}$ ` openssl enc [-e][-d] ... -salt -in filename -out newfilename [[-pass [pass: ][file: ]] -pbkdf2p[-iter 3]`
+### Cipher commands (see the $\color{#FF00FF}{enc}$ command for more details) $\color{#FF0000}{?}$ ` openssl enc [-e][-d] ... -salt -in filename -out newfilename [[-pass [pass: ][file: ]] -pbkdf2p[-iter 3]`
 
     -*              -ciphers        -iv             -out            -salt
     -A              -d              -k              -p              -v
