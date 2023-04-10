@@ -1,10 +1,10 @@
-> ## $\color{#FF00FF}\angle^{PARTITION}$
+> ### $\color{#FF00FF}\zeta^{PARTITION}$
 >> - /biosboot ~($\displaystyle\lim_{31k\rightarrow\infty}1M$).../boot/efi ~($\displaystyle\sum_{i \to 6M}^{n \to system} {i \times n+1M+40M}$).../boot ~($\displaystyle\sum_{i \to 100M}^{n \to kernel} {i \times n+200M}$).../ ~($\frac{\infty}{0.98}$).../swap ~($\sqrt[i \to 3]{RAM}$) . /home . /usr . /var . /opt . /tmp
 >> - sudo blkid $\int_{/etc/default/grub}^{/etc/fstab}\int_{/boot/grub2/grub.cfg}^{/boot/load/* }$
 >> - sed -i '$a\vm.swappiness=20' /etc/sysctl.conf#sysctl -p
 >> - $\oint_{{2820076477}^{16}}^{{140177258}^{9}}\displaystyle\sum_{s^S}^{m^M}\displaystyle\prod_{h_{mac}}^{echo_{2}}$ $\displaystyle\lim_{16 \rightarrow 20 \rightarrow 32 \rightarrow 63 \rightarrow \infty}^{\infty \rightarrow looknni}$
 ---
-> ## $\color{#FF0000}\infty^{HTTP[S]}$
+> ### $\color{#FF0000}\eta^{HTTP[S]}$
 >> - is a professional lyrics search network [musicenc](https://www.musicenc.com/) 
 >> .#Yandex offers internet search and other services like [Yandex Browser](https://yandex.com/)
 >> .#Any bug fixes for a stable [kernel.org](https://www.kernel.org/)
@@ -48,7 +48,7 @@
 >> .#Continuously delivered distro that tracks just ahead of Red Hat Enterprise Linux (RHEL) development [centos-stream](https://mirror.stream.centos.org/)
 >> [@websclone](https://www.ooopn.com/)
 ---
-> ##### $\color{#00e63e}\bot^{SOURCES}$ #debian$\oint_{testing}^{stable}\int_{unstable}$
+> #### $\color{#00e63e}\partial^{SOURCES}$ #debian$\oint_{testing}^{stable}\int_{unstable}$
 > - https://mirrors.huaweicloud.com
 > - https://mirrors.tuna.tsinghua.edu.cn
 > - https://mirrors.aliyun.com
@@ -60,7 +60,7 @@
 ##### on flatpak error fonts ? cp -r /etc/fonts/* org.example.com/config/fontconfig
 ##### `https://dl.google.com/linux/direct/google-chrome-` $\iiint_{beta}^{stable}\int_{unstable}$ \_current\_ $\iint_{amd64.deb}^{x86\_64.rpm}$
 
-> ##### $\color{#00b330}\approx{APT}$
+> ##### $\color{#00b330}\lambda^{APT}$
 ```
 vim-gtk3 kaffeine qbittorrent audacious git traceroute locate mtr \
 fcitx fcitx-table-compose fcitx-googlepinyin fcitx-dbus-status fcitx-table-wubi \
@@ -69,14 +69,14 @@ nmap tcpdump audacity inkscape gimp krita audacity libreoffice \
 libpam-tmpdir opendnssec rsync firmware-realtek
 ```
 
-> ##### $\color{#00cc37}\approx{YUM_{RPM}^{DNF}}$
+> ##### $\color{#00cc37}\gamma^{YUM_{RPM}^{DNF}}$
 ```
 epel-release.noarch epel-next-release.noarch gcc-c++ cmake bison ncurses ncurses-devel libaio \
 gnome-shell-extension-dash-to-dock.noarch gnome-extensions-app.x86_64 gnome-tweaks.noarch ibus.x86_64 \
 aide rear fapolicyd usbguard openscap openscap-scanner scap-security-guide \
 fastfetch-bash-completion.noarch im-chooser.x86_64 xnview alsa xxhash
 ```
-> ##### $\color{#0000FF}\in^{PKG}$
+> ##### $\color{#0000FF}\alpha^{PKG}$
 ```
 xorg gnome zh-auto-cn-l10n zh-ibus-libpinyin
   
@@ -108,7 +108,7 @@ xft*antiAlias:  true
 xft*autoHint:  true
 xterm*scrollBar: true
 ```
-## $\color{#FF7D00}\supset^{TOOLS}$
+## $\color{#FF7D00}\kappa^{TOOLS}$
 
 > ##### /usr/share/vim/vim82/colors/blue.vim
 > - hi Normal	guifg=yellow	guibg=darkBlue	ctermfg=yellow	ctermbg=none
@@ -146,12 +146,12 @@ endif
 >> $\oint_{im-config}$
 ---
 > ##### sudo update-grub
-> - $\displaystyle\infty_{/boot/efi/EFI/centos/grub.cfg}^{/boot/grub2/grub.cfga} {grub2-mkconfig\ -o}$
+> - $\displaystyle\phi_{/boot/efi/EFI/centos/grub.cfg}^{/boot/grub2/grub.cfga} {grub2-mkconfig\ -o}$
 ---
 ##### ` systemctl enable systemd-resolved.service ` #debian
 ##### ` systemctl disable accounts-daemon.service avahi-daemon.service ` #centos
 > ##### /etc/gdm/custom.conf
-> + $\displaystyle\int_{WaylandEnable=false}^{DefaultSession=gnome-xorg.desktop} {fedora}$ 
+> + $\displaystyle\psi_{WaylandEnable=false}^{DefaultSession=gnome-xorg.desktop} {fedora}$ 
 ---
 > ##### yum install libvirt-client
 >> + $\displaystyle\prod_{virsh net-undefine default}^{virsh net-destroy default}$
@@ -175,7 +175,7 @@ export LESS=-R #debian
 ##### ` dracut -f /boot/initramfs-$(uname -r).img $(uname -r) ` #Create new initramfs image
 ##### ` systemctl --user mask tracker-extract.service tracker-miner-fs.service tracker-store.service tracker-writeback.service ` #debian
 
-> #### $\color{#00ff85}\notin^{CPAN}$
+> #### $\color{#00ff85}\omega^{CPAN}$
 ```
 o conf auto_commit 1
 o conf prerequisites_policy follow
@@ -192,7 +192,7 @@ install CPAN
 o conf init
 ```
 ---
-> ## $\color{#FF6347}\displaystyle\bigcap^{ /etc/hosts }$
+> ## $\color{#FF6347}\displaystyle\beta^{ /etc/hosts }$
 ```
 #127.0.0.1 localhost hostname
 #127.0.1.1 hostname
@@ -219,7 +219,7 @@ ff02::E ip6-rsvp-encapsulation
 #ff05::2 ip6-allrouters-localscope-site
 ```
 ---
-> ## $\color{#E9967A}\displaystyle\bigcup^{ /etc/NetworkManager/NetworkManager.conf }$
+> ## $\color{#E9967A}\displaystyle\xi^{ /etc/NetworkManager/NetworkManager.conf }$
 ```
 [main]
 plugins=ifupdown,keyfile
@@ -238,7 +238,7 @@ uri=
 interval=0
 ```
 ---
-> ## $\color{#FF4500}\displaystyle\bigvee^{ /etc/systemd/resolved.conf }$
+> ## $\color{#FF4500}\displaystyle\mu^{ /etc/systemd/resolved.conf }$
 > + $\emptyset_{systemctl\ restart\ systemd-resolved.service}^{resolvectl}$
 ```
 DNS= 2606:4700:4700::1001 2606:4700:4700::1111 2001:4860:4860::8888 2001:4860:4860::8844 2620:fe::9 2620:fe::fe:9 2a09:: 2a11:: 2620:119:53::53 2620:119:35::35 2001:dc7:1000::1 240c:f:1:22::6 2001:de4::101 2001:de4::102 2001:da8:8000:1:202:120:2:100 2001:da8:8000:1:202:120:2:101 2001:da8:ff:305:20c:29ff:fe1f:a92a 2a02:6b8::feed:ff 2a02:6b8:0:1::feed:ff 2a02:6b8::feed:bad 2a02:6b8:0:1::feed:bad 2620:fe::fe 2620:fe::9 2620:0:ccc::2 2620:0:ccd::2
