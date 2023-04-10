@@ -48,7 +48,7 @@
 >> .#Continuously delivered distro that tracks just ahead of Red Hat Enterprise Linux (RHEL) development [centos-stream](https://mirror.stream.centos.org/)
 >> [@websclone](https://www.ooopn.com/)
 ---
-> #### $\color{#00e63e}\partial^{SOURCES}$ #debian$\oint_{testing}^{stable}\int_{unstable}$
+> #### $\color{#00e63e}\partial^{SOURCES}$ $\oint_{testing_{unstable}}^{stable} {debian}$
 > - https://mirrors.huaweicloud.com
 > - https://mirrors.tuna.tsinghua.edu.cn
 > - https://mirrors.aliyun.com
@@ -58,7 +58,7 @@
 ---
 ##### sudo flatpak remote-modify flathub --url=https://mirror.sjtu.edu.cn/flathub
 ##### on flatpak error fonts ? cp -r /etc/fonts/* org.example.com/config/fontconfig
-##### `https://dl.google.com/linux/direct/google-chrome-` $\iiint_{beta}^{stable}\int_{unstable}$ \_current\_ $\iint_{amd64.deb}^{x86\_64.rpm}$
+##### `https://dl.google.com/linux/direct/google-chrome-` $\iiint_{beta_{unstable}}^{stable}$ \_current\_ $\iint_{amd64.deb}^{x86\_64.rpm}$
 
 > ##### $\color{#00b330}\lambda^{APT}$
 ```
@@ -136,14 +136,14 @@ endif
 
 > ##### yum groupinstall 'Server with GUI' 
 >> - systemctl set-default graphical.target 
->> $\oint_{debian.tasksel}$
+>> $\oint_{o}^{n} {debian.tasksel}$
 ---
 ##### ` dpkg -l | grep ^rc | awk '{print $2}' | sudo xargs dpkg -P `
 
 #### ` sed -i 's:*.psd1:&;*;*.*:g' /usr/share/gtksourceview-4/language-specs/powershell.lang `
 
 > ~~sudo dpkg-reconfigure [locales][console-setup]~~
->> $\oint_{im-config}$
+>> $\oint_{debian} {im-config}$
 ---
 > ##### sudo update-grub
 > - $\displaystyle\phi_{/boot/efi/EFI/centos/grub.cfg}^{/boot/grub2/grub.cfga} {grub2-mkconfig\ -o}$
