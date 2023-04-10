@@ -6,7 +6,7 @@
 ---
 > ## $\color{#FF0000}\infty^{HTTP[S]}$
 >> - is a professional lyrics search network [musicenc](https://www.musicenc.com/) 
->> .#Yandex offers internet search and other services like [yandex](https://yandex.com/)
+>> .#Yandex offers internet search and other services like [Yandex Browser](https://yandex.com/)
 >> .#Any bug fixes for a stable [kernel.org](https://www.kernel.org/)
 >> .#the computational intelligence engine by [wolframalpha](https://www.wolframalpha.com/)
 >> [@git-scm](https://git-scm.com/)
@@ -146,12 +146,12 @@ endif
 >> $\oint_{im-config}$
 ---
 > ##### sudo update-grub
->> - $\infty_{grub2-mkconfig\ -o\ /boot/efi/EFI/centos/grub.cfg}^{/boot/grub2/grub.cfg}$
+> - $\displaystyle\infty_{/boot/efi/EFI/centos/grub.cfg}^{/boot/grub2/grub.cfga} {grub2-mkconfig\ -o}$
 ---
 ##### ` systemctl enable systemd-resolved.service ` #debian
 ##### ` systemctl disable accounts-daemon.service avahi-daemon.service ` #centos
 > ##### /etc/gdm/custom.conf
->> + $\int_{WaylandEnable=false}^{DefaultSession=gnome-xorg.desktop}$ #fedora
+> + $\displaystyle\int_{WaylandEnable=false}^{DefaultSession=gnome-xorg.desktop} {fedora}$ 
 ---
 > ##### yum install libvirt-client
 >> + $\displaystyle\prod_{virsh net-undefine default}^{virsh net-destroy default}$
