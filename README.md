@@ -4,7 +4,7 @@
 >> - sed -i '$a\vm.swappiness=20' /etc/sysctl.conf#sysctl -p
 >> - $\oint_{{2820076477}^{16}}^{{140177258}^{9}}\displaystyle\sum_{s^S}^{m^M}\displaystyle\prod_{h_{mac}}^{echo_{2}}$ $\displaystyle\lim_{16 \rightarrow 20 \rightarrow 32 \rightarrow 63 \rightarrow \infty}^{\infty \rightarrow looknni}$
 ---
-> ### $\color{#FF0000}\eta^{HTTP[S]}$
+> ### $\color{#FF0000}\eta^{HTTP_{[S]}}$
 >> - is a professional lyrics search network [musicenc](https://www.musicenc.com/) 
 >> .#Yandex offers internet search and other services like [Yandex Browser](https://yandex.com/)
 >> .#Any bug fixes for a stable [kernel.org](https://www.kernel.org/)
@@ -58,7 +58,7 @@
 ---
 ##### sudo flatpak remote-modify flathub --url=https://mirror.sjtu.edu.cn/flathub
 ##### on flatpak error fonts ? cp -r /etc/fonts/* org.example.com/config/fontconfig
-##### `https://dl.google.com/linux/direct/google-chrome-` $\iiint_{beta_{unstable}}^{stable}$ \_current\_ $\iint_{amd64.deb}^{x86\_64.rpm}$
+##### `https://dl.google.com/linux/direct/google-chrome-` $\iiint_{beta_{unstable}}^{stable}$ \_current\_ $\iint_{amd64.deb}^{x86 \_ 64.rpm}$
 
 > ##### $\color{#00b330}\lambda^{APT}$
 ```
