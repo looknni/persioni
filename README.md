@@ -4,7 +4,7 @@
 >> - sed -i '$a\vm.swappiness=20' /etc/sysctl.conf#sysctl -p
 >> - $\oint_{{2820076477}^{16}}^{{140177258}^{9}}\displaystyle\sum_{s^S}^{m^M}\displaystyle\prod_{h_{mac}}^{echo_{2}}$ $\displaystyle\lim_{16 \rightarrow 20 \rightarrow 32 \rightarrow 63 \rightarrow \infty}^{\infty \rightarrow looknni}$
 ---
-> ### $\color{#FF0000}\eta^{HTTP_{[S]}}$
+> ### $\color{#FF0000}\eta^{HTTP^{[S]}}$
 >> - is a professional lyrics search network [musicenc](https://www.musicenc.com/) 
 >> .#Yandex offers internet search and other services like [Yandex Browser](https://yandex.com/)
 >> .#Any bug fixes for a stable [kernel.org](https://www.kernel.org/)
@@ -32,7 +32,7 @@
 >> .#an Advanced Penetration Testing Linux [kali-tools](https://www.kali.org/tools/)
 >> .#is the largest collection of repositories and packages for Linux and Unix operating systems [packages-for-linux-and-unix](https://pkgs.org/)
 >> .#To get a Chrome Extension source code [google-crx](https://crxdl.com/)
->> .#is an open-source enterprise operating system designed to be 100% bug-for-bug compatible with Red Hat Enterprise Linux® [rocky](https://download.rockylinux.org/pub/rocky/)
+>> .#is an open-source enterprise operating system designed to be 100% bug-for-bug compatible with Red Hat Enterprise Linux® [rocky](https://rockylinux.org/)
 >> .#An Open Source, community owned and governed, forever-free enterprise [alma](https://almalinux.org/)
 >> .#shares open source news and reviews of Linux and BSD based operating systems [distrowatch](https://distrowatch.com/)
 >> .#is available free of charge and comes with the source code [freebsd](https://www.freebsd.org/)
