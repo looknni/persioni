@@ -1,4 +1,4 @@
-# Contributing to looknni
+# $_{Contributing} {to^{looknnn}}$
 
 First off, thanks for taking the time to contribute! ❤️
 
@@ -11,7 +11,7 @@ All types of contributions are encouraged and valued. See the [Table of Contents
 > - Mention the project at local meetups and tell your friends/colleagues
 
 <!-- omit in toc -->
-## Table of Contents
+## $_{Table} {of^{Contents}}$
 
 - [Code of Conduct](#code-of-conduct)
 - [I Have a Question](#i-have-a-question)
@@ -25,7 +25,7 @@ All types of contributions are encouraged and valued. See the [Table of Contents
 - [Join The Project Team](#join-the-project-team)
 
 
-## Code of Conduct
+## $^{Code} {of_{Conduct}}$
 
 This project and everyone participating in it is governed by the
 By participating, you are expected to uphold this code. Please report unacceptable behavior

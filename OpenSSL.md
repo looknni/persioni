@@ -1,11 +1,11 @@
-#### REQ
+#### $_{R} {E^{Q}}$
     openssl genrsa -out private.key 4096 #
     openssl req -new -key private.key -out generate.csr -sha256
     [openssl req -newkey rsa:4096 -nodes -keyout private.key -out generate.csr]
     openssl req -in generate.csr -text [-verify] [-noout]
     openssl req -x509 -days 365 -in generate.csr -signkey private.key -out new.crt
     openssl dhparam -out dhparams.pem 2048
-#### GENPKEY
+#### $_{GEN} {P^{KEY}}$
     openssl genpkey -algorithm RSA[X25519][ED448] -out private.key [-aes-128-cbc] [[-pkeyopt rsa_keygen_bits:4096] [-pkeyopt rsa_keygen_pubexp:3]] [-pass pass: ]
 #### DSA
     openssl genpkey -genparam -algorithm DSA -out dsap.pem [-pkeyopt pbits:2048] [-pkeyopt qbits:224] [-pkeyopt digest:SHA256] [-pkeyopt gindex:1] [-text]
@@ -26,7 +26,7 @@
     openssl pkey[rsa] -in private.key -putout -out public.key #
     openssl dgst -sha256 -sign [private.key] -out outfile.signature data.file
     openssl dgst -sha256 [-prverify private.key][-verify public.key] -signature outfile.signature data.file
-#### openssl base64 -in private.key -out opublic.key [-pass pass:1] #
+#### $openssl^{base64}$ -in private.key -out opublic.key [-pass pass:1] #
     aes-128-ctr  aes-128-ecb aes-128-ofb aes-192-cbc aes-192-cfb
     aes-192-cfb1  aes-192-cfb8 aes-192-ctr aes-192-ecb aes-192-ofb
     aes-256-cbc  aes-256-cfb aes-256-cfb1 aes-256-cfb8 aes-256-ctr
@@ -47,8 +47,8 @@
     des3  des3-wrap dsa enc id-aes128-wrap
     id-aes128-wrap-pad  id-aes192-wrap id-aes192-wrap-pad id-aes256-wrap id-aes256-wrap-pad
     id-smime-alg-CMS3DESwrap  smime
-
-### $\color{#FF00FF}{Standard \ commands}$ `?` openssl
+---
+### $\color{#FF00FF}{Standard \ commands}$ `?` $open^{ssl}$
 
     asn1parse         ca                ciphers           cmp
     cms               crl               crl2pkcs7         dgst
@@ -82,7 +82,7 @@
     -hmac              -prverify          -sha512-224
 
 ### Cipher commands (see the $\color{#FF00FF}{enc}$ command for more details) $\color{#FF0000}{?}$ ` openssl enc [-e][-d] ... -salt -in filename -out newfilename [[-pass [pass: ][file: ]] -pbkdf2p[-iter 3]`
-
+---
     -*              -ciphers        -iv             -out            -salt
     -A              -d              -k              -p              -v
     -K              -debug          -kfile          -pass           -writerand
@@ -91,7 +91,7 @@
     -a              -help           -none           -provider
     -base64         -in             -nopad          -provider-path
     -bufsize        -iter           -nosalt         -rand
-
+---
     -aes-128-cbc -aes-128-cfb -aes-128-cfb1 -aes-128-cfb8
     -aes-128-ctr  -aes-128-ecb -aes-128-ofb -aes-192-cbc -aes-192-cfb
     -aes-192-cfb1  -aes-192-cfb8 -aes-192-ctr -aes-192-ecb -aes-192-ofb
@@ -112,6 +112,7 @@
     -des-ede3-ofb  -des3 -id-aes128-wrap-pad -id-aes192-wrap-pad -id-aes256-wrap-pad
     -sm4  -sm4-cbc -sm4-cfb -sm4-ctr -sm4-ecb
     -sm4-ofb
+---
     -aes128-wrap -aes192-wrap -aes256-wrap
     -bf  -bf-cbc -bf-cfb -bf-ecb -bf-ofb
     -blowfish  -cast -cast-cbc -cast5-cbc -cast5-cfb
@@ -123,3 +124,4 @@
     -rc2-64  -rc2-64-cbc -rc2-cbc -rc2-cfb -rc2-ecb
     -rc2-ofb  -rc4 -rc4-40 -seed -seed-cbc
     -seed-cfb  -seed-ecb -seed-ofb
+---
