@@ -1,11 +1,11 @@
 ## $\color{#FF00FF}{ CONFIG }$
 
 > ##### git config --global user.
-## $\int_{user.email}^{user.signingKey}\int_{user.name}^{user.useConfigOnly}$
+>> $\int_{user.email}^{user.signingKey}\int_{user.name}^{user.useConfigOnly}$
 --- 
 ##### git config --list
 
-> ##### ssh-keygen -a 100 -b 4096 -t dsa/ecdsa/ecdsa-sk/ed25519/ed25519-sk/rsa -C commit [-f output_keyfile]
+> ##### ssh-keygen -a 1 -b 1024 -t $\int_{dsa}^{ecdsa}\int_{ecdsa-sk}^{ed25519-sk}\int_{ed25519}^{rsa}$ -C commit [-f output_keyfile]
 >> - -a rounds
 >>> When saving a private key, this option specifies the number of
 KDF (key derivation function, currently bcrypt_pbkdf(3)) rounds
@@ -28,10 +28,10 @@ and the -b flag will be ignored.
 >>> -T      Disable pseudo-terminal allocation.
 ---
 ##### gpg --full-generate-key
-##### gpg --list-secret-keys --keyid-format=long/short
-##### gpg --list-sigs/--list-sig/--list-signatures
-> ##### gpg --armor/--armour --export xxxxxxxxxxxx
-## $\iint_{--expert}^{--export-options}\int_{--export-secret-subkeys}^{--export}\int_{--export-ownertrust}^{--export-ssh-key}\int_{--export-filter}^{--export-secret-keys}$
+##### gpg --list-secret-keys --keyid-format= $\int_{long}^{short}$
+##### gpg $\int_{--list-sigs}^{--list-sig}\int_{--list-signatures}$
+> ##### gpg $\int_{--armor}^{--armour}$ --export xxxxxxxxxxxx
+>> $\iint_{--expert}^{--export-options}\int_{--export-secret-subkeys}^{--export}\int_{--export-ownertrust}^{--export-ssh-key}\int_{--export-filter}^{--export-secret-keys}$
 ---
 ##### gpg --send-keys xxxxxxxxxxx
 ##### git config --global commit.gpgsign true
@@ -41,9 +41,9 @@ and the -b flag will be ignored.
 ---
 ##### git branch -dr main `# git push origin --delete branch`
 > ##### git remote add gitlab git@github.com:looknnn/program
-## $\int_{add}^{prune}\int_{rename}^{set-head}\int_{show}^{get-url}\int_{remove}^{set-branches}\int_{set-url}^{update}$ 
+>> $\int_{add}^{prune}\int_{rename}^{set-head}\int_{show}^{get-url}\int_{remove}^{set-branches}\int_{set-url}^{update}$ 
 ---
-##### git push -uf origin main `#-u,--set-upstream && -f,--force`
+##### git push -uf origin main $\int_{-u}^{--set-upstream}\int_{-f}^{--force}$
 ---
 ## $\color{#0000FF}{EDIT}$
   
