@@ -4,87 +4,85 @@
 >> - sed -i '$a\vm.swappiness=20' /etc/sysctl.conf#sysctl -p
 >> - $\oint_{{2820076477}^{16}}^{{140177258}^{9}}\displaystyle\sum_{s^S}^{m^M}\displaystyle\prod_{h_{mac}}^{echo_{2}}$ $\displaystyle\lim_{16 \rightarrow 20 \rightarrow 32 \rightarrow 63 \rightarrow \infty}^{\infty \rightarrow looknni}$
 ---
-> ### $HTTP^{[S]}$
+##### Is a professional lyrics search network [Musicenc] https://www.musicenc.com/
 ---
-##### Is a professional lyrics search network [Musicenc](https://www.musicenc.com/) 
+##### Yandex offers internet search and other services like [YandexBrowser] https://yandex.com/
 ---
-##### Yandex offers internet search and other services like [YandexBrowser](https://yandex.com/)
+##### Any bug fixes for a stable [ $Kernel^{org}$ ] https://www.kernel.org/
 ---
-##### Any bug fixes for a stable [ $Kernel^{org}$ ](https://www.kernel.org/)
+##### The computational intelligence engine by [Wolframalpha] https://www.wolframalpha.com/
 ---
-##### The computational intelligence engine by [Wolframalpha](https://www.wolframalpha.com/)
+##### This site is open source and maintained by members of the Git community [Git-scm] https://git-scm.com/
 ---
-##### This site is open source and maintained by members of the Git community [Git-scm](https://git-scm.com/)
+##### Services: [En|De]crypt Hash — Generate hash out of the string and lookup (unhash) for hash value in our pre-computed hash-tables [md5hashing] https://md5hashing.net/
 ---
-##### Services: [En|De]crypt Hash — Generate hash out of the string and lookup (unhash) for hash value in our pre-computed hash-tables [md5hashing](https://md5hashing.net/)
+##### You can use direct access to this page from your browser address bar [md5calc] https://md5calc.com/
 ---
-##### You can use direct access to this page from your browser address bar [md5calc](https://md5calc.com/)
+##### New Bootable USB Solution [ $V_{entoy}$ ] https://www.ventoy.net/en/index.html
 ---
-##### New Bootable USB Solution [ $V_{entoy}$ ](https://www.ventoy.net/en/index.html)
+##### Debian release,unofficial [ $CDimage_{debian}$ ] https://cdimage.debian.org/images/
 ---
-##### Debian release,unofficial [ $CDimage_{debian}$ ](https://cdimage.debian.org/images/)
+##### A flexible, fast and multiplatform multimedia framework [Gstreamer] https://gstreamer.freedesktop.org/
 ---
-##### A flexible, fast and multiplatform multimedia framework [Gstreamer](https://gstreamer.freedesktop.org/)
+##### Ibus-libpinyin ibus-table-wubi [ibus-libpinyin] https://github.com/libpinyin/ibus-libpinyin
 ---
-##### Ibus-libpinyin ibus-table-wubi [ibus-libpinyin](https://github.com/libpinyin/ibus-libpinyin)
+##### lspci -v [Realtek-interface] https://www.realtek.com/en/component/zoo/category/network-interface-controllers-10-100-1000m-gigabit-ethernet-pci-express-software
 ---
-##### lspci -v [Realtek-interface](https://www.realtek.com/en/component/zoo/category/network-interface-controllers-10-100-1000m-gigabit-ethernet-pci-express-software)
+##### [@B560M-PRO] https://us.msi.com/Motherboard/B560M-PRO/support
 ---
-##### [@B560M-PRO](https://us.msi.com/Motherboard/B560M-PRO/support)
+##### [@magnet] https://yaurl302.top/DDWzy3oGkI?_=003
 ---
-##### [@magnet](https://yaurl302.top/DDWzy3oGkI?_=003)
+##### [@feijisu] http://fjisu.top/ {antiX sparkylinux}
 ---
-##### [@feijisu](http://fjisu.top/) {antiX sparkylinux}
+##### Temp Mail provides temporary, anonymous, free, secure, disposable email address [Tempmail] https://tempmail.plus/en
 ---
-##### Temp Mail provides temporary, anonymous, free, secure, disposable email address [Tempmail](https://tempmail.plus/en)
+##### Google Chrome. Google's web browser. Virtual DJ. The most complete free software for DJs. uTorrent [ $A^{pk}$ ] https://www.malavida.com/en
 ---
-##### Google Chrome. Google's web browser. Virtual DJ. The most complete free software for DJs. uTorrent [ $A^{pk}$ ](https://www.malavida.com/en)
+##### (Ubuntu) Server at breed.hackpascal.net Port 443 [ $breed_{hackpascal}$ ] https://breed.hackpascal.net/
 ---
-##### (Ubuntu) Server at breed.hackpascal.net Port 443 [ $breed_{hackpascal}$ ](https://breed.hackpascal.net/)
+##### Takes security very seriously. We handle all security problems [ $debian_{security}$ ] https://www.debian.org/security/
 ---
-##### Takes security very seriously. We handle all security problems [ $debian_{security}$ ](https://www.debian.org/security/)
+##### So instead of downloading packages/software one by one from random sites [ $packages_{debian}$ ] https://packages.debian.org/
 ---
-##### So instead of downloading packages/software one by one from random sites [ $packages_{debian}$ ](https://packages.debian.org/)
+##### Is a very powerful boot loader [ $gnu^{grub}$ ] https://ftp.gnu.org/gnu/
 ---
-##### Is a very powerful boot loader [ $gnu^{grub}$ ](https://ftp.gnu.org/gnu/)
+##### This service lets you follow the evolution of Debian both with email updates and a comprehensive web interface [ $tracker-debian^{kernel}$ ] https://tracker.debian.org/pkg/linux
 ---
-##### This service lets you follow the evolution of Debian both with email updates and a comprehensive web interface [ $tracker-debian^{kernel}$ ](https://tracker.debian.org/pkg/linux)
+##### Is being actively developed with frequent releases and has an ever growing list of features [ $Virtual^{box}$ ] https://download.virtualbox.org/virtualbox/
 ---
-##### Is being actively developed with frequent releases and has an ever growing list of features [ $Virtual^{box}$ ](https://download.virtualbox.org/virtualbox/)
+##### An Advanced Penetration Testing Linux [ $Kali^{tools}$ ] https://www.kali.org/tools/
 ---
-##### An Advanced Penetration Testing Linux [ $Kali^{tools}$ ](https://www.kali.org/tools/)
+##### Is the largest collection of repositories and packages for Linux and Unix operating systems [ $Packages-for_{linux}^{unix}$ ] https://pkgs.org/
 ---
-##### Is the largest collection of repositories and packages for Linux and Unix operating systems [ $Packages-for_{linux}^{unix}$ ](https://pkgs.org/)
+##### To get a Chrome Extension source code [ $Google^{crx}$ ] https://crxdl.com/
 ---
-##### To get a Chrome Extension source code [ $Google^{crx}$ ](https://crxdl.com/)
+##### Is an open-source enterprise operating system designed to be 100% bug-for-bug compatible with Red Hat Enterprise [® $Linux_{Rocky}$ ] https://rockylinux.org/
 ---
-##### Is an open-source enterprise operating system designed to be 100% bug-for-bug compatible with Red Hat Enterprise [® $Linux_{Rocky}$ ](https://rockylinux.org/)
+##### An Open Source, community owned and governed, forever-free enterprise [ $Al_{ma}$ ] https://almalinux.org/
 ---
-##### An Open Source, community owned and governed, forever-free enterprise [ $Al_{ma}$ ](https://almalinux.org/)
+##### Shares open source news and reviews of Linux and BSD based operating systems [ $Distro^{watch}$ ] https://distrowatch.com/
 ---
-##### Shares open source news and reviews of Linux and BSD based operating systems [ $Distro^{watch}$ ](https://distrowatch.com/)
+##### Is available free of charge and comes with the source code [ $Free^{BSD}$ ] https://www.freebsd.org/
 ---
-##### Is available free of charge and comes with the source code [ $Free^{BSD}$ ](https://www.freebsd.org/)
+##### Regular expressions library (C++11) basic_regex − algorithms. Concurrency support library (C++11) thread − jthread (C++20) atomic − atomic_flag − atomic_ref (C++20) memory_order − condition_variable [ $C++^{Referenc}$ ] https://cppreference.com/
 ---
-##### Regular expressions library (C++11) basic_regex − algorithms. Concurrency support library (C++11) thread − jthread (C++20) atomic − atomic_flag − atomic_ref (C++20) memory_order − condition_variable [ $C++^{Referenc}$ ](https://cppreference.com/)
+##### The author and holder of the copyright of the software is Alexander L. Roshal [ $Rar_{la}$ ] https://www.rarlab.com/
 ---
-##### The author and holder of the copyright of the software is Alexander L. Roshal [ $Rar_{la}$ ](https://www.rarlab.com/)
+##### Is developed by an independent community [ $flat^{pak}$ ] https://flatpak.org/setup
 ---
-##### Is developed by an independent community [ $flat^{pak}$ ](https://flatpak.org/setup)
+##### Is often called a "programmer's editor [ $Vi^{m}$ ] https://ftp.nluug.nl/pub/vim/unix/
 ---
-##### Is often called a "programmer's editor [ $Vi^{m}$ ](https://ftp.nluug.nl/pub/vim/unix/)
+##### The GNU Image Manipulation Program [ $Gim^{p}$ ] https://download.gimp.org/gimp/
 ---
-##### The GNU Image Manipulation Program [ $Gim^{p}$ ](https://download.gimp.org/gimp/)
+##### Are the same as those on Mac and Linux - install man pages on your phone and read them in one session while experimenting with them in another [ $Ter_{mux}$ ] https://f-droid.org/en/packages/com.termux/
 ---
-##### Are the same as those on Mac and Linux - install man pages on your phone and read them in one session while experimenting with them in another [ $Ter_{mux}$ ](https://f-droid.org/en/packages/com.termux/)
+##### GNU is an operating system which is 100% free software. [Gnu-command] https://www.gnu.org/software/
 ---
-##### GNU is an operating system which is 100% free software. [Gnu-command](https://www.gnu.org/software/)
+##### Try these free learning resources from the Perl community [METACPAN] https://metacpan.org/
 ---
-##### Try these free learning resources from the Perl community [METACPAN](https://metacpan.org/)
+##### Continuously delivered distro that tracks just ahead of Red Hat Enterprise Linux (RHEL) development [ $Centos_{stream}$ ] https://mirror.stream.centos.org/
 ---
-##### Continuously delivered distro that tracks just ahead of Red Hat Enterprise Linux (RHEL) development [ $Centos_{stream}$ ](https://mirror.stream.centos.org/)
----
-##### algorithm-visualizer is a web app written in React [ $algorithm^{visualizer}$ ](https://algorithm-visualizer.org/)
+##### algorithm-visualizer is a web app written in React [ $algorithm^{visualizer}$ ] https://algorithm-visualizer.org/
 ---
 > #### SOURCES $\oint_{testing_{unstable}}^{stable} {debian}$
 > - https://mirrors.huaweicloud.com
