@@ -98,7 +98,7 @@
 ##### on flatpak error fonts ? cp -r /etc/fonts/* org.example.com/config/fontconfig
 ##### `https://dl.google.com/linux/direct/google-chrome-` $\iiint_{beta_{unstable}}^{stable}$ \_current\_ $\iint_{amd64.deb}^{x86_{64.rpm}}$
 
-> ##### APT
+> ##### $APT_{dpkg}^{apt-get}$
 ```
 vim-gtk3 kaffeine qbittorrent audacious git traceroute locate mtr \
 fcitx fcitx-table-compose fcitx-googlepinyin fcitx-dbus-status fcitx-table-wubi \
@@ -114,7 +114,7 @@ gnome-shell-extension-dash-to-dock.noarch gnome-extensions-app.x86_64 gnome-twea
 aide rear fapolicyd usbguard openscap openscap-scanner scap-security-guide \
 fastfetch-bash-completion.noarch im-chooser.x86_64 xnview alsa xxhash
 ```
-> ##### PKG
+> ##### $PKG_{apt}^{dpkg}$
 ```
 xorg gnome zh-auto-cn-l10n zh-ibus-libpinyin
   
