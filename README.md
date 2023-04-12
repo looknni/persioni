@@ -12,7 +12,7 @@
 ---
 ##### Any bug fixes for a stable [ $Kernel^{org}$ ](https://www.kernel.org/)
 ---
-##### the computational intelligence engine by [Wolframalpha](https://www.wolframalpha.com/)
+##### The computational intelligence engine by [Wolframalpha](https://www.wolframalpha.com/)
 ---
 ##### [@git-scm](https://git-scm.com/)
 ---
@@ -20,15 +20,15 @@
 ---
 ##### [@md5calc](https://md5calc.com/)
 ---
-#####  New Bootable USB Solution [ $V_{entoy}$ ](https://www.ventoy.net/en/index.html)
+##### New Bootable USB Solution [ $V_{entoy}$ ](https://www.ventoy.net/en/index.html)
 ---
-#####  debian release,unofficial [ $CDimage_{debian}$ ](https://cdimage.debian.org/images/)
+##### Debian release,unofficial [ $CDimage_{debian}$ ](https://cdimage.debian.org/images/)
 ---
-#####  a flexible, fast and multiplatform multimedia framework [Gstreamer](https://gstreamer.freedesktop.org/)
+##### A flexible, fast and multiplatform multimedia framework [Gstreamer](https://gstreamer.freedesktop.org/)
 ---
-#####  ibus-libpinyin ibus-table-wubi [ibus-libpinyin](https://github.com/libpinyin/ibus-libpinyin)
+##### Ibus-libpinyin ibus-table-wubi [ibus-libpinyin](https://github.com/libpinyin/ibus-libpinyin)
 ---
-#####  lspci -v [Realtek-interface](https://www.realtek.com/en/component/zoo/category/network-interface-controllers-10-100-1000m-gigabit-ethernet-pci-express-software)
+##### lspci -v [Realtek-interface](https://www.realtek.com/en/component/zoo/category/network-interface-controllers-10-100-1000m-gigabit-ethernet-pci-express-software)
 ---
 ##### [@B560M-PRO](https://us.msi.com/Motherboard/B560M-PRO/support)
 ---
@@ -38,33 +38,33 @@
 ---
 ##### [@tempmail](https://tempmail.plus/en)
 ---
-#####  Google Chrome. Google's web browser. Virtual DJ. The most complete free software for DJs. uTorrent [ $A^{pk}$ ](https://www.malavida.com/en)
+##### Google Chrome. Google's web browser. Virtual DJ. The most complete free software for DJs. uTorrent [ $A^{pk}$ ](https://www.malavida.com/en)
 ---
 ##### (Ubuntu) Server at breed.hackpascal.net Port 443 [ $breed_{hackpascal}$ ](https://breed.hackpascal.net/)
 ---
-##### takes security very seriously. We handle all security problems [ $debian_{security}$ ](https://www.debian.org/security/)
+##### Takes security very seriously. We handle all security problems [ $debian_{security}$ ](https://www.debian.org/security/)
 ---
 ##### So instead of downloading packages/software one by one from random sites [ $packages_{debian}$ ](https://packages.debian.org/)
 ---
-##### is a very powerful boot loader [ $gnu^{grub}$ ](https://ftp.gnu.org/gnu/)
+##### Is a very powerful boot loader [ $gnu^{grub}$ ](https://ftp.gnu.org/gnu/)
 ---
 ##### [ $@^{tracker-debian-kernel}$ ](https://tracker.debian.org/pkg/linux)
 ---
-##### is being actively developed with frequent releases and has an ever growing list of features [ $Virtual^{box}$ ](https://download.virtualbox.org/virtualbox/)
+##### Is being actively developed with frequent releases and has an ever growing list of features [ $Virtual^{box}$ ](https://download.virtualbox.org/virtualbox/)
 ---
-##### an Advanced Penetration Testing Linux [ $Kali^{tools}$ ](https://www.kali.org/tools/)
+##### An Advanced Penetration Testing Linux [ $Kali^{tools}$ ](https://www.kali.org/tools/)
 ---
-##### is the largest collection of repositories and packages for Linux and Unix operating systems [ $Packages-for_{linux-and}^{unix}$ ](https://pkgs.org/)
+##### Is the largest collection of repositories and packages for Linux and Unix operating systems [ $Packages-for_{linux-and}^{unix}$ ](https://pkgs.org/)
 ---
 ##### To get a Chrome Extension source code [ $Google^{crx}$ ](https://crxdl.com/)
 ---
-##### is an open-source enterprise operating system designed to be 100% bug-for-bug compatible with Red Hat Enterprise [® $Linux_{Rocky}$ ](https://rockylinux.org/)
+##### Is an open-source enterprise operating system designed to be 100% bug-for-bug compatible with Red Hat Enterprise [® $Linux_{Rocky}$ ](https://rockylinux.org/)
 ---
 ##### An Open Source, community owned and governed, forever-free enterprise [ $Al_{ma}$ ](https://almalinux.org/)
 ---
-##### shares open source news and reviews of Linux and BSD based operating systems [ $Distro^{watch}$ ](https://distrowatch.com/)
+##### Shares open source news and reviews of Linux and BSD based operating systems [ $Distro^{watch}$ ](https://distrowatch.com/)
 ---
-##### is available free of charge and comes with the source code [ $Free^{BSD}$ ](https://www.freebsd.org/)
+##### Is available free of charge and comes with the source code [ $Free^{BSD}$ ](https://www.freebsd.org/)
 ---
 ##### [ $@^{c++Referenc}$ ](https://cppreference.com/)
 ---
@@ -72,11 +72,11 @@
 ---
 ##### Is developed by an independent community [ $flat^{pak}$ ](https://flatpak.org/setup)
 ---
-##### is often called a "programmer's editor [ $Vi^{m}$ ](https://ftp.nluug.nl/pub/vim/unix/)
+##### Is often called a "programmer's editor [ $Vi^{m}$ ](https://ftp.nluug.nl/pub/vim/unix/)
 ---
 ##### The GNU Image Manipulation Program [ $Gim^{p}$ ](https://download.gimp.org/gimp/)
 ---
-##### are the same as those on Mac and Linux - install man pages on your phone and read them in one session while experimenting with them in another [ $Ter_{mux}$ ](https://f-droid.org/en/packages/com.termux/)
+##### Are the same as those on Mac and Linux - install man pages on your phone and read them in one session while experimenting with them in another [ $Ter_{mux}$ ](https://f-droid.org/en/packages/com.termux/)
 ---
 ##### [@gnu-command](https://www.gnu.org/software/)
 ---
