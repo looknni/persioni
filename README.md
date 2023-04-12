@@ -14,11 +14,11 @@
 ---
 ##### The computational intelligence engine by [Wolframalpha](https://www.wolframalpha.com/)
 ---
-##### [@git-scm](https://git-scm.com/)
+##### This site is open source and maintained by members of the Git community [Git-scm](https://git-scm.com/)
 ---
-##### [@md5hashing](https://md5hashing.net/)
+##### Services: [En|De]crypt Hash — Generate hash out of the string and lookup (unhash) for hash value in our pre-computed hash-tables [md5hashing](https://md5hashing.net/)
 ---
-##### [@md5calc](https://md5calc.com/)
+##### You can use direct access to this page from your browser address bar [md5calc](https://md5calc.com/)
 ---
 ##### New Bootable USB Solution [ $V_{entoy}$ ](https://www.ventoy.net/en/index.html)
 ---
@@ -36,7 +36,7 @@
 ---
 ##### [@feijisu](http://fjisu.top/) {antiX sparkylinux}
 ---
-##### [@tempmail](https://tempmail.plus/en)
+##### Temp Mail provides temporary, anonymous, free, secure, disposable email address [Tempmail](https://tempmail.plus/en)
 ---
 ##### Google Chrome. Google's web browser. Virtual DJ. The most complete free software for DJs. uTorrent [ $A^{pk}$ ](https://www.malavida.com/en)
 ---
@@ -48,13 +48,13 @@
 ---
 ##### Is a very powerful boot loader [ $gnu^{grub}$ ](https://ftp.gnu.org/gnu/)
 ---
-##### [ $@^{tracker-debian-kernel}$ ](https://tracker.debian.org/pkg/linux)
+##### This service lets you follow the evolution of Debian both with email updates and a comprehensive web interface [ $tracker-debian^{kernel}$ ](https://tracker.debian.org/pkg/linux)
 ---
 ##### Is being actively developed with frequent releases and has an ever growing list of features [ $Virtual^{box}$ ](https://download.virtualbox.org/virtualbox/)
 ---
 ##### An Advanced Penetration Testing Linux [ $Kali^{tools}$ ](https://www.kali.org/tools/)
 ---
-##### Is the largest collection of repositories and packages for Linux and Unix operating systems [ $Packages-for_{linux-and}^{unix}$ ](https://pkgs.org/)
+##### Is the largest collection of repositories and packages for Linux and Unix operating systems [ $Packages-for_{linux}^{unix}$ ](https://pkgs.org/)
 ---
 ##### To get a Chrome Extension source code [ $Google^{crx}$ ](https://crxdl.com/)
 ---
@@ -66,7 +66,7 @@
 ---
 ##### Is available free of charge and comes with the source code [ $Free^{BSD}$ ](https://www.freebsd.org/)
 ---
-##### [ $@^{c++Referenc}$ ](https://cppreference.com/)
+##### Regular expressions library (C++11) basic_regex − algorithms. Concurrency support library (C++11) thread − jthread (C++20) atomic − atomic_flag − atomic_ref (C++20) memory_order − condition_variable [ $C++^{Referenc}$ ](https://cppreference.com/)
 ---
 ##### The author and holder of the copyright of the software is Alexander L. Roshal [ $Rar_{la}$ ](https://www.rarlab.com/)
 ---
@@ -78,13 +78,13 @@
 ---
 ##### Are the same as those on Mac and Linux - install man pages on your phone and read them in one session while experimenting with them in another [ $Ter_{mux}$ ](https://f-droid.org/en/packages/com.termux/)
 ---
-##### [@gnu-command](https://www.gnu.org/software/)
+##### GNU is an operating system which is 100% free software. [Gnu-command](https://www.gnu.org/software/)
 ---
 ##### Try these free learning resources from the Perl community [METACPAN](https://metacpan.org/)
 ---
 ##### Continuously delivered distro that tracks just ahead of Red Hat Enterprise Linux (RHEL) development [ $Centos_{stream}$ ](https://mirror.stream.centos.org/)
 ---
-##### [ $@^{algorithm-visualizer}$ ](https://algorithm-visualizer.org/)
+##### algorithm-visualizer is a web app written in React [ $algorithm^{visualizer}$ ](https://algorithm-visualizer.org/)
 ---
 > #### SOURCES $\oint_{testing_{unstable}}^{stable} {debian}$
 > - https://mirrors.huaweicloud.com
