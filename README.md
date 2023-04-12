@@ -7,7 +7,7 @@
 > ### $HTTP^{[S]}$
 >> - is a professional lyrics search network [Musicenc](https://www.musicenc.com/) 
 >> .#Yandex offers internet search and other services like [YandexBrowser](https://yandex.com/)
->> .#Any bug fixes for a stable [ $Kernel^{org}$ ](https://www.kernel.org/)
+>> .#Any bug fixes for a stable [ $$Kernel^{org}$$ ](https://www.kernel.org/)
 >> .#the computational intelligence engine by [Wolframalpha](https://www.wolframalpha.com/)
 >> [@git-scm](https://git-scm.com/)
 >> [@md5hashing](https://md5hashing.net/)
