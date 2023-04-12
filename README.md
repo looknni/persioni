@@ -5,7 +5,7 @@
 >> - $\oint_{{2820076477}^{16}}^{{140177258}^{9}}\displaystyle\sum_{s^S}^{m^M}\displaystyle\prod_{h_{mac}}^{echo_{2}}$ $\displaystyle\lim_{16 \rightarrow 20 \rightarrow 32 \rightarrow 63 \rightarrow \infty}^{\infty \rightarrow looknni}$
 ---
 > ### $HTTP^{[S]}$
->> - is a professional lyrics search network [Musicenc](https://www.musicenc.com/) 
+>> is a professional lyrics search network [Musicenc](https://www.musicenc.com/) 
 >> .#Yandex offers internet search and other services like [YandexBrowser](https://yandex.com/)
 >> .#Any bug fixes for a stable [ $\displaystyle Kernel^{org}$ ](https://www.kernel.org/)
 >> .#the computational intelligence engine by [Wolframalpha](https://www.wolframalpha.com/)
@@ -23,7 +23,7 @@
 >> [@tempmail](https://tempmail.plus/en)
 >> .# Google Chrome. Google's web browser. Virtual DJ. The most complete free software for DJs. uTorrent [ $A^{pk}$ ](https://www.malavida.com/en)
 ---
->> - (Ubuntu) Server at breed.hackpascal.net Port 443 [ $breed_{hackpascal}$ ](https://breed.hackpascal.net/)
+>> (Ubuntu) Server at breed.hackpascal.net Port 443 [ $breed_{hackpascal}$ ](https://breed.hackpascal.net/)
 >> .#takes security very seriously. We handle all security problems [ $debian_{security}$ ](https://www.debian.org/security/)
 >> .#So instead of downloading packages/software one by one from random sites [ $packages_{debian}$ ](https://packages.debian.org/)
 >> .#is a very powerful boot loader [ $gnu^{grub}$ ](https://ftp.gnu.org/gnu/)
@@ -39,7 +39,7 @@
 >> [ $@^{c++Referenc}$ ](https://cppreference.com/)
 >> .#The author and holder of the copyright of the software is Alexander L. Roshal [ $Rar_{la}$ ](https://www.rarlab.com/)
 ---
->> - is developed by an independent community [ $flat^{pak}$ ](https://flatpak.org/setup)
+>> is developed by an independent community [ $flat^{pak}$ ](https://flatpak.org/setup)
 >> .#is often called a "programmer's editor [ $Vi^{m}$ ](https://ftp.nluug.nl/pub/vim/unix/)
 >> .#The GNU Image Manipulation Program [ $Gim^{p}$ ](https://download.gimp.org/gimp/)
 >> .#are the same as those on Mac and Linux - install man pages on your phone and read them in one session while experimenting with them in another [ $Ter_{mux}$ ](https://f-droid.org/en/packages/com.termux/)
