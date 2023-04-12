@@ -1,54 +1,56 @@
-> ### $\color{#FF00FF}\zeta^{PARTITION}$
+> ### PARTITION
 >> - /biosboot ~($\displaystyle\lim_{31k\rightarrow\infty}1M$).../boot/efi ~($\displaystyle\sum_{i \to 6M}^{n \to system} {i \times n+1M+40M}$).../boot ~($\displaystyle\sum_{i \to 100M}^{n \to kernel} {i \times n+200M}$).../ ~($\frac{\infty}{0.98}$).../swap ~($\sqrt[i \to 3]{RAM}$) . /home . /usr . /var . /opt . /tmp
 >> - sudo blkid $\int_{/etc/default/grub}^{/etc/fstab}\int_{/boot/grub2/grub.cfg}^{/boot/load/* }$
 >> - sed -i '$a\vm.swappiness=20' /etc/sysctl.conf#sysctl -p
 >> - $\oint_{{2820076477}^{16}}^{{140177258}^{9}}\displaystyle\sum_{s^S}^{m^M}\displaystyle\prod_{h_{mac}}^{echo_{2}}$ $\displaystyle\lim_{16 \rightarrow 20 \rightarrow 32 \rightarrow 63 \rightarrow \infty}^{\infty \rightarrow looknni}$
 ---
-> ### $\color{#FF0000}\eta^{HTTP^{[S]}}$
->> - is a professional lyrics search network [musicenc](https://www.musicenc.com/) 
->> .#Yandex offers internet search and other services like [Yandex Browser](https://yandex.com/)
->> .#Any bug fixes for a stable [kernel.org](https://www.kernel.org/)
->> .#the computational intelligence engine by [wolframalpha](https://www.wolframalpha.com/)
+> ### $HTTP^{[S]}$
+>> - is a professional lyrics search network [Musicenc](https://www.musicenc.com/) 
+>> .#Yandex offers internet search and other services like [YandexBrowser](https://yandex.com/)
+>> .#Any bug fixes for a stable [ $Kernel^{org}$ ](https://www.kernel.org/)
+>> .#the computational intelligence engine by [Wolframalpha](https://www.wolframalpha.com/)
 >> [@git-scm](https://git-scm.com/)
 >> [@md5hashing](https://md5hashing.net/)
 >> [@md5calc](https://md5calc.com/)
->> .# New Bootable USB Solution [ventoy](https://www.ventoy.net/en/index.html)
->> .# debian release,unofficial [cdimage-debian](https://cdimage.debian.org/images/)
->> .# a flexible, fast and multiplatform multimedia framework [gstreamer](https://gstreamer.freedesktop.org/)
+>> .# New Bootable USB Solution [ $V_{entoy}$ ](https://www.ventoy.net/en/index.html)
+>> .# debian release,unofficial [ $CDimage_{debian}$ ](https://cdimage.debian.org/images/)
+>> .# a flexible, fast and multiplatform multimedia framework [Gstreamer](https://gstreamer.freedesktop.org/)
 >> .# ibus-libpinyin ibus-table-wubi [ibus-libpinyin](https://github.com/libpinyin/ibus-libpinyin)
->> .# lspci -v [realtek-network-interface-controllers](https://www.realtek.com/en/component/zoo/category/network-interface-controllers-10-100-1000m-gigabit-ethernet-pci-express-software)
+>> .# lspci -v [Realtek-interface](https://www.realtek.com/en/component/zoo/category/network-interface-controllers-10-100-1000m-gigabit-ethernet-pci-express-software)
 >> [@B560M-PRO](https://us.msi.com/Motherboard/B560M-PRO/support)
 >> [@magnet](https://yaurl302.top/DDWzy3oGkI?_=003)
 >> [@feijisu](http://fjisu.top/) {antiX sparkylinux}
 >> [@tempmail](https://tempmail.plus/en)
->> .# Google Chrome. Google's web browser. Virtual DJ. The most complete free software for DJs. uTorrent [apk](https://www.malavida.com/en)
+>> .# Google Chrome. Google's web browser. Virtual DJ. The most complete free software for DJs. uTorrent [ $A^{pk}$ ](https://www.malavida.com/en)
 ---
->> - (Ubuntu) Server at breed.hackpascal.net Port 443 [breed-hackpascal](https://breed.hackpascal.net/)
->> .#takes security very seriously. We handle all security problems [debian-security](https://www.debian.org/security/)
->> .#So instead of downloading packages/software one by one from random sites [packages-debian](https://packages.debian.org/)
->> .#is a very powerful boot loader [gnu-grub](https://ftp.gnu.org/gnu/)
->> [@tracker-debian-kernel](https://tracker.debian.org/pkg/linux)
->> .#is being actively developed with frequent releases and has an ever growing list of features [virtualbox](https://download.virtualbox.org/virtualbox/)
->> .#an Advanced Penetration Testing Linux [kali-tools](https://www.kali.org/tools/)
->> .#is the largest collection of repositories and packages for Linux and Unix operating systems [packages-for-linux-and-unix](https://pkgs.org/)
->> .#To get a Chrome Extension source code [google-crx](https://crxdl.com/)
->> .#is an open-source enterprise operating system designed to be 100% bug-for-bug compatible with Red Hat Enterprise Linux® [rocky](https://rockylinux.org/)
->> .#An Open Source, community owned and governed, forever-free enterprise [alma](https://almalinux.org/)
->> .#shares open source news and reviews of Linux and BSD based operating systems [distrowatch](https://distrowatch.com/)
->> .#is available free of charge and comes with the source code [freebsd](https://www.freebsd.org/)
->> [@c++Referenc](https://cppreference.com/)
->> .#The author and holder of the copyright of the software is Alexander L. Roshal [rarla](https://www.rarlab.com/)
+>> - (Ubuntu) Server at breed.hackpascal.net Port 443 [ $breed_{hackpascal}$ ](https://breed.hackpascal.net/)
+>> .#takes security very seriously. We handle all security problems [ $debian_{security}$ ](https://www.debian.org/security/)
+>> .#So instead of downloading packages/software one by one from random sites [ $packages_{debian}$ ](https://packages.debian.org/)
+>> .#is a very powerful boot loader [ $gnu^{grub}$ ](https://ftp.gnu.org/gnu/)
+>> [ $@^{tracker-debian-kernel}$ ](https://tracker.debian.org/pkg/linux)
+>> .#is being actively developed with frequent releases and has an ever growing list of features [ $Virtual^{box}$ ](https://download.virtualbox.org/virtualbox/)
+>> .#an Advanced Penetration Testing Linux [ $Kali^{tools}$ ](https://www.kali.org/tools/)
+>> .#is the largest collection of repositories and packages for Linux and Unix operating systems [ $Packages-for_{linux-and}^{unix}$ ](https://pkgs.org/)
+>> .#To get a Chrome Extension source code [ $Google^{crx}$ ](https://crxdl.com/)
+>> .#is an open-source enterprise operating system designed to be 100% bug-for-bug compatible with Red Hat Enterprise [® $Linux_{Rocky}$ ](https://rockylinux.org/)
+>> .#An Open Source, community owned and governed, forever-free enterprise [ $Al_{ma}$ ](https://almalinux.org/)
+>> .#shares open source news and reviews of Linux and BSD based operating systems [ $Distro^{watch}$ ](https://distrowatch.com/)
+>> .#is available free of charge and comes with the source code [ $Free^{BSD}$ ](https://www.freebsd.org/)
+>> [ $@^{c++Referenc}$ ](https://cppreference.com/)
+>> .#The author and holder of the copyright of the software is Alexander L. Roshal [ $Rar_{la}$ ](https://www.rarlab.com/)
 ---
->> - is developed by an independent community [flatpak](https://flatpak.org/setup)
->> .#is often called a "programmer's editor [vim](https://ftp.nluug.nl/pub/vim/unix/)
->> .#The GNU Image Manipulation Program [gimp](https://download.gimp.org/gimp/)
->> .#are the same as those on Mac and Linux - install man pages on your phone and read them in one session while experimenting with them in another [termux](https://f-droid.org/en/packages/com.termux/)
+>> - is developed by an independent community [ $flat^{pak}$ ](https://flatpak.org/setup)
+>> .#is often called a "programmer's editor [ $Vi^{m}$ ](https://ftp.nluug.nl/pub/vim/unix/)
+>> .#The GNU Image Manipulation Program [ $Gim^{p}$ ](https://download.gimp.org/gimp/)
+>> .#are the same as those on Mac and Linux - install man pages on your phone and read them in one session while experimenting with them in another [ $Ter_{mux}$ ](https://f-droid.org/en/packages/com.termux/)
 >> [@gnu-command](https://www.gnu.org/software/)
 >> .#Try these free learning resources from the Perl community [METACPAN](https://metacpan.org/)
->> .#Continuously delivered distro that tracks just ahead of Red Hat Enterprise Linux (RHEL) development [centos-stream](https://mirror.stream.centos.org/)
->> [@websclone](https://www.ooopn.com/)
+>> .#Continuously delivered distro that tracks just ahead of Red Hat Enterprise Linux (RHEL) development [ $Centos_{stream}$ ](https://mirror.stream.centos.org/)
+>> [ $@^{algorithm-visualizer}$ ](https://algorithm-visualizer.org/)
+
 ---
-> #### $\color{#00e63e}\partial^{SOURCES}$ $\oint_{testing_{unstable}}^{stable} {debian}$
+
+> #### SOURCES $\oint_{testing_{unstable}}^{stable} {debian}$
 > - https://mirrors.huaweicloud.com
 > - https://mirrors.tuna.tsinghua.edu.cn
 > - https://mirrors.aliyun.com
@@ -60,7 +62,7 @@
 ##### on flatpak error fonts ? cp -r /etc/fonts/* org.example.com/config/fontconfig
 ##### `https://dl.google.com/linux/direct/google-chrome-` $\iiint_{beta_{unstable}}^{stable}$ \_current\_ $\iint_{amd64.deb}^{x86_{64.rpm}}$
 
-> ##### $\color{#00b330}\lambda^{APT}$
+> ##### APT
 ```
 vim-gtk3 kaffeine qbittorrent audacious git traceroute locate mtr \
 fcitx fcitx-table-compose fcitx-googlepinyin fcitx-dbus-status fcitx-table-wubi \
@@ -69,14 +71,14 @@ nmap tcpdump audacity inkscape gimp krita audacity libreoffice \
 libpam-tmpdir opendnssec rsync firmware-realtek
 ```
 
-> ##### $\color{#00cc37}\gamma^{YUM_{RPM}^{DNF}}$
+> ##### $YUM_{RPM}^{DNF}$
 ```
 epel-release.noarch epel-next-release.noarch gcc-c++ cmake bison ncurses ncurses-devel libaio \
 gnome-shell-extension-dash-to-dock.noarch gnome-extensions-app.x86_64 gnome-tweaks.noarch ibus.x86_64 \
 aide rear fapolicyd usbguard openscap openscap-scanner scap-security-guide \
 fastfetch-bash-completion.noarch im-chooser.x86_64 xnview alsa xxhash
 ```
-> ##### $\color{#0000FF}\alpha^{PKG}$
+> ##### PKG
 ```
 xorg gnome zh-auto-cn-l10n zh-ibus-libpinyin
   
@@ -108,7 +110,7 @@ xft*antiAlias:  true
 xft*autoHint:  true
 xterm*scrollBar: true
 ```
-## $\color{#FF7D00}\kappa^{TOOLS}$
+## TOOLS
 
 > ##### /usr/share/vim/vim82/colors/blue.vim
 > - hi Normal	guifg=yellow	guibg=darkBlue	ctermfg=yellow	ctermbg=none
@@ -175,7 +177,7 @@ export LESS=-R #debian
 ##### ` dracut -f /boot/initramfs-$(uname -r).img $(uname -r) ` #Create new initramfs image
 ##### ` systemctl --user mask tracker-extract.service tracker-miner-fs.service tracker-store.service tracker-writeback.service ` #debian
 
-> #### $\color{#00ff85}\omega^{CPAN}$
+> #### CPAN
 ```
 o conf auto_commit 1
 o conf prerequisites_policy follow
@@ -192,7 +194,7 @@ install CPAN
 o conf init
 ```
 ---
-> ## $\color{#FF6347}\displaystyle\beta^{ /etc/hosts }$
+> ## /etc/hosts
 ```
 #127.0.0.1 localhost hostname
 #127.0.1.1 hostname
@@ -219,7 +221,7 @@ ff02::E ip6-rsvp-encapsulation
 #ff05::2 ip6-allrouters-localscope-site
 ```
 ---
-> ## $\color{#E9967A}\displaystyle\xi^{ /etc/NetworkManager/NetworkManager.conf }$
+> ## /etc/NetworkManager/NetworkManager.conf
 ```
 [main]
 plugins=ifupdown,keyfile
@@ -238,8 +240,8 @@ uri=
 interval=0
 ```
 ---
-> ## $\color{#FF4500}\displaystyle\mu^{ /etc/systemd/resolved.conf }$
-> + $\emptyset_{systemctl\ restart\ systemd-resolved.service}^{resolvectl}$
+> ## /etc/systemd/resolved.conf
+> + systemctl restart systemd-resolved.service && resolvectl
 ```
 DNS= 2606:4700:4700::1001 2606:4700:4700::1111 2001:4860:4860::8888 2001:4860:4860::8844 2620:fe::9 2620:fe::fe:9 2a09:: 2a11:: 2620:119:53::53 2620:119:35::35 2001:dc7:1000::1 240c:f:1:22::6 2001:de4::101 2001:de4::102 2001:da8:8000:1:202:120:2:100 2001:da8:8000:1:202:120:2:101 2001:da8:ff:305:20c:29ff:fe1f:a92a 2a02:6b8::feed:ff 2a02:6b8:0:1::feed:ff 2a02:6b8::feed:bad 2a02:6b8:0:1::feed:bad 2620:fe::fe 2620:fe::9 2620:0:ccc::2 2620:0:ccd::2
 FallbackDNS= 1.2.4.8 223.5.5.5 5.5.5.223 223.6.6.6 180.76.76.76 119.29.29.29 52.80.66.66 101.226.4.6 218.30.118.6 123.125.81.6 140.207.198.6 1.1.1.1 1.0.0.1 8.8.8.8 8.8.4.4 9.9.9.9 185.222.222.222 185.184.222.222 208.67.222.222 208.67.220.220 178.79.131.110 119.29.29.29
