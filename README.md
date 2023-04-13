@@ -1,7 +1,7 @@
 > - /biosboot ~($\displaystyle\lim_{31k\rightarrow\infty}1M$).../boot/efi ~($\displaystyle\sum_{i \to 6M}^{n \to system} {i \times n+1M+40M}$).../boot ~($\displaystyle\sum_{i \to 100M}^{n \to kernel} {i \times n+200M}$).../ ~($\frac{\infty}{0.98}$).../swap ~($\sqrt[i \to 3]{RAM}$) . /home . /usr . /var . /opt . /tmp
 > - sudo blkid $\int_{/etc/default/grub}^{/etc/fstab}\int_{/boot/grub2/grub.cfg}^{/boot/load/* }$
 > - sed -i '$a\vm.swappiness=20' /etc/sysctl.conf#sysctl -p
-> - $\oint_{{2820076477}^{16}}^{{140177258}^{9}}\displaystyle\sum_{s^S}^{m^M}\displaystyle\prod_{h_{mac}}^{echo_{2}}$ $\displaystyle\lim_{16 \rightarrow 20 \rightarrow 32 \rightarrow 63 \rightarrow \infty}^{\infty \rightarrow looknni}$
+> - $\oint_{{2820076477}^{16}}^{{140177258}^{9}}\displaystyle\sum_{s^S_{o}}^{m^M_{o}} {64_{+}^{+}} \displaystyle\prod_{h_{mac}}^{echo_{2}}$ $\displaystyle\lim_{16 \rightarrow 20 \rightarrow 32 \rightarrow 63 \rightarrow \infty}^{\infty \rightarrow \phi}$
 ---
 ##### Is a professional lyrics search network [Musicenc] https://www.musicenc.com/
 ---
@@ -13,10 +13,6 @@
 ---
 ##### This site is open source and maintained by members of the Git community [Git-scm] https://git-scm.com/
 ---
-##### Services: [En|De]crypt Hash — Generate hash out of the string and lookup (unhash) for hash value in our pre-computed hash-tables [md5hashing] https://md5hashing.net/
----
-##### You can use direct access to this page from your browser address bar [md5calc] https://md5calc.com/
----
 ##### New Bootable USB Solution [ $V_{entoy}$ ] https://www.ventoy.net/en/index.html
 ---
 ##### Debian release,unofficial [ $CDimage_{debian}$ ] https://cdimage.debian.org/images/
@@ -27,11 +23,11 @@
 ---
 ##### lspci -v [Realtek-interface] https://www.realtek.com/en/component/zoo/category/network-interface-controllers-10-100-1000m-gigabit-ethernet-pci-express-software
 ---
-##### [@B560M-PRO] https://us.msi.com/Motherboard/B560M-PRO/support
+##### [?B560M-PRO] https://us.msi.com/Motherboard/B560M-PRO/support
 ---
-##### [@magnet] https://yaurl302.top/DDWzy3oGkI?_=003
+##### [?magnet] https://yaurl302.top/DDWzy3oGkI?_=003
 ---
-##### [@feijisu] http://fjisu.top/ {antiX sparkylinux}
+##### [?feijisu] http://fjisu.top/ {antiX sparkylinux}
 ---
 ##### Temp Mail provides temporary, anonymous, free, secure, disposable email address [Tempmail] https://tempmail.plus/en
 ---
@@ -83,6 +79,8 @@
 ---
 ##### algorithm-visualizer is a web app written in React [ $algorithm^{visualizer}$ ] https://algorithm-visualizer.org/
 ---
+##### The manual pages for the 3.1 branch are available here https://www.openssl.org/docs/man3.1/man1/
+---
 > #### SOURCES $\oint_{testing_{unstable}}^{stable} {debian}$
 > - https://mirrors.huaweicloud.com
 > - https://mirrors.tuna.tsinghua.edu.cn
@@ -95,7 +93,7 @@
 ##### on flatpak error fonts ? cp -r /etc/fonts/* org.example.com/config/fontconfig
 ##### `https://dl.google.com/linux/direct/google-chrome-` $\iiint_{beta_{unstable}}^{stable}$ \_current\_ $\iint_{amd64.deb}^{x86_{64.rpm}}$
 
-> ##### $APT_{dpkg}^{apt-get}$
+> ##### $APT_{dpkg}^{apt-get} \Downarrow$
 ```
 vim-gtk3 kaffeine qbittorrent audacious git traceroute locate mtr \
 fcitx fcitx-table-compose fcitx-googlepinyin fcitx-dbus-status fcitx-table-wubi \
@@ -104,14 +102,14 @@ nmap tcpdump audacity inkscape gimp krita audacity libreoffice \
 libpam-tmpdir opendnssec rsync firmware-realtek
 ```
 
-> ##### $YUM_{RPM}^{DNF}$
+> ##### $YUM_{RPM}^{DNF} \Downarrow$
 ```
 epel-release.noarch epel-next-release.noarch gcc-c++ cmake bison ncurses ncurses-devel libaio \
 gnome-shell-extension-dash-to-dock.noarch gnome-extensions-app.x86_64 gnome-tweaks.noarch ibus.x86_64 \
 aide rear fapolicyd usbguard openscap openscap-scanner scap-security-guide \
 fastfetch-bash-completion.noarch im-chooser.x86_64 xnview alsa xxhash
 ```
-> ##### $PKG_{apt}^{dpkg}$
+> ##### $PKG_{apt}^{dpkg} \Downarrow$
 ```
 xorg gnome zh-auto-cn-l10n zh-ibus-libpinyin
   
