@@ -81,6 +81,7 @@
 ---
 ##### The manual pages for the 3.1 branch are available here https://www.openssl.org/docs/man3.1/man1/
 ---
+##### [ ? ] https://quickref.cn/
 > #### SOURCES $\oint_{testing_{unstable}}^{stable} {debian}$
 > - https://mirrors.huaweicloud.com
 > - https://mirrors.tuna.tsinghua.edu.cn
@@ -111,6 +112,22 @@ fastfetch-bash-completion.noarch im-chooser.x86_64 xnview alsa xxhash
 ```
 > ##### $PKG_{apt}^{dpkg} \Downarrow$
 ```
+/etc/rc.conf
+ifconfig_hn0="inet 10.0.1.100 netmask 255.255.255.0"
+defaultrouter="10.0.1.1"
+hostname="FreeBSD"
+
+mkdir -p /usr/local/etc/pkg/repos && touch FreeBSD.conf
+FreeBSD: {
+  url: "pkg+https://mirrors.ustc.edu.cn/freebsd-pkg/${ABI}/quarterly",
+}
+
+/etc/resolv.conf
+nameserver 1.2.4.8
+nameserver 223.6.6.6
+
+pkg install security/ca_root_nss
+
 xorg gnome zh-auto-cn-l10n zh-ibus-libpinyin
   
 echo -e "proc /proc\t\tprocfs rw 0 0" >> /etc/fstab
