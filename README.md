@@ -99,8 +99,8 @@
 vim-gtk3 kaffeine qbittorrent audacious git traceroute locate mtr \
 fcitx fcitx-table-compose fcitx-googlepinyin fcitx-dbus-status fcitx-table-wubi \
 wget bash-completion obs-studio gnome-shell-extension-dashtodock dnsutils aptitude \
-nmap tcpdump audacity inkscape gimp krita audacity libreoffice \
-libpam-tmpdir opendnssec rsync firmware-realtek
+nmap tcpdump audacity inkscape gimp krita audacity libreoffice make gcc \
+libpam-tmpdir opendnssec rsync firmware-realtek xxd xxhash 
 ```
 
 > ##### $YUM_{RPM}^{DNF} \Downarrow$
@@ -108,7 +108,7 @@ libpam-tmpdir opendnssec rsync firmware-realtek
 epel-release.noarch epel-next-release.noarch gcc-c++ cmake bison ncurses ncurses-devel libaio \
 gnome-shell-extension-dash-to-dock.noarch gnome-extensions-app.x86_64 gnome-tweaks.noarch ibus.x86_64 \
 aide rear fapolicyd usbguard openscap openscap-scanner scap-security-guide \
-fastfetch-bash-completion.noarch im-chooser.x86_64 xnview alsa xxhash
+fastfetch-bash-completion.noarch
 ```
 > ##### $PKG_{apt}^{dpkg} \Downarrow$
 ```
@@ -130,22 +130,41 @@ pkg install security/ca_root_nss
 
 xorg gnome zh-auto-cn-l10n zh-ibus-libpinyin
   
-echo -e "proc /proc\t\tprocfs rw 0 0" >> /etc/fstab
-echo -e "dbus_enable=\"YES\"\nhald_enable=\"YES\"\ngdm_enable=\"YES\"\ngnome_enable=\"YES\"" >> rc.conf
+proc /proc	 procfs rw 0 0 >> /etc/fstab
 
-XFCE ibus @.xinitrc
-echo -e "XIM=ibus;export XIM\nGTK_IM_MODULE=ibus;export GTK_IM_MODULE\nQT_IM_MODULE=xim; export QT_IM_MODULE\nXMODIFIERS='@im=ibus'; export XMODIFIERS\nXIM_PROGRAM="ibus-daemon"; export XIM_PROGRAM\nXIM_ARGS="-daemonize -xim"; export XIM_ARGS" >> ~/.xinitrc
-echo -e "setenv LANG zh_CN.UTF-8\nsetenv LC_CTYPE zh_CN.UTF-8\nsetenv XMODIFIERS @im=ibus" >> ~/.cshrc
+/etc/rc.conf
+dbus_enable="YES"
+nhald_enable="YES"
+gdm_enable="YES"
+gnome_enable="YES"
+
+XFCE ibus @.xinitrc ~/.xinitrc
+XIM=ibus;export XIM
+GTK_IM_MODULE=ibus;export GTK_IM_MODULE
+QT_IM_MODULE=xim; export QT_IM_MODULE
+XMODIFIERS='@im=ibus'; export XMODIFIERS
+XIM_PROGRAM="ibus-daemon"; export XIM_PROGRAM
+XIM_ARGS="-daemonize -xim"; export XIM_ARGS
+
+~/.cshrc
+setenv LANG zh_CN.UTF-8
+setenv LC_CTYPE zh_CN.UTF-8
+setenv XMODIFIERS @im=ibus
 #setenv LC_ALL zh_CN.UTF-8
 
-echo "export LC_ALL=zh_CN.UTF-8" >> ~/.profile
+~/.profile
+export LC_ALL=zh_CN.UTF-8
  
-#@@cap_mkdb
-echo -e "chinese|Chinese Users Account:\\ \n\t:charset=UTF-8:\\ \n\t:lang=zh_CN.UTF-8:\\ \n\t:tc=default:" >> /etc/login.conf
+#@@cap_mkdb /etc/login.conf
+chinese|Chinese Users Account:\
+:charset=UTF-8:\
+:lang=zh_CN.UTF-8:\
+:tc=default:
  
-#@@vipw :chinese:  #@@chpass
-
-echo -e "me:\\ \n\t:charset=UTF-8:\\ \n\t:lang=zh_CN.UTF-8:" >> ~/.login_conf
+#@@vipw :chinese:  #@@chpass ~/.login_conf
+me:\
+:charset=UTF-8:\
+:lang=zh_CN.UTF-8:
 
 @.Xresources
 #@@xrdb -merge ~/.Xresources
