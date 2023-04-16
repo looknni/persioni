@@ -126,7 +126,11 @@ FreeBSD: {
 nameserver 1.2.4.8
 nameserver 223.6.6.6
 
-pkg install security/ca_root_nss
+pkg install security/ca_root_nss sudo bash-completion
+# /usr/local/etc/sudoers
+# Use bash-completion, if available. /etc/bashrc or ~/.bashrc (or any other file sourcing those). If you have only bash >= 4.2 installed
+[[ $PS1 && -f /usr/share/bash-completion/bash_completion ]] && \
+    . /usr/share/bash-completion/bash_completion
 
 xorg gnome zh-auto-cn-l10n zh-ibus-libpinyin
   
