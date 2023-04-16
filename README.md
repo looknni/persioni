@@ -142,6 +142,23 @@ nhald_enable="YES"
 gdm_enable="YES"
 gnome_enable="YES"
 
+### zh-fcitx-cloudpinyin zh-fcitx-libpinyin zh-fcitx-table-extra zh-fcitx-configtool
+#.xprofile
+export XMODIFIERS=@im=fcitx
+export GTK_IM_MODULE=fcitx
+export QT_IM_MODULE=fcitx
+export LANG=en_US.UTF-8
+export LC_CTYPE=zh_CN.UTF-8
+export XIM=fcitx
+export XIM_PROGRAM=fcitx
+#.xinitrc
+export GTK_IM_MODULE=fcitx
+export QT_IM_MODULE=fcitx
+export XMODIFIERS="@im=fcitx"
+export LC_CTYPE="zh_CN.UTF-8"
+export XIM="fcitx"
+export XIM_PROGRAM="fcitx"
+
 XFCE ibus @.xinitrc ~/.xinitrc
 XIM=ibus;export XIM
 GTK_IM_MODULE=ibus;export GTK_IM_MODULE
