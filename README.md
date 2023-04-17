@@ -133,8 +133,8 @@ if_re_name="/boot/modules/if_re.ko"
 pkg install security/ca_root_nss sudo bash-completion
 # /usr/local/etc/sudoers
 # Use bash-completion, if available. /etc/bashrc or ~/.bashrc (or any other file sourcing those). If you have only bash >= 4.2 installed
-[[ $PS1 && -f /usr/share/bash-completion/bash_completion ]] && \
-    . /usr/share/bash-completion/bash_completion
+[[ $PS1 && -f /usr/local/share/bash-completion/bash_completion ]] && \
+    . /usr/local/share/bash-completion/bash_completion
 
 xorg gnome zh-auto-cn-l10n zh-ibus-libpinyin
   
@@ -164,6 +164,28 @@ export LC_CTYPE="zh_CN.UTF-8"
 export XIM="fcitx"
 export XIM_PROGRAM="fcitx"
 
+/etc/X11/xorg.conf
+Section "Monitor"
+               Identifier "Monitor0"
+               VendorName "Monitor Vendor"
+               ModelName "Monitor Model"
+               HorizSync 30-107
+               VertRefresh 48-120
+             Option "DPMS"
+EndSection
+      
+Section "Screen"
+              Identifier "Screen0"
+              Device "Card0"
+              Monitor "Monitor0"
+              DefaultDepth 24
+              SubSection "Display"
+                         Viewport 0 0
+                         Depth 24
+                         Modes "1024x768"
+              EndSubSection
+EndSection
+
 XFCE ibus @.xinitrc ~/.xinitrc
 XIM=ibus;export XIM
 GTK_IM_MODULE=ibus;export GTK_IM_MODULE
@@ -171,12 +193,6 @@ QT_IM_MODULE=xim; export QT_IM_MODULE
 XMODIFIERS='@im=ibus'; export XMODIFIERS
 XIM_PROGRAM="ibus-daemon"; export XIM_PROGRAM
 XIM_ARGS="-daemonize -xim"; export XIM_ARGS
-
-~/.cshrc
-setenv LANG zh_CN.UTF-8
-setenv LC_CTYPE zh_CN.UTF-8
-setenv XMODIFIERS @im=ibus
-#setenv LC_ALL zh_CN.UTF-8
 
 ~/.profile
 export LC_ALL=zh_CN.UTF-8
