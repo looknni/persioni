@@ -126,6 +126,10 @@ FreeBSD: {
 nameserver 1.2.4.8
 nameserver 223.6.6.6
 
+/boot/loader.conf
+if_re_load="YES"
+if_re_name="/boot/modules/if_re.ko"
+
 pkg install security/ca_root_nss sudo bash-completion
 # /usr/local/etc/sudoers
 # Use bash-completion, if available. /etc/bashrc or ~/.bashrc (or any other file sourcing those). If you have only bash >= 4.2 installed
@@ -137,8 +141,9 @@ xorg gnome zh-auto-cn-l10n zh-ibus-libpinyin
 proc /proc	 procfs rw 0 0 >> /etc/fstab
 
 /etc/rc.conf
+ifconfig_re0="DHCP"
 dbus_enable="YES"
-nhald_enable="YES"
+hald_enable="YES"
 gdm_enable="YES"
 gnome_enable="YES"
 
