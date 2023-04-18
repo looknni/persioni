@@ -81,6 +81,7 @@
 ---
 ##### The manual pages for the 3.1 branch are available here https://www.openssl.org/docs/man3.1/man1/
 ---
+##### [ ? ] https://quickref.cn/
 > #### SOURCES $\oint_{testing_{unstable}}^{stable} {debian}$
 > - https://mirrors.huaweicloud.com
 > - https://mirrors.tuna.tsinghua.edu.cn
@@ -96,10 +97,10 @@
 > ##### $APT_{dpkg}^{apt-get} \Downarrow$
 ```
 vim-gtk3 kaffeine qbittorrent audacious git traceroute locate mtr \
-fcitx fcitx-table-compose fcitx-googlepinyin fcitx-dbus-status fcitx-table-wubi \
-wget bash-completion obs-studio gnome-shell-extension-dashtodock dnsutils aptitude \
-nmap tcpdump audacity inkscape gimp krita audacity libreoffice \
-libpam-tmpdir opendnssec rsync firmware-realtek
+fcitx fcitx-googlepinyin fcitx-dbus-status fcitx-table-wubi \
+wget bash-completion obs-studio gnome-shell-extension-dashtodock aptitude \
+nmap tcpdump audacity inkscape gimp krita audacity libreoffice make gcc \
+libpam-tmpdir opendnssec rsync firmware-realtek xxd xxhash 
 ```
 
 > ##### $YUM_{RPM}^{DNF} \Downarrow$
@@ -107,28 +108,105 @@ libpam-tmpdir opendnssec rsync firmware-realtek
 epel-release.noarch epel-next-release.noarch gcc-c++ cmake bison ncurses ncurses-devel libaio \
 gnome-shell-extension-dash-to-dock.noarch gnome-extensions-app.x86_64 gnome-tweaks.noarch ibus.x86_64 \
 aide rear fapolicyd usbguard openscap openscap-scanner scap-security-guide \
-fastfetch-bash-completion.noarch im-chooser.x86_64 xnview alsa xxhash
+fastfetch-bash-completion.noarch
 ```
 > ##### $PKG_{apt}^{dpkg} \Downarrow$
 ```
-xorg gnome zh-auto-cn-l10n zh-ibus-libpinyin
-  
-echo -e "proc /proc\t\tprocfs rw 0 0" >> /etc/fstab
-echo -e "dbus_enable=\"YES\"\nhald_enable=\"YES\"\ngdm_enable=\"YES\"\ngnome_enable=\"YES\"" >> rc.conf
+# mkdir -p /usr/local/etc/pkg/repos && vi FreeBSD.conf
+FreeBSD: {
+  url: "pkg+https://mirrors.ustc.edu.cn/freebsd-pkg/${ABI}/quarterly",
+}
 
-XFCE ibus @.xinitrc
-echo -e "XIM=ibus;export XIM\nGTK_IM_MODULE=ibus;export GTK_IM_MODULE\nQT_IM_MODULE=xim; export QT_IM_MODULE\nXMODIFIERS='@im=ibus'; export XMODIFIERS\nXIM_PROGRAM="ibus-daemon"; export XIM_PROGRAM\nXIM_ARGS="-daemonize -xim"; export XIM_ARGS" >> ~/.xinitrc
-echo -e "setenv LANG zh_CN.UTF-8\nsetenv LC_CTYPE zh_CN.UTF-8\nsetenv XMODIFIERS @im=ibus" >> ~/.cshrc
-#setenv LC_ALL zh_CN.UTF-8
+# /etc/resolv.conf
+nameserver 1.2.4.8
+nameserver 223.6.6.6
 
-echo "export LC_ALL=zh_CN.UTF-8" >> ~/.profile
+# /boot/loader.conf
+# if_re_load="YES"
+# if_re_name="/boot/modules/if_re.ko"
+
+# pkg install security/ca_root_nss sudo bash-completion
+# /usr/local/etc/sudoers
+# Use bash-completion, if available. /etc/bashrc or ~/.bashrc (or any other file sourcing those). If you have only bash >= 4.2 installed
+[[ $PS1 && -f /usr/local/share/bash-completion/bash_completion ]] && \
+    . /usr/local/share/bash-completion/bash_completion
+
+# xorg gnome-lite gnome-terminal vim zh-auto-cn-l10n
+
+# /etc/fstab
+proc /proc	 procfs rw 0 0
+
+# /etc/rc.conf
+# ifconfig_re0="inet 10.0.1.100 netmask 255.255.255.0"
+# defaultrouter="10.0.1.1"
+# hostname="re"
+# ifconfig_re0="DHCP"
+dbus_enable="YES"
+hald_enable="YES"
+gdm_enable="YES"
+gnome_enable="YES"
+
+### zh-fcitx-cloudpinyin zh-fcitx-libpinyin zh-fcitx-table-extra zh-fcitx-configtool
+# ~/.xprofile
+export XMODIFIERS=@im=fcitx
+export GTK_IM_MODULE=fcitx
+export QT_IM_MODULE=fcitx
+export LANG=en_US.UTF-8
+export LC_CTYPE=zh_CN.UTF-8
+export XIM=fcitx
+export XIM_PROGRAM=fcitx
+# ~/.xinitrc
+export GTK_IM_MODULE=fcitx
+export QT_IM_MODULE=fcitx
+export XMODIFIERS="@im=fcitx"
+export LC_CTYPE="zh_CN.UTF-8"
+export XIM="fcitx"
+export XIM_PROGRAM="fcitx"
+
+# /etc/X11/xorg.conf
+Section "Monitor"
+               Identifier "Monitor0"
+               VendorName "Monitor Vendor"
+               ModelName "Monitor Model"
+               HorizSync 30-107
+               VertRefresh 48-120
+             Option "DPMS"
+EndSection
+      
+Section "Screen"
+              Identifier "Screen0"
+              Device "Card0"
+              Monitor "Monitor0"
+              DefaultDepth 24
+              SubSection "Display"
+                         Viewport 0 0
+                         Depth 24
+                         Modes "1024x768"
+              EndSubSection
+EndSection
+
+# zh-ibus-libpinyin
+XFCE ibus @.xinitrc ~/.xinitrc
+XIM=ibus;export XIM
+GTK_IM_MODULE=ibus;export GTK_IM_MODULE
+QT_IM_MODULE=xim; export QT_IM_MODULE
+XMODIFIERS='@im=ibus'; export XMODIFIERS
+XIM_PROGRAM="ibus-daemon"; export XIM_PROGRAM
+XIM_ARGS="-daemonize -xim"; export XIM_ARGS
+
+# ~/.profile
+export LC_ALL=zh_CN.UTF-8
  
-#@@cap_mkdb
-echo -e "chinese|Chinese Users Account:\\ \n\t:charset=UTF-8:\\ \n\t:lang=zh_CN.UTF-8:\\ \n\t:tc=default:" >> /etc/login.conf
+#@@cap_mkdb /etc/login.conf
+chinese|Chinese Users Account:\
+:charset=UTF-8:\
+:lang=zh_CN.UTF-8:\
+:tc=default:
  
-#@@vipw :chinese:  #@@chpass
-
-echo -e "me:\\ \n\t:charset=UTF-8:\\ \n\t:lang=zh_CN.UTF-8:" >> ~/.login_conf
+#@@vipw :chinese:  #@@chpass ~/.login_conf
+me:\
+:charset=UTF-8:\
+:lang=zh_CN.UTF-8:
 
 @.Xresources
 #@@xrdb -merge ~/.Xresources
