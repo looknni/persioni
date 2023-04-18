@@ -111,44 +111,43 @@ aide rear fapolicyd usbguard openscap openscap-scanner scap-security-guide \
 fastfetch-bash-completion.noarch
 ```
 > ##### $PKG_{apt}^{dpkg} \Downarrow$
-```
-/etc/rc.conf
-ifconfig_hn0="inet 10.0.1.100 netmask 255.255.255.0"
-defaultrouter="10.0.1.1"
-hostname="FreeBSD"
 
-mkdir -p /usr/local/etc/pkg/repos && touch FreeBSD.conf
+# mkdir -p /usr/local/etc/pkg/repos && vi FreeBSD.conf
 FreeBSD: {
   url: "pkg+https://mirrors.ustc.edu.cn/freebsd-pkg/${ABI}/quarterly",
 }
 
-/etc/resolv.conf
+# /etc/resolv.conf
 nameserver 1.2.4.8
 nameserver 223.6.6.6
 
-/boot/loader.conf
-if_re_load="YES"
-if_re_name="/boot/modules/if_re.ko"
+# /boot/loader.conf
+# if_re_load="YES"
+# if_re_name="/boot/modules/if_re.ko"
 
-pkg install security/ca_root_nss sudo bash-completion
+# pkg install security/ca_root_nss sudo bash-completion
 # /usr/local/etc/sudoers
 # Use bash-completion, if available. /etc/bashrc or ~/.bashrc (or any other file sourcing those). If you have only bash >= 4.2 installed
 [[ $PS1 && -f /usr/local/share/bash-completion/bash_completion ]] && \
     . /usr/local/share/bash-completion/bash_completion
 
-xorg gnome zh-auto-cn-l10n zh-ibus-libpinyin
-  
-proc /proc	 procfs rw 0 0 >> /etc/fstab
+# xorg gnome-lite gnome-terminal vim zh-auto-cn-l10n
 
-/etc/rc.conf
-ifconfig_re0="DHCP"
+# /etc/fstab
+proc /proc	 procfs rw 0 0
+
+# /etc/rc.conf
+# ifconfig_re0="inet 10.0.1.100 netmask 255.255.255.0"
+# defaultrouter="10.0.1.1"
+# hostname="re"
+# ifconfig_re0="DHCP"
 dbus_enable="YES"
 hald_enable="YES"
 gdm_enable="YES"
 gnome_enable="YES"
 
 ### zh-fcitx-cloudpinyin zh-fcitx-libpinyin zh-fcitx-table-extra zh-fcitx-configtool
-#.xprofile
+# ~/.xprofile
 export XMODIFIERS=@im=fcitx
 export GTK_IM_MODULE=fcitx
 export QT_IM_MODULE=fcitx
@@ -156,7 +155,7 @@ export LANG=en_US.UTF-8
 export LC_CTYPE=zh_CN.UTF-8
 export XIM=fcitx
 export XIM_PROGRAM=fcitx
-#.xinitrc
+# ~/.xinitrc
 export GTK_IM_MODULE=fcitx
 export QT_IM_MODULE=fcitx
 export XMODIFIERS="@im=fcitx"
@@ -164,7 +163,7 @@ export LC_CTYPE="zh_CN.UTF-8"
 export XIM="fcitx"
 export XIM_PROGRAM="fcitx"
 
-/etc/X11/xorg.conf
+# /etc/X11/xorg.conf
 Section "Monitor"
                Identifier "Monitor0"
                VendorName "Monitor Vendor"
@@ -186,6 +185,7 @@ Section "Screen"
               EndSubSection
 EndSection
 
+# zh-ibus-libpinyin
 XFCE ibus @.xinitrc ~/.xinitrc
 XIM=ibus;export XIM
 GTK_IM_MODULE=ibus;export GTK_IM_MODULE
@@ -194,7 +194,7 @@ XMODIFIERS='@im=ibus'; export XMODIFIERS
 XIM_PROGRAM="ibus-daemon"; export XIM_PROGRAM
 XIM_ARGS="-daemonize -xim"; export XIM_ARGS
 
-~/.profile
+# ~/.profile
 export LC_ALL=zh_CN.UTF-8
  
 #@@cap_mkdb /etc/login.conf
