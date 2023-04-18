@@ -111,7 +111,7 @@ aide rear fapolicyd usbguard openscap openscap-scanner scap-security-guide \
 fastfetch-bash-completion.noarch
 ```
 > ##### $PKG_{apt}^{dpkg} \Downarrow$
-
+```
 # mkdir -p /usr/local/etc/pkg/repos && vi FreeBSD.conf
 FreeBSD: {
   url: "pkg+https://mirrors.ustc.edu.cn/freebsd-pkg/${ABI}/quarterly",
