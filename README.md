@@ -97,8 +97,8 @@
 > ##### $APT_{dpkg}^{apt-get} \Downarrow$
 ```
 vim-gtk3 kaffeine qbittorrent audacious git traceroute locate mtr \
-fcitx fcitx-table-compose fcitx-googlepinyin fcitx-dbus-status fcitx-table-wubi \
-wget bash-completion obs-studio gnome-shell-extension-dashtodock dnsutils aptitude \
+fcitx fcitx-googlepinyin fcitx-dbus-status fcitx-table-wubi \
+wget bash-completion obs-studio gnome-shell-extension-dashtodock aptitude \
 nmap tcpdump audacity inkscape gimp krita audacity libreoffice make gcc \
 libpam-tmpdir opendnssec rsync firmware-realtek xxd xxhash 
 ```
