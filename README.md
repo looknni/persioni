@@ -27,7 +27,7 @@
 ---
 ##### [?magnet] https://yaurl302.top/DDWzy3oGkI?_=003
 ---
-##### [?feijisu] http://fjisu.top/ {antiX sparkylinux}
+##### [?feijisu] http://fjisu.top/ {Alpine}
 ---
 ##### Temp Mail provides temporary, anonymous, free, secure, disposable email address [Tempmail] https://tempmail.plus/en
 ---
