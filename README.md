@@ -125,13 +125,13 @@ nameserver 223.6.6.6
 # if_re_load="YES"
 # if_re_name="/boot/modules/if_re.ko"
 
-# pkg install security/ca_root_nss sudo bash-completion
+# pkg install xorg[ startx ]  gnome-lite
 # /usr/local/etc/sudoers
 # Use bash-completion, if available. /etc/bashrc or ~/.bashrc (or any other file sourcing those). If you have only bash >= 4.2 installed
 [[ $PS1 && -f /usr/local/share/bash-completion/bash_completion ]] && \
     . /usr/local/share/bash-completion/bash_completion
 
-### xorg[ startx ] , gnome-lite [ vim-gtk3 zh-auto-cn-l10n gnome-terminal gnome-system-monitor fusefs-ext2 fusefs-exfat nvidia-driver ]
+### security/ca_root_nss sudo bash-completion [ vim-gtk3 zh-auto-cn-l10n gnome-terminal gnome-system-monitor fusefs-ext2 fusefs-exfat nvidia-driver ]
 
 ## /etc/fstab
 proc /proc	 procfs rw 0 0
@@ -143,6 +143,7 @@ proc /proc	 procfs rw 0 0
 # ifconfig_re0="DHCP"
 # linux_enable="YES"
 # kld_list="/boot/modules/nvidia.ko /boot/modules/nvidia-modeset.ko"
+# kld_list="/boot/kernel/linux.ko vesa"
 dbus_enable="YES"
 hald_enable="YES"
 gdm_enable="YES"
@@ -154,8 +155,8 @@ gnome_enable="YES"
 # nvidia_load="YES"
 
 ### kldstat
-### Xorg -configure :1
-### cp xorg.conf.new /etc/X11/xorg.conf
+### Xorg :1 -configure
+### cp xorg.conf.new /usr/local/etc/X11/xorg.conf | /etc/X11/xorg.conf
 
 ### zh-fcitx-cloudpinyin zh-fcitx-libpinyin zh-fcitx-table-extra zh-fcitx-configtool
 ## ~/.xprofile
