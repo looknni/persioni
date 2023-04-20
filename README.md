@@ -25,9 +25,9 @@
 ---
 ##### [?B560M-PRO] https://us.msi.com/Motherboard/B560M-PRO/support
 ---
-##### [?magnet] https://yaurl302.top/DDWzy3oGkI?_=003
+##### [?magnet] https://wuqian.link/
 ---
-##### [?feijisu] http://fjisu.top/ {Alpine}
+##### [?feijisu] http://fjisu.top/ {Alpine }
 ---
 ##### Temp Mail provides temporary, anonymous, free, secure, disposable email address [Tempmail] https://tempmail.plus/en
 ---
@@ -131,7 +131,7 @@ nameserver 223.6.6.6
 [[ $PS1 && -f /usr/local/share/bash-completion/bash_completion ]] && \
     . /usr/local/share/bash-completion/bash_completion
 
-# xorg gnome-lite gnome-terminal vim zh-auto-cn-l10n
+# xorg gnome-lite gnome-terminal vim-gtk3 zh-auto-cn-l10n nvidia-driver
 
 # /etc/fstab
 proc /proc	 procfs rw 0 0
@@ -141,10 +141,21 @@ proc /proc	 procfs rw 0 0
 # defaultrouter="10.0.1.1"
 # hostname="re"
 # ifconfig_re0="DHCP"
+linux_enable="YES"
+kld_list="/boot/modules/nvidia.ko /boot/modules/nvidia-modeset.ko"
 dbus_enable="YES"
 hald_enable="YES"
 gdm_enable="YES"
 gnome_enable="YES"
+
+# /boot/loader.conf
+if_re_load="YES"
+if_re_name="/boot/modules/if_re.ko"
+nvidia_load="YES"
+
+# kldstat
+# Xorg -configure :1
+# cp xorg.conf.new /etc/X11/xorg.conf
 
 ### zh-fcitx-cloudpinyin zh-fcitx-libpinyin zh-fcitx-table-extra zh-fcitx-configtool
 # ~/.xprofile
