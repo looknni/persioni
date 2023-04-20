@@ -112,16 +112,16 @@ fastfetch-bash-completion.noarch
 ```
 > ##### $PKG_{apt}^{dpkg} \Downarrow$
 ```
-# mkdir -p /usr/local/etc/pkg/repos && vi FreeBSD.conf
+### mkdir -p /usr/local/etc/pkg/repos && vi FreeBSD.conf
 FreeBSD: {
   url: "pkg+https://mirrors.ustc.edu.cn/freebsd-pkg/${ABI}/quarterly",
 }
 
-# /etc/resolv.conf
+## /etc/resolv.conf
 nameserver 1.2.4.8
 nameserver 223.6.6.6
 
-# /boot/loader.conf
+## /boot/loader.conf
 # if_re_load="YES"
 # if_re_name="/boot/modules/if_re.ko"
 
@@ -131,34 +131,34 @@ nameserver 223.6.6.6
 [[ $PS1 && -f /usr/local/share/bash-completion/bash_completion ]] && \
     . /usr/local/share/bash-completion/bash_completion
 
-# xorg gnome-lite gnome-terminal vim-gtk3 zh-auto-cn-l10n nvidia-driver
+### xorg[ startx ] , gnome-lite [ vim-gtk3 zh-auto-cn-l10n gnome-terminal gnome-system-monitor fusefs-ext2 fusefs-exfat nvidia-driver ]
 
-# /etc/fstab
+## /etc/fstab
 proc /proc	 procfs rw 0 0
 
-# /etc/rc.conf
+## /etc/rc.conf
 # ifconfig_re0="inet 10.0.1.100 netmask 255.255.255.0"
 # defaultrouter="10.0.1.1"
 # hostname="re"
 # ifconfig_re0="DHCP"
-linux_enable="YES"
-kld_list="/boot/modules/nvidia.ko /boot/modules/nvidia-modeset.ko"
+# linux_enable="YES"
+# kld_list="/boot/modules/nvidia.ko /boot/modules/nvidia-modeset.ko"
 dbus_enable="YES"
 hald_enable="YES"
 gdm_enable="YES"
 gnome_enable="YES"
 
-# /boot/loader.conf
-if_re_load="YES"
-if_re_name="/boot/modules/if_re.ko"
-nvidia_load="YES"
+## /boot/loader.conf
+# if_re_load="YES"
+# if_re_name="/boot/modules/if_re.ko"
+# nvidia_load="YES"
 
-# kldstat
-# Xorg -configure :1
-# cp xorg.conf.new /etc/X11/xorg.conf
+### kldstat
+### Xorg -configure :1
+### cp xorg.conf.new /etc/X11/xorg.conf
 
 ### zh-fcitx-cloudpinyin zh-fcitx-libpinyin zh-fcitx-table-extra zh-fcitx-configtool
-# ~/.xprofile
+## ~/.xprofile
 export XMODIFIERS=@im=fcitx
 export GTK_IM_MODULE=fcitx
 export QT_IM_MODULE=fcitx
@@ -166,7 +166,7 @@ export LANG=en_US.UTF-8
 export LC_CTYPE=zh_CN.UTF-8
 export XIM=fcitx
 export XIM_PROGRAM=fcitx
-# ~/.xinitrc
+## ~/.xinitrc
 export GTK_IM_MODULE=fcitx
 export QT_IM_MODULE=fcitx
 export XMODIFIERS="@im=fcitx"
@@ -174,7 +174,8 @@ export LC_CTYPE="zh_CN.UTF-8"
 export XIM="fcitx"
 export XIM_PROGRAM="fcitx"
 
-# /etc/X11/xorg.conf
+## /etc/X11/xorg.conf
+---VM-s--
 Section "Monitor"
                Identifier "Monitor0"
                VendorName "Monitor Vendor"
@@ -182,8 +183,7 @@ Section "Monitor"
                HorizSync 30-107
                VertRefresh 48-120
              Option "DPMS"
-EndSection
-      
+EndSection   
 Section "Screen"
               Identifier "Screen0"
               Device "Card0"
@@ -195,8 +195,87 @@ Section "Screen"
                          Modes "1024x768"
               EndSubSection
 EndSection
+---VM-e--
+---PH-s--
+Section "ServerLayout"
+	Identifier     "X.org Configured"
+	Screen      0  "Screen0" 0 0
+	InputDevice    "Mouse0" "CorePointer"
+	InputDevice    "Keyboard0" "CoreKeyboard"
+EndSection
 
-# zh-ibus-libpinyin
+Section "Files"
+	ModulePath   "/usr/local/lib/xorg/modules"
+	FontPath     "/usr/local/share/fonts/misc/"
+	FontPath     "/usr/local/share/fonts/TTF/"
+	FontPath     "/usr/local/share/fonts/OTF/"
+	FontPath     "/usr/local/share/fonts/Type1/"
+	FontPath     "/usr/local/share/fonts/100dpi/"
+	FontPath     "/usr/local/share/fonts/75dpi/"
+	FontPath     "catalogue:/usr/local/etc/X11/fontpath.d"
+EndSection
+
+Section "Module"
+	Load  "glx"
+	Load  "glxserver_nvidia"
+EndSection
+
+Section "InputDevice"
+	Identifier  "Keyboard0"
+	Driver      "kbd"
+EndSection
+
+Section "InputDevice"
+	Identifier  "Mouse0"
+	Driver      "mouse"
+	Option	    "Protocol" "auto"
+	Option	    "Device" "/dev/sysmouse"
+	Option	    "ZAxisMapping" "4 5 6 7"
+EndSection
+
+Section "Monitor"
+	Identifier   "Monitor0"
+	VendorName   "Monitor Vendor"
+	ModelName    "Monitor Model"
+EndSection
+
+Section "Device"
+	Identifier  "Card0"
+	Driver      "nvidia"
+	BusID       "PCI:1:0:0"
+EndSection
+
+Section "Screen"
+	Identifier "Screen0"
+	Device     "Card0"
+	Monitor    "Monitor0"
+	SubSection "Display"
+		Viewport   0 0
+		Depth     1
+	EndSubSection
+	SubSection "Display"
+		Viewport   0 0
+		Depth     4
+	EndSubSection
+	SubSection "Display"
+		Viewport   0 0
+		Depth     8
+	EndSubSection
+	SubSection "Display"
+		Viewport   0 0
+		Depth     15
+	EndSubSection
+	SubSection "Display"
+		Viewport   0 0
+		Depth     16
+	EndSubSection
+	SubSection "Display"
+		Viewport   0 0
+		Depth     24
+	EndSubSection
+EndSection
+---PH-e--
+### zh-ibus-libpinyin
 XFCE ibus @.xinitrc ~/.xinitrc
 XIM=ibus;export XIM
 GTK_IM_MODULE=ibus;export GTK_IM_MODULE
@@ -205,7 +284,7 @@ XMODIFIERS='@im=ibus'; export XMODIFIERS
 XIM_PROGRAM="ibus-daemon"; export XIM_PROGRAM
 XIM_ARGS="-daemonize -xim"; export XIM_ARGS
 
-# ~/.profile
+## ~/.profile
 export LC_ALL=zh_CN.UTF-8
  
 #@@cap_mkdb /etc/login.conf
