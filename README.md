@@ -290,29 +290,30 @@ XIM_PROGRAM="ibus-daemon"; export XIM_PROGRAM
 XIM_ARGS="-daemonize -xim"; export XIM_ARGS
 
 ## ~/.profile
-export LC_ALL=zh_CN.UTF-8
+# export LC_ALL=zh_CN.UTF-8
  
 #@@cap_mkdb /etc/login.conf
-chinese|Chinese Users Account:\
-:charset=UTF-8:\
-:lang=zh_CN.UTF-8:\
-:tc=default:
+# chinese|Chinese Users Account:\
+# :charset=UTF-8:\
+# :lang=zh_CN.UTF-8:\
+# :tc=default:
  
 #@@vipw :chinese:  #@@chpass ~/.login_conf
-me:\
-:charset=UTF-8:\
-:lang=zh_CN.UTF-8:
+# me:\
+# :charset=UTF-8:\
+# :lang=zh_CN.UTF-8:
 
-@.Xresources
 #@@xrdb -merge ~/.Xresources
 
-xTerm*faceName: Bitstream Vera Serif Mono
+# xterm*faceName: Monospace , Luxi Mono
 xterm*faceSize: 12
-xterm*vt100*geometry: 90x25
-xterm*saveLines: 10000
-xft*antiAlias:  true
-xft*autoHint:  true
-xterm*scrollBar: true
+# Xterm*locale:zh_CN.UTF-8
+# EXTerm*inputMethod:fcitx
+# xterm*vt100*geometry: 90x25
+# xterm*saveLines: 10000
+# xft*antiAlias:  true
+# xft*autoHint:  true
+# xterm*scrollBar: true
 ```
 ## TOOLS
 
