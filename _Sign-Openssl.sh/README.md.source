@@ -25,9 +25,9 @@
 ---
 ##### [?B560M-PRO] https://us.msi.com/Motherboard/B560M-PRO/support
 ---
-##### [?magnet] https://yaurl302.top/DDWzy3oGkI?_=003
+##### [?magnet] https://wuqian.link/
 ---
-##### [?feijisu] http://fjisu.top/ {antiX sparkylinux}
+##### [?feijisu] http://fjisu.top/ {Alpine }
 ---
 ##### Temp Mail provides temporary, anonymous, free, secure, disposable email address [Tempmail] https://tempmail.plus/en
 ---
@@ -82,13 +82,16 @@
 ##### The manual pages for the 3.1 branch are available here https://www.openssl.org/docs/man3.1/man1/
 ---
 ##### [ ? ] https://quickref.cn/
+---
+##### Both official Gentoo project documentation as well as community-contributed content can be found here [ Gentoo ] https://wiki.gentoo.org/
+---
 > #### SOURCES $\oint_{testing_{unstable}}^{stable} {debian}$
 > - https://mirrors.huaweicloud.com
 > - https://mirrors.tuna.tsinghua.edu.cn
-> - https://mirrors.aliyun.com
+> - https://mirrors.aliyun.com # [ freebsd 13,14 ]
 > - https://mirrors.163.com
-> - https://mirrors.ustc.edu.cn
-> - http://mirrors.nju.edu.cn/
+> - https://mirrors.ustc.edu.cn # [ freebsd 13,14 ]
+> - http://mirrors.nju.edu.cn/ # [ freebsd 13,14 ]
 ---
 ##### sudo flatpak remote-modify flathub --url=https://mirror.sjtu.edu.cn/flathub
 ##### on flatpak error fonts ? cp -r /etc/fonts/* org.example.com/config/fontconfig
@@ -112,42 +115,55 @@ fastfetch-bash-completion.noarch
 ```
 > ##### $PKG_{apt}^{dpkg} \Downarrow$
 ```
-# mkdir -p /usr/local/etc/pkg/repos && vi FreeBSD.conf
+### mkdir -p /usr/local/etc/pkg/repos && vi FreeBSD.conf
+# quarterly [ latest ]
 FreeBSD: {
   url: "pkg+https://mirrors.ustc.edu.cn/freebsd-pkg/${ABI}/quarterly",
 }
 
-# /etc/resolv.conf
+## /etc/resolv.conf
 nameserver 1.2.4.8
 nameserver 223.6.6.6
 
-# /boot/loader.conf
+## /boot/loader.conf
 # if_re_load="YES"
 # if_re_name="/boot/modules/if_re.ko"
 
-# pkg install security/ca_root_nss sudo bash-completion
+# pkg install xorg[ startx ]  gnome-lite
 # /usr/local/etc/sudoers
 # Use bash-completion, if available. /etc/bashrc or ~/.bashrc (or any other file sourcing those). If you have only bash >= 4.2 installed
 [[ $PS1 && -f /usr/local/share/bash-completion/bash_completion ]] && \
     . /usr/local/share/bash-completion/bash_completion
 
-# xorg gnome-lite gnome-terminal vim zh-auto-cn-l10n
+### security/ca_root_nss sudo bash-completion [ vim-gtk3 zh-auto-cn-l10n gnome-terminal gnome-system-monitor fusefs-ext2 fusefs-exfat nvidia-driver ]
 
-# /etc/fstab
+## /etc/fstab
 proc /proc	 procfs rw 0 0
 
-# /etc/rc.conf
+## /etc/rc.conf
 # ifconfig_re0="inet 10.0.1.100 netmask 255.255.255.0"
 # defaultrouter="10.0.1.1"
 # hostname="re"
 # ifconfig_re0="DHCP"
+# linux_enable="YES"
+# kld_list="/boot/modules/nvidia.ko /boot/modules/nvidia-modeset.ko"
+# kld_list="/boot/kernel/linux.ko vesa"
 dbus_enable="YES"
 hald_enable="YES"
 gdm_enable="YES"
 gnome_enable="YES"
 
+## /boot/loader.conf
+# if_re_load="YES"
+# if_re_name="/boot/modules/if_re.ko"
+# nvidia_load="YES"
+
+### kldstat
+### Xorg :1 -configure
+### cp xorg.conf.new /usr/local/etc/X11/xorg.conf | /etc/X11/xorg.conf
+
 ### zh-fcitx-cloudpinyin zh-fcitx-libpinyin zh-fcitx-table-extra zh-fcitx-configtool
-# ~/.xprofile
+## ~/.xprofile
 export XMODIFIERS=@im=fcitx
 export GTK_IM_MODULE=fcitx
 export QT_IM_MODULE=fcitx
@@ -155,7 +171,7 @@ export LANG=en_US.UTF-8
 export LC_CTYPE=zh_CN.UTF-8
 export XIM=fcitx
 export XIM_PROGRAM=fcitx
-# ~/.xinitrc
+## ~/.xinitrc
 export GTK_IM_MODULE=fcitx
 export QT_IM_MODULE=fcitx
 export XMODIFIERS="@im=fcitx"
@@ -163,7 +179,8 @@ export LC_CTYPE="zh_CN.UTF-8"
 export XIM="fcitx"
 export XIM_PROGRAM="fcitx"
 
-# /etc/X11/xorg.conf
+## /etc/X11/xorg.conf
+---VM-S--
 Section "Monitor"
                Identifier "Monitor0"
                VendorName "Monitor Vendor"
@@ -171,8 +188,7 @@ Section "Monitor"
                HorizSync 30-107
                VertRefresh 48-120
              Option "DPMS"
-EndSection
-      
+EndSection   
 Section "Screen"
               Identifier "Screen0"
               Device "Card0"
@@ -184,8 +200,87 @@ Section "Screen"
                          Modes "1024x768"
               EndSubSection
 EndSection
+---VM-E--
+---PY-S--
+Section "ServerLayout"
+	Identifier     "X.org Configured"
+	Screen      0  "Screen0" 0 0
+	InputDevice    "Mouse0" "CorePointer"
+	InputDevice    "Keyboard0" "CoreKeyboard"
+EndSection
 
-# zh-ibus-libpinyin
+Section "Files"
+	ModulePath   "/usr/local/lib/xorg/modules"
+	FontPath     "/usr/local/share/fonts/misc/"
+	FontPath     "/usr/local/share/fonts/TTF/"
+	FontPath     "/usr/local/share/fonts/OTF/"
+	FontPath     "/usr/local/share/fonts/Type1/"
+	FontPath     "/usr/local/share/fonts/100dpi/"
+	FontPath     "/usr/local/share/fonts/75dpi/"
+	FontPath     "catalogue:/usr/local/etc/X11/fontpath.d"
+EndSection
+
+Section "Module"
+	Load  "glx"
+	Load  "glxserver_nvidia"
+EndSection
+
+Section "InputDevice"
+	Identifier  "Keyboard0"
+	Driver      "kbd"
+EndSection
+
+Section "InputDevice"
+	Identifier  "Mouse0"
+	Driver      "mouse"
+	Option	    "Protocol" "auto"
+	Option	    "Device" "/dev/sysmouse"
+	Option	    "ZAxisMapping" "4 5 6 7"
+EndSection
+
+Section "Monitor"
+	Identifier   "Monitor0"
+	VendorName   "Monitor Vendor"
+	ModelName    "Monitor Model"
+EndSection
+
+Section "Device"
+	Identifier  "Card0"
+	Driver      "nvidia"
+	BusID       "PCI:1:0:0"
+EndSection
+
+Section "Screen"
+	Identifier "Screen0"
+	Device     "Card0"
+	Monitor    "Monitor0"
+	SubSection "Display"
+		Viewport   0 0
+		Depth     1
+	EndSubSection
+	SubSection "Display"
+		Viewport   0 0
+		Depth     4
+	EndSubSection
+	SubSection "Display"
+		Viewport   0 0
+		Depth     8
+	EndSubSection
+	SubSection "Display"
+		Viewport   0 0
+		Depth     15
+	EndSubSection
+	SubSection "Display"
+		Viewport   0 0
+		Depth     16
+	EndSubSection
+	SubSection "Display"
+		Viewport   0 0
+		Depth     24
+	EndSubSection
+EndSection
+---PY-E--
+### zh-ibus-libpinyin
 XFCE ibus @.xinitrc ~/.xinitrc
 XIM=ibus;export XIM
 GTK_IM_MODULE=ibus;export GTK_IM_MODULE
@@ -194,30 +289,30 @@ XMODIFIERS='@im=ibus'; export XMODIFIERS
 XIM_PROGRAM="ibus-daemon"; export XIM_PROGRAM
 XIM_ARGS="-daemonize -xim"; export XIM_ARGS
 
-# ~/.profile
-export LC_ALL=zh_CN.UTF-8
+## ~/.profile
+# export LC_ALL=zh_CN.UTF-8
  
 #@@cap_mkdb /etc/login.conf
-chinese|Chinese Users Account:\
-:charset=UTF-8:\
-:lang=zh_CN.UTF-8:\
-:tc=default:
+# chinese|Chinese Users Account:\
+# :charset=UTF-8:\
+# :lang=zh_CN.UTF-8:\
+# :tc=default:
  
 #@@vipw :chinese:  #@@chpass ~/.login_conf
-me:\
-:charset=UTF-8:\
-:lang=zh_CN.UTF-8:
+# me:\
+# :charset=UTF-8:\
+# :lang=zh_CN.UTF-8:
 
-@.Xresources
 #@@xrdb -merge ~/.Xresources
-
-xTerm*faceName: Bitstream Vera Serif Mono
+# xterm*faceName: Monospace # Luxi Mono
 xterm*faceSize: 12
-xterm*vt100*geometry: 90x25
-xterm*saveLines: 10000
-xft*antiAlias:  true
-xft*autoHint:  true
-xterm*scrollBar: true
+# xterm*locale:zh_CN.UTF-8
+# xterm*inputMethod:fcitx
+# xterm*vt100*geometry: 90x25
+# xterm*saveLines: 10000
+# xft*antiAlias: true
+# xft*autoHint: true
+# xterm*scrollBar: true
 ```
 ## TOOLS
 
