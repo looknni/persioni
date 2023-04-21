@@ -88,10 +88,10 @@
 > #### SOURCES $\oint_{testing_{unstable}}^{stable} {debian}$
 > - https://mirrors.huaweicloud.com
 > - https://mirrors.tuna.tsinghua.edu.cn
-> - https://mirrors.aliyun.com
+> - https://mirrors.aliyun.com # [ freebsd 13 14 ]
 > - https://mirrors.163.com
-> - https://mirrors.ustc.edu.cn
-> - http://mirrors.nju.edu.cn/
+> - https://mirrors.ustc.edu.cn # [ freebsd 13 14 ]
+> - http://mirrors.nju.edu.cn/ # [ freebsd 13 14 ]
 ---
 ##### sudo flatpak remote-modify flathub --url=https://mirror.sjtu.edu.cn/flathub
 ##### on flatpak error fonts ? cp -r /etc/fonts/* org.example.com/config/fontconfig
@@ -116,6 +116,7 @@ fastfetch-bash-completion.noarch
 > ##### $PKG_{apt}^{dpkg} \Downarrow$
 ```
 ### mkdir -p /usr/local/etc/pkg/repos && vi FreeBSD.conf
+# quarterly [ latest ]
 FreeBSD: {
   url: "pkg+https://mirrors.ustc.edu.cn/freebsd-pkg/${ABI}/quarterly",
 }
