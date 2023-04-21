@@ -88,10 +88,10 @@
 > #### SOURCES $\oint_{testing_{unstable}}^{stable} {debian}$
 > - https://mirrors.huaweicloud.com
 > - https://mirrors.tuna.tsinghua.edu.cn
-> - https://mirrors.aliyun.com # [ freebsd 13 14 ]
+> - https://mirrors.aliyun.com # [ freebsd 13,14 ]
 > - https://mirrors.163.com
-> - https://mirrors.ustc.edu.cn # [ freebsd 13 14 ]
-> - http://mirrors.nju.edu.cn/ # [ freebsd 13 14 ]
+> - https://mirrors.ustc.edu.cn # [ freebsd 13,14 ]
+> - http://mirrors.nju.edu.cn/ # [ freebsd 13,14 ]
 ---
 ##### sudo flatpak remote-modify flathub --url=https://mirror.sjtu.edu.cn/flathub
 ##### on flatpak error fonts ? cp -r /etc/fonts/* org.example.com/config/fontconfig
@@ -180,7 +180,7 @@ export XIM="fcitx"
 export XIM_PROGRAM="fcitx"
 
 ## /etc/X11/xorg.conf
----VM-s--
+---VM-S--
 Section "Monitor"
                Identifier "Monitor0"
                VendorName "Monitor Vendor"
@@ -200,8 +200,8 @@ Section "Screen"
                          Modes "1024x768"
               EndSubSection
 EndSection
----VM-e--
----PH-s--
+---VM-E--
+---PY-S--
 Section "ServerLayout"
 	Identifier     "X.org Configured"
 	Screen      0  "Screen0" 0 0
@@ -279,7 +279,7 @@ Section "Screen"
 		Depth     24
 	EndSubSection
 EndSection
----PH-e--
+---PY-E--
 ### zh-ibus-libpinyin
 XFCE ibus @.xinitrc ~/.xinitrc
 XIM=ibus;export XIM
