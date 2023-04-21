@@ -82,6 +82,9 @@
 ##### The manual pages for the 3.1 branch are available here https://www.openssl.org/docs/man3.1/man1/
 ---
 ##### [ ? ] https://quickref.cn/
+---
+##### Both official Gentoo project documentation as well as community-contributed content can be found here [ Gentoo ] https://wiki.gentoo.org/
+---
 > #### SOURCES $\oint_{testing_{unstable}}^{stable} {debian}$
 > - https://mirrors.huaweicloud.com
 > - https://mirrors.tuna.tsinghua.edu.cn
