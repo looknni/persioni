@@ -304,15 +304,14 @@ XIM_ARGS="-daemonize -xim"; export XIM_ARGS
 # :lang=zh_CN.UTF-8:
 
 #@@xrdb -merge ~/.Xresources
-
-# xterm*faceName: Monospace , Luxi Mono
+# xterm*faceName: Monospace # Luxi Mono
 xterm*faceSize: 12
-# Xterm*locale:zh_CN.UTF-8
-# EXTerm*inputMethod:fcitx
+# xterm*locale:zh_CN.UTF-8
+# xterm*inputMethod:fcitx
 # xterm*vt100*geometry: 90x25
 # xterm*saveLines: 10000
-# xft*antiAlias:  true
-# xft*autoHint:  true
+# xft*antiAlias: true
+# xft*autoHint: true
 # xterm*scrollBar: true
 ```
 ## TOOLS
