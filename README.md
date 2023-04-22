@@ -339,7 +339,105 @@ if &diff
   	colorscheme blue
 endif
 ```
+## Gentoo
+```
+# lsblk
+mkfs.vfat -F 32 /dev/sda1
+mkfs.ext4 /dev/sda3
+mkswap /dev/sda2
+swapon /dev/sda2
+mkdir --parents /mnt/gentoo
+mount /dev/sda3 /mnt/gentoo
+tar xpvf stage3-*.tar.xz --xattrs-include='*.*' --numeric-owner
+/etc/portage/make.conf MAKEOPTS="-j4"
+mirrorselect -i -o >> /mnt/gentoo/etc/portage/make.conf
+kdir --parents /mnt/gentoo/etc/portage/repos.conf
+cp /mnt/gentoo/usr/share/portage/config/repos.conf /mnt/gentoo/etc/portage/repos.conf/gentoo.conf
+cp --dereference /etc/resolv.conf /mnt/gentoo/etc/
+mount --types proc /proc /mnt/gentoo/proc
+mount --rbind /sys /mnt/gentoo/sys
+mount --make-rslave /mnt/gentoo/sys
+mount --rbind /dev /mnt/gentoo/dev
+mount --make-rslave /mnt/gentoo/dev
+mount --bind /run /mnt/gentoo/run
+mount --make-slave /mnt/gentoo/run
+chroot /mnt/gentoo /bin/bash #???
+source /etc/profile
+export PS1="(chroot) ${PS1}"
+mount /dev/sda1 /boot
+emerge-webrsync
+# eselect news list
+# eselect news read
+emerge --ask --verbose --update --deep --newuse @world
+# emerge --info | grep ^USE
+# less /var/db/repos/gentoo/profiles/use.desc
+# nano -w /etc/portage/make.conf # USE=“”
+emerge --ask app-portage/cpuid2cpuflags
+# cpuid2cpuflags
+echo "*/* $(cpuid2cpuflags)" > /etc/portage/package.use/00cpu-flags
+# ls /usr/share/zoneinfo
+echo "Europe/Brussels" > /etc/timezone
+emerge --config sys-libs/timezone-data
+ln -sf ../usr/share/zoneinfo/Europe/Brussels /etc/localtime
+nano -w /etc/locale.gen
+# locale-gen
+eselect locale list
+eselect locale set 5 # /etc/env.d/02locale
+env-update && source /etc/profile && export PS1="(chroot) ${PS1}"
+emerge --ask sys-kernel/linux-firmware
+emerge --ask sys-kernel/installkernel-systemd-boot
+emerge --ask sys-kernel/installkernel-gentoo
+emerge --ask sys-kernel/gentoo-kernel
+# emerge --ask sys-kernel/gentoo-kernel-bin
+emerge --depclean
+# emerge --prune sys-kernel/gentoo-kernel sys-kernel/gentoo-kernel-bin
+# emerge --ask @module-rebuild
+# emerge --config sys-kernel/gentoo-kernel
+# emerge --config sys-kernel/gentoo-kernel-bin
+emerge --ask sys-kernel/gentoo-sources
+eselect kernel list
+eselect kernel set 1
+ls -l /usr/src/linux
+emerge --ask net-misc/dhcpcd
+rc-update add dhcpcd default
+rc-service dhcpcd start
+systemctl enable --now dhcpcd
+emerge --ask --noreplace net-misc/netifrc
 
+# /etc/conf.d/net
+config_eth0="dhcp"
+# config_eth0="192.168.0.2 netmask 255.255.255.0 brd 192.168.0.255"
+# routes_eth0="default via 192.168.0.1"
+cd /etc/init.d
+ln -s net.lo net.eth0
+rc-update add net.eth0 default
+
+systemd-firstboot --prompt --setup-machine-id
+systemctl preset-all --preset-mode=enable-only
+systemctl preset-all
+emerge --ask app-admin/sysklogd
+rc-update add sysklogd default
+emerge --ask net-misc/chrony
+rc-update add chronyd default
+# systemctl enable chronyd.service
+# systemctl enable systemd-timesyncd.service
+# emerge --ask net-misc/dhcpcd
+# emerge --ask net-dialup/ppp
+# emerge --ask net-wireless/iw net-wireless/wpa_supplicant
+# emerge --ask --verbose sys-boot/grub
+echo 'GRUB_PLATFORMS="efi-64"' >> /etc/portage/make.conf
+emerge --ask sys-boot/grub
+# emerge --ask --update --newuse --verbose sys-boot/grub
+grub-install /dev/sda
+grub-install --target=x86_64-efi --efi-directory=/boot
+# grub-instal return; Could not prepare Boot variable: Read-only file system
+# mount -o remount,rw,nosuid,nodev,noexec --types efivarfs efivarfs /sys/firmware/efi/efivars
+grub-install --target=x86_64-efi --efi-directory=/boot --removable
+grub-mkconfig -o /boot/grub/grub.cfg
+useradd -m -G users,wheel,audio -s /bin/bash username
+passwd username
+
+```
 > ##### yum groupinstall 'Server with GUI' 
 >> - systemctl set-default graphical.target 
 >> $\oint_{o}^{n} {debian.tasksel}$
