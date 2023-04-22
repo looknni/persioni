@@ -361,14 +361,14 @@ mount --rbind /dev /mnt/gentoo/dev
 mount --make-rslave /mnt/gentoo/dev
 mount --bind /run /mnt/gentoo/run
 mount --make-slave /mnt/gentoo/run
-chroot /mnt/gentoo /bin/bash #???
+chroot /mnt/gentoo /bin/bash # ? ? ?
 source /etc/profile
 export PS1="(chroot) ${PS1}"
 mount /dev/sda1 /boot
 emerge-webrsync
 # eselect news list
 # eselect news read
-emerge --ask --verbose --update --deep --newuse @world
+emerge --ask --verbose --update --deep --newuse @world # longTime
 # emerge --info | grep ^USE
 # less /var/db/repos/gentoo/profiles/use.desc
 # nano -w /etc/portage/make.conf # USE=“”
@@ -387,7 +387,7 @@ env-update && source /etc/profile && export PS1="(chroot) ${PS1}"
 emerge --ask sys-kernel/linux-firmware
 emerge --ask sys-kernel/installkernel-systemd-boot
 emerge --ask sys-kernel/installkernel-gentoo
-emerge --ask sys-kernel/gentoo-kernel
+emerge --ask sys-kernel/gentoo-kernel # longTime
 # emerge --ask sys-kernel/gentoo-kernel-bin
 emerge --depclean
 # emerge --prune sys-kernel/gentoo-kernel sys-kernel/gentoo-kernel-bin
@@ -401,20 +401,20 @@ ls -l /usr/src/linux
 emerge --ask net-misc/dhcpcd
 rc-update add dhcpcd default
 rc-service dhcpcd start
-systemctl enable --now dhcpcd
+# systemctl enable --now dhcpcd
 emerge --ask --noreplace net-misc/netifrc
 
 # /etc/conf.d/net
-config_eth0="dhcp"
+# configth0="dhcp"
 # config_eth0="192.168.0.2 netmask 255.255.255.0 brd 192.168.0.255"
 # routes_eth0="default via 192.168.0.1"
-cd /etc/init.d
-ln -s net.lo net.eth0
+# cd /etc/init.d
+# ln -s net.lo net.eth0
 rc-update add net.eth0 default
 
-systemd-firstboot --prompt --setup-machine-id
-systemctl preset-all --preset-mode=enable-only
-systemctl preset-all
+# systemd-firstboot --prompt --setup-machine-id
+# systemctl preset-all --preset-mode=enable-only
+# systemctl preset-all
 emerge --ask app-admin/sysklogd
 rc-update add sysklogd default
 emerge --ask net-misc/chrony
@@ -428,7 +428,7 @@ rc-update add chronyd default
 echo 'GRUB_PLATFORMS="efi-64"' >> /etc/portage/make.conf
 emerge --ask sys-boot/grub
 # emerge --ask --update --newuse --verbose sys-boot/grub
-grub-install /dev/sda
+# grub-install /dev/sda
 grub-install --target=x86_64-efi --efi-directory=/boot
 # grub-instal return; Could not prepare Boot variable: Read-only file system
 # mount -o remount,rw,nosuid,nodev,noexec --types efivarfs efivarfs /sys/firmware/efi/efivars
