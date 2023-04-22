@@ -436,7 +436,17 @@ grub-install --target=x86_64-efi --efi-directory=/boot --removable
 grub-mkconfig -o /boot/grub/grub.cfg
 useradd -m -G users,wheel,audio -s /bin/bash username
 passwd username
-
+exit
+cd
+umount -l /mnt/gentoo/dev{/shm,/pts,}
+umount -R /mnt/gentoo
+reboot
+## dracut
+grub> ls , ls /
+grub> set root=(hd0,1)
+grub> linux /boot/vmlinuz-...-generic root=/dev/sda1
+grub> initrd /boot/initrd...img
+grub> boot
 ```
 > ##### yum groupinstall 'Server with GUI' 
 >> - systemctl set-default graphical.target 
