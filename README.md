@@ -341,6 +341,7 @@ endif
 ```
 ## Gentoo
 ```
+ls /sys/firmware/efi/efivars
 # lsblk
 mkfs.vfat -F 32 /dev/sda1
 mkfs.ext4 /dev/sda3
@@ -348,12 +349,14 @@ mkswap /dev/sda2
 swapon /dev/sda2
 mkdir --parents /mnt/gentoo
 mount /dev/sda3 /mnt/gentoo
+
 tar xpvf stage3-*.tar.xz --xattrs-include='*.*' --numeric-owner
 /etc/portage/make.conf MAKEOPTS="-j4"
 mirrorselect -i -o >> /mnt/gentoo/etc/portage/make.conf
-kdir --parents /mnt/gentoo/etc/portage/repos.conf
+mkdir --parents /mnt/gentoo/etc/portage/repos.conf
 cp /mnt/gentoo/usr/share/portage/config/repos.conf /mnt/gentoo/etc/portage/repos.conf/gentoo.conf
 cp --dereference /etc/resolv.conf /mnt/gentoo/etc/
+
 mount --types proc /proc /mnt/gentoo/proc
 mount --rbind /sys /mnt/gentoo/sys
 mount --make-rslave /mnt/gentoo/sys
@@ -361,10 +364,14 @@ mount --rbind /dev /mnt/gentoo/dev
 mount --make-rslave /mnt/gentoo/dev
 mount --bind /run /mnt/gentoo/run
 mount --make-slave /mnt/gentoo/run
+
 chroot /mnt/gentoo /bin/bash # ? ? ?
 source /etc/profile
 export PS1="(chroot) ${PS1}"
+
 mount /dev/sda1 /boot
+mount /dev/sda4 /boot/efi
+
 emerge-webrsync
 # eselect news list
 # eselect news read
@@ -377,21 +384,21 @@ emerge --ask app-portage/cpuid2cpuflags
 echo "*/* $(cpuid2cpuflags)" > /etc/portage/package.use/00cpu-flags
 # ls /usr/share/zoneinfo
 echo "Europe/Brussels" > /etc/timezone
-emerge --config sys-libs/timezone-data
-ln -sf ../usr/share/zoneinfo/Europe/Brussels /etc/localtime
+emerge --config sys-libs/timezone-data 
+ln -sf ../usr/share/zoneinfo/Europe/Brussels /etc/localtime # systemd
 nano -w /etc/locale.gen
 # locale-gen
-eselect locale list
-eselect locale set 5 # /etc/env.d/02locale
+# eselect locale list
+# eselect locale set 5 # /etc/env.d/02locale
 env-update && source /etc/profile && export PS1="(chroot) ${PS1}"
 emerge --ask sys-kernel/linux-firmware
-emerge --ask sys-kernel/installkernel-systemd-boot
-emerge --ask sys-kernel/installkernel-gentoo
+emerge --ask sys-kernel/installkernel-systemd-boot # gummiboot # bootloader
+emerge --ask sys-kernel/installkernel-gentoo # /boot # GRUB LILO
 emerge --ask sys-kernel/gentoo-kernel # longTime
 # emerge --ask sys-kernel/gentoo-kernel-bin
 emerge --depclean
 # emerge --prune sys-kernel/gentoo-kernel sys-kernel/gentoo-kernel-bin
-# emerge --ask @module-rebuild
+emerge --ask @module-rebuild
 # emerge --config sys-kernel/gentoo-kernel
 # emerge --config sys-kernel/gentoo-kernel-bin
 emerge --ask sys-kernel/gentoo-sources
@@ -410,7 +417,7 @@ emerge --ask --noreplace net-misc/netifrc
 # routes_eth0="default via 192.168.0.1"
 # cd /etc/init.d
 # ln -s net.lo net.eth0
-rc-update add net.eth0 default
+# rc-update add net.eth0 default
 
 # systemd-firstboot --prompt --setup-machine-id
 # systemctl preset-all --preset-mode=enable-only
@@ -436,11 +443,13 @@ grub-install --target=x86_64-efi --efi-directory=/boot --removable
 grub-mkconfig -o /boot/grub/grub.cfg
 useradd -m -G users,wheel,audio -s /bin/bash username
 passwd username
+
 exit
 cd
 umount -l /mnt/gentoo/dev{/shm,/pts,}
 umount -R /mnt/gentoo
 reboot
+
 ## dracut
 grub> ls , ls /
 grub> set root=(hd0,1)
