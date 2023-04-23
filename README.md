@@ -351,7 +351,8 @@ mkdir --parents /mnt/gentoo
 mount /dev/sda3 /mnt/gentoo
 
 tar xpvf stage3-*.tar.xz --xattrs-include='*.*' --numeric-owner
-/etc/portage/make.conf MAKEOPTS="-j4"
+/etc/portage/make.conf MAKEOPTS="-j4" ??? RAM/2
+
 mirrorselect -i -o >> /mnt/gentoo/etc/portage/make.conf
 mkdir --parents /mnt/gentoo/etc/portage/repos.conf
 cp /mnt/gentoo/usr/share/portage/config/repos.conf /mnt/gentoo/etc/portage/repos.conf/gentoo.conf
@@ -370,12 +371,17 @@ source /etc/profile
 export PS1="(chroot) ${PS1}"
 
 mount /dev/sda1 /boot
-mount /dev/sda4 /boot/efi
+# mount /dev/sda4 /boot/efi
 
-emerge-webrsync
+emerge-webrsync ?? /var/db/repos/gentoo/
+# emerge --sync ?? Suppose there is a need for the last package updates (up to 1 hour),
+# emerge --sync --quiet ?? On slow terminals, like some framebuffers or serial consoles, it is recommended to use the --quiet option to speed up the process
 # eselect news list
 # eselect news read
-emerge --ask --verbose --update --deep --newuse @world # longTime
+eselect profile list
+eselect profile set <number>
+
+emerge --ask --verbose --update --deep --newuse @world # longTime ?? emerge -avuDN @world
 # emerge --info | grep ^USE
 # less /var/db/repos/gentoo/profiles/use.desc
 # nano -w /etc/portage/make.conf # USE=“”
@@ -383,19 +389,20 @@ emerge --ask app-portage/cpuid2cpuflags
 # cpuid2cpuflags
 echo "*/* $(cpuid2cpuflags)" > /etc/portage/package.use/00cpu-flags
 # ls /usr/share/zoneinfo
-echo "Europe/Brussels" > /etc/timezone
-emerge --config sys-libs/timezone-data 
+echo "Europe/Brussels" > /etc/timezone # openrc
+emerge --config sys-libs/timezone-data # openrc
 ln -sf ../usr/share/zoneinfo/Europe/Brussels /etc/localtime # systemd
 nano -w /etc/locale.gen
 # locale-gen
 # eselect locale list
 # eselect locale set 5 # /etc/env.d/02locale
-blkid >> /etc/fstab
+# blkid >> /etc/fstab
 env-update && source /etc/profile && export PS1="(chroot) ${PS1}"
+
 emerge --ask sys-kernel/linux-firmware
-emerge --ask sys-kernel/installkernel-systemd-boot # gummiboot # bootloader
-emerge --ask sys-kernel/installkernel-gentoo # /boot # GRUB LILO
-emerge --ask sys-kernel/gentoo-kernel # longTime
+emerge --ask sys-kernel/installkernel-systemd-boot ??? gummiboot # bootloader
+emerge --ask sys-kernel/installkernel-gentoo # /boot ??? GRUB LILO
+emerge --ask sys-kernel/gentoo-kernel ??? longTime
 # emerge --ask sys-kernel/gentoo-kernel-bin
 emerge --depclean
 # emerge --prune sys-kernel/gentoo-kernel sys-kernel/gentoo-kernel-bin
@@ -406,6 +413,7 @@ emerge --ask sys-kernel/gentoo-sources
 eselect kernel list
 eselect kernel set 1
 ls -l /usr/src/linux
+
 emerge --ask net-misc/dhcpcd
 rc-update add dhcpcd default
 rc-service dhcpcd start
@@ -429,13 +437,14 @@ emerge --ask net-misc/chrony
 rc-update add chronyd default
 # systemctl enable chronyd.service
 # systemctl enable systemd-timesyncd.service
-# emerge --ask net-misc/dhcpcd
+emerge --ask net-misc/dhcpcd
 # emerge --ask net-dialup/ppp
-# emerge --ask net-wireless/iw net-wireless/wpa_supplicant
+emerge --ask net-wireless/iw net-wireless/wpa_supplicant
 # emerge --ask --verbose sys-boot/grub
 echo 'GRUB_PLATFORMS="efi-64"' >> /etc/portage/make.conf
 emerge --ask sys-boot/grub
 # emerge --ask --update --newuse --verbose sys-boot/grub
+
 # grub-install /dev/sda
 grub-install --target=x86_64-efi --efi-directory=/boot
 # grub-instal return; Could not prepare Boot variable: Read-only file system
@@ -454,16 +463,12 @@ reboot
 systemctl start dhcpcd
 mount / -o remount,rw
 
-emerge --ask --verbose --update --deep --newuse @world ?? emerge -avuDN @world
 # To update all installed packages to the latest available versions
 emaint --auto sync ?? emaint -a sync
 # Any configuration file changes should be addressed, this can be managed by dispatch-conf:
 dispatch-conf
 # After the update, Portage recommends running 
 emerge --depclean
-
-# eselect profile list
-# eselect profile set <number>
 
 ## dracut
 grub> ls , ls /
