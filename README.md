@@ -459,55 +459,6 @@ cd
 umount -l /mnt/gentoo/dev{/shm,/pts,}
 umount -R /mnt/gentoo
 reboot
-----------------------------
-eselect profile set default/linux/amd64/17.1/desktop/gnome # openrc
-eselect profile set default/linux/amd64/17.1/desktop/gnome/systemd # systemd
-/etc/portage/make.conf # USE="-qt5 -kde X gtk gnome systemd"
-emerge --ask gnome-base/gnome # 
-env-update && source /etc/profile
-# getent group plugdev 
-gpasswd -a <username> plugdev
-# rc-update add elogind boot
-# rc-service elogind start
-emerge --ask --noreplace gui-libs/display-manager-init
-/etc/conf.d/display-manager # DISPLAYMANAGER="gdm"
-
-# rc-update add display-manager default
-# rc-service display-manager start
-systemctl enable gdm.service
-systemctl start gdm.service
-# systemctl enable --now gdm.service
-echo "exec gnome-session" > ~/.xinitrc
-sed -i '1i\export XDG_MENU_PREFIX=gnome-' ~/.xinitrc
-startx
-
- ~/.config/environment.d/01_localize.conf
-LANG="zh_CN.utf8"
-LC_MESSAGES="zh_CN.utf8"
-LC_TIME="zh_CN.utf8"
-
-gsettings set org.gnome.system.locale region 'zh_CN.utf8'
-
- ~/.bashrc
-LANG="C.utf8"
-LC_MESSAGES="C.utf8" 
-LC_TIME="C.utf8"
-
-emerge --ask gnome-extra/gnome-shell-extensions
-emerge --ask gnome-extra/chrome-gnome-shell
-
-gpasswd -a <user> video ??? "Oh no something has gone wrong"
-
-/etc/portage/make.conf ??? GNOME built-in screen recorder is not working
-USE="vpx"
-
- ~/.gnupg/gpg.conf ??? GNOME and Pinentry not working with GPG
-use-agent
-pinentry-mode loopback
-~/.gnupg/gpg-agent.conf
-pinentry-program /usr/bin/pinentry-gnome3
-
-----------------------------
 systemctl start dhcpcd
 mount / -o remount,rw
 
