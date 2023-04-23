@@ -390,6 +390,7 @@ nano -w /etc/locale.gen
 # locale-gen
 # eselect locale list
 # eselect locale set 5 # /etc/env.d/02locale
+blkid >> /etc/fstab
 env-update && source /etc/profile && export PS1="(chroot) ${PS1}"
 emerge --ask sys-kernel/linux-firmware
 emerge --ask sys-kernel/installkernel-systemd-boot # gummiboot # bootloader
