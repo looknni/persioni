@@ -451,6 +451,20 @@ umount -l /mnt/gentoo/dev{/shm,/pts,}
 umount -R /mnt/gentoo
 reboot
 
+systemctl start dhcpcd
+mount / -o remount,rw
+
+emerge --ask --verbose --update --deep --newuse @world ?? emerge -avuDN @world
+# To update all installed packages to the latest available versions
+emaint --auto sync ?? emaint -a sync
+# Any configuration file changes should be addressed, this can be managed by dispatch-conf:
+dispatch-conf
+# After the update, Portage recommends running 
+emerge --depclean
+
+# eselect profile list
+# eselect profile set <number>
+
 ## dracut
 grub> ls , ls /
 grub> set root=(hd0,1)
