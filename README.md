@@ -36,8 +36,6 @@
 ---
 ##### So instead of downloading packages/software one by one from random sites [ $packages_{debian}$ ] https://packages.debian.org/
 ---
-##### Is a very powerful boot loader [ $gnu^{grub}$ ] https://ftp.gnu.org/gnu/
----
 ##### This service lets you follow the evolution of Debian both with email updates and a comprehensive web interface [ $tracker-debian^{kernel}$ ] https://tracker.debian.org/pkg/linux
 ---
 ##### Is being actively developed with frequent releases and has an ever growing list of features [ $Virtual^{box}$ ] https://download.virtualbox.org/virtualbox/
@@ -55,6 +53,8 @@
 ##### The GNU Image Manipulation Program [ $Gim^{p}$ ] https://download.gimp.org/gimp/
 ---
 ##### Are the same as those on Mac and Linux - install man pages on your phone and read them in one session while experimenting with them in another [ $Ter_{mux}$ ] https://f-droid.org/en/packages/com.termux/
+---
+##### Is a very powerful boot loader [ $gnu^{grub}$ ] https://ftp.gnu.org/
 ---
 ##### GNU is an operating system which is 100% free software. [Gnu-command] https://www.gnu.org/software/
 ---
