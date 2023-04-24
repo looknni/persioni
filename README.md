@@ -339,7 +339,7 @@ if &diff
   	colorscheme blue
 endif
 ```
-## Arch
+## ~~Arch~~
 ```
 iwctl
 device list
@@ -387,7 +387,7 @@ pacman -Q ?? dpkg -l
 pacman -U package ?? dpkg --install
 # pacman -Qdt
 ```
-## Gentoo
+## ~~Gentoo~~
 ```
 ls /sys/firmware/efi/efivars
 # lsblk
