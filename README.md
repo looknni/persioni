@@ -339,10 +339,59 @@ if &diff
   	colorscheme blue
 endif
 ```
+## Arch
+```
+iwctl
+device list
+station wlan-name scan
+station wlan-name get-networks
+station wlan-name connect wifi-name
+
+/etc/pacman.d/mirrorlist # Server = https://mirrors.ustc.edu.cn/archlinux/$repo/os/$arch
+# /etc/pacman.conf # [archlinuxcn] Server = https://mirrors.ustc.edu.cn/archlinux/$arch ??? sudo pacman -S archlinuxcn-keyring && sudo pacman -Sy
+pacstrap /mnt base linux linux-firmware
+genfstab -U /mnt >> /mnt/etc/fstab
+arch-chroot /mnt
+pacman -S grub efibootmgr vim iwd dhcpcd sudo networkmanager
+systemctl enable dhcpcd NetworkManager iwd
+
+passwd
+useradd -m -G wheel username
+passwd username
+EDITOR=vim visudo # %wheel ALL=(ALL) ALL
+
+/etc/default/grub # GRUB_DISABLE_OS_PROBER=false
+grub-install --target=x86_64-efi --efi-directory=/boot --bootloader-id=ArchLinux # grub-install --target=i386-pc /dev/sda
+grub-mkconfig -o /boot/grub/grub.cfg
+
+/etc/locale.gen # en_US.UTF-8 zh_CN.UTF-8
+locale-gen
+pacman -S gnome gdm
+vim /etc/locale.conf # LANG=en_US.UTF-8
+systemctl enable gdm
+exit
+reboot
+
+pacman -S package ?? apt
+pacman -Ss package ?? apt list
+pacman -Si|-Qi package ?? rpm -qi
+pacman -Sy ?? apt update
+pacman -Syu ?? apt upgrade
+pacman -Rc package ?? apt remove
+pacman -Rsn package ?? apt remove --purge
+pacman -Sc ?? apt clean
+# pacman -Scc
+pacman -Su --ignore package
+pacman -Sg package
+pacman -Q ?? dpkg -l
+pacman -U package ?? dpkg --install
+# pacman -Qdt
+```
 ## Gentoo
 ```
 ls /sys/firmware/efi/efivars
 # lsblk
+fdisk /dev/sda # p g n l w ??? cfdisk
 mkfs.vfat -F 32 /dev/sda1
 mkfs.ext4 /dev/sda3
 mkswap /dev/sda2
