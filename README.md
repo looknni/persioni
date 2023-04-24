@@ -364,9 +364,9 @@ EDITOR=vim visudo # %wheel ALL=(ALL) ALL
 grub-install --target=x86_64-efi --efi-directory=/boot --bootloader-id=ArchLinux # grub-install --target=i386-pc /dev/sda
 grub-mkconfig -o /boot/grub/grub.cfg
 
-/etc/locale.gen # en_US.UTF-8 zh_CN.UTF-8
+/etc/locale.gen # en_US.UTF-8
 locale-gen
-pacman -S gnome gdm
+pacman -S gnome gdm wqy-microhei
 vim /etc/locale.conf # LANG=en_US.UTF-8
 systemctl enable gdm
 exit
