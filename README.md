@@ -16,8 +16,6 @@
 ---
 ##### New Bootable USB Solution [ $V_{entoy}$ ] https://www.ventoy.net/en/index.html
 ---
-##### Debian release,unofficial [ $CDimage_{debian}$ ] https://cdimage.debian.org/images/
----
 ##### A flexible, fast and multiplatform multimedia framework [Gstreamer] https://gstreamer.freedesktop.org/
 ---
 ##### Ibus-libpinyin ibus-table-wubi [ibus-libpinyin] https://github.com/libpinyin/ibus-libpinyin
@@ -36,8 +34,6 @@
 ---
 ##### (Ubuntu) Server at breed.hackpascal.net Port 443 [ $breed_{hackpascal}$ ] https://breed.hackpascal.net/
 ---
-##### Takes security very seriously. We handle all security problems [ $debian_{security}$ ] https://www.debian.org/security/
----
 ##### So instead of downloading packages/software one by one from random sites [ $packages_{debian}$ ] https://packages.debian.org/
 ---
 ##### Is a very powerful boot loader [ $gnu^{grub}$ ] https://ftp.gnu.org/gnu/
@@ -46,25 +42,13 @@
 ---
 ##### Is being actively developed with frequent releases and has an ever growing list of features [ $Virtual^{box}$ ] https://download.virtualbox.org/virtualbox/
 ---
-##### An Advanced Penetration Testing Linux [ $Kali^{tools}$ ] https://www.kali.org/tools/
----
 ##### Is the largest collection of repositories and packages for Linux and Unix operating systems [ $Packages-for_{linux}^{unix}$ ] https://pkgs.org/
 ---
-##### To get a Chrome Extension source code [ $Google^{crx}$ ] https://crxdl.com/
----
-##### Is an open-source enterprise operating system designed to be 100% bug-for-bug compatible with Red Hat Enterprise [® $Linux_{Rocky}$ ] https://rockylinux.org/
----
-##### An Open Source, community owned and governed, forever-free enterprise [ $Al_{ma}$ ] https://almalinux.org/
----
 ##### Shares open source news and reviews of Linux and BSD based operating systems [ $Distro^{watch}$ ] https://distrowatch.com/
----
-##### Is available free of charge and comes with the source code [ $Free^{BSD}$ ] https://www.freebsd.org/
 ---
 ##### Regular expressions library (C++11) basic_regex − algorithms. Concurrency support library (C++11) thread − jthread (C++20) atomic − atomic_flag − atomic_ref (C++20) memory_order − condition_variable [ $C++^{Referenc}$ ] https://cppreference.com/
 ---
 ##### The author and holder of the copyright of the software is Alexander L. Roshal [ $Rar_{la}$ ] https://www.rarlab.com/
----
-##### Is developed by an independent community [ $flat^{pak}$ ] https://flatpak.org/setup
 ---
 ##### Is often called a "programmer's editor [ $Vi^{m}$ ] https://ftp.nluug.nl/pub/vim/unix/
 ---
@@ -74,10 +58,6 @@
 ---
 ##### GNU is an operating system which is 100% free software. [Gnu-command] https://www.gnu.org/software/
 ---
-##### Try these free learning resources from the Perl community [METACPAN] https://metacpan.org/
----
-##### Continuously delivered distro that tracks just ahead of Red Hat Enterprise Linux (RHEL) development [ $Centos_{stream}$ ] https://mirror.stream.centos.org/
----
 ##### algorithm-visualizer is a web app written in React [ $algorithm^{visualizer}$ ] https://algorithm-visualizer.org/
 ---
 ##### The manual pages for the 3.1 branch are available here https://www.openssl.org/docs/man3.1/man1/
@@ -86,7 +66,7 @@
 ---
 ##### Both official Gentoo project documentation as well as community-contributed content can be found here [ Gentoo ] https://wiki.gentoo.org/
 ---
-> #### SOURCES $\oint_{testing_{unstable}}^{stable} {debian}$
+> #### [SOURCES](https://cdimage.debian.org/images/) $\oint_{testing_{unstable}}^{stable} {debian}$
 > - https://mirrors.huaweicloud.com
 > - https://mirrors.tuna.tsinghua.edu.cn
 > - https://mirrors.aliyun.com # [ freebsd 13,14 ]
@@ -95,10 +75,10 @@
 > - http://mirrors.nju.edu.cn/ # [ freebsd 13,14 ]
 ---
 ##### sudo flatpak remote-modify flathub --url=https://mirror.sjtu.edu.cn/flathub
-##### on flatpak error fonts ? cp -r /etc/fonts/* org.example.com/config/fontconfig
-##### `https://dl.google.com/linux/direct/google-chrome-` $\iiint_{beta_{unstable}}^{stable}$ \_current\_ $\iint_{amd64.deb}^{x86_{64.rpm}}$
+##### [on flatpak error fonts](https://flatpak.org/setup/) ? cp -r /etc/fonts/* org.example.com/config/fontconfig
+##### `https://dl.google.com/linux/direct/google-chrome-` $\iiint_{beta_{unstable}}^{stable}$ \_current\_ $\iint_{amd64.deb}^{x86_{64.rpm}}$ [Extension](https://crxdl.com/)
 
-> ##### $APT_{dpkg}^{apt-get} \Downarrow$
+> ##### $APT_{dpkg}^{apt-get} \Downarrow$ [Debian](https://www.debian.org/security/) ? [Kali](https://www.kali.org/tools/)
 ```
 vim-gtk3 kaffeine qbittorrent audacious git traceroute locate mtr \
 fcitx fcitx-googlepinyin fcitx-dbus-status fcitx-table-wubi \
@@ -107,14 +87,14 @@ nmap tcpdump audacity inkscape gimp krita audacity libreoffice make gcc \
 libpam-tmpdir opendnssec rsync firmware-realtek xxd xxhash lynx links
 ```
 
-> ##### $YUM_{RPM}^{DNF} \Downarrow$
+> ##### $YUM_{RPM}^{DNF} \Downarrow$ [RockyLinux](https://rockylinux.org/) ? [AlmaLinux](https://almalinux.org/) ? [CentOS-stream](https://mirror.stream.centos.org/)
 ```
 epel-release.noarch epel-next-release.noarch gcc-c++ cmake bison ncurses ncurses-devel libaio \
 gnome-shell-extension-dash-to-dock.noarch gnome-extensions-app.x86_64 gnome-tweaks.noarch ibus.x86_64 \
 aide rear fapolicyd usbguard openscap openscap-scanner scap-security-guide \
 fastfetch-bash-completion.noarch
 ```
-> ##### $PKG_{apt}^{dpkg} \Downarrow$
+> ##### $PKG_{apt}^{dpkg} \Downarrow$ [FreeBSD](https://www.freebsd.org/)
 ```
 ### mkdir -p /usr/local/etc/pkg/repos && vi FreeBSD.conf
 # quarterly [ latest ]
@@ -340,7 +320,7 @@ if &diff
   	colorscheme blue
 endif
 ```
-## ~~Arch~~
+## ~~[Arch](https://archlinux.org/)~~
 ```
 iwctl
 device list
@@ -388,7 +368,7 @@ pacman -Q ?? dpkg -l
 pacman -U package ?? dpkg --install
 # pacman -Qdt
 ```
-## ~~Gentoo~~
+## ~~[Gentoo](https://www.gentoo.org/)~~
 ```
 ls /sys/firmware/efi/efivars
 # lsblk
@@ -567,7 +547,7 @@ export LESS=-R #debian
 ##### ` dracut -f /boot/initramfs-$(uname -r).img $(uname -r) ` #Create new initramfs image
 ##### ` systemctl --user mask tracker-extract.service tracker-miner-fs.service tracker-store.service tracker-writeback.service ` #debian
 
-> #### CPAN
+> #### [METACPAN](https://metacpan.org/)
 ```
 o conf auto_commit 1
 o conf prerequisites_policy follow
