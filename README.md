@@ -374,7 +374,7 @@ pacman -U package ?? dpkg --install
 ```
 ls /sys/firmware/efi/efivars
 # lsblk
-fdisk /dev/sda # p g n l w ??? cfdisk
+fdisk /dev/sda # m p g o n t d l w ??? cfdisk
 mkfs.vfat -F 32 /dev/sda1
 mkfs.ext4 /dev/sda3
 mkswap /dev/sda2
