@@ -18,6 +18,8 @@
 ---
 ##### A flexible, fast and multiplatform multimedia framework [Gstreamer] https://gstreamer.freedesktop.org/
 ---
+##### Fcitx [ˈfaɪtɪks] is an input method framework with extension support [Fcitx] https://fcitx-im.org/wiki/Fcitx
+---
 ##### Ibus-libpinyin ibus-table-wubi [ibus-libpinyin] https://github.com/libpinyin/ibus-libpinyin
 ---
 ##### lspci -v [Realtek-interface] https://www.realtek.com/en/component/zoo/category/network-interface-controllers-10-100-1000m-gigabit-ethernet-pci-express-software
@@ -32,7 +34,7 @@
 ---
 ##### Google Chrome. Google's web browser. Virtual DJ. The most complete free software for DJs. uTorrent [ $A^{pk}$ ] https://www.malavida.com/en
 ---
-##### (Ubuntu) Server at breed.hackpascal.net Port 443 [ $breed_{hackpascal}$ ] https://breed.hackpascal.net/
+##### (Ubuntu) Server at breed.hackpascal.net Port 443 [ $Breed_{hackpascal}$ ] https://breed.hackpascal.net/
 ---
 ##### So instead of downloading packages/software one by one from random sites [ $packages_{debian}$ ] https://packages.debian.org/
 ---
