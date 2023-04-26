@@ -500,7 +500,7 @@ reboot
 systemctl start dhcpcd
 mount / -o remount,rw
 
-# awesome
+# awesome https://awesomewm.org/
 ~/xinitrc # exec awesome
 /etc/portage/make.conf # USE="X" VIDEO_CARDS="nouveau"
 portageq envvar INPUT_DEVICES # Libinput
