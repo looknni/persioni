@@ -500,6 +500,14 @@ reboot
 systemctl start dhcpcd
 mount / -o remount,rw
 
+# awesome
+~/xinitrc # exec awesome
+/etc/portage/make.conf # USE="X" VIDEO_CARDS="nouveau"
+portageq envvar INPUT_DEVICES # Libinput
+emerge --pretend --verbose x11-base/xorg-drivers x11-wm/awesome
+env-update && source /etc/profile
+startx
+
 # To update all installed packages to the latest available versions
 emaint --auto sync ?? emaint -a sync
 # Any configuration file changes should be addressed, this can be managed by dispatch-conf:
