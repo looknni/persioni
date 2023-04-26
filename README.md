@@ -297,8 +297,8 @@ XIM_ARGS="-daemonize -xim"; export XIM_ARGS
 # ~/.Xresources
 # xterm*faceName: Monospace # Luxi Mono
 xterm*faceSize: 12
-# xterm*locale:zh_CN.UTF-8
-# xterm*inputMethod:fcitx
+# xterm*locale: en_GB.UTF-8
+# xterm*inputMethod: fcitx
 # xterm*vt100*geometry: 90x25
 # xterm*saveLines: 10000
 # xft*antiAlias: true
