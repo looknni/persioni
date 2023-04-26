@@ -507,6 +507,9 @@ portageq envvar INPUT_DEVICES # Libinput
 emerge --pretend --verbose x11-base/xorg-drivers x11-wm/awesome
 env-update && source /etc/profile
 startx
+echo "www-client/google-chrome google-chrome" >> /etc/portage/package.license
+emerge --ask www-client/google-chrome
+google-chrome-stable --gtk-version=4 # Chrome needs to be instructed to use gtk4 in order to use IM such as fcitx5.
 
 # To update all installed packages to the latest available versions
 emaint --auto sync ?? emaint -a sync
