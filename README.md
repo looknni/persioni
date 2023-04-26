@@ -112,7 +112,7 @@ nameserver 223.6.6.6
 # if_re_load="YES"
 # if_re_name="/boot/modules/if_re.ko"
 
-# pkg install xorg[ startx ]  gnome-lite
+# pkg install xorg[ startx ]  [awesome][gnome-lite]
 # /usr/local/etc/sudoers
 # Use bash-completion, if available. /etc/bashrc or ~/.bashrc (or any other file sourcing those). If you have only bash >= 4.2 installed
 [[ $PS1 && -f /usr/local/share/bash-completion/bash_completion ]] && \
@@ -133,8 +133,9 @@ proc /proc	 procfs rw 0 0
 # kld_list="/boot/kernel/linux.ko vesa"
 dbus_enable="YES"
 hald_enable="YES"
-gdm_enable="YES"
-gnome_enable="YES"
+#gdm_enable="YES"
+#gnome_enable="YES"
+~/.xinitrc # exec awesome
 
 ## /boot/loader.conf
 # if_re_load="YES"
@@ -286,7 +287,12 @@ XIM_ARGS="-daemonize -xim"; export XIM_ARGS
 # :charset=UTF-8:\
 # :lang=zh_CN.UTF-8:
 
-#@@xrdb -merge ~/.Xresources
+# ~/.bashrc
+[[ -f ~/.Xresources ]] && xrdb -merge ~/.Xresources
+
+### appres XTerm | grep -i utf8
+
+# ~/.Xresources
 # xterm*faceName: Monospace # Luxi Mono
 xterm*faceSize: 12
 # xterm*locale:zh_CN.UTF-8
@@ -530,7 +536,7 @@ grub> boot
 > ##### yum install libvirt-client
 >> + $\displaystyle\prod_{virsh net-undefine default}^{virsh net-destroy default}$
 ---
-##### ` echo "PS1='\[\e[0;32m\]\A \[\e[1;33m\]\u\[\e[0;35m\]@\[\e[0;32m\]\h \[\e[1;33m\]\W \[\e[1;31m\]? \[\e[0m\]'" >> ~/.bashrc `
+##### ` echo "PS1='\[\e[0;32m\]\A \[\e[1;34m\]\u\[\e[0;35m\]@\[\e[0;32m\]\h \[\e[1;34m\]\W \[\e[1;31m\]? \[\e[0m\]'" >> ~/.bashrc `
 ``` 
 export HISTTIMEFORMAT='%F %T]$ '
 export LESS_TERMCAP_mb=$'\E[01;35m'
@@ -543,7 +549,7 @@ export LESS_TERMCAP_us=$'\E[01;32m'
 export GROFF_NO_SGR=1 #redhat
 export LESS=-R #debian
 ```
-##### ` echo "PS1='\[\e[1;32m\]\u\[\e[0;33m\]@\[\e[0;32m\]\h \[\e[1;33m\]\W \[\e[1;35m\]? \[\e[0m\]'" >> /root/.bashrc `
+##### ` echo "PS1='\[\e[1;32m\]\u\[\e[0;34m\]@\[\e[0;32m\]\h \[\e[1;34m\]\W \[\e[1;35m\]? \[\e[0m\]'" >> /root/.bashrc `
 #### ` sed -i 's/GRUB_CMDLINE_LINUX=\"/GRUB_CMDLINE_LINUX=\"nouveau.modeset=1 /g ' /etc/default/grub @nouveau.modeset=0|1 #rd.driver.blacklist=nouveau `
 ##### ` yum remove $(rpm -qa | grep kernel | grep -v $(uname -r)) `
 ##### ` dracut -f /boot/initramfs-$(uname -r).img $(uname -r) ` #Create new initramfs image
