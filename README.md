@@ -149,17 +149,7 @@ hald_enable="YES"
 ### cp xorg.conf.new /usr/local/etc/X11/xorg.conf | /etc/X11/xorg.conf
 
 ### zh-fcitx-cloudpinyin zh-fcitx-libpinyin zh-fcitx-table-extra zh-fcitx-configtool
-## ~/.xprofile
-export XMODIFIERS=@im=fcitx
-export GTK_IM_MODULE=fcitx
-export QT_IM_MODULE=fcitx
-export LANG=en_US.UTF-8
-export LC_CTYPE=zh_CN.UTF-8
-export XIM=fcitx
-export XIM_PROGRAM=fcitx
-#export XIM_ARGS="-daemonize -xim"
-
-## ~/.xinitrc
+## ~/.xprofile ~/.xinitrc
 export GTK_IM_MODULE=fcitx
 export QT_IM_MODULE=fcitx
 export XMODIFIERS="@im=fcitx"
@@ -270,9 +260,6 @@ Section "Screen"
 EndSection
 ---PY-E--
 
-## ~/.profile
-# export LC_ALL=zh_CN.UTF-8
- 
 #@@cap_mkdb /etc/login.conf
 # chinese|Chinese Users Account:\
 # :charset=UTF-8:\
