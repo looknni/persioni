@@ -490,6 +490,29 @@ portageq envvar INPUT_DEVICES # Libinput
 emerge --pretend --verbose x11-base/xorg-drivers x11-wm/awesome
 env-update && source /etc/profile
 startx
+
+# fcitx
+USE="X autostart cairo debug enchant gtk2 gtk3 introspection lua nls opencc pango table test xkb" emerge --ask app-i18n/fcitx
+# ~/.xprofile or ~/.xinitrc
+eval "$(dbus-launch --sh-syntax --exit-with-session)"
+export XMODIFIERS="@im=fcitx"
+export QT_IM_MODULE=fcitx
+export GTK_IM_MODULE=fcitx
+
+emerge --ask app-i18n/fcitx-configtool app-i18n/fcitx-sunpinyin app-i18n/fcitx-libpinyin
+
+# ibus
+USE="X appindicator emoji gtk2 gtk3 gtk4 gui introspection libnotify nls python systemd test unicode vala wayland" emerge --ask app-i18n/ibus ibus-libpinyin
+eix -c -S engine app-i18n/ibus
+# ~/.bashrc or ~/.xinitrc
+export XMODIFIERS=@im=ibus
+export GTK_IM_MODULE=ibus
+export QT_IM_MODULE=ibus
+# Use `xim` in case some Electron apps (like Chromium) refuse to work with IBus
+# export GTK_IM_MODULE=xim
+# export QT_IM_MODULE=xim
+ibus-daemon -drx
+
 echo "www-client/google-chrome google-chrome" >> /etc/portage/package.license
 emerge --ask www-client/google-chrome
 google-chrome-stable --gtk-version=4 # Chrome needs to be instructed to use gtk4 in order to use IM such as fcitx5.
