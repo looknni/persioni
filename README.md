@@ -152,11 +152,11 @@ hald_enable="YES"
 ## ~/.xprofile ~/.xinitrc
 export GTK_IM_MODULE=fcitx
 export QT_IM_MODULE=fcitx
-export XMODIFIERS="@im=fcitx"
-export LC_CTYPE="zh_CN.UTF-8"
-export XIM="fcitx"
-export XIM_PROGRAM="fcitx"
-#export XIM_ARGS="-daemonize -xim"
+export XMODIFIERS=@im=fcitx
+export LC_CTYPE=zh_CN.UTF-8
+export XIM=fcitx
+export XIM_PROGRAM=fcitx
+#export XIM_ARGS=-daemonize -xim
 
 ## /etc/X11/xorg.conf
 ---VM-S--
