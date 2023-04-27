@@ -88,7 +88,7 @@ vim-gtk3 kaffeine qbittorrent audacious git traceroute locate mtr \
 fcitx fcitx-googlepinyin fcitx-dbus-status fcitx-table-wubi \
 wget bash-completion obs-studio gnome-shell-extension-dashtodock aptitude \
 nmap tcpdump audacity inkscape gimp krita audacity libreoffice make gcc \
-libpam-tmpdir opendnssec rsync firmware-realtek xxd xxhash lynx links
+libpam-tmpdir opendnssec rsync firmware-realtek xxd xxhash lynx links terminator
 ```
 
 > ##### $YUM_{RPM}^{DNF} \Downarrow$ [RockyLinux](https://rockylinux.org/) ? [AlmaLinux](https://almalinux.org/) ? [CentOS-stream](https://mirror.stream.centos.org/)
@@ -157,6 +157,8 @@ export LANG=en_US.UTF-8
 export LC_CTYPE=zh_CN.UTF-8
 export XIM=fcitx
 export XIM_PROGRAM=fcitx
+#export XIM_ARGS="-daemonize -xim"
+
 ## ~/.xinitrc
 export GTK_IM_MODULE=fcitx
 export QT_IM_MODULE=fcitx
@@ -164,6 +166,7 @@ export XMODIFIERS="@im=fcitx"
 export LC_CTYPE="zh_CN.UTF-8"
 export XIM="fcitx"
 export XIM_PROGRAM="fcitx"
+#export XIM_ARGS="-daemonize -xim"
 
 ## /etc/X11/xorg.conf
 ---VM-S--
@@ -266,14 +269,6 @@ Section "Screen"
 	EndSubSection
 EndSection
 ---PY-E--
-### zh-ibus-libpinyin
-XFCE ibus @.xinitrc ~/.xinitrc
-XIM=ibus;export XIM
-GTK_IM_MODULE=ibus;export GTK_IM_MODULE
-QT_IM_MODULE=xim; export QT_IM_MODULE
-XMODIFIERS='@im=ibus'; export XMODIFIERS
-XIM_PROGRAM="ibus-daemon"; export XIM_PROGRAM
-XIM_ARGS="-daemonize -xim"; export XIM_ARGS
 
 ## ~/.profile
 # export LC_ALL=zh_CN.UTF-8
