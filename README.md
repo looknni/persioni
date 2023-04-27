@@ -80,21 +80,20 @@
 ##### [on flatpak error fonts](https://flatpak.org/setup/) ? cp -r /etc/fonts/* org.example.com/config/fontconfig
 ##### `https://dl.google.com/linux/direct/google-chrome-` $\iiint_{beta_{unstable}}^{stable}$ \_current\_ $\iint_{amd64.deb}^{x86_{64.rpm}}$ [Extension](https://crxdl.com/)
 ---
-##### [Awesomewm](https://awesomewm.org/) ??? [I3wm](https://i3wm.org/) ??? [Icewm]https://ice-wm.org/()
+##### [Awesomewm](https://awesomewm.org/) ??? [I3wm](https://i3wm.org/) ??? [Dwm](#)
 ---
 > ##### $APT_{dpkg}^{apt-get} \Downarrow$ [Debian](https://www.debian.org/security/) ? [Kali](https://www.kali.org/tools/)
 ```
 vim-gtk3 kaffeine qbittorrent audacious git traceroute locate mtr \
 fcitx fcitx-googlepinyin fcitx-dbus-status fcitx-table-wubi \
-wget bash-completion obs-studio gnome-shell-extension-dashtodock aptitude \
+wget bash-completion obs-studio aptitude \
 nmap tcpdump audacity inkscape gimp krita audacity libreoffice make gcc \
 libpam-tmpdir opendnssec rsync firmware-realtek xxd xxhash lynx links terminator
 ```
 
 > ##### $YUM_{RPM}^{DNF} \Downarrow$ [RockyLinux](https://rockylinux.org/) ? [AlmaLinux](https://almalinux.org/) ? [CentOS-stream](https://mirror.stream.centos.org/)
 ```
-epel-release.noarch epel-next-release.noarch gcc-c++ cmake bison ncurses ncurses-devel libaio \
-gnome-shell-extension-dash-to-dock.noarch gnome-extensions-app.x86_64 gnome-tweaks.noarch ibus.x86_64 \
+epel-release.noarch epel-next-release.noarch gcc-c++ cmake bison ncurses ncurses-devel libaio ibus.x86_64 \
 aide rear fapolicyd usbguard openscap openscap-scanner scap-security-guide \
 fastfetch-bash-completion.noarch
 ```
@@ -120,7 +119,7 @@ nameserver 223.6.6.6
 [[ $PS1 && -f /usr/local/share/bash-completion/bash_completion ]] && \
     . /usr/local/share/bash-completion/bash_completion
 
-### security/ca_root_nss sudo bash-completion [ vim-gtk3 zh-auto-cn-l10n gnome-terminal gnome-system-monitor fusefs-ext2 fusefs-exfat nvidia-driver ]
+### security/ca_root_nss sudo bash-completion [ vim-gtk3 zh-auto-cn-l10n gnome-system-monitor fusefs-ext2 fusefs-exfat nvidia-driver ]
 
 ## /etc/fstab
 proc /proc	 procfs rw 0 0
@@ -155,8 +154,8 @@ export QT_IM_MODULE=fcitx
 export XMODIFIERS=@im=fcitx
 export LC_CTYPE=zh_CN.UTF-8
 export XIM=fcitx
-export XIM_PROGRAM=fcitx
-#export XIM_ARGS=-daemonize -xim
+export XIM_PROGRAM="ibus-daemon -drx | fcitx"
+#export XIM_ARGS=-"--daemonize --xim"
 
 ## /etc/X11/xorg.conf
 ---VM-S--
