@@ -113,7 +113,7 @@ nameserver 223.6.6.6
 # if_re_load="YES"
 # if_re_name="/boot/modules/if_re.ko"
 
-# pkg install xorg[ startx ]  [awesome(gnome-screenshot gnome-system-monitor  gnome-disk-utility)][gnome-lite]
+# pkg install xorg[ startx ]  [awesome(gnome-screenshot gnome-system-monitor)][gnome-lite]
 # /usr/local/etc/sudoers
 # Use bash-completion, if available. /etc/bashrc or ~/.bashrc (or any other file sourcing those). If you have only bash >= 4.2 installed
 [[ $PS1 && -f /usr/local/share/bash-completion/bash_completion ]] && \
