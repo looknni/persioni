@@ -50,8 +50,6 @@
 ---
 ##### The author and holder of the copyright of the software is Alexander L. Roshal [ $Rar_{la}$ ] https://www.rarlab.com/
 ---
-##### Is often called a "programmer's editor [ $Vi^{m}$ ] https://ftp.nluug.nl/pub/vim/unix/
----
 ##### The GNU Image Manipulation Program [ $Gim^{p}$ ] https://download.gimp.org/gimp/
 ---
 ##### Are the same as those on Mac and Linux - install man pages on your phone and read them in one session while experimenting with them in another [ $Ter_{mux}$ ] https://f-droid.org/en/packages/com.termux/
@@ -286,7 +284,7 @@ xterm*faceSize: 12
 # xft*autoHint: true
 # xterm*scrollBar: true
 ```
-## TOOLS
+## [Vim](https://ftp.nluug.nl/pub/vim/unix/)
 
 > ##### /usr/share/vim/vim82/colors/blue.vim
 > - hi Normal	guifg=yellow	guibg=darkBlue	ctermfg=yellow	ctermbg=none
@@ -336,13 +334,14 @@ EDITOR=vim visudo # %wheel ALL=(ALL) ALL
 grub-install --target=x86_64-efi --efi-directory=/boot --bootloader-id=ArchLinux # grub-install --target=i386-pc /dev/sda
 grub-mkconfig -o /boot/grub/grub.cfg
 
-/etc/locale.gen # en_US.UTF-8
+/etc/locale.gen # en_GB.UTF-8
 locale-gen
-pacman -S gnome gdm wqy-microhei
-vim /etc/locale.conf # LANG=en_US.UTF-8
-systemctl enable gdm
+pacman -S wqy-microhei xorg-server xor-xinit xf86-video-vesa #gnome #gdm
+vim /etc/locale.conf # LANG=en_GB.UTF-8
+#systemctl enable gdm
 exit
 reboot
+pacman -S i3-wm i3status dmenu terminator fcitx fcitx-configtool fcitx-googlepinyin fcitx-libpinyin fcitx-qt5 fcitx-table-extra
 
 pacman -S package ?? apt
 pacman -Ss package ?? apt list
