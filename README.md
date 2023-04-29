@@ -404,6 +404,8 @@ XTerm.VT100*dynamicColors: On
 >> - $\displaystyle\coprod_{/usr/share/vim/vimrc@debian}^{/etc/vimrc@centos}$
 ```
 syntax on
+set cursorcolumn
+set cursorline
 set hlsearch
 set incsearch
 set autoindent "redhat
