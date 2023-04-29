@@ -111,16 +111,16 @@ nameserver 223.6.6.6
 # if_re_load="YES"
 # if_re_name="/boot/modules/if_re.ko"
 
-# pkg install xorg[ startx ]  [awesome(gnome-screenshot gnome-system-monitor)][gnome-lite]
+# pkg install xorg-server xorg-drivers xinit xauth i3 terminator sudo bash-completion #awesome #nome-lite
 # /usr/local/etc/sudoers
 # Use bash-completion, if available. /etc/bashrc or ~/.bashrc (or any other file sourcing those). If you have only bash >= 4.2 installed
 [[ $PS1 && -f /usr/local/share/bash-completion/bash_completion ]] && \
     . /usr/local/share/bash-completion/bash_completion
 
-### security/ca_root_nss sudo bash-completion [ vim-gtk3 zh-auto-cn-l10n gnome-system-monitor fusefs-ext2 fusefs-exfat nvidia-driver ]
+### security/ca_root_nss vim-gtk3 zh-auto-cn-l10n fusefs-ext2 fusefs-exfat gnome-system-monitor gnome-screenshot
 
 ## /etc/fstab
-proc /proc	 procfs rw 0 0
+#proc /proc	 procfs rw 0 0
 
 ## /etc/rc.conf
 # ifconfig_re0="inet 10.0.1.100 netmask 255.255.255.0"
@@ -130,11 +130,11 @@ proc /proc	 procfs rw 0 0
 # linux_enable="YES"
 # kld_list="/boot/modules/nvidia.ko /boot/modules/nvidia-modeset.ko"
 # kld_list="/boot/kernel/linux.ko vesa"
-dbus_enable="YES"
-hald_enable="YES"
+#dbus_enable="YES"
+#hald_enable="YES"
 #gdm_enable="YES"
 #gnome_enable="YES"
-~/.xinitrc # exec awesome
+~/.xinitrc # exec i3
 
 ## /boot/loader.conf
 # if_re_load="YES"
@@ -150,9 +150,9 @@ hald_enable="YES"
 export GTK_IM_MODULE=fcitx
 export QT_IM_MODULE=fcitx
 export XMODIFIERS=@im=fcitx
-export LC_CTYPE=zh_CN.UTF-8
+export LC_CTYPE=en_GB.UTF-8
 export XIM=fcitx
-export XIM_PROGRAM="ibus-daemon -drx | fcitx"
+export XIM_PROGRAM="fcitx"
 #export XIM_ARGS=-"--daemonize --xim"
 
 ## /etc/X11/xorg.conf
@@ -268,10 +268,9 @@ EndSection
 # :charset=UTF-8:\
 # :lang=zh_CN.UTF-8:
 
+### appres XTerm | grep -i utf8
 # ~/.bashrc
 [[ -f ~/.Xresources ]] && xrdb -merge ~/.Xresources
-
-### appres XTerm | grep -i utf8
 
 # ~/.Xresources
 # xterm*faceName: Monospace # Luxi Mono
