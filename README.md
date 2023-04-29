@@ -97,7 +97,7 @@ xorg-x11-server-Xorg.x86_64 xorg-x11-xinit.x86_64 xorg-x11-xinit-session.x86_64 
 ```
 > ##### $PKG_{apt}^{dpkg} \Downarrow$ [FreeBSD](https://www.freebsd.org/)
 ```
-### mkdir -p /usr/local/etc/pkg/repos && vi FreeBSD.conf
+mkdir -p /usr/local/etc/pkg/repos && vi FreeBSD.conf
 # quarterly [ latest ]
 FreeBSD: {
   url: "pkg+https://mirrors.ustc.edu.cn/freebsd-pkg/${ABI}/quarterly",
@@ -544,15 +544,10 @@ grub> boot
 > ##### sudo update-grub
 > - $\displaystyle\phi_{/boot/efi/EFI/centos/grub.cfg}^{/boot/grub2/grub.cfga} {grub2-mkconfig\ -o}$
 ---
-##### ` systemctl enable systemd-resolved.service ` #debian
-##### ` systemctl disable accounts-daemon.service avahi-daemon.service ` #centos
-> ##### /etc/gdm/custom.conf
-> + $\displaystyle\psi_{WaylandEnable=false}^{DefaultSession=gnome-xorg.desktop} {fedora}$ 
----
 > ##### yum install libvirt-client
 >> + $\displaystyle\prod_{virsh net-undefine default}^{virsh net-destroy default}$
 ---
-##### ` echo "PS1='\[\e[0;32m\]\A \[\e[1;34m\]\u\[\e[0;35m\]@\[\e[0;32m\]\h \[\e[1;34m\]\W \[\e[1;31m\]? \[\e[0m\]'" >> ~/.bashrc `
+##### ` echo "PS1='\[\e[0;32m\]\A \[\e[1;33m\]\u\[\e[0;35m\]@\[\e[0;32m\]\h \[\e[1;33m\]\W \[\e[1;31m\]? \[\e[0m\]'" >> ~/.bashrc `
 ``` 
 export HISTTIMEFORMAT='%F %T]$ '
 export LESS_TERMCAP_mb=$'\E[01;35m'
@@ -565,11 +560,10 @@ export LESS_TERMCAP_us=$'\E[01;32m'
 export GROFF_NO_SGR=1 #redhat
 export LESS=-R #debian
 ```
-##### ` echo "PS1='\[\e[1;32m\]\u\[\e[0;34m\]@\[\e[0;32m\]\h \[\e[1;34m\]\W \[\e[1;35m\]? \[\e[0m\]'" >> /root/.bashrc `
+##### ` echo "PS1='\[\e[1;32m\]\u\[\e[0;33m\]@\[\e[0;32m\]\h \[\e[1;33m\]\W \[\e[1;35m\]? \[\e[0m\]'" >> /root/.bashrc `
 #### ` sed -i 's/GRUB_CMDLINE_LINUX=\"/GRUB_CMDLINE_LINUX=\"nouveau.modeset=1 /g ' /etc/default/grub @nouveau.modeset=0|1 #rd.driver.blacklist=nouveau `
 ##### ` yum remove $(rpm -qa | grep kernel | grep -v $(uname -r)) `
 ##### ` dracut -f /boot/initramfs-$(uname -r).img $(uname -r) ` #Create new initramfs image
-##### ` systemctl --user mask tracker-extract.service tracker-miner-fs.service tracker-store.service tracker-writeback.service ` #debian
 
 > #### [METACPAN](https://metacpan.org/)
 ```
