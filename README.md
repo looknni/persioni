@@ -84,7 +84,7 @@
 ```
 vim-gtk3 kaffeine qbittorrent audacious git traceroute locate mtr \
 fcitx fcitx-googlepinyin fcitx-dbus-status fcitx-table-wubi \
-wget bash-completion obs-studio aptitude \
+wget bash-completion obs-studio aptitude xnview \
 nmap tcpdump audacity inkscape gimp krita audacity libreoffice make gcc \
 libpam-tmpdir opendnssec rsync firmware-realtek xxd xxhash lynx links terminator
 ```
