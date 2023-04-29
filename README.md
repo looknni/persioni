@@ -86,7 +86,7 @@ vim-gtk3 kaffeine qbittorrent audacious git traceroute locate mtr \
 fcitx fcitx-googlepinyin fcitx-dbus-status fcitx-table-wubi \
 wget bash-completion obs-studio aptitude xnview \
 nmap tcpdump audacity inkscape gimp krita audacity libreoffice make gcc \
-libpam-tmpdir opendnssec rsync firmware-realtek xxd xxhash lynx links terminator
+libpam-tmpdir opendnssec rsync firmware-realtek xxd xxhash lynx links xterm
 ```
 
 > ##### $YUM_{RPM}^{DNF} \Downarrow$ [RockyLinux](https://rockylinux.org/) ? [AlmaLinux](https://almalinux.org/) ? [CentOS-stream](https://mirror.stream.centos.org/)
@@ -111,7 +111,7 @@ nameserver 223.6.6.6
 # if_re_load="YES"
 # if_re_name="/boot/modules/if_re.ko"
 
-# pkg install xorg-server xorg-drivers xinit xauth i3 terminator sudo bash-completion #awesome #nome-lite
+# pkg install xorg-server xorg-drivers xinit xauth i3 xterm sudo bash-completion #awesome #nome-lite
 # /usr/local/etc/sudoers
 # Use bash-completion, if available. /etc/bashrc or ~/.bashrc (or any other file sourcing those). If you have only bash >= 4.2 installed
 [[ $PS1 && -f /usr/local/share/bash-completion/bash_completion ]] && \
@@ -273,10 +273,17 @@ EndSection
 [[ -f ~/.Xresources ]] && xrdb -merge ~/.Xresources
 
 # ~/.Xresources
-# xterm*faceName: Monospace # Luxi Mono
+uxTerm*termName: xterm-256color
+xTerm*termName: xterm-256color
+xTerm*locale: en_GB.UTF-8
+xft.dpi: 120
+xft.rgba: rgb
+xft.hinting: true
+xft.hintstyle: hintslight
+xterm*cursorColor: *xtDefaultForeground
+xterm*inputMethod: ibus
+xterm*faceName: Monospace # Luxi Mono
 xterm*faceSize: 12
-# xterm*locale: en_GB.UTF-8
-# xterm*inputMethod: fcitx
 # xterm*vt100*geometry: 90x25
 # xterm*saveLines: 10000
 # xft*antiAlias: true
@@ -301,7 +308,7 @@ set mouse=a "redhat
 set ai	"redhat
 set autowrite "redhat
 set t_Co=256 "redhat
-colorscheme desert
+colorscheme delek "industry "murphy
 "hi IncSearch	cterm=bold ctermfg=red ctermbg=darkgreen
 "hi Search	cterm=bold ctermfg=red ctermbg=darkgreen
 if &diff
