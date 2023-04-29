@@ -93,7 +93,7 @@ libpam-tmpdir opendnssec rsync firmware-realtek xxd xxhash lynx links terminator
 ```
 epel-release.noarch epel-next-release.noarch gcc-c++ cmake bison ncurses ncurses-devel libaio ibus.x86_64 \
 aide rear fapolicyd usbguard openscap openscap-scanner scap-security-guide fastfetch-bash-completion.noarch \
-xorg-x11-server-Xorg.x86_64 xorg-x11-xinit.x86_64 xorg-x11-xinit-session.x86_64 i3.x86_64
+xorg-x11-server-Xorg.x86_64 xorg-x11-xinit.x86_64 xorg-x11-xinit-session.x86_64 i3.x86_64 roxterm
 ```
 > ##### $PKG_{apt}^{dpkg} \Downarrow$ [FreeBSD](https://www.freebsd.org/)
 ```
@@ -340,7 +340,7 @@ vim /etc/locale.conf # LANG=en_GB.UTF-8
 #systemctl enable gdm
 exit
 reboot
-pacman -S i3-wm i3status dmenu terminator fcitx fcitx-configtool fcitx-googlepinyin fcitx-libpinyin fcitx-qt5 fcitx-table-extra
+pacman -S i3-wm i3status dmenu roxterm fcitx fcitx-configtool fcitx-googlepinyin fcitx-libpinyin fcitx-qt5 fcitx-table-extra
 
 pacman -S package ?? apt
 pacman -Ss package ?? apt list
