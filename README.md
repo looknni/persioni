@@ -92,8 +92,8 @@ libpam-tmpdir opendnssec rsync firmware-realtek xxd xxhash lynx links terminator
 > ##### $YUM_{RPM}^{DNF} \Downarrow$ [RockyLinux](https://rockylinux.org/) ? [AlmaLinux](https://almalinux.org/) ? [CentOS-stream](https://mirror.stream.centos.org/)
 ```
 epel-release.noarch epel-next-release.noarch gcc-c++ cmake bison ncurses ncurses-devel libaio ibus.x86_64 \
-aide rear fapolicyd usbguard openscap openscap-scanner scap-security-guide \
-fastfetch-bash-completion.noarch
+aide rear fapolicyd usbguard openscap openscap-scanner scap-security-guide fastfetch-bash-completion.noarch \
+xorg-x11-server-Xorg.x86_64 xorg-x11-xinit.x86_64 xorg-x11-xinit-session.x86_64 i3.x86_64
 ```
 > ##### $PKG_{apt}^{dpkg} \Downarrow$ [FreeBSD](https://www.freebsd.org/)
 ```
@@ -357,6 +357,7 @@ pacman -Sg package
 pacman -Q ?? dpkg -l
 pacman -U package ?? dpkg --install
 # pacman -Qdt
+pacman -Qdtq | pacman -Rsn -
 ```
 ## ~~[Gentoo](https://www.gentoo.org/)~~
 ```
