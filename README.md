@@ -154,9 +154,9 @@ export LC_CTYPE=en_GB.UTF-8
 export XIM=fcitx
 export XIM_PROGRAM="fcitx"
 #export XIM_ARGS=-"--daemonize --xim"
-
-## /etc/X11/xorg.conf
----VM-S--
+```
+#### /etc/X11/xorg.conf
+```
 Section "Monitor"
                Identifier "Monitor0"
                VendorName "Monitor Vendor"
@@ -176,8 +176,8 @@ Section "Screen"
                          Modes "1024x768"
               EndSubSection
 EndSection
----VM-E--
----PY-S--
+```
+```
 Section "ServerLayout"
 	Identifier     "X.org Configured"
 	Screen      0  "Screen0" 0 0
@@ -255,24 +255,13 @@ Section "Screen"
 		Depth     24
 	EndSubSection
 EndSection
----PY-E--
+```
+##### appres XTerm | grep -i utf8
+#### ~/.bashrc
+    [[ -f ~/.Xresources ]] && xrdb -merge ~/.Xresources
 
-#@@cap_mkdb /etc/login.conf
-# chinese|Chinese Users Account:\
-# :charset=UTF-8:\
-# :lang=zh_CN.UTF-8:\
-# :tc=default:
- 
-#@@vipw :chinese:  #@@chpass ~/.login_conf
-# me:\
-# :charset=UTF-8:\
-# :lang=zh_CN.UTF-8:
-
-### appres XTerm | grep -i utf8
-# ~/.bashrc
-[[ -f ~/.Xresources ]] && xrdb -merge ~/.Xresources
-
-# ~/.Xresources
+#### ~/.Xresources
+```
 uxTerm*termName: xterm-256color
 xTerm*termName: xterm-256color
 xTerm*locale: en_GB.UTF-8
@@ -284,11 +273,127 @@ xterm*cursorColor: *xtDefaultForeground
 xterm*inputMethod: ibus
 xterm*faceName: Monospace # Luxi Mono
 xterm*faceSize: 12
-# xterm*vt100*geometry: 90x25
-# xterm*saveLines: 10000
-# xft*antiAlias: true
-# xft*autoHint: true
-# xterm*scrollBar: true
+```
+```
+xterm*faceName:             DejaVu Sans Mono:style=Book:antialias=true
+xterm*faceNameDoublesize:   Noto Sans CJK SC
+xterm*renderFont:           true
+xterm*cjk_width:            true
+xterm*geometry:             80x25
+xterm*dynamicColors:        true
+xterm*utf8:                 2
+xterm*eightBitInput:        true
+xterm*saveLines:            2048
+xterm*scrollKey:            true
+xterm*scrollTtyOutput:      false
+xterm*scrollBar:            false
+xterm*rightScrollBar:       false
+xterm*jumpScroll:           true
+xterm*multiScroll:          true
+xterm*toolBar:              false
+xterm*Scrollbar*thickness:  10
+xterm*Scrollbar*background: black
+xterm*Scrollbar*foreground: gray90
+xterm*termName:             xterm-256color
+xterm*decTerminalID:        vt340
+xterm*selectToClipboard:    true
+xterm*background:   rgb:1a/1a/1a
+xterm*foreground:   rgb:d6/d6/d6
+xterm*cursorColor:  rgb:d6/d6/d6
+xterm*color0:       rgb:00/00/00
+xterm*color1:       rgb:9e/18/28
+xterm*color2:       rgb:00/88/00
+xterm*color3:       rgb:96/8a/38
+xterm*color4:       rgb:41/41/71
+xterm*color5:       rgb:96/3c/59
+xterm*color6:       rgb:41/81/79
+xterm*color7:       rgb:be/be/be
+xterm*color8:       rgb:66/66/66
+xterm*color9:       rgb:cf/61/71
+xterm*color10:      rgb:7c/bc/8c
+xterm*color11:      rgb:ff/f7/96
+xterm*color12:      rgb:41/86/be
+xterm*color13:      rgb:cf/9e/be
+xterm*color14:      rgb:71/be/be
+xterm*color15:      rgb:ff/ff/ff
+```
+```
+xterm*font: terminus-12
+xterm*boldFont: terminus-12
+xterm*loginShell: true
+xterm*vt100*geometry: 80x50
+xterm*saveLines: 2000
+xterm*charClass: 33:48,35:48,37:48,43:48,45-47:48,64:48,95:48,126:48
+xterm*termName: xterm-color
+xterm*eightBitInput: false
+xterm*foreground: rgb:a8/a8/a8
+xterm*background: rgb:00/00/00
+xterm*color0: rgb:00/00/00
+xterm*color1: rgb:a8/00/00
+xterm*color2: rgb:00/a8/00
+xterm*color3: rgb:a8/54/00
+xterm*color4: rgb:00/00/a8
+xterm*color5: rgb:a8/00/a8
+xterm*color6: rgb:00/a8/a8
+xterm*color7: rgb:a8/a8/a8
+xterm*color8: rgb:54/54/54
+xterm*color9: rgb:fc/54/54
+xterm*color10: rgb:54/fc/54
+xterm*color11: rgb:fc/fc/54
+xterm*color12: rgb:54/54/fc
+xterm*color13: rgb:fc/54/fc
+xterm*color14: rgb:54/fc/fc
+xterm*color15: rgb:fc/fc/fc
+xterm*boldMode: false
+xterm*colorBDMode: true
+xterm*colorBD: rgb:fc/fc/fc
+```
+```
+XTerm*VT100*titeInhibit: true
+XTerm*alwaysHighlight: yes
+XTerm*marginBell: yes
+XTerm*iconName: terminal
+XTerm*loginShell: true
+XTerm*scrollColor: black
+XTerm*allowSendEvents: True
+XTerm*sessionMgt: false
+XTerm*eightBitInput: false
+XTerm*metaSendsEscape: true
+XTerm*internalBorder: 10
+XTerm*highlightSelection: true
+XTerm*VT100*colorBDMode: on
+XTerm*VT100*colorBD: blue
+XTerm.VT100.eightBitOutput: true
+XTerm.VT100.titeInhibit: false
+XTerm*color0: black
+XTerm*color1: red3
+XTerm*color2: green3
+XTerm*color3: yellow3
+XTerm*color4: DodgerBlue1
+XTerm*color5: magenta3
+XTerm*color6: cyan3
+XTerm*color7: gray90
+XTerm*color8: gray50
+XTerm*color9: red
+XTerm*color10: green
+XTerm*color11: yellow
+XTerm*color12: blue
+XTerm*color13: magenta
+XTerm*color14: cyan
+XTerm*color15: white
+XTerm*colorUL: yellow
+XTerm*colorBD: white
+XTerm*mainMenu*foreground: white
+XTerm*vtMenu*foreground: white
+XTerm*fontMenu*foreground: white
+XTerm*tekMenu*foreground: white
+XTerm*rightScrollBar: true
+XTerm*VT100*colorBDMode: on
+XTerm*VT100*colorBD: purple
+XTerm*VT100*colorULMode: on
+XTerm*VT100*underLine: on
+XTerm*VT100*colorUL: red
+XTerm.VT100*dynamicColors: On
 ```
 ## [Vim](https://ftp.nluug.nl/pub/vim/unix/)
 
