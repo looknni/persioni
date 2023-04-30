@@ -502,7 +502,7 @@ vim /etc/locale.conf # LANG=en_GB.UTF-8
 #systemctl enable gdm
 exit
 reboot
-pacman -S i3-wm i3status dmenu roxterm fcitx fcitx-configtool fcitx-googlepinyin fcitx-libpinyin fcitx-qt5 fcitx-table-extra
+pacman -S i3-wm i3status dmenu xterm fcitx fcitx-configtool fcitx-googlepinyin fcitx-libpinyin fcitx-qt5 fcitx-table-extra
 
 pacman -S package ?? apt
 pacman -Ss package ?? apt list
