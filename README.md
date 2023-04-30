@@ -264,7 +264,7 @@ EndSection
 ```
 !xterm*faceName: DejaVu Sans Mono:size=11:style=Book:antialias=true
 xterm*faceName: Monospace:size=11:style=Book:antialias=true
-xterm*faceNameDoublesize: Noto Sans CJK SC
+xterm*faceNameDoublesize: size=11
 uxTerm*termName: xterm-256color
 xterm*termName: xterm-256color
 xterm*locale: en_GB.UTF-8
