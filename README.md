@@ -93,7 +93,7 @@ libpam-tmpdir opendnssec rsync firmware-realtek xxd xxhash lynx links xterm
 ```
 epel-release.noarch epel-next-release.noarch gcc-c++ cmake bison ncurses ncurses-devel libaio ibus.x86_64 \
 aide rear fapolicyd usbguard openscap openscap-scanner scap-security-guide fastfetch-bash-completion.noarch \
-xorg-x11-server-Xorg.x86_64 xorg-x11-xinit.x86_64 xorg-x11-xinit-session.x86_64 i3.x86_64 roxterm
+xorg-x11-server-Xorg.x86_64 xorg-x11-xinit.x86_64 xorg-x11-xinit-session.x86_64 i3.x86_64
 ```
 > ##### $PKG_{apt}^{dpkg} \Downarrow$ [FreeBSD](https://www.freebsd.org/)
 ```
@@ -272,7 +272,7 @@ xft.hintstyle: hintslight
 xterm*cursorColor: *xtDefaultForeground
 xterm*inputMethod: ibus
 xterm*faceName: Monospace # Luxi Mono
-xterm*faceSize: 12
+xterm*faceSize: 11
 ```
 ```
 xterm*faceName:             DejaVu Sans Mono:style=Book:antialias=true
@@ -349,22 +349,70 @@ xterm*colorBDMode: true
 xterm*colorBD: rgb:fc/fc/fc
 ```
 ```
-XTerm*VT100*titeInhibit: true
-XTerm*alwaysHighlight: yes
-XTerm*marginBell: yes
-XTerm*iconName: terminal
+xterm*faceName: Monospace:size=11:antialias=true
+XTerm*allowBoldFonts: true
+xterm*geometry: 80x25
+XTerm*termName: xterm-256color
+UXTerm*termName: xterm-256color
+! Lighter Black & Gray
+xterm*background: #0c0c0c
+xterm*foreground: #aaaaaa
+! Black & DarkGray
+xterm*color0: #000000
+xterm*color8: #555555
+! DarkRed & Red
+xterm*color1: #aa0000
+xterm*color9: #ff5555
+! DarkGreen & Green
+xterm*color2: #00aa00
+xterm*color10: #55ff55
+! DarkYellow & Yellow
+xterm*color3: #aa5500
+xterm*color11: #ffff55
+! DarkBlue & Blue
+xterm*color4: #0000aa
+xterm*color12: #5555ff
+! DarkMagenta & Magenta
+xterm*color5: #aa00aa
+xterm*color13: #ff55ff
+! DarkCyan & Cyan
+xterm*color6: #00aaaa
+xterm*color14: #55ffff
+! LightGray + White
+xterm*color7: #aaaaaa
+xterm*color15: #ffffff
+! Orange
+xterm*cursorColor: #ffa530
+```
+```
+!xterm*background:  Black
+!xterm*foreground:  Grey
+xterm*font:     -Misc-Fixed-Medium-R-Normal--20-200-75-75-C-100-ISO10646-1
+!xterm*font:        -misc-fixed-medium-r-normal--18-*-*-*-*-*-iso10646-1
+!xterm*iconPixmap: ...
+xterm*iconPixmap:       /usr/share/pixmaps/gnome-gemvt.xbm
+xterm*iconMask:         /usr/share/pixmaps/gnome-gemvt-mask.xbm
+!XTerm*iconName: terminal
+!Mwm*xterm*iconImage: /home/a/a1111aa/xterm.icon
 XTerm*loginShell: true
+XTerm*foreground: gray90
+XTerm*background: black
+XTerm*cursorColor: rgb:00/80/00
+XTerm*borderColor: white
 XTerm*scrollColor: black
+XTerm*visualBell: true
+XTerm*saveLines: 1000
+!! XTerm.VT100.allowSendEvents: True
 XTerm*allowSendEvents: True
 XTerm*sessionMgt: false
-XTerm*eightBitInput: false
-XTerm*metaSendsEscape: true
-XTerm*internalBorder: 10
-XTerm*highlightSelection: true
-XTerm*VT100*colorBDMode: on
-XTerm*VT100*colorBD: blue
-XTerm.VT100.eightBitOutput: true
-XTerm.VT100.titeInhibit: false
+!XTerm*eightBitInput:  false
+!XTerm*metaSendsEscape: true
+!XTerm*internalBorder:  10
+!XTerm*highlightSelection:  true
+!XTerm*VT100*colorBDMode:  on
+!XTerm*VT100*colorBD:  blue
+!XTerm.VT100.eightBitOutput:  true
+!XTerm.VT100.titeInhibit:  false
 XTerm*color0: black
 XTerm*color1: red3
 XTerm*color2: green3
@@ -383,17 +431,16 @@ XTerm*color14: cyan
 XTerm*color15: white
 XTerm*colorUL: yellow
 XTerm*colorBD: white
-XTerm*mainMenu*foreground: white
-XTerm*vtMenu*foreground: white
-XTerm*fontMenu*foreground: white
-XTerm*tekMenu*foreground: white
+!XTerm*mainMenu*backgroundPixmap:     gradient:vertical?dimension=400&start=gray10&end=gray40
+!XTerm*mainMenu*foreground:          white
+!XTerm*vtMenu*backgroundPixmap:       gradient:vertical?dimension=550&start=gray10&end=gray40
+!XTerm*vtMenu*foreground:             white
+!XTerm*fontMenu*backgroundPixmap:     gradient:vertical?dimension=300&start=gray10&end=gray40
+!XTerm*fontMenu*foreground:           white
+!XTerm*tekMenu*backgroundPixmap:      gradient:vertical?dimension=300&start=gray10&end=gray40
+!XTerm*tekMenu*foreground:            white
+!XTerm Profiles (idea from dag wieers)
 XTerm*rightScrollBar: true
-XTerm*VT100*colorBDMode: on
-XTerm*VT100*colorBD: purple
-XTerm*VT100*colorULMode: on
-XTerm*VT100*underLine: on
-XTerm*VT100*colorUL: red
-XTerm.VT100*dynamicColors: On
 ```
 ## [Vim](https://ftp.nluug.nl/pub/vim/unix/)
 
