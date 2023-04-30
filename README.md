@@ -258,7 +258,7 @@ EndSection
 ```
 ##### appres XTerm | grep -i utf8
 #### ~/.bashrc
-    [[ -f ~/.Xresources ]] && xrdb -merge ~/.Xresources
+    [[ -f ~/.Xresources ]] && xrdb -load ~/.Xresources
 
 #### ~/.Xresources
 ```
