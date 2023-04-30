@@ -472,7 +472,7 @@ station wlan-name connect wifi-name
 pacstrap /mnt base linux linux-firmware
 genfstab -U /mnt >> /mnt/etc/fstab
 arch-chroot /mnt
-pacman -S grub efibootmgr vim iwd dhcpcd sudo networkmanager
+pacman -S grub efibootmgr os-prober vim iwd dhcpcd sudo networkmanager bash-completion
 systemctl enable dhcpcd NetworkManager iwd
 
 passwd
@@ -486,9 +486,10 @@ grub-mkconfig -o /boot/grub/grub.cfg
 
 /etc/locale.gen # en_GB.UTF-8
 locale-gen
-pacman -S wqy-microhei xorg-server xor-xinit xf86-video-vesa #gnome #gdm
+pacman -S wqy-microhei xorg-server xorg-xinit xf86-video-vesa #gnome #gdm
 vim /etc/locale.conf # LANG=en_GB.UTF-8
 #systemctl enable gdm
+#sudo mkinitcpio -p linux
 exit
 reboot
 pacman -S i3-wm i3status dmenu xterm fcitx fcitx-configtool fcitx-googlepinyin fcitx-libpinyin fcitx-qt5 fcitx-table-extra
@@ -582,8 +583,22 @@ emerge --ask @module-rebuild
 # emerge --config sys-kernel/gentoo-kernel-bin
 emerge --ask sys-kernel/gentoo-sources
 eselect kernel list
-eselect kernel set 1
-ls -l /usr/src/linux
+# eselect kernel set 1
+# ls -l /usr/src/linux
+
+mkdir /etc/portage/package.license
+/etc/portage/package.license/linux-firmware # sys-kernel/linux-firmware @BINARY-REDISTRIBUTABLE
+emerge --ask sys-kernel/genkernel
+genkernel --mountboot --install all
+# ls /boot/vmlinu* /boot/initramfs*
+# root #ls /lib/modules
+# emerge --ask sys-kernel/dracut
+# dracut --kver=5.15.52-gentoo
+
+# /etc/fstab
+/dev/sda1   /boot        vfat    defaults,noatime     0 2
+/dev/sda2   none         swap    sw                   0 0
+/dev/sda3   /            ext4    noatime              0 1
 
 emerge --ask net-misc/dhcpcd
 rc-update add dhcpcd default
@@ -622,6 +637,13 @@ grub-install --target=x86_64-efi --efi-directory=/boot
 # mount -o remount,rw,nosuid,nodev,noexec --types efivarfs efivarfs /sys/firmware/efi/efivars
 grub-install --target=x86_64-efi --efi-directory=/boot --removable
 grub-mkconfig -o /boot/grub/grub.cfg
+
+emerge --ask sys-boot/efibootmgr
+mkdir -p /boot/efi/boot
+cp /boot/vmlinuz-* /boot/efi/boot/bootx64.efi
+efibootmgr --create --disk /dev/sda --part 2 --label "Gentoo" --loader "\efi\boot\bootx64.efi"
+efibootmgr -c -d /dev/sda -p 2 -L "Gentoo" -l "\efi\boot\bootx64.efi" initrd='\initramfs-genkernel-amd64-5.15.52-gentoo'
+
 useradd -m -G users,wheel,audio -s /bin/bash username
 passwd username
 
