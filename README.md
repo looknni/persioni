@@ -262,28 +262,25 @@ EndSection
 
 #### ~/.Xresources
 ```
+!xterm*faceName: DejaVu Sans Mono:size=11:style=Book:antialias=true
+xterm*faceName: Monospace:size=11:style=Book:antialias=true
+xterm*faceNameDoublesize: Noto Sans CJK SC
 uxTerm*termName: xterm-256color
-xTerm*termName: xterm-256color
-xTerm*locale: en_GB.UTF-8
+xterm*termName: xterm-256color
+xterm*locale: en_GB.UTF-8
 xft.dpi: 120
 xft.rgba: rgb
 xft.hinting: true
 xft.hintstyle: hintslight
 xterm*cursorColor: *xtDefaultForeground
-xterm*inputMethod: ibus
-xterm*faceName: Monospace # Luxi Mono
-xterm*faceSize: 11
-```
-```
-xterm*faceName:             DejaVu Sans Mono:style=Book:antialias=true
-xterm*faceNameDoublesize:   Noto Sans CJK SC
+!xterm*inputMethod: ibus
+
 xterm*renderFont:           true
 xterm*cjk_width:            true
 xterm*geometry:             80x25
 xterm*dynamicColors:        true
 xterm*utf8:                 2
 xterm*eightBitInput:        true
-xterm*saveLines:            2048
 xterm*scrollKey:            true
 xterm*scrollTtyOutput:      false
 xterm*scrollBar:            false
@@ -294,9 +291,21 @@ xterm*toolBar:              false
 xterm*Scrollbar*thickness:  10
 xterm*Scrollbar*background: black
 xterm*Scrollbar*foreground: gray90
-xterm*termName:             xterm-256color
 xterm*decTerminalID:        vt340
 xterm*selectToClipboard:    true
+
+XTerm*allowBoldFonts: true
+xterm*boldMode: false
+xterm*font: terminus-12
+xterm*boldFont: terminus-12
+xterm*loginShell: true
+xterm*vt100*geometry: 80x50
+xterm*saveLines: 2000
+xterm*charClass: 33:48,35:48,37:48,43:48,45-47:48,64:48,95:48,126:48
+xterm*colorBDMode: true
+xterm*colorBD: rgb:fc/fc/fc
+```
+```
 xterm*background:   rgb:1a/1a/1a
 xterm*foreground:   rgb:d6/d6/d6
 xterm*cursorColor:  rgb:d6/d6/d6
@@ -318,14 +327,6 @@ xterm*color14:      rgb:71/be/be
 xterm*color15:      rgb:ff/ff/ff
 ```
 ```
-xterm*font: terminus-12
-xterm*boldFont: terminus-12
-xterm*loginShell: true
-xterm*vt100*geometry: 80x50
-xterm*saveLines: 2000
-xterm*charClass: 33:48,35:48,37:48,43:48,45-47:48,64:48,95:48,126:48
-xterm*termName: xterm-color
-xterm*eightBitInput: false
 xterm*foreground: rgb:a8/a8/a8
 xterm*background: rgb:00/00/00
 xterm*color0: rgb:00/00/00
@@ -344,16 +345,8 @@ xterm*color12: rgb:54/54/fc
 xterm*color13: rgb:fc/54/fc
 xterm*color14: rgb:54/fc/fc
 xterm*color15: rgb:fc/fc/fc
-xterm*boldMode: false
-xterm*colorBDMode: true
-xterm*colorBD: rgb:fc/fc/fc
 ```
 ```
-xterm*faceName: Monospace:size=11:antialias=true
-XTerm*allowBoldFonts: true
-xterm*geometry: 80x25
-XTerm*termName: xterm-256color
-UXTerm*termName: xterm-256color
 ! Lighter Black & Gray
 xterm*background: #0c0c0c
 xterm*foreground: #aaaaaa
@@ -389,11 +382,7 @@ xterm*cursorColor: #ffa530
 !xterm*foreground:  Grey
 xterm*font:     -Misc-Fixed-Medium-R-Normal--20-200-75-75-C-100-ISO10646-1
 !xterm*font:        -misc-fixed-medium-r-normal--18-*-*-*-*-*-iso10646-1
-!xterm*iconPixmap: ...
-xterm*iconPixmap:       /usr/share/pixmaps/gnome-gemvt.xbm
-xterm*iconMask:         /usr/share/pixmaps/gnome-gemvt-mask.xbm
 !XTerm*iconName: terminal
-!Mwm*xterm*iconImage: /home/a/a1111aa/xterm.icon
 XTerm*loginShell: true
 XTerm*foreground: gray90
 XTerm*background: black
@@ -463,7 +452,7 @@ set mouse=a "redhat
 set ai	"redhat
 set autowrite "redhat
 set t_Co=256 "redhat
-colorscheme delek "industry "murphy
+colorscheme delek "industry "murphy "desert
 "hi IncSearch	cterm=bold ctermfg=red ctermbg=darkgreen
 "hi Search	cterm=bold ctermfg=red ctermbg=darkgreen
 if &diff
