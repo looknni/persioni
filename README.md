@@ -262,7 +262,7 @@ EndSection
 
 #### ~/.Xresources
 ```
-!xterm*faceName: DejaVu Sans Mono:size=11:style=Book:antialias=true
+! xterm*faceName: DejaVu Sans Mono:size=11:style=Book:antialias=true
 xterm*faceName: Monospace:size=11:style=Book:antialias=true
 xterm*faceNameDoublesize: size=11
 uxTerm*termName: xterm-256color
@@ -272,7 +272,9 @@ xft.dpi: 120
 xft.rgba: rgb
 xft.hinting: true
 xft.hintstyle: hintslight
-xterm*cursorColor: *xtDefaultForeground
+! xterm*cursorColor: *xtDefaultForeground
+! Orange
+xterm*cursorColor: #ffa530
 !xterm*inputMethod: ibus
 
 xterm*renderFont:           true
@@ -374,15 +376,13 @@ xterm*color14: #55ffff
 ! LightGray + White
 xterm*color7: #aaaaaa
 xterm*color15: #ffffff
-! Orange
-xterm*cursorColor: #ffa530
 ```
 ```
-!xterm*background:  Black
-!xterm*foreground:  Grey
-xterm*font:     -Misc-Fixed-Medium-R-Normal--20-200-75-75-C-100-ISO10646-1
-!xterm*font:        -misc-fixed-medium-r-normal--18-*-*-*-*-*-iso10646-1
-!XTerm*iconName: terminal
+! xterm*background:  Black
+! xterm*foreground:  Grey
+xterm*font: -Misc-Fixed-Medium-R-Normal--20-200-75-75-C-100-ISO10646-1
+! xterm*font: -misc-fixed-medium-r-normal--18-*-*-*-*-*-iso10646-1
+! XTerm*iconName: terminal
 XTerm*loginShell: true
 XTerm*foreground: gray90
 XTerm*background: black
@@ -394,14 +394,14 @@ XTerm*saveLines: 1000
 !! XTerm.VT100.allowSendEvents: True
 XTerm*allowSendEvents: True
 XTerm*sessionMgt: false
-!XTerm*eightBitInput:  false
-!XTerm*metaSendsEscape: true
-!XTerm*internalBorder:  10
-!XTerm*highlightSelection:  true
-!XTerm*VT100*colorBDMode:  on
-!XTerm*VT100*colorBD:  blue
-!XTerm.VT100.eightBitOutput:  true
-!XTerm.VT100.titeInhibit:  false
+! XTerm*eightBitInput:  false
+! XTerm*metaSendsEscape: true
+! XTerm*internalBorder:  10
+! XTerm*highlightSelection:  true
+! XTerm*VT100*colorBDMode:  on
+! XTerm*VT100*colorBD:  blue
+! XTerm.VT100.eightBitOutput:  true
+! XTerm.VT100.titeInhibit:  false
 XTerm*color0: black
 XTerm*color1: red3
 XTerm*color2: green3
@@ -420,16 +420,16 @@ XTerm*color14: cyan
 XTerm*color15: white
 XTerm*colorUL: yellow
 XTerm*colorBD: white
-!XTerm*mainMenu*backgroundPixmap:     gradient:vertical?dimension=400&start=gray10&end=gray40
-!XTerm*mainMenu*foreground:          white
-!XTerm*vtMenu*backgroundPixmap:       gradient:vertical?dimension=550&start=gray10&end=gray40
-!XTerm*vtMenu*foreground:             white
-!XTerm*fontMenu*backgroundPixmap:     gradient:vertical?dimension=300&start=gray10&end=gray40
-!XTerm*fontMenu*foreground:           white
-!XTerm*tekMenu*backgroundPixmap:      gradient:vertical?dimension=300&start=gray10&end=gray40
-!XTerm*tekMenu*foreground:            white
-!XTerm Profiles (idea from dag wieers)
-XTerm*rightScrollBar: true
+! XTerm*mainMenu*backgroundPixmap: gradient:vertical?dimension=400&start=gray10&end=gray40
+! XTerm*mainMenu*foreground:          white
+! XTerm*vtMenu*backgroundPixmap: gradient:vertical?dimension=550&start=gray10&end=gray40
+! XTerm*vtMenu*foreground:             white
+! XTerm*fontMenu*backgroundPixmap: gradient:vertical?dimension=300&start=gray10&end=gray40
+! XTerm*fontMenu*foreground:           white
+! XTerm*tekMenu*backgroundPixmap: gradient:vertical?dimension=300&start=gray10&end=gray40
+! XTerm*tekMenu*foreground:            white
+! XTerm Profiles (idea from dag wieers)
+XTerm*rightScrollBar: false
 ```
 ## [Vim](https://ftp.nluug.nl/pub/vim/unix/)
 
