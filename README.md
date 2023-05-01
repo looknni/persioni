@@ -490,6 +490,7 @@ pacman -S wqy-microhei xorg-server xorg-xinit xf86-video-vesa #gnome #gdm
 vim /etc/locale.conf # LANG=en_GB.UTF-8
 #systemctl enable gdm
 #sudo mkinitcpio -p linux
+# /boot/grub/grub.cfg # 20 -->> 30
 exit
 reboot
 pacman -S i3-wm i3status dmenu xterm fcitx fcitx-configtool fcitx-googlepinyin fcitx-libpinyin fcitx-qt5 fcitx-table-extra
