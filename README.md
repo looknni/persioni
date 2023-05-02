@@ -84,15 +84,15 @@
 ```
 vim-gtk3 kaffeine qbittorrent audacious git traceroute locate mtr \
 fcitx fcitx-googlepinyin fcitx-dbus-status fcitx-table-wubi \
-wget bash-completion obs-studio aptitude xnview \
+wget bash-completion obs-studio aptitude xnview gnome-shell-extension-dashtodock \
 nmap tcpdump audacity inkscape gimp krita audacity libreoffice make gcc \
 libpam-tmpdir opendnssec rsync firmware-realtek xxd xxhash lynx links xterm
 ```
-
 > ##### $YUM_{RPM}^{DNF} \Downarrow$ [RockyLinux](https://rockylinux.org/) ? [AlmaLinux](https://almalinux.org/) ? [CentOS-stream](https://mirror.stream.centos.org/)
 ```
 epel-release.noarch epel-next-release.noarch gcc-c++ cmake bison ncurses ncurses-devel libaio ibus.x86_64 \
 aide rear fapolicyd usbguard openscap openscap-scanner scap-security-guide fastfetch-bash-completion.noarch \
+gnome-tweaks.noarch gnome-shell-extension-dash-to-dock.noarch gnome-extensions-app.x86_64 \
 xorg-x11-server-Xorg.x86_64 xorg-x11-xinit.x86_64 xorg-x11-xinit-session.x86_64 i3.x86_64
 ```
 > ##### $PKG_{apt}^{dpkg} \Downarrow$ [FreeBSD](https://www.freebsd.org/)
@@ -308,6 +308,28 @@ xterm*colorBDMode: true
 xterm*colorBD: rgb:fc/fc/fc
 ```
 ```
+xterm*faceName:             DejaVu Sans Mono:style=Book:antialias=true
+xterm*faceNameDoublesize:   Noto Sans CJK SC
+xterm*renderFont:           true
+xterm*cjk_width:            true
+xterm*geometry:             80x25
+xterm*dynamicColors:        true
+xterm*utf8:                 2
+xterm*eightBitInput:        true
+xterm*saveLines:            2048
+xterm*scrollKey:            true
+xterm*scrollTtyOutput:      false
+xterm*scrollBar:            true
+xterm*rightScrollBar:       true
+xterm*jumpScroll:           true
+xterm*multiScroll:          true
+xterm*toolBar:              false
+xterm*Scrollbar*thickness:  10
+xterm*Scrollbar*background: black
+xterm*Scrollbar*foreground: gray90
+xterm*termName:             xterm-256color
+xterm*decTerminalID:        vt340
+xterm*selectToClipboard:    true
 xterm*background:   rgb:1a/1a/1a
 xterm*foreground:   rgb:d6/d6/d6
 xterm*cursorColor:  rgb:d6/d6/d6
@@ -327,8 +349,17 @@ xterm*color12:      rgb:41/86/be
 xterm*color13:      rgb:cf/9e/be
 xterm*color14:      rgb:71/be/be
 xterm*color15:      rgb:ff/ff/ff
+
 ```
 ```
+xterm*font: terminus-12
+xterm*boldFont: terminus-12
+xterm*loginShell: true
+xterm*vt100*geometry: 80x50
+xterm*saveLines: 2000
+xterm*charClass: 33:48,35:48,37:48,43:48,45-47:48,64:48,95:48,126:48
+xterm*termName: xterm-color
+xterm*eightBitInput: false
 xterm*foreground: rgb:a8/a8/a8
 xterm*background: rgb:00/00/00
 xterm*color0: rgb:00/00/00
@@ -347,6 +378,9 @@ xterm*color12: rgb:54/54/fc
 xterm*color13: rgb:fc/54/fc
 xterm*color14: rgb:54/fc/fc
 xterm*color15: rgb:fc/fc/fc
+xterm*boldMode: false
+xterm*colorBDMode: true
+xterm*colorBD: rgb:fc/fc/fc
 ```
 ```
 ! Lighter Black & Gray
@@ -442,7 +476,7 @@ XTerm*rightScrollBar: false
 syntax on
 set cursorcolumn
 set cursorline
-set statusline=\ %<%F\ [%1*%M%*%n%R%H]%=\ %y\ %0(%{&fileformat}\ %{&encoding}\ %c:%l\ ?\ %L%)
+"set statusline=\ %<%F\ [%1*%M%*%n%R%H]%=\ %y\ %0(%{&fileformat}\ %{&encoding}\ %c:%l\ ?\ %L%)
 set hlsearch
 set incsearch
 set autoindent "redhat
@@ -452,7 +486,7 @@ set mouse=a "redhat
 set ai	"redhat
 set autowrite "redhat
 set t_Co=256 "redhat
-colorscheme delek "industry "murphy "desert
+colorscheme desert "delek "industry "murphy
 "hi IncSearch	cterm=bold ctermfg=red ctermbg=darkgreen
 "hi Search	cterm=bold ctermfg=red ctermbg=darkgreen
 if &diff
@@ -469,7 +503,7 @@ station wlan-name connect wifi-name
 
 /etc/pacman.d/mirrorlist # Server = https://mirrors.ustc.edu.cn/archlinux/$repo/os/$arch
 # /etc/pacman.conf # [archlinuxcn] Server = https://mirrors.ustc.edu.cn/archlinux/$arch ??? sudo pacman -S archlinuxcn-keyring && sudo pacman -Sy
-pacstrap /mnt base linux linux-firmware
+pacstrap -K /mnt base linux linux-firmware
 genfstab -U /mnt >> /mnt/etc/fstab
 arch-chroot /mnt
 pacman -S grub efibootmgr os-prober vim iwd dhcpcd sudo networkmanager bash-completion
@@ -481,7 +515,7 @@ passwd username
 EDITOR=vim visudo # %wheel ALL=(ALL) ALL
 
 /etc/default/grub # GRUB_DISABLE_OS_PROBER=false
-grub-install --target=x86_64-efi --efi-directory=/boot --bootloader-id=ArchLinux # grub-install --target=i386-pc /dev/sda
+grub-install --target=x86_64-efi --recheck --removable --boot-directory=/mnt/boot --efi-directory=/mnt # grub-install --target=i386-pc --recheck --boot-directory=/mnt/boot /dev/sdX
 grub-mkconfig -o /boot/grub/grub.cfg
 
 /etc/locale.gen # en_GB.UTF-8
@@ -490,7 +524,7 @@ pacman -S wqy-microhei xorg-server xorg-xinit xf86-video-vesa #gnome #gdm
 vim /etc/locale.conf # LANG=en_GB.UTF-8
 #systemctl enable gdm
 #sudo mkinitcpio -p linux
-# /boot/grub/grub.cfg # 20 -->> 30
+# /boot/grub/grub.cfg # 10 -->> 30
 exit
 reboot
 pacman -S i3-wm i3status dmenu xterm fcitx fcitx-configtool fcitx-googlepinyin fcitx-libpinyin fcitx-qt5 fcitx-table-extra
@@ -516,7 +550,7 @@ pacman -Qdtq | pacman -Rsn -
 ls /sys/firmware/efi/efivars
 # lsblk
 fdisk /dev/sda # m p g o n t d l w ??? cfdisk
-mkfs.vfat -F 32 /dev/sda1
+mkfs.fat -F 32 /dev/sda1
 mkfs.ext4 /dev/sda3
 mkswap /dev/sda2
 swapon /dev/sda2
@@ -701,7 +735,7 @@ emerge --depclean
 grub> ls , ls /
 grub> set root=(hd0,1)
 grub> linux /boot/vmlinuz-...-generic root=/dev/sda1
-grub> initrd /boot/initrd...img
+grub> initrd /boot/initrd.img
 grub> boot
 ```
 > ##### yum groupinstall 'Server with GUI' 
