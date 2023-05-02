@@ -560,7 +560,7 @@ pacman -Qdtq | pacman -Rsn -
 ls /sys/firmware/efi/efivars
 # lsblk
 fdisk /dev/sda # m p g o n t d l w ??? cfdisk
-mkfs.fat -F 32 /dev/sda1
+mkfs.vfat -F 32 /dev/sda1
 mkfs.ext4 /dev/sda3
 mkswap /dev/sda2
 swapon /dev/sda2
@@ -617,7 +617,6 @@ nano -w /etc/locale.gen
     # locale-gen
     # eselect locale list
     # eselect locale set 5 # /etc/env.d/02locale
-    # blkid >> /etc/fstab
 env-update && source /etc/profile && export PS1="(chroot) ${PS1}"
 
 emerge --ask sys-kernel/linux-firmware
@@ -646,10 +645,15 @@ genkernel --mountboot --install all
     # emerge --ask sys-kernel/dracut
     # dracut --kver=5.15.52-gentoo
 
-# /etc/fstab
-    /dev/sda1   /boot        vfat    defaults,noatime     0 2
-    /dev/sda2   none         swap    sw                   0 0
-    /dev/sda3   /            ext4    noatime              0 1
+# blkid >> /etc/fstab
+    #/dev/sda1   
+    	UUID=		/boot        ext4    defaults,noatime     0 2
+    	#/dev/xx
+    		#UUID=		/boot/EFI	vfat	umask=0077,shortname=winnt	0	2
+    #/dev/sda2
+    	UUID=		none         swap    sw                   0 0
+    #/dev/sda3
+    	UUID=		/            ext4    noatime              0 1
 
 emerge --ask net-misc/dhcpcd
     #rc-update add dhcpcd default
