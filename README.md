@@ -267,8 +267,8 @@ xterm*faceName: Monospace:size=11:style=Book:antialias=true
 xterm*faceNameDoublesize: size=11
 uxTerm*termName: xterm-256color
 xterm*termName: xterm-256color
-xterm*locale: en_GB.UTF-8
-xft.dpi: 120
+xterm*locale: UTF-8
+xft.dpi: 96
 xft.rgba: rgb
 xft.hinting: true
 xft.hintstyle: hintslight
@@ -325,8 +325,8 @@ xterm*eightBitInput:        true
 xterm*saveLines:            2048
 xterm*scrollKey:            true
 xterm*scrollTtyOutput:      false
-xterm*scrollBar:            true
-xterm*rightScrollBar:       true
+xterm*scrollBar:            false
+xterm*rightScrollBar:       false
 xterm*jumpScroll:           true
 xterm*multiScroll:          true
 xterm*toolBar:              false
