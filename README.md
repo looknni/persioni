@@ -380,7 +380,7 @@ xterm*color8: rgb:54/54/54
 xterm*color9: rgb:fc/54/54
 xterm*color10: rgb:54/fc/54
 xterm*color11: rgb:fc/fc/54
-xterm*color12: rgb:54/54/fc
+xterm*color12: rgb:ff/7f/50
 xterm*color13: rgb:fc/54/fc
 xterm*color14: rgb:54/fc/fc
 xterm*color15: rgb:fc/fc/fc
