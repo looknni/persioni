@@ -524,10 +524,9 @@ passwd username
 visudo # %wheel ALL=(ALL) ALL
 
 /etc/default/grub # GRUB_DISABLE_OS_PROBER=false
-grub-install --target=x86_64-efi --recheck --removable --boot-directory=/boot --efi-directory=/boot/efi
+grub-install --target=x86_64-efi --efi-directory=/boot/EFI --recheck --removable
     # grub-install --target=i386-pc --recheck --boot-directory=/mnt/boot /dev/sdX
 grub-mkconfig -o /boot/grub/grub.cfg
-cp /boot/efi/EFI/Archlinux/grubx64.efi /boot/efi/EFI/BOOT/BOOTx64.EFI
 
 /etc/locale.gen # en_GB.UTF-8
 locale-gen
@@ -568,6 +567,8 @@ swapon /dev/sda2
 mkdir --parents /mnt/gentoo
 mount /dev/sda3 /mnt/gentoo
 
+??? /boot/EFI/BOOT/BOOTx64.EFI
+
 tar xpvf stage3-*.tar.xz --xattrs-include='*.*' --numeric-owner
 /etc/portage/make.conf 
     MAKEOPTS="-j4" ??? RAM/2
@@ -591,7 +592,7 @@ source /etc/profile
 export PS1="(chroot) ${PS1}"
 
 mount /dev/sda1 /boot
-# mount /dev/sda4 /boot/efi
+# mount /dev/sda4 /boot/EFI
 
 emerge-webrsync ?? /var/db/repos/gentoo/
     # emerge --sync ?? Suppose there is a need for the last package updates (up to 1 hour),
