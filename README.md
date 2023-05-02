@@ -512,7 +512,7 @@ station wlan-name connect wifi-name
 /etc/pacman.d/mirrorlist # Server = https://mirrors.ustc.edu.cn/archlinux/$repo/os/$arch
     # /etc/pacman.conf # [archlinuxcn] Server = https://mirrors.ustc.edu.cn/archlinux/$arch 
     ??? sudo pacman -S archlinuxcn-keyring && sudo pacman -Sy
-pacstrap -K /mnt base linux-lts linux-firmware
+pacstrap /mnt base linux-lts linux-firmware
 genfstab -U /mnt >> /mnt/etc/fstab
 arch-chroot /mnt
 pacman -S grub efibootmgr os-prober vim iwd dhcpcd sudo networkmanager bash-completion
@@ -525,7 +525,7 @@ visudo # %wheel ALL=(ALL) ALL
 
 /etc/default/grub # GRUB_DISABLE_OS_PROBER=false
 grub-install --target=x86_64-efi --efi-directory=/boot/EFI --recheck --removable
-    # grub-install --target=i386-pc --recheck --boot-directory=/mnt/boot /dev/sdX
+    # grub-install --target=i386-pc --boot-directory=/boot --recheck  /dev/sdX
 grub-mkconfig -o /boot/grub/grub.cfg
 
 /etc/locale.gen # en_GB.UTF-8
