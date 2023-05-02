@@ -1,4 +1,4 @@
-> - /biosboot ~($\displaystyle\lim_{31k\rightarrow\infty}1M$).../boot/efi ~($\displaystyle\sum_{i \to 6M}^{n \to system} {i \times n+1M+40M}$).../boot ~($\displaystyle\sum_{i \to 100M}^{n \to kernel} {i \times n+200M}$).../ ~($\frac{\infty}{0.98}$).../swap ~($\sqrt[i \to 3]{RAM}$) . /home . /usr . /var . /opt . /tmp
+> - /biosboot ~($\displaystyle\lim_{31k\rightarrow\infty}1M$).../boot/EFI ~($\displaystyle\sum_{i \to 6M}^{n \to system} {i \times n+1M+40M}$).../boot ~($\displaystyle\sum_{i \to 100M}^{n \to kernel} {i \times n+200M}$).../ ~($\frac{\infty}{0.98}$).../swap ~($\sqrt[i \to 3]{RAM}$) . /home . /usr . /var . /opt . /tmp
 > - sudo blkid $\int_{/etc/default/grub}^{/etc/fstab}\int_{/boot/grub2/grub.cfg}^{/boot/load/* }$
 > - sed -i '$a\vm.swappiness=20' /etc/sysctl.conf#sysctl -p
 > - $\oint_{{2820076477}^{16}}^{{140177258}^{9}}\displaystyle\sum_{s^S_{o}}^{m^M_{o}} {64_{+}^{+}} \displaystyle\prod_{h_{mac}}^{echo_{2}}$ $\displaystyle\lim_{16 \rightarrow 20 \rightarrow 32 \rightarrow 63 \rightarrow \infty}^{\infty \rightarrow \phi}$
@@ -523,9 +523,12 @@ useradd -m -G wheel username
 passwd username
 visudo # %wheel ALL=(ALL) ALL
 
-/etc/default/grub # GRUB_DISABLE_OS_PROBER=false
+/etc/default/grub
+    GRUB_DISABLE_OS_PROBER=false
+
 grub-install --target=x86_64-efi --efi-directory=/boot/EFI --recheck --removable
     # grub-install --target=i386-pc --boot-directory=/boot --recheck  /dev/sdX
+
 grub-mkconfig -o /boot/grub/grub.cfg
 
 /etc/locale.gen # en_GB.UTF-8
@@ -534,7 +537,6 @@ pacman -S wqy-microhei xorg-server xorg-xinit xf86-video-vesa #gnome #gdm
 vim /etc/locale.conf # LANG=en_GB.UTF-8
     #systemctl enable gdm
     #sudo mkinitcpio -p linux
-    # /boot/grub/grub.cfg # 10 -->> 30
 exit
 reboot
 pacman -S i3-wm i3status dmenu xterm fcitx fcitx-configtool fcitx-googlepinyin fcitx-libpinyin fcitx-qt5 fcitx-table-extra
@@ -685,10 +687,10 @@ grub-install --target=x86_64-efi --efi-directory=/boot --removable
 grub-mkconfig -o /boot/grub/grub.cfg
 
 emerge --ask sys-boot/efibootmgr
-    #mkdir -p /boot/efi/boot
-    #cp /boot/vmlinuz-* /boot/efi/boot/bootx64.efi
-    #efibootmgr --create --disk /dev/sda --part 2 --label "Gentoo" --loader "\efi\boot\bootx64.efi"
-    #efibootmgr -c -d /dev/sda -p 2 -L "Gentoo" -l "\efi\boot\bootx64.efi" initrd='\initramfs-genkernel-amd64-5.15.52-gentoo'
+    #mkdir -p /boot/EFI/BOOT
+    #cp /boot/vmlinuz-* /boot/EFI/BOOt/BOOTX64.EFI
+    #efibootmgr --create --disk /dev/sda --part 2 --label "Gentoo" --loader "\EFI\BOOT\BOOTX64.EFI"
+    #efibootmgr -c -d /dev/sda -p 2 -L "Gentoo" -l "\EFI\BOOT\BOOTX64.EFI" initrd='\initramfs-genkernel-amd64-5.15.52-gentoo'
 
 useradd -m -G users,wheel,audio -s /bin/bash username
 passwd username
