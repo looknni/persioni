@@ -277,6 +277,12 @@ xft.hintstyle: hintslight
 xterm*cursorColor: #ffa530
 !xterm*inputMethod: ibus
 
+*VT100*translations: #override \n\
+Shift <KeyPress> Insert:insert-selection(CLIPBOARD, CUT_BUFFER1) \n\
+~Shift~Ctrl<Btn2Up>: insert-selection(PRIMARY, CUT_BUFFER0) \n\
+~Shift<BtnUp>: select-end(CLIPBOARD, CUT_BUFFER1) \n\
+~Shift<BtnUp>: select-end(PRIMARY, CUT_BUFFER0)
+
 xterm*renderFont:           true
 xterm*cjk_width:            true
 xterm*geometry:             80x25
@@ -308,8 +314,8 @@ xterm*colorBDMode: true
 xterm*colorBD: rgb:fc/fc/fc
 ```
 ```
-xterm*faceName:             DejaVu Sans Mono:style=Book:antialias=true
-xterm*faceNameDoublesize:   Noto Sans CJK SC
+xterm*faceName:             DejaVu Sans Mono:size=11:style=Book:antialias=true
+xterm*faceNameDoublesize:   size=11
 xterm*renderFont:           true
 xterm*cjk_width:            true
 xterm*geometry:             80x25
