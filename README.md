@@ -509,7 +509,7 @@ station wlan-name connect wifi-name
 
 /etc/pacman.d/mirrorlist # Server = https://mirrors.ustc.edu.cn/archlinux/$repo/os/$arch
 # /etc/pacman.conf # [archlinuxcn] Server = https://mirrors.ustc.edu.cn/archlinux/$arch ??? sudo pacman -S archlinuxcn-keyring && sudo pacman -Sy
-pacstrap -K /mnt base linux linux-firmware
+pacstrap -K /mnt base linux-lts linux-firmware
 genfstab -U /mnt >> /mnt/etc/fstab
 arch-chroot /mnt
 pacman -S grub efibootmgr os-prober vim iwd dhcpcd sudo networkmanager bash-completion
