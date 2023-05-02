@@ -98,7 +98,7 @@ xorg-x11-server-Xorg.x86_64 xorg-x11-xinit.x86_64 xorg-x11-xinit-session.x86_64 
 > ##### $PKG_{apt}^{dpkg} \Downarrow$ [FreeBSD](https://www.freebsd.org/)
 ```
 mkdir -p /usr/local/etc/pkg/repos && vi FreeBSD.conf
-# quarterly [ latest ]
+    # quarterly [ latest ]
 FreeBSD: {
   url: "pkg+https://mirrors.ustc.edu.cn/freebsd-pkg/${ABI}/quarterly",
 }
@@ -112,8 +112,8 @@ nameserver 223.6.6.6
 # if_re_name="/boot/modules/if_re.ko"
 
 # pkg install xorg-server xorg-drivers xinit xauth i3 xterm sudo bash-completion #awesome #nome-lite
-# /usr/local/etc/sudoers
-# Use bash-completion, if available. /etc/bashrc or ~/.bashrc (or any other file sourcing those). If you have only bash >= 4.2 installed
+    # /usr/local/etc/sudoers
+    # Use bash-completion, if available. /etc/bashrc or ~/.bashrc (or any other file sourcing those). If you have only bash >= 4.2 installed
 [[ $PS1 && -f /usr/local/share/bash-completion/bash_completion ]] && \
     . /usr/local/share/bash-completion/bash_completion
 
@@ -123,23 +123,23 @@ nameserver 223.6.6.6
 #proc /proc	 procfs rw 0 0
 
 ## /etc/rc.conf
-# ifconfig_re0="inet 10.0.1.100 netmask 255.255.255.0"
-# defaultrouter="10.0.1.1"
-# hostname="re"
-# ifconfig_re0="DHCP"
+    # ifconfig_re0="inet 10.0.1.100 netmask 255.255.255.0"
+    # defaultrouter="10.0.1.1"
+    # hostname="re"
+ifconfig_re0="DHCP"
 # linux_enable="YES"
 # kld_list="/boot/modules/nvidia.ko /boot/modules/nvidia-modeset.ko"
-# kld_list="/boot/kernel/linux.ko vesa"
+        # kld_list="/boot/kernel/linux.ko vesa"
 #dbus_enable="YES"
 #hald_enable="YES"
 #gdm_enable="YES"
 #gnome_enable="YES"
-~/.xinitrc # exec i3
+#~/.xinitrc # exec i3
 
 ## /boot/loader.conf
-# if_re_load="YES"
-# if_re_name="/boot/modules/if_re.ko"
-# nvidia_load="YES"
+    # if_re_load="YES"
+    # if_re_name="/boot/modules/if_re.ko"
+    # nvidia_load="YES"
 
 ### kldstat
 ### Xorg :1 -configure
@@ -508,7 +508,8 @@ station wlan-name get-networks
 station wlan-name connect wifi-name
 
 /etc/pacman.d/mirrorlist # Server = https://mirrors.ustc.edu.cn/archlinux/$repo/os/$arch
-# /etc/pacman.conf # [archlinuxcn] Server = https://mirrors.ustc.edu.cn/archlinux/$arch ??? sudo pacman -S archlinuxcn-keyring && sudo pacman -Sy
+    # /etc/pacman.conf # [archlinuxcn] Server = https://mirrors.ustc.edu.cn/archlinux/$arch 
+    ??? sudo pacman -S archlinuxcn-keyring && sudo pacman -Sy
 pacstrap -K /mnt base linux-lts linux-firmware
 genfstab -U /mnt >> /mnt/etc/fstab
 arch-chroot /mnt
@@ -518,10 +519,11 @@ systemctl enable dhcpcd NetworkManager iwd
 passwd
 useradd -m -G wheel username
 passwd username
-EDITOR=vim visudo # %wheel ALL=(ALL) ALL
+visudo # %wheel ALL=(ALL) ALL
 
 /etc/default/grub # GRUB_DISABLE_OS_PROBER=false
-grub-install --target=x86_64-efi --recheck --removable --boot-directory=/mnt/boot --efi-directory=/mnt # grub-install --target=i386-pc --recheck --boot-directory=/mnt/boot /dev/sdX
+grub-install --target=x86_64-efi --recheck --removable --boot-directory=/boot --efi-directory=/boot/efi
+    # grub-install --target=i386-pc --recheck --boot-directory=/mnt/boot /dev/sdX
 grub-mkconfig -o /boot/grub/grub.cfg
 cp /boot/efi/EFI/Archlinux/grubx64.efi /boot/efi/EFI/BOOT/BOOTx64.EFI
 
@@ -529,9 +531,9 @@ cp /boot/efi/EFI/Archlinux/grubx64.efi /boot/efi/EFI/BOOT/BOOTx64.EFI
 locale-gen
 pacman -S wqy-microhei xorg-server xorg-xinit xf86-video-vesa #gnome #gdm
 vim /etc/locale.conf # LANG=en_GB.UTF-8
-#systemctl enable gdm
-#sudo mkinitcpio -p linux
-# /boot/grub/grub.cfg # 10 -->> 30
+    #systemctl enable gdm
+    #sudo mkinitcpio -p linux
+    # /boot/grub/grub.cfg # 10 -->> 30
 exit
 reboot
 pacman -S i3-wm i3status dmenu xterm fcitx fcitx-configtool fcitx-googlepinyin fcitx-libpinyin fcitx-qt5 fcitx-table-extra
@@ -544,12 +546,12 @@ pacman -Syu ?? apt upgrade
 pacman -Rc package ?? apt remove
 pacman -Rsn package ?? apt remove --purge
 pacman -Sc ?? apt clean
-# pacman -Scc
+    # pacman -Scc
 pacman -Su --ignore package
 pacman -Sg package
 pacman -Q ?? dpkg -l
 pacman -U package ?? dpkg --install
-# pacman -Qdt
+    # pacman -Qdt
 pacman -Qdtq | pacman -Rsn -
 ```
 ## ~~[Gentoo](https://www.gentoo.org/)~~
@@ -565,7 +567,9 @@ mkdir --parents /mnt/gentoo
 mount /dev/sda3 /mnt/gentoo
 
 tar xpvf stage3-*.tar.xz --xattrs-include='*.*' --numeric-owner
-/etc/portage/make.conf MAKEOPTS="-j4" ??? RAM/2
+/etc/portage/make.conf 
+    MAKEOPTS="-j4" ??? RAM/2
+    GRUB_PLATFORMS="emu efi-32 efi-64 pc"
 
 mirrorselect -i -o >> /mnt/gentoo/etc/portage/make.conf
 mkdir --parents /mnt/gentoo/etc/portage/repos.conf
@@ -588,103 +592,96 @@ mount /dev/sda1 /boot
 # mount /dev/sda4 /boot/efi
 
 emerge-webrsync ?? /var/db/repos/gentoo/
-# emerge --sync ?? Suppose there is a need for the last package updates (up to 1 hour),
-# emerge --sync --quiet ?? On slow terminals, like some framebuffers or serial consoles, it is recommended to use the --quiet option to speed up the process
-# eselect news list
-# eselect news read
-eselect profile list
-eselect profile set <number>
+    # emerge --sync ?? Suppose there is a need for the last package updates (up to 1 hour),
+    # emerge --sync --quiet ?? On slow terminals, like some framebuffers or serial consoles, it is recommended to use the --quiet option to speed up the process
+    # eselect news list
+    # eselect news read
+    # eselect profile list
+    # eselect profile set <number>
 
-emerge --ask --verbose --update --deep --newuse @world # longTime ?? emerge -avuDN @world
-# emerge --info | grep ^USE
-# less /var/db/repos/gentoo/profiles/use.desc
-# nano -w /etc/portage/make.conf # USE=“”
+emerge --ask --verbose --update --deep --newuse @world # longTime
+    emerge -avuDN @world
+    # emerge --info | grep ^USE
+    # nano -w /etc/portage/make.conf # USE=“”
 emerge --ask app-portage/cpuid2cpuflags
-# cpuid2cpuflags
+    # cpuid2cpuflags
 echo "*/* $(cpuid2cpuflags)" > /etc/portage/package.use/00cpu-flags
-# ls /usr/share/zoneinfo
+    # ls /usr/share/zoneinfo
 echo "Europe/Brussels" > /etc/timezone # openrc
 emerge --config sys-libs/timezone-data # openrc
 ln -sf ../usr/share/zoneinfo/Europe/Brussels /etc/localtime # systemd
 nano -w /etc/locale.gen
-# locale-gen
-# eselect locale list
-# eselect locale set 5 # /etc/env.d/02locale
-# blkid >> /etc/fstab
+    # locale-gen
+    # eselect locale list
+    # eselect locale set 5 # /etc/env.d/02locale
+    # blkid >> /etc/fstab
 env-update && source /etc/profile && export PS1="(chroot) ${PS1}"
 
 emerge --ask sys-kernel/linux-firmware
 emerge --ask sys-kernel/installkernel-systemd-boot ??? gummiboot # bootloader
 emerge --ask sys-kernel/installkernel-gentoo # /boot ??? GRUB LILO
 emerge --ask sys-kernel/gentoo-kernel ??? longTime
-# emerge --ask sys-kernel/gentoo-kernel-bin
+    # emerge --ask sys-kernel/gentoo-kernel-bin
 emerge --depclean
-# emerge --prune sys-kernel/gentoo-kernel sys-kernel/gentoo-kernel-bin
+    # emerge --prune sys-kernel/gentoo-kernel sys-kernel/gentoo-kernel-bin
 emerge --ask @module-rebuild
-# emerge --config sys-kernel/gentoo-kernel
-# emerge --config sys-kernel/gentoo-kernel-bin
+    # emerge --config sys-kernel/gentoo-kernel
+    # emerge --config sys-kernel/gentoo-kernel-bin
 emerge --ask sys-kernel/gentoo-sources
 eselect kernel list
-# eselect kernel set 1
-# ls -l /usr/src/linux
+    # eselect kernel set 1
+    # ls -l /usr/src/linux
 
-mkdir /etc/portage/package.license
-/etc/portage/package.license/linux-firmware # sys-kernel/linux-firmware @BINARY-REDISTRIBUTABLE
+    # mkdir /etc/portage/package.license
+    # /etc/portage/package.license/linux-firmware
+        sys-kernel/linux-firmware @BINARY-REDISTRIBUTABLE
 emerge --ask sys-kernel/genkernel
+genkernel --menuconfig all
 genkernel --mountboot --install all
-# ls /boot/vmlinu* /boot/initramfs*
-# root #ls /lib/modules
-# emerge --ask sys-kernel/dracut
-# dracut --kver=5.15.52-gentoo
+    # ls /boot/vmlinu* /boot/initramfs*
+    # root #ls /lib/modules
+    # emerge --ask sys-kernel/dracut
+    # dracut --kver=5.15.52-gentoo
 
 # /etc/fstab
-/dev/sda1   /boot        vfat    defaults,noatime     0 2
-/dev/sda2   none         swap    sw                   0 0
-/dev/sda3   /            ext4    noatime              0 1
+    /dev/sda1   /boot        vfat    defaults,noatime     0 2
+    /dev/sda2   none         swap    sw                   0 0
+    /dev/sda3   /            ext4    noatime              0 1
 
 emerge --ask net-misc/dhcpcd
-rc-update add dhcpcd default
-rc-service dhcpcd start
-# systemctl enable --now dhcpcd
-emerge --ask --noreplace net-misc/netifrc
+    #rc-update add dhcpcd default
+    #rc-service dhcpcd start
+systemctl enable --now dhcpcd
 
-# /etc/conf.d/net
-# configth0="dhcp"
-# config_eth0="192.168.0.2 netmask 255.255.255.0 brd 192.168.0.255"
-# routes_eth0="default via 192.168.0.1"
-# cd /etc/init.d
-# ln -s net.lo net.eth0
-# rc-update add net.eth0 default
+    # /etc/conf.d/net
+    # configth0="dhcp"
+    # config_eth0="192.168.0.2 netmask 255.255.255.0 brd 192.168.0.255"
+    # routes_eth0="default via 192.168.0.1"
+    # cd /etc/init.d
+    # ln -s net.lo net.eth0
+    # rc-update add net.eth0 default
 
-# systemd-firstboot --prompt --setup-machine-id
-# systemctl preset-all --preset-mode=enable-only
-# systemctl preset-all
-emerge --ask app-admin/sysklogd
-rc-update add sysklogd default
-emerge --ask net-misc/chrony
-rc-update add chronyd default
-# systemctl enable chronyd.service
-# systemctl enable systemd-timesyncd.service
-emerge --ask net-misc/dhcpcd
-# emerge --ask net-dialup/ppp
+systemd-firstboot --prompt --setup-machine-id
+systemctl preset-all --preset-mode=enable-only
+systemctl preset-all
+    # emerge --ask net-dialup/ppp
 emerge --ask net-wireless/iw net-wireless/wpa_supplicant
-# emerge --ask --verbose sys-boot/grub
+    # emerge --ask --verbose sys-boot/grub:2
 echo 'GRUB_PLATFORMS="efi-64"' >> /etc/portage/make.conf
 emerge --ask sys-boot/grub
-# emerge --ask --update --newuse --verbose sys-boot/grub
+    # emerge --ask --update --newuse --verbose sys-boot/grub
 
-# grub-install /dev/sda
 grub-install --target=x86_64-efi --efi-directory=/boot
-# grub-instal return; Could not prepare Boot variable: Read-only file system
-# mount -o remount,rw,nosuid,nodev,noexec --types efivarfs efivarfs /sys/firmware/efi/efivars
+    # grub-instal return; Could not prepare Boot variable: Read-only file system
+    # mount -o remount,rw,nosuid,nodev,noexec --types efivarfs efivarfs /sys/firmware/efi/efivars
 grub-install --target=x86_64-efi --efi-directory=/boot --removable
 grub-mkconfig -o /boot/grub/grub.cfg
 
 emerge --ask sys-boot/efibootmgr
-mkdir -p /boot/efi/boot
-cp /boot/vmlinuz-* /boot/efi/boot/bootx64.efi
-efibootmgr --create --disk /dev/sda --part 2 --label "Gentoo" --loader "\efi\boot\bootx64.efi"
-efibootmgr -c -d /dev/sda -p 2 -L "Gentoo" -l "\efi\boot\bootx64.efi" initrd='\initramfs-genkernel-amd64-5.15.52-gentoo'
+    #mkdir -p /boot/efi/boot
+    #cp /boot/vmlinuz-* /boot/efi/boot/bootx64.efi
+    #efibootmgr --create --disk /dev/sda --part 2 --label "Gentoo" --loader "\efi\boot\bootx64.efi"
+    #efibootmgr -c -d /dev/sda -p 2 -L "Gentoo" -l "\efi\boot\bootx64.efi" initrd='\initramfs-genkernel-amd64-5.15.52-gentoo'
 
 useradd -m -G users,wheel,audio -s /bin/bash username
 passwd username
@@ -731,8 +728,6 @@ echo "www-client/google-chrome google-chrome" >> /etc/portage/package.license
 emerge --ask www-client/google-chrome
 google-chrome-stable --gtk-version=4 # Chrome needs to be instructed to use gtk4 in order to use IM such as fcitx5.
 
-# To update all installed packages to the latest available versions
-emaint --auto sync ?? emaint -a sync
 # Any configuration file changes should be addressed, this can be managed by dispatch-conf:
 dispatch-conf
 # After the update, Portage recommends running 
