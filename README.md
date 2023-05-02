@@ -143,7 +143,9 @@ ifconfig_re0="DHCP"
 
 ### kldstat
 ### Xorg :1 -configure
-### cp xorg.conf.new /usr/local/etc/X11/xorg.conf | /etc/X11/xorg.conf
+### cp xorg.conf.new 
+	/usr/local/etc/X11/xorg.conf
+	/etc/X11/xorg.conf
 
 ### zh-fcitx-cloudpinyin zh-fcitx-libpinyin zh-fcitx-table-extra zh-fcitx-configtool
 ## ~/.xprofile ~/.xinitrc
@@ -153,7 +155,7 @@ export XMODIFIERS=@im=fcitx
 export LC_CTYPE=en_GB.UTF-8
 export XIM=fcitx
 export XIM_PROGRAM="fcitx"
-#export XIM_ARGS=-"--daemonize --xim"
+	#export XIM_ARGS=-"--daemonize --xim"
 ```
 #### /etc/X11/xorg.conf
 ```
@@ -418,8 +420,6 @@ xterm*color7: #aaaaaa
 xterm*color15: #ffffff
 ```
 ```
-! xterm*background:  Black
-! xterm*foreground:  Grey
 xterm*font: -Misc-Fixed-Medium-R-Normal--20-200-75-75-C-100-ISO10646-1
 ! xterm*font: -misc-fixed-medium-r-normal--18-*-*-*-*-*-iso10646-1
 ! XTerm*iconName: terminal
@@ -442,6 +442,8 @@ XTerm*sessionMgt: false
 ! XTerm*VT100*colorBD:  blue
 ! XTerm.VT100.eightBitOutput:  true
 ! XTerm.VT100.titeInhibit:  false
+xterm*background:  Black
+xterm*foreground:  Grey
 XTerm*color0: black
 XTerm*color1: red3
 XTerm*color2: green3
