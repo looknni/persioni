@@ -523,6 +523,7 @@ EDITOR=vim visudo # %wheel ALL=(ALL) ALL
 /etc/default/grub # GRUB_DISABLE_OS_PROBER=false
 grub-install --target=x86_64-efi --recheck --removable --boot-directory=/mnt/boot --efi-directory=/mnt # grub-install --target=i386-pc --recheck --boot-directory=/mnt/boot /dev/sdX
 grub-mkconfig -o /boot/grub/grub.cfg
+cp /boot/efi/EFI/Archlinux/grubx64.efi /boot/efi/EFI/BOOT/BOOTx64.EFI
 
 /etc/locale.gen # en_GB.UTF-8
 locale-gen
