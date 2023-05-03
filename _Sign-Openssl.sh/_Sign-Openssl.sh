@@ -7,7 +7,10 @@
 ./.git/ORIG_HEAD
 ./CHANGELOG
 ./CONTRIBUTING.md
+./Generate.stat
 ./LICENSE
+./Locate.stat
+./OpenSSL.md
 ./README.md
 ./SH/AWK.awk
 ./SH/BASH.sh
@@ -29,6 +32,3 @@
 ./SH/TestOpenssl.sh
 ./SH/UEncrypt.pl
 ./SH/journal.ods
-./Generate.stat
-./Locate.stat
-./OpenSSL.md

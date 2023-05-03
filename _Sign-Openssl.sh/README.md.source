@@ -1,4 +1,4 @@
-> - /biosboot ~($\displaystyle\lim_{31k\rightarrow\infty}1M$).../boot/efi ~($\displaystyle\sum_{i \to 6M}^{n \to system} {i \times n+1M+40M}$).../boot ~($\displaystyle\sum_{i \to 100M}^{n \to kernel} {i \times n+200M}$).../ ~($\frac{\infty}{0.98}$).../swap ~($\sqrt[i \to 3]{RAM}$) . /home . /usr . /var . /opt . /tmp
+> - /biosboot ~($\displaystyle\lim_{31k\rightarrow\infty}1M$).../boot/EFI ~($\displaystyle\sum_{i \to 6M}^{n \to system} {i \times n+1M+40M}$).../boot ~($\displaystyle\sum_{i \to 100M}^{n \to kernel} {i \times n+200M}$).../ ~($\frac{\infty}{0.98}$).../swap ~($\sqrt[i \to 3]{RAM}$) . /home . /usr . /var . /opt . /tmp
 > - sudo blkid $\int_{/etc/default/grub}^{/etc/fstab}\int_{/boot/grub2/grub.cfg}^{/boot/load/* }$
 > - sed -i '$a\vm.swappiness=20' /etc/sysctl.conf#sysctl -p
 > - $\oint_{{2820076477}^{16}}^{{140177258}^{9}}\displaystyle\sum_{s^S_{o}}^{m^M_{o}} {64_{+}^{+}} \displaystyle\prod_{h_{mac}}^{echo_{2}}$ $\displaystyle\lim_{16 \rightarrow 20 \rightarrow 32 \rightarrow 63 \rightarrow \infty}^{\infty \rightarrow \phi}$
@@ -50,8 +50,6 @@
 ---
 ##### The author and holder of the copyright of the software is Alexander L. Roshal [ $Rar_{la}$ ] https://www.rarlab.com/
 ---
-##### Is often called a "programmer's editor [ $Vi^{m}$ ] https://ftp.nluug.nl/pub/vim/unix/
----
 ##### The GNU Image Manipulation Program [ $Gim^{p}$ ] https://download.gimp.org/gimp/
 ---
 ##### Are the same as those on Mac and Linux - install man pages on your phone and read them in one session while experimenting with them in another [ $Ter_{mux}$ ] https://f-droid.org/en/packages/com.termux/
@@ -79,27 +77,28 @@
 ##### sudo flatpak remote-modify flathub --url=https://mirror.sjtu.edu.cn/flathub
 ##### [on flatpak error fonts](https://flatpak.org/setup/) ? cp -r /etc/fonts/* org.example.com/config/fontconfig
 ##### `https://dl.google.com/linux/direct/google-chrome-` $\iiint_{beta_{unstable}}^{stable}$ \_current\_ $\iint_{amd64.deb}^{x86_{64.rpm}}$ [Extension](https://crxdl.com/)
-
+---
+##### [Awesomewm](https://awesomewm.org/) ??? [I3wm](https://i3wm.org/) ??? [Dwm](#)
+---
 > ##### $APT_{dpkg}^{apt-get} \Downarrow$ [Debian](https://www.debian.org/security/) ? [Kali](https://www.kali.org/tools/)
 ```
 vim-gtk3 kaffeine qbittorrent audacious git traceroute locate mtr \
 fcitx fcitx-googlepinyin fcitx-dbus-status fcitx-table-wubi \
-wget bash-completion obs-studio gnome-shell-extension-dashtodock aptitude \
+wget bash-completion obs-studio aptitude xnview gnome-shell-extension-dashtodock \
 nmap tcpdump audacity inkscape gimp krita audacity libreoffice make gcc \
-libpam-tmpdir opendnssec rsync firmware-realtek xxd xxhash lynx links
+libpam-tmpdir opendnssec rsync firmware-realtek xxd xxhash lynx links xterm
 ```
-
 > ##### $YUM_{RPM}^{DNF} \Downarrow$ [RockyLinux](https://rockylinux.org/) ? [AlmaLinux](https://almalinux.org/) ? [CentOS-stream](https://mirror.stream.centos.org/)
 ```
-epel-release.noarch epel-next-release.noarch gcc-c++ cmake bison ncurses ncurses-devel libaio \
-gnome-shell-extension-dash-to-dock.noarch gnome-extensions-app.x86_64 gnome-tweaks.noarch ibus.x86_64 \
-aide rear fapolicyd usbguard openscap openscap-scanner scap-security-guide \
-fastfetch-bash-completion.noarch
+epel-release.noarch epel-next-release.noarch gcc-c++ cmake bison ncurses ncurses-devel libaio ibus.x86_64 \
+aide rear fapolicyd usbguard openscap openscap-scanner scap-security-guide fastfetch-bash-completion.noarch \
+gnome-tweaks.noarch gnome-shell-extension-dash-to-dock.noarch gnome-extensions-app.x86_64 \
+xorg-x11-server-Xorg.x86_64 xorg-x11-xinit.x86_64 xorg-x11-xinit-session.x86_64 i3.x86_64
 ```
 > ##### $PKG_{apt}^{dpkg} \Downarrow$ [FreeBSD](https://www.freebsd.org/)
 ```
-### mkdir -p /usr/local/etc/pkg/repos && vi FreeBSD.conf
-# quarterly [ latest ]
+mkdir -p /usr/local/etc/pkg/repos && vi FreeBSD.conf
+    # quarterly [ latest ]
 FreeBSD: {
   url: "pkg+https://mirrors.ustc.edu.cn/freebsd-pkg/${ABI}/quarterly",
 }
@@ -109,61 +108,62 @@ nameserver 1.2.4.8
 nameserver 223.6.6.6
 
 ## /boot/loader.conf
-# if_re_load="YES"
-# if_re_name="/boot/modules/if_re.ko"
+	if_re_load="YES"
+	if_re_name="/boot/modules/if_re.ko"
 
-# pkg install xorg[ startx ]  gnome-lite
-# /usr/local/etc/sudoers
-# Use bash-completion, if available. /etc/bashrc or ~/.bashrc (or any other file sourcing those). If you have only bash >= 4.2 installed
+# pkg install xorg-server xorg-drivers \
+    xinit xauth i3 xterm sudo \
+    bash-completion awesome gnome-lite
+    # /usr/local/etc/sudoers
+    # Use bash-completion, if available. /etc/bashrc or ~/.bashrc (or any other file sourcing those). If you have only bash >= 4.2 installed
 [[ $PS1 && -f /usr/local/share/bash-completion/bash_completion ]] && \
     . /usr/local/share/bash-completion/bash_completion
 
-### security/ca_root_nss sudo bash-completion [ vim-gtk3 zh-auto-cn-l10n gnome-terminal gnome-system-monitor fusefs-ext2 fusefs-exfat nvidia-driver ]
+### security/ca_root_nss vim-gtk3 \
+    zh-auto-cn-l10n fusefs-ext2 \
+    fusefs-exfat
 
 ## /etc/fstab
-proc /proc	 procfs rw 0 0
+	proc /proc	 procfs rw 0 0
 
 ## /etc/rc.conf
-# ifconfig_re0="inet 10.0.1.100 netmask 255.255.255.0"
-# defaultrouter="10.0.1.1"
-# hostname="re"
-# ifconfig_re0="DHCP"
-# linux_enable="YES"
-# kld_list="/boot/modules/nvidia.ko /boot/modules/nvidia-modeset.ko"
-# kld_list="/boot/kernel/linux.ko vesa"
+    # ifconfig_re0="inet 10.0.1.100 netmask 255.255.255.0"
+    # defaultrouter="10.0.1.1"
+    # hostname="re"
+ifconfig_re0="DHCP"
+linux_enable="YES"
 dbus_enable="YES"
 hald_enable="YES"
 gdm_enable="YES"
 gnome_enable="YES"
+	#~/.xinitrc # exec i3
 
 ## /boot/loader.conf
-# if_re_load="YES"
-# if_re_name="/boot/modules/if_re.ko"
-# nvidia_load="YES"
+	if_re_load="YES"
+	if_re_name="/boot/modules/if_re.ko"
+	nvidia_load="YES"
+    kld_list="/boot/modules/nvidia.ko /boot/modules/nvidia-modeset.ko"
+        # kld_list="/boot/kernel/linux.ko vesa"
 
 ### kldstat
 ### Xorg :1 -configure
-### cp xorg.conf.new /usr/local/etc/X11/xorg.conf | /etc/X11/xorg.conf
+### cp xorg.conf.new 
+	/usr/local/etc/X11/xorg.conf
+	/etc/X11/xorg.conf
 
-### zh-fcitx-cloudpinyin zh-fcitx-libpinyin zh-fcitx-table-extra zh-fcitx-configtool
-## ~/.xprofile
+### zh-fcitx-cloudpinyin zh-fcitx-libpinyin \
+    zh-fcitx-table-extra zh-fcitx-configtool
+## ~/.xprofile ~/.xinitrc
+export GTK_IM_MODULE=fcitx
+export QT_IM_MODULE=fcitx
 export XMODIFIERS=@im=fcitx
-export GTK_IM_MODULE=fcitx
-export QT_IM_MODULE=fcitx
-export LANG=en_US.UTF-8
-export LC_CTYPE=zh_CN.UTF-8
+export LC_CTYPE=en_GB.UTF-8
 export XIM=fcitx
-export XIM_PROGRAM=fcitx
-## ~/.xinitrc
-export GTK_IM_MODULE=fcitx
-export QT_IM_MODULE=fcitx
-export XMODIFIERS="@im=fcitx"
-export LC_CTYPE="zh_CN.UTF-8"
-export XIM="fcitx"
 export XIM_PROGRAM="fcitx"
-
-## /etc/X11/xorg.conf
----VM-S--
+	#export XIM_ARGS=-"--daemonize --xim"
+```
+#### /etc/X11/xorg.conf
+```
 Section "Monitor"
                Identifier "Monitor0"
                VendorName "Monitor Vendor"
@@ -183,8 +183,8 @@ Section "Screen"
                          Modes "1024x768"
               EndSubSection
 EndSection
----VM-E--
----PY-S--
+```
+```
 Section "ServerLayout"
 	Identifier     "X.org Configured"
 	Screen      0  "Screen0" 0 0
@@ -262,42 +262,226 @@ Section "Screen"
 		Depth     24
 	EndSubSection
 EndSection
----PY-E--
-### zh-ibus-libpinyin
-XFCE ibus @.xinitrc ~/.xinitrc
-XIM=ibus;export XIM
-GTK_IM_MODULE=ibus;export GTK_IM_MODULE
-QT_IM_MODULE=xim; export QT_IM_MODULE
-XMODIFIERS='@im=ibus'; export XMODIFIERS
-XIM_PROGRAM="ibus-daemon"; export XIM_PROGRAM
-XIM_ARGS="-daemonize -xim"; export XIM_ARGS
-
-## ~/.profile
-# export LC_ALL=zh_CN.UTF-8
- 
-#@@cap_mkdb /etc/login.conf
-# chinese|Chinese Users Account:\
-# :charset=UTF-8:\
-# :lang=zh_CN.UTF-8:\
-# :tc=default:
- 
-#@@vipw :chinese:  #@@chpass ~/.login_conf
-# me:\
-# :charset=UTF-8:\
-# :lang=zh_CN.UTF-8:
-
-#@@xrdb -merge ~/.Xresources
-# xterm*faceName: Monospace # Luxi Mono
-xterm*faceSize: 12
-# xterm*locale:zh_CN.UTF-8
-# xterm*inputMethod:fcitx
-# xterm*vt100*geometry: 90x25
-# xterm*saveLines: 10000
-# xft*antiAlias: true
-# xft*autoHint: true
-# xterm*scrollBar: true
 ```
-## TOOLS
+##### appres XTerm | grep -i utf8
+#### ~/.bashrc
+    [[ -f ~/.Xresources ]] && xrdb -load ~/.Xresources
+
+#### ~/.Xresources
+```
+! XTerm*faceName: DejaVu Sans Mono:size=11:style=Book:antialias=true
+XTerm*faceName: Monospace:size=11:style=Book:antialias=true
+XTerm*faceNameDoublesize: size=11
+uxTerm*termName: xterm-256color
+XTerm*termName: xterm-256color
+XTerm*locale: true
+XTerm*utf8Title: true
+xft.dpi: 96
+xpdf.title: PDF
+xft.antialias: true
+xft.rgba: rgb
+xft.hinting: true
+xft.hintstyle: hintslight
+! XTerm*cursorColor: *xtDefaultForeground
+! Orange
+XTerm*cursorColor: #ffa530
+!XTerm*inputMethod: ibus
+
+*VT100*translations: #override \n\
+Shift <KeyPress> Insert:insert-selection(CLIPBOARD, CUT_BUFFER1) \n\
+~Shift~Ctrl<Btn2Up>: insert-selection(PRIMARY, CUT_BUFFER0) \n\
+~Shift<BtnUp>: select-end(CLIPBOARD, CUT_BUFFER1) \n\
+~Shift<BtnUp>: select-end(PRIMARY, CUT_BUFFER0)
+
+XTerm*renderFont:           true
+XTerm*cjk_width:            true
+XTerm*geometry:             80x25
+XTerm*dynamicColors:        true
+XTerm*utf8:                 2
+XTerm*eightBitInput:        true
+XTerm*scrollKey:            true
+XTerm*scrollTtyOutput:      false
+XTerm*scrollBar:            false
+XTerm*rightScrollBar:       false
+XTerm*jumpScroll:           true
+XTerm*multiScroll:          true
+XTerm*toolBar:              false
+XTerm*Scrollbar*thickness:  10
+XTerm*Scrollbar*background: black
+XTerm*Scrollbar*foreground: gray90
+XTerm*decTerminalID:        vt340
+XTerm*selectToClipboard:    true
+
+XTerm*allowBoldFonts: true
+XTerm*boldMode: false
+XTerm*font: terminus-12
+XTerm*boldFont: terminus-12
+XTerm*loginShell: true
+XTerm*vt100*geometry: 80x50
+XTerm*saveLines: 2000
+XTerm*charClass: 33:48,35:48,37:48,43:48,45-47:48,64:48,95:48,126:48
+XTerm*colorBDMode: true
+XTerm*colorBD: rgb:fc/fc/fc
+```
+```
+XTerm*faceName:             DejaVu Sans Mono:size=11:style=Book:antialias=true
+XTerm*faceNameDoublesize:   size=11
+XTerm*renderFont:           true
+XTerm*cjk_width:            true
+XTerm*geometry:             80x25
+XTerm*dynamicColors:        true
+XTerm*utf8:                 2
+XTerm*eightBitInput:        true
+XTerm*saveLines:            2048
+XTerm*scrollKey:            true
+XTerm*scrollTtyOutput:      false
+XTerm*scrollBar:            false
+XTerm*rightScrollBar:       false
+XTerm*jumpScroll:           true
+XTerm*multiScroll:          true
+XTerm*toolBar:              false
+XTerm*Scrollbar*thickness:  10
+XTerm*Scrollbar*background: black
+XTerm*Scrollbar*foreground: gray90
+XTerm*termName:             xterm-256color
+XTerm*decTerminalID:        vt340
+XTerm*selectToClipboard:    true
+XTerm*background:   rgb:1a/1a/1a
+XTerm*foreground:   rgb:d6/d6/d6
+XTerm*cursorColor:  rgb:d6/d6/d6
+XTerm*color0:       rgb:00/00/00
+XTerm*color1:       rgb:9e/18/28
+XTerm*color2:       rgb:00/88/00
+XTerm*color3:       rgb:96/8a/38
+XTerm*color4:       rgb:41/41/71
+XTerm*color5:       rgb:96/3c/59
+XTerm*color6:       rgb:41/81/79
+XTerm*color7:       rgb:be/be/be
+XTerm*color8:       rgb:66/66/66
+XTerm*color9:       rgb:cf/61/71
+XTerm*color10:      rgb:7c/bc/8c
+XTerm*color11:      rgb:ff/f7/96
+XTerm*color12:      rgb:41/86/be
+XTerm*color13:      rgb:cf/9e/be
+XTerm*color14:      rgb:71/be/be
+XTerm*color15:      rgb:ff/ff/ff
+
+```
+```
+XTerm*font: terminus-12
+XTerm*boldFont: terminus-12
+XTerm*loginShell: true
+XTerm*vt100*geometry: 80x50
+XTerm*saveLines: 2000
+XTerm*charClass: 33:48,35:48,37:48,43:48,45-47:48,64:48,95:48,126:48
+XTerm*termName: xterm-color
+XTerm*eightBitInput: false
+XTerm*foreground: rgb:a8/a8/a8
+XTerm*background: rgb:00/00/00
+XTerm*color0: rgb:00/00/00
+XTerm*color1: rgb:a8/00/00
+XTerm*color2: rgb:00/a8/00
+XTerm*color3: rgb:a8/54/00
+XTerm*color4: rgb:64/95/ed
+XTerm*color5: rgb:a8/00/a8
+XTerm*color6: rgb:00/a8/a8
+XTerm*color7: rgb:a8/a8/a8
+XTerm*color8: rgb:54/54/54
+XTerm*color9: rgb:fc/54/54
+XTerm*color10: rgb:54/fc/54
+XTerm*color11: rgb:fc/fc/54
+XTerm*color12: rgb:ff/7f/50
+XTerm*color13: rgb:fc/54/fc
+XTerm*color14: rgb:54/fc/fc
+XTerm*color15: rgb:fc/fc/fc
+XTerm*boldMode: false
+XTerm*colorBDMode: true
+XTerm*colorBD: rgb:fc/fc/fc
+```
+```
+! Lighter Black & Gray
+XTerm*background: #0c0c0c
+XTerm*foreground: #aaaaaa
+! Black & DarkGray
+XTerm*color0: #000000
+XTerm*color8: #555555
+! DarkRed & Red
+XTerm*color1: #aa0000
+XTerm*color9: #ff5555
+! DarkGreen & Green
+XTerm*color2: #00aa00
+XTerm*color10: #55ff55
+! DarkYellow & Yellow
+XTerm*color3: #aa5500
+XTerm*color11: #ffff55
+! DarkBlue & Blue
+XTerm*color4: #0000aa
+XTerm*color12: #5555ff
+! DarkMagenta & Magenta
+XTerm*color5: #aa00aa
+XTerm*color13: #ff55ff
+! DarkCyan & Cyan
+XTerm*color6: #00aaaa
+XTerm*color14: #55ffff
+! LightGray + White
+XTerm*color7: #aaaaaa
+XTerm*color15: #ffffff
+```
+```
+XTerm*font: -Misc-Fixed-Medium-R-Normal--20-200-75-75-C-100-ISO10646-1
+! XTerm*font: -misc-fixed-medium-r-normal--18-*-*-*-*-*-iso10646-1
+! XTerm*iconName: terminal
+XTerm*loginShell: true
+XTerm*foreground: gray90
+XTerm*background: black
+XTerm*cursorColor: rgb:00/80/00
+XTerm*borderColor: white
+XTerm*scrollColor: black
+XTerm*visualBell: true
+XTerm*saveLines: 1000
+!! XTerm.VT100.allowSendEvents: True
+XTerm*allowSendEvents: True
+XTerm*sessionMgt: false
+! XTerm*eightBitInput:  false
+! XTerm*metaSendsEscape: true
+! XTerm*internalBorder:  10
+! XTerm*highlightSelection:  true
+! XTerm*VT100*colorBDMode:  on
+! XTerm*VT100*colorBD:  blue
+! XTerm.VT100.eightBitOutput:  true
+! XTerm.VT100.titeInhibit:  false
+XTerm*background:  Black
+XTerm*foreground:  Grey
+XTerm*color0: black
+XTerm*color1: red3
+XTerm*color2: green3
+XTerm*color3: yellow3
+XTerm*color4: DodgerBlue1
+XTerm*color5: magenta3
+XTerm*color6: cyan3
+XTerm*color7: gray90
+XTerm*color8: gray50
+XTerm*color9: red
+XTerm*color10: green
+XTerm*color11: yellow
+XTerm*color12: blue
+XTerm*color13: magenta
+XTerm*color14: cyan
+XTerm*color15: white
+XTerm*colorUL: yellow
+XTerm*colorBD: white
+! XTerm*mainMenu*backgroundPixmap: gradient:vertical?dimension=400&start=gray10&end=gray40
+! XTerm*mainMenu*foreground:          white
+! XTerm*vtMenu*backgroundPixmap: gradient:vertical?dimension=550&start=gray10&end=gray40
+! XTerm*vtMenu*foreground:             white
+! XTerm*fontMenu*backgroundPixmap: gradient:vertical?dimension=300&start=gray10&end=gray40
+! XTerm*fontMenu*foreground:           white
+! XTerm*tekMenu*backgroundPixmap: gradient:vertical?dimension=300&start=gray10&end=gray40
+! XTerm*tekMenu*foreground:            white
+! XTerm Profiles (idea from dag wieers)
+XTerm*rightScrollBar: false
+```
+## [Vim](https://ftp.nluug.nl/pub/vim/unix/)
 
 > ##### /usr/share/vim/vim82/colors/blue.vim
 > - hi Normal	guifg=yellow	guibg=darkBlue	ctermfg=yellow	ctermbg=none
@@ -306,6 +490,9 @@ xterm*faceSize: 12
 >> - $\displaystyle\coprod_{/usr/share/vim/vimrc@debian}^{/etc/vimrc@centos}$
 ```
 syntax on
+set cursorcolumn
+set cursorline
+"set statusline=\ %<%F\ [%1*%M%*%n%R%H]%=\ %y\ %0(%{&fileformat}\ %{&encoding}\ %c:%l\ ?\ %L%)
 set hlsearch
 set incsearch
 set autoindent "redhat
@@ -315,7 +502,7 @@ set mouse=a "redhat
 set ai	"redhat
 set autowrite "redhat
 set t_Co=256 "redhat
-colorscheme desert
+colorscheme desert "delek "industry "murphy
 "hi IncSearch	cterm=bold ctermfg=red ctermbg=darkgreen
 "hi Search	cterm=bold ctermfg=red ctermbg=darkgreen
 if &diff
@@ -331,11 +518,14 @@ station wlan-name get-networks
 station wlan-name connect wifi-name
 
 /etc/pacman.d/mirrorlist # Server = https://mirrors.ustc.edu.cn/archlinux/$repo/os/$arch
-# /etc/pacman.conf # [archlinuxcn] Server = https://mirrors.ustc.edu.cn/archlinux/$arch ??? sudo pacman -S archlinuxcn-keyring && sudo pacman -Sy
-pacstrap /mnt base linux linux-firmware
+    # /etc/pacman.conf # [archlinuxcn] Server = https://mirrors.ustc.edu.cn/archlinux/$arch 
+    ??? sudo pacman -S archlinuxcn-keyring && sudo pacman -Sy
+pacstrap /mnt base linux-lts linux-firmware
 genfstab -U /mnt >> /mnt/etc/fstab
 arch-chroot /mnt
-pacman -S grub efibootmgr vim iwd dhcpcd sudo networkmanager
+pacman -S grub efibootmgr os-prober \
+    vim iwd dhcpcd sudo networkmanager \
+    bash-completion
 systemctl enable dhcpcd NetworkManager iwd
 
 passwd
@@ -343,17 +533,26 @@ useradd -m -G wheel username
 passwd username
 EDITOR=vim visudo # %wheel ALL=(ALL) ALL
 
-/etc/default/grub # GRUB_DISABLE_OS_PROBER=false
-grub-install --target=x86_64-efi --efi-directory=/boot --bootloader-id=ArchLinux # grub-install --target=i386-pc /dev/sda
+/etc/default/grub
+    GRUB_DISABLE_OS_PROBER=false
+
+grub-install --target=x86_64-efi --efi-directory=/boot/EFI --recheck --removable
+    # grub-install --target=i386-pc --boot-directory=/boot --recheck  /dev/sdX
+
 grub-mkconfig -o /boot/grub/grub.cfg
 
-/etc/locale.gen # en_US.UTF-8
+/etc/locale.gen # en_GB.UTF-8
 locale-gen
-pacman -S gnome gdm wqy-microhei
-vim /etc/locale.conf # LANG=en_US.UTF-8
-systemctl enable gdm
+pacman -S wqy-microhei xorg-server xorg-xinit xf86-video-vesa gnome gdm
+vim /etc/locale.conf # LANG=en_GB.UTF-8
+    systemctl enable gdm
+    #sudo mkinitcpio -p linux
 exit
 reboot
+pacman -S i3-wm i3status dmenu \
+    xterm fcitx fcitx-configtool \
+    fcitx-googlepinyin fcitx-libpinyin \
+    fcitx-qt5 fcitx-table-extra
 
 pacman -S package ?? apt
 pacman -Ss package ?? apt list
@@ -363,16 +562,17 @@ pacman -Syu ?? apt upgrade
 pacman -Rc package ?? apt remove
 pacman -Rsn package ?? apt remove --purge
 pacman -Sc ?? apt clean
-# pacman -Scc
+    # pacman -Scc
 pacman -Su --ignore package
 pacman -Sg package
 pacman -Q ?? dpkg -l
 pacman -U package ?? dpkg --install
-# pacman -Qdt
+    # pacman -Qdt
+pacman -Qdtq | pacman -Rsn -
 ```
 ## ~~[Gentoo](https://www.gentoo.org/)~~
 ```
-ls /sys/firmware/efi/efivars
+mount | grep efi
 # lsblk
 fdisk /dev/sda # m p g o n t d l w ??? cfdisk
 mkfs.vfat -F 32 /dev/sda1
@@ -382,8 +582,13 @@ swapon /dev/sda2
 mkdir --parents /mnt/gentoo
 mount /dev/sda3 /mnt/gentoo
 
+??? /boot/EFI/BOOT/BOOTx64.EFI
+	???# \EFI\DEBIAN\SHIMX64.EFI
+
 tar xpvf stage3-*.tar.xz --xattrs-include='*.*' --numeric-owner
-/etc/portage/make.conf MAKEOPTS="-j4" ??? RAM/2
+/etc/portage/make.conf 
+    MAKEOPTS="-j4" ??? RAM/2
+    GRUB_PLATFORMS="emu efi-32 efi-64 pc"
 
 mirrorselect -i -o >> /mnt/gentoo/etc/portage/make.conf
 mkdir --parents /mnt/gentoo/etc/portage/repos.conf
@@ -403,86 +608,105 @@ source /etc/profile
 export PS1="(chroot) ${PS1}"
 
 mount /dev/sda1 /boot
-# mount /dev/sda4 /boot/efi
+# mount /dev/sda4 /boot/EFI
 
 emerge-webrsync ?? /var/db/repos/gentoo/
-# emerge --sync ?? Suppose there is a need for the last package updates (up to 1 hour),
-# emerge --sync --quiet ?? On slow terminals, like some framebuffers or serial consoles, it is recommended to use the --quiet option to speed up the process
-# eselect news list
-# eselect news read
-eselect profile list
-eselect profile set <number>
+    # emerge --sync ?? Suppose there is a need for the last package updates (up to 1 hour),
+    # emerge --sync --quiet ?? On slow terminals, like some framebuffers or serial consoles, it is recommended to use the --quiet option to speed up the process
+    # eselect news list
+    # eselect news read
+    # eselect profile list
+    # eselect profile set <number>
 
-emerge --ask --verbose --update --deep --newuse @world # longTime ?? emerge -avuDN @world
-# emerge --info | grep ^USE
-# less /var/db/repos/gentoo/profiles/use.desc
-# nano -w /etc/portage/make.conf # USE=“”
+emerge --ask --verbose --update --deep --newuse @world # longTime
+    emerge -avuDN @world
+    # emerge --info | grep ^USE
+    # nano -w /etc/portage/make.conf # USE=“”
 emerge --ask app-portage/cpuid2cpuflags
-# cpuid2cpuflags
+    # cpuid2cpuflags
 echo "*/* $(cpuid2cpuflags)" > /etc/portage/package.use/00cpu-flags
-# ls /usr/share/zoneinfo
+    # ls /usr/share/zoneinfo
 echo "Europe/Brussels" > /etc/timezone # openrc
 emerge --config sys-libs/timezone-data # openrc
 ln -sf ../usr/share/zoneinfo/Europe/Brussels /etc/localtime # systemd
 nano -w /etc/locale.gen
-# locale-gen
-# eselect locale list
-# eselect locale set 5 # /etc/env.d/02locale
-# blkid >> /etc/fstab
+    # locale-gen
+    # eselect locale list
+    # eselect locale set 5 # /etc/env.d/02locale
 env-update && source /etc/profile && export PS1="(chroot) ${PS1}"
 
 emerge --ask sys-kernel/linux-firmware
 emerge --ask sys-kernel/installkernel-systemd-boot ??? gummiboot # bootloader
 emerge --ask sys-kernel/installkernel-gentoo # /boot ??? GRUB LILO
 emerge --ask sys-kernel/gentoo-kernel ??? longTime
-# emerge --ask sys-kernel/gentoo-kernel-bin
+    # emerge --ask sys-kernel/gentoo-kernel-bin
 emerge --depclean
-# emerge --prune sys-kernel/gentoo-kernel sys-kernel/gentoo-kernel-bin
+    # emerge --prune sys-kernel/gentoo-kernel sys-kernel/gentoo-kernel-bin
 emerge --ask @module-rebuild
-# emerge --config sys-kernel/gentoo-kernel
-# emerge --config sys-kernel/gentoo-kernel-bin
+    # emerge --config sys-kernel/gentoo-kernel
+    # emerge --config sys-kernel/gentoo-kernel-bin
 emerge --ask sys-kernel/gentoo-sources
 eselect kernel list
-eselect kernel set 1
-ls -l /usr/src/linux
+    # eselect kernel set 1
+    # ls -l /usr/src/linux
+
+    # mkdir /etc/portage/package.license
+    # /etc/portage/package.license/linux-firmware
+        sys-kernel/linux-firmware @BINARY-REDISTRIBUTABLE
+emerge --ask sys-kernel/genkernel
+genkernel --menuconfig all
+genkernel --mountboot --install all
+    # ls /boot/vmlinu* /boot/initramfs*
+    # root #ls /lib/modules
+    # emerge --ask sys-kernel/dracut
+    # dracut --kver=5.15.52-gentoo
+
+# blkid >> /etc/fstab
+    #/dev/sda1   
+    	UUID=		/boot        ext4    defaults,noatime     0 2
+    	#/dev/xx
+    		#UUID=		/boot/EFI	vfat	umask=0077,shortname=winnt	0	2
+    #/dev/sda2
+    	UUID=		none         swap    sw                   0 0
+    #/dev/sda3
+    	UUID=		/            ext4    noatime              0 1
 
 emerge --ask net-misc/dhcpcd
-rc-update add dhcpcd default
-rc-service dhcpcd start
-# systemctl enable --now dhcpcd
-emerge --ask --noreplace net-misc/netifrc
+    #rc-update add dhcpcd default
+    #rc-service dhcpcd start
+systemctl enable --now dhcpcd
 
-# /etc/conf.d/net
-# configth0="dhcp"
-# config_eth0="192.168.0.2 netmask 255.255.255.0 brd 192.168.0.255"
-# routes_eth0="default via 192.168.0.1"
-# cd /etc/init.d
-# ln -s net.lo net.eth0
-# rc-update add net.eth0 default
+    # /etc/conf.d/net
+    # configth0="dhcp"
+    # config_eth0="192.168.0.2 netmask 255.255.255.0 brd 192.168.0.255"
+    # routes_eth0="default via 192.168.0.1"
+    # cd /etc/init.d
+    # ln -s net.lo net.eth0
+    # rc-update add net.eth0 default
 
-# systemd-firstboot --prompt --setup-machine-id
-# systemctl preset-all --preset-mode=enable-only
-# systemctl preset-all
-emerge --ask app-admin/sysklogd
-rc-update add sysklogd default
-emerge --ask net-misc/chrony
-rc-update add chronyd default
-# systemctl enable chronyd.service
-# systemctl enable systemd-timesyncd.service
-emerge --ask net-misc/dhcpcd
-# emerge --ask net-dialup/ppp
+systemd-firstboot --prompt --setup-machine-id
+systemctl preset-all --preset-mode=enable-only
+systemctl preset-all
+    # emerge --ask net-dialup/ppp
 emerge --ask net-wireless/iw net-wireless/wpa_supplicant
-# emerge --ask --verbose sys-boot/grub
+    # emerge --ask --verbose sys-boot/grub:2
 echo 'GRUB_PLATFORMS="efi-64"' >> /etc/portage/make.conf
 emerge --ask sys-boot/grub
-# emerge --ask --update --newuse --verbose sys-boot/grub
+    # emerge --ask --update --newuse --verbose sys-boot/grub
 
-# grub-install /dev/sda
 grub-install --target=x86_64-efi --efi-directory=/boot
-# grub-instal return; Could not prepare Boot variable: Read-only file system
-# mount -o remount,rw,nosuid,nodev,noexec --types efivarfs efivarfs /sys/firmware/efi/efivars
+    # grub-instal return; Could not prepare Boot variable: Read-only file system
+    # mount -o remount,rw,nosuid,nodev,noexec --types efivarfs efivarfs /sys/firmware/efi/efivars
 grub-install --target=x86_64-efi --efi-directory=/boot --removable
 grub-mkconfig -o /boot/grub/grub.cfg
+
+emerge --ask sys-boot/efibootmgr
+    #mkdir -p /boot/EFI/BOOT
+    #cp /boot/vmlinuz-* /boot/EFI/BOOt/BOOTX64.EFI
+    #efibootmgr --create --disk /dev/sda --part 2 --label "Gentoo" --loader "\EFI\BOOT\BOOTX64.EFI"
+    #efibootmgr -c -d /dev/sda -p 2 -L "Gentoo" -l "\EFI\BOOT\BOOTX64.EFI" initrd='\initramfs-genkernel-amd64-5.15.52-gentoo'
+    #efibootmgr -b 0002 -B 0002
+
 useradd -m -G users,wheel,audio -s /bin/bash username
 passwd username
 
@@ -494,18 +718,50 @@ reboot
 systemctl start dhcpcd
 mount / -o remount,rw
 
-# To update all installed packages to the latest available versions
-emaint --auto sync ?? emaint -a sync
+    # awesome
+~/xinitrc # exec awesome
+/etc/portage/make.conf # USE="X" VIDEO_CARDS="nouveau"
+portageq envvar INPUT_DEVICES # Libinput
+emerge --pretend --verbose x11-base/xorg-drivers x11-wm/awesome
+env-update && source /etc/profile
+startx
+
+    # fcitx
+USE="X autostart cairo debug enchant gtk2 gtk3 introspection lua nls opencc pango table test xkb" emerge --ask app-i18n/fcitx
+    # ~/.xprofile or ~/.xinitrc
+eval "$(dbus-launch --sh-syntax --exit-with-session)"
+export XMODIFIERS="@im=fcitx"
+export QT_IM_MODULE=fcitx
+export GTK_IM_MODULE=fcitx
+
+emerge --ask app-i18n/fcitx-configtool app-i18n/fcitx-sunpinyin app-i18n/fcitx-libpinyin
+
+    # ibus
+USE="X appindicator emoji gtk2 gtk3 gtk4 gui introspection libnotify nls python systemd test unicode vala wayland" emerge --ask app-i18n/ibus ibus-libpinyin
+eix -c -S engine app-i18n/ibus
+    # ~/.bashrc or ~/.xinitrc
+export XMODIFIERS=@im=ibus
+export GTK_IM_MODULE=ibus
+export QT_IM_MODULE=ibus
+# Use `xim` in case some Electron apps (like Chromium) refuse to work with IBus
+# export GTK_IM_MODULE=xim
+# export QT_IM_MODULE=xim
+ibus-daemon -drx
+
+echo "www-client/google-chrome google-chrome" >> /etc/portage/package.license
+emerge --ask www-client/google-chrome
+google-chrome-stable --gtk-version=4 # Chrome needs to be instructed to use gtk4 in order to use IM such as fcitx5.
+
 # Any configuration file changes should be addressed, this can be managed by dispatch-conf:
 dispatch-conf
 # After the update, Portage recommends running 
 emerge --depclean
 
-## dracut
+    ## dracut
 grub> ls , ls /
 grub> set root=(hd0,1)
 grub> linux /boot/vmlinuz-...-generic root=/dev/sda1
-grub> initrd /boot/initrd...img
+grub> initrd /boot/initrd.img
 grub> boot
 ```
 > ##### yum groupinstall 'Server with GUI' 
@@ -521,11 +777,6 @@ grub> boot
 ---
 > ##### sudo update-grub
 > - $\displaystyle\phi_{/boot/efi/EFI/centos/grub.cfg}^{/boot/grub2/grub.cfga} {grub2-mkconfig\ -o}$
----
-##### ` systemctl enable systemd-resolved.service ` #debian
-##### ` systemctl disable accounts-daemon.service avahi-daemon.service ` #centos
-> ##### /etc/gdm/custom.conf
-> + $\displaystyle\psi_{WaylandEnable=false}^{DefaultSession=gnome-xorg.desktop} {fedora}$ 
 ---
 > ##### yum install libvirt-client
 >> + $\displaystyle\prod_{virsh net-undefine default}^{virsh net-destroy default}$
@@ -547,7 +798,6 @@ export LESS=-R #debian
 #### ` sed -i 's/GRUB_CMDLINE_LINUX=\"/GRUB_CMDLINE_LINUX=\"nouveau.modeset=1 /g ' /etc/default/grub @nouveau.modeset=0|1 #rd.driver.blacklist=nouveau `
 ##### ` yum remove $(rpm -qa | grep kernel | grep -v $(uname -r)) `
 ##### ` dracut -f /boot/initramfs-$(uname -r).img $(uname -r) ` #Create new initramfs image
-##### ` systemctl --user mask tracker-extract.service tracker-miner-fs.service tracker-store.service tracker-writeback.service ` #debian
 
 > #### [METACPAN](https://metacpan.org/)
 ```

@@ -10,7 +10,7 @@ $termuxhome/.bashrc
 EOF
 ;;
 esac
-termuxextrakeys="#ZXh0cmEta2V5cwo\nextra-keys = [['ESC','/','<','>','-','HOME','UP','END','PGUP'],['TAB','CTRL','{','}','ALT','LEFT','DOWN','RIGHT','PGDN']]"
+termuxextrakeys="#ZXh0cmEta2V5cwo\nextra-keys = [['ESC','/','<','>','(',')','-','HOME','UP','END','PGUP'],['TAB','CTRL','{','}','[',']','BACKSLASH','LEFT','DOWN','RIGHT','PGDN']]"
 termuxsourceslist="deb https://mirrors.ustc.edu.cn/termux/apt/termux-main stable main"
 termuxhome="/data/data/com.termux/files/home"
 if [ -f _$0 ];then

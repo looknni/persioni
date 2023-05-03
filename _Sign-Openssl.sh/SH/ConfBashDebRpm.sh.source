@@ -111,10 +111,16 @@ lognamen=`logname`
 aptsources="/etc/apt/sources.list"
 Batfun ${aptsources}
 cat > $aptsources << "EOF"
-deb https://repo.huaweicloud.com/debian/ bullseye main contrib non-free
-deb https://repo.huaweicloud.com/debian/ bullseye-updates main contrib non-free
-deb https://repo.huaweicloud.com/debian/ bullseye-backports main contrib non-free
-deb https://repo.huaweicloud.com/debian-security bullseye-security main contrib non-free
+deb https://mirrors.tuna.tsinghua.edu.cn/debian/ bookworm main contrib non-free non-free-firmware
+# deb-src https://mirrors.tuna.tsinghua.edu.cn/debian/ bookworm main contrib non-free non-free-firmware
+deb https://mirrors.tuna.tsinghua.edu.cn/debian/ bookworm-updates main contrib non-free non-free-firmware
+# deb-src https://mirrors.tuna.tsinghua.edu.cn/debian/ bookworm-updates main contrib non-free non-free-firmware
+
+deb https://mirrors.tuna.tsinghua.edu.cn/debian/ bookworm-backports main contrib non-free non-free-firmware
+# deb-src https://mirrors.tuna.tsinghua.edu.cn/debian/ bookworm-backports main contrib non-free non-free-firmware
+
+deb https://mirrors.tuna.tsinghua.edu.cn/debian-security bookworm-security main contrib non-free non-free-firmware
+# deb-src https://mirrors.tuna.tsinghua.edu.cn/debian-security bookworm-security main contrib non-free non-free-firmware
 EOF
 	echo "Acquire::http::Pipeline-Depth \"0\";" > /etc/apt/apt.conf.d/99nopipelining
 apt update -y
