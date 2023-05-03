@@ -111,13 +111,18 @@ nameserver 223.6.6.6
 # if_re_load="YES"
 # if_re_name="/boot/modules/if_re.ko"
 
-# pkg install xorg-server xorg-drivers xinit xauth i3 xterm sudo bash-completion #awesome #nome-lite
+# pkg install xorg-server xorg-drivers \
+    xinit xauth i3 xterm sudo \
+    bash-completion #awesome #gnome-lite
     # /usr/local/etc/sudoers
     # Use bash-completion, if available. /etc/bashrc or ~/.bashrc (or any other file sourcing those). If you have only bash >= 4.2 installed
 [[ $PS1 && -f /usr/local/share/bash-completion/bash_completion ]] && \
     . /usr/local/share/bash-completion/bash_completion
 
-### security/ca_root_nss vim-gtk3 zh-auto-cn-l10n fusefs-ext2 fusefs-exfat gnome-system-monitor gnome-screenshot
+### security/ca_root_nss vim-gtk3 \
+    zh-auto-cn-l10n fusefs-ext2 \
+    fusefs-exfat gnome-system-monitor \
+    gnome-screenshot
 
 ## /etc/fstab
 #proc /proc	 procfs rw 0 0
@@ -147,7 +152,8 @@ ifconfig_re0="DHCP"
 	/usr/local/etc/X11/xorg.conf
 	/etc/X11/xorg.conf
 
-### zh-fcitx-cloudpinyin zh-fcitx-libpinyin zh-fcitx-table-extra zh-fcitx-configtool
+### zh-fcitx-cloudpinyin zh-fcitx-libpinyin \
+    zh-fcitx-table-extra zh-fcitx-configtool
 ## ~/.xprofile ~/.xinitrc
 export GTK_IM_MODULE=fcitx
 export QT_IM_MODULE=fcitx
@@ -515,13 +521,15 @@ station wlan-name connect wifi-name
 pacstrap /mnt base linux-lts linux-firmware
 genfstab -U /mnt >> /mnt/etc/fstab
 arch-chroot /mnt
-pacman -S grub efibootmgr os-prober vim iwd dhcpcd sudo networkmanager bash-completion
+pacman -S grub efibootmgr os-prober \
+    vim iwd dhcpcd sudo networkmanager \
+    bash-completion
 systemctl enable dhcpcd NetworkManager iwd
 
 passwd
 useradd -m -G wheel username
 passwd username
-visudo # %wheel ALL=(ALL) ALL
+EDITOR=vim visudo # %wheel ALL=(ALL) ALL
 
 /etc/default/grub
     GRUB_DISABLE_OS_PROBER=false
@@ -539,7 +547,10 @@ vim /etc/locale.conf # LANG=en_GB.UTF-8
     #sudo mkinitcpio -p linux
 exit
 reboot
-pacman -S i3-wm i3status dmenu xterm fcitx fcitx-configtool fcitx-googlepinyin fcitx-libpinyin fcitx-qt5 fcitx-table-extra
+pacman -S i3-wm i3status dmenu \
+    xterm fcitx fcitx-configtool \
+    fcitx-googlepinyin fcitx-libpinyin \
+    fcitx-qt5 fcitx-table-extra
 
 pacman -S package ?? apt
 pacman -Ss package ?? apt list
@@ -559,7 +570,7 @@ pacman -Qdtq | pacman -Rsn -
 ```
 ## ~~[Gentoo](https://www.gentoo.org/)~~
 ```
-ls /sys/firmware/efi/efivars
+mount | grep efi
 # lsblk
 fdisk /dev/sda # m p g o n t d l w ??? cfdisk
 mkfs.vfat -F 32 /dev/sda1
@@ -691,6 +702,7 @@ emerge --ask sys-boot/efibootmgr
     #cp /boot/vmlinuz-* /boot/EFI/BOOt/BOOTX64.EFI
     #efibootmgr --create --disk /dev/sda --part 2 --label "Gentoo" --loader "\EFI\BOOT\BOOTX64.EFI"
     #efibootmgr -c -d /dev/sda -p 2 -L "Gentoo" -l "\EFI\BOOT\BOOTX64.EFI" initrd='\initramfs-genkernel-amd64-5.15.52-gentoo'
+    #efibootmgr -b 0002 -B 0002
 
 useradd -m -G users,wheel,audio -s /bin/bash username
 passwd username
@@ -703,7 +715,7 @@ reboot
 systemctl start dhcpcd
 mount / -o remount,rw
 
-# awesome
+    # awesome
 ~/xinitrc # exec awesome
 /etc/portage/make.conf # USE="X" VIDEO_CARDS="nouveau"
 portageq envvar INPUT_DEVICES # Libinput
@@ -711,9 +723,9 @@ emerge --pretend --verbose x11-base/xorg-drivers x11-wm/awesome
 env-update && source /etc/profile
 startx
 
-# fcitx
+    # fcitx
 USE="X autostart cairo debug enchant gtk2 gtk3 introspection lua nls opencc pango table test xkb" emerge --ask app-i18n/fcitx
-# ~/.xprofile or ~/.xinitrc
+    # ~/.xprofile or ~/.xinitrc
 eval "$(dbus-launch --sh-syntax --exit-with-session)"
 export XMODIFIERS="@im=fcitx"
 export QT_IM_MODULE=fcitx
@@ -721,10 +733,10 @@ export GTK_IM_MODULE=fcitx
 
 emerge --ask app-i18n/fcitx-configtool app-i18n/fcitx-sunpinyin app-i18n/fcitx-libpinyin
 
-# ibus
+    # ibus
 USE="X appindicator emoji gtk2 gtk3 gtk4 gui introspection libnotify nls python systemd test unicode vala wayland" emerge --ask app-i18n/ibus ibus-libpinyin
 eix -c -S engine app-i18n/ibus
-# ~/.bashrc or ~/.xinitrc
+    # ~/.bashrc or ~/.xinitrc
 export XMODIFIERS=@im=ibus
 export GTK_IM_MODULE=ibus
 export QT_IM_MODULE=ibus
@@ -742,7 +754,7 @@ dispatch-conf
 # After the update, Portage recommends running 
 emerge --depclean
 
-## dracut
+    ## dracut
 grub> ls , ls /
 grub> set root=(hd0,1)
 grub> linux /boot/vmlinuz-...-generic root=/dev/sda1
