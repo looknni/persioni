@@ -380,7 +380,7 @@ xterm*color0: rgb:00/00/00
 xterm*color1: rgb:a8/00/00
 xterm*color2: rgb:00/a8/00
 xterm*color3: rgb:a8/54/00
-xterm*color4: rgb:00/00/a8
+xterm*color4: rgb:64/95/ed
 xterm*color5: rgb:a8/00/a8
 xterm*color6: rgb:00/a8/a8
 xterm*color7: rgb:a8/a8/a8
