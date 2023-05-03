@@ -275,8 +275,11 @@ xterm*faceName: Monospace:size=11:style=Book:antialias=true
 xterm*faceNameDoublesize: size=11
 uxTerm*termName: xterm-256color
 xterm*termName: xterm-256color
-xterm*locale: UTF-8
+xterm*locale: true
+xterm*utf8Title: true
 xft.dpi: 96
+xpdf.title: PDF
+Xft.antialias: true
 xft.rgba: rgb
 xft.hinting: true
 xft.hintstyle: hintslight
