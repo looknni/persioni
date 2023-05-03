@@ -108,12 +108,12 @@ nameserver 1.2.4.8
 nameserver 223.6.6.6
 
 ## /boot/loader.conf
-# if_re_load="YES"
-# if_re_name="/boot/modules/if_re.ko"
+	if_re_load="YES"
+	if_re_name="/boot/modules/if_re.ko"
 
 # pkg install xorg-server xorg-drivers \
     xinit xauth i3 xterm sudo \
-    bash-completion #awesome #gnome-lite
+    bash-completion awesome gnome-lite
     # /usr/local/etc/sudoers
     # Use bash-completion, if available. /etc/bashrc or ~/.bashrc (or any other file sourcing those). If you have only bash >= 4.2 installed
 [[ $PS1 && -f /usr/local/share/bash-completion/bash_completion ]] && \
@@ -121,30 +121,29 @@ nameserver 223.6.6.6
 
 ### security/ca_root_nss vim-gtk3 \
     zh-auto-cn-l10n fusefs-ext2 \
-    fusefs-exfat gnome-system-monitor \
-    gnome-screenshot
+    fusefs-exfat
 
 ## /etc/fstab
-#proc /proc	 procfs rw 0 0
+	proc /proc	 procfs rw 0 0
 
 ## /etc/rc.conf
     # ifconfig_re0="inet 10.0.1.100 netmask 255.255.255.0"
     # defaultrouter="10.0.1.1"
     # hostname="re"
 ifconfig_re0="DHCP"
-# linux_enable="YES"
-# kld_list="/boot/modules/nvidia.ko /boot/modules/nvidia-modeset.ko"
+linux_enable="YES"
+kld_list="/boot/modules/nvidia.ko /boot/modules/nvidia-modeset.ko"
         # kld_list="/boot/kernel/linux.ko vesa"
-#dbus_enable="YES"
-#hald_enable="YES"
-#gdm_enable="YES"
-#gnome_enable="YES"
-#~/.xinitrc # exec i3
+dbus_enable="YES"
+hald_enable="YES"
+gdm_enable="YES"
+gnome_enable="YES"
+	#~/.xinitrc # exec i3
 
 ## /boot/loader.conf
-    # if_re_load="YES"
-    # if_re_name="/boot/modules/if_re.ko"
-    # nvidia_load="YES"
+	if_re_load="YES"
+	if_re_name="/boot/modules/if_re.ko"
+	nvidia_load="YES"
 
 ### kldstat
 ### Xorg :1 -configure
@@ -544,9 +543,9 @@ grub-mkconfig -o /boot/grub/grub.cfg
 
 /etc/locale.gen # en_GB.UTF-8
 locale-gen
-pacman -S wqy-microhei xorg-server xorg-xinit xf86-video-vesa #gnome #gdm
+pacman -S wqy-microhei xorg-server xorg-xinit xf86-video-vesa gnome gdm
 vim /etc/locale.conf # LANG=en_GB.UTF-8
-    #systemctl enable gdm
+    systemctl enable gdm
     #sudo mkinitcpio -p linux
 exit
 reboot
