@@ -132,8 +132,6 @@ nameserver 223.6.6.6
     # hostname="re"
 ifconfig_re0="DHCP"
 linux_enable="YES"
-kld_list="/boot/modules/nvidia.ko /boot/modules/nvidia-modeset.ko"
-        # kld_list="/boot/kernel/linux.ko vesa"
 dbus_enable="YES"
 hald_enable="YES"
 gdm_enable="YES"
@@ -144,6 +142,8 @@ gnome_enable="YES"
 	if_re_load="YES"
 	if_re_name="/boot/modules/if_re.ko"
 	nvidia_load="YES"
+    kld_list="/boot/modules/nvidia.ko /boot/modules/nvidia-modeset.ko"
+        # kld_list="/boot/kernel/linux.ko vesa"
 
 ### kldstat
 ### Xorg :1 -configure
