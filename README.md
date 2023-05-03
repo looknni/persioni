@@ -269,23 +269,23 @@ EndSection
 
 #### ~/.Xresources
 ```
-! xterm*faceName: DejaVu Sans Mono:size=11:style=Book:antialias=true
-xterm*faceName: Monospace:size=11:style=Book:antialias=true
-xterm*faceNameDoublesize: size=11
+! XTerm*faceName: DejaVu Sans Mono:size=11:style=Book:antialias=true
+XTerm*faceName: Monospace:size=11:style=Book:antialias=true
+XTerm*faceNameDoublesize: size=11
 uxTerm*termName: xterm-256color
-xterm*termName: xterm-256color
-xterm*locale: true
-xterm*utf8Title: true
+XTerm*termName: xterm-256color
+XTerm*locale: true
+XTerm*utf8Title: true
 xft.dpi: 96
 xpdf.title: PDF
-Xft.antialias: true
+xft.antialias: true
 xft.rgba: rgb
 xft.hinting: true
 xft.hintstyle: hintslight
-! xterm*cursorColor: *xtDefaultForeground
+! XTerm*cursorColor: *xtDefaultForeground
 ! Orange
-xterm*cursorColor: #ffa530
-!xterm*inputMethod: ibus
+XTerm*cursorColor: #ffa530
+!XTerm*inputMethod: ibus
 
 *VT100*translations: #override \n\
 Shift <KeyPress> Insert:insert-selection(CLIPBOARD, CUT_BUFFER1) \n\
@@ -293,143 +293,143 @@ Shift <KeyPress> Insert:insert-selection(CLIPBOARD, CUT_BUFFER1) \n\
 ~Shift<BtnUp>: select-end(CLIPBOARD, CUT_BUFFER1) \n\
 ~Shift<BtnUp>: select-end(PRIMARY, CUT_BUFFER0)
 
-xterm*renderFont:           true
-xterm*cjk_width:            true
-xterm*geometry:             80x25
-xterm*dynamicColors:        true
-xterm*utf8:                 2
-xterm*eightBitInput:        true
-xterm*scrollKey:            true
-xterm*scrollTtyOutput:      false
-xterm*scrollBar:            false
-xterm*rightScrollBar:       false
-xterm*jumpScroll:           true
-xterm*multiScroll:          true
-xterm*toolBar:              false
-xterm*Scrollbar*thickness:  10
-xterm*Scrollbar*background: black
-xterm*Scrollbar*foreground: gray90
-xterm*decTerminalID:        vt340
-xterm*selectToClipboard:    true
+XTerm*renderFont:           true
+XTerm*cjk_width:            true
+XTerm*geometry:             80x25
+XTerm*dynamicColors:        true
+XTerm*utf8:                 2
+XTerm*eightBitInput:        true
+XTerm*scrollKey:            true
+XTerm*scrollTtyOutput:      false
+XTerm*scrollBar:            false
+XTerm*rightScrollBar:       false
+XTerm*jumpScroll:           true
+XTerm*multiScroll:          true
+XTerm*toolBar:              false
+XTerm*Scrollbar*thickness:  10
+XTerm*Scrollbar*background: black
+XTerm*Scrollbar*foreground: gray90
+XTerm*decTerminalID:        vt340
+XTerm*selectToClipboard:    true
 
 XTerm*allowBoldFonts: true
-xterm*boldMode: false
-xterm*font: terminus-12
-xterm*boldFont: terminus-12
-xterm*loginShell: true
-xterm*vt100*geometry: 80x50
-xterm*saveLines: 2000
-xterm*charClass: 33:48,35:48,37:48,43:48,45-47:48,64:48,95:48,126:48
-xterm*colorBDMode: true
-xterm*colorBD: rgb:fc/fc/fc
+XTerm*boldMode: false
+XTerm*font: terminus-12
+XTerm*boldFont: terminus-12
+XTerm*loginShell: true
+XTerm*vt100*geometry: 80x50
+XTerm*saveLines: 2000
+XTerm*charClass: 33:48,35:48,37:48,43:48,45-47:48,64:48,95:48,126:48
+XTerm*colorBDMode: true
+XTerm*colorBD: rgb:fc/fc/fc
 ```
 ```
-xterm*faceName:             DejaVu Sans Mono:size=11:style=Book:antialias=true
-xterm*faceNameDoublesize:   size=11
-xterm*renderFont:           true
-xterm*cjk_width:            true
-xterm*geometry:             80x25
-xterm*dynamicColors:        true
-xterm*utf8:                 2
-xterm*eightBitInput:        true
-xterm*saveLines:            2048
-xterm*scrollKey:            true
-xterm*scrollTtyOutput:      false
-xterm*scrollBar:            false
-xterm*rightScrollBar:       false
-xterm*jumpScroll:           true
-xterm*multiScroll:          true
-xterm*toolBar:              false
-xterm*Scrollbar*thickness:  10
-xterm*Scrollbar*background: black
-xterm*Scrollbar*foreground: gray90
-xterm*termName:             xterm-256color
-xterm*decTerminalID:        vt340
-xterm*selectToClipboard:    true
-xterm*background:   rgb:1a/1a/1a
-xterm*foreground:   rgb:d6/d6/d6
-xterm*cursorColor:  rgb:d6/d6/d6
-xterm*color0:       rgb:00/00/00
-xterm*color1:       rgb:9e/18/28
-xterm*color2:       rgb:00/88/00
-xterm*color3:       rgb:96/8a/38
-xterm*color4:       rgb:41/41/71
-xterm*color5:       rgb:96/3c/59
-xterm*color6:       rgb:41/81/79
-xterm*color7:       rgb:be/be/be
-xterm*color8:       rgb:66/66/66
-xterm*color9:       rgb:cf/61/71
-xterm*color10:      rgb:7c/bc/8c
-xterm*color11:      rgb:ff/f7/96
-xterm*color12:      rgb:41/86/be
-xterm*color13:      rgb:cf/9e/be
-xterm*color14:      rgb:71/be/be
-xterm*color15:      rgb:ff/ff/ff
+XTerm*faceName:             DejaVu Sans Mono:size=11:style=Book:antialias=true
+XTerm*faceNameDoublesize:   size=11
+XTerm*renderFont:           true
+XTerm*cjk_width:            true
+XTerm*geometry:             80x25
+XTerm*dynamicColors:        true
+XTerm*utf8:                 2
+XTerm*eightBitInput:        true
+XTerm*saveLines:            2048
+XTerm*scrollKey:            true
+XTerm*scrollTtyOutput:      false
+XTerm*scrollBar:            false
+XTerm*rightScrollBar:       false
+XTerm*jumpScroll:           true
+XTerm*multiScroll:          true
+XTerm*toolBar:              false
+XTerm*Scrollbar*thickness:  10
+XTerm*Scrollbar*background: black
+XTerm*Scrollbar*foreground: gray90
+XTerm*termName:             xterm-256color
+XTerm*decTerminalID:        vt340
+XTerm*selectToClipboard:    true
+XTerm*background:   rgb:1a/1a/1a
+XTerm*foreground:   rgb:d6/d6/d6
+XTerm*cursorColor:  rgb:d6/d6/d6
+XTerm*color0:       rgb:00/00/00
+XTerm*color1:       rgb:9e/18/28
+XTerm*color2:       rgb:00/88/00
+XTerm*color3:       rgb:96/8a/38
+XTerm*color4:       rgb:41/41/71
+XTerm*color5:       rgb:96/3c/59
+XTerm*color6:       rgb:41/81/79
+XTerm*color7:       rgb:be/be/be
+XTerm*color8:       rgb:66/66/66
+XTerm*color9:       rgb:cf/61/71
+XTerm*color10:      rgb:7c/bc/8c
+XTerm*color11:      rgb:ff/f7/96
+XTerm*color12:      rgb:41/86/be
+XTerm*color13:      rgb:cf/9e/be
+XTerm*color14:      rgb:71/be/be
+XTerm*color15:      rgb:ff/ff/ff
 
 ```
 ```
-xterm*font: terminus-12
-xterm*boldFont: terminus-12
-xterm*loginShell: true
-xterm*vt100*geometry: 80x50
-xterm*saveLines: 2000
-xterm*charClass: 33:48,35:48,37:48,43:48,45-47:48,64:48,95:48,126:48
-xterm*termName: xterm-color
-xterm*eightBitInput: false
-xterm*foreground: rgb:a8/a8/a8
-xterm*background: rgb:00/00/00
-xterm*color0: rgb:00/00/00
-xterm*color1: rgb:a8/00/00
-xterm*color2: rgb:00/a8/00
-xterm*color3: rgb:a8/54/00
-xterm*color4: rgb:64/95/ed
-xterm*color5: rgb:a8/00/a8
-xterm*color6: rgb:00/a8/a8
-xterm*color7: rgb:a8/a8/a8
-xterm*color8: rgb:54/54/54
-xterm*color9: rgb:fc/54/54
-xterm*color10: rgb:54/fc/54
-xterm*color11: rgb:fc/fc/54
-xterm*color12: rgb:ff/7f/50
-xterm*color13: rgb:fc/54/fc
-xterm*color14: rgb:54/fc/fc
-xterm*color15: rgb:fc/fc/fc
-xterm*boldMode: false
-xterm*colorBDMode: true
-xterm*colorBD: rgb:fc/fc/fc
+XTerm*font: terminus-12
+XTerm*boldFont: terminus-12
+XTerm*loginShell: true
+XTerm*vt100*geometry: 80x50
+XTerm*saveLines: 2000
+XTerm*charClass: 33:48,35:48,37:48,43:48,45-47:48,64:48,95:48,126:48
+XTerm*termName: xterm-color
+XTerm*eightBitInput: false
+XTerm*foreground: rgb:a8/a8/a8
+XTerm*background: rgb:00/00/00
+XTerm*color0: rgb:00/00/00
+XTerm*color1: rgb:a8/00/00
+XTerm*color2: rgb:00/a8/00
+XTerm*color3: rgb:a8/54/00
+XTerm*color4: rgb:64/95/ed
+XTerm*color5: rgb:a8/00/a8
+XTerm*color6: rgb:00/a8/a8
+XTerm*color7: rgb:a8/a8/a8
+XTerm*color8: rgb:54/54/54
+XTerm*color9: rgb:fc/54/54
+XTerm*color10: rgb:54/fc/54
+XTerm*color11: rgb:fc/fc/54
+XTerm*color12: rgb:ff/7f/50
+XTerm*color13: rgb:fc/54/fc
+XTerm*color14: rgb:54/fc/fc
+XTerm*color15: rgb:fc/fc/fc
+XTerm*boldMode: false
+XTerm*colorBDMode: true
+XTerm*colorBD: rgb:fc/fc/fc
 ```
 ```
 ! Lighter Black & Gray
-xterm*background: #0c0c0c
-xterm*foreground: #aaaaaa
+XTerm*background: #0c0c0c
+XTerm*foreground: #aaaaaa
 ! Black & DarkGray
-xterm*color0: #000000
-xterm*color8: #555555
+XTerm*color0: #000000
+XTerm*color8: #555555
 ! DarkRed & Red
-xterm*color1: #aa0000
-xterm*color9: #ff5555
+XTerm*color1: #aa0000
+XTerm*color9: #ff5555
 ! DarkGreen & Green
-xterm*color2: #00aa00
-xterm*color10: #55ff55
+XTerm*color2: #00aa00
+XTerm*color10: #55ff55
 ! DarkYellow & Yellow
-xterm*color3: #aa5500
-xterm*color11: #ffff55
+XTerm*color3: #aa5500
+XTerm*color11: #ffff55
 ! DarkBlue & Blue
-xterm*color4: #0000aa
-xterm*color12: #5555ff
+XTerm*color4: #0000aa
+XTerm*color12: #5555ff
 ! DarkMagenta & Magenta
-xterm*color5: #aa00aa
-xterm*color13: #ff55ff
+XTerm*color5: #aa00aa
+XTerm*color13: #ff55ff
 ! DarkCyan & Cyan
-xterm*color6: #00aaaa
-xterm*color14: #55ffff
+XTerm*color6: #00aaaa
+XTerm*color14: #55ffff
 ! LightGray + White
-xterm*color7: #aaaaaa
-xterm*color15: #ffffff
+XTerm*color7: #aaaaaa
+XTerm*color15: #ffffff
 ```
 ```
-xterm*font: -Misc-Fixed-Medium-R-Normal--20-200-75-75-C-100-ISO10646-1
-! xterm*font: -misc-fixed-medium-r-normal--18-*-*-*-*-*-iso10646-1
+XTerm*font: -Misc-Fixed-Medium-R-Normal--20-200-75-75-C-100-ISO10646-1
+! XTerm*font: -misc-fixed-medium-r-normal--18-*-*-*-*-*-iso10646-1
 ! XTerm*iconName: terminal
 XTerm*loginShell: true
 XTerm*foreground: gray90
@@ -450,8 +450,8 @@ XTerm*sessionMgt: false
 ! XTerm*VT100*colorBD:  blue
 ! XTerm.VT100.eightBitOutput:  true
 ! XTerm.VT100.titeInhibit:  false
-xterm*background:  Black
-xterm*foreground:  Grey
+XTerm*background:  Black
+XTerm*foreground:  Grey
 XTerm*color0: black
 XTerm*color1: red3
 XTerm*color2: green3
