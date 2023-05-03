@@ -581,6 +581,7 @@ mkdir --parents /mnt/gentoo
 mount /dev/sda3 /mnt/gentoo
 
 ??? /boot/EFI/BOOT/BOOTx64.EFI
+	???# \EFI\DEBIAN\SHIMX64.EFI
 
 tar xpvf stage3-*.tar.xz --xattrs-include='*.*' --numeric-owner
 /etc/portage/make.conf 
