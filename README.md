@@ -529,24 +529,25 @@ pacman -S grub efibootmgr os-prober \
     bash-completion
 systemctl enable dhcpcd NetworkManager iwd
 
-passwd
-useradd -m -G wheel username
-passwd username
-EDITOR=vim visudo # %wheel ALL=(ALL) ALL
-
 /etc/default/grub
     GRUB_DISABLE_OS_PROBER=false
 
 grub-install --target=x86_64-efi --efi-directory=/boot/EFI --recheck --removable
-    # grub-install --target=i386-pc --boot-directory=/boot --recheck  /dev/sdX
+    # grub-install --target=i386-pc --boot-directory=/boot --recheck  /dev/sda
 
 grub-mkconfig -o /boot/grub/grub.cfg
+
+passwd
+useradd -m -G wheel username
+passwd username
+EDITOR=vim visudo # %wheel ALL=(ALL) ALL
 
 /etc/locale.gen # en_GB.UTF-8
 pacman -S wqy-microhei xorg-server xorg-xinit xf86-video-vesa gnome gdm
 vim /etc/locale.conf # LANG=en_GB.UTF-8
     systemctl enable gdm
     #sudo mkinitcpio -p linux
+
 exit
 reboot
 pacman -S i3-wm i3status dmenu \
