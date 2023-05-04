@@ -661,28 +661,23 @@ genkernel --mountboot --install all
     # emerge --ask sys-kernel/dracut
     # dracut --kver=5.15.52-gentoo
 
-# blkid mount ??? /etc/fstab
-    #/dev/sda1   
-    	UUID=		/boot        ext4    defaults,noatime     0 2
-    	#/dev/xx
-    		#UUID=		/boot/EFI	vfat	umask=0077	0	2
-    #/dev/sda2
-    	UUID=		none         swap    sw                   0 0
-    #/dev/sda3
-    	UUID=		/            ext4    noatime              0 1
+    # blkid mount ??? /etc/fstab
+#/dev/sda1   
+ UUID=? /boot ext4 defaults,noatime 0 2
+#/dev/xx
+ #UUID=? /boot/EFI vfat umask=0077 0 2
+#/dev/sda2
+ UUID=? none swap sw 0 0
+#/dev/sda3
+ UUID=? / ext4 noatime 0 1
 
 emerge --ask net-misc/dhcpcd
-    #rc-update add dhcpcd default
-    #rc-service dhcpcd start
 systemctl enable --now dhcpcd
 
     # /etc/conf.d/net
     # configth0="dhcp"
     # config_eth0="192.168.0.2 netmask 255.255.255.0 brd 192.168.0.255"
     # routes_eth0="default via 192.168.0.1"
-    # cd /etc/init.d
-    # ln -s net.lo net.eth0
-    # rc-update add net.eth0 default
 
 systemd-firstboot --prompt --setup-machine-id
 systemctl preset-all --preset-mode=enable-only
@@ -694,10 +689,9 @@ echo 'GRUB_PLATFORMS="efi-64"' >> /etc/portage/make.conf
 emerge --ask sys-boot/grub
     # emerge --ask --update --newuse --verbose sys-boot/grub
 
-grub-install --target=x86_64-efi --efi-directory=/boot
     # grub-instal return; Could not prepare Boot variable: Read-only file system
     # mount -o remount,rw,nosuid,nodev,noexec --types efivarfs efivarfs /sys/firmware/efi/efivars
-grub-install --target=x86_64-efi --efi-directory=/boot --removable
+grub-install --target=x86_64-efi --efi-directory=/boot/EFI --removable
 grub-mkconfig -o /boot/grub/grub.cfg
 
 emerge --ask sys-boot/efibootmgr
