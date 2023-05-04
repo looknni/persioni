@@ -661,11 +661,11 @@ genkernel --mountboot --install all
     # emerge --ask sys-kernel/dracut
     # dracut --kver=5.15.52-gentoo
 
-# blkid >> /etc/fstab
+# blkid mount ??? /etc/fstab
     #/dev/sda1   
     	UUID=		/boot        ext4    defaults,noatime     0 2
     	#/dev/xx
-    		#UUID=		/boot/EFI	vfat	umask=0077,shortname=winnt	0	2
+    		#UUID=		/boot/EFI	vfat	umask=0077	0	2
     #/dev/sda2
     	UUID=		none         swap    sw                   0 0
     #/dev/sda3
