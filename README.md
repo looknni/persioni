@@ -574,7 +574,7 @@ pacman -Qdtq | pacman -Rsn -
 ```
 mount | grep efi
 # lsblk
-fdisk /dev/sda # m p g o n t d l w ??? cfdisk
+gdisk cgdisk | fdisk cfdisk /dev/sda # m p g o n t d l w
 mkfs.vfat -F 32 /dev/sda1
 mkfs.ext4 /dev/sda3
 mkswap /dev/sda2
