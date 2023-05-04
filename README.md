@@ -136,14 +136,13 @@ dbus_enable="YES"
 hald_enable="YES"
 gdm_enable="YES"
 gnome_enable="YES"
-	#~/.xinitrc # exec i3
+	#echo "exec i3" >> ~/.xinitrc
 
 ## /boot/loader.conf
 	if_re_load="YES"
 	if_re_name="/boot/modules/if_re.ko"
 	nvidia_load="YES"
     kld_list="/boot/modules/nvidia.ko /boot/modules/nvidia-modeset.ko"
-        # kld_list="/boot/kernel/linux.ko vesa"
 
 ### kldstat
 ### Xorg :1 -configure
@@ -282,10 +281,8 @@ xft.antialias: true
 xft.rgba: rgb
 xft.hinting: true
 xft.hintstyle: hintslight
-! XTerm*cursorColor: *xtDefaultForeground
-! Orange
 XTerm*cursorColor: #ffa530
-!XTerm*inputMethod: ibus
+! XTerm*inputMethod: ibus
 
 *VT100*translations: #override \n\
 Shift <KeyPress> Insert:insert-selection(CLIPBOARD, CUT_BUFFER1) \n\
@@ -346,6 +343,7 @@ XTerm*Scrollbar*foreground: gray90
 XTerm*termName:             xterm-256color
 XTerm*decTerminalID:        vt340
 XTerm*selectToClipboard:    true
+
 XTerm*background:   rgb:1a/1a/1a
 XTerm*foreground:   rgb:d6/d6/d6
 XTerm*cursorColor:  rgb:d6/d6/d6
@@ -365,7 +363,6 @@ XTerm*color12:      rgb:41/86/be
 XTerm*color13:      rgb:cf/9e/be
 XTerm*color14:      rgb:71/be/be
 XTerm*color15:      rgb:ff/ff/ff
-
 ```
 ```
 XTerm*font: terminus-12
@@ -376,6 +373,10 @@ XTerm*saveLines: 2000
 XTerm*charClass: 33:48,35:48,37:48,43:48,45-47:48,64:48,95:48,126:48
 XTerm*termName: xterm-color
 XTerm*eightBitInput: false
+XTerm*boldMode: false
+XTerm*colorBDMode: true
+XTerm*colorBD: rgb:fc/fc/fc
+
 XTerm*foreground: rgb:a8/a8/a8
 XTerm*background: rgb:00/00/00
 XTerm*color0: rgb:00/00/00
@@ -394,9 +395,6 @@ XTerm*color12: rgb:ff/7f/50
 XTerm*color13: rgb:fc/54/fc
 XTerm*color14: rgb:54/fc/fc
 XTerm*color15: rgb:fc/fc/fc
-XTerm*boldMode: false
-XTerm*colorBDMode: true
-XTerm*colorBD: rgb:fc/fc/fc
 ```
 ```
 ! Lighter Black & Gray
@@ -450,6 +448,7 @@ XTerm*sessionMgt: false
 ! XTerm*VT100*colorBD:  blue
 ! XTerm.VT100.eightBitOutput:  true
 ! XTerm.VT100.titeInhibit:  false
+
 XTerm*background:  Black
 XTerm*foreground:  Grey
 XTerm*color0: black
@@ -468,6 +467,7 @@ XTerm*color12: blue
 XTerm*color13: magenta
 XTerm*color14: cyan
 XTerm*color15: white
+
 XTerm*colorUL: yellow
 XTerm*colorBD: white
 ! XTerm*mainMenu*backgroundPixmap: gradient:vertical?dimension=400&start=gray10&end=gray40
@@ -522,6 +522,7 @@ station wlan-name connect wifi-name
     ??? sudo pacman -S archlinuxcn-keyring && sudo pacman -Sy
 pacstrap /mnt base linux-lts linux-firmware
 genfstab -U /mnt >> /mnt/etc/fstab
+
 arch-chroot /mnt
 pacman -S grub efibootmgr os-prober \
     vim iwd dhcpcd sudo networkmanager \
@@ -542,7 +543,6 @@ grub-install --target=x86_64-efi --efi-directory=/boot/EFI --recheck --removable
 grub-mkconfig -o /boot/grub/grub.cfg
 
 /etc/locale.gen # en_GB.UTF-8
-locale-gen
 pacman -S wqy-microhei xorg-server xorg-xinit xf86-video-vesa gnome gdm
 vim /etc/locale.conf # LANG=en_GB.UTF-8
     systemctl enable gdm
@@ -611,34 +611,23 @@ mount /dev/sda1 /boot
 # mount /dev/sda4 /boot/EFI
 
 emerge-webrsync ?? /var/db/repos/gentoo/
-    # emerge --sync ?? Suppose there is a need for the last package updates (up to 1 hour),
-    # emerge --sync --quiet ?? On slow terminals, like some framebuffers or serial consoles, it is recommended to use the --quiet option to speed up the process
     # eselect news list
     # eselect news read
     # eselect profile list
     # eselect profile set <number>
 
 emerge --ask --verbose --update --deep --newuse @world # longTime
-    emerge -avuDN @world
-    # emerge --info | grep ^USE
-    # nano -w /etc/portage/make.conf # USE=“”
+    # emerge -avuDN @world
 emerge --ask app-portage/cpuid2cpuflags
-    # cpuid2cpuflags
 echo "*/* $(cpuid2cpuflags)" > /etc/portage/package.use/00cpu-flags
-    # ls /usr/share/zoneinfo
-echo "Europe/Brussels" > /etc/timezone # openrc
-emerge --config sys-libs/timezone-data # openrc
+
 ln -sf ../usr/share/zoneinfo/Europe/Brussels /etc/localtime # systemd
 nano -w /etc/locale.gen
-    # locale-gen
     # eselect locale list
     # eselect locale set 5 # /etc/env.d/02locale
 env-update && source /etc/profile && export PS1="(chroot) ${PS1}"
 
-emerge --ask sys-kernel/linux-firmware
-emerge --ask sys-kernel/installkernel-systemd-boot ??? gummiboot # bootloader
-emerge --ask sys-kernel/installkernel-gentoo # /boot ??? GRUB LILO
-emerge --ask sys-kernel/gentoo-kernel ??? longTime
+emerge --ask sys-kernel/linux-firmware sys-kernel/installkernel-systemd-boot sys-kernel/installkernel-gentoo sys-kernel/gentoo-kernel ??? longTime
     # emerge --ask sys-kernel/gentoo-kernel-bin
 emerge --depclean
     # emerge --prune sys-kernel/gentoo-kernel sys-kernel/gentoo-kernel-bin
@@ -653,13 +642,10 @@ eselect kernel list
     # mkdir /etc/portage/package.license
     # /etc/portage/package.license/linux-firmware
         sys-kernel/linux-firmware @BINARY-REDISTRIBUTABLE
+
 emerge --ask sys-kernel/genkernel
 genkernel --menuconfig all
 genkernel --mountboot --install all
-    # ls /boot/vmlinu* /boot/initramfs*
-    # root #ls /lib/modules
-    # emerge --ask sys-kernel/dracut
-    # dracut --kver=5.15.52-gentoo
 
     # blkid mount ??? /etc/fstab
 #/dev/sda1   
@@ -684,13 +670,14 @@ systemctl preset-all --preset-mode=enable-only
 systemctl preset-all
     # emerge --ask net-dialup/ppp
 emerge --ask net-wireless/iw net-wireless/wpa_supplicant
-    # emerge --ask --verbose sys-boot/grub:2
+
 echo 'GRUB_PLATFORMS="efi-64"' >> /etc/portage/make.conf
 emerge --ask sys-boot/grub
     # emerge --ask --update --newuse --verbose sys-boot/grub
 
     # grub-instal return; Could not prepare Boot variable: Read-only file system
     # mount -o remount,rw,nosuid,nodev,noexec --types efivarfs efivarfs /sys/firmware/efi/efivars
+
 grub-install --target=x86_64-efi --efi-directory=/boot/EFI --removable
 grub-mkconfig -o /boot/grub/grub.cfg
 
@@ -709,8 +696,7 @@ cd
 umount -l /mnt/gentoo/dev{/shm,/pts,}
 umount -R /mnt/gentoo
 reboot
-systemctl start dhcpcd
-mount / -o remount,rw
+mount -o remount,rw /
 
     # awesome
 ~/xinitrc # exec awesome
@@ -730,26 +716,12 @@ export GTK_IM_MODULE=fcitx
 
 emerge --ask app-i18n/fcitx-configtool app-i18n/fcitx-sunpinyin app-i18n/fcitx-libpinyin
 
-    # ibus
-USE="X appindicator emoji gtk2 gtk3 gtk4 gui introspection libnotify nls python systemd test unicode vala wayland" emerge --ask app-i18n/ibus ibus-libpinyin
-eix -c -S engine app-i18n/ibus
-    # ~/.bashrc or ~/.xinitrc
-export XMODIFIERS=@im=ibus
-export GTK_IM_MODULE=ibus
-export QT_IM_MODULE=ibus
-# Use `xim` in case some Electron apps (like Chromium) refuse to work with IBus
-# export GTK_IM_MODULE=xim
-# export QT_IM_MODULE=xim
-ibus-daemon -drx
-
 echo "www-client/google-chrome google-chrome" >> /etc/portage/package.license
 emerge --ask www-client/google-chrome
 google-chrome-stable --gtk-version=4 # Chrome needs to be instructed to use gtk4 in order to use IM such as fcitx5.
 
 # Any configuration file changes should be addressed, this can be managed by dispatch-conf:
 dispatch-conf
-# After the update, Portage recommends running 
-emerge --depclean
 
     ## dracut
 grub> ls , ls /
