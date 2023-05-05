@@ -436,7 +436,7 @@ XTerm*cursorColor: rgb:00/80/00
 XTerm*borderColor: white
 XTerm*scrollColor: black
 XTerm*visualBell: true
-XTerm*saveLines: 1000
+XTerm*saveLines: 2000
 !! XTerm.VT100.allowSendEvents: True
 XTerm*allowSendEvents: True
 XTerm*sessionMgt: false
@@ -487,7 +487,7 @@ XTerm*rightScrollBar: false
 > - $\displaystyle\coprod_{/usr/share/vim/vimrc@debian}^{/etc/vimrc@centos}$
 ```
 syntax on
-set cursorcolumn
+"set cursorcolumn
 set cursorline
 set laststatus=2
 set statusline=\ %<%F\ [%1*%M%*%n%R%H]%=\ %y\ %0(%{&fileformat}\ %{&encoding}\ %c:%l\ %)
@@ -501,13 +501,13 @@ set ai	"redhat
 set autowrite "redhat
 set t_Co=256 "redhat
 colorscheme desert "delek "industry "murphy
-hi statusline guibg=Cyan ctermfg=147 guifg=Black ctermbg=0
-hi IncSearch	cterm=bold ctermfg=red ctermbg=darkgreen
-hi Search	cterm=bold ctermfg=red ctermbg=darkgreen
+hi statusline guibg=Cyan ctermfg=103 guifg=Black ctermbg=0
+hi IncSearch    cterm=bold ctermfg=129 ctermbg=8
+hi Search       cterm=bold ctermfg=148 ctermbg=8
 if &diff
   	colorscheme blue
 	hi Normal	guifg=yellow	guibg=darkBlue	ctermfg=yellow	ctermbg=none
-	hi statusline guibg=Cyan ctermfg=147 guifg=Black ctermbg=0
+	hi statusline guibg=Cyan ctermfg=103 guifg=Black ctermbg=0
 endif
 ```
 ## ~~[Arch](https://archlinux.org/)~~
@@ -575,7 +575,7 @@ pacman -Qdtq | pacman -Rsn -
 ## ~~[Gentoo](https://www.gentoo.org/)~~
 ```
 mount | grep efi
-# lsblk
+	# lsblk
 gdisk cgdisk | fdisk cfdisk /dev/sda # m p g o n t d l w
 mkfs.vfat -F 32 /dev/sda1
 mkfs.ext4 /dev/sda3
@@ -698,7 +698,7 @@ cd
 umount -l /mnt/gentoo/dev{/shm,/pts,}
 umount -R /mnt/gentoo
 reboot
-mount -o remount,rw /
+# mount -o remount,rw /
 
     # awesome
 ~/xinitrc # exec awesome
