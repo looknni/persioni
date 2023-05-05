@@ -483,11 +483,8 @@ XTerm*rightScrollBar: false
 ```
 ## [Vim](https://ftp.nluug.nl/pub/vim/unix/)
 
-> ##### /usr/share/vim/vim82/colors/blue.vim
-> - hi Normal	guifg=yellow	guibg=darkBlue	ctermfg=yellow	ctermbg=none
-
 > ##### ~/.vimrc 
->> - $\displaystyle\coprod_{/usr/share/vim/vimrc@debian}^{/etc/vimrc@centos}$
+> - $\displaystyle\coprod_{/usr/share/vim/vimrc@debian}^{/etc/vimrc@centos}$
 ```
 syntax on
 set cursorcolumn
@@ -505,10 +502,12 @@ set autowrite "redhat
 set t_Co=256 "redhat
 colorscheme desert "delek "industry "murphy
 hi statusline guibg=Cyan ctermfg=147 guifg=Black ctermbg=0
-"hi IncSearch	cterm=bold ctermfg=red ctermbg=darkgreen
-"hi Search	cterm=bold ctermfg=red ctermbg=darkgreen
+hi IncSearch	cterm=bold ctermfg=red ctermbg=darkgreen
+hi Search	cterm=bold ctermfg=red ctermbg=darkgreen
 if &diff
   	colorscheme blue
+	hi Normal	guifg=yellow	guibg=darkBlue	ctermfg=yellow	ctermbg=none
+	hi statusline guibg=Cyan ctermfg=147 guifg=Black ctermbg=0
 endif
 ```
 ## ~~[Arch](https://archlinux.org/)~~
