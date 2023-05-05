@@ -493,7 +493,7 @@ syntax on
 set cursorcolumn
 set cursorline
 set laststatus=2
-set statusline=\ %<%F\ [%1*%M%*%n%R%H]%=\ %y\ %0(%{&fileformat}\ %{&encoding}\ %c:%l\ ?\ %L%)
+set statusline=\ %<%F\ [%1*%M%*%n%R%H]%=\ %y\ %0(%{&fileformat}\ %{&encoding}\ %c:%l\ %)
 set hlsearch
 set incsearch
 set autoindent "redhat
@@ -504,6 +504,7 @@ set ai	"redhat
 set autowrite "redhat
 set t_Co=256 "redhat
 colorscheme desert "delek "industry "murphy
+hi statusline guibg=Cyan ctermfg=147 guifg=Black ctermbg=0
 "hi IncSearch	cterm=bold ctermfg=red ctermbg=darkgreen
 "hi Search	cterm=bold ctermfg=red ctermbg=darkgreen
 if &diff
