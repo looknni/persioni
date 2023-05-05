@@ -285,10 +285,10 @@ XTerm*cursorColor: #ffa530
 ! XTerm*inputMethod: ibus
 
 *VT100*translations: #override \n\
-Ctrl <KeyPress> Insert:insert-selection(CLIPBOARD, CUT_BUFFER1) \n\
-~Shift~Ctrl<Btn2Up>: insert-selection(PRIMARY, CUT_BUFFER0) \n\
-~Ctrl<BtnUp>: select-end(CLIPBOARD, CUT_BUFFER1) \n\
-~Ctrl<BtnUp>: select-end(PRIMARY, CUT_BUFFER0)
+Ctrl <KeyPress> Insert : insert-selection(CLIPBOARD, CUT_BUFFER1) \n\
+Shift Ctrl<Btn2Up> : insert-selection(PRIMARY, CUT_BUFFER0) \n\
+Ctrl <BtnUp> : select-end(CLIPBOARD, CUT_BUFFER1) \n\
+Ctrl <BtnUp> : select-end(PRIMARY, CUT_BUFFER0)
 
 XTerm*renderFont:           true
 XTerm*cjk_width:            true
