@@ -284,6 +284,7 @@ xft.hintstyle: hintslight
 XTerm*cursorColor: #ffa530
 ! XTerm*inputMethod: ibus
 
+XTerm*selectToClipboard:    true
 *VT100*translations: #override \n\
 Ctrl <KeyPress> Insert : insert-selection(CLIPBOARD, CUT_BUFFER1) \n\
 Shift Ctrl<Btn2Up> : insert-selection(PRIMARY, CUT_BUFFER0) \n\
@@ -296,9 +297,7 @@ XTerm*geometry:             80x25
 XTerm*dynamicColors:        true
 XTerm*utf8:                 2
 XTerm*eightBitInput:        true
-XTerm*scrollKey:            true
-XTerm*scrollTtyOutput:      false
-XTerm*scrollBar:            false
+XTerm*decTerminalID:        vt340
 XTerm*rightScrollBar:       false
 XTerm*jumpScroll:           true
 XTerm*multiScroll:          true
@@ -306,15 +305,19 @@ XTerm*toolBar:              false
 XTerm*Scrollbar*thickness:  10
 XTerm*Scrollbar*background: black
 XTerm*Scrollbar*foreground: gray90
-XTerm*decTerminalID:        vt340
-XTerm*selectToClipboard:    true
+XTerm*ScrollKey:            true
+XTerm*ScrollTtyOutput:      false
+XTerm*ScrollBar:            false
 
+XTerm*vt100*geometry: 80x50
+XTerm.vt100*fadeColor: #002b36
+XTerm.vt100*pointerColorBackground: #586e75
+XTerm.vt100*pointerColorForeground: #93a1a1
 XTerm*allowBoldFonts: true
-XTerm*boldMode: false
+XTerm*boldMode: true
 XTerm*font: terminus-12
 XTerm*boldFont: terminus-12
 XTerm*loginShell: true
-XTerm*vt100*geometry: 80x50
 XTerm*saveLines: 2000
 XTerm*charClass: 33:48,35:48,37:48,43:48,45-47:48,64:48,95:48,126:48
 XTerm*colorBDMode: true
@@ -330,9 +333,9 @@ XTerm*dynamicColors:        true
 XTerm*utf8:                 2
 XTerm*eightBitInput:        true
 XTerm*saveLines:            2048
-XTerm*scrollKey:            true
-XTerm*scrollTtyOutput:      false
-XTerm*scrollBar:            false
+XTerm*ScrollKey:            true
+XTerm*ScrollTtyOutput:      false
+XTerm*ScrollBar:            false
 XTerm*rightScrollBar:       false
 XTerm*jumpScroll:           true
 XTerm*multiScroll:          true
@@ -397,31 +400,22 @@ XTerm*color14: rgb:54/fc/fc
 XTerm*color15: rgb:fc/fc/fc
 ```
 ```
-! Lighter Black & Gray
 XTerm*background: #0c0c0c
 XTerm*foreground: #aaaaaa
-! Black & DarkGray
 XTerm*color0: #000000
 XTerm*color8: #555555
-! DarkRed & Red
 XTerm*color1: #aa0000
 XTerm*color9: #ff5555
-! DarkGreen & Green
 XTerm*color2: #00aa00
 XTerm*color10: #55ff55
-! DarkYellow & Yellow
 XTerm*color3: #aa5500
 XTerm*color11: #ffff55
-! DarkBlue & Blue
 XTerm*color4: #0000aa
 XTerm*color12: #5555ff
-! DarkMagenta & Magenta
 XTerm*color5: #aa00aa
 XTerm*color13: #ff55ff
-! DarkCyan & Cyan
 XTerm*color6: #00aaaa
 XTerm*color14: #55ffff
-! LightGray + White
 XTerm*color7: #aaaaaa
 XTerm*color15: #ffffff
 
@@ -447,26 +441,26 @@ XTerm*color15:     #ffffff
 ```
 XTerm*font: -Misc-Fixed-Medium-R-Normal--20-200-75-75-C-100-ISO10646-1
 ! XTerm*font: -misc-fixed-medium-r-normal--18-*-*-*-*-*-iso10646-1
-! XTerm*iconName: terminal
+XTerm*iconName: terminal
 XTerm*loginShell: true
 XTerm*foreground: gray90
 XTerm*background: black
 XTerm*cursorColor: rgb:00/80/00
 XTerm*borderColor: white
-XTerm*scrollColor: black
+XTerm*ScrollColor: black
 XTerm*visualBell: true
 XTerm*saveLines: 2000
-!! XTerm.VT100.allowSendEvents: True
+XTerm.VT100.allowSendEvents: true
 XTerm*allowSendEvents: True
 XTerm*sessionMgt: false
-! XTerm*eightBitInput:  false
-! XTerm*metaSendsEscape: true
-! XTerm*internalBorder:  10
-! XTerm*highlightSelection:  true
-! XTerm*VT100*colorBDMode:  on
-! XTerm*VT100*colorBD:  blue
-! XTerm.VT100.eightBitOutput:  true
-! XTerm.VT100.titeInhibit:  false
+XTerm*eightBitInput:  false
+XTerm*metaSendsEscape: true
+XTerm*internalBorder:  10
+XTerm*highlightSelection:  true
+XTerm*VT100*colorBDMode:  on
+XTerm*VT100*colorBD:  blue
+XTerm.VT100.eightBitOutput:  true
+XTerm.VT100.titeInhibit:  false
 
 XTerm*background:  Black
 XTerm*foreground:  Grey
@@ -489,6 +483,7 @@ XTerm*color15: white
 
 XTerm*colorUL: yellow
 XTerm*colorBD: white
+XTerm*rightScrollBar: false
 ! XTerm*mainMenu*backgroundPixmap: gradient:vertical?dimension=400&start=gray10&end=gray40
 ! XTerm*mainMenu*foreground:          white
 ! XTerm*vtMenu*backgroundPixmap: gradient:vertical?dimension=550&start=gray10&end=gray40
@@ -498,7 +493,6 @@ XTerm*colorBD: white
 ! XTerm*tekMenu*backgroundPixmap: gradient:vertical?dimension=300&start=gray10&end=gray40
 ! XTerm*tekMenu*foreground:            white
 ! XTerm Profiles (idea from dag wieers)
-XTerm*rightScrollBar: false
 ```
 ## [Vim](https://ftp.nluug.nl/pub/vim/unix/)
 
