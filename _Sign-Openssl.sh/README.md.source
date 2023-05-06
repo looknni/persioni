@@ -136,14 +136,13 @@ dbus_enable="YES"
 hald_enable="YES"
 gdm_enable="YES"
 gnome_enable="YES"
-	#~/.xinitrc # exec i3
+	#echo "exec i3" >> ~/.xinitrc
 
 ## /boot/loader.conf
 	if_re_load="YES"
 	if_re_name="/boot/modules/if_re.ko"
 	nvidia_load="YES"
     kld_list="/boot/modules/nvidia.ko /boot/modules/nvidia-modeset.ko"
-        # kld_list="/boot/kernel/linux.ko vesa"
 
 ### kldstat
 ### Xorg :1 -configure
@@ -184,91 +183,14 @@ Section "Screen"
               EndSubSection
 EndSection
 ```
-```
-Section "ServerLayout"
-	Identifier     "X.org Configured"
-	Screen      0  "Screen0" 0 0
-	InputDevice    "Mouse0" "CorePointer"
-	InputDevice    "Keyboard0" "CoreKeyboard"
-EndSection
-
-Section "Files"
-	ModulePath   "/usr/local/lib/xorg/modules"
-	FontPath     "/usr/local/share/fonts/misc/"
-	FontPath     "/usr/local/share/fonts/TTF/"
-	FontPath     "/usr/local/share/fonts/OTF/"
-	FontPath     "/usr/local/share/fonts/Type1/"
-	FontPath     "/usr/local/share/fonts/100dpi/"
-	FontPath     "/usr/local/share/fonts/75dpi/"
-	FontPath     "catalogue:/usr/local/etc/X11/fontpath.d"
-EndSection
-
-Section "Module"
-	Load  "glx"
-	Load  "glxserver_nvidia"
-EndSection
-
-Section "InputDevice"
-	Identifier  "Keyboard0"
-	Driver      "kbd"
-EndSection
-
-Section "InputDevice"
-	Identifier  "Mouse0"
-	Driver      "mouse"
-	Option	    "Protocol" "auto"
-	Option	    "Device" "/dev/sysmouse"
-	Option	    "ZAxisMapping" "4 5 6 7"
-EndSection
-
-Section "Monitor"
-	Identifier   "Monitor0"
-	VendorName   "Monitor Vendor"
-	ModelName    "Monitor Model"
-EndSection
-
-Section "Device"
-	Identifier  "Card0"
-	Driver      "nvidia"
-	BusID       "PCI:1:0:0"
-EndSection
-
-Section "Screen"
-	Identifier "Screen0"
-	Device     "Card0"
-	Monitor    "Monitor0"
-	SubSection "Display"
-		Viewport   0 0
-		Depth     1
-	EndSubSection
-	SubSection "Display"
-		Viewport   0 0
-		Depth     4
-	EndSubSection
-	SubSection "Display"
-		Viewport   0 0
-		Depth     8
-	EndSubSection
-	SubSection "Display"
-		Viewport   0 0
-		Depth     15
-	EndSubSection
-	SubSection "Display"
-		Viewport   0 0
-		Depth     16
-	EndSubSection
-	SubSection "Display"
-		Viewport   0 0
-		Depth     24
-	EndSubSection
-EndSection
-```
 ##### appres XTerm | grep -i utf8
 #### ~/.bashrc
     [[ -f ~/.Xresources ]] && xrdb -load ~/.Xresources
 
 #### ~/.Xresources
 ```
+! XTerm*font: -Misc-Fixed-Medium-R-Normal--20-200-75-75-C-100-ISO10646-1
+! XTerm*font: -misc-fixed-medium-r-normal--18-*-*-*-*-*-iso10646-1
 ! XTerm*faceName: DejaVu Sans Mono:size=11:style=Book:antialias=true
 XTerm*faceName: Monospace:size=11:style=Book:antialias=true
 XTerm*faceNameDoublesize: size=11
@@ -276,32 +198,29 @@ uxTerm*termName: xterm-256color
 XTerm*termName: xterm-256color
 XTerm*locale: true
 XTerm*utf8Title: true
+XTerm*utf8: 1
 xft.dpi: 96
 xpdf.title: PDF
 xft.antialias: true
 xft.rgba: rgb
 xft.hinting: true
 xft.hintstyle: hintslight
-! XTerm*cursorColor: *xtDefaultForeground
-! Orange
 XTerm*cursorColor: #ffa530
-!XTerm*inputMethod: ibus
+! XTerm*inputMethod: ibus
 
+XTerm*selectToClipboard:    true
 *VT100*translations: #override \n\
-Shift <KeyPress> Insert:insert-selection(CLIPBOARD, CUT_BUFFER1) \n\
-~Shift~Ctrl<Btn2Up>: insert-selection(PRIMARY, CUT_BUFFER0) \n\
-~Shift<BtnUp>: select-end(CLIPBOARD, CUT_BUFFER1) \n\
-~Shift<BtnUp>: select-end(PRIMARY, CUT_BUFFER0)
+Ctrl <KeyPress> Insert : insert-selection(CLIPBOARD, CUT_BUFFER1) \n\
+Shift Ctrl<Btn2Up> : insert-selection(PRIMARY, CUT_BUFFER0) \n\
+Ctrl <BtnUp> : select-end(CLIPBOARD, CUT_BUFFER1) \n\
+Ctrl <BtnUp> : select-end(PRIMARY, CUT_BUFFER0)
 
 XTerm*renderFont:           true
 XTerm*cjk_width:            true
 XTerm*geometry:             80x25
 XTerm*dynamicColors:        true
-XTerm*utf8:                 2
 XTerm*eightBitInput:        true
-XTerm*scrollKey:            true
-XTerm*scrollTtyOutput:      false
-XTerm*scrollBar:            false
+XTerm*decTerminalID:        vt340
 XTerm*rightScrollBar:       false
 XTerm*jumpScroll:           true
 XTerm*multiScroll:          true
@@ -309,43 +228,25 @@ XTerm*toolBar:              false
 XTerm*Scrollbar*thickness:  10
 XTerm*Scrollbar*background: black
 XTerm*Scrollbar*foreground: gray90
-XTerm*decTerminalID:        vt340
-XTerm*selectToClipboard:    true
+XTerm*ScrollKey:            true
+XTerm*ScrollTtyOutput:      false
+XTerm*ScrollBar:            false
 
+XTerm*vt100*geometry: 80x50
+XTerm.vt100*fadeColor: #002b36
+XTerm.vt100*pointerColorBackground: #586e75
+XTerm.vt100*pointerColorForeground: #93a1a1
 XTerm*allowBoldFonts: true
-XTerm*boldMode: false
+XTerm*boldMode: true
 XTerm*font: terminus-12
 XTerm*boldFont: terminus-12
 XTerm*loginShell: true
-XTerm*vt100*geometry: 80x50
 XTerm*saveLines: 2000
 XTerm*charClass: 33:48,35:48,37:48,43:48,45-47:48,64:48,95:48,126:48
 XTerm*colorBDMode: true
 XTerm*colorBD: rgb:fc/fc/fc
 ```
 ```
-XTerm*faceName:             DejaVu Sans Mono:size=11:style=Book:antialias=true
-XTerm*faceNameDoublesize:   size=11
-XTerm*renderFont:           true
-XTerm*cjk_width:            true
-XTerm*geometry:             80x25
-XTerm*dynamicColors:        true
-XTerm*utf8:                 2
-XTerm*eightBitInput:        true
-XTerm*saveLines:            2048
-XTerm*scrollKey:            true
-XTerm*scrollTtyOutput:      false
-XTerm*scrollBar:            false
-XTerm*rightScrollBar:       false
-XTerm*jumpScroll:           true
-XTerm*multiScroll:          true
-XTerm*toolBar:              false
-XTerm*Scrollbar*thickness:  10
-XTerm*Scrollbar*background: black
-XTerm*Scrollbar*foreground: gray90
-XTerm*termName:             xterm-256color
-XTerm*decTerminalID:        vt340
-XTerm*selectToClipboard:    true
 XTerm*background:   rgb:1a/1a/1a
 XTerm*foreground:   rgb:d6/d6/d6
 XTerm*cursorColor:  rgb:d6/d6/d6
@@ -365,17 +266,8 @@ XTerm*color12:      rgb:41/86/be
 XTerm*color13:      rgb:cf/9e/be
 XTerm*color14:      rgb:71/be/be
 XTerm*color15:      rgb:ff/ff/ff
-
 ```
 ```
-XTerm*font: terminus-12
-XTerm*boldFont: terminus-12
-XTerm*loginShell: true
-XTerm*vt100*geometry: 80x50
-XTerm*saveLines: 2000
-XTerm*charClass: 33:48,35:48,37:48,43:48,45-47:48,64:48,95:48,126:48
-XTerm*termName: xterm-color
-XTerm*eightBitInput: false
 XTerm*foreground: rgb:a8/a8/a8
 XTerm*background: rgb:00/00/00
 XTerm*color0: rgb:00/00/00
@@ -394,105 +286,57 @@ XTerm*color12: rgb:ff/7f/50
 XTerm*color13: rgb:fc/54/fc
 XTerm*color14: rgb:54/fc/fc
 XTerm*color15: rgb:fc/fc/fc
-XTerm*boldMode: false
-XTerm*colorBDMode: true
-XTerm*colorBD: rgb:fc/fc/fc
 ```
 ```
-! Lighter Black & Gray
 XTerm*background: #0c0c0c
 XTerm*foreground: #aaaaaa
-! Black & DarkGray
 XTerm*color0: #000000
 XTerm*color8: #555555
-! DarkRed & Red
 XTerm*color1: #aa0000
 XTerm*color9: #ff5555
-! DarkGreen & Green
 XTerm*color2: #00aa00
 XTerm*color10: #55ff55
-! DarkYellow & Yellow
 XTerm*color3: #aa5500
 XTerm*color11: #ffff55
-! DarkBlue & Blue
 XTerm*color4: #0000aa
 XTerm*color12: #5555ff
-! DarkMagenta & Magenta
 XTerm*color5: #aa00aa
 XTerm*color13: #ff55ff
-! DarkCyan & Cyan
 XTerm*color6: #00aaaa
 XTerm*color14: #55ffff
-! LightGray + White
 XTerm*color7: #aaaaaa
 XTerm*color15: #ffffff
 ```
 ```
-XTerm*font: -Misc-Fixed-Medium-R-Normal--20-200-75-75-C-100-ISO10646-1
-! XTerm*font: -misc-fixed-medium-r-normal--18-*-*-*-*-*-iso10646-1
-! XTerm*iconName: terminal
-XTerm*loginShell: true
-XTerm*foreground: gray90
-XTerm*background: black
-XTerm*cursorColor: rgb:00/80/00
-XTerm*borderColor: white
-XTerm*scrollColor: black
-XTerm*visualBell: true
-XTerm*saveLines: 1000
-!! XTerm.VT100.allowSendEvents: True
-XTerm*allowSendEvents: True
-XTerm*sessionMgt: false
-! XTerm*eightBitInput:  false
-! XTerm*metaSendsEscape: true
-! XTerm*internalBorder:  10
-! XTerm*highlightSelection:  true
-! XTerm*VT100*colorBDMode:  on
-! XTerm*VT100*colorBD:  blue
-! XTerm.VT100.eightBitOutput:  true
-! XTerm.VT100.titeInhibit:  false
-XTerm*background:  Black
-XTerm*foreground:  Grey
-XTerm*color0: black
-XTerm*color1: red3
-XTerm*color2: green3
-XTerm*color3: yellow3
-XTerm*color4: DodgerBlue1
-XTerm*color5: magenta3
-XTerm*color6: cyan3
-XTerm*color7: gray90
-XTerm*color8: gray50
-XTerm*color9: red
-XTerm*color10: green
-XTerm*color11: yellow
-XTerm*color12: blue
-XTerm*color13: magenta
-XTerm*color14: cyan
-XTerm*color15: white
-XTerm*colorUL: yellow
-XTerm*colorBD: white
-! XTerm*mainMenu*backgroundPixmap: gradient:vertical?dimension=400&start=gray10&end=gray40
-! XTerm*mainMenu*foreground:          white
-! XTerm*vtMenu*backgroundPixmap: gradient:vertical?dimension=550&start=gray10&end=gray40
-! XTerm*vtMenu*foreground:             white
-! XTerm*fontMenu*backgroundPixmap: gradient:vertical?dimension=300&start=gray10&end=gray40
-! XTerm*fontMenu*foreground:           white
-! XTerm*tekMenu*backgroundPixmap: gradient:vertical?dimension=300&start=gray10&end=gray40
-! XTerm*tekMenu*foreground:            white
-! XTerm Profiles (idea from dag wieers)
-XTerm*rightScrollBar: false
+XTerm*background:  #000000
+XTerm*foreground:  #9f9f9f
+XTerm*color0:      #000000
+XTerm*color1:      #9e1828
+XTerm*color2:      #aece92
+XTerm*color3:      #968a38
+XTerm*color4:      #414171
+XTerm*color5:      #963c59
+XTerm*color6:      #418179
+XTerm*color7:      #bebebe
+XTerm*color8:      #666666
+XTerm*color9:      #cf6171
+XTerm*color10:     #c5f779
+XTerm*color11:     #fff796
+XTerm*color12:     #4186be
+XTerm*color13:     #cf9ebe
+XTerm*color14:     #71bebe
+XTerm*color15:     #ffffff
 ```
 ## [Vim](https://ftp.nluug.nl/pub/vim/unix/)
 
-> ##### /usr/share/vim/vim82/colors/blue.vim
-> - hi Normal	guifg=yellow	guibg=darkBlue	ctermfg=yellow	ctermbg=none
-
 > ##### ~/.vimrc 
->> - $\displaystyle\coprod_{/usr/share/vim/vimrc@debian}^{/etc/vimrc@centos}$
+> - $\displaystyle\coprod_{/usr/share/vim/vimrc@debian}^{/etc/vimrc@centos}$
 ```
 syntax on
-set cursorcolumn
+"set cursorcolumn
 set cursorline
-"set statusline=\ %<%F\ [%1*%M%*%n%R%H]%=\ %y\ %0(%{&fileformat}\ %{&encoding}\ %c:%l\ ?\ %L%)
+set laststatus=2
+set statusline=\ %<%F\ [%1*%M%*%n%R%H]%=\ %y\ %0(%{&fileformat}\ %{&encoding}\ %c:%l\ %)
 set hlsearch
 set incsearch
 set autoindent "redhat
@@ -503,10 +347,13 @@ set ai	"redhat
 set autowrite "redhat
 set t_Co=256 "redhat
 colorscheme desert "delek "industry "murphy
-"hi IncSearch	cterm=bold ctermfg=red ctermbg=darkgreen
-"hi Search	cterm=bold ctermfg=red ctermbg=darkgreen
+hi statusline guibg=Cyan ctermfg=103 guifg=Black ctermbg=0
+hi IncSearch    cterm=bold ctermfg=129 ctermbg=8
+hi Search       cterm=bold ctermfg=148 ctermbg=8
 if &diff
   	colorscheme blue
+	hi Normal	guifg=yellow	guibg=darkBlue	ctermfg=yellow	ctermbg=none
+	hi statusline guibg=Cyan ctermfg=103 guifg=Black ctermbg=0
 endif
 ```
 ## ~~[Arch](https://archlinux.org/)~~
@@ -522,31 +369,32 @@ station wlan-name connect wifi-name
     ??? sudo pacman -S archlinuxcn-keyring && sudo pacman -Sy
 pacstrap /mnt base linux-lts linux-firmware
 genfstab -U /mnt >> /mnt/etc/fstab
+
 arch-chroot /mnt
 pacman -S grub efibootmgr os-prober \
     vim iwd dhcpcd sudo networkmanager \
     bash-completion
 systemctl enable dhcpcd NetworkManager iwd
 
+/etc/default/grub
+    GRUB_DISABLE_OS_PROBER=false
+
+grub-install --target=x86_64-efi --efi-directory=/boot/EFI --recheck --removable
+    # grub-install --target=i386-pc --boot-directory=/boot --recheck  /dev/sda
+
+grub-mkconfig -o /boot/grub/grub.cfg
+
 passwd
 useradd -m -G wheel username
 passwd username
 EDITOR=vim visudo # %wheel ALL=(ALL) ALL
 
-/etc/default/grub
-    GRUB_DISABLE_OS_PROBER=false
-
-grub-install --target=x86_64-efi --efi-directory=/boot/EFI --recheck --removable
-    # grub-install --target=i386-pc --boot-directory=/boot --recheck  /dev/sdX
-
-grub-mkconfig -o /boot/grub/grub.cfg
-
 /etc/locale.gen # en_GB.UTF-8
-locale-gen
 pacman -S wqy-microhei xorg-server xorg-xinit xf86-video-vesa gnome gdm
 vim /etc/locale.conf # LANG=en_GB.UTF-8
     systemctl enable gdm
     #sudo mkinitcpio -p linux
+
 exit
 reboot
 pacman -S i3-wm i3status dmenu \
@@ -573,8 +421,8 @@ pacman -Qdtq | pacman -Rsn -
 ## ~~[Gentoo](https://www.gentoo.org/)~~
 ```
 mount | grep efi
-# lsblk
-fdisk /dev/sda # m p g o n t d l w ??? cfdisk
+	# lsblk
+gdisk cgdisk | fdisk cfdisk /dev/sda # m p g o n t d l w
 mkfs.vfat -F 32 /dev/sda1
 mkfs.ext4 /dev/sda3
 mkswap /dev/sda2
@@ -611,34 +459,23 @@ mount /dev/sda1 /boot
 # mount /dev/sda4 /boot/EFI
 
 emerge-webrsync ?? /var/db/repos/gentoo/
-    # emerge --sync ?? Suppose there is a need for the last package updates (up to 1 hour),
-    # emerge --sync --quiet ?? On slow terminals, like some framebuffers or serial consoles, it is recommended to use the --quiet option to speed up the process
     # eselect news list
     # eselect news read
     # eselect profile list
     # eselect profile set <number>
 
 emerge --ask --verbose --update --deep --newuse @world # longTime
-    emerge -avuDN @world
-    # emerge --info | grep ^USE
-    # nano -w /etc/portage/make.conf # USE=“”
+    # emerge -avuDN @world
 emerge --ask app-portage/cpuid2cpuflags
-    # cpuid2cpuflags
 echo "*/* $(cpuid2cpuflags)" > /etc/portage/package.use/00cpu-flags
-    # ls /usr/share/zoneinfo
-echo "Europe/Brussels" > /etc/timezone # openrc
-emerge --config sys-libs/timezone-data # openrc
+
 ln -sf ../usr/share/zoneinfo/Europe/Brussels /etc/localtime # systemd
 nano -w /etc/locale.gen
-    # locale-gen
     # eselect locale list
     # eselect locale set 5 # /etc/env.d/02locale
 env-update && source /etc/profile && export PS1="(chroot) ${PS1}"
 
-emerge --ask sys-kernel/linux-firmware
-emerge --ask sys-kernel/installkernel-systemd-boot ??? gummiboot # bootloader
-emerge --ask sys-kernel/installkernel-gentoo # /boot ??? GRUB LILO
-emerge --ask sys-kernel/gentoo-kernel ??? longTime
+emerge --ask sys-kernel/linux-firmware sys-kernel/installkernel-systemd-boot sys-kernel/installkernel-gentoo sys-kernel/gentoo-kernel ??? longTime
     # emerge --ask sys-kernel/gentoo-kernel-bin
 emerge --depclean
     # emerge --prune sys-kernel/gentoo-kernel sys-kernel/gentoo-kernel-bin
@@ -653,51 +490,43 @@ eselect kernel list
     # mkdir /etc/portage/package.license
     # /etc/portage/package.license/linux-firmware
         sys-kernel/linux-firmware @BINARY-REDISTRIBUTABLE
+
 emerge --ask sys-kernel/genkernel
 genkernel --menuconfig all
 genkernel --mountboot --install all
-    # ls /boot/vmlinu* /boot/initramfs*
-    # root #ls /lib/modules
-    # emerge --ask sys-kernel/dracut
-    # dracut --kver=5.15.52-gentoo
 
-# blkid >> /etc/fstab
-    #/dev/sda1   
-    	UUID=		/boot        ext4    defaults,noatime     0 2
-    	#/dev/xx
-    		#UUID=		/boot/EFI	vfat	umask=0077,shortname=winnt	0	2
-    #/dev/sda2
-    	UUID=		none         swap    sw                   0 0
-    #/dev/sda3
-    	UUID=		/            ext4    noatime              0 1
+    # blkid mount ??? /etc/fstab
+#/dev/sda1   
+ UUID=? /boot ext4 defaults,noatime 0 2
+#/dev/xx
+ #UUID=? /boot/EFI vfat umask=0077 0 2
+#/dev/sda2
+ UUID=? none swap sw 0 0
+#/dev/sda3
+ UUID=? / ext4 noatime 0 1
 
 emerge --ask net-misc/dhcpcd
-    #rc-update add dhcpcd default
-    #rc-service dhcpcd start
 systemctl enable --now dhcpcd
 
     # /etc/conf.d/net
     # configth0="dhcp"
     # config_eth0="192.168.0.2 netmask 255.255.255.0 brd 192.168.0.255"
     # routes_eth0="default via 192.168.0.1"
-    # cd /etc/init.d
-    # ln -s net.lo net.eth0
-    # rc-update add net.eth0 default
 
 systemd-firstboot --prompt --setup-machine-id
 systemctl preset-all --preset-mode=enable-only
 systemctl preset-all
     # emerge --ask net-dialup/ppp
 emerge --ask net-wireless/iw net-wireless/wpa_supplicant
-    # emerge --ask --verbose sys-boot/grub:2
+
 echo 'GRUB_PLATFORMS="efi-64"' >> /etc/portage/make.conf
 emerge --ask sys-boot/grub
     # emerge --ask --update --newuse --verbose sys-boot/grub
 
-grub-install --target=x86_64-efi --efi-directory=/boot
     # grub-instal return; Could not prepare Boot variable: Read-only file system
     # mount -o remount,rw,nosuid,nodev,noexec --types efivarfs efivarfs /sys/firmware/efi/efivars
-grub-install --target=x86_64-efi --efi-directory=/boot --removable
+
+grub-install --target=x86_64-efi --efi-directory=/boot/EFI --removable
 grub-mkconfig -o /boot/grub/grub.cfg
 
 emerge --ask sys-boot/efibootmgr
@@ -715,8 +544,7 @@ cd
 umount -l /mnt/gentoo/dev{/shm,/pts,}
 umount -R /mnt/gentoo
 reboot
-systemctl start dhcpcd
-mount / -o remount,rw
+# mount -o remount,rw /
 
     # awesome
 ~/xinitrc # exec awesome
@@ -736,26 +564,12 @@ export GTK_IM_MODULE=fcitx
 
 emerge --ask app-i18n/fcitx-configtool app-i18n/fcitx-sunpinyin app-i18n/fcitx-libpinyin
 
-    # ibus
-USE="X appindicator emoji gtk2 gtk3 gtk4 gui introspection libnotify nls python systemd test unicode vala wayland" emerge --ask app-i18n/ibus ibus-libpinyin
-eix -c -S engine app-i18n/ibus
-    # ~/.bashrc or ~/.xinitrc
-export XMODIFIERS=@im=ibus
-export GTK_IM_MODULE=ibus
-export QT_IM_MODULE=ibus
-# Use `xim` in case some Electron apps (like Chromium) refuse to work with IBus
-# export GTK_IM_MODULE=xim
-# export QT_IM_MODULE=xim
-ibus-daemon -drx
-
 echo "www-client/google-chrome google-chrome" >> /etc/portage/package.license
 emerge --ask www-client/google-chrome
 google-chrome-stable --gtk-version=4 # Chrome needs to be instructed to use gtk4 in order to use IM such as fcitx5.
 
 # Any configuration file changes should be addressed, this can be managed by dispatch-conf:
 dispatch-conf
-# After the update, Portage recommends running 
-emerge --depclean
 
     ## dracut
 grub> ls , ls /
@@ -798,50 +612,6 @@ export LESS=-R #debian
 #### ` sed -i 's/GRUB_CMDLINE_LINUX=\"/GRUB_CMDLINE_LINUX=\"nouveau.modeset=1 /g ' /etc/default/grub @nouveau.modeset=0|1 #rd.driver.blacklist=nouveau `
 ##### ` yum remove $(rpm -qa | grep kernel | grep -v $(uname -r)) `
 ##### ` dracut -f /boot/initramfs-$(uname -r).img $(uname -r) ` #Create new initramfs image
-
-> #### [METACPAN](https://metacpan.org/)
-```
-o conf auto_commit 1
-o conf prerequisites_policy follow
-o conf build_requires_install_policy yes
-o conf commandnumber_in_prompt 0
-o conf init /colorize/
-install Term::ReadLine::Perl Term::ReadKey
-install YAML
-install YAML::XS
-o conf yaml_module YAML::XS
-install CPAN::SQLite
-o conf use_sqlite yes
-install CPAN
-o conf init
-```
----
-> ## /etc/hosts
-```
-#127.0.0.1 localhost hostname
-#127.0.1.1 hostname
-#::1 localhost hostname ip6-localhost ip6-loopback
-#ff02::1 ip6-allnodes
-#ff02::2 ip6-allrouters
-fe00::0 ip6-localnet
-ff00::0 ip6-mcastprefix
-ff02::3 ip6-allhosts
-ff02::5 ip6-allospfrouters
-ff02::9 ip6-allriprouters
-ff02::A ip6-alleigrprouters
-ff01::1 ip6-allnode-interface
-ff01::2 ip6-allrouter-interface
-ff02::4 ip6-dvmrp-router
-ff02::6 ip6-ospf-igp-dr
-ff02::7 ip6-strouter
-ff02::8 ip6-sthost
-ff02::B ip6-mobile-agent
-ff02::D ip6-allpim-routers
-ff02::E ip6-rsvp-encapsulation
-#ff02::1:1 ip6-link-name
-#ff02::1:2 ip6-alldhcp-agents
-#ff05::2 ip6-allrouters-localscope-site
-```
 ---
 > ## /etc/NetworkManager/NetworkManager.conf
 ```
