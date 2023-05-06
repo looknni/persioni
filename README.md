@@ -475,14 +475,15 @@ nano -w /etc/locale.gen
 env-update && source /etc/profile && export PS1="(chroot) ${PS1}"
 
 emerge --ask sys-kernel/linux-firmware sys-kernel/installkernel-systemd-boot sys-kernel/installkernel-gentoo sys-kernel/gentoo-kernel ??? longTime
+emerge --ask sys-kernel/gentoo-sources
+    
     # emerge --ask sys-kernel/gentoo-kernel-bin
 emerge --depclean
     # emerge --prune sys-kernel/gentoo-kernel sys-kernel/gentoo-kernel-bin
 emerge --ask @module-rebuild
     # emerge --config sys-kernel/gentoo-kernel
     # emerge --config sys-kernel/gentoo-kernel-bin
-emerge --ask sys-kernel/gentoo-sources
-eselect kernel list
+#eselect kernel list
     # eselect kernel set 1
     # ls -l /usr/src/linux
 
@@ -535,6 +536,7 @@ emerge --ask sys-boot/efibootmgr
     #efibootmgr -c -d /dev/sda -p 2 -L "Gentoo" -l "\EFI\BOOT\BOOTX64.EFI" initrd='\initramfs-genkernel-amd64-5.15.52-gentoo'
     #efibootmgr -b 0002 -B 0002
 
+passwd
 useradd -m -G users,wheel,audio -s /bin/bash username
 passwd username
 
