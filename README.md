@@ -198,6 +198,7 @@ uxTerm*termName: xterm-256color
 XTerm*termName: xterm-256color
 XTerm*locale: true
 XTerm*utf8Title: true
+XTerm*utf8: 1
 xft.dpi: 96
 xpdf.title: PDF
 xft.antialias: true
@@ -218,7 +219,6 @@ XTerm*renderFont:           true
 XTerm*cjk_width:            true
 XTerm*geometry:             80x25
 XTerm*dynamicColors:        true
-XTerm*utf8:                 2
 XTerm*eightBitInput:        true
 XTerm*decTerminalID:        vt340
 XTerm*rightScrollBar:       false
@@ -247,29 +247,6 @@ XTerm*colorBDMode: true
 XTerm*colorBD: rgb:fc/fc/fc
 ```
 ```
-XTerm*faceName:             DejaVu Sans Mono:size=11:style=Book:antialias=true
-XTerm*faceNameDoublesize:   size=11
-XTerm*renderFont:           true
-XTerm*cjk_width:            true
-XTerm*geometry:             80x25
-XTerm*dynamicColors:        true
-XTerm*utf8:                 2
-XTerm*eightBitInput:        true
-XTerm*saveLines:            2048
-XTerm*ScrollKey:            true
-XTerm*ScrollTtyOutput:      false
-XTerm*ScrollBar:            false
-XTerm*rightScrollBar:       false
-XTerm*jumpScroll:           true
-XTerm*multiScroll:          true
-XTerm*toolBar:              false
-XTerm*Scrollbar*thickness:  10
-XTerm*Scrollbar*background: black
-XTerm*Scrollbar*foreground: gray90
-XTerm*termName:             xterm-256color
-XTerm*decTerminalID:        vt340
-XTerm*selectToClipboard:    true
-
 XTerm*background:   rgb:1a/1a/1a
 XTerm*foreground:   rgb:d6/d6/d6
 XTerm*cursorColor:  rgb:d6/d6/d6
@@ -291,18 +268,6 @@ XTerm*color14:      rgb:71/be/be
 XTerm*color15:      rgb:ff/ff/ff
 ```
 ```
-XTerm*font: terminus-12
-XTerm*boldFont: terminus-12
-XTerm*loginShell: true
-XTerm*vt100*geometry: 80x50
-XTerm*saveLines: 2000
-XTerm*charClass: 33:48,35:48,37:48,43:48,45-47:48,64:48,95:48,126:48
-XTerm*termName: xterm-color
-XTerm*eightBitInput: false
-XTerm*boldMode: false
-XTerm*colorBDMode: true
-XTerm*colorBD: rgb:fc/fc/fc
-
 XTerm*foreground: rgb:a8/a8/a8
 XTerm*background: rgb:00/00/00
 XTerm*color0: rgb:00/00/00
@@ -341,7 +306,8 @@ XTerm*color6: #00aaaa
 XTerm*color14: #55ffff
 XTerm*color7: #aaaaaa
 XTerm*color15: #ffffff
-
+```
+```
 XTerm*background:  #000000
 XTerm*foreground:  #9f9f9f
 XTerm*color0:      #000000
@@ -646,50 +612,6 @@ export LESS=-R #debian
 #### ` sed -i 's/GRUB_CMDLINE_LINUX=\"/GRUB_CMDLINE_LINUX=\"nouveau.modeset=1 /g ' /etc/default/grub @nouveau.modeset=0|1 #rd.driver.blacklist=nouveau `
 ##### ` yum remove $(rpm -qa | grep kernel | grep -v $(uname -r)) `
 ##### ` dracut -f /boot/initramfs-$(uname -r).img $(uname -r) ` #Create new initramfs image
-
-> #### [METACPAN](https://metacpan.org/)
-```
-o conf auto_commit 1
-o conf prerequisites_policy follow
-o conf build_requires_install_policy yes
-o conf commandnumber_in_prompt 0
-o conf init /colorize/
-install Term::ReadLine::Perl Term::ReadKey
-install YAML
-install YAML::XS
-o conf yaml_module YAML::XS
-install CPAN::SQLite
-o conf use_sqlite yes
-install CPAN
-o conf init
-```
----
-> ## /etc/hosts
-```
-#127.0.0.1 localhost hostname
-#127.0.1.1 hostname
-#::1 localhost hostname ip6-localhost ip6-loopback
-#ff02::1 ip6-allnodes
-#ff02::2 ip6-allrouters
-fe00::0 ip6-localnet
-ff00::0 ip6-mcastprefix
-ff02::3 ip6-allhosts
-ff02::5 ip6-allospfrouters
-ff02::9 ip6-allriprouters
-ff02::A ip6-alleigrprouters
-ff01::1 ip6-allnode-interface
-ff01::2 ip6-allrouter-interface
-ff02::4 ip6-dvmrp-router
-ff02::6 ip6-ospf-igp-dr
-ff02::7 ip6-strouter
-ff02::8 ip6-sthost
-ff02::B ip6-mobile-agent
-ff02::D ip6-allpim-routers
-ff02::E ip6-rsvp-encapsulation
-#ff02::1:1 ip6-link-name
-#ff02::1:2 ip6-alldhcp-agents
-#ff05::2 ip6-allrouters-localscope-site
-```
 ---
 > ## /etc/NetworkManager/NetworkManager.conf
 ```
