@@ -249,7 +249,6 @@ XTerm*colorBD: rgb:fc/fc/fc
 ```
 XTerm*background:   rgb:1a/1a/1a
 XTerm*foreground:   rgb:d6/d6/d6
-XTerm*cursorColor:  rgb:d6/d6/d6
 XTerm*color0:       rgb:00/00/00
 XTerm*color1:       rgb:9e/18/28
 XTerm*color2:       rgb:00/88/00
