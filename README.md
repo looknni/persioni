@@ -400,6 +400,12 @@ pacman -S i3-wm i3status dmenu \
     xterm fcitx fcitx-configtool \
     fcitx-googlepinyin fcitx-libpinyin \
     fcitx-qt5 fcitx-table-extra
+# echo "exec_always --no-startup-id fcitx" >> .config/i3/config
+# xterm -u8
+# ~/.bashrc
+	export GTK_IM_MODULE=fcitx
+	export QT_IM_MODULE=fcitx
+	export XMODIFIERS=@im=fcitx
 
 pacman -S package ?? apt
 pacman -Ss package ?? apt list
