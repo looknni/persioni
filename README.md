@@ -159,7 +159,7 @@ export QT_IM_MODULE=fcitx
 export XMODIFIERS=@im=fcitx
 export LC_CTYPE=en_GB.UTF-8
 export XIM=fcitx
-export XIM_PROGRAM="fcitx"
+export XIM_PROGRAM=fcitx
 	#export XIM_ARGS=-"--daemonize --xim"
 ```
 #### /etc/X11/xorg.conf
@@ -407,6 +407,8 @@ pacman -S i3-wm i3status dmenu \
 	# exec_always --no-startup-id "ibus-daemon -drx"
 	# exec "xrdb -load ~/.Xresources"
 	# xterm -u8 # fc-list :lang=zh
+    ## exec --no-startup-id "export GTK_IM_MODULE=xim"
+
 
 # ~/.bashrc
 	export GTK_IM_MODULE=fcitx
