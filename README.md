@@ -78,21 +78,24 @@
 ##### [on flatpak error fonts](https://flatpak.org/setup/) ? cp -r /etc/fonts/* org.example.com/config/fontconfig
 ##### `https://dl.google.com/linux/direct/google-chrome-` $\iiint_{beta_{unstable}}^{stable}$ \_current\_ $\iint_{amd64.deb}^{x86_{64.rpm}}$ [Extension](https://crxdl.com/)
 ---
-##### [Awesomewm](https://awesomewm.org/) ??? [I3wm](https://i3wm.org/) ??? [Dwm](#)
+##### gdm ? [Awesomewm](https://awesomewm.org/) ? [I3wm](https://i3wm.org/) ? [Dwm](#)
 ---
 > ##### $APT_{dpkg}^{apt-get} \Downarrow$ [Debian](https://www.debian.org/security/) ? [Kali](https://www.kali.org/tools/)
 ```
+? gnome-shell-extension-dashtodock
+
 vim-gtk3 kaffeine qbittorrent audacious git traceroute locate mtr \
 fcitx fcitx-googlepinyin fcitx-dbus-status fcitx-table-wubi \
-wget bash-completion obs-studio aptitude xnview gnome-shell-extension-dashtodock \
+wget bash-completion obs-studio aptitude lynx links xterm \
 nmap tcpdump audacity inkscape gimp krita audacity libreoffice make gcc \
-libpam-tmpdir opendnssec rsync firmware-realtek xxd xxhash lynx links xterm
+libpam-tmpdir opendnssec rsync firmware-realtek xxd xxhash xnview
 ```
 > ##### $YUM_{RPM}^{DNF} \Downarrow$ [RockyLinux](https://rockylinux.org/) ? [AlmaLinux](https://almalinux.org/) ? [CentOS-stream](https://mirror.stream.centos.org/)
 ```
+? gnome-tweaks.noarch gnome-shell-extension-dash-to-dock.noarch gnome-extensions-app.x86_64
+
 epel-release.noarch epel-next-release.noarch gcc-c++ cmake bison ncurses ncurses-devel libaio ibus.x86_64 \
-aide rear fapolicyd usbguard openscap openscap-scanner scap-security-guide fastfetch-bash-completion.noarch \
-gnome-tweaks.noarch gnome-shell-extension-dash-to-dock.noarch gnome-extensions-app.x86_64 \
+aide rear fapolicyd usbguard openscap openscap-scanner scap-security-guide \
 xorg-x11-server-Xorg.x86_64 xorg-x11-xinit.x86_64 xorg-x11-xinit-session.x86_64 i3.x86_64 \
 google-noto-sans-cjk-ttc-fonts.noarch
 ```
@@ -114,7 +117,9 @@ nameserver 223.6.6.6
 
 # pkg install xorg-server xorg-drivers \
     xinit xauth i3 xterm sudo \
-    bash-completion awesome gnome-lite
+    bash-completion 
+    ? awesome gnome-lite
+
     # /usr/local/etc/sudoers
     # Use bash-completion, if available. /etc/bashrc or ~/.bashrc (or any other file sourcing those). If you have only bash >= 4.2 installed
 [[ $PS1 && -f /usr/local/share/bash-completion/bash_completion ]] && \
@@ -143,7 +148,7 @@ gnome_enable="YES"
 	if_re_load="YES"
 	if_re_name="/boot/modules/if_re.ko"
 	nvidia_load="YES"
-    kld_list="/boot/modules/nvidia.ko /boot/modules/nvidia-modeset.ko"
+	kld_list="/boot/modules/nvidia.ko /boot/modules/nvidia-modeset.ko"
 
 ### kldstat
 ### Xorg :1 -configure
@@ -390,8 +395,7 @@ passwd username
 EDITOR=vim visudo # %wheel ALL=(ALL) ALL
 
 /etc/locale.gen # en_GB.UTF-8
-pacman -S wqy-microhei xorg-server xorg-xinit xf86-video-vesa gnome gdm
-vim /etc/locale.conf # LANG=en_GB.UTF-8
+pacman -S wqy-microhei xorg-server xorg-xinit xf86-video-vesa gdm
     systemctl enable gdm
     #sudo mkinitcpio -p linux
 
@@ -407,7 +411,7 @@ pacman -S i3-wm i3status dmenu \
 	# exec_always --no-startup-id "ibus-daemon -drx"
 	# exec "xrdb -load ~/.Xresources"
 	# xterm -u8 # fc-list :lang=zh
-    ## exec --no-startup-id "export GTK_IM_MODULE=xim"
+	#? exec --no-startup-id "export GTK_IM_MODULE=xim"
 
 
 # ~/.bashrc
