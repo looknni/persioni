@@ -78,22 +78,26 @@
 ##### [on flatpak error fonts](https://flatpak.org/setup/) ? cp -r /etc/fonts/* org.example.com/config/fontconfig
 ##### `https://dl.google.com/linux/direct/google-chrome-` $\iiint_{beta_{unstable}}^{stable}$ \_current\_ $\iint_{amd64.deb}^{x86_{64.rpm}}$ [Extension](https://crxdl.com/)
 ---
-##### [Awesomewm](https://awesomewm.org/) ??? [I3wm](https://i3wm.org/) ??? [Dwm](#)
+##### gdm ? [Awesomewm](https://awesomewm.org/) ? [I3wm](https://i3wm.org/) ? [Dwm](#)
 ---
 > ##### $APT_{dpkg}^{apt-get} \Downarrow$ [Debian](https://www.debian.org/security/) ? [Kali](https://www.kali.org/tools/)
 ```
+? gnome-shell-extension-dashtodock
+
 vim-gtk3 kaffeine qbittorrent audacious git traceroute locate mtr \
 fcitx fcitx-googlepinyin fcitx-dbus-status fcitx-table-wubi \
-wget bash-completion obs-studio aptitude xnview gnome-shell-extension-dashtodock \
+wget bash-completion obs-studio aptitude lynx links xterm \
 nmap tcpdump audacity inkscape gimp krita audacity libreoffice make gcc \
-libpam-tmpdir opendnssec rsync firmware-realtek xxd xxhash lynx links xterm
+libpam-tmpdir opendnssec rsync firmware-realtek xxd xxhash xnview
 ```
 > ##### $YUM_{RPM}^{DNF} \Downarrow$ [RockyLinux](https://rockylinux.org/) ? [AlmaLinux](https://almalinux.org/) ? [CentOS-stream](https://mirror.stream.centos.org/)
 ```
+? gnome-tweaks.noarch gnome-shell-extension-dash-to-dock.noarch gnome-extensions-app.x86_64
+
 epel-release.noarch epel-next-release.noarch gcc-c++ cmake bison ncurses ncurses-devel libaio ibus.x86_64 \
-aide rear fapolicyd usbguard openscap openscap-scanner scap-security-guide fastfetch-bash-completion.noarch \
-gnome-tweaks.noarch gnome-shell-extension-dash-to-dock.noarch gnome-extensions-app.x86_64 \
-xorg-x11-server-Xorg.x86_64 xorg-x11-xinit.x86_64 xorg-x11-xinit-session.x86_64 i3.x86_64
+aide rear fapolicyd usbguard openscap openscap-scanner scap-security-guide \
+xorg-x11-server-Xorg.x86_64 xorg-x11-xinit.x86_64 xorg-x11-xinit-session.x86_64 i3.x86_64 \
+google-noto-sans-cjk-ttc-fonts.noarch
 ```
 > ##### $PKG_{apt}^{dpkg} \Downarrow$ [FreeBSD](https://www.freebsd.org/)
 ```
@@ -113,7 +117,9 @@ nameserver 223.6.6.6
 
 # pkg install xorg-server xorg-drivers \
     xinit xauth i3 xterm sudo \
-    bash-completion awesome gnome-lite
+    bash-completion 
+    ? awesome gnome-lite
+
     # /usr/local/etc/sudoers
     # Use bash-completion, if available. /etc/bashrc or ~/.bashrc (or any other file sourcing those). If you have only bash >= 4.2 installed
 [[ $PS1 && -f /usr/local/share/bash-completion/bash_completion ]] && \
@@ -142,7 +148,7 @@ gnome_enable="YES"
 	if_re_load="YES"
 	if_re_name="/boot/modules/if_re.ko"
 	nvidia_load="YES"
-    kld_list="/boot/modules/nvidia.ko /boot/modules/nvidia-modeset.ko"
+	kld_list="/boot/modules/nvidia.ko /boot/modules/nvidia-modeset.ko"
 
 ### kldstat
 ### Xorg :1 -configure
@@ -158,7 +164,7 @@ export QT_IM_MODULE=fcitx
 export XMODIFIERS=@im=fcitx
 export LC_CTYPE=en_GB.UTF-8
 export XIM=fcitx
-export XIM_PROGRAM="fcitx"
+export XIM_PROGRAM=fcitx
 	#export XIM_ARGS=-"--daemonize --xim"
 ```
 #### /etc/X11/xorg.conf
@@ -185,7 +191,7 @@ EndSection
 ```
 ##### appres XTerm | grep -i utf8
 #### ~/.bashrc
-    [[ -f ~/.Xresources ]] && xrdb -load ~/.Xresources
+    $(xrdb -load ~/.Xresources)
 
 #### ~/.Xresources
 ```
@@ -249,7 +255,6 @@ XTerm*colorBD: rgb:fc/fc/fc
 ```
 XTerm*background:   rgb:1a/1a/1a
 XTerm*foreground:   rgb:d6/d6/d6
-XTerm*cursorColor:  rgb:d6/d6/d6
 XTerm*color0:       rgb:00/00/00
 XTerm*color1:       rgb:9e/18/28
 XTerm*color2:       rgb:00/88/00
@@ -298,7 +303,7 @@ XTerm*color2: #00aa00
 XTerm*color10: #55ff55
 XTerm*color3: #aa5500
 XTerm*color11: #ffff55
-XTerm*color4: #0000aa
+XTerm*color4: #4169e1
 XTerm*color12: #5555ff
 XTerm*color5: #aa00aa
 XTerm*color13: #ff55ff
@@ -390,8 +395,7 @@ passwd username
 EDITOR=vim visudo # %wheel ALL=(ALL) ALL
 
 /etc/locale.gen # en_GB.UTF-8
-pacman -S wqy-microhei xorg-server xorg-xinit xf86-video-vesa gnome gdm
-vim /etc/locale.conf # LANG=en_GB.UTF-8
+pacman -S wqy-microhei xorg-server xorg-xinit xf86-video-vesa gdm
     systemctl enable gdm
     #sudo mkinitcpio -p linux
 
@@ -401,6 +405,19 @@ pacman -S i3-wm i3status dmenu \
     xterm fcitx fcitx-configtool \
     fcitx-googlepinyin fcitx-libpinyin \
     fcitx-qt5 fcitx-table-extra
+
+# .config/i3/config
+	# exec_always --no-startup-id "fcitx -dr" 
+	# exec_always --no-startup-id "ibus-daemon -drx"
+	# exec "xrdb -load ~/.Xresources"
+	# xterm -u8 # fc-list :lang=zh
+	#? exec --no-startup-id "export GTK_IM_MODULE=xim"
+
+
+# ~/.bashrc
+	export GTK_IM_MODULE=fcitx
+	export QT_IM_MODULE=fcitx
+	export XMODIFIERS=@im=fcitx
 
 pacman -S package ?? apt
 pacman -Ss package ?? apt list
@@ -476,14 +493,15 @@ nano -w /etc/locale.gen
 env-update && source /etc/profile && export PS1="(chroot) ${PS1}"
 
 emerge --ask sys-kernel/linux-firmware sys-kernel/installkernel-systemd-boot sys-kernel/installkernel-gentoo sys-kernel/gentoo-kernel ??? longTime
+emerge --ask sys-kernel/gentoo-sources
+    
     # emerge --ask sys-kernel/gentoo-kernel-bin
 emerge --depclean
     # emerge --prune sys-kernel/gentoo-kernel sys-kernel/gentoo-kernel-bin
 emerge --ask @module-rebuild
     # emerge --config sys-kernel/gentoo-kernel
     # emerge --config sys-kernel/gentoo-kernel-bin
-emerge --ask sys-kernel/gentoo-sources
-eselect kernel list
+#eselect kernel list
     # eselect kernel set 1
     # ls -l /usr/src/linux
 
@@ -536,6 +554,7 @@ emerge --ask sys-boot/efibootmgr
     #efibootmgr -c -d /dev/sda -p 2 -L "Gentoo" -l "\EFI\BOOT\BOOTX64.EFI" initrd='\initramfs-genkernel-amd64-5.15.52-gentoo'
     #efibootmgr -b 0002 -B 0002
 
+passwd
 useradd -m -G users,wheel,audio -s /bin/bash username
 passwd username
 
