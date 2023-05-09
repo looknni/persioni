@@ -97,7 +97,7 @@ libpam-tmpdir opendnssec rsync firmware-realtek xxd xxhash xnview
 epel-release.noarch epel-next-release.noarch gcc-c++ cmake bison ncurses ncurses-devel libaio ibus.x86_64 \
 aide rear fapolicyd usbguard openscap openscap-scanner scap-security-guide \
 xorg-x11-server-Xorg.x86_64 xorg-x11-xinit.x86_64 xorg-x11-xinit-session.x86_64 i3.x86_64 \
-google-noto-sans-cjk-ttc-fonts.noarch
+google-droid-sans-fonts.noarch google-noto-sans-cjk-ttc-fonts.noarch
 ```
 > ##### $PKG_{apt}^{dpkg} \Downarrow$ [FreeBSD](https://www.freebsd.org/)
 ```
