@@ -394,6 +394,7 @@ pacman -S i3-wm i3status dmenu \
 	# exec "xrdb -load ~/.Xresources"
 	# xterm -u8 # fc-list :lang=zh
 	#? exec --no-startup-id "export GTK_IM_MODULE=xim"
+? BUG # bindsym $mod+Shift+r restart
 
 # ~/.bashrc
 	export GTK_IM_MODULE=fcitx
