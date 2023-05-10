@@ -16,18 +16,13 @@
 ---
 ##### New Bootable USB Solution [ $V_{entoy}$ ] https://www.ventoy.net/en/index.html
 ---
-##### A flexible, fast and multiplatform multimedia framework [Gstreamer] https://gstreamer.freedesktop.org/
----
 ##### Fcitx [ˈfaɪtɪks] is an input method framework with extension support [Fcitx] https://fcitx-im.org/wiki/Fcitx
----
 ##### Ibus-libpinyin ibus-table-wubi [ibus-libpinyin] https://github.com/libpinyin/ibus-libpinyin
 ---
 ##### lspci -v [Realtek-interface] https://www.realtek.com/en/component/zoo/category/network-interface-controllers-10-100-1000m-gigabit-ethernet-pci-express-software
 ---
 ##### [?B560M-PRO] https://us.msi.com/Motherboard/B560M-PRO/support
----
 ##### [?magnet] https://wuqian.link/
----
 ##### [?feijisu] http://fjisu.top/ {Alpine }
 ---
 ##### Temp Mail provides temporary, anonymous, free, secure, disposable email address [Tempmail] https://tempmail.plus/en
@@ -37,7 +32,6 @@
 ##### (Ubuntu) Server at breed.hackpascal.net Port 443 [ $Breed_{hackpascal}$ ] https://breed.hackpascal.net/
 ---
 ##### So instead of downloading packages/software one by one from random sites [ $packages_{debian}$ ] https://packages.debian.org/
----
 ##### This service lets you follow the evolution of Debian both with email updates and a comprehensive web interface [ $tracker-debian^{kernel}$ ] https://tracker.debian.org/pkg/linux
 ---
 ##### Is being actively developed with frequent releases and has an ever growing list of features [ $Virtual^{box}$ ] https://download.virtualbox.org/virtualbox/
@@ -92,7 +86,7 @@ wget bash-completion obs-studio aptitude lynx links xterm \
 nmap tcpdump audacity inkscape gimp krita audacity libreoffice make gcc \
 libpam-tmpdir opendnssec rsync firmware-realtek xxd xxhash xnview
 ```
-> ##### $YUM_{RPM}^{DNF} \Downarrow$ [RockyLinux](https://rockylinux.org/) ? [AlmaLinux](https://almalinux.org/) ? [CentOS-stream](https://mirror.stream.centos.org/)
+> ##### $YUM_{RPM}^{DNF} \Downarrow$ [RockyLinux](https://rockylinux.org/) ? [AlmaLinux](https://almalinux.org/)
 ```
 ? gnome-tweaks.noarch gnome-shell-extension-dash-to-dock.noarch gnome-extensions-app.x86_64
 
@@ -198,12 +192,9 @@ EndSection
 #### ~/.Xresources
 ```
 ! XTerm*font: -Misc-Fixed-Medium-R-Normal--20-200-75-75-C-100-ISO10646-1
-! XTerm*font: -misc-fixed-medium-r-normal--18-*-*-*-*-*-iso10646-1
-! XTerm*faceName: DejaVu Sans Mono:size=11:style=Book:antialias=true
-XTerm*faceName: Monospace:size=11:style=Book:antialias=true
+! XTerm*faceName: DejaVu Sans Mono:style=Book:size=11:antialias=true
+XTerm*faceName: Monospace:style=Book:size=11:antialias=true
 XTerm*faceNameDoublesize: size=11
-uxTerm*termName: xterm-256color
-XTerm*termName: xterm-256color
 XTerm*locale: true
 XTerm*utf8Title: true
 XTerm*utf8: 1
@@ -240,7 +231,7 @@ XTerm*ScrollKey:            true
 XTerm*ScrollTtyOutput:      false
 XTerm*ScrollBar:            false
 
-XTerm*vt100*geometry: 80x50
+XTerm*vt100*geometry: 80x30
 XTerm.vt100*fadeColor: #002b36
 XTerm.vt100*pointerColorBackground: #586e75
 XTerm.vt100*pointerColorForeground: #93a1a1
@@ -585,12 +576,10 @@ grub> boot
 ---
 ##### ` dpkg -l | grep ^rc | awk '{print $2}' | sudo xargs dpkg -P `
 
-#### ` sed -i 's:*.psd1:&;*;*.*:g' /usr/share/gtksourceview-4/language-specs/powershell.lang `
-
 > ~~sudo dpkg-reconfigure [locales][console-setup]~~
 >> $\oint_{debian} {im-config}$
 ---
-> ##### sudo update-grub
+> ##### sudo update-grub2
 > - $\displaystyle\phi_{/boot/efi/EFI/centos/grub.cfg}^{/boot/grub2/grub.cfga} {grub2-mkconfig\ -o}$
 ---
 > ##### yum install libvirt-client
