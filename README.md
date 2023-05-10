@@ -66,6 +66,8 @@
 ---
 ##### Both official Gentoo project documentation as well as community-contributed content can be found here [ Gentoo ] https://wiki.gentoo.org/
 ---
+##### Grml is especially well suited for administrative tasks like installation, deployment and system rescue. https://grml.org/
+---
 > #### [SOURCES](https://cdimage.debian.org/images/) $\oint_{testing_{unstable}}^{stable} {debian}$
 > - https://mirrors.huaweicloud.com
 > - https://mirrors.tuna.tsinghua.edu.cn
@@ -412,7 +414,6 @@ pacman -S i3-wm i3status dmenu \
 	# exec "xrdb -load ~/.Xresources"
 	# xterm -u8 # fc-list :lang=zh
 	#? exec --no-startup-id "export GTK_IM_MODULE=xim"
-
 
 # ~/.bashrc
 	export GTK_IM_MODULE=fcitx
