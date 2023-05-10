@@ -237,9 +237,7 @@ XTerm.vt100*pointerColorBackground: #586e75
 XTerm.vt100*pointerColorForeground: #93a1a1
 XTerm*allowBoldFonts: true
 XTerm*boldMode: true
-XTerm*font: terminus-12
-XTerm*boldFont: terminus-12
-XTerm*loginShell: true
+XTerm*loginShell: false
 XTerm*saveLines: 2000
 XTerm*charClass: 33:48,35:48,37:48,43:48,45-47:48,64:48,95:48,126:48
 XTerm*colorBDMode: true
@@ -370,7 +368,6 @@ EDITOR=vim visudo # %wheel ALL=(ALL) ALL
 /etc/locale.gen # en_GB.UTF-8
 pacman -S wqy-microhei xorg-server xorg-xinit xf86-video-vesa gdm
     systemctl enable gdm
-    #sudo mkinitcpio -p linux
 
 exit
 reboot
@@ -407,6 +404,7 @@ pacman -Q ?? dpkg -l
 pacman -U package ?? dpkg --install
     # pacman -Qdt
 pacman -Qdtq | pacman -Rsn -
+# sudo mkinitcpio -p linux
 ```
 ## ~~[Gentoo](https://www.gentoo.org/)~~
 ```
