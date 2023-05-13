@@ -1,6 +1,6 @@
   File: ./SH/ConfBashDebRpm.sh
   Size: 7913      	Blocks: 16         IO Block: 4096   regular file
-Device: 259,2	Inode: 697005      Links: 1
+Device: 259,3	Inode: 697005      Links: 1
 Access: (0700/-rwx------)  Uid: (10288/ u0_a288)   Gid: (10288/ u0_a288)
 Access: 2023-05-02 20:43:10.678280521 +0800
 Modify: 2023-05-02 20:43:10.678280521 +0800

@@ -16,18 +16,13 @@
 ---
 ##### New Bootable USB Solution [ $V_{entoy}$ ] https://www.ventoy.net/en/index.html
 ---
-##### A flexible, fast and multiplatform multimedia framework [Gstreamer] https://gstreamer.freedesktop.org/
----
 ##### Fcitx [ˈfaɪtɪks] is an input method framework with extension support [Fcitx] https://fcitx-im.org/wiki/Fcitx
----
 ##### Ibus-libpinyin ibus-table-wubi [ibus-libpinyin] https://github.com/libpinyin/ibus-libpinyin
 ---
 ##### lspci -v [Realtek-interface] https://www.realtek.com/en/component/zoo/category/network-interface-controllers-10-100-1000m-gigabit-ethernet-pci-express-software
 ---
 ##### [?B560M-PRO] https://us.msi.com/Motherboard/B560M-PRO/support
----
 ##### [?magnet] https://wuqian.link/
----
 ##### [?feijisu] http://fjisu.top/ {Alpine }
 ---
 ##### Temp Mail provides temporary, anonymous, free, secure, disposable email address [Tempmail] https://tempmail.plus/en
@@ -37,7 +32,6 @@
 ##### (Ubuntu) Server at breed.hackpascal.net Port 443 [ $Breed_{hackpascal}$ ] https://breed.hackpascal.net/
 ---
 ##### So instead of downloading packages/software one by one from random sites [ $packages_{debian}$ ] https://packages.debian.org/
----
 ##### This service lets you follow the evolution of Debian both with email updates and a comprehensive web interface [ $tracker-debian^{kernel}$ ] https://tracker.debian.org/pkg/linux
 ---
 ##### Is being actively developed with frequent releases and has an ever growing list of features [ $Virtual^{box}$ ] https://download.virtualbox.org/virtualbox/
@@ -66,6 +60,8 @@
 ---
 ##### Both official Gentoo project documentation as well as community-contributed content can be found here [ Gentoo ] https://wiki.gentoo.org/
 ---
+##### Grml is especially well suited for administrative tasks like installation, deployment and system rescue. https://grml.org/
+---
 > #### [SOURCES](https://cdimage.debian.org/images/) $\oint_{testing_{unstable}}^{stable} {debian}$
 > - https://mirrors.huaweicloud.com
 > - https://mirrors.tuna.tsinghua.edu.cn
@@ -90,14 +86,14 @@ wget bash-completion obs-studio aptitude lynx links xterm \
 nmap tcpdump audacity inkscape gimp krita audacity libreoffice make gcc \
 libpam-tmpdir opendnssec rsync firmware-realtek xxd xxhash xnview
 ```
-> ##### $YUM_{RPM}^{DNF} \Downarrow$ [RockyLinux](https://rockylinux.org/) ? [AlmaLinux](https://almalinux.org/) ? [CentOS-stream](https://mirror.stream.centos.org/)
+> ##### $YUM_{RPM}^{DNF} \Downarrow$ [RockyLinux](https://rockylinux.org/) ? [AlmaLinux](https://almalinux.org/)
 ```
 ? gnome-tweaks.noarch gnome-shell-extension-dash-to-dock.noarch gnome-extensions-app.x86_64
 
 epel-release.noarch epel-next-release.noarch gcc-c++ cmake bison ncurses ncurses-devel libaio ibus.x86_64 \
 aide rear fapolicyd usbguard openscap openscap-scanner scap-security-guide \
 xorg-x11-server-Xorg.x86_64 xorg-x11-xinit.x86_64 xorg-x11-xinit-session.x86_64 i3.x86_64 \
-google-noto-sans-cjk-ttc-fonts.noarch
+google-droid-sans-fonts.noarch google-noto-sans-cjk-ttc-fonts.noarch
 ```
 > ##### $PKG_{apt}^{dpkg} \Downarrow$ [FreeBSD](https://www.freebsd.org/)
 ```
@@ -196,12 +192,9 @@ EndSection
 #### ~/.Xresources
 ```
 ! XTerm*font: -Misc-Fixed-Medium-R-Normal--20-200-75-75-C-100-ISO10646-1
-! XTerm*font: -misc-fixed-medium-r-normal--18-*-*-*-*-*-iso10646-1
-! XTerm*faceName: DejaVu Sans Mono:size=11:style=Book:antialias=true
-XTerm*faceName: Monospace:size=11:style=Book:antialias=true
+! XTerm*faceName: DejaVu Sans Mono:style=Book:size=11:antialias=true
+XTerm*faceName: Monospace:style=Book:size=11:antialias=true
 XTerm*faceNameDoublesize: size=11
-uxTerm*termName: xterm-256color
-XTerm*termName: xterm-256color
 XTerm*locale: true
 XTerm*utf8Title: true
 XTerm*utf8: 1
@@ -238,15 +231,13 @@ XTerm*ScrollKey:            true
 XTerm*ScrollTtyOutput:      false
 XTerm*ScrollBar:            false
 
-XTerm*vt100*geometry: 80x50
+XTerm*vt100*geometry: 80x30
 XTerm.vt100*fadeColor: #002b36
 XTerm.vt100*pointerColorBackground: #586e75
 XTerm.vt100*pointerColorForeground: #93a1a1
 XTerm*allowBoldFonts: true
 XTerm*boldMode: true
-XTerm*font: terminus-12
-XTerm*boldFont: terminus-12
-XTerm*loginShell: true
+XTerm*loginShell: false
 XTerm*saveLines: 2000
 XTerm*charClass: 33:48,35:48,37:48,43:48,45-47:48,64:48,95:48,126:48
 XTerm*colorBDMode: true
@@ -311,26 +302,6 @@ XTerm*color6: #00aaaa
 XTerm*color14: #55ffff
 XTerm*color7: #aaaaaa
 XTerm*color15: #ffffff
-```
-```
-XTerm*background:  #000000
-XTerm*foreground:  #9f9f9f
-XTerm*color0:      #000000
-XTerm*color1:      #9e1828
-XTerm*color2:      #aece92
-XTerm*color3:      #968a38
-XTerm*color4:      #414171
-XTerm*color5:      #963c59
-XTerm*color6:      #418179
-XTerm*color7:      #bebebe
-XTerm*color8:      #666666
-XTerm*color9:      #cf6171
-XTerm*color10:     #c5f779
-XTerm*color11:     #fff796
-XTerm*color12:     #4186be
-XTerm*color13:     #cf9ebe
-XTerm*color14:     #71bebe
-XTerm*color15:     #ffffff
 ```
 ## [Vim](https://ftp.nluug.nl/pub/vim/unix/)
 
@@ -397,7 +368,6 @@ EDITOR=vim visudo # %wheel ALL=(ALL) ALL
 /etc/locale.gen # en_GB.UTF-8
 pacman -S wqy-microhei xorg-server xorg-xinit xf86-video-vesa gdm
     systemctl enable gdm
-    #sudo mkinitcpio -p linux
 
 exit
 reboot
@@ -412,7 +382,7 @@ pacman -S i3-wm i3status dmenu \
 	# exec "xrdb -load ~/.Xresources"
 	# xterm -u8 # fc-list :lang=zh
 	#? exec --no-startup-id "export GTK_IM_MODULE=xim"
-
+? BUG # bindsym $mod+Shift+r restart
 
 # ~/.bashrc
 	export GTK_IM_MODULE=fcitx
@@ -434,6 +404,7 @@ pacman -Q ?? dpkg -l
 pacman -U package ?? dpkg --install
     # pacman -Qdt
 pacman -Qdtq | pacman -Rsn -
+# sudo mkinitcpio -p linux
 ```
 ## ~~[Gentoo](https://www.gentoo.org/)~~
 ```
@@ -603,12 +574,10 @@ grub> boot
 ---
 ##### ` dpkg -l | grep ^rc | awk '{print $2}' | sudo xargs dpkg -P `
 
-#### ` sed -i 's:*.psd1:&;*;*.*:g' /usr/share/gtksourceview-4/language-specs/powershell.lang `
-
 > ~~sudo dpkg-reconfigure [locales][console-setup]~~
 >> $\oint_{debian} {im-config}$
 ---
-> ##### sudo update-grub
+> ##### sudo update-grub2
 > - $\displaystyle\phi_{/boot/efi/EFI/centos/grub.cfg}^{/boot/grub2/grub.cfga} {grub2-mkconfig\ -o}$
 ---
 > ##### yum install libvirt-client
@@ -655,7 +624,7 @@ interval=0
 > + systemctl restart systemd-resolved.service && resolvectl
 ```
 DNS= 2606:4700:4700::1001 2606:4700:4700::1111 2001:4860:4860::8888 2001:4860:4860::8844 2620:fe::9 2620:fe::fe:9 2a09:: 2a11:: 2620:119:53::53 2620:119:35::35 2001:dc7:1000::1 240c:f:1:22::6 2001:de4::101 2001:de4::102 2001:da8:8000:1:202:120:2:100 2001:da8:8000:1:202:120:2:101 2001:da8:ff:305:20c:29ff:fe1f:a92a 2a02:6b8::feed:ff 2a02:6b8:0:1::feed:ff 2a02:6b8::feed:bad 2a02:6b8:0:1::feed:bad 2620:fe::fe 2620:fe::9 2620:0:ccc::2 2620:0:ccd::2
-FallbackDNS= 1.2.4.8 223.5.5.5 5.5.5.223 223.6.6.6 180.76.76.76 119.29.29.29 52.80.66.66 101.226.4.6 218.30.118.6 123.125.81.6 140.207.198.6 1.1.1.1 1.0.0.1 8.8.8.8 8.8.4.4 9.9.9.9 185.222.222.222 185.184.222.222 208.67.222.222 208.67.220.220 178.79.131.110 119.29.29.29
+FallbackDNS= 1.2.4.8 210.2.4.8 101.6.6.6 223.5.5.5 223.6.6.6 180.76.76.76 119.29.29.29 52.80.66.66 101.226.4.6 218.30.118.6 123.125.81.6 140.207.198.6 114.114.114.119 114.114.114.110
 Domains=lan
 DNSSEC=allow-downgrade
 DNSOverTLS=opportunistic
