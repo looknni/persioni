@@ -270,7 +270,7 @@ XTerm*color0: rgb:00/00/00
 XTerm*color1: rgb:a8/00/00
 XTerm*color2: rgb:00/a8/00
 XTerm*color3: rgb:a8/54/00
-XTerm*color4: rgb:64/95/ed
+XTerm*color4: rgb:41/41/71
 XTerm*color5: rgb:a8/00/a8
 XTerm*color6: rgb:00/a8/a8
 XTerm*color7: rgb:a8/a8/a8
@@ -294,7 +294,7 @@ XTerm*color2: #00aa00
 XTerm*color10: #55ff55
 XTerm*color3: #aa5500
 XTerm*color11: #ffff55
-XTerm*color4: #4169e1
+XTerm*color4: #414171
 XTerm*color12: #5555ff
 XTerm*color5: #aa00aa
 XTerm*color13: #ff55ff
