@@ -81,7 +81,7 @@
 ? gnome-shell-extension-dashtodock
 
 vim-gtk3 kaffeine qbittorrent audacious git traceroute locate mtr \
-fcitx fcitx-googlepinyin fcitx-dbus-status fcitx-table-wubi \
+fcitx fcitx-googlepinyin fcitx-configtool fcitx-table-wubi \
 wget bash-completion obs-studio aptitude lynx links xterm \
 nmap tcpdump audacity inkscape gimp krita audacity libreoffice make gcc \
 libpam-tmpdir opendnssec rsync firmware-realtek xxd xxhash xnview
@@ -161,7 +161,6 @@ export XMODIFIERS=@im=fcitx
 export LC_CTYPE=en_GB.UTF-8
 export XIM=fcitx
 export XIM_PROGRAM=fcitx
-	#export XIM_ARGS=-"--daemonize --xim"
 ```
 #### /etc/X11/xorg.conf
 ```
@@ -216,7 +215,7 @@ Ctrl <BtnUp> : select-end(PRIMARY, CUT_BUFFER0)
 
 XTerm*renderFont:           true
 XTerm*cjk_width:            true
-XTerm*geometry:             80x25
+! XTerm*geometry:             80x25
 XTerm*dynamicColors:        true
 XTerm*eightBitInput:        true
 XTerm*decTerminalID:        vt340
@@ -376,12 +375,11 @@ pacman -S i3-wm i3status dmenu \
     fcitx-googlepinyin fcitx-libpinyin \
     fcitx-qt5 fcitx-table-extra
 
-# .config/i3/config
+# ~/.config/i3/config
 	# exec_always --no-startup-id "fcitx -dr" 
 	# exec_always --no-startup-id "ibus-daemon -drx"
 	# exec "xrdb -load ~/.Xresources"
 	# xterm -u8 # fc-list :lang=zh
-	#? exec --no-startup-id "export GTK_IM_MODULE=xim"
 ? BUG # bindsym $mod+Shift+r restart
 
 # ~/.bashrc
@@ -605,9 +603,9 @@ export LESS=-R #debian
 ```
 [main]
 plugins=ifupdown,keyfile
-dns=dnsmasq
-systemd-resolved=true
-rc-manager=resolvconf
+#dns=dnsmasq
+#systemd-resolved=true
+#rc-manager=resolvconf
 
 [ifupdown]
 managed=true
