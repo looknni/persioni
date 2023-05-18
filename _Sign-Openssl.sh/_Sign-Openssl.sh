@@ -32,3 +32,5 @@
 ./SH/TestOpenssl.sh
 ./SH/UEncrypt.pl
 ./SH/journal.ods
+./Init.sh
+./Openwrt.list

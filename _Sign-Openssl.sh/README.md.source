@@ -81,7 +81,7 @@
 ? gnome-shell-extension-dashtodock
 
 vim-gtk3 kaffeine qbittorrent audacious git traceroute locate mtr \
-fcitx fcitx-googlepinyin fcitx-dbus-status fcitx-table-wubi \
+fcitx fcitx-googlepinyin fcitx-configtool fcitx-table-wubi \
 wget bash-completion obs-studio aptitude lynx links xterm \
 nmap tcpdump audacity inkscape gimp krita audacity libreoffice make gcc \
 libpam-tmpdir opendnssec rsync firmware-realtek xxd xxhash xnview
@@ -161,7 +161,6 @@ export XMODIFIERS=@im=fcitx
 export LC_CTYPE=en_GB.UTF-8
 export XIM=fcitx
 export XIM_PROGRAM=fcitx
-	#export XIM_ARGS=-"--daemonize --xim"
 ```
 #### /etc/X11/xorg.conf
 ```
@@ -216,7 +215,7 @@ Ctrl <BtnUp> : select-end(PRIMARY, CUT_BUFFER0)
 
 XTerm*renderFont:           true
 XTerm*cjk_width:            true
-XTerm*geometry:             80x25
+! XTerm*geometry:             80x25
 XTerm*dynamicColors:        true
 XTerm*eightBitInput:        true
 XTerm*decTerminalID:        vt340
@@ -270,7 +269,7 @@ XTerm*color0: rgb:00/00/00
 XTerm*color1: rgb:a8/00/00
 XTerm*color2: rgb:00/a8/00
 XTerm*color3: rgb:a8/54/00
-XTerm*color4: rgb:64/95/ed
+XTerm*color4: rgb:41/41/71
 XTerm*color5: rgb:a8/00/a8
 XTerm*color6: rgb:00/a8/a8
 XTerm*color7: rgb:a8/a8/a8
@@ -294,7 +293,7 @@ XTerm*color2: #00aa00
 XTerm*color10: #55ff55
 XTerm*color3: #aa5500
 XTerm*color11: #ffff55
-XTerm*color4: #4169e1
+XTerm*color4: #414171
 XTerm*color12: #5555ff
 XTerm*color5: #aa00aa
 XTerm*color13: #ff55ff
@@ -376,12 +375,11 @@ pacman -S i3-wm i3status dmenu \
     fcitx-googlepinyin fcitx-libpinyin \
     fcitx-qt5 fcitx-table-extra
 
-# .config/i3/config
+# ~/.config/i3/config
 	# exec_always --no-startup-id "fcitx -dr" 
 	# exec_always --no-startup-id "ibus-daemon -drx"
 	# exec "xrdb -load ~/.Xresources"
 	# xterm -u8 # fc-list :lang=zh
-	#? exec --no-startup-id "export GTK_IM_MODULE=xim"
 ? BUG # bindsym $mod+Shift+r restart
 
 # ~/.bashrc
@@ -605,9 +603,9 @@ export LESS=-R #debian
 ```
 [main]
 plugins=ifupdown,keyfile
-dns=dnsmasq
-systemd-resolved=true
-rc-manager=resolvconf
+#dns=dnsmasq
+#systemd-resolved=true
+#rc-manager=resolvconf
 
 [ifupdown]
 managed=true
@@ -623,7 +621,7 @@ interval=0
 > ## /etc/systemd/resolved.conf
 > + systemctl restart systemd-resolved.service && resolvectl
 ```
-DNS= 2606:4700:4700::1001 2606:4700:4700::1111 2001:4860:4860::8888 2001:4860:4860::8844 2620:fe::9 2620:fe::fe:9 2a09:: 2a11:: 2620:119:53::53 2620:119:35::35 2001:dc7:1000::1 240c:f:1:22::6 2001:de4::101 2001:de4::102 2001:da8:8000:1:202:120:2:100 2001:da8:8000:1:202:120:2:101 2001:da8:ff:305:20c:29ff:fe1f:a92a 2a02:6b8::feed:ff 2a02:6b8:0:1::feed:ff 2a02:6b8::feed:bad 2a02:6b8:0:1::feed:bad 2620:fe::fe 2620:fe::9 2620:0:ccc::2 2620:0:ccd::2
+DNS= 240C::6666 240C::6644 2001:da8::666 2606:4700:4700::1001 2606:4700:4700::1111 2001:4860:4860::8888 2001:4860:4860::8844 2620:fe::9 2620:fe::fe:9 2a09:: 2a11:: 2620:119:53::53 2620:119:35::35 2001:dc7:1000::1 240c:f:1:22::6 2001:de4::101 2001:de4::102 2001:da8:8000:1:202:120:2:100 2001:da8:8000:1:202:120:2:101 2001:da8:ff:305:20c:29ff:fe1f:a92a 2a02:6b8::feed:ff 2a02:6b8:0:1::feed:ff 2a02:6b8::feed:bad 2a02:6b8:0:1::feed:bad 2620:fe::fe 2620:fe::9 2620:0:ccc::2 2620:0:ccd::2
 FallbackDNS= 1.2.4.8 210.2.4.8 101.6.6.6 223.5.5.5 223.6.6.6 180.76.76.76 119.29.29.29 52.80.66.66 101.226.4.6 218.30.118.6 123.125.81.6 140.207.198.6 114.114.114.119 114.114.114.110
 Domains=lan
 DNSSEC=allow-downgrade

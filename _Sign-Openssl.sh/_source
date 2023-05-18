@@ -32,3 +32,5 @@
 ./_Sign-Openssl.sh/Locate.stat.tar
 ./_Sign-Openssl.sh/OpenSSL.md.tar
 ./_Sign-Openssl.sh/README.md.tar
+./_Sign-Openssl.sh/Init.sh.tar
+./_Sign-Openssl.sh/Openwrt.list.tar
