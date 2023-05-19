@@ -71,7 +71,7 @@
 > - http://mirrors.nju.edu.cn/ # [ freebsd 13,14 ]
 ---
 ##### sudo flatpak remote-modify flathub --url=https://mirror.sjtu.edu.cn/flathub
-##### [on flatpak error fonts](https://flatpak.org/setup/) ? cp -r /etc/fonts/* org.example.com/config/fontconfig
+##### [On Flatpak error fonts](https://flatpak.org/setup/) ? cp -r /etc/fonts/* org.example.com/config/fontconfig
 ##### `https://dl.google.com/linux/direct/google-chrome-` $\iiint_{beta_{unstable}}^{stable}$ \_current\_ $\iint_{amd64.deb}^{x86_{64.rpm}}$ [Extension](https://crxdl.com/)
 ---
 ##### gdm ? [Awesomewm](https://awesomewm.org/) ? [I3wm](https://i3wm.org/) ? [Dwm](#)
@@ -558,13 +558,6 @@ google-chrome-stable --gtk-version=4 # Chrome needs to be instructed to use gtk4
 
 # Any configuration file changes should be addressed, this can be managed by dispatch-conf:
 dispatch-conf
-
-    ## dracut
-grub> ls , ls /
-grub> set root=(hd0,1)
-grub> linux /boot/vmlinuz-...-generic root=/dev/sda1
-grub> initrd /boot/initrd.img
-grub> boot
 ```
 > ##### yum groupinstall 'Server with GUI' 
 >> - systemctl set-default graphical.target 
