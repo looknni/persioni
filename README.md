@@ -206,29 +206,29 @@ xft.hintstyle: hintslight
 XTerm*cursorColor: #ffa530
 ! XTerm*inputMethod: ibus
 
-XTerm*selectToClipboard:    true
+XTerm*selectToClipboard: true
 *VT100*translations: #override \n\
 Ctrl <KeyPress> Insert : insert-selection(CLIPBOARD, CUT_BUFFER1) \n\
 Shift Ctrl<Btn2Up> : insert-selection(PRIMARY, CUT_BUFFER0) \n\
 Ctrl <BtnUp> : select-end(CLIPBOARD, CUT_BUFFER1) \n\
 Ctrl <BtnUp> : select-end(PRIMARY, CUT_BUFFER0)
 
-XTerm*renderFont:           true
-XTerm*cjk_width:            true
-! XTerm*geometry:             80x25
-XTerm*dynamicColors:        true
-XTerm*eightBitInput:        true
-XTerm*decTerminalID:        vt340
-XTerm*rightScrollBar:       false
-XTerm*jumpScroll:           true
-XTerm*multiScroll:          true
-XTerm*toolBar:              false
-XTerm*Scrollbar*thickness:  10
+XTerm*renderFont: true
+XTerm*cjk_width: true
+! XTerm*geometry: 80x25
+XTerm*dynamicColors: true
+XTerm*eightBitInput: true
+XTerm*decTerminalID: vt340
+XTerm*rightScrollBar: false
+XTerm*jumpScroll: true
+XTerm*multiScroll: true
+XTerm*toolBar: false
+XTerm*Scrollbar*thickness: 10
 XTerm*Scrollbar*background: black
 XTerm*Scrollbar*foreground: gray90
-XTerm*ScrollKey:            true
-XTerm*ScrollTtyOutput:      false
-XTerm*ScrollBar:            false
+XTerm*ScrollKey: true
+XTerm*ScrollTtyOutput: false
+XTerm*ScrollBar: false
 
 XTerm*vt100*geometry: 80x30
 XTerm.vt100*fadeColor: #002b36
@@ -243,24 +243,24 @@ XTerm*colorBDMode: true
 XTerm*colorBD: rgb:fc/fc/fc
 ```
 ```
-XTerm*background:   rgb:1a/1a/1a
-XTerm*foreground:   rgb:d6/d6/d6
-XTerm*color0:       rgb:00/00/00
-XTerm*color1:       rgb:9e/18/28
-XTerm*color2:       rgb:00/88/00
-XTerm*color3:       rgb:96/8a/38
-XTerm*color4:       rgb:41/41/71
-XTerm*color5:       rgb:96/3c/59
-XTerm*color6:       rgb:41/81/79
-XTerm*color7:       rgb:be/be/be
-XTerm*color8:       rgb:66/66/66
-XTerm*color9:       rgb:cf/61/71
-XTerm*color10:      rgb:7c/bc/8c
-XTerm*color11:      rgb:ff/f7/96
-XTerm*color12:      rgb:41/86/be
-XTerm*color13:      rgb:cf/9e/be
-XTerm*color14:      rgb:71/be/be
-XTerm*color15:      rgb:ff/ff/ff
+XTerm*background: rgb:1a/1a/1a
+XTerm*foreground: rgb:d6/d6/d6
+XTerm*color0: rgb:00/00/00
+XTerm*color1: rgb:9e/18/28
+XTerm*color2: rgb:00/88/00
+XTerm*color3: rgb:96/8a/38
+XTerm*color4: rgb:4a/4a/ff
+XTerm*color5: rgb:96/3c/59
+XTerm*color6: rgb:41/81/79
+XTerm*color7: rgb:be/be/be
+XTerm*color8: rgb:66/66/66
+XTerm*color9: rgb:cf/61/71
+XTerm*color10: rgb:7c/bc/8c
+XTerm*color11: rgb:ff/f7/96
+XTerm*color12: rgb:41/86/be
+XTerm*color13: rgb:cf/9e/be
+XTerm*color14: rgb:71/be/be
+XTerm*color15: rgb:ff/ff/ff
 ```
 ```
 XTerm*foreground: rgb:a8/a8/a8
@@ -269,7 +269,7 @@ XTerm*color0: rgb:00/00/00
 XTerm*color1: rgb:a8/00/00
 XTerm*color2: rgb:00/a8/00
 XTerm*color3: rgb:a8/54/00
-XTerm*color4: rgb:41/41/71
+XTerm*color4: rgb:4a/4a/ff
 XTerm*color5: rgb:a8/00/a8
 XTerm*color6: rgb:00/a8/a8
 XTerm*color7: rgb:a8/a8/a8
@@ -293,7 +293,7 @@ XTerm*color2: #00aa00
 XTerm*color10: #55ff55
 XTerm*color3: #aa5500
 XTerm*color11: #ffff55
-XTerm*color4: #414171
+XTerm*color4: #4a4aff
 XTerm*color12: #5555ff
 XTerm*color5: #aa00aa
 XTerm*color13: #ff55ff
