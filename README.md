@@ -82,18 +82,18 @@
 
 vim-gtk3 kaffeine qbittorrent audacious git traceroute locate mtr \
 fcitx fcitx-googlepinyin fcitx-configtool fcitx-table-wubi \
-wget bash-completion obs-studio aptitude lynx links xterm \
+wget bash-completion obs-studio aptitude lynx links xterm dnsutils \
 nmap tcpdump audacity inkscape gimp krita audacity libreoffice make gcc \
 libpam-tmpdir opendnssec rsync firmware-realtek xxd xxhash xnview
 ```
 > ##### $YUM_{RPM}^{DNF} \Downarrow$ [RockyLinux](https://rockylinux.org/) ? [AlmaLinux](https://almalinux.org/)
 ```
 ? gnome-tweaks.noarch gnome-shell-extension-dash-to-dock.noarch gnome-extensions-app.x86_64
+? aide rear fapolicyd usbguard openscap openscap-scanner scap-security-guide
 
 epel-release.noarch epel-next-release.noarch gcc-c++ cmake bison ncurses ncurses-devel libaio ibus.x86_64 \
-aide rear fapolicyd usbguard openscap openscap-scanner scap-security-guide \
 xorg-x11-server-Xorg.x86_64 xorg-x11-xinit.x86_64 xorg-x11-xinit-session.x86_64 i3.x86_64 \
-google-droid-sans-fonts.noarch google-noto-sans-cjk-ttc-fonts.noarch
+google-droid-sans-fonts.noarch google-noto-sans-cjk-ttc-fonts.noarch bind-utils
 ```
 > ##### $PKG_{apt}^{dpkg} \Downarrow$ [FreeBSD](https://www.freebsd.org/)
 ```
@@ -104,7 +104,7 @@ FreeBSD: {
 }
 
 ## /etc/resolv.conf
-nameserver 1.2.4.8
+nameserver 114.114.114.119
 nameserver 223.6.6.6
 
 ## /boot/loader.conf
@@ -158,7 +158,7 @@ gnome_enable="YES"
 export GTK_IM_MODULE=fcitx
 export QT_IM_MODULE=fcitx
 export XMODIFIERS=@im=fcitx
-export LC_CTYPE=en_GB.UTF-8
+export LC_CTYPE=en_US.UTF-8
 export XIM=fcitx
 export XIM_PROGRAM=fcitx
 ```
@@ -364,7 +364,7 @@ useradd -m -G wheel username
 passwd username
 EDITOR=vim visudo # %wheel ALL=(ALL) ALL
 
-/etc/locale.gen # en_GB.UTF-8
+/etc/locale.gen # en_US.UTF-8
 pacman -S wqy-microhei xorg-server xorg-xinit xf86-video-vesa gdm
     systemctl enable gdm
 
