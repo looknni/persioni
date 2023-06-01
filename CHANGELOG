@@ -1,6 +1,7 @@
 dmesg
 hostnamectl
-dimdecode
+dmidecode
+lspci
 lshw
 lsattr -l [-RVadlpv]
 # suS---dAc---t-e-x----- ----iadAc-----e-------
