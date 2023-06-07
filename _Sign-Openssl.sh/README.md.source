@@ -71,7 +71,7 @@
 > - http://mirrors.nju.edu.cn/ # [ freebsd 13,14 ]
 ---
 ##### sudo flatpak remote-modify flathub --url=https://mirror.sjtu.edu.cn/flathub
-##### [on flatpak error fonts](https://flatpak.org/setup/) ? cp -r /etc/fonts/* org.example.com/config/fontconfig
+##### [On Flatpak error fonts](https://flatpak.org/setup/) ? cp -r /etc/fonts/* org.example.com/config/fontconfig
 ##### `https://dl.google.com/linux/direct/google-chrome-` $\iiint_{beta_{unstable}}^{stable}$ \_current\_ $\iint_{amd64.deb}^{x86_{64.rpm}}$ [Extension](https://crxdl.com/)
 ---
 ##### gdm ? [Awesomewm](https://awesomewm.org/) ? [I3wm](https://i3wm.org/) ? [Dwm](#)
@@ -82,18 +82,18 @@
 
 vim-gtk3 kaffeine qbittorrent audacious git traceroute locate mtr \
 fcitx fcitx-googlepinyin fcitx-configtool fcitx-table-wubi \
-wget bash-completion obs-studio aptitude lynx links xterm \
+wget bash-completion obs-studio aptitude lynx links xterm dnsutils \
 nmap tcpdump audacity inkscape gimp krita audacity libreoffice make gcc \
 libpam-tmpdir opendnssec rsync firmware-realtek xxd xxhash xnview
 ```
 > ##### $YUM_{RPM}^{DNF} \Downarrow$ [RockyLinux](https://rockylinux.org/) ? [AlmaLinux](https://almalinux.org/)
 ```
 ? gnome-tweaks.noarch gnome-shell-extension-dash-to-dock.noarch gnome-extensions-app.x86_64
+? aide rear fapolicyd usbguard openscap openscap-scanner scap-security-guide
 
 epel-release.noarch epel-next-release.noarch gcc-c++ cmake bison ncurses ncurses-devel libaio ibus.x86_64 \
-aide rear fapolicyd usbguard openscap openscap-scanner scap-security-guide \
 xorg-x11-server-Xorg.x86_64 xorg-x11-xinit.x86_64 xorg-x11-xinit-session.x86_64 i3.x86_64 \
-google-droid-sans-fonts.noarch google-noto-sans-cjk-ttc-fonts.noarch
+google-droid-sans-fonts.noarch google-noto-sans-cjk-ttc-fonts.noarch bind-utils
 ```
 > ##### $PKG_{apt}^{dpkg} \Downarrow$ [FreeBSD](https://www.freebsd.org/)
 ```
@@ -104,7 +104,7 @@ FreeBSD: {
 }
 
 ## /etc/resolv.conf
-nameserver 1.2.4.8
+nameserver 114.114.114.119
 nameserver 223.6.6.6
 
 ## /boot/loader.conf
@@ -158,7 +158,7 @@ gnome_enable="YES"
 export GTK_IM_MODULE=fcitx
 export QT_IM_MODULE=fcitx
 export XMODIFIERS=@im=fcitx
-export LC_CTYPE=en_GB.UTF-8
+export LC_CTYPE=en_US.UTF-8
 export XIM=fcitx
 export XIM_PROGRAM=fcitx
 ```
@@ -206,29 +206,29 @@ xft.hintstyle: hintslight
 XTerm*cursorColor: #ffa530
 ! XTerm*inputMethod: ibus
 
-XTerm*selectToClipboard:    true
+XTerm*selectToClipboard: true
 *VT100*translations: #override \n\
 Ctrl <KeyPress> Insert : insert-selection(CLIPBOARD, CUT_BUFFER1) \n\
 Shift Ctrl<Btn2Up> : insert-selection(PRIMARY, CUT_BUFFER0) \n\
 Ctrl <BtnUp> : select-end(CLIPBOARD, CUT_BUFFER1) \n\
 Ctrl <BtnUp> : select-end(PRIMARY, CUT_BUFFER0)
 
-XTerm*renderFont:           true
-XTerm*cjk_width:            true
-! XTerm*geometry:             80x25
-XTerm*dynamicColors:        true
-XTerm*eightBitInput:        true
-XTerm*decTerminalID:        vt340
-XTerm*rightScrollBar:       false
-XTerm*jumpScroll:           true
-XTerm*multiScroll:          true
-XTerm*toolBar:              false
-XTerm*Scrollbar*thickness:  10
+XTerm*renderFont: true
+XTerm*cjk_width: true
+! XTerm*geometry: 80x25
+XTerm*dynamicColors: true
+XTerm*eightBitInput: true
+XTerm*decTerminalID: vt340
+XTerm*rightScrollBar: false
+XTerm*jumpScroll: true
+XTerm*multiScroll: true
+XTerm*toolBar: false
+XTerm*Scrollbar*thickness: 10
 XTerm*Scrollbar*background: black
 XTerm*Scrollbar*foreground: gray90
-XTerm*ScrollKey:            true
-XTerm*ScrollTtyOutput:      false
-XTerm*ScrollBar:            false
+XTerm*ScrollKey: true
+XTerm*ScrollTtyOutput: false
+XTerm*ScrollBar: false
 
 XTerm*vt100*geometry: 80x30
 XTerm.vt100*fadeColor: #002b36
@@ -243,24 +243,24 @@ XTerm*colorBDMode: true
 XTerm*colorBD: rgb:fc/fc/fc
 ```
 ```
-XTerm*background:   rgb:1a/1a/1a
-XTerm*foreground:   rgb:d6/d6/d6
-XTerm*color0:       rgb:00/00/00
-XTerm*color1:       rgb:9e/18/28
-XTerm*color2:       rgb:00/88/00
-XTerm*color3:       rgb:96/8a/38
-XTerm*color4:       rgb:41/41/71
-XTerm*color5:       rgb:96/3c/59
-XTerm*color6:       rgb:41/81/79
-XTerm*color7:       rgb:be/be/be
-XTerm*color8:       rgb:66/66/66
-XTerm*color9:       rgb:cf/61/71
-XTerm*color10:      rgb:7c/bc/8c
-XTerm*color11:      rgb:ff/f7/96
-XTerm*color12:      rgb:41/86/be
-XTerm*color13:      rgb:cf/9e/be
-XTerm*color14:      rgb:71/be/be
-XTerm*color15:      rgb:ff/ff/ff
+XTerm*background: rgb:1a/1a/1a
+XTerm*foreground: rgb:d6/d6/d6
+XTerm*color0: rgb:00/00/00
+XTerm*color1: rgb:9e/18/28
+XTerm*color2: rgb:00/88/00
+XTerm*color3: rgb:96/8a/38
+XTerm*color4: rgb:4a/4a/ff
+XTerm*color5: rgb:96/3c/59
+XTerm*color6: rgb:41/81/79
+XTerm*color7: rgb:be/be/be
+XTerm*color8: rgb:66/66/66
+XTerm*color9: rgb:cf/61/71
+XTerm*color10: rgb:7c/bc/8c
+XTerm*color11: rgb:ff/f7/96
+XTerm*color12: rgb:41/86/be
+XTerm*color13: rgb:cf/9e/be
+XTerm*color14: rgb:71/be/be
+XTerm*color15: rgb:ff/ff/ff
 ```
 ```
 XTerm*foreground: rgb:a8/a8/a8
@@ -269,7 +269,7 @@ XTerm*color0: rgb:00/00/00
 XTerm*color1: rgb:a8/00/00
 XTerm*color2: rgb:00/a8/00
 XTerm*color3: rgb:a8/54/00
-XTerm*color4: rgb:41/41/71
+XTerm*color4: rgb:4a/4a/ff
 XTerm*color5: rgb:a8/00/a8
 XTerm*color6: rgb:00/a8/a8
 XTerm*color7: rgb:a8/a8/a8
@@ -293,7 +293,7 @@ XTerm*color2: #00aa00
 XTerm*color10: #55ff55
 XTerm*color3: #aa5500
 XTerm*color11: #ffff55
-XTerm*color4: #414171
+XTerm*color4: #4a4aff
 XTerm*color12: #5555ff
 XTerm*color5: #aa00aa
 XTerm*color13: #ff55ff
@@ -364,7 +364,7 @@ useradd -m -G wheel username
 passwd username
 EDITOR=vim visudo # %wheel ALL=(ALL) ALL
 
-/etc/locale.gen # en_GB.UTF-8
+/etc/locale.gen # en_US.UTF-8
 pacman -S wqy-microhei xorg-server xorg-xinit xf86-video-vesa gdm
     systemctl enable gdm
 
@@ -558,13 +558,6 @@ google-chrome-stable --gtk-version=4 # Chrome needs to be instructed to use gtk4
 
 # Any configuration file changes should be addressed, this can be managed by dispatch-conf:
 dispatch-conf
-
-    ## dracut
-grub> ls , ls /
-grub> set root=(hd0,1)
-grub> linux /boot/vmlinuz-...-generic root=/dev/sda1
-grub> initrd /boot/initrd.img
-grub> boot
 ```
 > ##### yum groupinstall 'Server with GUI' 
 >> - systemctl set-default graphical.target 
@@ -621,8 +614,8 @@ interval=0
 > ## /etc/systemd/resolved.conf
 > + systemctl restart systemd-resolved.service && resolvectl
 ```
-DNS= 240C::6666 240C::6644 2001:da8::666 2606:4700:4700::1001 2606:4700:4700::1111 2001:4860:4860::8888 2001:4860:4860::8844 2620:fe::9 2620:fe::fe:9 2a09:: 2a11:: 2620:119:53::53 2620:119:35::35 2001:dc7:1000::1 240c:f:1:22::6 2001:de4::101 2001:de4::102 2001:da8:8000:1:202:120:2:100 2001:da8:8000:1:202:120:2:101 2001:da8:ff:305:20c:29ff:fe1f:a92a 2a02:6b8::feed:ff 2a02:6b8:0:1::feed:ff 2a02:6b8::feed:bad 2a02:6b8:0:1::feed:bad 2620:fe::fe 2620:fe::9 2620:0:ccc::2 2620:0:ccd::2
-FallbackDNS= 1.2.4.8 210.2.4.8 101.6.6.6 223.5.5.5 223.6.6.6 180.76.76.76 119.29.29.29 52.80.66.66 101.226.4.6 218.30.118.6 123.125.81.6 140.207.198.6 114.114.114.119 114.114.114.110
+DNS= 2001:da8::666 2606:4700:4700::1001 2606:4700:4700::1111 2001:4860:4860::8888 2001:4860:4860::8844 2620:fe::9 2620:fe::fe:9 2a09:: 2a11:: 2620:119:53::53 2620:119:35::35 2001:dc7:1000::1 240c:f:1:22::6 2001:de4::101 2001:de4::102 2001:da8:8000:1:202:120:2:100 2001:da8:8000:1:202:120:2:101 2001:da8:ff:305:20c:29ff:fe1f:a92a 2a02:6b8::feed:ff 2a02:6b8:0:1::feed:ff 2a02:6b8::feed:bad 2a02:6b8:0:1::feed:bad 2620:fe::fe 2620:fe::9 2620:0:ccc::2 2620:0:ccd::2
+FallbackDNS= 101.6.6.6 223.5.5.5 223.6.6.6 180.76.76.76 119.29.29.29 52.80.66.66 101.226.4.6 218.30.118.6 123.125.81.6 140.207.198.6 114.114.114.119 114.114.114.110
 Domains=lan
 DNSSEC=allow-downgrade
 DNSOverTLS=opportunistic
