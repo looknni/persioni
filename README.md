@@ -70,6 +70,7 @@
 > - https://mirrors.ustc.edu.cn # [ freebsd 13,14 ]
 > - http://mirrors.nju.edu.cn/ # [ freebsd 13,14 ]
 ---
+##### timedatectl set-timezone Asia/Shanghai /etc/systemd/timesyncd.conf NTP=cn.ntp.org.cn edu.ntp.org.cn
 ##### sudo flatpak remote-modify flathub --url=https://mirror.sjtu.edu.cn/flathub
 ##### [On Flatpak error fonts](https://flatpak.org/setup/) ? cp -r /etc/fonts/* org.example.com/config/fontconfig
 ##### `https://dl.google.com/linux/direct/google-chrome-` $\iiint_{beta_{unstable}}^{stable}$ \_current\_ $\iint_{amd64.deb}^{x86_{64.rpm}}$ [Extension](https://crxdl.com/)
