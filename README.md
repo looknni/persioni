@@ -584,8 +584,6 @@ export GTK_IM_MODULE=fcitx
 export QT_IM_MODULE=fcitx
 export XMODIFIERS=@im=fcitx
 $(xrdb -load ~/.Xresources)
-$(ibus-daemon -drx &)
-#$(fcitx -dr &)
 ```
 ##### ` echo "PS1='\[\e[1;32m\]\u\[\e[0;33m\]@\[\e[0;32m\]\h \[\e[1;33m\]\W \[\e[1;35m\]? \[\e[0m\]'" >> /root/.bashrc `
 #### ` sed -i 's/GRUB_CMDLINE_LINUX=\"/GRUB_CMDLINE_LINUX=\"nouveau.modeset=1 /g ' /etc/default/grub @nouveau.modeset=0|1 #rd.driver.blacklist=nouveau `
