@@ -80,11 +80,11 @@
 ```
 ? gnome-shell-extension-dashtodock
 
-vim-gtk3 kaffeine qbittorrent audacious git traceroute locate mtr \
-fcitx fcitx-googlepinyin fcitx-configtool fcitx-table-wubi \
+vim-gtk3 kaffeine audacious git traceroute locate mtr \
+fcitx fcitx-googlepinyin fcitx-config-gtk3 fcitx-table-wubi \
 wget bash-completion obs-studio aptitude lynx links xterm dnsutils \
 nmap tcpdump audacity inkscape gimp krita audacity libreoffice make gcc \
-libpam-tmpdir opendnssec rsync firmware-realtek xxd xxhash xnview
+libpam-tmpdir opendnssec rsync firmware-realtek xxd xxhash xnview qbittorrent
 ```
 > ##### $YUM_{RPM}^{DNF} \Downarrow$ [RockyLinux](https://rockylinux.org/) ? [AlmaLinux](https://almalinux.org/)
 ```
