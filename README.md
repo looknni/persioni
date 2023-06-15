@@ -81,7 +81,7 @@
 ```
 ? gnome-shell-extension-dashtodock
 
-vim-gtk3 kaffeine audacious git traceroute locate mtr \
+vim-gtk3 kaffeine audacious git traceroute locate mtr smartmontools \
 fcitx fcitx-googlepinyin fcitx-config-gtk3 fcitx-table-wubi \
 wget bash-completion obs-studio aptitude lynx links xterm dnsutils \
 nmap tcpdump audacity inkscape gimp krita audacity libreoffice make gcc \
@@ -256,7 +256,7 @@ XTerm*color8: rgb:66/66/66
 XTerm*color9: rgb:cf/61/71
 XTerm*color10: rgb:7c/bc/8c
 XTerm*color11: rgb:ff/f7/96
-XTerm*color12: rgb:41/86/be
+XTerm*color12: rgb:22/8b/22
 XTerm*color13: rgb:cf/9e/be
 XTerm*color14: rgb:71/be/be
 XTerm*color15: rgb:ff/ff/ff
