@@ -52,8 +52,6 @@
 ---
 ##### GNU is an operating system which is 100% free software. [Gnu-command] https://www.gnu.org/software/
 ---
-##### algorithm-visualizer is a web app written in React [ $algorithm^{visualizer}$ ] https://algorithm-visualizer.org/
----
 ##### The manual pages for the 3.1 branch are available here https://www.openssl.org/docs/man3.1/man1/
 ---
 ##### [ ? ] https://quickref.cn/
