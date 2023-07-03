@@ -45,3 +45,4 @@ BEGIN {
 # grep -nbi --color '' filename # -v, --invert-match -R -i, --ignore-case -c, --count 
 # sed -n '3,6p' filename | cat -n , head -n 6 filename | tail -n +3 | nl
 # ls /bin/ | awk '{xx=$0;if(NR % 5 != 0){ORS=" ";print($xx)}else{print("\n",$xx ,"")}}'
+# awk '{printf "%s ", $0}' , sed ':a;N;$!ba;s/\n/ /g' 
