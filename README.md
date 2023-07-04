@@ -22,7 +22,7 @@
 ##### lspci -v [Realtek-interface] https://www.realtek.com/en/component/zoo/category/network-interface-controllers-10-100-1000m-gigabit-ethernet-pci-express-software
 ---
 ##### [?B560M-PRO] https://us.msi.com/Motherboard/B560M-PRO/support
-##### [?magnet] https://wuqian.link/
+##### [?magnet] https://wuqian.link/ @TjVYSE8zM1NOTlpTNDNURk9RRkE9PT09Cg==
 ##### [?feijisu] http://fjisu.top/ {Alpine }
 ---
 ##### Temp Mail provides temporary, anonymous, free, secure, disposable email address [Tempmail] https://tempmail.plus/en
