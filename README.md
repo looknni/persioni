@@ -1,12 +1,11 @@
 > - /biosboot ~($\displaystyle\lim_{31k\rightarrow\infty}1M$).../boot/EFI ~($\displaystyle\sum_{i \to 6M}^{n \to system} {i \times n+1M+40M}$).../boot ~($\displaystyle\sum_{i \to 100M}^{n \to kernel} {i \times n+200M}$).../ ~($\frac{\infty}{0.98}$).../swap ~($\sqrt[i \to 3]{RAM}$) . /home . /usr . /var . /opt . /tmp
 > - sudo blkid $\int_{/etc/default/grub}^{/etc/fstab}\int_{/boot/grub2/grub.cfg}^{/boot/load/* }$
 > - sed -i '$a\vm.swappiness=20' /etc/sysctl.conf#sysctl -p
-> - $\oint_{{2820076477}^{16}}^{{140177258}^{9}}\displaystyle\sum_{s^S_{o}}^{m^M_{o}} {64_{+}^{+}} \displaystyle\prod_{h_{mac}}^{echo_{2}}$ $\displaystyle\lim_{16 \rightarrow 20 \rightarrow 32 \rightarrow 63 \rightarrow \infty}^{\infty \rightarrow \phi}$
+> - $\oint_{{2820076477}^{16}}^{{140177258}^{9}}\displaystyle\sum_{s^S_{o}}^{m^M_{o}} {64_{+}^{-}} \displaystyle\prod_{h_{mac}}^{echo_{2}}$ $\displaystyle\lim_{16 \rightarrow 20 \rightarrow 32 \rightarrow 63 \rightarrow \infty}^{\infty \rightarrow \phi}$
 ---
 ##### Is a professional lyrics search network [Musicenc] https://www.musicenc.com/
 ---
 ##### [ ? ]  https://looknnn.mycozy.cloud/
-##### Yandex offers internet search and other services like [YandexBrowser] https://yandex.com/
 ---
 ##### Any bug fixes for a stable [ $Kernel^{org}$ ] https://www.kernel.org/
 ---
@@ -16,14 +15,11 @@
 ---
 ##### New Bootable USB Solution [ $V_{entoy}$ ] https://www.ventoy.net/en/index.html
 ---
-##### Fcitx [ˈfaɪtɪks] is an input method framework with extension support [Fcitx] https://fcitx-im.org/wiki/Fcitx
-##### Ibus-libpinyin ibus-table-wubi [ibus-libpinyin] https://github.com/libpinyin/ibus-libpinyin
----
 ##### lspci -v [Realtek-interface] https://www.realtek.com/en/component/zoo/category/network-interface-controllers-10-100-1000m-gigabit-ethernet-pci-express-software
 ---
 ##### [?B560M-PRO] https://us.msi.com/Motherboard/B560M-PRO/support
-##### [?magnet] https://wuqian.link/ @TjVYSE8zM1NOTlpTNDNURk9RRkE9PT09Cg==
-##### [?feijisu] http://fjisu.top/ {Alpine }
+##### @TjVYSE8zM1NOTlpTNDNURk9RRkE9PT09Cg==
+##### [?feijisu] http://fjisu.top/
 ---
 ##### Temp Mail provides temporary, anonymous, free, secure, disposable email address [Tempmail] https://tempmail.plus/en
 ---
