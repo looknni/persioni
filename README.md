@@ -1,0 +1,459 @@
+> - /biosboot ~($\displaystyle\lim_{31k\rightarrow\infty}1M$).../boot/efi ~($\displaystyle\sum_{i \to 6M}^{n \to system} {i \times n+1M+40M}$).../boot ~($\displaystyle\sum_{i \to 100M}^{n \to kernel} {i \times n+200M}$).../ ~($\frac{\infty}{0.98}$).../swap ~($\sqrt[i \to 2]{RAM}$) . /home
+> - sudo blkid $\int_{/etc/default/grub}^{/etc/fstab}\int_{/boot/grub2/grub.cfg}^{/boot/load/* }$
+> - sed -i '$a\vm.swappiness=20' /etc/sysctl.conf#sysctl -p
+> - $\oint_{{2820076477}^{16}}^{{140177258}^{9}}\displaystyle\sum_{s^S_{o}}^{m^M_{o}} {64_{+}^{-}} \displaystyle\prod_{h_{mac}}^{echo_{2}}$ $\displaystyle\lim_{16 \rightarrow 20 \rightarrow 32 \rightarrow 63 \rightarrow \infty}^{\infty \rightarrow \phi}$
+---
+##### [ ? ]  https://looknnn.mycozy.cloud/
+---
+##### The computational intelligence engine by [Wolframalpha](https://www.wolframalpha.com/) [Swissxows](https://swisscows.com/en) [Ecosia](https://www.ecosia.org/) [git-openwrt](https://git.openwrt.org/)
+---
+##### This site is open source and maintained by members of the Git community [Git-scm] https://git-scm.com/
+---
+##### New Bootable USB Solution [Ventoy] https://www.ventoy.net/en/index.html
+---
+##### lspci -v [Realtek-interface](https://www.realtek.com/en/component/zoo/category/network-interface-controllers-10-100-1000m-gigabit-ethernet-pci-express-software)
+---
+##### [Msi](https://us.msi.com/Motherboard/B560M-PRO/support) @TjVYSE8zM1NOTlpTNDNURk9RRkE9PT09Cg== [Comics](http://fjisu.top/)
+---
+##### Temp Mail provides temporary, anonymous, free, secure, disposable email address [Tempmail](https://tempmail.plus/en)
+---
+##### Google Chrome. Google's web browser. Virtual DJ. The most complete free software for DJs. uTorrent [.apk] https://www.malavida.com/en
+---
+##### (Ubuntu) Server at breed.hackpascal.net Port 443 [ $Breed_{hackpascal}$ ] https://breed.hackpascal.net/
+---
+##### This service lets you follow the evolution of Debian both with email updates and a comprehensive web interface [ $tracker-debian^{kernel}$ ] https://tracker.debian.org/pkg/linux
+---
+##### Shares open source news and reviews of Linux and BSD based operating systems [ $Distro^{watch}$ ] https://distrowatch.com/
+---
+##### Regular expressions library (C++11) basic_regex − algorithms. Concurrency support library (C++11) thread − jthread (C++20) atomic − atomic_flag − atomic_ref (C++20) memory_order − condition_variable [ $C++^{Referenc}$ ] https://cppreference.com/
+---
+##### GNU is an operating system which is 100% free software. [Gnu-command](https://www.gnu.org/software/)
+---
+##### [ ? ] https://quickref.cn/
+---
+##### Both official Gentoo project documentation as well as community-contributed content can be found here [ Gentoo ](https://wiki.gentoo.org/) [ Funtoo ](https://www.funtoo.org/)
+---
+##### Grml is especially well suited for administrative tasks like installation, deployment and system rescue. [Grml](https://grml.org/)
+---
+##### Void is a general purpose operating system, based on the monolithic Linux kernel. [ VoidLinux ](https://voidlinux.org/) #static domain_name_servers=1.1.1.1 9.9.9.9 @ man dhcpcd.conf @ xbps
+---
+> #### [SOURCES](https://cdimage.debian.org/images/) $\oint_{testing_{unstable}}^{stable} {debian}$
+> - https://mirrors.huaweicloud.com
+> - https://mirrors.tuna.tsinghua.edu.cn
+> - https://mirrors.aliyun.com # [ freebsd 13,14 ]
+> - https://mirrors.163.com
+> - https://mirrors.ustc.edu.cn # [ freebsd 13,14 ]
+> - http://mirrors.nju.edu.cn/ # [ freebsd 13,14 ]
+---
+##### dig @ns1.google.com TXT o-o.myaddr.l.google.com nslookup -type=TXT o-o.myaddr.l.google.com ns1.google.com # dig whoami.akamai.net. @ns1-1.akamaitech.net nslookup whoami.akamai.net. ns1-1.akamaitech.net # dig myip.opendns.com @resolver1.opendns.com nslookup myip.opendns.com resolver1.opendns.com
+##### timedatectl set-timezone Asia/Chongqing # /etc/systemd/timesyncd.conf ? /etc/chrony.conf ? /etc/ntpsec/ntp.conf # server ntp.org.cn iburst ? server edu.ntp.org.cn iburst
+##### sudo flatpak remote-modify flathub --url=https://mirror.sjtu.edu.cn/flathub
+##### [On Flatpak error fonts](https://flatpak.org/setup/) ? cp -r /etc/fonts/* org.example.com/config/fontconfig
+##### `https://dl.google.com/linux/direct/google-chrome-stable[beta][unstable]_current_amd64.deb[x86_64.rpm]`
+---
+##### gdm ? [I3wm](https://i3wm.org/) ? [Sway](https://swaywm.org/) ? [Awesomewm](https://awesomewm.org/) ? [Dwm](#)
+---
+> ##### $APT_{dpkg}^{apt-get} \Downarrow$ [Debian](https://www.debian.org/security/) ? [Kali](https://www.kali.org/tools/)
+```
+vim-gtk3 kaffeine audacious git traceroute locate mtr smartmontools ntpdate \
+fcitx fcitx-googlepinyin fcitx-config-gtk fcitx-table-wubi libvirt-clients \
+wget bash-completion obs-studio aptitude links xterm dnsutils net-tools iptables iptables-persistent iptables-netflow-dkms \
+nmap tcpdump audacity inkscape gimp krita audacity libreoffice make gcc dhcpcd5 \
+rsync systemd-resolved hexcompare aircrack-ng hashcat airmon-ng flashrom \
+firmware-realtek xxd xxhash qbittorrent
+
+virsh net-define /etc/libvirt/qemu/networks/default.xml
+virsh net-start default
+
+#ip link add name br0 type bridge
+#ip link set dev br0 up
+#ip link set dev eth0 master br0
+#ip addr add 192.168.0.3/24 dev br0
+#ip route add default via 192.168.0.1 dev br0
+#ip link set dev br0 type stp on
+#ip link set dev br0 nomaster
+
+# efibootmgr -c -d /dev/sda -p 2 -L "Gentoo" -l "\EFI\debian\shimx64.efi"
+# efibootmgr -b 0002 -B 0002
+
+sudo dpkg-reconfigure linux-image-$(uname -r)
+sudo update-initramfs -u -k all
+
+```
+##### putty/SecureCRT tftpd # insmod ch34x,modprobe usbserial # CONFIG_USB_SERIAL CONFIG_USB_SERIAL_GENERIC # flashrom -p ch341a_spi [-E|-r <file>|-w <file>|-v <file>]
+
+> ##### $YUM_{RPM}^{DNF} \Downarrow$ [RockyLinux](https://rockylinux.org/) ? [AlmaLinux](https://almalinux.org/)
+```
+epel-release.noarch epel-next-release.noarch ibus.x86_64 xorg-x11-server-Xorg.x86_64 \
+xorg-x11-xinit.x86_64 xorg-x11-xinit-session.x86_64
+google-droid-sans-fonts.noarch google-noto-sans-cjk-ttc-fonts.noarch bind-utils
+```
+> ##### $PKG_{apt}^{dpkg} \Downarrow$ [FreeBSD](https://www.freebsd.org/)
+```
+mkdir -p /usr/local/etc/pkg/repos && vi FreeBSD.conf
+    # quarterly [ latest ]
+FreeBSD: {
+  url: "https://mirrors.ustc.edu.cn/freebsd-pkg/${ABI}/quarterly",
+}
+
+## /etc/resolv.conf
+nameserver 1.0.0.1
+## /etc/dhclient.conf
+#	interface "re0" {
+#		prepend domain-name-servers 64.6.64.6,8.8.4.4;
+#	}
+## service netif restart 
+## dhclient re0
+
+## /boot/loader.conf
+	if_re_load="YES"
+	if_re_name="/boot/modules/if_re.ko"
+
+# pkg install xorg-server xorg-drivers xinit xauth i3 xterm sudo dhcpcd ? gnome-lite
+
+    # /usr/local/etc/sudoers
+
+### zh-auto-cn-l10n fusefs-ext2 fusefs-exfat
+
+## /etc/fstab
+	proc /proc	 procfs rw 0 0
+
+## /etc/rc.conf
+    # ifconfig_re0="inet 10.0.2.100 netmask 255.255.255.0"
+    # defaultrouter="10.0.2.2"
+    # hostname="re"
+ifconfig_re0="DHCP"
+linux_enable="YES"
+dbus_enable="YES"
+hald_enable="YES"
+gdm_enable="YES"
+gnome_enable="YES"
+	#echo "exec i3" >> ~/.xinitrc
+
+## /boot/loader.conf
+	if_re_load="YES"
+	if_re_name="/boot/modules/if_re.ko"
+	nvidia_load="YES"
+	kld_list="/boot/modules/nvidia.ko /boot/modules/nvidia-modeset.ko"
+
+### kldstat
+### Xorg :1 -configure
+
+### zh-fcitx-libpinyin zh-fcitx-configtool
+## ~/.xprofile ~/.xinitrc
+export GTK_IM_MODULE=fcitx
+export QT_IM_MODULE=fcitx
+export XMODIFIERS=@im=fcitx
+```
+#### /etc/X11/xorg.conf
+```
+Section "Monitor"
+               Identifier "Monitor0"
+               VendorName "Monitor Vendor"
+               ModelName "Monitor Model"
+               HorizSync 30-107
+               VertRefresh 48-120
+               Option "DPMS"
+EndSection   
+Section "Screen"
+              Identifier "Screen0"
+              Device "Card0"
+              Monitor "Monitor0"
+              DefaultDepth 24
+              SubSection "Display"
+                         Viewport 0 0
+                         Depth 24
+                         Modes "1024x768"
+              EndSubSection
+EndSection
+```
+##### appres XTerm | grep -i utf8
+
+#### ~/.Xresources
+```
+XTerm*faceName: Monospace:style=Book:size=11:antialias=true
+XTerm*faceNameDoublesize: size=11
+XTerm*locale: true
+XTerm*utf8Title: true
+XTerm*utf8: 1
+xft.dpi: 96
+xpdf.title: PDF
+xft.antialias: true
+xft.rgba: rgb
+xft.hinting: true
+xft.hintstyle: hintslight
+XTerm*cursorColor: #ffa530
+
+XTerm*selectToClipboard: true
+*VT100*translations: #override \n\
+Ctrl <KeyPress> Insert : insert-selection(CLIPBOARD, CUT_BUFFER1) \n\
+Shift Ctrl<Btn2Up> : insert-selection(PRIMARY, CUT_BUFFER0) \n\
+Ctrl <BtnUp> : select-end(CLIPBOARD, CUT_BUFFER1) \n\
+Ctrl <BtnUp> : select-end(PRIMARY, CUT_BUFFER0)
+
+XTerm*renderFont: true
+XTerm*cjk_width: true
+XTerm*dynamicColors: true
+XTerm*eightBitInput: true
+XTerm*decTerminalID: vt340
+XTerm*rightScrollBar: false
+XTerm*jumpScroll: true
+XTerm*multiScroll: true
+XTerm*toolBar: false
+XTerm*Scrollbar*thickness: 10
+XTerm*Scrollbar*background: black
+XTerm*Scrollbar*foreground: gray90
+XTerm*ScrollKey: true
+XTerm*ScrollTtyOutput: false
+XTerm*ScrollBar: false
+
+XTerm*vt100*geometry: 80x30
+XTerm.vt100*fadeColor: #002b36
+XTerm.vt100*pointerColorBackground: #586e75
+XTerm.vt100*pointerColorForeground: #93a1a1
+XTerm*allowBoldFonts: true
+XTerm*boldMode: true
+XTerm*loginShell: false
+XTerm*saveLines: 2000
+XTerm*charClass: 33:48,35:48,37:48,43:48,45-47:48,64:48,95:48,126:48
+XTerm*colorBDMode: true
+XTerm*colorBD: #fcfcfc
+
+XTerm*background: #1a1a1a
+XTerm*foreground: #d6d6d6
+! 0,bg 1,fg(text) 2,bg(selected-text) 3,fg(selected-text) 4,dir-exec(file) 5,compressed-archive(file) 6,symbolic-links 7,fg-bg(regular-text) 8,fg(non-highlighted-parts) 9,fg(error-msg) 10,fg(prompt) 11,fg(selected-text) 12,fg(compressed-archive-file) 13,fg(symbolic-links) 14,fg(prompt) 15,fg(highlighted-parts)
+XTerm*color0: #000000
+XTerm*color1: #a800aa
+XTerm*color2: #E6E6FA
+XTerm*color3: #a85400
+XTerm*color4: #8B008B
+XTerm*color5: #a800a8
+XTerm*color6: #00a8a8
+XTerm*color7: #ffeeaa
+XTerm*color8: #4682b4
+XTerm*color9: #fc5454
+XTerm*color10: #54fc54
+XTerm*color11: #fcfc54
+XTerm*color12: #32cd32
+XTerm*color13: #fc54fc
+XTerm*color14: #54fcfc
+XTerm*color15: #ffffff
+```
+## [Vim](https://ftp.nluug.nl/pub/vim/unix/)
+```
+syntax on
+set cursorcolumn
+"set cursorline
+set laststatus=2
+set statusline=\ %<%F\ [%1*%M%*%n%R%H]%=\ %y\ %0(%{&fileformat}\ %{&encoding}\ %c:%l\ %)
+set hlsearch
+set incsearch
+set autoindent "redhat
+set showmatch "redhat
+set number "redhat
+set mouse=a "redhat
+set ai	"redhat
+set autowrite "redhat
+set t_Co=256 "redhat
+colorscheme desert "delek "industry "murphy
+hi statusline guibg=Cyan ctermfg=103 guifg=Black ctermbg=0
+hi IncSearch    cterm=bold ctermfg=129 ctermbg=8
+hi Search       cterm=bold ctermfg=148 ctermbg=8
+if &diff
+  	colorscheme blue
+	hi Normal	guifg=yellow	guibg=darkBlue	ctermfg=yellow	ctermbg=none
+	hi statusline guibg=Cyan ctermfg=103 guifg=Black ctermbg=0
+endif
+```
+## ~~[Arch](https://archlinux.org/)~~
+```
+# iwctl
+# device list
+# station wlan-name scan
+# station wlan-name get-networks
+# station wlan-name connect wifi-name
+
+/etc/pacman.d/mirrorlist # Server = https://mirrors.ustc.edu.cn/archlinux/$repo/os/$arch
+    # /etc/pacman.conf
+
+pacstrap /mnt base linux-lts linux-firmware
+genfstab -U /mnt >> /mnt/etc/fstab
+
+arch-chroot /mnt
+pacman -S grub efibootmgr os-prober vim sudo networkmanager
+systemctl enable NetworkManager
+
+/etc/default/grub
+    GRUB_DISABLE_OS_PROBER=false
+    GRUB_DEFAULT=saved
+    GRUB_SAVEDEFAULT=true
+    GRUB_GFXMODE=640x480
+    GRUB_TERMINAL="console"
+
+grub-install --target x86_64-efi --efi-directory /boot/efi --recheck --removable /dev/sda1
+    # grub-install --target i386-pc --boot-directory /boot --recheck  /dev/sda1
+grub-mkconfig -o /boot/grub/grub.cfg
+
+pacman -S wqy-microhei xorg-server xorg-xinit xf86-video-vesa
+---
+pacman -S i3-wm dmenu xterm fcitx fcitx-configtool fcitx-googlepinyin
+
+# ~/.config/i3/config
+	# exec_always --no-startup-id "fcitx -dr" 
+	# exec_always --no-startup-id "ibus-daemon -drx"
+	# exec "xrdb -load ~/.Xresources"
+	# xterm -u8 # fc-list :lang=zh
+? BUG # bindsym $mod+Shift+r restart
+
+pacman -Si|-Qi package ?? rpm -qi
+pacman -Syu ?? apt upgrade
+pacman -Rsn package ?? apt remove --purge
+pacman -Q ?? dpkg -l
+pacman -U package ?? dpkg --install
+pacman -Qdtq | pacman -Rsn -
+# sudo mkinitcpio -p linux
+```
+## ~~[Gentoo](https://www.gentoo.org/)~~
+```
+mount | grep efi
+# gdisk cgdisk | fdisk cfdisk /dev/sda # m p g o n t d l w
+# mkfs.vfat -F 32 /dev/sda1
+# mkfs.ext4 /dev/sda3
+# mkswap /dev/sda2
+# swapon /dev/sda2
+# mount /dev/sda3 /mnt/gentoo
+# mount /dev/sda1 /boot
+# mount /dev/sda4 /boot/efi
+
+# tar xpvf stage3-*.tar.xz --xattrs-include='*.*' --numeric-owner
+
+mirrorselect -i -o >> /mnt/gentoo/etc/portage/make.conf
+cp -r /mnt/gentoo/usr/share/portage/config/repos.conf /mnt/gentoo/etc/portage/repos.conf/gentoo.conf
+cp --dereference /etc/resolv.conf /mnt/gentoo/etc/
+
+mount --types proc /proc /mnt/gentoo/proc
+mount --bind /sys /mnt/gentoo/sys
+mount --bind /dev /mnt/gentoo/dev
+mount --bind /run /mnt/gentoo/run
+
+chroot /mnt/gentoo /bin/bash
+env-update && source /etc/profile && export PS1="(chroot) ${PS1}"
+
+/etc/portage/make.conf
+    MAKEOPTS="-j6"
+    GRUB_PLATFORMS="efi-64"
+
+emerge-webrsync # /var/db/repos/gentoo/
+emerge -avuDN --with-bdeps=y @world
+
+emerge --ask sys-kernel/linux-firmware sys-kernel/installkernel-gentoo
+##### []
+# emerge --ask sys-kernel/gentoo-sources
+	# eselect kernel set 1
+	# make localmodconfig # menuconfig clean mrproper oldconfig
+	## nouveau efi selinux iptable nf_tables IPVS conntrack exfat tun/tap
+	# make -j6 && make modules_install
+	# make install
+# emerge -a sys-kernel/dracut
+	# dracut --kver xxx 
+
+##### default
+    emerge --ask sys-kernel/gentoo-kernel-bin
+
+    # blkid mount
+#/dev/sda1   
+UUID=? /boot ext4 rw,noatime 0 2
+#/dev/xx
+UUID=? /boot/efi vfat defaults 0 2
+#/dev/sda2
+UUID=? none swap sw 0 0
+#/dev/sda3
+UUID=? / ext4 rw,noatime 0 1
+
+emerge --ask sys-boot/grub sys-boot/efibootmgr
+    # mount -o remount,rw,nosuid,nodev,noexec --types efivarfs efivarfs /sys/firmware/efi/efivars
+
+emerge -a app-portage/gentoolkit media-sound/alsa-utils sys-apps/dbus net-misc/dhcpcd
+
+/etc/locale.gen en_US.UTF-8 UTF-8 # locale-gen && env-update && source /etc/profile
+/etc/locale.conf LANG=en_US.UTF8
+# useradd -m -G users,wheel,audio,video -s /bin/bash username
+# passwd username
+
+umount -l /mnt/gentoo/dev{/shm,/pts,}
+# mount -o remount,rw /
+# sys-fs/exfat-utils sys-fs/dosfstools net-misc/networkmanager dev-util/intel-ocl-sdk app-crypt/hashcat app-crypt/johntheripper dev-libs/intel-compute-runtime app-admin/sysstat sys-apps/pv
+
+# touch /etc/portage/package.accept_keywords/zzz_autounmask
+# emerge mypackage --autounmask-write --autounmask
+# etc-update || dispatch-conf
+## google-chrome # Use hardware acceleration when available
+## /etc/portage/package.use/zz-autounmask # Error: circular dependencies
+```
+##### [Openwrt](https://openwrt.org/)
+```
+xsltproc ecj fastjar java-propose-classpath libelf-dev libncursesw5-dev python3-setuptools python3-dev subversion swig xsltproc zlib1g-dev build-essential clang flex g++ gawk gcc-multilib gettext libncurses5-dev libssl-dev python3-distutils asciidoc binutils patch bison autoconf texinfo sharutils subversion ncurses-term zlib1g-dev libc6-dev-i386 uglifyjs msmtp libglib2.0-dev xmlto qemu-utils libtool
+
+git clone https://github.com/openwrt/openwrt.git
+cd openwrt
+git pull
+git checkout xxx
+./scripts/feeds update -a
+./scripts/feeds install -a
+./target/linux/ramips/dts # reg = <0x50000 0x1fb0000> # 32m
+./target/linux/ramips/image # IMAGE_SIZE := 32m
+wget https://downloads.openwrt.org/releases/23.05.2/xx/config.buildinfo -O .config
+menuconfig
+make -j4 V=s
+```
+##### yum groupinstall 'Server with GUI' # systemctl set-default graphical.target 
+##### ` dpkg -l | grep ^rc | awk '{print $2}' | sudo xargs dpkg -P `
+##### ` yum remove $(rpm -qa | grep kernel | grep -v $(uname -r)) `
+``` 
+PS1='\[\e[0;32m\]\A \[\e[1;95m\]\W \[\e[1;33m\]\$ \[\e[0m\]'
+
+export HISTTIMEFORMAT='%F %T]$ '
+export LESS_TERMCAP_mb=$'\E[01;35m'
+export LESS_TERMCAP_md=$'\E[01;35m'
+export LESS_TERMCAP_me=$'\E[0m'
+export LESS_TERMCAP_se=$'\E[0m'
+export LESS_TERMCAP_so=$'\E[01;37;42m'
+export LESS_TERMCAP_ue=$'\E[0m'
+export LESS_TERMCAP_us=$'\E[01;32m'
+export GROFF_NO_SGR=1 #redhat
+export LESS=-R #debian
+
+export GTK_IM_MODULE=fcitx
+export QT_IM_MODULE=fcitx
+export XMODIFIERS=@im=fcitx
+$(xrdb -load ~/.Xresources)
+```
+> ## /etc/NetworkManager/NetworkManager.conf
+```
+[main]
+plugins=ifupdown,keyfile
+#dns=dnsmasq
+#systemd-resolved=true
+#rc-manager=resolvconf
+
+[ifupdown]
+managed=true
+
+[device]
+wifi.scan-rand-mac-address=yes
+
+[connectivity]
+uri=
+interval=0
+```
+> ## /etc/systemd/resolved.conf
+```
+DNS=119.29.29.29#dot.pub 2402:4e00::#dot.pub 223.5.5.5#dns.alidns.com 240c:f:1:22::6#dns.ipv6dns.com 180.76.76.76#dot.onedns.net 114.114.114.114#dot.onedns.net 1.2.4.8#dot-pure.onedns.net
+#FallbackDNS=1.1.1.1#cloudflare-dns.com 8.8.8.8#dns.google 1.0.0.1#cloudflare-dns.com 8.8.4.4#dns.google 2606:4700:4700::1111#cloudflare-dns.com 2001:4860:4860::8888#dns.google 2606:4700:4700::1001#cloudflare-dns.com 2001:4860:4860::8844#dns.google 2620:fe::9 2620:fe::fe:9 2a09:: 2a11:: 2620:119:53::53 2620:119:35::35 2001:dc7:1000::1 2001:de4::101 2001:de4::102 2001:da8:8000:1:202:120:2:100 2001:da8:8000:1:202:120:2:101 2001:da8:ff:305:20c:29ff:fe1f:a92a 2a02:6b8::feed:ff 2a02:6b8:0:1::feed:ff 2a02:6b8::feed:bad 2a02:6b8:0:1::feed:bad 2620:fe::fe 2620:0:ccc::2 2620:0:ccd::2
+#Domains=lan
+#DoH# https://dns.alidns.com/dns-query https://dns.ipv6dns.com/dns-query https://101.6.6.6:8443/dns-query https://doh.360.cn https://doh.onedns.net/dns-query https://doh-pure.onedns.net/dns-query
+DNSSEC=allow-downgrade
+DNSOverTLS=opportunistic
+MulticastDNS=yes
+LLMNR=yes
+```

@@ -1,0 +1,34 @@
+#!/bin/bash
+# GNU bash, version 5.2.15(1)-release
+case "$1" in
+	* ) echo -e "help: bash $0 \$1\n\$1,[1..n]";;
+esac
+if [[ -z $1 ]];then
+	exit;
+fi
+fill="_$0"
+tmpd="m.m.m"
+if [[ -e ./$fill ]];then
+	echo -e "delete $fill\n";
+	exit;
+fi
+st=$(date +%s)
+fils=` find -maxdepth $1 -type f | grep -v ".git" `
+if [ $? -eq 0 ];then
+	echo "10%";
+fi
+set -x
+for i in $fils ;do 
+	if [ -s $i ];then 
+		echo `sha256sum $i` `stat $i` >> $tmpd;
+	fi
+done
+set +x
+if [ $? -eq 0 ];then
+	echo "90%";
+fi
+awk '{$2="";print NR,$0}' $tmpd > $fill 2>&1
+chmod 400 $fill
+rm $tmpd
+ed=$(date +%s)
+echo $((ed-st)) "100%"

@@ -1,0 +1,12 @@
+dmesg
+hostnamectl
+dmidecode
+lspci
+lshw
+lsattr -l [-RVadlpv]
+# suS---dAc---t-e-x----- ----iadAc-----e-------
+# Secure_Deletion, Undelete, Synchronous_Updates, No_Dump, No_Atime, Compression_Requested, No_Tailmerging, Extents, DAX
+# Immutable, Append_Only, No_Dump, No_Atime, Compression_Requested, Extents
+chattr [-pRVf] [-+=aAcCdDeijPsStTuFx]
+chflags / ls -lo
+scp -P port [-r ~/file] hostname@remote:~/file #.ssh/,700 authorized_keys,600
