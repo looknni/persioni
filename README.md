@@ -222,13 +222,13 @@ XTerm*colorBD: #fcfcfc
 
 XTerm*background: #1a1a1a
 XTerm*foreground: #d6d6d6
-! 0,bg 1,fg(text) 2,bg(selected-text) 3,fg(selected-text) 4,dir-exec(file) 5,compressed-archive(file)
-! 6,symbolic-links 7,fg-bg(regular-text) 8,fg(non-highlighted-parts) 9,fg(error-msg) 10,fg(prompt)
-! 11,fg(selected-text) 12,fg(compressed-archive-file) 13,fg(symbolic-links) 14,fg(prompt)
+! 0,bg 1,bg(-s) 2,bg(d777) 3,fg(compressed-archive-exec) 4,fg(srw) 5,n
+! 6,n 7,n 8,fg(non-highlighted-parts) 9,fg(error-msg) 10,fg(prompt)
+! 11,fg(b-c) 12,fg(d-x) 13,fg(.png .xpm .svg) 14,fg(l)
 ! 15,fg(highlighted-parts)
 XTerm*color0: #000000
 XTerm*color1: #a800aa
-XTerm*color2: #E6E6FA
+XTerm*color2: #D3D3D3
 XTerm*color3: #a85400
 XTerm*color4: #8B008B
 XTerm*color5: #a800a8
@@ -241,7 +241,7 @@ XTerm*color11: #fcfc54
 XTerm*color12: #32cd32
 XTerm*color13: #fc54fc
 XTerm*color14: #54fcfc
-XTerm*color15: #ffffff
+XTerm*color15: #000000
 ```
 ## [Vim](https://ftp.nluug.nl/pub/vim/unix/)
 ```
