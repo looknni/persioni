@@ -57,7 +57,8 @@
 ```
 vim-gtk3 kaffeine audacious git traceroute locate mtr smartmontools ntpdate \
 fcitx fcitx-googlepinyin fcitx-config-gtk fcitx-table-wubi libvirt-clients \
-wget bash-completion obs-studio aptitude links xterm dnsutils net-tools iptables iptables-persistent iptables-netflow-dkms \
+wget bash-completion obs-studio aptitude links xterm dnsutils net-tools iptables \
+iptables-persistent iptables-netflow-dkms \
 nmap tcpdump audacity inkscape gimp krita audacity libreoffice make gcc dhcpcd5 \
 rsync systemd-resolved hexcompare aircrack-ng hashcat airmon-ng flashrom \
 firmware-realtek xxd xxhash qbittorrent
@@ -221,7 +222,10 @@ XTerm*colorBD: #fcfcfc
 
 XTerm*background: #1a1a1a
 XTerm*foreground: #d6d6d6
-! 0,bg 1,fg(text) 2,bg(selected-text) 3,fg(selected-text) 4,dir-exec(file) 5,compressed-archive(file) 6,symbolic-links 7,fg-bg(regular-text) 8,fg(non-highlighted-parts) 9,fg(error-msg) 10,fg(prompt) 11,fg(selected-text) 12,fg(compressed-archive-file) 13,fg(symbolic-links) 14,fg(prompt) 15,fg(highlighted-parts)
+! 0,bg 1,fg(text) 2,bg(selected-text) 3,fg(selected-text) 4,dir-exec(file) 5,compressed-archive(file)
+! 6,symbolic-links 7,fg-bg(regular-text) 8,fg(non-highlighted-parts) 9,fg(error-msg) 10,fg(prompt)
+! 11,fg(selected-text) 12,fg(compressed-archive-file) 13,fg(symbolic-links) 14,fg(prompt)
+! 15,fg(highlighted-parts)
 XTerm*color0: #000000
 XTerm*color1: #a800aa
 XTerm*color2: #E6E6FA
@@ -392,7 +396,11 @@ umount -l /mnt/gentoo/dev{/shm,/pts,}
 ```
 ##### [Openwrt](https://openwrt.org/)
 ```
-xsltproc ecj fastjar java-propose-classpath libelf-dev libncursesw5-dev python3-setuptools python3-dev subversion swig xsltproc zlib1g-dev build-essential clang flex g++ gawk gcc-multilib gettext libncurses5-dev libssl-dev python3-distutils asciidoc binutils patch bison autoconf texinfo sharutils subversion ncurses-term zlib1g-dev libc6-dev-i386 uglifyjs msmtp libglib2.0-dev xmlto qemu-utils libtool
+xsltproc ecj fastjar java-propose-classpath libelf-dev libncursesw5-dev python3-setuptools \
+python3-dev subversion swig xsltproc zlib1g-dev build-essential clang flex g++ gawk gcc-multilib \
+gettext libncurses5-dev libssl-dev python3-distutils asciidoc binutils patch bison autoconf texinfo \
+sharutils subversion ncurses-term zlib1g-dev libc6-dev-i386 uglifyjs msmtp libglib2.0-dev xmlto \
+qemu-utils libtool
 
 git clone https://github.com/openwrt/openwrt.git
 cd openwrt
