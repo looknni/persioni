@@ -129,7 +129,7 @@ dbus_enable="YES"
 hald_enable="YES"
 gdm_enable="YES"
 gnome_enable="YES"
-	#echo "exec i3" >> ~/.xinitrc
+	# echo "exec dbus-launch --exit-with-session i3" >> ~/.xinitrc
 
 ## /boot/loader.conf
 	if_re_load="YES"
