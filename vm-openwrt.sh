@@ -20,15 +20,16 @@ ip tuntap del mode tap dev $LAN
 
 # qemu-img create -f qcow2 xx.img 10G
 
-# /etc/config/network
-# config interface 'lan'
-# 	list dns '1.1.1.1'
-# config interface 'wan'
-# 	option proto 'dhcp'
-# 	option device 'eth1'
-# config interface 'wan6'
-# 	option proto 'dhcp'
-# 	option device 'eth1'
+# https://openwrt.org/docs/start
+#
+# uci set network.wan.dns='8.8.8.8 8.8.4.4'
+# uci set network.lan.proto='static'  
+# uci set network.lan.ipaddr='192.168.10.100'  
+# uci set network.lan.netmask='255.255.255.0'  
+# uci set network.lan.gateway='192.168.10.1'  
+# uci set network.lan.dns='8.8.8.8'  
+# uci commit network  
+# /etc/init.d/network reload
 
 # /etc/rc.local # ip6tables-extra iptables-mod-iprange iptables-mod-filter
 
