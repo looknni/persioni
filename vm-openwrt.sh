@@ -22,12 +22,11 @@ ip tuntap del mode tap dev $LAN
 
 # https://openwrt.org/docs/start
 #
+# uci set network.wan.proto='static'  
+# uci set network.wan.ipaddr='192.168.10.100'  
+# uci set network.wan.netmask='255.255.255.0'  
+# uci set network.wan.gateway='192.168.10.1'  
 # uci set network.wan.dns='8.8.8.8 8.8.4.4'
-# uci set network.lan.proto='static'  
-# uci set network.lan.ipaddr='192.168.10.100'  
-# uci set network.lan.netmask='255.255.255.0'  
-# uci set network.lan.gateway='192.168.10.1'  
-# uci set network.lan.dns='8.8.8.8'  
 # uci commit network  
 # /etc/init.d/network reload
 
