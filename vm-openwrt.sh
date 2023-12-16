@@ -34,6 +34,9 @@ ip tuntap del mode tap dev $LAN
 
 # ssh/scp -oHostKeyAlgorithms=ssh-rsa -oPubkeyAcceptedKeyTypes=+ssh-rsa
 # curl -O http[s]
+# switch-interface-firewall
+# cat /tmp/dhcp.leases
+# iwinfo phy0-ap0 assoclist/freqlist
 # iw dev
 # iw phy phy0 info
 # iw phy phy0 interface add mon0 type monitor
