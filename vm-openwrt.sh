@@ -34,6 +34,10 @@ ip tuntap del mode tap dev $LAN
 
 # ssh/scp -oHostKeyAlgorithms=ssh-rsa -oPubkeyAcceptedKeyTypes=+ssh-rsa
 # curl -O http[s]
+# /etc/sysctl.conf
+#	net.ipv4.icmp_echo_ignore_all=1
+#	net.ipv6.icmp.echo_ignore_all=1
+
 # ls -l /sys/class/net/
 # switch-interface-firewall
 # cat /tmp/dhcp.leases
