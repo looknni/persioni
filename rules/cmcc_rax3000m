@@ -1,4 +1,5 @@
 https://git.openwrt.org/?p=openwrt/openwrt.git;a=commitdiff;h=d3c193525e6210da2834050e92a077d408381320
+https://mirrors.aliyun.com/openwrt/releases/23.05.2/targets/mediatek/filogic/
 Hardware specification:
   SoC: MediaTek MT7981B 2x A53
   Flash: 64GB eMMC or 128 MB SPI-NAND
