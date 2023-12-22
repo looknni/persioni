@@ -1,9 +1,9 @@
 ./.git/description
 ./.git/HEAD
 ./.git/config
-./.git/FETCH_HEAD
 ./.git/COMMIT_EDITMSG
 ./.git/index
+./.git/FETCH_HEAD
 ./.git/ORIG_HEAD
 ./.gitignore
 ./.gitlab-ci.yml
@@ -30,11 +30,12 @@
 ./SH/UEncrypt.pl
 ./SH/journal.ods
 ./SH/GREP.bash
+./openwrt.list
 ./ca-iptables
 ./openssl.md
-./openwrt.list
+./vm-openwrt.sh
 ./rules/cr660x.mtd
 ./rules/key
 ./rules/sh.tar
+./rules/cmcc_rax3000m
 ./speedtest.bash
-./vm-openwrt.sh
