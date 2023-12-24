@@ -30,10 +30,11 @@ ip tuntap del mode tap dev $LAN
 # uci commit network  
 # /etc/init.d/network reload
 
-# /etc/rc.local # ip6tables-extra iptables-mod-iprange iptables-mod-filter
+# /etc/rc.local # ip6tables-extra iptables-mod-iprange iptables-mod-filter iptables-mod-conntrack-extra ip6tables-mod-nat iptables-mod-socket iptables-mod-nat-extra iptables-mod-ipsec iptables-mod-ipp2p
 
 # ssh/scp -oHostKeyAlgorithms=ssh-rsa -oPubkeyAcceptedKeyTypes=+ssh-rsa
 # curl -O http[s]
+
 # /etc/sysctl.conf
 #	net.ipv4.icmp_echo_ignore_all=1
 #	net.ipv6.icmp.echo_ignore_all=1
