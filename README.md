@@ -59,7 +59,7 @@ vim-gtk3 kaffeine audacious git traceroute locate mtr smartmontools ntpdate \
 fcitx fcitx-googlepinyin fcitx-config-gtk fcitx-table-wubi libvirt-clients \
 wget bash-completion obs-studio aptitude links xterm dnsutils net-tools iptables \
 iptables-persistent iptables-netflow-dkms \
-nmap tcpdump audacity inkscape gimp krita audacity libreoffice make gcc dhcpcd5 \
+nmap tcpdump audacity inkscape gimp krita audacity libreoffice make gcc isc-dhcp-server isc-dhcp-client \
 rsync systemd-resolved hexcompare aircrack-ng hashcat airmon-ng flashrom \
 firmware-realtek xxd xxhash qbittorrent
 
@@ -110,7 +110,7 @@ nameserver 1.0.0.1
 	if_re_load="YES"
 	if_re_name="/boot/modules/if_re.ko"
 
-# pkg install xorg-server xorg-drivers xinit xauth i3 xterm sudo dhcpcd ? gnome-lite
+# pkg install xorg-server xorg-drivers xinit xauth i3 xterm sudo isc-dhcp ? gnome-lite
 
     # /usr/local/etc/sudoers
 
@@ -377,7 +377,7 @@ UUID=? / ext4 rw,noatime 0 1
 emerge --ask sys-boot/grub sys-boot/efibootmgr
     # mount -o remount,rw,nosuid,nodev,noexec --types efivarfs efivarfs /sys/firmware/efi/efivars
 
-emerge -a app-portage/gentoolkit media-sound/alsa-utils sys-apps/dbus net-misc/dhcpcd
+emerge -a app-portage/gentoolkit media-sound/alsa-utils sys-apps/dbus net-misc/dhcp
 
 /etc/locale.gen en_US.UTF-8 UTF-8 # locale-gen && env-update && source /etc/profile
 /etc/locale.conf LANG=en_US.UTF8
@@ -386,7 +386,7 @@ emerge -a app-portage/gentoolkit media-sound/alsa-utils sys-apps/dbus net-misc/d
 
 umount -l /mnt/gentoo/dev{/shm,/pts,}
 # mount -o remount,rw /
-# sys-fs/exfat-utils sys-fs/dosfstools net-misc/dhcp net-misc/networkmanager dev-util/intel-ocl-sdk app-crypt/hashcat app-crypt/johntheripper dev-libs/intel-compute-runtime app-admin/sysstat sys-apps/pv
+# sys-fs/exfat-utils sys-fs/dosfstools net-misc/networkmanager dev-util/intel-ocl-sdk app-crypt/hashcat app-crypt/johntheripper dev-libs/intel-compute-runtime app-admin/sysstat sys-apps/pv
 
 # touch /etc/portage/package.accept_keywords/zzz_autounmask
 # emerge mypackage --autounmask-write --autounmask
