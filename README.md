@@ -284,8 +284,8 @@ pacstrap /mnt base linux-lts linux-firmware
 genfstab -U /mnt >> /mnt/etc/fstab
 
 arch-chroot /mnt
-pacman -S grub efibootmgr os-prober vim sudo networkmanager
-systemctl enable NetworkManager
+pacman -S grub efibootmgr os-prober vim sudo dhcp
+systemctl enable dhcpd.service
 
 /etc/default/grub
     GRUB_DISABLE_OS_PROBER=false
@@ -386,7 +386,7 @@ emerge -a app-portage/gentoolkit media-sound/alsa-utils sys-apps/dbus net-misc/d
 
 umount -l /mnt/gentoo/dev{/shm,/pts,}
 # mount -o remount,rw /
-# sys-fs/exfat-utils sys-fs/dosfstools net-misc/networkmanager dev-util/intel-ocl-sdk app-crypt/hashcat app-crypt/johntheripper dev-libs/intel-compute-runtime app-admin/sysstat sys-apps/pv
+# sys-fs/exfat-utils sys-fs/dosfstools dev-util/intel-ocl-sdk app-crypt/hashcat app-crypt/johntheripper dev-libs/intel-compute-runtime app-admin/sysstat sys-apps/pv
 
 # touch /etc/portage/package.accept_keywords/zzz_autounmask
 # emerge mypackage --autounmask-write --autounmask
