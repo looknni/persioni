@@ -59,9 +59,18 @@ vim-gtk3 kaffeine audacious git traceroute locate mtr smartmontools ntpdate \
 fcitx fcitx-googlepinyin fcitx-config-gtk fcitx-table-wubi libvirt-clients \
 wget bash-completion obs-studio aptitude links xterm dnsutils net-tools iptables \
 iptables-persistent iptables-netflow-dkms \
-nmap tcpdump audacity inkscape gimp krita audacity libreoffice make gcc isc-dhcp-server isc-dhcp-client \
+nmap tcpdump audacity inkscape gimp krita audacity libreoffice make gcc isc-dhcp-client \
 rsync systemd-resolved hexcompare aircrack-ng hashcat airmon-ng flashrom \
 firmware-realtek xxd xxhash qbittorrent
+
+# /etc/network/interfaces # man interfaces
+auto eth0
+iface eth0 inet static/dhcp
+address 192.168.1.100
+netmask 255.255.255.0
+gateway 192.168.1.1
+broadcast 192.168.1.255
+sudo systemctl restart networking
 
 virsh net-define /etc/libvirt/qemu/networks/default.xml
 virsh net-start default
@@ -285,7 +294,17 @@ genfstab -U /mnt >> /mnt/etc/fstab
 
 arch-chroot /mnt
 pacman -S grub efibootmgr os-prober vim sudo dhcp
-systemctl enable dhcpd.service
+sudo systemctl restart systemd-networkd
+# https://www.freedesktop.org/software/systemd/man/latest/systemd.network.html
+# /etc/systemd/network/eth0.network
+    [Match]
+    Name=eth0
+
+    [Network]
+    DHCP=no/yes
+    Address=192.168.0.100/24
+    Gateway=192.168.0.1
+    DNS=8.8.8.8
 
 /etc/default/grub
     GRUB_DISABLE_OS_PROBER=false
