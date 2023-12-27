@@ -296,22 +296,6 @@ genfstab -U /mnt >> /mnt/etc/fstab
 
 arch-chroot /mnt
 pacman -S grub efibootmgr os-prober vim sudo dhcp
-sudo systemctl restart systemd-networkd
-# https://www.freedesktop.org/software/systemd/man/latest/systemd.network.html
-# /etc/systemd/network/eth0.network
-    [Match]
-    Name=eth0
-
-    [Network]
-    DHCP=no/yes
-    Address=192.168.0.100/24
-    Gateway=192.168.0.1
-    DNS=8.8.4.4
-    DNS=1.1.1.1
-    DNSSEC=allow-downgrade
-    DNSOverTLS=opportunistic
-    MulticastDNS=yes
-    LLMNR=yes
 
 /etc/default/grub
     GRUB_DISABLE_OS_PROBER=false
@@ -404,6 +388,23 @@ emerge --ask sys-boot/grub sys-boot/efibootmgr
     # mount -o remount,rw,nosuid,nodev,noexec --types efivarfs efivarfs /sys/firmware/efi/efivars
 
 emerge -a app-portage/gentoolkit media-sound/alsa-utils sys-apps/dbus net-misc/dhcp
+##### network - dhclient - dhcpd
+sudo systemctl restart systemd-networkd
+# https://www.freedesktop.org/software/systemd/man/latest/systemd.network.html
+# /etc/systemd/network/eth0.network
+    [Match]
+    Name=eth0
+
+    [Network]
+    DHCP=no/yes
+    Address=192.168.0.100/24
+    Gateway=192.168.0.1
+    DNS=8.8.4.4
+    DNS=1.1.1.1
+    DNSSEC=allow-downgrade
+    DNSOverTLS=opportunistic
+    MulticastDNS=yes
+    LLMNR=yes
 
 /etc/locale.gen en_US.UTF-8 UTF-8 # locale-gen && env-update && source /etc/profile
 /etc/locale.conf LANG=en_US.UTF8
