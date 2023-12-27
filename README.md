@@ -67,9 +67,11 @@ firmware-realtek xxd xxhash qbittorrent
 auto eth0
 iface eth0 inet static/dhcp
 address 192.168.1.100
+network 192.168.1.0
 netmask 255.255.255.0
 gateway 192.168.1.1
 broadcast 192.168.1.255
+dns-nameservers 8.8.8.8 8.8.4.4
 sudo systemctl restart networking
 
 virsh net-define /etc/libvirt/qemu/networks/default.xml
@@ -304,7 +306,12 @@ sudo systemctl restart systemd-networkd
     DHCP=no/yes
     Address=192.168.0.100/24
     Gateway=192.168.0.1
-    DNS=8.8.8.8
+    DNS=8.8.4.4
+    DNS=1.1.1.1
+    DNSSEC=allow-downgrade
+    DNSOverTLS=opportunistic
+    MulticastDNS=yes
+    LLMNR=yes
 
 /etc/default/grub
     GRUB_DISABLE_OS_PROBER=false
