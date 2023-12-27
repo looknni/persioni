@@ -11,8 +11,6 @@
 ---
 ##### New Bootable USB Solution [Ventoy] https://www.ventoy.net/en/index.html
 ---
-##### lspci -v [Realtek-interface](https://www.realtek.com/en/component/zoo/category/network-interface-controllers-10-100-1000m-gigabit-ethernet-pci-express-software)
----
 ##### [Msi](https://us.msi.com/Motherboard/B560M-PRO/support) @TjVYSE8zM1NOTlpTNDNURk9RRkE9PT09Cg== [Comics](http://fjisu.top/)
 ---
 ##### Temp Mail provides temporary, anonymous, free, secure, disposable email address [Tempmail](https://tempmail.plus/en)
@@ -34,8 +32,6 @@
 ##### Both official Gentoo project documentation as well as community-contributed content can be found here [ Gentoo ](https://wiki.gentoo.org/) [ Funtoo ](https://www.funtoo.org/)
 ---
 ##### Grml is especially well suited for administrative tasks like installation, deployment and system rescue. [Grml](https://grml.org/)
----
-##### Void is a general purpose operating system, based on the monolithic Linux kernel. [ VoidLinux ](https://voidlinux.org/) #static domain_name_servers=1.1.1.1 9.9.9.9 @ man dhcpcd.conf @ xbps
 ---
 > #### [SOURCES](https://cdimage.debian.org/images/) $\oint_{testing_{unstable}}^{stable} {debian}$
 > - https://mirrors.huaweicloud.com
@@ -71,7 +67,6 @@ network 192.168.1.0
 netmask 255.255.255.0
 gateway 192.168.1.1
 broadcast 192.168.1.255
-dns-nameservers 8.8.8.8 8.8.4.4
 sudo systemctl restart networking
 
 virsh net-define /etc/libvirt/qemu/networks/default.xml
