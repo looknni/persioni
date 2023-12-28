@@ -292,6 +292,15 @@ genfstab -U /mnt >> /mnt/etc/fstab
 
 arch-chroot /mnt
 pacman -S grub efibootmgr os-prober vim sudo dhcp
+/etc/netctl/enp0s3
+    Description='A basic static ethernet connection'
+    Interface=enp0s3
+    Connection=ethernet
+    IP=static
+    Address=('192.168.1.102/24')
+    Gateway=('192.168.1.1')
+    DNS=('8.8.8.8' '8.8.4.4')
+sudo netctl enable enp0s3
 
 /etc/default/grub
     GRUB_DISABLE_OS_PROBER=false
