@@ -43,6 +43,7 @@ ip tuntap del mode tap dev $LAN
 # switch - interface - firewall #/etc/config/firewall @lan INPUT,REJECT OUTPUT,ACCEPT FORWARD,ACCEPT
 
 # cat /tmp/dhcp.leases
+# iw dev wlan0 station dump
 # iwinfo phy0-ap0 assoclist/freqlist
 # iw dev
 # iw phy phy0 info
