@@ -41,7 +41,7 @@ ip tuntap del mode tap dev $LAN
 
 # ls -l /sys/class/net/
 # switch - interface - firewall #/etc/config/firewall @lan INPUT,REJECT OUTPUT,ACCEPT FORWARD,ACCEPT
-# iptables - firewall - internal @SOURCE:lan TARGET:INPUT ACTION:DROP
+# iptables|nftables - traffic-rule - firewall @SOURCE:lan TARGET:INPUT ACTION:DROP
 
 # cat /tmp/dhcp.leases
 # iw dev wlan0 station dump
