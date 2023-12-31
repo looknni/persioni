@@ -425,6 +425,15 @@ umount -l /mnt/gentoo/dev{/shm,/pts,}
 # etc-update || dispatch-conf
 ## google-chrome # Use hardware acceleration when available
 ## /etc/portage/package.use/zz-autounmask # Error: circular dependencies
+
+# /etc/systemd/journald.conf 
+[Journal]
+Storage=auto
+Compress=yes
+SplitMode=uid
+SystemMaxUse=1G
+SystemMaxFileSize=100M
+SystemMaxFiles=10
 ```
 ##### [Openwrt](https://openwrt.org/)
 ```
