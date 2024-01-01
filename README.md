@@ -428,12 +428,12 @@ umount -l /mnt/gentoo/dev{/shm,/pts,}
 
 # /etc/systemd/journald.conf 
 [Journal]
-Storage=auto
+#Storage=auto
 Compress=yes
 SplitMode=uid
-SystemMaxUse=1G
-SystemMaxFileSize=100M
-SystemMaxFiles=10
+SystemMaxUse=500M
+#SystemMaxFileSize=100M
+#SystemMaxFiles=10
 ```
 ##### [Openwrt](https://openwrt.org/)
 ```
