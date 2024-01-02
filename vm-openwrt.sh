@@ -40,8 +40,8 @@ ip tuntap del mode tap dev $LAN
 #	net.ipv6.icmp.echo_ignore_all=1
 
 # ls -l /sys/class/net/
-# switch - interface - firewall #/etc/config/firewall @lan INPUT,REJECT OUTPUT,ACCEPT FORWARD,ACCEPT
-# iptables|nftables - traffic-rule - firewall @SOURCE:lan TARGET:INPUT ACTION:DROP
+# switch - interface - firewall #/etc/config/firewall @lan INPUT,REJECT OUTPUT,ACCEPT FORWARD,REJECT
+# iptables|nftables - traffic-rule - firewall @SOURCE:lan TARGET:input ACTION:ACCEPT
 
 # cat /tmp/dhcp.leases
 # iw dev wlan0 station dump
