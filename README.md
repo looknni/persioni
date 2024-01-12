@@ -503,5 +503,5 @@ DNS=119.29.29.29#dot.pub 2402:4e00::#dot.pub 223.5.5.5#dns.alidns.com 240c:f:1:2
 DNSSEC=allow-downgrade
 DNSOverTLS=opportunistic
 MulticastDNS=yes
-LLMNR=yes
+LLMNR=no
 ```
