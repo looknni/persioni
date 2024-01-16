@@ -409,7 +409,7 @@ sudo systemctl restart systemd-networkd
     DNSSEC=allow-downgrade
     DNSOverTLS=opportunistic
     MulticastDNS=yes
-    LLMNR=yes
+    LLMNR=no
 
 /etc/locale.gen en_US.UTF-8 UTF-8 # locale-gen && env-update && source /etc/profile
 /etc/locale.conf LANG=en_US.UTF8
