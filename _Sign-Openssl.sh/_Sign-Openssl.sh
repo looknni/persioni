@@ -39,3 +39,4 @@
 ./rules/sh.tar
 ./rules/cmcc_rax3000m
 ./speedtest.bash
+./atob.bash
