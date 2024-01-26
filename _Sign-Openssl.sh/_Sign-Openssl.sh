@@ -5,6 +5,7 @@
 ./.git/index
 ./.git/FETCH_HEAD
 ./.git/ORIG_HEAD
+./.git/packed-refs
 ./CHANGELOG
 ./Generate.stat
 ./Init.sh
@@ -37,3 +38,4 @@
 ./rules/sh.tar
 ./rules/cmcc_rax3000m
 ./speedtest.bash
+./atob.bash
