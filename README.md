@@ -59,6 +59,14 @@ nmap tcpdump audacity inkscape gimp krita audacity libreoffice make gcc isc-dhcp
 rsync systemd-resolved hexcompare aircrack-ng hashcat airmon-ng flashrom \
 firmware-realtek xxd xxhash qbittorrent
 
+# connection wifi
+iwconfig
+ifconfig eth0 up
+iwlist eth0 scan | grep "ESSID"
+wpa_passphrase name password > wpa_supplicant.conf
+wpa_supplicant -B -c wpa_supplicant.conf -i eth0
+dhclient eth0
+
 # /etc/network/interfaces # man interfaces
 auto eth0
 iface eth0 inet static/dhcp
