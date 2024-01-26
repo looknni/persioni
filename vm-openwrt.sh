@@ -50,3 +50,6 @@ ip tuntap del mode tap dev $LAN
 # iw phy phy0 info
 # iw phy phy0 interface add mon0 type monitor
 # ifconfig mon0 up
+# airodump mon0
+# airodump -w xxx -c 1 --bssid <ap_mac> mon0
+# aireplay -0 0 -a <ap_mac> -c <client_mac> mon0
