@@ -81,13 +81,38 @@ sudo systemctl restart networking
 virsh net-define /etc/libvirt/qemu/networks/default.xml
 virsh net-start default
 
-#ip link add name br0 type bridge
-#ip link set dev br0 up
-#ip link set dev eth0 master br0
-#ip addr add 192.168.0.3/24 dev br0
 #ip route add default via 192.168.0.1 dev br0
 #ip link set dev br0 type stp on
 #ip link set dev br0 nomaster
+
+#s# netns 
+ip netns add ns0
+ip netns add ns1
+ip netns add ns2
+ip link add br0 type bridge  # brctl addbr br0
+ip link set br0 up
+ip link add veth0 type veth peer name veth0br
+ip link add veth1 type veth peer name veth1br
+ip link add veth2 type veth peer name veth2br
+ip link set veth0 netns ns0
+ip link set veth1 netns ns1
+ip link set veth2 netns ns2
+ip netns exec ns0 ip a add 192.168.10.10/24 dev veth0
+ip netns exec ns0 ip link set veth0 up
+ip netns exec ns1 ip addr add 192.168.10.11/24 dev veth1
+ip netns exec ns1 ip link set veth1 up
+ip netns exec ns2 ip addr add 192.168.10.12/24 dev veth2
+ip netns exec ns2 ip link set veth2 up
+
+# ip -d link
+ip link set veth0br master br0  # brctl addif br0 veth01
+ip link set veth0br up
+ip link set veth1br master br0
+ip link set veth1br up
+ip link set veth2br master br0
+ip link set veth2br up
+ip netns exec ns0 ping 192.168.10.11
+#e#
 
 # efibootmgr -c -d /dev/sda -p 2 -L "Gentoo" -l "\EFI\debian\shimx64.efi"
 # efibootmgr -b 0002 -B 0002
