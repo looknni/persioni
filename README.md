@@ -51,10 +51,10 @@
 ---
 > ##### $APT_{dpkg}^{apt-get} \Downarrow$ [Debian](https://www.debian.org/security/) ? [Kali](https://www.kali.org/tools/)
 ```
-vim-gtk3 kaffeine audacious git traceroute locate mtr smartmontools ntpdate \
+vim-gtk3 kaffeine audacious git traceroute locate smartmontools ntpdate \
 fcitx fcitx-googlepinyin fcitx-config-gtk fcitx-table-wubi libvirt-clients \
 wget bash-completion obs-studio aptitude links xterm dnsutils net-tools iptables \
-iptables-persistent iptables-netflow-dkms \
+iptables-persistent iptables-netflow-dkms wpasupplicant \
 nmap tcpdump audacity inkscape gimp krita audacity libreoffice make gcc isc-dhcp-client \
 rsync systemd-resolved hexcompare aircrack-ng hashcat airmon-ng flashrom \
 firmware-realtek xxd xxhash qbittorrent
@@ -451,7 +451,7 @@ sudo systemctl restart systemd-networkd
 
 umount -l /mnt/gentoo/dev{/shm,/pts,}
 # mount -o remount,rw /
-# sys-fs/exfat-utils sys-fs/dosfstools dev-util/intel-ocl-sdk app-crypt/hashcat app-crypt/johntheripper dev-libs/intel-compute-runtime app-admin/sysstat sys-apps/pv
+# net-wireless/wpa_supplicant sys-fs/exfat-utils sys-fs/dosfstools dev-util/intel-ocl-sdk app-crypt/hashcat app-crypt/johntheripper dev-libs/intel-compute-runtime app-admin/sysstat sys-apps/pv
 
 # touch /etc/portage/package.accept_keywords/zzz_autounmask
 # emerge mypackage --autounmask-write --autounmask
