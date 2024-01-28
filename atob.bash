@@ -10,7 +10,6 @@ a=`cat $2`
 b=0
 for j in $a;do
 	sed -i "s/^/$j/g" 'f-'$((b++))
-	echo $b
 done
 #
 for k in {1..9};do
