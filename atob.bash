@@ -3,7 +3,7 @@
 num=`wc $2|awk '{print $1}'`
 set -x
 for i in `seq 0 $num`;do
-	cp $1 "f-"$i
+	cp $1 "f-$i"
 done
 #
 a=`cat $2`
@@ -13,7 +13,7 @@ for j in $a;do
 done
 #
 for k in {1..9};do
-        cat f-${k}* > m2n${k}
-        rm f-${k}*
+        cat "f-${k}"* > "m2n${k}"
+        rm "f-${k}"*
 done
 set +x
