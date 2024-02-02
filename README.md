@@ -374,8 +374,6 @@ mount | grep efi
 # mkswap /dev/sda2
 # swapon /dev/sda2
 # mount /dev/sda3 /mnt/gentoo
-# mount /dev/sda1 /boot
-# mount /dev/sda4 /boot/efi
 
 # tar xpvf stage3-*.tar.xz --xattrs-include='*.*' --numeric-owner
 
@@ -391,14 +389,38 @@ mount --bind /run /mnt/gentoo/run
 chroot /mnt/gentoo /bin/bash
 env-update && source /etc/profile && export PS1="(chroot) ${PS1}"
 
+mount /dev/sda1 /efi
+
 /etc/portage/make.conf
-    MAKEOPTS="-j6"
-    GRUB_PLATFORMS="efi-64"
+	MAKEOPTS="-j6"
+	GRUB_PLATFORMS="efi-64"
+	<div>
+	USE="modules-sign"
+	</div>
+	<div lang="en" dir="ltr" class="mw-content-ltr">
+	# Optionally, to use custom signing keys.
+	MODULES_SIGN_KEY="/path/to/key.pem"
+	MODULES_SIGN_CERT="/path/to/cert.pem" # Only required if the MODULES_SIGN_KEY does not also contain the certificate.
+	MODULES_SIGN_HASH="sha512" # Defaults to sha512.
+	</div>
+	<div lang="en" dir="ltr" class="mw-content-ltr">
+	$ Optionally, to boot with secureboot enabled, may be the same or different signing key.
+	SECUREBOOT_SIGN_KEY="/path/to/key.pem"
+	SECUREBOOT_SIGN_CERT="/path/to/cert.pem"
+
+openssl req -new -nodes -utf8 -sha256 -x509 -outform PEM -out kernel_key.pem -keyout kernel_key.pem
+chown root:root kernel_key.pem
+chmod 400 kernel_key.pem
 
 emerge-webrsync # /var/db/repos/gentoo/
 emerge -avuDN --with-bdeps=y @world
+ln -sf ../usr/share/zoneinfo/Europe/Brussels /etc/localtime
+/etc/locale.gen en_US.UTF-8 UTF-8 # locale-gen && env-update && source /etc/profile
+/etc/locale.conf LANG=en_US.UTF8
 
-emerge --ask sys-kernel/linux-firmware sys-kernel/installkernel-gentoo
+#/etc/portage/package.use/installkernel # Enable dracut support
+	sys-kernel/installkernel dracut
+emerge --ask sys-kernel/linux-firmware sys-kernel/installkernel sys-apps/pciutils
 ##### []
 # emerge --ask sys-kernel/gentoo-sources
 	# eselect kernel set 1
@@ -409,20 +431,16 @@ emerge --ask sys-kernel/linux-firmware sys-kernel/installkernel-gentoo
 # emerge -a sys-kernel/dracut
 	# dracut --kver xxx 
 
-##### default
-    emerge --ask sys-kernel/gentoo-kernel-bin
-
     # blkid mount
-#/dev/sda1   
-UUID=? /boot ext4 rw,noatime 0 2
-#/dev/xx
-UUID=? /boot/efi vfat defaults 0 2
+#/dev/sda1
+UUID=? /efi vfat defaults 0 2
 #/dev/sda2
 UUID=? none swap sw 0 0
 #/dev/sda3
 UUID=? / ext4 rw,noatime 0 1
 
 emerge --ask sys-boot/grub sys-boot/efibootmgr
+	# cp /boot/vmlinuz-* /boot/efi/boot/bzImage.efi
     # mount -o remount,rw,nosuid,nodev,noexec --types efivarfs efivarfs /sys/firmware/efi/efivars
 
 emerge -a app-portage/gentoolkit media-sound/alsa-utils sys-apps/dbus net-misc/dhcp
@@ -444,8 +462,6 @@ sudo systemctl restart systemd-networkd
     MulticastDNS=yes
     LLMNR=no
 
-/etc/locale.gen en_US.UTF-8 UTF-8 # locale-gen && env-update && source /etc/profile
-/etc/locale.conf LANG=en_US.UTF8
 # useradd -m -G users,wheel,audio,video -s /bin/bash username
 # passwd username
 
