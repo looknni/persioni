@@ -387,6 +387,7 @@ mount --bind /dev /mnt/gentoo/dev
 mount --bind /run /mnt/gentoo/run
 
 chroot /mnt/gentoo /bin/bash
+emerge-webrsync # /var/db/repos/gentoo/
 env-update && source /etc/profile && export PS1="(chroot) ${PS1}"
 
 mount /dev/sda1 /efi
@@ -412,8 +413,6 @@ openssl req -new -nodes -utf8 -sha256 -x509 -outform PEM -out kernel_key.pem -ke
 chown root:root kernel_key.pem
 chmod 400 kernel_key.pem
 
-emerge-webrsync # /var/db/repos/gentoo/
-emerge -avuDN --with-bdeps=y @world
 ln -sf ../usr/share/zoneinfo/Europe/Brussels /etc/localtime
 /etc/locale.gen en_US.UTF-8 UTF-8 # locale-gen && env-update && source /etc/profile
 /etc/locale.conf LANG=en_US.UTF8
@@ -430,22 +429,11 @@ UUID=? / ext4 rw,noatime 0 1
 
 emerge --ask sys-boot/grub sys-boot/efibootmgr
 	# cp /boot/vmlinuz-* /boot/efi/boot/bzImage.efi
-    # mount -o remount,rw,nosuid,nodev,noexec --types efivarfs efivarfs /sys/firmware/efi/efivars
+    # mount --types efivarfs efivarfs /sys/firmware/efi/efivars
 
 emerge -a app-portage/gentoolkit media-sound/alsa-utils sys-apps/dbus net-misc/dhcp
 
-##### []
-# emerge --ask sys-kernel/gentoo-sources
-	# eselect kernel set 1
-	# make localmodconfig # menuconfig clean mrproper oldconfig
-	## nouveau efi selinux iptable nf_tables IPVS conntrack exfat tun/tap
-	# make bzImage -j6 && make modules_install
-	# make install
-# emerge -a sys-kernel/dracut
-	# dracut --kver xxx 
-
-##### network - dhclient - dhcpd
-sudo systemctl restart systemd-networkd
+sudo systemctl enable systemd-networkd.server
 # https://www.freedesktop.org/software/systemd/man/latest/systemd.network.html
 # /etc/systemd/network/eth0.network
     [Match]
@@ -461,6 +449,16 @@ sudo systemctl restart systemd-networkd
     DNSOverTLS=opportunistic
     MulticastDNS=yes
     LLMNR=no
+
+##### []
+# emerge --ask sys-kernel/gentoo-sources
+	# eselect kernel set 1
+	# make localmodconfig # menuconfig clean mrproper oldconfig
+	## nouveau efi selinux iptable nf_tables IPVS conntrack exfat tun/tap
+	# make -j6 && make modules_install
+	# make install
+# emerge -a sys-kernel/dracut
+	# dracut --kver xxx 
 
 # useradd -m -G users,wheel,audio,video username
 # passwd username
