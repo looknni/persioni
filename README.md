@@ -418,9 +418,7 @@ ln -sf ../usr/share/zoneinfo/Europe/Brussels /etc/localtime
 /etc/locale.gen en_US.UTF-8 UTF-8 # locale-gen && env-update && source /etc/profile
 /etc/locale.conf LANG=en_US.UTF8
 
-#/etc/portage/package.use/installkernel # Enable dracut support
-	sys-kernel/installkernel dracut
-emerge --ask sys-kernel/linux-firmware sys-kernel/installkernel sys-apps/pciutils
+emerge --ask sys-kernel/linux-firmware sys-apps/pciutils
 
     # blkid mount
 #/dev/sda1
@@ -442,7 +440,7 @@ emerge -a app-portage/gentoolkit media-sound/alsa-utils sys-apps/dbus net-misc/d
 	# make localmodconfig # menuconfig clean mrproper oldconfig
 	## nouveau efi selinux iptable nf_tables IPVS conntrack exfat tun/tap
 	# make -j6 && make modules_install
-	# make install
+	# make install # make bzImage
 # emerge -a sys-kernel/dracut
 	# dracut --kver xxx 
 
