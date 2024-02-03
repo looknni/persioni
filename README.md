@@ -439,8 +439,8 @@ emerge -a app-portage/gentoolkit media-sound/alsa-utils sys-apps/dbus net-misc/d
 	# eselect kernel set 1
 	# make localmodconfig # menuconfig clean mrproper oldconfig
 	## nouveau efi selinux iptable nf_tables IPVS conntrack exfat tun/tap
-	# make -j6 && make modules_install
-	# make install # make bzImage
+	# make bzImage -j6 && make modules_install
+	# make install
 # emerge -a sys-kernel/dracut
 	# dracut --kver xxx 
 
