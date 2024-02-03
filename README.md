@@ -421,15 +421,6 @@ ln -sf ../usr/share/zoneinfo/Europe/Brussels /etc/localtime
 #/etc/portage/package.use/installkernel # Enable dracut support
 	sys-kernel/installkernel dracut
 emerge --ask sys-kernel/linux-firmware sys-kernel/installkernel sys-apps/pciutils
-##### []
-# emerge --ask sys-kernel/gentoo-sources
-	# eselect kernel set 1
-	# make localmodconfig # menuconfig clean mrproper oldconfig
-	## nouveau efi selinux iptable nf_tables IPVS conntrack exfat tun/tap
-	# make -j6 && make modules_install
-	# make install
-# emerge -a sys-kernel/dracut
-	# dracut --kver xxx 
 
     # blkid mount
 #/dev/sda1
@@ -444,6 +435,17 @@ emerge --ask sys-boot/grub sys-boot/efibootmgr
     # mount -o remount,rw,nosuid,nodev,noexec --types efivarfs efivarfs /sys/firmware/efi/efivars
 
 emerge -a app-portage/gentoolkit media-sound/alsa-utils sys-apps/dbus net-misc/dhcp
+
+##### []
+# emerge --ask sys-kernel/gentoo-sources
+	# eselect kernel set 1
+	# make localmodconfig # menuconfig clean mrproper oldconfig
+	## nouveau efi selinux iptable nf_tables IPVS conntrack exfat tun/tap
+	# make -j6 && make modules_install
+	# make install
+# emerge -a sys-kernel/dracut
+	# dracut --kver xxx 
+
 ##### network - dhclient - dhcpd
 sudo systemctl restart systemd-networkd
 # https://www.freedesktop.org/software/systemd/man/latest/systemd.network.html
@@ -462,7 +464,7 @@ sudo systemctl restart systemd-networkd
     MulticastDNS=yes
     LLMNR=no
 
-# useradd -m -G users,wheel,audio,video -s /bin/bash username
+# useradd -m -G users,wheel,audio,video username
 # passwd username
 
 umount -l /mnt/gentoo/dev{/shm,/pts,}
@@ -472,17 +474,8 @@ umount -l /mnt/gentoo/dev{/shm,/pts,}
 # touch /etc/portage/package.accept_keywords/zzz_autounmask
 # emerge mypackage --autounmask-write --autounmask
 # etc-update || dispatch-conf
-## google-chrome # Use hardware acceleration when available
 ## /etc/portage/package.use/zz-autounmask # Error: circular dependencies
 
-# /etc/systemd/journald.conf 
-[Journal]
-#Storage=auto
-Compress=yes
-SplitMode=uid
-SystemMaxUse=500M
-#SystemMaxFileSize=100M
-#SystemMaxFiles=10
 ```
 ##### [Openwrt](https://openwrt.org/)
 ```
