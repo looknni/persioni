@@ -335,17 +335,6 @@ pacman -S grub efibootmgr os-prober vim sudo dhcp
     DNS=('8.8.8.8' '8.8.4.4')
 sudo netctl enable enp0s3
 
-/etc/default/grub
-    GRUB_DISABLE_OS_PROBER=false
-    GRUB_DEFAULT=saved
-    GRUB_SAVEDEFAULT=true
-    GRUB_GFXMODE=640x480
-    GRUB_TERMINAL="console"
-
-grub-install --target x86_64-efi --efi-directory /boot/efi --recheck --removable /dev/sda1
-    # grub-install --target i386-pc --boot-directory /boot --recheck  /dev/sda1
-grub-mkconfig -o /boot/grub/grub.cfg
-
 pacman -S wqy-microhei xorg-server xorg-xinit xf86-video-vesa
 ---
 pacman -S i3-wm dmenu xterm fcitx fcitx-configtool fcitx-googlepinyin
@@ -395,17 +384,12 @@ mount /dev/sda1 /efi
 /etc/portage/make.conf
 	MAKEOPTS="-j6"
 	GRUB_PLATFORMS="efi-64"
-	<div>
 	USE="modules-sign"
-	</div>
-	<div lang="en" dir="ltr" class="mw-content-ltr">
 	# Optionally, to use custom signing keys.
 	MODULES_SIGN_KEY="/path/to/key.pem"
 #	MODULES_SIGN_CERT="/path/to/cert.pem" # Only required if the MODULES_SIGN_KEY does not also contain the certificate.
 	MODULES_SIGN_HASH="sha512" # Defaults to sha512.
-	</div>
-	<div lang="en" dir="ltr" class="mw-content-ltr">
-	$ Optionally, to boot with secureboot enabled, may be the same or different signing key.
+#	$ Optionally, to boot with secureboot enabled, may be the same or different signing key.
 	SECUREBOOT_SIGN_KEY="/path/to/key.pem"
 #	SECUREBOOT_SIGN_CERT="/path/to/cert.pem"
 
@@ -459,6 +443,18 @@ sudo systemctl enable systemd-networkd.server
 	# make install
 # emerge -a sys-kernel/dracut
 	# dracut --kver xxx 
+
+/etc/default/grub
+    GRUB_DISABLE_OS_PROBER=false
+    GRUB_DEFAULT=saved
+    GRUB_SAVEDEFAULT=true
+    GRUB_GFXMODE=640x480
+    GRUB_TERMINAL="console"
+
+grub-install --target x86_64-efi --efi-directory /boot/efi --recheck --removable /dev/sda1
+    # grub-install --target i386-pc --boot-directory /boot --recheck  /dev/sda1
+grub-mkconfig -o /boot/grub/grub.cfg
+grub-mkstandalone -o /boot/efi/EFI/gentoo/bootx64.efi -d /usr/lib/grub/x86_64-efi -O x86_64-efi /boot/grub/grub.cfg
 
 # useradd -m -G users,wheel,audio,video username
 # passwd username
