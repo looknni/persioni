@@ -381,18 +381,6 @@ mount /dev/sda1 /efi
 /etc/portage/make.conf
 	MAKEOPTS="-j6"
 	GRUB_PLATFORMS="efi-64"
-	USE="modules-sign"
-	# Optionally, to use custom signing keys.
-	MODULES_SIGN_KEY="/path/to/key.pem"
-#	MODULES_SIGN_CERT="/path/to/cert.pem" # Only required if the MODULES_SIGN_KEY does not also contain the certificate.
-	MODULES_SIGN_HASH="sha512" # Defaults to sha512.
-#	$ Optionally, to boot with secureboot enabled, may be the same or different signing key.
-	SECUREBOOT_SIGN_KEY="/path/to/key.pem"
-#	SECUREBOOT_SIGN_CERT="/path/to/cert.pem"
-
-openssl req -new -nodes -utf8 -sha256 -x509 -outform PEM -out kernel_key.pem -keyout kernel_key.pem
-chown root:root kernel_key.pem
-chmod 400 kernel_key.pem
 
 ln -sf ../usr/share/zoneinfo/Europe/Brussels /etc/localtime
 /etc/locale.gen en_US.UTF-8 UTF-8 # locale-gen && env-update && source /etc/profile
