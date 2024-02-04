@@ -462,6 +462,7 @@ grub-mkstandalone -o /boot/efi/EFI/gentoo/bootx64.efi -d /usr/lib/grub/x86_64-ef
 
 umount -l /mnt/gentoo/dev{/shm,/pts,}
 # mount -o remount,rw /
+emerge -avuDN @world
 # net-wireless/wpa_supplicant sys-fs/exfat-utils sys-fs/dosfstools dev-util/intel-ocl-sdk app-crypt/hashcat app-crypt/johntheripper dev-libs/intel-compute-runtime app-admin/sysstat sys-apps/pv
 
 # touch /etc/portage/package.accept_keywords/zzz_autounmask
