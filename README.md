@@ -114,9 +114,6 @@ ip link set veth2br up
 ip netns exec ns0 ping 192.168.10.11
 #e#
 
-# efibootmgr -c -d /dev/sda -p 2 -L "Gentoo" -l "\EFI\debian\shimx64.efi"
-# efibootmgr -b 0002 -B 0002
-
 sudo dpkg-reconfigure linux-image-$(uname -r)
 sudo update-initramfs -u -k all
 
@@ -454,7 +451,11 @@ sudo systemctl enable systemd-networkd.server
 grub-install --target x86_64-efi --efi-directory /boot/efi --recheck --removable /dev/sda1
     # grub-install --target i386-pc --boot-directory /boot --recheck  /dev/sda1
 grub-mkconfig -o /boot/grub/grub.cfg
+
 grub-mkstandalone -o /boot/efi/EFI/gentoo/bootx64.efi -d /usr/lib/grub/x86_64-efi -O x86_64-efi /boot/grub/grub.cfg
+
+# efibootmgr -c -d /dev/sda -p 2 -L "Gentoo" -l "\EFI\gentoo\bootx64.efi"
+# efibootmgr -b 0002 -B 0002
 
 # useradd -m -G users,wheel,audio,video username
 # passwd username
