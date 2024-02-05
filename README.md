@@ -354,14 +354,14 @@ pacman -Qdtq | pacman -Rsn -
 ## ~~[Gentoo](https://www.gentoo.org/)~~
 ```
 mount | grep efi
-# gdisk cgdisk | fdisk cfdisk /dev/sda # m p g o n t d l w
-# mkfs.vfat -F 32 /dev/sda1
-# mkfs.ext4 /dev/sda3
-# mkswap /dev/sda2
-# swapon /dev/sda2
-# mount /dev/sda3 /mnt/gentoo
+gdisk cgdisk | fdisk cfdisk /dev/sda # m p g o n t d l w
+ mkfs.vfat -F 32 /dev/sda1
+ mkfs.ext4 /dev/sda3
+ mkswap /dev/sda2
+ swapon /dev/sda2
+ mount /dev/sda3 /mnt/gentoo
 
-# tar xpvf stage3-*.tar.xz --xattrs-include='*.*' --numeric-owner
+tar xpvf stage3-*.tar.xz --xattrs-include='*.*' --numeric-owner
 
 mirrorselect -i -o >> /mnt/gentoo/etc/portage/make.conf
 cp -r /mnt/gentoo/usr/share/portage/config/repos.conf /mnt/gentoo/etc/portage/repos.conf/gentoo.conf
@@ -420,13 +420,13 @@ sudo systemctl enable systemd-networkd.server
     LLMNR=no
 
 ##### []
-# emerge --ask sys-kernel/gentoo-sources
+emerge --ask sys-kernel/gentoo-sources
 	# eselect kernel set 1
 	# make localmodconfig # menuconfig clean mrproper oldconfig
 	## nouveau efi selinux iptable nf_tables IPVS conntrack exfat tun/tap
 	# make -j6 && make modules_install
 	# make install
-# emerge -a sys-kernel/dracut
+emerge -a sys-kernel/dracut
 	# dracut --kver xxx 
 
 /etc/default/grub
@@ -442,21 +442,26 @@ grub-mkconfig -o /boot/grub/grub.cfg
 
 grub-mkstandalone -o /boot/efi/EFI/gentoo/bootx64.efi -d /usr/lib/grub/x86_64-efi -O x86_64-efi /boot/grub/grub.cfg
 
-# efibootmgr -c -d /dev/sda -p 2 -L "Gentoo" -l "\EFI\gentoo\bootx64.efi"
-# efibootmgr -b 0002 -B 0002
+efibootmgr -c -d /dev/sda -p 2 -L "Gentoo" -l "\EFI\gentoo\bootx64.efi"
+efibootmgr -b 0002 -B
 
-# useradd -m -G users,wheel,audio,video username
-# passwd username
+useradd -m -G users,wheel,audio,video username
+passwd username
 
 umount -l /mnt/gentoo/dev{/shm,/pts,}
 # mount -o remount,rw /
-emerge -avuDN @world
-# net-wireless/wpa_supplicant sys-fs/exfat-utils sys-fs/dosfstools dev-util/intel-ocl-sdk app-crypt/hashcat app-crypt/johntheripper dev-libs/intel-compute-runtime app-admin/sysstat sys-apps/pv
+# emerge -avuDN @world
+# net-wireless/wpa_supplicant sys-fs/exfat-utils sys-fs/dosfstools dev-util/intel-ocl-sdk app-crypt/hashcat app-crypt/johntheripper
 
 # touch /etc/portage/package.accept_keywords/zzz_autounmask
-# emerge mypackage --autounmask-write --autounmask
-# etc-update || dispatch-conf
+emerge mypackage --autounmask-write --autounmask
+etc-update || dispatch-conf
 ## /etc/portage/package.use/zz-autounmask # Error: circular dependencies
+
+# /usr/src/linux-6.6.13-gentoo/System.map -> System.map-6.6.13-gentoo-x86_64
+# dracut --kver xxx -> initramfs-6.6.13-gentoo-x86_64.img
+# .config -> config-6.6.13-gentoo-x86_64
+# /usr/src/linux-6.6.13-gentoo/arch/x86_64/boot/bzImage -> vmlinuz-6.6.13-gentoo-x86_64
 
 ```
 ##### [Openwrt](https://openwrt.org/)
