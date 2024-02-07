@@ -40,3 +40,4 @@
 ./speedtest.bash
 ./atob.bash
 ./usb.wifi
+./grub.cfg
