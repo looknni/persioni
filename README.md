@@ -332,6 +332,17 @@ pacman -S grub efibootmgr os-prober vim sudo dhcp
     DNS=('8.8.8.8' '8.8.4.4')
 sudo netctl enable enp0s3
 
+/etc/default/grub
+    GRUB_DISABLE_OS_PROBER=false
+    GRUB_DEFAULT=saved
+    GRUB_SAVEDEFAULT=true
+    GRUB_GFXMODE=640x480
+    GRUB_TERMINAL="console"
+
+grub-install --target x86_64-efi --efi-directory /boot/efi --recheck --removable /dev/sda1
+    # grub-install --target i386-pc --boot-directory /boot --recheck  /dev/sda1
+grub-mkconfig -o /boot/grub/grub.cfg
+
 pacman -S wqy-microhei xorg-server xorg-xinit xf86-video-vesa
 ---
 pacman -S i3-wm dmenu xterm fcitx fcitx-configtool fcitx-googlepinyin
@@ -396,7 +407,7 @@ UUID=? none swap sw 0 0
 #/dev/sda3
 UUID=? / ext4 rw,noatime 0 1
 
-emerge --ask sys-boot/grub sys-boot/efibootmgr
+emerge --ask sys-boot/efibootmgr
 	# cp /boot/vmlinuz-* /boot/efi/boot/bzImage.efi
     # mount --types efivarfs efivarfs /sys/firmware/efi/efivars
 
@@ -429,20 +440,10 @@ emerge --ask sys-kernel/gentoo-sources
 emerge -a sys-kernel/dracut
 	# dracut --kver xxx 
 
-/etc/default/grub
-    GRUB_DISABLE_OS_PROBER=false
-    GRUB_DEFAULT=saved
-    GRUB_SAVEDEFAULT=true
-    GRUB_GFXMODE=640x480
-    GRUB_TERMINAL="console"
+# grub-mkstandalone -o /boot/efi/EFI/gentoo/bootx64.efi -d /usr/lib/grub/x86_64-efi -O x86_64-efi /boot/grub/grub.cfg
 
-grub-install --target x86_64-efi --efi-directory /boot/efi --recheck --removable /dev/sda1
-    # grub-install --target i386-pc --boot-directory /boot --recheck  /dev/sda1
-grub-mkconfig -o /boot/grub/grub.cfg
-
-grub-mkstandalone -o /boot/efi/EFI/gentoo/bootx64.efi -d /usr/lib/grub/x86_64-efi -O x86_64-efi /boot/grub/grub.cfg
-
-efibootmgr -c -d /dev/sda -p 2 -L "Gentoo" -l "\EFI\gentoo\bootx64.efi"
+efibootmgr -c -d /dev/sda -p 2 -L "Gentoo" -l "\EFI\gentoo\bootx64.efi" -u "root=UUID=x-x-x-x-x rw splash loglevel=3"
+# efibootmgr -c -d /dev/sda -p 2 -L "Gentoo" -l "/boot/vmlinuz-linux" -u "root=UUID=x-x-x-x-x rw initrd=\initramfs-linux.img splash loglevel=3"
 efibootmgr -b 0002 -B
 
 useradd -m -G users,wheel,audio,video username
