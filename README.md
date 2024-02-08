@@ -439,8 +439,7 @@ grub-mkconfig -o /boot/grub/grub.cfg
 
 grub-mkstandalone -o /boot/efi/EFI/gentoo/bootx64.efi -d /usr/lib/grub/x86_64-efi -O x86_64-efi /boot/grub/grub.cfg
 
-efibootmgr -c -d /dev/sda -p 2 -L "Gentoo" -l "\EFI\gentoo\bootx64.efi" -u "root=UUID=x-x-x-x-x rw splash loglevel=3"
-# efibootmgr -c -d /dev/sda -p 2 -L "Gentoo" -l "/boot/vmlinuz-linux" -u "root=UUID=x-x-x-x-x rw initrd=\initramfs-linux.img splash loglevel=3" -v
+efibootmgr -c -d /dev/sda -p 2 -L "Gentoo" -l "\EFI\gentoo\bootx64.efi"
 efibootmgr -b 0002 -B
 
 useradd -m -G users,wheel,audio,video username
