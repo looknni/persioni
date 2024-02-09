@@ -1,5 +1,8 @@
 #!/bin/bash
-# $1,source $2,file
+# $1,source $2,file $3,name
+if [[ -z $1 || -z $2 || -z $3 ]];then
+       exit
+fi
 num=`wc $2|awk '{print $1}'`
 set -x
 sed -i '/^$/d' $1
