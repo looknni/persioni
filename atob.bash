@@ -6,6 +6,7 @@ fi
 num=`wc $2|awk '{print $1}'`
 set -x
 sed -i '/^$/d' $1
+sed -i '/^$/d' $2
 for i in `seq 1 $num`;do
 	cp $1 "f-"$i
 done
