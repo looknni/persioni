@@ -371,6 +371,8 @@ mount --types proc /proc /mnt/gentoo/proc
 mount --bind /sys /mnt/gentoo/sys
 mount --bind /dev /mnt/gentoo/dev
 mount --bind /run /mnt/gentoo/run
+# mount --types tmpfs --options nosuid,nodev,noexec shm /dev/shm
+# chmod 1777 /dev/shm /run/shm
 
 chroot /mnt/gentoo /bin/bash
 emerge-webrsync # /var/db/repos/gentoo/
@@ -393,9 +395,8 @@ UUID=? /efi vfat defaults 0 2
 UUID=? none swap sw 0 0
 UUID=? / ext4 rw,noatime 0 1
 
+mount --types efivarfs efivarfs /sys/firmware/efi/efivars
 emerge --ask sys-boot/grub sys-boot/efibootmgr
-	# cp /boot/vmlinuz-* /boot/efi/boot/bzImage.efi
-    # mount --types efivarfs efivarfs /sys/firmware/efi/efivars
 
 emerge -a app-portage/gentoolkit media-sound/alsa-utils sys-apps/dbus net-misc/dhcp
 
