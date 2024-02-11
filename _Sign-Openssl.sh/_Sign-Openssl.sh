@@ -41,3 +41,4 @@
 ./atob.bash
 ./usb.wifi
 ./grub.cfg
+./gentoo.config.nou
