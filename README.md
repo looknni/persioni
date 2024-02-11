@@ -390,6 +390,16 @@ ln -sf /usr/share/zoneinfo/Europe/Brussels /etc/localtime
 
 emerge --ask sys-kernel/linux-firmware sys-apps/pciutils
 
+##### []
+emerge --ask sys-kernel/gentoo-sources
+	# eselect kernel set 1
+	# make localmodconfig # menuconfig clean mrproper oldconfig
+	## nouveau efi selinux iptable nf_tables IPVS conntrack exfat tun/tap
+	# make -j6 && make modules_install
+	# make install
+emerge -a sys-kernel/dracut
+	# dracut --kver xxx 
+
 # blkid mount
 UUID=? /efi vfat defaults 0 2
 UUID=? none swap sw 0 0
@@ -416,17 +426,6 @@ sudo systemctl enable systemd-networkd.server
     DNSOverTLS=opportunistic
     MulticastDNS=yes
     LLMNR=no
-
-##### []
-emerge --ask sys-kernel/gentoo-sources
-	# eselect kernel set 1
-	# make localmodconfig # menuconfig clean mrproper oldconfig
-	## nouveau efi selinux iptable nf_tables IPVS conntrack exfat tun/tap
-	# make -j6 && make modules_install
-	# make install
-emerge -a sys-kernel/dracut
-	# dracut --kver xxx 
-
 /etc/default/grub
     GRUB_DISABLE_OS_PROBER=false
     GRUB_DEFAULT=saved
