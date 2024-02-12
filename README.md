@@ -406,7 +406,17 @@ UUID=? none swap sw 0 0
 UUID=? / ext4 rw,noatime 0 1
 
 # sys-kernel/installkernel -systemd
+
 # sys-apps/systemd boot # bootctl install && bootctl list
+# /efi/loader/entries/gentoo.conf
+    title gentoo
+    linux /vmlinuz # /efi/
+    initrd /initramfs.img #/efi/
+    options root=/dev/xxx
+# /efi/loader/loader.conf
+    default gentoo.conf
+# bootctl update
+
 mount -o remount,rw -t efivarfs efivarfs /sys/firmware/efi/efivars/
 emerge --ask sys-boot/grub sys-boot/efibootmgr
 
@@ -439,9 +449,8 @@ grub-install --target x86_64-efi --efi-directory /boot/efi --recheck --removable
     # grub-install --target i386-pc --boot-directory /boot --recheck
 grub-mkconfig -o /boot/grub/grub.cfg
 
-grub-mkstandalone -o /boot/efi/EFI/gentoo/bootx64.efi -d /usr/lib/grub/x86_64-efi -O x86_64-efi /boot/grub/grub.cfg
-
-efibootmgr -c -d /dev/sda -p 2 -L "Gentoo" -l "\EFI\gentoo\bootx64.efi"
+grub-mkstandalone --compress xz -o /efi/EFI/gentoo/xxx.efi -d /usr/lib/grub/x86_64-efi/ -O x86_64-efi /boot/grub/grub.cfg -v
+efibootmgr -c -d /dev/sda -p 2 -L "Gentoo" -l "\EFI\gentoo\xxx.efi"
 efibootmgr -b 0002 -B
 
 useradd -m -G users,wheel,audio,video username
