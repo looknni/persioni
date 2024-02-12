@@ -406,7 +406,7 @@ UUID=? none swap sw 0 0
 UUID=? / ext4 rw,noatime 0 1
 
 # sys-kernel/installkernel -systemd grub [uki]
-mount --types efivarfs efivarfs /sys/firmware/efi/efivars
+mount -o remount,rw -t efivarfs efivarfs /sys/firmware/efi/efivars/
 emerge --ask sys-boot/grub sys-boot/efibootmgr
 
 emerge -a app-portage/gentoolkit media-sound/alsa-utils sys-apps/dbus net-misc/dhcp
