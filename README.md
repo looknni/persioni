@@ -406,7 +406,7 @@ UUID=? none swap sw 0 0
 UUID=? / ext4 rw,noatime 0 1
 
 # sys-kernel/installkernel -systemd
-# sys-apps/systemd boot # bootctl install
+# sys-apps/systemd boot # bootctl install && bootctl list
 mount -o remount,rw -t efivarfs efivarfs /sys/firmware/efi/efivars/
 emerge --ask sys-boot/grub sys-boot/efibootmgr
 
