@@ -405,6 +405,7 @@ UUID=? /efi vfat defaults 0 2
 UUID=? none swap sw 0 0
 UUID=? / ext4 rw,noatime 0 1
 
+# sys-kernel/installkernel -systemd grub [uki]
 mount --types efivarfs efivarfs /sys/firmware/efi/efivars
 emerge --ask sys-boot/grub sys-boot/efibootmgr
 
