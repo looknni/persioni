@@ -1,5 +1,5 @@
 > - /biosboot ~($\displaystyle\lim_{31k\rightarrow\infty}1M$).../boot/efi ~($\displaystyle\sum_{i \to 6M}^{n \to system} {i \times n+1M+40M}$).../boot ~($\displaystyle\sum_{i \to 100M}^{n \to kernel} {i \times n+200M}$).../ ~($\frac{\infty}{0.98}$).../swap ~($\sqrt[i \to 2]{RAM}$) . /home
-> - sudo blkid $\int_{/etc/default/grub}^{/etc/fstab}\int_{/boot/grub2/grub.cfg}^{/boot/load/* }$
+> - blkid $\int_{/etc/default/grub}^{/etc/fstab}\int_{/boot/grub2/grub.cfg}^{/boot/load/* }$
 > - sed -i '$a\vm.swappiness=20' /etc/sysctl.conf#sysctl -p
 > - $\oint_{{2820076477}^{16}}^{{140177258}^{9}}\displaystyle\sum_{s^S_{o}}^{m^M_{o}} {64_{+}^{-}} \displaystyle\prod_{h_{mac}}^{echo_{2}}$ $\displaystyle\lim_{16 \rightarrow 20 \rightarrow 32 \rightarrow 63 \rightarrow \infty}^{\infty \rightarrow \phi}$
 ---
@@ -81,9 +81,9 @@ sudo systemctl restart networking
 virsh net-define /etc/libvirt/qemu/networks/default.xml
 virsh net-start default
 
-#ip route add default via 192.168.0.1 dev br0
-#ip link set dev br0 type stp on
-#ip link set dev br0 nomaster
+# ip route add default via 192.168.0.1 dev br0
+ip link set dev br0 type stp on
+ip link set dev br0 nomaster
 
 #s# netns 
 ip netns add ns0
@@ -137,42 +137,43 @@ FreeBSD: {
 ## /etc/resolv.conf
 nameserver 1.0.0.1
 ## /etc/dhclient.conf
-#	interface "re0" {
-#		prepend domain-name-servers 64.6.64.6,8.8.4.4;
-#	}
+interface "re0" {
+    prepend domain-name-servers 64.6.64.6,8.8.4.4;
+}
 ## service netif restart 
 ## dhclient re0
 
 ## /boot/loader.conf
-	if_re_load="YES"
-	if_re_name="/boot/modules/if_re.ko"
+if_re_load="YES"
+if_re_name="/boot/modules/if_re.ko"
 
 # pkg install xorg-server xorg-drivers xinit xauth i3 xterm sudo isc-dhcp ? gnome-lite
 
-    # /usr/local/etc/sudoers
+# /usr/local/etc/sudoers
 
 ### zh-auto-cn-l10n fusefs-ext2 fusefs-exfat
 
 ## /etc/fstab
-	proc /proc	 procfs rw 0 0
+proc /proc	 procfs rw 0 0
 
 ## /etc/rc.conf
-    # ifconfig_re0="inet 10.0.2.100 netmask 255.255.255.0"
-    # defaultrouter="10.0.2.2"
-    # hostname="re"
+ifconfig_re0="inet 10.0.2.100 netmask 255.255.255.0"
+defaultrouter="10.0.2.2"
+hostname="re"
 ifconfig_re0="DHCP"
 linux_enable="YES"
 dbus_enable="YES"
 hald_enable="YES"
 gdm_enable="YES"
 gnome_enable="YES"
-	# echo "exec dbus-launch --exit-with-session i3" >> ~/.xinitrc
+
+# echo "exec dbus-launch --exit-with-session i3" >> ~/.xinitrc
 
 ## /boot/loader.conf
-	if_re_load="YES"
-	if_re_name="/boot/modules/if_re.ko"
-	nvidia_load="YES"
-	kld_list="/boot/modules/nvidia.ko /boot/modules/nvidia-modeset.ko"
+if_re_load="YES"
+if_re_name="/boot/modules/if_re.ko"
+nvidia_load="YES"
+kld_list="/boot/modules/nvidia.ko /boot/modules/nvidia-modeset.ko"
 
 ### kldstat
 ### Xorg :1 -configure
@@ -186,23 +187,23 @@ export XMODIFIERS=@im=fcitx
 #### /etc/X11/xorg.conf
 ```
 Section "Monitor"
-               Identifier "Monitor0"
-               VendorName "Monitor Vendor"
-               ModelName "Monitor Model"
-               HorizSync 30-107
-               VertRefresh 48-120
-               Option "DPMS"
+    Identifier "Monitor0"
+    VendorName "Monitor Vendor"
+    ModelName "Monitor Model"
+    HorizSync 30-107
+    VertRefresh 48-120
+    Option "DPMS"
 EndSection   
 Section "Screen"
-              Identifier "Screen0"
-              Device "Card0"
-              Monitor "Monitor0"
-              DefaultDepth 24
-              SubSection "Display"
-                         Viewport 0 0
-                         Depth 24
-                         Modes "1024x768"
-              EndSubSection
+    Identifier "Screen0"
+    Device "Card0"
+    Monitor "Monitor0"
+    DefaultDepth 24
+    SubSection "Display"
+        Viewport 0 0
+        Depth 24
+        Modes "1024x768"
+    EndSubSection
 EndSection
 ```
 ##### appres XTerm | grep -i utf8
@@ -309,38 +310,39 @@ endif
 ## ~~[Arch](https://archlinux.org/)~~
 ```
 # iwctl
-# device list
-# station wlan-name scan
-# station wlan-name get-networks
-# station wlan-name connect wifi-name
+device list
+station wlan-name scan
+station wlan-name get-networks
+station wlan-name connect wifi-name
 
 /etc/pacman.d/mirrorlist # Server = https://mirrors.ustc.edu.cn/archlinux/$repo/os/$arch
-    # /etc/pacman.conf
+# /etc/pacman.conf
 
 pacstrap /mnt base linux-lts linux-firmware
 genfstab -U /mnt >> /mnt/etc/fstab
 
 arch-chroot /mnt
 pacman -S grub efibootmgr os-prober vim sudo dhcp
-/etc/netctl/enp0s3
-    Description='A basic static ethernet connection'
-    Interface=enp0s3
-    Connection=ethernet
-    IP=static
-    Address=('192.168.1.102/24')
-    Gateway=('192.168.1.1')
-    DNS=('8.8.8.8' '8.8.4.4')
-sudo netctl enable enp0s3
+# /etc/netctl/enp0s3
+Description='A basic static ethernet connection'
+Interface=enp0s3
+Connection=ethernet
+IP=static
+Address=('192.168.1.102/24')
+Gateway=('192.168.1.1')
+DNS=('8.8.8.8' '8.8.4.4')
 
+sudo netctl enable enp0s3
 pacman -S wqy-microhei xorg-server xorg-xinit xf86-video-vesa
 ---
 pacman -S i3-wm dmenu xterm fcitx fcitx-configtool fcitx-googlepinyin
 
 # ~/.config/i3/config
-	# exec_always --no-startup-id "fcitx -dr" 
-	# exec_always --no-startup-id "ibus-daemon -drx"
-	# exec "xrdb -load ~/.Xresources"
-	# xterm -u8 # fc-list :lang=zh
+exec_always --no-startup-id "fcitx -dr" 
+# exec_always --no-startup-id "ibus-daemon -drx"
+exec "xrdb -load ~/.Xresources"
+xterm -u8 # fc-list :lang=zh
+
 ? BUG # bindsym $mod+Shift+r restart
 
 pacman -Si|-Qi package ?? rpm -qi
@@ -354,12 +356,12 @@ pacman -Qdtq | pacman -Rsn -
 ## ~~[Gentoo](https://www.gentoo.org/)~~
 ```
 mount | grep efi
-gdisk cgdisk | fdisk cfdisk /dev/sda # m p g o n t d l w
- mkfs.vfat -F 32 /dev/sda1
- mkfs.ext4 /dev/sda3
- mkswap /dev/sda2
- swapon /dev/sda2
- mount /dev/sda3 /mnt/gentoo
+# gdisk cgdisk | fdisk cfdisk /dev/sda # m p g o n t d l w
+mkfs.vfat -F 32 /dev/sda1
+mkfs.ext4 /dev/sda3
+mkswap /dev/sda2
+swapon /dev/sda2
+mount /dev/sda3 /mnt/gentoo
 
 tar xpvf stage3-*.tar.xz --xattrs-include='*.*' --numeric-owner
 
@@ -380,9 +382,9 @@ env-update && source /etc/profile && export PS1="(chroot) ${PS1}"
 
 mount /dev/sda1 /efi
 
-/etc/portage/make.conf
-	MAKEOPTS="-j6"
-	GRUB_PLATFORMS="efi-64"
+# /etc/portage/make.conf
+MAKEOPTS="-j6"
+GRUB_PLATFORMS="efi-64"
 
 ln -sf /usr/share/zoneinfo/Europe/Brussels /etc/localtime
 # /etc/locale.gen en_US.UTF-8 UTF-8 # locale-gen && env-update && source /etc/profile
@@ -390,15 +392,14 @@ ln -sf /usr/share/zoneinfo/Europe/Brussels /etc/localtime
 
 emerge --ask sys-kernel/linux-firmware sys-apps/pciutils
 
-##### []
-emerge --ask sys-kernel/gentoo-sources
-	# eselect kernel set 1
-	# make localmodconfig # menuconfig clean mrproper oldconfig
-	## nouveau efi selinux iptable nf_tables IPVS conntrack exfat tun/tap
-	# make -j6 && make modules_install
-	# make install
-emerge -a sys-kernel/dracut
-	# dracut --kver xxx 
+# emerge --ask sys-kernel/gentoo-sources
+eselect kernel set 1
+make localmodconfig # menuconfig clean mrproper oldconfig
+# nouveau efi selinux iptable nf_tables IPVS conntrack exfat tun/tap
+make -j6 && make modules_install
+make install
+# emerge -a sys-kernel/dracut
+dracut --kver xxx 
 
 # blkid mount
 UUID=? /efi vfat defaults 0 2
@@ -409,44 +410,44 @@ mount -o remount,rw -t efivarfs efivarfs /sys/firmware/efi/efivars/
 emerge --ask sys-boot/grub sys-boot/efibootmgr
 
 # sys-kernel/installkernel -systemd
-
 # sys-apps/systemd boot # bootctl install && bootctl list
 # /efi/loader/entries/gentoo.conf
-    title gentoo
-    linux /vmlinuz # /efi/
-    initrd /initramfs.img #/efi/
-    options root=/dev/xxx
+title gentoo
+linux /vmlinuz # /efi/
+initrd /initramfs.img #/efi/
+options root=/dev/xxx
+
 # /efi/loader/loader.conf
-    default gentoo.conf
+default gentoo.conf
 # bootctl update
 
 emerge -a app-portage/gentoolkit media-sound/alsa-utils sys-apps/dbus net-misc/dhcp
-
-sudo systemctl enable systemd-networkd.server
+systemctl enable systemd-networkd.server
 # https://www.freedesktop.org/software/systemd/man/latest/systemd.network.html
 # /etc/systemd/network/eth0.network
-    [Match]
-    Name=eth0
+[Match]
+Name=eth0
 
-    [Network]
-    DHCP=no/yes
-    Address=192.168.0.100/24
-    Gateway=192.168.0.1
-    DNS=8.8.4.4
-    DNS=1.1.1.1
-    DNSSEC=allow-downgrade
-    DNSOverTLS=opportunistic
-    MulticastDNS=yes
-    LLMNR=no
-/etc/default/grub
-    GRUB_DISABLE_OS_PROBER=false
-    GRUB_DEFAULT=saved
-    GRUB_SAVEDEFAULT=true
-    GRUB_GFXMODE=640x480
-    GRUB_TERMINAL="console"
+[Network]
+DHCP=no/yes
+Address=192.168.0.100/24
+Gateway=192.168.0.1
+DNS=8.8.4.4
+DNS=1.1.1.1
+DNSSEC=allow-downgrade
+DNSOverTLS=opportunistic
+MulticastDNS=yes
+LLMNR=no
+
+# /etc/default/grub
+GRUB_DISABLE_OS_PROBER=false
+GRUB_DEFAULT=saved
+GRUB_SAVEDEFAULT=true
+GRUB_GFXMODE=640x480
+GRUB_TERMINAL="console"
 
 grub-install --target x86_64-efi --efi-directory /boot/efi --recheck --removable
-    # grub-install --target i386-pc --boot-directory /boot --recheck
+# grub-install --target i386-pc --boot-directory /boot --recheck
 grub-mkconfig -o /boot/grub/grub.cfg
 
 grub-mkstandalone --compress xz -o /efi/EFI/gentoo/xxx.efi -d /usr/lib/grub/x86_64-efi/ -O x86_64-efi /boot/grub/grub.cfg -v
