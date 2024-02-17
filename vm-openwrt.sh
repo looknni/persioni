@@ -52,4 +52,5 @@ ip tuntap del mode tap dev $LAN
 # ifconfig mon0 up
 # airodump mon0
 # airodump -w xxx -c 1 --bssid <ap_mac> mon0
-# aireplay -0 0 -a <ap_mac> -c <client_mac> mon0
+# aireplay -0 0 -a <ap_mac> -c <client_mac> mon
+# tr -dc 'a-z0-9' < /dev/urandom|fold -w8
