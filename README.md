@@ -17,13 +17,13 @@
 ---
 ##### Google Chrome. Google's web browser. Virtual DJ. The most complete free software for DJs. uTorrent [.apk] https://www.malavida.com/en
 ---
-##### (Ubuntu) Server at breed.hackpascal.net Port 443 [ $Breed_{hackpascal}$ ] https://breed.hackpascal.net/
+##### (Ubuntu) Server at breed.hackpascal.net Port 443 [ Breed ] https://breed.hackpascal.net/
 ---
-##### This service lets you follow the evolution of Debian both with email updates and a comprehensive web interface [ $tracker-debian^{kernel}$ ] https://tracker.debian.org/pkg/linux
+##### This service lets you follow the evolution of Debian both with email updates and a comprehensive web interface [ Tracker.deb ] https://tracker.debian.org/pkg/linux
 ---
 ##### Shares open source news and reviews of Linux and BSD based operating systems [ $Distro^{watch}$ ] https://distrowatch.com/
 ---
-##### Regular expressions library (C++11) basic_regex − algorithms. Concurrency support library (C++11) thread − jthread (C++20) atomic − atomic_flag − atomic_ref (C++20) memory_order − condition_variable [ $C++^{Referenc}$ ] https://cppreference.com/
+##### Regular expressions library (C++11) basic_regex − algorithms. Concurrency support library (C++11) thread − jthread (C++20) atomic − atomic_flag − atomic_ref (C++20) memory_order − condition_variable [ Cppreference ] https://cppreference.com/
 ---
 ##### GNU is an operating system which is 100% free software. [Gnu-command](https://www.gnu.org/software/)
 ---
