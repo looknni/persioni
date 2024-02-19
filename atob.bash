@@ -14,11 +14,11 @@ done
 a=`cat $2`
 b=0
 for j in $a;do
-	sed -i "s/\$/$j/g" 'f-'$((++b))
+	sed -i "s/$3/$j/g" 'f-'$((++b))
 done
 #
 for k in {1..9};do
-        cat "f-"${k}* > "$3"${k}
+        cat "f-"${k}* > "$4"${k}
         rm "f-"${k}*
 done
 set +x
