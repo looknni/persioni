@@ -444,7 +444,7 @@ GRUB_SAVEDEFAULT=true
 GRUB_GFXMODE=1024x768
 GRUB_TERMINAL="console"
 
-grub-install --target x86_64-efi --efi-directory /boot/efi --recheck <--removable>
+grub-install --target x86_64-efi --efi-directory /boot/efi --recheck [<--removable>]
 # grub-install --target i386-pc --boot-directory /boot --recheck
 grub-mkconfig -o /boot/grub/grub.cfg
 
