@@ -1,7 +1,5 @@
-> - /biosboot ~($\displaystyle\lim_{31k\rightarrow\infty}1M$).../boot/efi ~($\displaystyle\sum_{i \to 6M}^{n \to system} {i \times n+1M+40M}$).../boot ~($\displaystyle\sum_{i \to 100M}^{n \to kernel} {i \times n+200M}$).../ ~($\frac{\infty}{0.98}$).../swap ~($\sqrt[i \to 2]{RAM}$) . /home
-> - blkid $\int_{/etc/default/grub}^{/etc/fstab}\int_{/boot/grub2/grub.cfg}^{/boot/load/* }$
-> - sed -i '$a\vm.swappiness=20' /etc/sysctl.conf#sysctl -p
-> - $\oint_{{2820076477}^{16}}^{{140177258}^{9}}\displaystyle\sum_{s^S_{o}}^{m^M_{o}} {64_{+}^{-}} \displaystyle\prod_{h_{mac}}^{echo_{2}}$ $\displaystyle\lim_{16 \rightarrow 20 \rightarrow 32 \rightarrow 63 \rightarrow \infty}^{\infty \rightarrow \phi}$
+> - /biosboot ~($\displaystyle\lim_{31k\rightarrow\infty}1M$).../boot=/efi ~($\displaystyle\sum_{i \to 33M}^{n \to system} {i \times n+100M}$).../ ~($\frac{\infty}{0.96}$).../swap ~($\sqrt[i \to 2]{RAM}$) . /home
+> - blkid $\int_{/etc/default/grub}^{/etc/fstab}\int_{/boot/grub2/grub.cfg}^{/boot/load/* }$ $\oint_{{0}^{16}}^{{140177258}^{9}}\displaystyle\sum_{0^1_{-1}}^{0^-1_{1}} {64_{+}^{-}}
 ---
 ##### [ ? ]  https://looknnn.mycozy.cloud/
 ---
@@ -443,10 +441,10 @@ LLMNR=no
 GRUB_DISABLE_OS_PROBER=false
 GRUB_DEFAULT=saved
 GRUB_SAVEDEFAULT=true
-GRUB_GFXMODE=640x480
+GRUB_GFXMODE=1024x768
 GRUB_TERMINAL="console"
 
-grub-install --target x86_64-efi --efi-directory /boot/efi --recheck [--removable]
+grub-install --target x86_64-efi --efi-directory /boot/efi --recheck <--removable>
 # grub-install --target i386-pc --boot-directory /boot --recheck
 grub-mkconfig -o /boot/grub/grub.cfg
 
