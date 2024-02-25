@@ -285,7 +285,7 @@ syntax on
 set cursorcolumn
 "set cursorline
 set laststatus=2
-set statusline=\ %<%F\ [%1*%M%*%n%R%H]%=\ %y\ %0(%{&fileformat}\ %{&encoding}\ %c:%l\ %)
+set statusline=\ %<\ %n,%B%M%R%h%w%=\ %y\ %0(%{&fileformat}\ %{&encoding}\ %c:%l:%L\ %)
 set hlsearch
 set incsearch
 set autoindent "redhat
