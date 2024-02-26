@@ -38,6 +38,8 @@
 ./rules/key
 ./rules/sh.tar
 ./rules/cmcc_rax3000m
+./rules/x.ing
+./rules/z.i
 ./speedtest.bash
 ./atob.bash
 ./usb.wifi
