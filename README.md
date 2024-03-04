@@ -65,6 +65,15 @@ wpa_passphrase name password > wpa_supplicant.conf
 wpa_supplicant -B -c wpa_supplicant.conf -i eth0
 dhclient eth0
 
+# set ap
+ip link add br0 type bridge
+ip link set dev eth0 master br0
+ip link set dev wlan0 master br0
+ip link set dev br0 up
+ip addr add 192.168.1.1/24 dev br0
+hostapd hostapd.conf
+dhcpd
+
 # /etc/network/interfaces # man interfaces
 auto eth0
 iface eth0 inet static/dhcp
