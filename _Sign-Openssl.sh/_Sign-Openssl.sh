@@ -43,4 +43,5 @@
 ./atob.bash
 ./usb.wifi
 ./grub.cfg
+./hostapd.conf
 ./gentoo.config.nou
