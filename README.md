@@ -66,13 +66,14 @@ wpa_supplicant -B -c wpa_supplicant.conf -i eth0
 dhclient eth0
 
 # set ap
-ip link add br0 type bridge
-ip link set dev eth0 master br0
-ip link set dev wlan0 master br0
-ip link set dev br0 up
-ip addr add 192.168.1.1/24 dev br0
+ip addr add 192.168.1.11/24 dev wlan0
 hostapd hostapd.conf
 dhcpd
+sysctl net.ipv4.ip_forward=1
+iptables -A FORWARD -i eth0 -o wlan0 -s 192.168.1.0/24 -m conntrack --ctstate NEW -j ACCEPT
+iptables -A FORWARD -m conntrack --ctstate ESTABLISHED,RELATED -j ACCEPT
+iptables -t nat -A POSTROUTING -o eth0 -j MASQUERADE
+# clent.gateway set eth0.ip
 
 # /etc/network/interfaces # man interfaces
 auto eth0
