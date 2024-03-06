@@ -3,6 +3,7 @@ hostnamectl
 dmidecode
 lspci
 lshw
+lsof -i :53
 lsattr -l [-RVadlpv]
 # suS---dAc---t-e-x----- ----iadAc-----e-------
 # Secure_Deletion, Undelete, Synchronous_Updates, No_Dump, No_Atime, Compression_Requested, No_Tailmerging, Extents, DAX
