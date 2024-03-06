@@ -124,7 +124,7 @@ ip netns exec ns0 ping 192.168.10.11
 
 sudo dpkg-reconfigure linux-image-$(uname -r)
 sudo update-initramfs -u -k all
-netstat -tln|awk '{print $4}'|awk -F: '{print $2}'|sed '/^$/d'|sort|uniq|xargs -I {} sudo lsof -i :{}
+netstat -tuln|awk '{print $4}'|awk -F: '{print $2}'|grep -v '^$'|sort|uniq|xargs -I {} sudo lsof -i :{}
 
 ```
 ##### putty/SecureCRT tftpd # insmod ch34x,modprobe usbserial # CONFIG_USB_SERIAL CONFIG_USB_SERIAL_GENERIC # flashrom -p ch341a_spi [-E|-r <file>|-w <file>|-v <file>]
