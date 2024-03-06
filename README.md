@@ -543,7 +543,7 @@ interval=0
 ```
 > ## /etc/systemd/resolved.conf
 ```
-DNS=119.29.29.29#dot.pub 2402:4e00::#dot.pub 223.5.5.5#dns.alidns.com 240c:f:1:22::6#dns.ipv6dns.com 180.76.76.76#dot.onedns.net 114.114.114.114#dot.onedns.net 1.2.4.8#dot-pure.onedns.net
+#DNS=119.29.29.29#dot.pub 2402:4e00::#dot.pub 223.5.5.5#dns.alidns.com 240c:f:1:22::6#dns.ipv6dns.com 180.76.76.76#dot.onedns.net 114.114.114.114#dot.onedns.net 1.2.4.8#dot-pure.onedns.net
 #FallbackDNS=1.1.1.1#cloudflare-dns.com 8.8.8.8#dns.google 1.0.0.1#cloudflare-dns.com 8.8.4.4#dns.google 2606:4700:4700::1111#cloudflare-dns.com 2001:4860:4860::8888#dns.google 2606:4700:4700::1001#cloudflare-dns.com 2001:4860:4860::8844#dns.google 2620:fe::9 2620:fe::fe:9 2a09:: 2a11:: 2620:119:53::53 2620:119:35::35 2001:dc7:1000::1 2001:de4::101 2001:de4::102 2001:da8:8000:1:202:120:2:100 2001:da8:8000:1:202:120:2:101 2001:da8:ff:305:20c:29ff:fe1f:a92a 2a02:6b8::feed:ff 2a02:6b8:0:1::feed:ff 2a02:6b8::feed:bad 2a02:6b8:0:1::feed:bad 2620:fe::fe 2620:0:ccc::2 2620:0:ccd::2
 #Domains=lan
 #DoH# https://dns.alidns.com/dns-query https://dns.ipv6dns.com/dns-query https://101.6.6.6:8443/dns-query https://doh.360.cn https://doh.onedns.net/dns-query https://doh-pure.onedns.net/dns-query
