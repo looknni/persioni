@@ -50,7 +50,7 @@
 > ##### $APT_{dpkg}^{apt-get} \Downarrow$ [Debian](https://www.debian.org/security/) ? [Kali](https://www.kali.org/tools/)
 ```
 vim-gtk3 kaffeine audacious git traceroute locate smartmontools ntpdate \
-fcitx fcitx-googlepinyin fcitx-config-gtk fcitx-table-wubi \
+fcitx fcitx-googlepinyin fcitx-config-gtk fcitx-table-wubi dnsutils \
 wget bash-completion obs-studio aptitude links xterm net-tools iptables \
 iptables-persistent iptables-netflow-dkms wpasupplicant \
 nmap tcpdump audacity inkscape gimp krita audacity libreoffice make gcc isc-dhcp-client \
