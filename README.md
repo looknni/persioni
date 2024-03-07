@@ -19,7 +19,7 @@
 ---
 ##### This service lets you follow the evolution of Debian both with email updates and a comprehensive web interface [ Tracker.deb ] https://tracker.debian.org/pkg/linux
 ---
-##### Shares open source news and reviews of Linux and BSD based operating systems [ $Distro^{watch}$ ] https://distrowatch.com/
+##### Shares open source news and reviews of Linux and BSD based operating systems [ Operating.s ] https://distrowatch.com/
 ---
 ##### Regular expressions library (C++11) basic_regex − algorithms. Concurrency support library (C++11) thread − jthread (C++20) atomic − atomic_flag − atomic_ref (C++20) memory_order − condition_variable [ Cppreference ] https://cppreference.com/
 ---
@@ -50,14 +50,14 @@
 > ##### $APT_{dpkg}^{apt-get} \Downarrow$ [Debian](https://www.debian.org/security/) ? [Kali](https://www.kali.org/tools/)
 ```
 vim-gtk3 kaffeine audacious git traceroute locate smartmontools ntpdate \
-fcitx fcitx-googlepinyin fcitx-config-gtk fcitx-table-wubi libvirt-clients \
+fcitx fcitx-googlepinyin fcitx-config-gtk fcitx-table-wubi \
 wget bash-completion obs-studio aptitude links xterm dnsutils net-tools iptables \
 iptables-persistent iptables-netflow-dkms wpasupplicant \
 nmap tcpdump audacity inkscape gimp krita audacity libreoffice make gcc isc-dhcp-client \
 rsync systemd-resolved hexcompare aircrack-ng hashcat airmon-ng flashrom \
 firmware-realtek xxd xxhash qbittorrent
 
-# connection wifi
+? connection wifi
 iwconfig
 ifconfig eth0 up
 iwlist eth0 scan | grep "ESSID"
@@ -65,7 +65,7 @@ wpa_passphrase name password > wpa_supplicant.conf
 wpa_supplicant -B -c wpa_supplicant.conf -i eth0
 dhclient eth0
 
-# set ap
+? set ap
 ip addr add 192.168.1.11/24 dev wlan0
 hostapd hostapd.conf
 dhcpd
@@ -75,7 +75,7 @@ iptables -A FORWARD -m conntrack --ctstate ESTABLISHED,RELATED -j ACCEPT
 iptables -t nat -A POSTROUTING -o eth0 -j MASQUERADE
 # clent.gateway set eth0.ip
 
-# /etc/network/interfaces # man interfaces
+? /etc/network/interfaces # man interfaces
 auto eth0
 iface eth0 inet static/dhcp
 address 192.168.1.100
@@ -89,7 +89,7 @@ sudo systemctl restart networking
 virsh net-define /etc/libvirt/qemu/networks/default.xml
 virsh net-start default
 
-# ip route add default via 192.168.0.1 dev br0
+? ip route add default via 192.168.0.1 dev br0
 ip link set dev br0 type stp on
 ip link set dev br0 nomaster
 
@@ -360,12 +360,12 @@ pacman -Rsn package ?? apt remove --purge
 pacman -Q ?? dpkg -l
 pacman -U package ?? dpkg --install
 pacman -Qdtq | pacman -Rsn -
-# sudo mkinitcpio -p linux
+? mkinitcpio -p linux
 ```
 ## ~~[Gentoo](https://www.gentoo.org/)~~
 ```
 mount | grep efi
-# gdisk cgdisk | fdisk cfdisk /dev/sda # m p g o n t d l w
+? gdisk cgdisk | fdisk cfdisk /dev/sda # m p g o n t d l w
 mkfs.vfat -F 32 /dev/sda1
 mkfs.ext4 /dev/sda3
 mkswap /dev/sda2
@@ -382,8 +382,8 @@ mount --types proc /proc /mnt/gentoo/proc
 mount --bind /sys /mnt/gentoo/sys
 mount --bind /dev /mnt/gentoo/dev
 mount --bind /run /mnt/gentoo/run
-# mount --types tmpfs --options nosuid,nodev,noexec shm /dev/shm
-# chmod 1777 /dev/shm /run/shm
+? mount --types tmpfs --options nosuid,nodev,noexec shm /dev/shm
+? chmod 1777 /dev/shm /run/shm
 
 chroot /mnt/gentoo /bin/bash
 emerge-webrsync # /var/db/repos/gentoo/
@@ -396,19 +396,19 @@ MAKEOPTS="-j6"
 GRUB_PLATFORMS="efi-64"
 
 ln -sf /usr/share/zoneinfo/Europe/Brussels /etc/localtime
-# /etc/locale.gen en_US.UTF-8 UTF-8 # locale-gen && env-update && source /etc/profile
-# /etc/locale.conf LANG=en_US.UTF8
+? /etc/locale.gen en_US.UTF-8 UTF-8 # locale-gen && env-update && source /etc/profile
+? /etc/locale.conf LANG=en_US.UTF8
 
 emerge --ask sys-kernel/linux-firmware sys-apps/pciutils
 
-# emerge --ask sys-kernel/gentoo-sources
+emerge --ask sys-kernel/gentoo-sources
 eselect kernel set 1
 make localmodconfig # menuconfig clean mrproper oldconfig
-# nouveau efi selinux iptable nf_tables IPVS conntrack exfat tun/tap
+? nouveau efi selinux iptable nf_tables IPVS conntrack exfat tun/tap
 make -j6 && make modules_install
 make install
-# emerge -a sys-kernel/dracut
-dracut --kver xxx 
+emerge -a sys-kernel/dracut
+dracut --kver kernel.version
 
 # blkid mount
 UUID=? /efi vfat defaults 0 2
@@ -418,12 +418,12 @@ UUID=? / ext4 rw,noatime 0 1
 mount -o remount,rw -t efivarfs efivarfs /sys/firmware/efi/efivars/
 emerge --ask sys-boot/grub sys-boot/efibootmgr
 
-# sys-kernel/installkernel -systemd
-# sys-apps/systemd boot # bootctl install && bootctl list
+sys-kernel/installkernel -systemd
+sys-apps/systemd boot # bootctl install && bootctl list
 # /efi/loader/entries/gentoo.conf
 title gentoo
 linux /vmlinuz # /efi/
-initrd /initramfs.img #/efi/
+initrd /initramfs.img # /efi/
 options root=/dev/xxx
 
 # /efi/loader/loader.conf
@@ -431,8 +431,8 @@ default gentoo.conf
 # bootctl update
 
 emerge -a app-portage/gentoolkit media-sound/alsa-utils sys-apps/dbus net-misc/dhcp
-systemctl enable systemd-networkd.server
-# https://www.freedesktop.org/software/systemd/man/latest/systemd.network.html
+systemctl enable systemd-networkd
+? https://www.freedesktop.org/software/systemd/man/latest/systemd.network.html
 # /etc/systemd/network/eth0.network
 [Match]
 Name=eth0
@@ -456,30 +456,31 @@ GRUB_GFXMODE=1024x768
 GRUB_TERMINAL="console"
 
 grub-install --target x86_64-efi --efi-directory /boot/efi --recheck [<--removable>]
-# grub-install --target i386-pc --boot-directory /boot --recheck
+? grub-install --target i386-pc --boot-directory /boot --recheck
 grub-mkconfig -o /boot/grub/grub.cfg
 
-grub-mkstandalone --compress xz -o /efi/EFI/gentoo/xxx.efi -d /usr/lib/grub/x86_64-efi/ -O x86_64-efi /boot/grub/grub.cfg -v
-efibootmgr -c -d /dev/sda -p 2 -L "Gentoo" -l "\EFI\gentoo\xxx.efi"
-efibootmgr -b 0002 -B
+? grub-mkstandalone --compress xz -o /efi/EFI/gentoo/xxx.efi -d /usr/lib/grub/x86_64-efi/ -O x86_64-efi /boot/grub/grub.cfg -v
+? efibootmgr -c -d /dev/sda -p 2 -L "Gentoo" -l "\EFI\gentoo\xxx.efi"
+? efibootmgr -b 0002 -B
 
 useradd -m -G users,wheel,audio,video username
 passwd username
 
 umount -l /mnt/gentoo/dev{/shm,/pts,}
-# mount -o remount,rw /
-# emerge -avuDN @world
-# net-wireless/wpa_supplicant sys-fs/exfat-utils sys-fs/dosfstools dev-util/intel-ocl-sdk app-crypt/hashcat app-crypt/johntheripper
+? mount -o remount,rw /
+? emerge -avuDN @world
+? sys-process/lsof net-wireless/wpa_supplicant sys-fs/exfat-utils sys-fs/dosfstools dev-util/intel-ocl-sdk app-crypt/hashcat app-crypt/johntheripper
+? net-libs/axtls cgi-php doc httpd savedconfig
 
-# touch /etc/portage/package.accept_keywords/zzz_autounmask
-emerge mypackage --autounmask-write --autounmask
-etc-update || dispatch-conf
-## /etc/portage/package.use/zz-autounmask # Error: circular dependencies
+? touch /etc/portage/package.accept_keywords/zzz_autounmask
+? emerge mypackage --autounmask-write --autounmask
+? etc-update || dispatch-conf
+? /etc/portage/package.use/zz-autounmask # Error: circular dependencies
 
-# /usr/src/linux-6.6.13-gentoo/System.map -> System.map-6.6.13-gentoo-x86_64
-# dracut --kver xxx -> initramfs-6.6.13-gentoo-x86_64.img
-# .config -> config-6.6.13-gentoo-x86_64
-# /usr/src/linux-6.6.13-gentoo/arch/x86_64/boot/bzImage -> vmlinuz-6.6.13-gentoo-x86_64
+? /usr/src/linux-6.6.13-gentoo/System.map -> System.map-6.6.13-gentoo-x86_64
+? dracut --kver xxx -> initramfs-6.6.13-gentoo-x86_64.img
+? .config -> config-6.6.13-gentoo-x86_64
+? /usr/src/linux-6.6.13-gentoo/arch/x86_64/boot/bzImage -> vmlinuz-6.6.13-gentoo-x86_64
 
 ```
 ##### [Openwrt](https://openwrt.org/)
