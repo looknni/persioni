@@ -51,10 +51,10 @@
 ```
 vim-gtk3 kaffeine audacious git traceroute locate smartmontools ntpdate \
 fcitx fcitx-googlepinyin fcitx-config-gtk fcitx-table-wubi \
-wget bash-completion obs-studio aptitude links xterm dnsutils net-tools iptables \
+wget bash-completion obs-studio aptitude links xterm net-tools iptables \
 iptables-persistent iptables-netflow-dkms wpasupplicant \
 nmap tcpdump audacity inkscape gimp krita audacity libreoffice make gcc isc-dhcp-client \
-rsync systemd-resolved hexcompare aircrack-ng hashcat airmon-ng flashrom \
+rsync dnsmasq hexcompare aircrack-ng hashcat airmon-ng flashrom \
 firmware-realtek xxd xxhash qbittorrent
 
 ? connection wifi
