@@ -263,6 +263,7 @@ XTerm*allowBoldFonts: true
 XTerm*boldMode: true
 XTerm*loginShell: false
 XTerm*saveLines: 2000
+!XTerm*charClass: 33:48,35:48,37:48,43:48,45-47:48,64:48,95:48,126:48
 XTerm*colorBDMode: true
 XTerm*colorBD: #fcfcfc
 
