@@ -35,17 +35,14 @@ ip tuntap del mode tap dev $LAN
 # ssh/scp -oHostKeyAlgorithms=ssh-rsa -oPubkeyAcceptedKeyTypes=+ssh-rsa
 # curl -O http[s]
 
-# /etc/sysctl.conf
-#	net.ipv4.icmp_echo_ignore_all=1
-#	net.ipv6.icmp.echo_ignore_all=1
-
 # ls -l /sys/class/net/
 # switch - interface - firewall #/etc/config/firewall @lan INPUT,REJECT OUTPUT,ACCEPT FORWARD,REJECT
 # iptables|nftables - traffic-rule - firewall @SOURCE:lan TARGET:input ACTION:ACCEPT
 
 # cat /tmp/dhcp.leases
-# iw dev wlan0 station dump
-# iwinfo phy0-ap0 assoclist/freqlist
+# iw dev phy0-sta0 scan|grep SSID
+# iw dev phy0-sta0 station dump
+# iwinfo phy1-ap0 assoclist/freqlist
 # iw dev
 # iw phy phy0 info
 # iw phy phy0 interface add mon0 type monitor
