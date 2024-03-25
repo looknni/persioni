@@ -32,10 +32,8 @@
 ##### Grml is especially well suited for administrative tasks like installation, deployment and system rescue. [Grml](https://grml.org/)
 ---
 > #### [SOURCES](https://cdimage.debian.org/images/) $\oint_{testing_{unstable}}^{stable} {debian}$
-> - https://mirrors.huaweicloud.com
 > - https://mirrors.tuna.tsinghua.edu.cn
 > - https://mirrors.aliyun.com # [ freebsd 13,14 ]
-> - https://mirrors.163.com
 > - https://mirrors.ustc.edu.cn # [ freebsd 13,14 ]
 > - http://mirrors.nju.edu.cn/ # [ freebsd 13,14 ]
 ---
@@ -492,13 +490,13 @@ sharutils subversion ncurses-term zlib1g-dev libc6-dev-i386 uglifyjs msmtp libgl
 qemu-utils libtool
 
 git clone https://github.com/openwrt/openwrt.git
-cd openwrt
-git checkout xxx
+git checkout v23.05.3
+wget https://downloads.openwrt.org/releases/23.05.3/xx/feeds.buildinfo -O feeds.conf.default
 ./scripts/feeds update -a
 ./scripts/feeds install -a
 ./target/linux/ramips/dts # reg = <0x50000 0x1fb0000> # 32m
 ./target/linux/ramips/image # IMAGE_SIZE := 32m
-wget https://downloads.openwrt.org/releases/23.05.2/xx/config.buildinfo -O .config
+wget https://downloads.openwrt.org/releases/23.05.3/xx/config.buildinfo -O .config
 menuconfig
 make -j4 V=s
 ```
