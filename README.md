@@ -491,9 +491,15 @@ qemu-utils libtool
 
 git clone https://github.com/openwrt/openwrt.git
 git checkout v23.05.3
-wget https://downloads.openwrt.org/releases/23.05.3/xx/feeds.buildinfo -O feeds.conf.default
-./scripts/feeds update -a
-./scripts/feeds install -a
+
+./feeds.conf.default
+src-git packages https://git.openwrt.org/feed/packages.git
+src-git luci https://git.openwrt.org/project/luci.git
+src-git routing https://git.openwrt.org/feed/routing.git
+src-git telephony https://git.openwrt.org/feed/telephony.git
+
+./scripts/feeds update -a [luci]
+./scripts/feeds install -a [-p luci]
 ./target/linux/ramips/dts # reg = <0x50000 0x1fb0000> # 32m
 ./target/linux/ramips/image # IMAGE_SIZE := 32m
 wget https://downloads.openwrt.org/releases/23.05.3/xx/config.buildinfo -O .config
