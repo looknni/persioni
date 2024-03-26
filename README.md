@@ -52,7 +52,7 @@ fcitx fcitx-googlepinyin fcitx-config-gtk fcitx-table-wubi dnsutils \
 wget bash-completion obs-studio aptitude links xterm net-tools iptables \
 iptables-persistent iptables-netflow-dkms wpasupplicant \
 nmap tcpdump audacity inkscape gimp krita audacity libreoffice make gcc isc-dhcp-client \
-rsync dnsmasq hexcompare aircrack-ng hashcat airmon-ng flashrom \
+rsync dnsmasq hexcompare aircrack-ng hashcat flashrom \
 firmware-realtek xxd xxhash qbittorrent
 
 ? connection wifi
