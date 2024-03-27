@@ -64,7 +64,16 @@ wpa_supplicant -B -c wpa_supplicant.conf -i eth0
 dhclient eth0
 
 ? set ap
-ip addr add 192.168.1.11/24 dev wlan0
+# /etc/dhcp/dhcpd.conf
+default-lease-time 600;
+max-lease-time 7200;
+subnet 10.0.0.0 netmask 255.255.255.0 {
+  range 10.0.0.100 10.0.0.200;
+  option broadcast-address 10.0.0.255;
+  option domain-name-servers 114.114.114.114;
+  option routers 10.0.0.1;
+}
+ip addr add 10.0.0.11/24 dev wlan0
 hostapd hostapd.conf
 dhcpd
 sysctl net.ipv4.ip_forward=1
