@@ -1,0 +1,54 @@
+#!/bin/sh
+source /root/fu.l
+if [ -z $1 ];then
+	exit
+fi
+if [ -z $2 ];then
+iptables-nft -t mangle -A MEE -d $1 -p all -j DROP 2>/dev/null
+	fa=$?
+ip6tables-nft -t mangle -A MEE -d $1 -p all -j DROP 2>/dev/null
+	fb=$?
+	echo ' ' $fa $fb
+	unset fa fb
+	addl4
+	uniq4
+	addl6
+	uniq6
+fi
+if [[ "$2" == "6" ]];then
+ip6tables-nft -t mangle -A MEE -d $1 -p all -j DROP 2>/dev/null
+	fa=$?
+	echo ' ' $fa
+	unset fa
+	addl6
+	uniq6
+fi
+
+if [[ "$2" == "accept4" ]];then
+iptables-nft -t mangle -A MACC -d $1 -p all -j ACCEPT 2>/dev/null
+	fa=$?
+	echo $fa
+	unset fa
+	addl4
+	uniq4
+fi
+if [[ "$2" == "accept6" ]];then
+ip6tables-nft -t mangle -A MACC -d $1 -p all -j ACCEPT 2>/dev/null
+	fa=$?
+	echo $fa
+	unset fa
+	addl6
+	uniq6
+fi
+aa=`echo "$1"|grep ':'`
+bb=`echo "$2"|grep ':'`
+cc=`echo "$3"|grep ':'`
+if [[ ! -z "$3" && "$aa" == "0" && "$bb" == "0" && "$cc" == "0" ]];then
+	sed -n "/-d $2:.*:$3/p" /etc/iptables/rules.v6
+	sed -i "/-d $2:.*:$3/d" /etc/iptables/rules.v6
+restore6
+	ip6tables -t mangle -I MAA -m iprange --src-range $1 -j DROP 2>/dev/null
+save6
+uniq6
+fi
+unset aa bb cc
