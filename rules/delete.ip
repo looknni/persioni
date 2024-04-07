@@ -1,0 +1,12 @@
+#!/bin/sh
+echo '\$1,file \$2,[46]'
+source /root/fu.l
+if [[ -z $1 && -z $2 ]];then
+	exit
+fi
+if [[ "$2" == "4" ]];then
+	delete4 $1
+fi
+if [[ "$2" == "6" ]];then
+	delete6 $1
+fi
