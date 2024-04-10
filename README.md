@@ -82,16 +82,17 @@ iptables -A FORWARD -m conntrack --ctstate ESTABLISHED,RELATED -j ACCEPT
 iptables -t nat -A POSTROUTING -o eth0 -j MASQUERADE
 # clent.gateway set eth0.ip
 
-? /etc/network/interfaces # man interfaces
-auto eth0
-iface eth0 inet static/dhcp
-address 192.168.1.100
-network 192.168.1.0
-netmask 255.255.255.0
-gateway 192.168.1.1
-broadcast 192.168.1.255
-server 8.8.4.4 1.1.1.1
-sudo systemctl restart networking
+?o /etc/network/interfaces # man interfaces
+#auto eth0
+#iface eth0 inet static/dhcp
+#address 192.168.1.100
+#network 192.168.1.0
+#netmask 255.255.255.0
+#gateway 192.168.1.1
+#broadcast 192.168.1.255
+#server 8.8.4.4 1.1.1.1
+systemctl disable networking
+systemctl enable systemd-networkd
 
 virsh net-define /etc/libvirt/qemu/networks/default.xml
 virsh net-start default
@@ -338,28 +339,14 @@ pacstrap /mnt base linux-lts linux-firmware
 genfstab -U /mnt >> /mnt/etc/fstab
 
 arch-chroot /mnt
-pacman -S grub efibootmgr os-prober vim sudo dhcp
-# /etc/netctl/enp0s3
-Description='A basic static ethernet connection'
-Interface=enp0s3
-Connection=ethernet
-IP=static
-Address=('192.168.1.102/24')
-Gateway=('192.168.1.1')
-DNS=('8.8.8.8' '8.8.4.4')
-
-sudo netctl enable enp0s3
-pacman -S wqy-microhei xorg-server xorg-xinit xf86-video-vesa
----
-pacman -S i3-wm dmenu xterm fcitx fcitx-configtool fcitx-googlepinyin
+pacman -S grub efibootmgr os-prober vim sudo dhcp wqy-microhei xorg-server xorg-xinit \
+xf86-video-vesa i3-wm dmenu xterm fcitx fcitx-configtool fcitx-googlepinyin
 
 # ~/.config/i3/config
 exec_always --no-startup-id "fcitx -dr" 
 # exec_always --no-startup-id "ibus-daemon -drx"
 exec "xrdb -load ~/.Xresources"
 xterm -u8 # fc-list :lang=zh
-
-? BUG # bindsym $mod+Shift+r restart
 
 pacman -Si|-Qi package ?? rpm -qi
 pacman -Syu ?? apt upgrade
