@@ -47,13 +47,7 @@
 ---
 > ##### $APT_{dpkg}^{apt-get} \Downarrow$ [Debian](https://www.debian.org/security/) ? [Kali](https://www.kali.org/tools/)
 ```
-vim-gtk3 kaffeine audacious git traceroute locate smartmontools ntpdate \
-fcitx fcitx-googlepinyin fcitx-config-gtk fcitx-table-wubi dnsutils \
-wget bash-completion obs-studio aptitude links xterm net-tools iptables \
-iptables-persistent iptables-netflow-dkms wpasupplicant \
-nmap tcpdump audacity inkscape gimp krita audacity libreoffice make gcc isc-dhcp-client \
-rsync dnsmasq hexcompare aircrack-ng hashcat flashrom \
-firmware-realtek xxd xxhash qbittorrent
+vim-gtk3 kaffeine audacious git traceroute locate smartmontools ntpdate fcitx fcitx-googlepinyin fcitx-config-gtk fcitx-table-wubi dnsutils wget bash-completion obs-studio aptitude links xterm net-tools iptables iptables-persistent iptables-netflow-dkms wpasupplicant nmap tcpdump audacity inkscape gimp krita audacity libreoffice make gcc isc-dhcp-client rsync dnsmasq resolvconf hexcompare aircrack-ng hashcat flashrom firmware-realtek xxd xxhash qbittorrent
 
 ? connection wifi
 iwconfig
@@ -93,9 +87,6 @@ iptables -t nat -A POSTROUTING -o eth0 -j MASQUERADE
 #server 8.8.4.4 1.1.1.1
 systemctl disable networking
 systemctl enable systemd-networkd
-
-virsh net-define /etc/libvirt/qemu/networks/default.xml
-virsh net-start default
 
 ? ip route add default via 192.168.0.1 dev br0
 ip link set dev br0 type stp on
