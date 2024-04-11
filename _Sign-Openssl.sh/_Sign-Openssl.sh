@@ -38,8 +38,8 @@
 ./rules/key
 ./rules/appent.ip
 ./rules/delete.ip
-./rules/x.ing
-./rules/z.i
+./rules/x.dic
+./rules/z.dic
 ./rules/cmcc_rax3000m.mtd
 ./rules/drop.list
 ./rules/fu.l
