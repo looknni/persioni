@@ -1,5 +1,6 @@
 > - /biosboot ~($\displaystyle\lim_{31k\rightarrow\infty}1M$).../boot=/efi ~($\displaystyle\sum_{i \to 33M}^{n \to system} {i \times n+100M}$).../ ~($\frac{\infty}{0.96}$).../swap ~($\sqrt[i \to 2]{RAM}$) . /home
-> - blkid $\int_{/etc/default/grub}^{/etc/fstab}\int_{/boot/grub2/grub.cfg}^{/boot/load/* } \oint_{{0}^{16}}^{{140177258}^{9}}\displaystyle\sum_{0^1_{-1}}^{0^-1_{1}} {64_{+}^{-}}$
+
+##### blkid /etc/default/grub /etc/fstab /boot/grub2/grub.cfg /boot/load/* 0^2^16 140177258^9
 ---
 ##### The computational intelligence engine by [Wolframalpha](https://www.wolframalpha.com/) [Swisscows](https://swisscows.com/en) [Ecosia](https://www.ecosia.org/) [git-openwrt](https://git.openwrt.org/) [Fluxion](https://github.com/FluxionNetwork/fluxion)
 ---
