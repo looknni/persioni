@@ -3,7 +3,10 @@ source /root/fu.l
 restore4
 restore6
 
-apo=$(shuf -i 1025-65500 -n 1)
+apo=$RANDOM
+if [ "$apo" -lt "2000" ];then
+	apo=1234
+fi
 uci set dhcp.@dnsmasq[0].port="$apo"
 uci set dhcp.@dnsmasq[0].minport='1024'
 uci set dhcp.@dnsmasq[0].maxport='6000'
