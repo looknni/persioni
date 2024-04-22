@@ -5,8 +5,6 @@
 ./.git/index
 ./.git/FETCH_HEAD
 ./.git/ORIG_HEAD
-./.gitignore
-./.gitlab-ci.yml
 ./CHANGELOG
 ./Generate.stat
 ./Init.sh
