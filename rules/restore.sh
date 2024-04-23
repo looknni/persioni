@@ -10,6 +10,9 @@ fi
 uci set dhcp.@dnsmasq[0].port="$apo"
 uci set dhcp.@dnsmasq[0].minport='1024'
 uci set dhcp.@dnsmasq[0].maxport='6000'
+uci set dhcp.@dnsmasq[0].noresolv='1'
+uci set dhcp.@dnsmasq[0].strictorder='1'
+uci set dhcp.@dnsmasq[0].sequential_ip='1'
 uci commit dhcp
 unset apo
 service dnsmasq reload
