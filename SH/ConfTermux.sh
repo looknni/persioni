@@ -32,13 +32,11 @@ termuxrc=`grep "#Y2RkCg" $termuxhome/.bashrc`
 echo $termuxsourceslist > $PREFIX/etc/apt/sources.list
 cat > $PREFIX/etc/resolv.conf << "EOF"
 nameserver 223.6.6.6
-nameserver 1.2.4.8
-nameserver 223.5.5.5
 EOF
 if [ -z "$termuxrc" ];then
 cat >> $termuxhome/.bashrc << "EOF"
 #Y2RkCg
-PS1='\[\e[0;32m\]\w\[\e[0m\] \[\e[0;97m\]\[\e[1;31m\]? \[\e[0m\]'
+PS1='\[\e[0;32m\]\W\[\e[0m\] \[\e[1;31m\]? \[\e[0m\]'
 alias cdd="cd $PREFIX"
 export HISTTIMEFORMAT='%F %T]$ '
 #export HISTSIZE=5000
