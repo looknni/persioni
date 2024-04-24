@@ -15,8 +15,6 @@
 ./SH/AWK.awk
 ./SH/BASH.sh
 ./SH/Base6.pl
-./SH/ConfDeb.sh
-./SH/ConfGit.sh
 ./SH/ConfTermux.sh
 ./SH/Format_t.pl
 ./SH/Function-Perl.md
@@ -28,9 +26,7 @@
 ./SH/TestOpenssl.sh
 ./SH/UEncrypt.pl
 ./SH/journal.ods
-./SH/GREP.bash
 ./ca-iptables
-./openwrt.list
 ./openssl.md
 ./vm-openwrt.sh
 ./rules/cr660x.mtd
@@ -47,7 +43,6 @@
 ./rules/rules.v6
 ./rules/test.iptables
 ./rules/v4.iptables
-./speedtest.bash
 ./atob.bash
 ./usb.wifi
 ./grub.cfg
