@@ -30,17 +30,12 @@ ip tuntap del mode tap dev $LAN
 # uci commit network  
 # /etc/init.d/network reload
 
-# /etc/rc.local # ip6tables-extra iptables-mod-iprange iptables-mod-filter iptables-mod-conntrack-extra iptables-mod-ipsec tc # iperf3
-# tc qdisc add dev eth0 root handle 1: htb default 10
-# tc class add dev eth0 parent 1: classid 1:1 htb rate 10mbit
-# tc filter add dev eth0 protocol ip parent 1: prio 1 u32 match u16 0x0800 0xFFFF at -2 match u16 0x1111 0xFFFF at -4 match u32 0x11223344 0xFFFFFFFF at -8 flowid 1:1
+# /etc/rc.local # ip6tables-extra iptables-mod-iprange iptables-mod-filter iptables-mod-conntrack-extra iptables-mod-ipsec # iperf3
 
 # ssh/scp -oHostKeyAlgorithms=ssh-rsa -oPubkeyAcceptedKeyTypes=+ssh-rsa
-# curl -O http[s]
 
 # ls -l /sys/class/net/
 # switch - interface - firewall #/etc/config/firewall @lan INPUT,REJECT OUTPUT,ACCEPT FORWARD,REJECT
-# iptables|nftables - traffic-rule - firewall @SOURCE:lan TARGET:input ACTION:ACCEPT
 
 # cat /tmp/dhcp.leases
 # iw dev phy0-sta0 scan|grep SSID
