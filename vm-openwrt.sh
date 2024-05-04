@@ -38,7 +38,7 @@ ip tuntap del mode tap dev $LAN
 # switch - interface - firewall #/etc/config/firewall @lan INPUT,REJECT OUTPUT,ACCEPT FORWARD,REJECT
 
 # cat /tmp/dhcp.leases
-# iw dev phy0-sta0 scan|grep SSID
+# iw dev phy1-sta0 scan | grep -iE "phy1-sta0|SSID|signal|channel width|VHT (RX|TX) highest supported|HE (RX|TX) MCS|streams: MCS"
 # iw dev phy0-sta0 station dump
 # iwinfo phy1-ap0 assoclist/freqlist
 # iw dev
