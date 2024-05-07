@@ -27,8 +27,8 @@
 ./SH/UEncrypt.pl
 ./SH/journal.ods
 ./ca-iptables
-./openssl.md
 ./vm-openwrt.sh
+./openssl.md
 ./rules/cr660x.mtd
 ./rules/key
 ./rules/appent.ip
@@ -43,6 +43,8 @@
 ./rules/rules.v6
 ./rules/test.iptables
 ./rules/v4.iptables
+./rules/ax6s-ax3200-xiaomi.mtd
+./rules/ax6s.sn.py
 ./atob.bash
 ./usb.wifi
 ./grub.cfg
