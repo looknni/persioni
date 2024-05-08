@@ -1,28 +1,28 @@
-https://git.openwrt.org/?p=openwrt/openwrt.git;a=commitdiff;h=3343ca7e6837b2ac5f237ea78bf73d50831dea20
-Xiaomi Mi Router CR6606 is a Wi-Fi6 AX1800 Router with 4 GbE Ports.
-Alongside the general model, it has three carrier customized models:
-CR6606 (China Unicom), CR6608 (China Mobile), CR6609 (China Telecom)
-
-Specifications:
-- SoC: MediaTek MT7621AT
-- RAM: 256MB DDR3 (ESMT M15T2G16128A)
-- Flash: 128MB NAND (ESMT F59L1G81MB)
-- Ethernet: 1000Base-T x4 (MT7530 SoC)
-- WLAN: 2x2 2.4GHz 574Mbps + 2x2 5GHz 1201Mbps (MT7905DAN + MT7975DN)
-- LEDs: System (Blue, Yellow), Internet (Blue, Yellow)
-- Buttons: Reset, WPS
-- UART: through-hole on PCB ([VCC 3.3v](RX)(GND)(TX) 115200, 8n1)
-- Power: 12VDC, 1A
-
-Jailbreak Notes:
-1. Get shell access.
-   1.1. Get yourself a wireless router that runs OpenWrt already.
-   1.2. On the OpenWrt router:
-      1.2.1. Access its console.
-      1.2.2. Create and edit
-             /usr/lib/lua/luci/controller/admin/xqsystem.lua # version~21.xx
-             with the following code (exclude backquotes and line no.):
-```
+#https://git.openwrt.org/?p=openwrt/openwrt.git;a=commitdiff;h=3343ca7e6837b2ac5f237ea78bf73d50831dea20
+#Xiaomi Mi Router CR6606 is a Wi-Fi6 AX1800 Router with 4 GbE Ports.
+#Alongside the general model, it has three carrier customized models:
+#CR6606 (China Unicom), CR6608 (China Mobile), CR6609 (China Telecom)
+#
+#Specifications:
+#- SoC: MediaTek MT7621AT
+#- RAM: 256MB DDR3 (ESMT M15T2G16128A)
+#- Flash: 128MB NAND (ESMT F59L1G81MB)
+#- Ethernet: 1000Base-T x4 (MT7530 SoC)
+#- WLAN: 2x2 2.4GHz 574Mbps + 2x2 5GHz 1201Mbps (MT7905DAN + MT7975DN)
+#- LEDs: System (Blue, Yellow), Internet (Blue, Yellow)
+#- Buttons: Reset, WPS
+#- UART: through-hole on PCB ([VCC 3.3v](RX)(GND)(TX) 115200, 8n1)
+#- Power: 12VDC, 1A
+#
+#Jailbreak Notes:
+#1. Get shell access.
+#   1.1. Get yourself a wireless router that runs OpenWrt already.
+#   1.2. On the OpenWrt router:
+#      1.2.1. Access its console.
+#      1.2.2. Create and edit
+#             /usr/lib/lua/luci/controller/admin/xqsystem.lua # version~21.xx
+#             with the following code (exclude backquotes and line no.):
+#
 module("luci.controller.admin.xqsystem", package.seeall)
 
 function index()
@@ -47,67 +47,67 @@ function getToken()
     result["token"] = "; nvram set ssh_en=1; nvram commit; sed -i 's/channel=.*/channel="debug"/g' /etc/init.d/dropbear; /etc/init.d/dropbear start;"
     LuciHttp.write_json(result)
 end
-```
-      1.2.3. Browse http://{OWRT_ADDR}/cgi-bin/luci/api/xqsystem/token
-             It should give you a respond like this:
-             {"code":0,"token":"; nvram set ssh_en=1; nvram commit; ..."}
-             If so, continue; Otherwise, check the file, reboot the rout-
-             er, try again.
-      1.2.4. Set wireless network interface's IP to 169.254.31.1, turn
-             off DHCP of wireless interface's zone.
-      1.2.5. Connect to the router wirelessly, manually set your access
-             device's IP to 169.254.31.3, make sure
-             http://169.254.31.1/cgi-bin/luci/api/xqsystem/token
-             still have a similar result as 1.2.3 shows.
-   1.3. On the Xiaomi CR660x:
-        1.3.1. Login to the web interface. Your would be directed to a
-               page with URL like this:
-               http://{ROUTER_ADDR}/cgi-bin/luci/;stok={STOK}/web/home#r-
-               outer
-        1.3.2. Browse this URL with {STOK} from 1.3.1, {WIFI_NAME}
-               {PASSWORD} be your OpenWrt router's SSID and password:
-               http://{MIROUTER_ADDR}/cgi-bin/luci/;stok={STOK}/api/misystem/extendwifi_connect?ssid={WIFI_NAME}&password={PASSWORD}
-               It should return 0.
-        1.3.3. Browse this URL with {STOK} from 1.3.1:
-               http://{MIROUTER_ADDR}/cgi-bin/luci/;stok={STOK}/api/xqsystem/oneclick_get_remote_token?username=xxx&password=xxx&nonce=xxx
-   1.4. Before rebooting, you can now access your CR660x via SSH.
-        For CR6606, you can calculate your root password by this project:
-        https://github.com/wfjsw/xiaoqiang-root-password, or at
-        https://www.oxygen7.cn/miwifi.
-        The root password for carrier-specific models should be the admi-
-        nistration password or the default login password on the label.
-        It is also feasible to change the root password at the same time
-        by modifying the script from step 1.2.2.
-        You can treat OpenWrt Router however you like from this point as
-        long as you don't mind go through this again if you have to expl-
-        oit it again. If you do have to and left your OpenWrt router unt-
-        ouched, start from 1.3.
-2. There's no official binary firmware available, and if you lose the
-   content of your flash, no one except Xiaomi can help you.
-   Dump these partitions in case you need them:
-   "Bootloader" "Nvram" "Bdata" "crash" "crash_log"
-   "firmware" "firmware1" "overlay" "obr"
-   Find the corespond block device from /proc/mtd
-   Read from read-only block device to avoid misoperation.
-   It's recommended to use /tmp/syslogbackup/ as destination, since files
-   would be available at http://{ROUTER_ADDR}/backup/log/YOUR_DUMP
-   Keep an eye on memory usage though.
-3. Since UART access is locked ootb, you should get UART access by modify
-   uboot env. Otherwise, your router may become bricked.
-   Excute these in stock firmware shell:
-    a. nvram set boot_wait=on
-    b. nvram set bootdelay=3
-    c. nvram commit
-   Or in OpenWrt:
-    a. opkg update && opkg install kmod-mtd-rw
-    b. insmod mtd-rw i_want_a_brick=1
-    c. fw_setenv boot_wait on
-    d. fw_setenv bootdelay 3
-    e. rmmod mtd-rw
-
-Migrate to OpenWrt:
- 1. Transfer squashfs-firmware.bin to the router.
- 2. nvram set flag_try_sys1_failed=0
- 3. nvram set flag_try_sys2_failed=1
- 4. nvram commit
- 5. mtd -r write /path/to/image/squashfs-firmware.bin firmware
+#
+#      1.2.3. Browse http://{OWRT_ADDR}/cgi-bin/luci/api/xqsystem/token
+#             It should give you a respond like this:
+#             {"code":0,"token":"; nvram set ssh_en=1; nvram commit; ..."}
+#             If so, continue; Otherwise, check the file, reboot the rout-
+#             er, try again.
+#      1.2.4. Set wireless network interface's IP to 169.254.31.1, turn
+#             off DHCP of wireless interface's zone.
+#      1.2.5. Connect to the router wirelessly, manually set your access
+#             device's IP to 169.254.31.3, make sure
+#             http://169.254.31.1/cgi-bin/luci/api/xqsystem/token
+#             still have a similar result as 1.2.3 shows.
+#   1.3. On the Xiaomi CR660x:
+#        1.3.1. Login to the web interface. Your would be directed to a
+#               page with URL like this:
+#               http://{ROUTER_ADDR}/cgi-bin/luci/;stok={STOK}/web/home#r-
+#               outer
+#        1.3.2. Browse this URL with {STOK} from 1.3.1, {WIFI_NAME}
+#               {PASSWORD} be your OpenWrt router's SSID and password:
+#               http://{MIROUTER_ADDR}/cgi-bin/luci/;stok={STOK}/api/misystem/extendwifi_connect?ssid={WIFI_NAME}&password={PASSWORD}
+#               It should return 0.
+#        1.3.3. Browse this URL with {STOK} from 1.3.1:
+#               http://{MIROUTER_ADDR}/cgi-bin/luci/;stok={STOK}/api/xqsystem/oneclick_get_remote_token?username=xxx&password=xxx&nonce=xxx
+#   1.4. Before rebooting, you can now access your CR660x via SSH.
+#        For CR6606, you can calculate your root password by this project:
+#        https://github.com/wfjsw/xiaoqiang-root-password, or at
+#        https://www.oxygen7.cn/miwifi.
+#        The root password for carrier-specific models should be the admi-
+#        nistration password or the default login password on the label.
+#        It is also feasible to change the root password at the same time
+#        by modifying the script from step 1.2.2.
+#        You can treat OpenWrt Router however you like from this point as
+#        long as you don't mind go through this again if you have to expl-
+#        oit it again. If you do have to and left your OpenWrt router unt-
+#        ouched, start from 1.3.
+#2. There's no official binary firmware available, and if you lose the
+#   content of your flash, no one except Xiaomi can help you.
+#   Dump these partitions in case you need them:
+#   "Bootloader" "Nvram" "Bdata" "crash" "crash_log"
+#   "firmware" "firmware1" "overlay" "obr"
+#   Find the corespond block device from /proc/mtd
+#   Read from read-only block device to avoid misoperation.
+#   It's recommended to use /tmp/syslogbackup/ as destination, since files
+#   would be available at http://{ROUTER_ADDR}/backup/log/YOUR_DUMP
+#   Keep an eye on memory usage though.
+#3. Since UART access is locked ootb, you should get UART access by modify
+#   uboot env. Otherwise, your router may become bricked.
+#   Excute these in stock firmware shell:
+#    a. nvram set boot_wait=on
+#    b. nvram set bootdelay=3
+#    c. nvram commit
+#   Or in OpenWrt:
+#    a. opkg update && opkg install kmod-mtd-rw
+#    b. insmod mtd-rw i_want_a_brick=1
+#    c. fw_setenv boot_wait on
+#    d. fw_setenv bootdelay 3
+#    e. rmmod mtd-rw
+#
+#Migrate to OpenWrt:
+# 1. Transfer squashfs-firmware.bin to the router.
+# 2. nvram set flag_try_sys1_failed=0
+# 3. nvram set flag_try_sys2_failed=1
+# 4. nvram commit
+# 5. mtd -r write /path/to/image/squashfs-firmware.bin firmware
