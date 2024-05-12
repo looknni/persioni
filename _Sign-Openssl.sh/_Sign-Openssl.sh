@@ -29,7 +29,6 @@
 ./ca-iptables
 ./openssl.md
 ./rules/cr660x.mtd
-./rules/key
 ./rules/appent.ip
 ./rules/delete.ip
 ./rules/x.dic
@@ -42,10 +41,8 @@
 ./rules/rules.v6
 ./rules/test.iptables
 ./rules/v4.iptables
-./rules/ax6s-ax3200-xiaomi.mtd
-./rules/ax6s.sn.py
+./rules/ax6s-ax3200-mi.mtd.py
 ./atob.bash
-./usb.wifi
 ./grub.cfg
 ./hostapd.conf
 ./gentoo.config.nou
