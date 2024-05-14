@@ -2,7 +2,7 @@
 
 ##### blkid /etc/default/grub /etc/fstab /boot/grub2/grub.cfg /boot/load/* 0^2^16 140177258^9
 ---
-##### The computational intelligence engine by [Wolframalpha](https://www.wolframalpha.com/) [Swisscows](https://swisscows.com/en) [Ecosia](https://www.ecosia.org/) [git-openwrt](https://git.openwrt.org/) [Fluxion](https://github.com/FluxionNetwork/fluxion)
+##### The computational intelligence engine by [Wolframalpha](https://www.wolframalpha.com/) [Swisscows](https://swisscows.com/en) [git-openwrt](https://git.openwrt.org/) [Fluxion](https://github.com/FluxionNetwork/fluxion)
 ---
 ##### New Bootable USB Solution [Ventoy] https://www.ventoy.net/en/index.html
 ---
@@ -18,15 +18,13 @@
 ---
 ##### Shares open source news and reviews of Linux and BSD based operating systems [ Operating.s ] https://distrowatch.com/
 ---
-##### Regular expressions library (C++11) basic_regex − algorithms. Concurrency support library (C++11) thread − jthread (C++20) atomic − atomic_flag − atomic_ref (C++20) memory_order − condition_variable [ Cppreference ] https://cppreference.com/
+##### Concurrency support library (C++11) thread − jthread (C++20) atomic − atomic_flag − atomic_ref (C++20) memory_order − condition_variable [ Cppreference ] https://cppreference.com/
 ---
 ##### GNU is an operating system which is 100% free software. [Gnu-command](https://www.gnu.org/software/)
 ---
 ##### [ ? ] https://quickref.cn/
 ---
 ##### Both official Gentoo project documentation as well as community-contributed content can be found here [ Gentoo ](https://wiki.gentoo.org/) [ Funtoo ](https://www.funtoo.org/)
----
-##### Grml is especially well suited for administrative tasks like installation, deployment and system rescue. [Grml](https://grml.org/)
 ---
 > #### [SOURCES](https://cdimage.debian.org/images/) $\oint_{testing_{unstable}}^{stable} {debian}$
 > - https://mirrors.tuna.tsinghua.edu.cn
@@ -44,7 +42,7 @@
 ---
 > ##### $APT_{dpkg}^{apt-get} \Downarrow$ [Debian](https://www.debian.org/security/) ? [Kali](https://www.kali.org/tools/)
 ```
-vim-gtk3 kaffeine audacious git traceroute locate smartmontools ntpdate fcitx fcitx-googlepinyin fcitx-config-gtk fcitx-table-wubi dnsutils wget bash-completion obs-studio aptitude links xterm net-tools iptables iptables-persistent iptables-netflow-dkms wpasupplicant nmap tcpdump audacity inkscape gimp krita audacity libreoffice make gcc isc-dhcp-client rsync dnsmasq resolvconf hexcompare aircrack-ng hashcat flashrom firmware-realtek xxd xxhash qbittorrent
+vim-gtk3 kaffeine audacious git traceroute locate smartmontools ntpdate fcitx fcitx-googlepinyin fcitx-config-gtk fcitx-table-wubi dnsutils wget bash-completion obs-studio aptitude links xterm net-tools iptables iptables-persistent iptables-netflow-dkms wpasupplicant nmap tcpdump audacity inkscape gimp krita audacity libreoffice make gcc isc-dhcp-client rsync dnsmasq resolvconf hexcompare aircrack-ng hashcat flashrom firmware-realtek xxd xxhash qbittorrent aria2
 
 ? connection wifi
 iwconfig
@@ -511,33 +509,5 @@ export GTK_IM_MODULE=fcitx
 export QT_IM_MODULE=fcitx
 export XMODIFIERS=@im=fcitx
 $(xrdb -load ~/.Xresources)
-```
-> ## /etc/NetworkManager/NetworkManager.conf
-```
-[main]
-plugins=ifupdown,keyfile
-#dns=dnsmasq
-#systemd-resolved=true
-#rc-manager=resolvconf
-
-[ifupdown]
-managed=true
-
-[device]
-wifi.scan-rand-mac-address=yes
-
-[connectivity]
-uri=
-interval=0
-```
-> ## /etc/systemd/resolved.conf
-```
-#DNS=119.29.29.29#dot.pub 2402:4e00::#dot.pub 223.5.5.5#dns.alidns.com 240c:f:1:22::6#dns.ipv6dns.com 180.76.76.76#dot.onedns.net 114.114.114.114#dot.onedns.net 1.2.4.8#dot-pure.onedns.net
-#FallbackDNS=1.1.1.1#cloudflare-dns.com 8.8.8.8#dns.google 1.0.0.1#cloudflare-dns.com 8.8.4.4#dns.google 2606:4700:4700::1111#cloudflare-dns.com 2001:4860:4860::8888#dns.google 2606:4700:4700::1001#cloudflare-dns.com 2001:4860:4860::8844#dns.google 2620:fe::9 2620:fe::fe:9 2a09:: 2a11:: 2620:119:53::53 2620:119:35::35 2001:dc7:1000::1 2001:de4::101 2001:de4::102 2001:da8:8000:1:202:120:2:100 2001:da8:8000:1:202:120:2:101 2001:da8:ff:305:20c:29ff:fe1f:a92a 2a02:6b8::feed:ff 2a02:6b8:0:1::feed:ff 2a02:6b8::feed:bad 2a02:6b8:0:1::feed:bad 2620:fe::fe 2620:0:ccc::2 2620:0:ccd::2
-#Domains=lan
-#DoH# https://dns.alidns.com/dns-query https://dns.ipv6dns.com/dns-query https://101.6.6.6:8443/dns-query https://doh.360.cn https://doh.onedns.net/dns-query https://doh-pure.onedns.net/dns-query
-DNSSEC=allow-downgrade
-DNSOverTLS=opportunistic
-MulticastDNS=yes
-LLMNR=no
+cat ~/.bash_history > ~/.bash_history
 ```
