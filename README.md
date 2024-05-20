@@ -63,6 +63,7 @@ subnet 10.0.0.0 netmask 255.255.255.0 {
   option routers 10.0.0.1;
 }
 ip addr add 10.0.0.11/24 dev wlan0
+ip link set wlan0 up
 hostapd hostapd.conf
 dhcpd
 sysctl net.ipv4.ip_forward=1
@@ -70,6 +71,7 @@ iptables -A FORWARD -i eth0 -o wlan0 -s 192.168.1.0/24 -m conntrack --ctstate NE
 iptables -A FORWARD -m conntrack --ctstate ESTABLISHED,RELATED -j ACCEPT
 iptables -t nat -A POSTROUTING -o eth0 -j MASQUERADE
 # clent.gateway set eth0.ip
+# iptables -t nat -A PREROUTING -i at0 -p tcp -j DNAT --to-destination 192.168.0.1
 
 ?o /etc/network/interfaces # man interfaces
 #auto eth0
