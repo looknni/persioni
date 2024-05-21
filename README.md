@@ -52,6 +52,14 @@ wpa_passphrase name password > wpa_supplicant.conf
 wpa_supplicant -B -c wpa_supplicant.conf -i eth0
 dhclient eth0
 
+? dnsmasq.conf
+interface=wlan0
+dhcp-range=10.0.0.100,10.0.0.200,12h
+dhcp-option=6,192.168.0.1,1.1.1.1
+dhcp-option=3,172.168.0.1
+bind-interfaces
+except-interface=lo
+
 ? set ap
 # /etc/dhcp/dhcpd.conf
 default-lease-time 600;
