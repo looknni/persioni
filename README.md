@@ -67,7 +67,7 @@ max-lease-time 7200;
 subnet 10.0.0.0 netmask 255.255.255.0 {
   range 10.0.0.100 10.0.0.200;
   option broadcast-address 10.0.0.255;
-  option domain-name-servers 114.114.114.114;
+  option domain-name-servers 114.114.114.114, 1.2.4.8;
   option routers 10.0.0.1;
 }
 ip addr add 10.0.0.11/24 dev wlan0
@@ -79,7 +79,7 @@ iptables -A FORWARD -i eth0 -o wlan0 -s 192.168.1.0/24 -m conntrack --ctstate NE
 iptables -A FORWARD -m conntrack --ctstate ESTABLISHED,RELATED -j ACCEPT
 iptables -t nat -A POSTROUTING -o eth0 -j MASQUERADE
 # clent.gateway set eth0.ip
-# iptables -t nat -A PREROUTING -i at0 -p tcp -j DNAT --to-destination 192.168.0.1
+# iptables -t nat -A PREROUTING -i at0 -p tcp --dport 80 [-m multiport --dports 80,8080] -j DNAT --to-destination 192.168.0.1:443
 
 ?o /etc/network/interfaces # man interfaces
 #auto eth0
