@@ -35,6 +35,7 @@ ip tuntap del mode tap dev $LAN
 # ssh/scp -oHostKeyAlgorithms=ssh-rsa -oPubkeyAcceptedKeyTypes=+ssh-rsa
 
 # ls -l /sys/class/net/
+# /usr/share/ucode/luci/
 # switch - interface - firewall #/etc/config/firewall @lan INPUT,REJECT OUTPUT,ACCEPT FORWARD,REJECT
 
 # cat /tmp/dhcp.leases
