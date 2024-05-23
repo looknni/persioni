@@ -93,7 +93,8 @@ iptables -A FORWARD -i eth0 -o wlan0 -s 192.168.1.0/24 -m conntrack --ctstate NE
 iptables -A FORWARD -m conntrack --ctstate ESTABLISHED,RELATED -j ACCEPT
 iptables -t nat -A POSTROUTING -o eth0 -j MASQUERADE
 # clent.gateway set eth0.ip
-# iptables -t nat -A PREROUTING -i at0 -p tcp --dport 80 [-m multiport --dports 80,8080] -j DNAT --to-destination 192.168.0.1:443
+# iptables -t nat -A PREROUTING -i at0 -p tcp [-d www.example.com|192.168.1.100][-m iprange --dst-range 192.168.1.100-192.168.1.200] [--dport 80][-m multiport --dports 80,8080] -j DNAT --to-destination 192.168.0.1:443
+# iptables -A FORWARD -p tcp -d 127.0.0.1 --dport 8080 -j ACCEPT
 
 ?o /etc/network/interfaces # man interfaces
 #auto eth0
