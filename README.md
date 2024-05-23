@@ -70,7 +70,7 @@ log-dhcp
 interface=wlan0
 dhcp-range=10.0.0.100,10.0.0.200,12h
 dhcp-option=6,192.168.0.1,1.1.1.1
-dhcp-option=3,172.168.0.1
+dhcp-option=3,192.168.0.1
 bind-interfaces
 except-interface=lo
 
