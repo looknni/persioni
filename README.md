@@ -53,6 +53,20 @@ wpa_supplicant -B -c wpa_supplicant.conf -i eth0
 dhclient eth0
 
 ? dnsmasq.conf
+port=1234
+domain-needed
+bogus-priv
+strict-order
+no-resolv
+no-poll
+no-hosts
+cache-size=150
+no-negcache
+localmx
+selfmx
+cname=bertrand,bert
+log-queries
+log-dhcp
 interface=wlan0
 dhcp-range=10.0.0.100,10.0.0.200,12h
 dhcp-option=6,192.168.0.1,1.1.1.1
@@ -460,12 +474,16 @@ umount -l /mnt/gentoo/dev{/shm,/pts,}
 ? mount -o remount,rw /
 ? emerge -avuDN @world
 ? net-firewall/iptables net-firewall/nftables sys-process/lsof net-wireless/wpa_supplicant sys-fs/exfat-utils sys-fs/dosfstools dev-util/intel-ocl-sdk app-crypt/hashcat app-crypt/johntheripper media-gfx/flameshot
-? net-libs/axtls cgi-php doc httpd savedconfig
+
+# /etc/portage/package.use/zz-autounmask
+net-libs/axtls cgi-php doc httpd savedconfig
+dev-lang/php-8.2.15 cgi apache2 iodbc odbc mysql mysqli mhash curl debug sockets sqlite threads xmlreader xmlwriter xmp xslt zip fpm
+www-servers/lighttpd php
+app-misc/mime-types-2.1.54 nginx
 
 ? touch /etc/portage/package.accept_keywords/zzz_autounmask
 ? emerge mypackage --autounmask-write --autounmask
 ? etc-update || dispatch-conf
-? /etc/portage/package.use/zz-autounmask # Error: circular dependencies
 
 ? /usr/src/linux-6.6.13-gentoo/System.map -> System.map-6.6.13-gentoo-x86_64
 ? dracut --kver xxx -> initramfs-6.6.13-gentoo-x86_64.img
