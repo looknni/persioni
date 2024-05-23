@@ -50,3 +50,5 @@ ip tuntap del mode tap dev $LAN
 # airodump -w xxx -c 1 --bssid <ap_mac> mon0
 # aireplay -0 0 -a <ap_mac> -c <client_mac> mon
 # (tr -dc 'a-z0-9' < /dev/urandom |fold -w8 > 1 &);sleep 10;sudo kill -9 $(pgrep tr)
+# ubus list
+# ubus call network.interface.lan status|dump|up|down|reload
