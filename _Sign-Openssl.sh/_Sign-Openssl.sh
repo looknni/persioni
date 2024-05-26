@@ -29,7 +29,9 @@
 ./ca-iptables
 ./vm-openwrt.sh
 ./openssl.md
+./hostapd.conf
 ./rules/cr660x.mtd
+./rules/restore.sh
 ./rules/appent.ip
 ./rules/delete.ip
 ./rules/x.dic
@@ -37,7 +39,6 @@
 ./rules/cmcc_rax3000m.mtd
 ./rules/drop.list
 ./rules/fu.l
-./rules/restore.sh
 ./rules/rules.v4
 ./rules/rules.v6
 ./rules/test.iptables
@@ -45,5 +46,4 @@
 ./rules/ax6s-ax3200-mi.mtd.py
 ./atob.bash
 ./grub.cfg
-./hostapd.conf
 ./gentoo.config.nou
