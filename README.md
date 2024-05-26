@@ -477,9 +477,9 @@ umount -l /mnt/gentoo/dev{/shm,/pts,}
 
 # /etc/portage/package.use/zz-autounmask
 net-libs/axtls cgi-php doc httpd savedconfig
-dev-lang/php-8.2.15 cgi apache2 iodbc odbc mysql mysqli mhash curl debug sockets sqlite threads xmlreader xmlwriter xmp xslt zip fpm
+dev-lang/php cgi apache2 iodbc odbc mysql mysqli mhash curl debug sockets sqlite threads xmlreader xmlwriter xmp xslt zip fpm
 www-servers/lighttpd php
-app-misc/mime-types-2.1.54 nginx
+app-misc/mime-types nginx
 x11-terms/xterm sixel xinerama 
 sys-devel/gcc objc objc++ objc-gc go
 
