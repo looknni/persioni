@@ -473,7 +473,7 @@ passwd username
 umount -l /mnt/gentoo/dev{/shm,/pts,}
 ? mount -o remount,rw /
 ? emerge -avuDN @world
-? net-firewall/iptables net-firewall/nftables sys-process/lsof net-wireless/wpa_supplicant sys-fs/exfat-utils sys-fs/dosfstools dev-util/intel-ocl-sdk app-crypt/hashcat app-crypt/johntheripper media-gfx/flameshot
+? net-firewall/iptables net-firewall/nftables sys-process/lsof net-wireless/wpa_supplicant sys-fs/exfat-utils sys-fs/dosfstools dev-util/intel-ocl-sdk app-crypt/hashcat app-crypt/johntheripper media-gfx/flameshot net-libs/nodejs
 
 # /etc/portage/package.use/zz-autounmask
 net-libs/axtls cgi-php doc httpd savedconfig
@@ -483,6 +483,7 @@ app-misc/mime-types nginx
 x11-terms/xterm sixel xinerama 
 sys-devel/gcc objc objc++ objc-gc go
 app-editors/vim lua perl python racket ruby tcl
+dev-libs/openssl fips rfc3779
 
 ? touch /etc/portage/package.accept_keywords/zzz_autounmask
 ? emerge mypackage --autounmask-write --autounmask
