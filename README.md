@@ -482,6 +482,7 @@ www-servers/lighttpd php
 app-misc/mime-types nginx
 x11-terms/xterm sixel xinerama 
 sys-devel/gcc objc objc++ objc-gc go
+app-editors/vim lua perl python racket ruby tcl
 
 ? touch /etc/portage/package.accept_keywords/zzz_autounmask
 ? emerge mypackage --autounmask-write --autounmask
