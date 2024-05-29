@@ -2,27 +2,11 @@
 
 ##### blkid /etc/default/grub /etc/fstab /boot/grub2/grub.cfg /boot/load/* 0^2^16 140177258^9
 ---
-##### The computational intelligence engine by [Wolframalpha](https://www.wolframalpha.com/) [Swisscows](https://swisscows.com/en)
+##### [Wolframalpha](https://www.wolframalpha.com/) . [Swisscows](https://swisscows.com/en) . [Maintaining and evolving HTML](https://whatwg.org/) . [Mmdn web docs](https://developer.mozilla.org/zh-CN/docs/Web/) . [Msi](https://us.msi.com/Motherboard/B560M-PRO/support) . [Comics](http://fjisu.top/)
 ---
-##### [Maintaining and evolving HTML](https://whatwg.org/) [Mmdn web docs](https://developer.mozilla.org/zh-CN/docs/Web/) 
+##### [Ventoy](https://www.ventoy.net/en/index.html) . [Tempmail](https://tempmail.plus/en) . [.apk](https://www.malavida.com/en) . [Tracker.deb](https://tracker.debian.org/pkg/linux) . [Cppreference](https://cppreference.com/)
 ---
-##### New Bootable USB Solution [Ventoy] https://www.ventoy.net/en/index.html
----
-##### [Msi](https://us.msi.com/Motherboard/B560M-PRO/support) @TjVYSE8zM1NOTlpTNDNURk9RRkE9PT09Cg== [Comics](http://fjisu.top/)
----
-##### Temp Mail provides temporary, anonymous, free, secure, disposable email address [Tempmail](https://tempmail.plus/en)
----
-##### Google Chrome. Google's web browser. Virtual DJ. The most complete free software for DJs. uTorrent [.apk] https://www.malavida.com/en
----
-##### This service lets you follow the evolution of Debian both with email updates and a comprehensive web interface [ Tracker.deb ] https://tracker.debian.org/pkg/linux
----
-##### Concurrency support library (C++11) thread − jthread (C++20) atomic − atomic_flag − atomic_ref (C++20) memory_order − condition_variable [ Cppreference ] https://cppreference.com/
----
-##### GNU is an operating system which is 100% free software. [Gnu-command](https://www.gnu.org/software/)
----
-##### [ ? ] https://quickref.cn/
----
-##### Both official Gentoo project documentation as well as community-contributed content can be found here [ Gentoo ](https://wiki.gentoo.org/) [ Funtoo ](https://www.funtoo.org/)
+##### [Gnu-command](https://www.gnu.org/software/) . [ ? ](https://quickref.cn/) . [Gentoo](https://wiki.gentoo.org/) . [Funtoo](https://www.funtoo.org/)
 ---
 > #### [SOURCES](https://cdimage.debian.org/images/) $\oint_{testing_{unstable}}^{stable} {debian}$
 > - https://mirrors.tuna.tsinghua.edu.cn
@@ -30,7 +14,8 @@
 > - https://mirrors.ustc.edu.cn # [ freebsd 13,14 ]
 > - http://mirrors.nju.edu.cn/ # [ freebsd 13,14 ]
 ---
-##### dig @ns1.google.com TXT o-o.myaddr.l.google.com nslookup -type=TXT o-o.myaddr.l.google.com ns1.google.com # dig whoami.akamai.net. @ns1-1.akamaitech.net nslookup whoami.akamai.net. ns1-1.akamaitech.net # dig myip.opendns.com @resolver1.opendns.com nslookup myip.opendns.com resolver1.opendns.com
+##### dig @ns1.google.com TXT o-o.myaddr.l.google.com | whoami.akamai.net. @ns1-1.akamaitech.net | myip.opendns.com @resolver1.opendns.com
+##### nslookup -type=TXT o-o.myaddr.l.google.com ns1.google.com | whoami.akamai.net. ns1-1.akamaitech.net | myip.opendns.com resolver1.opendns.com
 ##### timedatectl set-timezone Asia/Chongqing # /etc/systemd/timesyncd.conf ? /etc/chrony.conf ? /etc/ntpsec/ntp.conf # server ntp.org.cn iburst ? server edu.ntp.org.cn iburst
 ##### sudo flatpak remote-modify flathub --url=https://mirror.sjtu.edu.cn/flathub
 ##### [On Flatpak error fonts](https://flatpak.org/setup/) ? cp -r /etc/fonts/* org.example.com/config/fontconfig
