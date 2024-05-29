@@ -2,7 +2,9 @@
 
 ##### blkid /etc/default/grub /etc/fstab /boot/grub2/grub.cfg /boot/load/* 0^2^16 140177258^9
 ---
-##### The computational intelligence engine by [Wolframalpha](https://www.wolframalpha.com/) [Swisscows](https://swisscows.com/en) [git-openwrt](https://git.openwrt.org/) [Fluxion](https://github.com/FluxionNetwork/fluxion)
+##### The computational intelligence engine by [Wolframalpha](https://www.wolframalpha.com/) [Swisscows](https://swisscows.com/en)
+---
+##### [Maintaining and evolving HTML](https://whatwg.org/) [Mmdn web docs](https://developer.mozilla.org/zh-CN/docs/Web/) 
 ---
 ##### New Bootable USB Solution [Ventoy] https://www.ventoy.net/en/index.html
 ---
@@ -12,11 +14,7 @@
 ---
 ##### Google Chrome. Google's web browser. Virtual DJ. The most complete free software for DJs. uTorrent [.apk] https://www.malavida.com/en
 ---
-##### (Ubuntu) Server at breed.hackpascal.net Port 443 [ Breed ] https://breed.hackpascal.net/
----
 ##### This service lets you follow the evolution of Debian both with email updates and a comprehensive web interface [ Tracker.deb ] https://tracker.debian.org/pkg/linux
----
-##### Shares open source news and reviews of Linux and BSD based operating systems [ Operating.s ] https://distrowatch.com/
 ---
 ##### Concurrency support library (C++11) thread − jthread (C++20) atomic − atomic_flag − atomic_ref (C++20) memory_order − condition_variable [ Cppreference ] https://cppreference.com/
 ---
