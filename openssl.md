@@ -128,3 +128,4 @@
 psk=$(echo -n "$1" | iconv -t UTF-16LE | openssl md5 -binary | xxd -p)
 hmac=$(echo -n "$2$3" | xxd -r -p | openssl dgst -sha1 -hmac $psk | awk '{print $2}')
 pmk=$(echo -n "$hmac" | cut -c 1-64)
+---
