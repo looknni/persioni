@@ -293,6 +293,7 @@ XTerm*color15: #000000
 ```
 ## [Vim](https://ftp.nluug.nl/pub/vim/unix/)
 ```
+set viminfofile=NONE
 syntax on
 set cursorcolumn
 "set cursorline
