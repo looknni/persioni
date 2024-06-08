@@ -30,7 +30,7 @@ ip tuntap del mode tap dev $LAN
 # uci commit network  
 # /etc/init.d/network reload
 
-# /etc/rc.local # ip6tables-extra iptables-mod-iprange iptables-mod-filter iptables-mod-conntrack-extra iptables-mod-ipsec # iperf3 iptables-mod-nat-extra
+# /etc/rc.local # ip6tables-extra iptables-mod-iprange iptables-mod-filter iptables-mod-conntrack-extra iptables-mod-ipsec iperf3 iptables-mod-nat-extra
 
 # ssh/scp -oHostKeyAlgorithms=ssh-rsa -oPubkeyAcceptedKeyTypes=+ssh-rsa
 
