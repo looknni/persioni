@@ -1,13 +1,15 @@
 #!/bin/sh
 echo
-ip6tables -t filter -nvL --line-numbers | awk '{if($2>0) print}'|grep 'DROP'
+# ip6tables -t filter -nvL --line-numbers | awk '{if($2>0) print}'|grep 'DROP'
 iptables -t filter -nvL --line-numbers | awk '{if($2>0) print}'|grep 'DROP'
 echo "### MANGLE ###"
-ip6tables -t mangle -nvL --line-numbers | awk '{if($2>0) print}'|grep 'DROP'
+# ip6tables -t mangle -nvL --line-numbers | awk '{if($2>0) print}'|grep 'DROP'
 iptables -t mangle -nvL --line-numbers | awk '{if($2>0) print}'|grep 'DROP'
+iptables -t nat -nvL --line-numbers | awk '{if($2>0) print}'|grep 'DNAT'
 logread | grep -Eo '[0-9]+\.[0-9]+\.[0-9]+\.[0-9]+'| uniq | tail -n 5 | tr '\n' '#'
 echo -e "\n### $(date) ###"
 iptables-nft -t mangle -S | grep -E '0\.0\.0\.0|\.[01]/32'
 ip6tables-nft -t mangle -S | grep '\-[sd] ::/128'
 iptables-nft -t mangle -S |grep '\-A'|sort|uniq -dc
 ip6tables-nft -t mangle -S |grep '\-A'|grep ':'|sort|uniq -dc
+logread | grep 'daemon.err'
