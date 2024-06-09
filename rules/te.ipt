@@ -6,7 +6,7 @@ fi
 v4='/etc/iptables/rules.v4'
 v6='/etc/iptables/rules.v6'
 q='mangle'
-w='MCC'
+w='MCC' # local 'MDD'
 IFS=$'\n'
 iptables -t $q -A $w -d $1 -j DROP
 a=`iptables -t $q -S | grep '\-A' | sort | uniq -d`
