@@ -13,7 +13,16 @@ a=`iptables -t $q -S | grep '\-A' | sort | uniq -d`
 function saves(){
         iptables-save > $v4
 }
+function dell(){
+        iptables -t $q -D $w -d 0.0.0.0 -j DROP 2>/dev/null
+        iptables -t $q -D $w -s 0.0.0.0 -j DROP 2>/dev/null
+        ip6tables -t $q -D $w -s ::/128 -j DROP 2>/dev/null
+        ip6tables -t $q -D $w -d ::/128 -j DROP 2>/dev/null
+}
+dell
 saves
+sed -i '/0.0.0.0/d' $v4
+sed -i -E '/\-(s|d) ::\/128/d' $v6
 function restores(){
         iptables-restore < $v4
 }
@@ -33,7 +42,7 @@ if [ ! -z "$a" ];then
         done
         restores
         for k in $b;do
-                l=$(echo $k|grep -oE '([0-9]\.){3}[0-9]')
+                l=$(echo $k|grep -oE '([0-9]+\.){3}[0-9]+')
                 iptables -t $q -A $w -d $l -j DROP
         done
         saves
