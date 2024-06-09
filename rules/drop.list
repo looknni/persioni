@@ -14,10 +14,10 @@ function ipt6(){
         ip6tables -t $1 -nvL --line-numbers
 }
 function sipt(){
-        iptables-nft -t $1 -S
+        iptables -t $1 -S
 }
 function sipt6(){
-        ip6tables-nft -t $1 -S
+        ip6tables -t $1 -S
 }
 # ipt6 $filter | dr $d
 ipt $filter | dr $d
