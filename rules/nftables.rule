@@ -1,0 +1,374 @@
+#table inet fw4 {
+#        flowtable ft {
+#                hook ingress priority filter
+#                devices = { lan1, lan2, lan3, phy1-ap0, wan }
+#                flags offload
+#                counter
+#        }
+#
+#        chain input {
+#                type filter hook input priority filter; policy drop;
+#                iifname "lo" accept comment "!fw4: Accept traffic from loopback"
+#                ct state established,related accept comment "!fw4: Allow inbound established and related flows"
+#                tcp flags syn / fin,syn,rst,ack jump syn_flood comment "!fw4: Rate limit TCP syn packets"
+#                iifname "br-lan" jump input_lan comment "!fw4: Handle lan IPv4/IPv6 input traffic"
+#                iifname "wan" jump input_wan comment "!fw4: Handle wan IPv4/IPv6 input traffic"
+#                jump handle_reject
+#        }
+#
+#        chain forward {
+#                type filter hook forward priority filter; policy drop;
+#                meta l4proto { tcp, udp } flow add @ft
+#                ct state established,related accept comment "!fw4: Allow forwarded established and related flows"
+#                iifname "br-lan" jump forward_lan comment "!fw4: Handle lan IPv4/IPv6 forward traffic"
+#                iifname "wan" jump forward_wan comment "!fw4: Handle wan IPv4/IPv6 forward traffic"
+#                jump handle_reject
+#        }
+#
+#        chain output {
+#                type filter hook output priority filter; policy accept;
+#                oifname "lo" accept comment "!fw4: Accept traffic towards loopback"
+#                ct state established,related accept comment "!fw4: Allow outbound established and related flows"
+#                oifname "br-lan" jump output_lan comment "!fw4: Handle lan IPv4/IPv6 output traffic"
+#                oifname "wan" jump output_wan comment "!fw4: Handle wan IPv4/IPv6 output traffic"
+#        }
+#
+#        chain prerouting {
+#                type filter hook prerouting priority filter; policy accept;
+#                iifname "br-lan" jump helper_lan comment "!fw4: Handle lan IPv4/IPv6 helper assignment"
+#        }
+#
+#        chain handle_reject {
+#                meta l4proto tcp reject with tcp reset comment "!fw4: Reject TCP traffic"
+#                reject comment "!fw4: Reject any other traffic"
+#        }
+#
+#        chain syn_flood {
+#                limit rate 25/second burst 50 packets return comment "!fw4: Accept SYN packets below rate-limit"
+#                drop comment "!fw4: Drop excess packets"
+#        }
+#
+#        chain input_lan {
+#                jump accept_from_lan
+#        }
+#
+#        chain output_lan {
+#                jump accept_to_lan
+#        }
+#
+#        chain forward_lan {
+#                jump accept_to_wan comment "!fw4: Accept lan to wan forwarding"
+#                jump reject_to_lan
+#        }
+#
+#        chain helper_lan {
+#        }
+#
+#        chain accept_from_lan {
+#                iifname "br-lan" counter packets 11482 bytes 774114 accept comment "!fw4: accept lan IPv4/IPv6 traffic"
+#        }
+#
+#        chain accept_to_lan {
+#                oifname "br-lan" counter packets 11 bytes 3050 accept comment "!fw4: accept lan IPv4/IPv6 traffic"
+#        }
+#
+#        chain reject_to_lan {
+#                oifname "br-lan" counter packets 0 bytes 0 jump handle_reject comment "!fw4: reject lan IPv4/IPv6 traffic"
+#        }
+#
+#        chain input_wan {
+#                meta nfproto ipv4 udp dport 68 counter packets 0 bytes 0 accept comment "!fw4: Allow-DHCP-Renew"
+#                jump reject_from_wan
+#        }
+#
+#        chain output_wan {
+#                jump accept_to_wan
+#        }
+#
+#        chain forward_wan {
+#                jump reject_to_wan
+#        }
+#
+#        chain accept_to_wan {
+#                meta nfproto ipv4 oifname "wan" ct state invalid counter packets 6508 bytes 291791 drop comment "!fw4: Prevent NAT leakage"
+#                oifname "wan" counter packets 151767 bytes 29727492 accept comment "!fw4: accept wan IPv4/IPv6 traffic"
+#        }
+#
+#        chain reject_from_wan {
+#                iifname "wan" counter packets 3121 bytes 361250 jump handle_reject comment "!fw4: reject wan IPv4/IPv6 traffic"
+#        }
+#
+#        chain reject_to_wan {
+#                oifname "wan" counter packets 0 bytes 0 jump handle_reject comment "!fw4: reject wan IPv4/IPv6 traffic"
+#        }
+#
+#        chain dstnat {
+#                type nat hook prerouting priority dstnat; policy accept;
+#        }
+#
+#        chain srcnat {
+#                type nat hook postrouting priority srcnat; policy accept;
+#                oifname "wan" jump srcnat_wan comment "!fw4: Handle wan IPv4/IPv6 srcnat traffic"
+#        }
+#
+#        chain srcnat_wan {
+#                meta nfproto ipv4 masquerade comment "!fw4: Masquerade IPv4 wan traffic"
+#        }
+#
+#        chain raw_prerouting {
+#                type filter hook prerouting priority raw; policy accept;
+#        }
+#
+#        chain raw_output {
+#                type filter hook output priority raw; policy accept;
+#        }
+#
+#        chain mangle_prerouting {
+#                type filter hook prerouting priority mangle; policy accept;
+#        }
+#
+#        chain mangle_postrouting {
+#                type filter hook postrouting priority mangle; policy accept;
+#        }
+#
+#        chain mangle_input {
+#                type filter hook input priority mangle; policy accept;
+#        }
+#
+#        chain mangle_output {
+#                type route hook output priority mangle; policy accept;
+#        }
+#
+#        chain mangle_forward {
+#                type filter hook forward priority mangle; policy accept;
+#                iifname "wan" tcp flags syn tcp option maxseg size set rt mtu comment "!fw4: Zone wan IPv4/IPv6 ingress MTU fixing"
+#                oifname "wan" tcp flags syn tcp option maxseg size set rt mtu comment "!fw4: Zone wan IPv4/IPv6 egress MTU fixing"
+#        }
+#}
+table ip mangle {
+        chain PREROUTING {
+                type filter hook prerouting priority mangle; policy accept;
+                counter packets 1648216 bytes 208078665 jump MACC
+                counter packets 1648216 bytes 208078665 jump MAA
+        }
+
+        chain INPUT {
+                type filter hook input priority mangle; policy accept;
+                counter packets 26707 bytes 3619951 jump MBCC
+                counter packets 26707 bytes 3619951 jump MBB
+        }
+
+        chain FORWARD {
+                type filter hook forward priority mangle; policy accept;
+                counter packets 1620718 bytes 204299857 jump MCCC
+                counter packets 1620718 bytes 204299857 jump MCC
+        }
+
+        chain OUTPUT {
+                type route hook output priority mangle; policy accept;
+                counter packets 26003 bytes 3401060 jump MDCC
+                counter packets 26003 bytes 3401060 jump MDD
+        }
+
+        chain POSTROUTING {
+                type filter hook postrouting priority mangle; policy accept;
+                counter packets 1626516 bytes 206587306 jump MECC
+                counter packets 1626516 bytes 206587306 jump MEE
+        }
+
+        chain MAA {
+        }
+
+        chain MACC {
+        }
+
+        chain MBB {
+        }
+
+        chain MBCC {
+        }
+
+        chain MCC {
+                ip daddr 192.168.0.1 counter packets 0 bytes 0 drop
+        }
+
+        chain MCCC {
+        }
+
+        chain MDCC {
+        }
+
+        chain MDD {
+        }
+
+        chain MECC {
+        }
+
+        chain MEE {
+        }
+}
+table ip raw {
+        chain PREROUTING {
+                type filter hook prerouting priority raw; policy accept;
+        }
+
+        chain OUTPUT {
+                type filter hook output priority raw; policy accept;
+        }
+}
+table ip filter {
+        chain INPUT {
+                type filter hook input priority filter; policy accept;
+        }
+
+        chain FORWARD {
+                type filter hook forward priority filter; policy accept;
+        }
+
+        chain OUTPUT {
+                type filter hook output priority filter; policy accept;
+        }
+
+        chain FAA {
+        }
+
+        chain FACC {
+        }
+
+        chain FBB {
+        }
+
+        chain FBCC {
+        }
+
+        chain FCC {
+        }
+
+        chain FCCC {
+        }
+}
+# Warning: table ip nat is managed by iptables-nft, do not touch!
+table ip nat {
+        chain PREROUTING {
+                type nat hook prerouting priority dstnat; policy accept;
+        }
+
+        chain INPUT {
+                type nat hook input priority 100; policy accept;
+        }
+
+        chain OUTPUT {
+                type nat hook output priority -100; policy accept;
+        }
+
+        chain POSTROUTING {
+                type nat hook postrouting priority srcnat; policy accept;
+        }
+}
+table ip6 mangle {
+        chain PREROUTING {
+                type filter hook prerouting priority mangle; policy accept;
+                counter packets 269 bytes 22516 jump MACC
+                counter packets 269 bytes 22516 jump MAA
+        }
+
+        chain INPUT {
+                type filter hook input priority mangle; policy accept;
+                counter packets 174 bytes 12732 jump MBCC
+                counter packets 174 bytes 12732 jump MBB
+        }
+
+        chain FORWARD {
+                type filter hook forward priority mangle; policy accept;
+                counter packets 0 bytes 0 jump MCCC
+                counter packets 0 bytes 0 jump MCC
+        }
+
+        chain OUTPUT {
+                type route hook output priority mangle; policy accept;
+                counter packets 739 bytes 104692 jump MDCC
+                counter packets 739 bytes 104692 jump MDD
+        }
+
+        chain POSTROUTING {
+                type filter hook postrouting priority mangle; policy accept;
+                counter packets 742 bytes 104844 jump MECC
+                counter packets 742 bytes 104844 jump MEE
+        }
+
+        chain MAA {
+        }
+
+        chain MACC {
+        }
+
+        chain MBB {
+        }
+
+        chain MBCC {
+        }
+
+        chain MCC {
+        }
+
+        chain MCCC {
+        }
+
+        chain MDCC {
+        }
+
+        chain MDD {
+        }
+
+        chain MECC {
+        }
+
+        chain MEE {
+        }
+}
+table ip6 raw {
+        chain PREROUTING {
+                type filter hook prerouting priority raw; policy accept;
+        }
+
+        chain OUTPUT {
+                type filter hook output priority raw; policy accept;
+        }
+}
+table ip6 filter {
+        chain INPUT {
+                type filter hook input priority filter; policy accept;
+                counter packets 174 bytes 12732 jump FACC
+                counter packets 174 bytes 12732 jump FAA
+        }
+
+        chain FORWARD {
+                type filter hook forward priority filter; policy accept;
+                counter packets 0 bytes 0 jump FBCC
+                counter packets 0 bytes 0 jump FBB
+        }
+
+        chain OUTPUT {
+                type filter hook output priority filter; policy accept;
+                counter packets 739 bytes 104692 jump FCCC
+                counter packets 739 bytes 104692 jump FCC
+        }
+
+        chain FAA {
+        }
+
+        chain FACC {
+        }
+
+        chain FBB {
+        }
+
+        chain FBCC {
+        }
+
+        chain FCC {
+        }
+
+        chain FCCC {
+        }
+}
