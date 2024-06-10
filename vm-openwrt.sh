@@ -104,7 +104,7 @@ ip tuntap del mode tap dev $LAN
 # 	policy performance/memory \;
 # 	auto-merge \; }
 # nft add element ?family <table> <set> { '192.168.1.1','192.168.1.2' }
-# nft add rule ?family <table> <chain> ip saddr @<set> -j drop
+# nft add rule ?family <table> <chain> ip saddr @<set> drop
 #
 # nft add/delete/destroy/list/flush/reset map ?family <table> <map> {
 # 	type ipv4_addr:ipv6_addr:ether_addr:inet_proto:inet_service,mark:counter:quota \;
