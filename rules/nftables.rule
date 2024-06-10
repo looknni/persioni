@@ -146,6 +146,12 @@
 #        }
 #}
 table ip mangle {
+	set setmcc {
+		type ipv4_addr
+		flags interval
+		counter
+	}
+
         chain PREROUTING {
                 type filter hook prerouting priority mangle; policy accept;
                 counter packets 1648216 bytes 208078665 jump MACC
@@ -190,6 +196,7 @@ table ip mangle {
 
         chain MCC {
                 ip daddr 192.168.0.1 counter packets 0 bytes 0 drop
+		ip daddr @setmcc drop
         }
 
         chain MCCC {
