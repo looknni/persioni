@@ -103,13 +103,13 @@ ip tuntap del mode tap dev $LAN
 # 	size 10000 \;
 # 	policy performance/memory \;
 # 	auto-merge \; }
-# nft add element ?family <table> <set> { 192.168.1.1,192.168.1.2 }
+# nft add element ?family <table> <set> { '192.168.1.1','192.168.1.2' }
 # nft add rule ?family <table> <chain> ip saddr @<set> -j drop
 #
 # nft add/delete/destroy/list/flush/reset map ?family <table> <map> {
-# 	type ipv4_addr:ipv6_addr:ether_addr:inet_proto:inet_service,mark:counter:quota:verdict \;
+# 	type ipv4_addr:ipv6_addr:ether_addr:inet_proto:inet_service,mark:counter:quota \;
 # 	size 10000 \;
 # 	policy performance/memory \; }
-# nft add element ?family <table> <map> { 192.168.1.1:tcp dport {80,443}:drop,192.168.1.2:udp dport 53:drop}
+# nft add element ?family <table> <map> {'192.168.1.1':80,'192.168.1.2':443}
 # nft add rule ?family <table> <chain> ip saddr @<map> ct state new counter drop
 #
