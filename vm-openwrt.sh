@@ -55,14 +55,61 @@ ip tuntap del mode tap dev $LAN
 
 
 # iptables -nvL/-S/-F/-X/-Z [--line-numbers]
-#iptables -t raw/mangle/nat/filter/security -A/-I/-D/-R PREROUTING/INPUT/FORWARD/OUTPUT/POSTROUTING 1..n { -m state/conntrack/limit/icmp/mac/multiport/recent/string/ttl/time/iprange  --state ESTABLISHED,RELATED,NEW,INVALID,UNTRACKED,SNAT,DNAT /--ctstate NEW /--limit 1/second /--icmp-type echo-request /--mac-source 00:11:22:33:44:55 /--dports 22,80 /--name badguy --rcheck --seconds 60 --hitcount 3 /--algo bm/kmp --string "blockme" /--ttl-lt 10 / --timestart 08:00 --timestop 18:00 --days Mon-Fri /--src-range 192.168.0.100-192.168.0.200 } -i/-o enp1s0 -p all/tcp --tcp-flags FIN,SYN,RST,PSH,ACK,URG /udp/icmp --icmp-type echo-request/echo-reply -s/-d 192.168.0.2/24 --sport/--dport 80 -j DROP/ACCEPT/REJECT/LOG/REDIRECT/DNAT/SNAT/MASQUERADE/FORWARD/MARK
+#iptables -t raw/mangle/nat/filter/security -A/-I/-D/-R PREROUTING/INPUT/FORWARD/OUTPUT/POSTROUTING \ 
+#	-m state --state ESTABLISHED,RELATED,NEW,INVALID,UNTRACKED,SNAT,DNAT
+#	conntrack --ctstate ESTABLISHED,RELATED,NEW,INVALID,UNTRACKED
+#	limit --limit 1
+#	icmp --icmp-type echo-request
+#	mac --mac-source 00:11:22:33:44:55
+#	multiport --dports 80,443
+#	recent --name badguy --rcheck --seconds 60 --hitcount 3
+#	string --algo bm/kmp --string "blockme"
+#	ttl --ttl-lt 10
+#	time --timestart 08:00 --timestop 18:00 --days Mon-Fri
+#	iprange --src-range 192.168.0.100-192.168.0.200 
+#	-i/-o enp1s0 -p all/tcp --tcp-flags FIN,SYN,RST,PSH,ACK,URG /udp/icmp --icmp-type echo-request/echo-reply -s/-d 192.168.0.2/24 --sport/--dport 80 -j DROP/ACCEPT/REJECT/LOG/REDIRECT --to-port 8080/DNAT --to-destination 192.168.0.1/SNAT --to 192.168.0.1/MASQUERADE/MARK --set-mark 1
 #
-# nft -a/-f list/flush ruleset | grep -Fx "rule"
-# nft add rule raw prerouting ip saddr { ip1,ip2 } drop
-# nft add rule filter input limit rate 10/second burst 20 packets
-
 # nft export (xml | json)
 # nft monitor [new | destroy] [tables | chains | sets | rules | elements] [xml | json]
-
-# nft add table <family> <table>
-# nft add chain ip/ip6/inet/arp/bridge/netdev <table> <chain> { type filter/nat/route/bridge/fip/arp hook prerouting/input/forward/output/postrouting [device <device>] priority NF_IP_PRI_CONNTRACK_DEFRAG (-400) / NF_IP_PRI_RAW (-300) / NF_IP_PRI_SELINUX_FIRST (-225) / NF_IP_PRI_CONNTRACK (-200) / NF_IP_PRI_MANGLE (-150) / NF_IP_PRI_NAT_DST (-100) / NF_IP_PRI_FILTER (0) / NF_IP_PRI_SECURITY (50) / NF_IP_PRI_NAT_SRC (100) / NF_IP_PRI_SELINUX_LAST (225) / NF_IP_PRI_CONNTRACK_HELPER (300); policy accept/drop/queue/continue/return/jump <chain>/goto <chain> ; }
+# 
+# family ip|ip6|inet|arp|bridge|netdev
+# hook	inet prerouting|input|forward|output|postrouting|ingress
+# 	arp input|output
+# 	netdev ingress|egress
+# priority,type bridge  dstnat,-300,prerouting
+# 			filter,-200,all
+# 			out,100,output
+# 			srcnat,300,postrouting
+#
+# nft -a/-f list/flush ruleset/counters/quotas/limits ?family
+#
+# nft add/delete table ?family <table>
+# nft add chain ?family <table> <chain> { 
+# 	type filter/nat/route/bridge/fip/arp 
+# 	hook prerouting/input/forward/output/postrouting/ingress
+# 	[device <device>] 
+# 	priority raw,-300|mangle,-150|dstnat,-100|filter,0|security,50|srcnat,100 \; 
+# 	policy accept/drop/queue/continue/return/jump <chain>/goto <chain> \; }
+#
+# nft add/replace/reset/delete rule ?family <table> <chain>
+# 	nft add rule raw prerouting ip saddr { ip1,ip2 } ip daddr { ip1,ip2 } drop
+# 	nft add rule filter input limit rate 10/second burst 20 packets
+#
+# nft add/delete/destroy/list/flush/reset set ?family <table> <set> {
+# 	type/typeof ipv4_addr,ipv6_addr,ether_addr,inet_proto,inet_service,mark \;
+# 	flags constant,dynamic,interval,timeout \;
+# 	timeout 600 \;
+# 	gc-interval 65536 \;
+# 	size 10000 \;
+# 	policy performance/memory \;
+# 	auto-merge \; }
+# nft add element ?family <table> <set> { 192.168.1.1,192.168.1.2 }
+# nft add rule ?family <table> <chain> ip saddr @<set> -j drop
+#
+# nft add/delete/destroy/list/flush/reset map ?family <table> <map> {
+# 	type ipv4_addr:ipv6_addr:ether_addr:inet_proto:inet_service,mark:counter:quota:verdict \;
+# 	size 10000 \;
+# 	policy performance/memory \; }
+# nft add element ?family <table> <map> { 192.168.1.1:tcp dport {80,443}:drop,192.168.1.2:udp dport 53:drop}
+# nft add rule ?family <table> <chain> ip saddr @<map> ct state new counter drop
+#
