@@ -1,5 +1,18 @@
 #!/bin/sh
 
+:<<'END'
+
+if [ -z $1 ];then
+        exit
+fi
+nft add element ip mangle setmcc {"$1"}
+if [ "$2" == "del" ];then
+        nft delete element ip mangle setmcc {"$1"}
+fi
+nft list set mangle setmcc
+
+END
+
 if [ -z $1 ];then
         exit
 fi
