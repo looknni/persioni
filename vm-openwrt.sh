@@ -69,7 +69,7 @@ ip tuntap del mode tap dev $LAN
 #	iprange --src-range 192.168.0.100-192.168.0.200 
 #	-i/-o enp1s0 -p all/tcp --tcp-flags FIN,SYN,RST,PSH,ACK,URG /udp/icmp --icmp-type echo-request/echo-reply -s/-d 192.168.0.2/24 --sport/--dport 80 -j DROP/ACCEPT/REJECT/LOG/REDIRECT --to-port 8080/DNAT --to-destination 192.168.0.1/SNAT --to 192.168.0.1/MASQUERADE/MARK --set-mark 1
 #
-#
+# nft monitor [new | destroy] [tables | chains | sets | rules | elements] 
 # family ip|ip6|inet|arp|bridge|netdev
 # hook	inet prerouting|input|forward|output|postrouting
 # 	arp input|output
@@ -91,9 +91,16 @@ ip tuntap del mode tap dev $LAN
 # 	[device <device>] 
 # 	priority raw,-300|mangle,-150|dstnat,-100|filter,0|security,50|srcnat,100 \; 
 # 	policy accept/drop/queue/continue/return/jump <chain>/goto <chain> \; }
+# nft rename chain ?family <table> <name> <newname>
 #
-# nft add/replace/reset/delete rule ?family <table> <chain>
-# 	nft add rule raw prerouting ip saddr { ip1,ip2 } ip daddr { ip1,ip2 } drop
+# log [level emerg|alert|crit|err|warn|notice|info|debug]
+# nft add/insert/replace/delete rule ?family <table> <chain> \
+# 		<matches> <statements> # add
+#	 	[position <handle>] <matches> # insert
+# 		[handle <handle>] <matches>  # replace
+# 		[handle <handle>] # delete
+#
+# 	nft add rule raw prerouting ip saddr { ip1,ip2 } ip daddr { ip1,ip2 } log prefix "look" drop
 # 	nft add rule filter input limit rate 10/second burst 20 packets
 #	nft add rule ip filter FORWARD iifname "eth0" oifname "wlan0" ip saddr 192.168.1.0/24 ct state new accept
 #	nft add rule ip filter FORWARD ct state established,related accept
