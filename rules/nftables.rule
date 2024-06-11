@@ -150,6 +150,7 @@ table ip mangle {
 		type ipv4_addr
 		flags interval
 		counter
+		auto-merge
 	}
 						
         chain PREROUTING {
