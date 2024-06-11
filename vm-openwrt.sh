@@ -93,7 +93,7 @@ ip tuntap del mode tap dev $LAN
 # 	policy accept/drop/queue/continue/return/jump <chain>/goto <chain> \; }
 # nft rename chain ?family <table> <name> <newname>
 #
-# log [level emerg|alert|crit|err|warn|notice|info|debug]
+# log [level emerg|alert|crit|err|warn|notice|info|debug] [flags tcp|ip|skuid|ether|all]
 # nft add/insert/replace/delete rule ?family <table> <chain> \
 # 		<matches> <statements> # add
 #	 	[position <handle>] <matches> # insert
@@ -118,18 +118,18 @@ ip tuntap del mode tap dev $LAN
 # 	policy performance/memory \;
 # 	auto-merge \; }
 # nft add element ?family <table> <set> { '192.168.1.1','192.168.1.2' }
-# nft add rule ?family <table> <chain> ip saddr @<set> drop
+# nft add rule ?family <table> <chain> ip saddr [!=] @<set> drop
 #
 # nft add/delete/destroy/list/flush/reset map ?family <table> <map> {
-# 	type ipv4_addr:ipv6_addr:ether_addr:inet_proto:inet_service,mark:counter:quota \;
+# 	type ipv4_addr:ipv6_addr:ether_addr:inet_proto:inet_service,mark:counter:quota:verdict \;
 # 	flags constant,dynamic,interval,timeout \;
 # 	size 10000 \;
 # 	policy performance/memory \; }
 # nft add element ?family <table> <map> {'192.168.1.1':80,'192.168.1.2':443}
-# nft add rule ?family <table> <chain> ip saddr @<map> ct state new counter drop
+# nft add rule ?family <table> <chain> ip saddr [map|vmap] @<map> ct state new counter drop
 #
 # nft add/delete flowtable ?family <table> <flowtable> {
-#	hook <hook> priority <priority> \;
+#	hook ingress priority <priority> \;
 #	devices={device[, ...]} \; }
 # nft add rule ?family <table> <chain> jump flowtable <flowtable>
 #
