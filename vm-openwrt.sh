@@ -69,9 +69,7 @@ ip tuntap del mode tap dev $LAN
 #	iprange --src-range 192.168.0.100-192.168.0.200 
 #	-i/-o enp1s0 -p all/tcp --tcp-flags FIN,SYN,RST,PSH,ACK,URG /udp/icmp --icmp-type echo-request/echo-reply -s/-d 192.168.0.2/24 --sport/--dport 80 -j DROP/ACCEPT/REJECT/LOG/REDIRECT --to-port 8080/DNAT --to-destination 192.168.0.1/SNAT --to 192.168.0.1/MASQUERADE/MARK --set-mark 1
 #
-# nft export (xml | json)
-# nft monitor [new | destroy] [tables | chains | sets | rules | elements] [xml | json]
-# 
+# nft monitor [new | destroy] [tables | chains | sets | rules | elements] 
 # family ip|ip6|inet|arp|bridge|netdev
 # hook	inet prerouting|input|forward|output|postrouting
 # 	arp input|output
@@ -80,6 +78,7 @@ ip tuntap del mode tap dev $LAN
 # 			filter,-200,all
 # 			out,100,output
 # 			srcnat,300,postrouting
+# meta	length | nfproto | l4proto | protocol | priority | mark | iif | iifname | iiftype | oif | oifname | oiftype | skuid | skgid | nftrace | rtclassid | ibrname | obrname | pkttype | cpu | iifgroup | oifgroup | cgroup | random | ipsec | iifkind | oifkind | time | hour | day
 #
 # nft -a/-f list/flush ruleset/counters/quotas/limits ?family
 # nft list secmarks/synproxys/flow tables/meters/hooks [table ?family <table>]
@@ -92,33 +91,45 @@ ip tuntap del mode tap dev $LAN
 # 	[device <device>] 
 # 	priority raw,-300|mangle,-150|dstnat,-100|filter,0|security,50|srcnat,100 \; 
 # 	policy accept/drop/queue/continue/return/jump <chain>/goto <chain> \; }
+# nft rename chain ?family <table> <name> <newname>
 #
-# nft add/replace/reset/delete rule ?family <table> <chain>
-# 	nft add rule raw prerouting ip saddr { ip1,ip2 } ip daddr { ip1,ip2 } drop
+# log [level emerg|alert|crit|err|warn|notice|info|debug]
+# nft add/insert/replace/delete rule ?family <table> <chain> \
+# 		<matches> <statements> # add
+#	 	[position <handle>] <matches> # insert
+# 		[handle <handle>] <matches>  # replace
+# 		[handle <handle>] # delete
+#
+# 	nft add rule raw prerouting ip saddr { ip1,ip2 } ip daddr { ip1,ip2 } log prefix "look" drop
 # 	nft add rule filter input limit rate 10/second burst 20 packets
+#	nft add rule ip filter FORWARD iifname "eth0" oifname "wlan0" ip saddr 192.168.1.0/24 ct state new accept
+#	nft add rule ip filter FORWARD ct state established,related accept
+#	nft add rule ip nat POSTROUTING oifname "eth0" masquerade
+#	nft add rule ip nat PREROUTING iifname "at0" tcp dport 80 ip daddr 192.168.1.100 dnat to 192.168.0.2:443
 #
 # nft add/delete/destroy/list/flush/reset set ?family <table> <set> {
-# 	type/typeof ipv4_addr,ipv6_addr,ether_addr,inet_proto,inet_service,mark \;
+# 	type ipv4_addr . ipv6_addr . ether_addr . inet_proto . inet_service . mark \;
 # 	flags constant,dynamic,interval,timeout \;
 # 	counter \;
-# 	timeout 600 \;
+# 	timeout 10000ms \;
 # 	gc-interval 65536 \;
 # 	size 10000 \;
+# 	comment "why" \;
 # 	policy performance/memory \;
 # 	auto-merge \; }
 # nft add element ?family <table> <set> { '192.168.1.1','192.168.1.2' }
 # nft add rule ?family <table> <chain> ip saddr @<set> drop
 #
 # nft add/delete/destroy/list/flush/reset map ?family <table> <map> {
-# 	type/typeof ipv4_addr:ipv6_addr:ether_addr:inet_proto:inet_service,mark:counter:quota \;
+# 	type ipv4_addr:ipv6_addr:ether_addr:inet_proto:inet_service,mark:counter:quota \;
 # 	flags constant,dynamic,interval,timeout \;
 # 	size 10000 \;
 # 	policy performance/memory \; }
 # nft add element ?family <table> <map> {'192.168.1.1':80,'192.168.1.2':443}
 # nft add rule ?family <table> <chain> ip saddr @<map> ct state new counter drop
 #
-# nft add/delete flowtable ?family table <flowtable> {
+# nft add/delete flowtable ?family <table> <flowtable> {
 #	hook <hook> priority <priority> \;
 #	devices={device[, ...]} \; }
-# nft add flow ?family <tables> <flowtable> tcp dport 22 ip saddr 192.168.0.1/24 counter accept
 # nft add rule ?family <table> <chain> jump flowtable <flowtable>
+#

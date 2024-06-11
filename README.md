@@ -6,7 +6,7 @@
 ---
 ##### [Ventoy](https://www.ventoy.net/en/index.html) . [Tempmail](https://tempmail.plus/en) . [.apk](https://www.malavida.com/en) . [Tracker.deb](https://tracker.debian.org/pkg/linux) . [Cppreference](https://cppreference.com/)
 ---
-##### [Gnu-command](https://www.gnu.org/software/) . [ ? ](https://quickref.cn/) . [Gentoo](https://wiki.gentoo.org/) . [Funtoo](https://www.funtoo.org/)
+##### [Gnu-command](https://www.gnu.org/software/) . [ ? ](https://quickref.cn/) . [Gentoo](https://wiki.gentoo.org/) . [Funtoo](https://www.funtoo.org/) . [Nftables](https://wiki.nftables.org/)
 ---
 > #### [SOURCES](https://cdimage.debian.org/images/) $\oint_{testing_{unstable}}^{stable} {debian}$
 > - https://mirrors.tuna.tsinghua.edu.cn
