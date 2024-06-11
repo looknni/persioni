@@ -5,11 +5,12 @@
 if [ -z $1 ];then
         exit
 fi
-nft add element ip mangle setmcc {"$1"}
+mdd='setmdd'
+nft add element ip mangle $mdd {"$1"}
 if [ "$2" == "del" ];then
-        nft delete element ip mangle setmcc {"$1"}
+        nft delete element ip mangle $mdd {"$1"}
 fi
-nft list set mangle setmcc
+nft list set mangle $mdd
 
 END
 
