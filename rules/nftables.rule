@@ -152,6 +152,13 @@ table ip mangle {
 		counter
 		auto-merge
 	}
+
+	set setmdd {
+		type ipv4_addr
+		flags interval
+		counter
+		auto-merge
+	}
 						
         chain PREROUTING {
                 type filter hook prerouting priority mangle; policy accept;
@@ -206,6 +213,7 @@ table ip mangle {
         }
 
         chain MDD {
+		ip daddr @setmdd drop
         }
 
         chain MECC {
