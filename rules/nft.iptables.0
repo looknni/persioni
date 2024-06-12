@@ -48,6 +48,9 @@ nch $mangle $ne $filter $ne $pd
 function nchn(){
 	nft add chain inet $1 $2
 }
+nchn $filter syn_flood
+nft add rule inet $filter syn_flood limit rate 25/second burst 50 packets return comment "water"
+nft add rule inet $filter syn_flood drop comment "drop_flood"
 nchn $filter faa
 nchn $filter fbb
 nchn $filter fcc
