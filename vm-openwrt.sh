@@ -34,6 +34,14 @@ ip tuntap del mode tap dev $LAN
 
 # ssh/scp -oHostKeyAlgorithms=ssh-rsa -oPubkeyAcceptedKeyTypes=+ssh-rsa
 
+# cp client.id_rsa.pub >> service./etc/dropbear/authorized_keys
+# ~/.ssh/config # ssh xxx
+# 	Host xxx
+#	Hostname 192.168.1.1
+#	IdentityFile ~/.ssh/id_rsa
+#	User root
+#	Port 1234
+
 # ls -l /sys/class/net/
 # /usr/share/ucode/luci/
 # switch - interface - firewall #/etc/config/firewall @lan INPUT,REJECT OUTPUT,ACCEPT FORWARD,REJECT
