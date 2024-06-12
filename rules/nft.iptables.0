@@ -26,7 +26,7 @@ nta $nat
 nta $filter
 nta $mangle
 function nch(){
-	nft add chain inet $1 $2 { type $3 hook $4 priority $5 \;counter \; policy accept \; }
+	nft add chain inet $1 $2 { type $3 hook $4 priority $5 \; policy accept \; }
 }
 nch $raw $nd $filter $na $pa
 nch $raw $ne $filter $na $pa
@@ -46,7 +46,7 @@ nch $mangle $nc $filter $nc $pd
 nch $mangle $nd $filter $nd $pd
 nch $mangle $ne $filter $ne $pd
 function nchn(){
-	nft add chain inet $1 $2 {counter \;}
+	nft add chain inet $1 $2
 }
 nchn $filter syn_flood
 nft add rule inet $filter syn_flood limit rate 25/second burst 50 packets counter return comment "water"
