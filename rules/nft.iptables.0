@@ -63,7 +63,6 @@ nchn $mangle mee
 function nru(){
 	nft add rule inet $1 $2 counter jump $3
 }
-nru $filter $nb syn_flood
 nru $filter $nb faa
 nru $filter $nc fbb
 nru $filter $nd fcc
