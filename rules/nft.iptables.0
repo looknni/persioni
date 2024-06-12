@@ -98,13 +98,22 @@ fi
 
 if [ "$1" == "iptables" ];then
 	filter='filter'
+	mangle='mangle'
 	prerouting='PREROUTING'
 	input='INPUT'
 	forward='FORWARD'
 	output='OUTPUT'
 	postrouting='POSTROUTING'
-	mangle='mangle'
-
+function inul(){
+	iptables -t $1 -F
+	iptables -t $1 -X
+	iptables -t $1 -Z
+	ip6tables -t $1 -F
+	ip6tables -t $1 -X
+	ip6tables -t $1 -Z
+}
+inul $filter
+inul $mangle
 function ifi(){
 	iptables -t $filter --new $2
 	iptables -t $filter -A $1 -j $2
