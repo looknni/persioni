@@ -1,17 +1,32 @@
 #!/bin/sh
 
 :<<'END'
-
-if [ -z $1 ];then
+if [ -z $2 ];then
         exit
 fi
-mdd='setmdd'
-nft add element ip mangle $mdd {"$1"}
-if [ "$2" == "del" ];then
-        nft delete element ip mangle $mdd {"$1"}
+mdd='mddset'
+function list4(){
+        nft list set inet mangle $mdd
+}
+function list6(){
+        nft list set inet mangle "${mdd}6"
+}
+if [ "$2" == "4" ];then
+        nft add element inet mangle $mdd {"$1"}
+        list4
 fi
-nft list set mangle $mdd
-
+if [ "$2" == "6" ];then
+        nft add element inet mangle "${mdd}6" {"$1"}
+        list6
+fi
+if [ "$3" == "del" ];then
+        nft delete element inet mangle $mdd {"$1"}
+        list4
+fi
+if [ "$3" == "del6" ];then
+        nft delete element inet mangle "${mdd}6" {"$1"}
+        list6
+fi
 END
 
 if [ -z $1 ];then

@@ -2,6 +2,7 @@
 if [ -z $1 ];then
 	exit
 fi
+nft flush ruleset
 if [ "$1" == "nft" ];then
 	na='prerouting'
 	nb='input'
@@ -18,14 +19,14 @@ if [ "$1" == "nft" ];then
 	pd=-150
 
 function nta(){
-	nft add table ip $1
+	nft add table inet $1
 }
 nta $raw
 nta $nat
 nta $filter
 nta $mangle
 function nch(){
-	nft add chain ip $1 $2 { type $3 hook $4 priority $5 \; policy accept \; }
+	nft add chain inet $1 $2 { type $3 hook $4 priority $5 \; policy accept \; }
 }
 nch $raw $nd $filter $na $pa
 nch $raw $ne $filter $na $pa
@@ -45,7 +46,7 @@ nch $mangle $nc $filter $nc $pd
 nch $mangle $nd $filter $nd $pd
 nch $mangle $ne $filter $ne $pd
 function nchn(){
-	nft add chain ip $1 $2
+	nft add chain inet $1 $2
 }
 nchn $filter faa
 nchn $filter fbb
@@ -57,7 +58,7 @@ nchn $mangle mcc
 nchn $mangle mdd
 nchn $mangle mee
 function nru(){
-	nft add rule ip $1 $2 counter jump $3
+	nft add rule inet $1 $2 counter jump $3
 }
 nru $filter $nb faa
 nru $filter $nc fbb
@@ -70,7 +71,8 @@ nru $mangle $nd mdd
 nru $mangle $ne mee
 
 function nset(){
-	nft add set ip $1 $2 { type ipv4_addr \;flags interval \; counter \; auto-merge \;}
+	nft add set inet ${1} ${2} { type ipv4_addr \;flags interval \; counter \; auto-merge \;}
+	nft add set inet ${1} "${2}6" { type ipv6_addr \;flags interval \; counter \; auto-merge \;}
 }
 nset $mangle maaset
 nset $mangle mbbset
@@ -78,13 +80,15 @@ nset $mangle mccset
 nset $mangle mddset
 nset $mangle meeset
 function nsetru(){
-	nft add rule ip $1 $2 ip daddr @$3 drop
+	nft add rule inet ${1} ${2} ip daddr @${3} drop
+	nft add rule inet ${1} ${2} ip6 daddr @"${3}6" drop
 }
 nsetru $mangle maa maaset
 nsetru $mangle mbb mbbset
 nsetru $mangle mcc mccset
 nsetru $mangle mdd mddset
 nsetru $mangle mee meeset
+
 unset na nb nc nd ne raw nat filter mangle pa pb pc pd
 nft list ruleset
 fi
