@@ -36,7 +36,6 @@ wpa_supplicant -B -c wpa_supplicant.conf -i eth0
 dhclient eth0
 
 ? dnsmasq.conf
-port=1234
 domain-needed
 bogus-priv
 strict-order
@@ -468,6 +467,8 @@ x11-terms/xterm sixel xinerama
 sys-devel/gcc objc objc++ objc-gc go
 app-editors/vim lua perl python racket ruby tcl
 dev-libs/openssl fips rfc3779
+net-firewall/iptables nftables conntrack netlink pcap static-libs
+net-firewall/nftables static-libs
 
 ? touch /etc/portage/package.accept_keywords/zzz_autounmask
 ? emerge mypackage --autounmask-write --autounmask

@@ -11,11 +11,11 @@ function list4(){
 function list6(){
         nft list set inet mangle "${mdd}6"
 }
-if [ "$2" == "4" ];then
+if [ "$2" == "4" ] && [ -z $3 ];then
         nft add element inet mangle $mdd {"$1"}
         list4
 fi
-if [ "$2" == "6" ];then
+if [ "$2" == "6" ] && [ -z $3 ];then
         nft add element inet mangle "${mdd}6" {"$1"}
         list6
 fi
