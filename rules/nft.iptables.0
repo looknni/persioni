@@ -100,7 +100,7 @@ nsetru $mangle mcc mccset
 nsetru $mangle mdd mddset
 nsetru $mangle mee meeset
 function nmapmacru(){
-	nft add rule inet ${1} ${2} ether saddr @${3} drop
+	nft add rule inet ${1} ${2} ether saddr vmap @${3} drop
 }
 nmapmacru $mangle maa maamap
 nmapmacru $mangle mbb mbbmap
