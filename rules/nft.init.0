@@ -1,9 +1,45 @@
 #!/bin/sh
-if [ -z $1 ];then
-	exit
+if [ ! "$1" == "init" ];then
+	mdd='mddset'
+	mangle='mangle'
+function list4(){
+        nft list set inet $mangle $mdd
+}
+function list6(){
+        nft list set inet $mangle "${mdd}6"
+}
+function add(){
+	if [ "$1" == "add" ];then
+        	nft add element inet $mangle $mdd {"$2"}
+        	list4
 fi
-nft flush ruleset
-if [ "$1" == "nft" ];then
+	if [ "$1" == "add6" ];then
+        	nft add element inet $mangle "${mdd}6" {"$2"}
+        	list6
+fi
+
+}
+function del(){
+	if [ "$1" == "del" ];then
+        	nft delete element inet $mangle $mdd {"$2"}
+        	list4
+fi
+	if [ "$1" == "del6" ];then
+        	nft delete element inet $mangle "${mdd}6" {"$2"}
+        	list6
+fi
+}
+if [ "$1" == "add" ] || [ "$1" == "add6" ];then
+	add $1 $2
+fi
+if [ "$1" == "del" ] || [ "$1" == "del6" ];then
+	del $1 $2
+fi
+fi
+
+if [ "$1" == "init" ];then
+
+	nft flush ruleset
 	na='prerouting'
 	nb='input'
 	nc='forward'
@@ -109,45 +145,4 @@ nsetru $mangle mee meeset
 #nmapmacru $mangle mee meemap
 unset na nb nc nd ne raw nat filter mangle pa pb pc pd
 nft list ruleset
-fi
-
-if [ "$1" == "iptables" ];then
-	filter='filter'
-	mangle='mangle'
-	prerouting='PREROUTING'
-	input='INPUT'
-	forward='FORWARD'
-	output='OUTPUT'
-	postrouting='POSTROUTING'
-function inul(){
-	iptables -t $1 -F
-	iptables -t $1 -X
-	iptables -t $1 -Z
-	ip6tables -t $1 -F
-	ip6tables -t $1 -X
-	ip6tables -t $1 -Z
-}
-inul $filter
-inul $mangle
-function ifi(){
-	iptables -t $filter --new $2
-	iptables -t $filter -A $1 -j $2
-	ip6tables -t $filter --new $2
-	ip6tables -t $filter -A $1 -j $2
-}
-ifi $input FAA
-ifi $forward FBB
-ifi $output FCC
-function ima(){
-	iptables -t $mangle --new $2
-	iptables -t $mangle -A $1 -j $2
-	ip6tables -t $mangle --new $2
-	ip6tables -t $mangle -A $1 -j $2
-}
-ima $prerouting MAA
-ima $input MBB
-ima $forward MCC
-ima $output MDD
-ima $postrouting MEE
-unset filter prerouting input forward output postrouting mangle
 fi
