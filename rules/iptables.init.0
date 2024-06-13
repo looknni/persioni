@@ -1,0 +1,91 @@
+#!/bin/sh
+
+if [ ! "$1" == "init" ];then
+	v4='/etc/iptables/rules.v4'
+	v6='/etc/iptables/rules.v6'
+q='mangle'
+w='MCC' # local 'MDD'
+IFS=$'\n'
+iptables -t $q -A $w -d $1 -j DROP
+a=`iptables -t $q -S | grep '\-A' | sort | uniq -d`
+function saves(){
+        iptables-save > $v4
+}
+function dell(){
+        iptables -t $q -D $w -d 0.0.0.0 -j DROP 2>/dev/null
+        iptables -t $q -D $w -s 0.0.0.0 -j DROP 2>/dev/null
+        ip6tables -t $q -D $w -s ::/128 -j DROP 2>/dev/null
+        ip6tables -t $q -D $w -d ::/128 -j DROP 2>/dev/null
+}
+dell
+saves
+sed -i '/0.0.0.0/d' $v4
+sed -i -E '/\-(s|d) ::\/128/d' $v6
+function restores(){
+        iptables-restore < $v4
+}
+function saves6(){
+        ip6tables-save > $v6
+}
+function restores6(){
+        ip6tables-restore < $v6
+}
+function sig4(){
+if [ ! -z "$a" ];then
+        b=$a
+        for i in $a;do
+                j=${i//\//\\\/}
+                sed -i "/${j}/d" $v4
+                echo "DEL $i"
+        done
+        restores
+        for k in $b;do
+                l=$(echo $k|grep -oE '([0-9]+\.){3}[0-9]+')
+                iptables -t $q -A $w -d $l -j DROP
+        done
+        saves
+fi
+}
+sig4
+fi
+
+if [ "$1" == "init" ];then
+        filter='filter'
+        mangle='mangle'
+        prerouting='PREROUTING'
+        input='INPUT'
+        forward='FORWARD'
+        output='OUTPUT'
+        postrouting='POSTROUTING'
+function inul(){
+        iptables -t $1 -F
+        iptables -t $1 -X
+        iptables -t $1 -Z
+        ip6tables -t $1 -F
+        ip6tables -t $1 -X
+        ip6tables -t $1 -Z
+}        
+inul $filter
+inul $mangle
+function ifi(){
+        iptables -t $filter --new $2
+        iptables -t $filter -A $1 -j $2
+        ip6tables -t $filter --new $2
+        ip6tables -t $filter -A $1 -j $2
+}        
+ifi $input FAA
+ifi $forward FBB
+ifi $output FCC
+function ima(){
+        iptables -t $mangle --new $2
+        iptables -t $mangle -A $1 -j $2
+        ip6tables -t $mangle --new $2
+        ip6tables -t $mangle -A $1 -j $2
+}        
+ima $prerouting MAA
+ima $input MBB
+ima $forward MCC
+ima $output MDD
+ima $postrouting MEE
+unset filter prerouting input forward output postrouting mangle
+fi
