@@ -265,7 +265,7 @@ XTerm*loginShell: false
 XTerm*saveLines: 2000
 !XTerm*charClass: 33:48,35:48,37:48,43:48,45-47:48,64:48,95:48,126:48
 XTerm*colorBDMode: true
-XTerm*colorBD: #fcfcfc
+XTerm*colorBD: #FF69B4
 
 XTerm*background: #1a1a1a
 XTerm*foreground: #d6d6d6
