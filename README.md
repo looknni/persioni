@@ -269,15 +269,15 @@ XTerm*colorBD: #FF69B4
 
 XTerm*background: #1a1a1a
 XTerm*foreground: #d6d6d6
-! 0,bg 1,bg(-s) 2,bg(d777) 3,fg(compressed-archive-exec) 4,fg(srw) 5,n
-! 6,n 7,n 8,fg(non-highlighted-parts) 9,fg(error-msg) 10,fg(prompt)
-! 11,fg(b-c) 12,fg(d-x) 13,fg(.png .xpm .svg) 14,fg(l)
-! 15,fg(highlighted-parts)
+! 0,bg 1,rws 2,ver 3,compressed-archive-exec 4,d777 5,n
+! 6,n 7,n 8,non-highlighted-parts 9,error-msg 10,prompt
+! 11,$ 12,d-x 13,.png .xpm .svg 14,l
+! 15,highlighted-parts
 XTerm*color0: #000000
-XTerm*color1: #a800aa
+XTerm*color1: #6A5ACD
 XTerm*color2: #D3D3D3
 XTerm*color3: #a85400
-XTerm*color4: #8B008B
+XTerm*color4: #000000
 XTerm*color5: #a800a8
 XTerm*color6: #00a8a8
 XTerm*color7: #ffeeaa
