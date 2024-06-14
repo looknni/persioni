@@ -119,6 +119,9 @@ nset $mangle mbbset
 nset $mangle mccset
 nset $mangle mddset
 nset $mangle meeset
+nset $filter faaset
+nset $filter fbbset
+nset $filter fccset
 function nsetru(){
 	nft add rule inet ${1} ${2} ip daddr @${3} drop
 	nft add rule inet ${1} ${2} ip6 daddr @"${3}6" drop
@@ -128,6 +131,9 @@ nsetru $mangle mbb mbbset
 nsetru $mangle mcc mccset
 nsetru $mangle mdd mddset
 nsetru $mangle mee meeset
+nsetru $filter faa faaset
+nsetru $filter fbb fbbset
+nsetru $filter fcc fccset
 #function nmapmac(){
 #	nft add map inet ${1} ${2} { type ether_addr : inet_proto \; flags interval \; counter \;}
 #}
