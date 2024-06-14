@@ -49,3 +49,12 @@ set mccset6 {
 #     type filter hook output priority 1; policy accept;
 #     ct state new log prefix "Firewall4 accepted egress: "
 # }
+chain user_dstnat {
+	type nat hook prerouting priority dstnat; policy accept;
+}
+
+chain user_srcnat {
+	type nat hook postrouting priority srcnat; policy accept;
+#	oifname "wan" jump srcnat_wan comment "!fw4: Handle wan IPv4/IPv6 srcnat traffic"
+}
+
