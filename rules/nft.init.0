@@ -1,8 +1,8 @@
 #!/bin/sh
 # $1,add|add6|del|del6 $2,ipaddr
 if [[ "$1" == "add" || "$1" == "add6" || "$1" == "del" || "$1" == "del6" ]];then
-	mdd='mccset' # local 'mddset'
-	mangle='fw4' # local 'mangle
+	mdd='mccset' # local 'fccset'|'mddset'
+	mangle='fw4' # local 'filter'|'mangle'
 function list4(){
         nft list set inet $mangle $mdd
 }
@@ -114,11 +114,14 @@ function nset(){
 	nft add set inet ${1} ${2} { type ipv4_addr \;flags interval \; counter \; auto-merge \;}
 	nft add set inet ${1} "${2}6" { type ipv6_addr \;flags interval \; counter \; auto-merge \;}
 }
-nset $mangle maaset
-nset $mangle mbbset
-nset $mangle mccset
-nset $mangle mddset
-nset $mangle meeset
+function p_nset(){
+	nft add set inet ${1} ${2} { type ipv4_addr . inet_service \;flags interval \; counter \; auto-merge \;}
+}
+p_nset $mangle maaset
+p_nset $mangle mbbset
+p_nset $mangle mccset
+p_nset $mangle mddset
+p_nset $mangle meeset
 nset $filter faaset
 nset $filter fbbset
 nset $filter fccset
@@ -126,16 +129,19 @@ function nsetru(){
 	nft add rule inet ${1} ${2} ip daddr @${3} drop
 	nft add rule inet ${1} ${2} ip6 daddr @"${3}6" drop
 }
-nsetru $mangle maa maaset
-nsetru $mangle mbb mbbset
-nsetru $mangle mcc mccset
-nsetru $mangle mdd mddset
-nsetru $mangle mee meeset
+function p_nset_ru(){
+	nft add rule inet ${1} ${2} ip saddr . tcp dport @${3} drop
+}
+p_nset_ru $mangle maa maaset
+p_nset_ru $mangle mbb mbbset
+p_nset_ru $mangle mcc mccset
+p_nset_ru $mangle mdd mddset
+p_nset_ru $mangle mee meeset
 nsetru $filter faa faaset
 nsetru $filter fbb fbbset
 nsetru $filter fcc fccset
 #function nmapmac(){
-#	nft add map inet ${1} ${2} { type ether_addr : inet_proto \; flags interval \; counter \;}
+#	nft add map inet ${1} ${2} { type ether_addr : verdict \; flags interval \; counter \;}
 #}
 #nmapmac $mangle maamap
 #nmapmac $mangle mbbmap
@@ -143,7 +149,7 @@ nsetru $filter fcc fccset
 #nmapmac $mangle mddmap
 #nmapmac $mangle meemap
 #function nmapmacru(){
-#	nft add rule inet ${1} ${2} ether saddr map @${3} drop
+#	nft add rule inet ${1} ${2} ether saddr vmap @${3} drop
 #}
 #nmapmacru $mangle maa maamap
 #nmapmacru $mangle mbb mbbmap
