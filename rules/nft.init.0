@@ -1,8 +1,8 @@
 #!/bin/sh
 # $1,add|add6|del|del6 $2,ipaddr
 if [[ "$1" == "add" || "$1" == "add6" || "$1" == "del" || "$1" == "del6" ]];then
-	mdd='mccset' # local 'fccset'|'mddset'
-	mangle='fw4' # local 'filter'|'mangle'
+	mdd='mccset' # local 'fccset'
+	mangle='fw4' # local 'filter'
 function list4(){
         nft list set inet $mangle $mdd
 }
