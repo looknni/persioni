@@ -277,7 +277,7 @@ XTerm*color0: #000000
 XTerm*color1: #6A5ACD
 XTerm*color2: #D3D3D3
 XTerm*color3: #a85400
-XTerm*color4: #000000
+XTerm*color4: #ff00ff
 XTerm*color5: #a800a8
 XTerm*color6: #00a8a8
 XTerm*color7: #ffeeaa
