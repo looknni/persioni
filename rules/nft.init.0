@@ -140,22 +140,19 @@ p_nset_ru $mangle mee meeset
 nsetru $filter faa faaset
 nsetru $filter fbb fbbset
 nsetru $filter fcc fccset
-#function nmapmac(){
-#	nft add map inet ${1} ${2} { type ether_addr : verdict \; flags interval \; counter \;}
-#}
-#nmapmac $mangle maamap
-#nmapmac $mangle mbbmap
-#nmapmac $mangle mccmap
-#nmapmac $mangle mddmap
-#nmapmac $mangle meemap
-#function nmapmacru(){
-#	nft add rule inet ${1} ${2} ether saddr vmap @${3} drop
-#}
-#nmapmacru $mangle maa maamap
-#nmapmacru $mangle mbb mbbmap
-#nmapmacru $mangle mcc mccmap
-#nmapmacru $mangle mdd mddmap
-#nmapmacru $mangle mee meemap
+
+function nmapmac(){
+	nft add map inet ${1} ${2} { type ether_addr : verdict \; flags interval \; counter \;}
+}
+nmapmac $filter faamap
+nmapmac $filter fbbmap
+nmapmac $filter fccmap
+function nmapmacru(){
+	nft add rule inet ${1} ${2} ether saddr vmap @${3}
+}
+nmapmacru $filter faa faamap
+nmapmacru $filter fbb fbbmap
+nmapmacru $filter fcc fccmap
 unset na nb nc nd ne raw nat filter mangle pa pb pc pd
 nft list ruleset
 fi
