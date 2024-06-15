@@ -86,7 +86,7 @@ ip tuntap del mode tap dev $LAN
 # 			filter,-200,all
 # 			out,100,output
 # 			srcnat,300,postrouting
-# meta	length | nfproto | l4proto | protocol | priority | mark | iif | iifname | iiftype | oif | oifname | oiftype | skuid | skgid | nftrace | rtclassid | ibrname | obrname | pkttype | cpu | iifgroup | oifgroup | cgroup | random | ipsec | iifkind | oifkind | time | hour | day
+# meta nfproto|protocol|l3proto|l4proto|iif|iifname|iiftype|iifkind|iifgroup|ibrname|oif|oifname|oiftype|oifkind|oifgroup|obrname|length|priority|mark|pkttype|random|cpu|time|hour|day|cgroup|ipsec|skuid|skgid|rtclassid|nftrace
 #
 # nft -a/-f list/flush ruleset/counters/quotas/limits ?family
 # nft list secmarks/synproxys/flow tables/meters/hooks [table ?family <table>]
