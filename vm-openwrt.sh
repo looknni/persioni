@@ -64,8 +64,8 @@ ip tuntap del mode tap dev $LAN
 
 # iptables -nvL/-S/-F/-X/-Z [--line-numbers]
 #iptables -t raw/mangle/nat/filter/security -A/-I/-D/-R PREROUTING/INPUT/FORWARD/OUTPUT/POSTROUTING \ 
-#	-m state --state ESTABLISHED,RELATED,NEW,INVALID,UNTRACKED,SNAT,DNAT
-#	conntrack --ctstate ESTABLISHED,RELATED,NEW,INVALID,UNTRACKED
+#	-m state --state UNTRACKED,INVALID,NEW,ESTABLISHED,RELATED,SNAT,DNAT
+#	conntrack --ctstate UNTRACKED,INVALID,NEW,ESTABLISHED,RELATED
 #	limit --limit 1
 #	icmp --icmp-type echo-request
 #	mac --mac-source 00:11:22:33:44:55
