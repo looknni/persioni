@@ -110,10 +110,6 @@ ip tuntap del mode tap dev $LAN
 #
 # 	nft add rule raw prerouting ip saddr { ip1,ip2 } ip daddr { ip1,ip2 } log prefix "look" drop
 # 	nft add rule filter input limit rate 10/second burst 20 packets
-#	nft add rule ip filter FORWARD iifname "eth0" oifname "wlan0" ip saddr 192.168.1.0/24 ct state new accept
-#	nft add rule ip filter FORWARD ct state established,related accept
-#	nft add rule ip nat POSTROUTING oifname "eth0" masquerade
-#	nft add rule ip nat PREROUTING iifname "at0" tcp dport 80 ip daddr 192.168.1.100 dnat to 192.168.0.2:443
 #
 # nft add/delete/destroy/list/flush/reset set ?family <table> <set> {
 # 	type ipv4_addr . ipv6_addr . ether_addr . inet_proto . inet_service . mark \;
