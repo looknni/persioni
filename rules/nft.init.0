@@ -141,11 +141,11 @@ nru $mangle $nd mdd
 nru $mangle $ne mee
 
 function nset(){
-	nft add set inet ${1} ${2} { type ipv4_addr \;flags interval \; counter \; auto-merge \;}
-	nft add set inet ${1} "${2}6" { type ipv6_addr \;flags interval \; counter \; auto-merge \;}
+	nft add set inet ${1} ${2} { type ipv4_addr \;flags interval,timeout \; counter \; auto-merge \;}
+	nft add set inet ${1} "${2}6" { type ipv6_addr \;flags interval,timeout \; counter \; auto-merge \;}
 }
 function p_nset(){
-	nft add set inet ${1} ${2} { type ipv4_addr . inet_service \;flags interval \; counter \; auto-merge \;}
+	nft add set inet ${1} ${2} { type ipv4_addr . inet_service \;flags interval,timeout \; counter \; auto-merge \;}
 }
 p_nset $mangle maaset
 p_nset $mangle mbbset
@@ -172,7 +172,7 @@ nsetru $filter fbb fbbset
 nsetru $filter fcc fccset
 
 function nmapmac(){
-	nft add map inet ${1} ${2} { type ether_addr : verdict \; flags interval \; counter \;}
+	nft add map inet ${1} ${2} { type ether_addr : verdict \; flags interval,timeout \; counter \;}
 }
 nmapmac $filter faamap
 nmapmac $filter fbbmap
