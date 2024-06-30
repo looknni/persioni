@@ -111,6 +111,11 @@ ip tuntap del mode tap dev $LAN
 # 	nft add rule raw prerouting ip saddr { ip1,ip2 } ip daddr { ip1,ip2 } log prefix "look" drop
 # 	nft add rule filter input limit rate 10/second burst 20 packets
 #
+# limit rate [over] packet_number / TIME_UNIT [burst packet_number packets]
+# limit rate [over] byte_number BYTE_UNIT / TIME_UNIT [burst byte_number BYTE_UNIT]
+# 	TIME_UNIT := second | minute | hour | day
+# 	BYTE_UNIT := bytes | kbytes | mbytes
+#
 # nft add/delete/destroy/list/flush/reset set ?family <table> <set> {
 # 	type ipv4_addr . ipv6_addr . ether_addr . inet_proto . inet_service . mark \;
 # 	flags constant,dynamic,interval,timeout \;

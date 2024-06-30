@@ -1,42 +1,72 @@
 #!/bin/sh
-# $1,add|add6|del|del6 $2,ipaddr
-if [[ "$1" == "add" || "$1" == "add6" || "$1" == "del" || "$1" == "del6" ]];then
+
 	mdd='mccset' # local 'fccset'
+	mddm='mccm'
 	mangle='fw4' # local 'filter'
 function list4(){
-        nft list set inet $mangle $mdd
+	nft list set inet $1 $2
 }
 function list6(){
         nft list set inet $mangle "${mdd}6"
 }
 function add(){
-	if [ "$1" == "add" ];then
-        	nft add element inet $mangle $mdd {"$2"}
-        	list4
-fi
-	if [ "$1" == "add6" ];then
-        	nft add element inet $mangle "${mdd}6" {"$2"}
-        	list6
-fi
-
+	case "$1" in
+		add )
+			nft add element inet $mangle $mdd {"$2"}
+			list4 $mangle $mdd
+			;;
+		add6 )
+			nft add element inet $mangle "${mdd}6" {"$2"}
+			list6
+			;;
+		addt )
+			nft add element inet $mangle $mdd {"$2" timeout $3}
+			list4 $mangle $mdd
+			;;
+		addm )
+			nft add element inet $mangle $mddm { "$2" }
+			list4 $mangle $mddm
+			;;
+		addmt )
+			nft add element inet $mangle $mddm { "$2" timeout $3 }
+			list4 $mangle $mddm
+			;;
+	esac
 }
 function del(){
-	if [ "$1" == "del" ];then
-        	nft delete element inet $mangle $mdd {"$2"}
-        	list4
-fi
-	if [ "$1" == "del6" ];then
-        	nft delete element inet $mangle "${mdd}6" {"$2"}
-        	list6
-fi
+	case "$1" in
+		del )
+			nft delete element inet $mangle $mdd {"$2"}
+			list4 $mangle $mdd
+			;;
+		del6 )
+			nft delete element inet $mangle "${mdd}6" {"$2"}
+			list6
+			;;
+		delm )
+			nft delete element inet $mangle $mddm {"$2"}
+			list4 $mangle $mddm
+			;;
+	esac
 }
-if [ "$1" == "add" ] || [ "$1" == "add6" ];then
-	add $1 $2
-fi
-if [ "$1" == "del" ] || [ "$1" == "del6" ];then
-	del $1 $2
-fi
-fi
+case "$1" in
+	add | add6 )
+		add $1 $2
+		;;
+	del | del6 )
+		del $1 $2
+		;;
+	addm )
+		add $1 $2
+		;;
+        addt |addmt )
+                add $1 $2 $3
+                ;;
+	delm )
+		del $1 $2
+		;;
+esac
+unset mdd mddm mangle
 
 if [ "$1" == "init" ];then
 
