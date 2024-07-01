@@ -63,7 +63,7 @@ ip tuntap del mode tap dev $LAN
 
 
 # iptables -nvL/-S/-F/-X/-Z [--line-numbers]
-#iptables -t raw/mangle/nat/filter/security -A/-I/-D/-R PREROUTING/INPUT/FORWARD/OUTPUT/POSTROUTING \ 
+# iptables -t raw/mangle/nat/filter/security -A/-I/-D/-R PREROUTING/INPUT/FORWARD/OUTPUT/POSTROUTING \
 #	-m state --state UNTRACKED,INVALID,NEW,ESTABLISHED,RELATED,SNAT,DNAT
 #	conntrack --ctstate UNTRACKED,INVALID,NEW,ESTABLISHED,RELATED
 #	limit --limit 1
