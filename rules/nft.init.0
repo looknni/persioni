@@ -81,8 +81,6 @@ if [ "$1" == "init" ];then
 	pb=-100
 	pc=0
 	pd=-150
-
-
 nta="$raw $nat $filter $mangle"
 for i in $nta;do
 	nft add table inet $i
@@ -98,20 +96,13 @@ for i in $nnat;do
 	nch $nat $i $nat $i $pb
 done
 unset nnat
-chainf="faa fbb fcc"
-chainf=($chainf)
-chainm="maa mbb mcc mdd mee"
-chainm=($chainm)
-fnn="$nb $nc $nd"
-fnn=($fnn)
-mnn="$na $nb $nc $nd $ne"
-mnn=($mnn)
-mset="maaset mbbset mccset mddset meeset"
-mset=($mset)
-fset="faaset fbbset fccset"
-fset=($fset)
-fmap="faamap fbbmap fccmap"
-fmap=($fmap)
+chainf=(faa fbb fcc)
+chainm=(maa mbb mcc mdd mee)
+fnn=($nb $nc $nd)
+mnn=($na $nb $nc $nd $ne)
+mset=(maaset mbbset mccset mddset meeset)
+fset=(faaset fbbset fccset)
+fmap=(faamap fbbmap fccmap)
 for i in {0..2};do
 	nch $filter ${fnn[i]} $filter ${fnn[i]} $pc
 	nft add chain inet $filter ${chainf[i]}
