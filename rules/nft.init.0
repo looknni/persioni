@@ -82,18 +82,17 @@ if [ "$1" == "init" ];then
 	pc=0
 	pd=-150
 
-function nta(){
-	nft add table inet $1
-}
-nta $raw
-nta $nat
-nta $filter
-nta $mangle
+
+nta="$raw $nat $filter $mangle"
+for i in $nta;do
+	nft add table inet $i
+done
+unset nta
 function nch(){
 	nft add chain inet $1 $2 { type $3 hook $4 priority $5 \; policy accept \; }
 }
-nch $raw $nd $filter $na $pa
-nch $raw $ne $filter $na $pa
+nch $raw $nd $filter $nd $pa
+nch $raw $ne $filter $ne $pa
 
 nch $nat $na $nat $na $pb
 nch $nat $nb $nat $nb $pb
@@ -109,21 +108,21 @@ nch $mangle $nb $filter $nb $pd
 nch $mangle $nc $filter $nc $pd
 nch $mangle $nd $filter $nd $pd
 nch $mangle $ne $filter $ne $pd
-function nchn(){
-	nft add chain inet $1 $2
-}
-nchn $filter syn_flood
-nft add rule inet $filter syn_flood limit rate 25/second burst 50 packets counter return comment "water"
-nft add rule inet $filter syn_flood counter drop comment "drop_flood"
-nchn $filter faa
-nchn $filter fbb
-nchn $filter fcc
 
-nchn $mangle maa
-nchn $mangle mbb
-nchn $mangle mcc
-nchn $mangle mdd
-nchn $mangle mee
+chainf="faa fbb fcc"
+chainm="maa mbb mcc mdd mee"
+for i in $chainf;do
+	nft add chain inet $filter $i
+done
+for j in $chainm;do
+	nft add chain inet $mangle $j
+done
+unset chainf chainm
+
+# nft add chian inet $filter syn_flood
+# nft add rule inet $filter syn_flood limit rate 25/second burst 50 packets counter return comment "water"
+# nft add rule inet $filter syn_flood counter drop comment "drop_flood"
+
 function nru(){
 	nft add rule inet $1 $2 counter jump $3
 }
