@@ -62,7 +62,10 @@ ip tuntap del mode tap dev $LAN
 
 # /etc/config/dropbear
 # config dropbear
-# 	option Interface 'lan'
+#	option PasswordAuth 'off'
+#	option RootPasswordAuth 'off'
+#	option Port '22'
+#	option Interface 'lan'
 
 # /etc/rc.local # ip6tables-extra iptables-mod-iprange iptables-mod-filter iptables-mod-conntrack-extra iptables-mod-ipsec iperf3 iptables-mod-nat-extra
 
