@@ -22,13 +22,47 @@ ip tuntap del mode tap dev $LAN
 
 # https://openwrt.org/docs/start
 #
-# uci set network.wan.proto='static'  
-# uci set network.wan.ipaddr='192.168.10.100'  
-# uci set network.wan.netmask='255.255.255.0'  
-# uci set network.wan.gateway='192.168.10.1'  
-# uci set network.wan.dns='8.8.8.8 8.8.4.4'
-# uci commit network  
-# /etc/init.d/network reload
+# /etc/config/wireless
+# config wifi-iface 'default_radio1'
+#	option device 'radio1'
+#	option network 'lan'
+#	option mode 'ap'
+#	option ssid 'Openwrt'
+#	option encryption 'sae-mixed'
+#	option key '12345678'
+#
+# config wifi-iface 'wifinet2'
+#	option device 'radio1'
+#	option mode 'sta'
+#	option network 'wwan'
+#	option ssid 'Openwrt'
+#	option bssid '00:00:00:00:02:01'
+#	option encryption 'psk2' # none sae sae-mixed psk2+tkip+ccmp psk2+tkip+aes psk2+tkip psk2+ccmp psk2+aes
+#	option key '12345678'
+#	option disabled '1'
+#
+
+# /etc/config/network
+# config interface 'wan'
+#	option device 'wan'
+#	option proto 'dhcp' # static < ipaddr netmask >
+#
+# service network reload/restart | ifdown/ifup wan | ifstatus wan | wifi down/up | ubus list network.interface.* | uci export/import /tmp/xx.uci
+
+# /etc/config/firewall
+# config rule
+# 	option enabled '0'
+
+# /etc/config/system
+# config system
+#	option timezone 'HKT-8'
+#	option zonename 'Asia/Hong Kong'
+# config timeserver 'ntp'
+#	option interface 'lan'
+
+# /etc/config/dropbear
+# config dropbear
+# 	option Interface 'lan'
 
 # /etc/rc.local # ip6tables-extra iptables-mod-iprange iptables-mod-filter iptables-mod-conntrack-extra iptables-mod-ipsec iperf3 iptables-mod-nat-extra
 
@@ -60,7 +94,6 @@ ip tuntap del mode tap dev $LAN
 # (tr -dc 'a-z0-9' < /dev/urandom |fold -w8 > 1 &);sleep 10;sudo kill -9 $(pgrep tr)
 # ubus list
 # ubus call network.interface.lan status|dump|up|down|reload
-
 
 # iptables -nvL/-S/-F/-X/-Z [--line-numbers]
 # iptables -t raw/mangle/nat/filter/security -A/-I/-D/-R PREROUTING/INPUT/FORWARD/OUTPUT/POSTROUTING \
