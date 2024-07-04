@@ -23,6 +23,11 @@ ip tuntap del mode tap dev $LAN
 # https://openwrt.org/docs/start
 #
 # /etc/config/wireless
+# config wifi-device 'radio1'
+#	option band '5g' # 2g 6g
+#	option htmode 'VHT20' # HT20 VHT20 HE20
+# 	option beacon_int '100'
+#
 # config wifi-iface 'default_radio1'
 #	option device 'radio1'
 #	option network 'lan'
