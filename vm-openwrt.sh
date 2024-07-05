@@ -26,7 +26,9 @@ ip tuntap del mode tap dev $LAN
 # config wifi-device 'radio1'
 #	option band '5g' # 2g 6g
 #	option htmode 'VHT20' # HT20 VHT20 HE20
+#	option cell_density '0'
 # 	option beacon_int '100'
+# 	option country 'CN' # US
 #
 # config wifi-iface 'default_radio1'
 #	option device 'radio1'
@@ -35,6 +37,8 @@ ip tuntap del mode tap dev $LAN
 #	option ssid 'Openwrt'
 #	option encryption 'sae-mixed'
 #	option key '12345678'
+#	option ieee80211w '1'
+#	option wmm '0'
 #
 # config wifi-iface 'wifinet2'
 #	option device 'radio1'
@@ -44,6 +48,8 @@ ip tuntap del mode tap dev $LAN
 #	option bssid '00:00:00:00:02:01'
 #	option encryption 'psk2' # none sae sae-mixed psk2+tkip+ccmp psk2+tkip+aes psk2+tkip psk2+ccmp psk2+aes
 #	option key '12345678'
+#	option ieee80211w '1'
+#	option wmm '0'
 #	option disabled '1'
 #
 
