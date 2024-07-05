@@ -37,8 +37,7 @@ ip tuntap del mode tap dev $LAN
 #	option ssid 'Openwrt'
 #	option encryption 'sae-mixed'
 #	option key '12345678'
-#	option ieee80211w '1'
-#	option wmm '0'
+#	option wmm '1'
 #
 # config wifi-iface 'wifinet2'
 #	option device 'radio1'
@@ -49,7 +48,7 @@ ip tuntap del mode tap dev $LAN
 #	option encryption 'psk2' # none sae sae-mixed psk2+tkip+ccmp psk2+tkip+aes psk2+tkip psk2+ccmp psk2+aes
 #	option key '12345678'
 #	option ieee80211w '1'
-#	option wmm '0'
+#	option wmm '1'
 #	option disabled '1'
 #
 
