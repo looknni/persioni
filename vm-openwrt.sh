@@ -54,7 +54,6 @@ ip tuntap del mode tap dev $LAN
 
 # /etc/config/network
 # config interface 'wan'
-#	option device 'wan'
 #	option proto 'dhcp' # static < ipaddr netmask >
 #
 # service network reload/restart | ifdown/ifup wan | ifstatus wan | wifi down/up | ubus list network.interface.* | uci export/import /tmp/xx.uci
