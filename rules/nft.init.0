@@ -95,6 +95,18 @@ uci set wireless.radio0.cell_density='0'
 uci set wireless.radio0.country='US'
 uci set wireless.radio0.beacon_int='100'
 
+uci set wireless.wifinet0=wifi-iface
+uci set wireless.wifinet0.device='radio0'
+uci set wireless.wifinet0.mode='sta'
+uci set wireless.wifinet0.network='wwan'
+uci set wireless.wifinet0.ssid='Openwrt'
+uci set wireless.wifinet0.bssid='00:00:00:00:02:01'
+uci set wireless.wifinet0.encryption='psk2'
+uci set wireless.wifinet0.key='12345678'
+# uci set wireless.wifinet0.ieee80211w='1'
+uci set wireless.wifinet0.wmm='1'
+uci set wireless.wifinet0.disabled='1'
+
 uci set wireless.wifinet1=wifi-iface
 uci set wireless.wifinet1.device='radio1'
 uci set wireless.wifinet1.mode='sta'
