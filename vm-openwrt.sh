@@ -60,6 +60,10 @@ ip tuntap del mode tap dev $LAN
 # service network reload/restart | ifdown/ifup wan | ifstatus wan | wifi down/up | ubus list network.interface.* | uci export/import /tmp/xx.uci
 
 # /etc/config/firewall
+# config defaults
+#	option synflood_protect '1'
+#	option flow_offloading '1'
+#	option flow_offloading_hw '1'
 # config rule
 # 	option enabled '0'
 
