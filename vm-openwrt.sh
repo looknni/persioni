@@ -53,10 +53,10 @@ ip tuntap del mode tap dev $LAN
 #
 
 # /etc/config/network
-# config interface 'wan'
+# config interface 'wwan'
 #	option proto 'dhcp' # static < ipaddr netmask >
 #
-# service network reload/restart | ifdown/ifup wan | ifstatus wan | wifi down/up | ubus list network.interface.* | uci export/import /tmp/xx.uci
+# service network reload/restart | ifdown/ifup wan | ifstatus wan | wifi down/up | ubus list network.interface.* | uci export/import /tmp/xx.uci | iwinfo phy0/phy1 scan | iw dev/phy phy0-sta0 scan
 
 # /etc/config/firewall
 # config defaults
@@ -98,9 +98,6 @@ ip tuntap del mode tap dev $LAN
 
 # cat /tmp/dhcp.leases
 # iw dev phy1-sta0 scan | grep -iE "phy1-sta0|SSID|signal|channel width|VHT (RX|TX) highest supported|HE (RX|TX) MCS|streams: MCS"
-# iw dev phy0-sta0 station dump
-# iwinfo phy1-ap0 assoclist/freqlist
-# iw dev
 # iw phy phy0 info
 # iw phy phy0 interface add mon0 type monitor
 # ifconfig mon0 up
