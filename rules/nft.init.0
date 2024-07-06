@@ -168,8 +168,8 @@ for i in {0..2};do
 	nch $filter ${fnn[i]} $filter ${fnn[i]} $pc
 	nft add chain inet $filter ${chainf[i]}
 	nft add rule inet $filter ${fnn[i]} counter jump ${chainf[i]}
-	nft add set inet $filter ${fset[i]} { type ipv4_addr \;flags interval,timeout \; counter \; auto-merge \;}
-	nft add set inet $filter "${fset[i]}6" { type ipv6_addr \;flags interval,timeout \; counter \; auto-merge \;}
+	nft add set inet $filter ${fset[i]} { type ipv4_addr \;flags interval,timeout \; counter \;}
+	nft add set inet $filter "${fset[i]}6" { type ipv6_addr \;flags interval,timeout \; counter \;}
 	nft add rule inet $filter ${chainf[i]} ip daddr @${fset[i]} drop
 	nft add map inet $filter ${fmap[i]} { type ether_addr : verdict \; flags interval,timeout \; counter \;}
 	nft add rule inet $filter ${chainf[i]} ether saddr vmap @${fmap[i]}
@@ -178,7 +178,7 @@ for j in {0..4};do
 	nch $mangle ${mnn[j]} $filter ${mnn[j]} $pd
 	nft add chain inet $mangle ${chainm[j]}
 	nft add rule inet $mangle ${mnn[j]} counter jump ${chainm[j]}
-	nft add set inet $mangle ${mset[j]} { type ipv4_addr . inet_service \;flags interval,timeout \; counter \; auto-merge \;}
+	nft add set inet $mangle ${mset[j]} { type ipv4_addr . inet_service \;flags interval,timeout \; counter \;}
 	nft add rule inet $mangle ${chainm[j]} ip saddr . tcp dport @${mset[j]} drop
 done
 

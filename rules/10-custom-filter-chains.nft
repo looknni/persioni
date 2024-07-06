@@ -8,13 +8,11 @@ set mccset {
 	type ipv4_addr
 	flags interval,timeout
 	counter
-	auto-merge
 }
 set mccset6 {
         type ipv6_addr
         flags interval,timeout
         counter
-        auto-merge
 }
 set mccm {
 	type ether_addr
