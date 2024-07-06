@@ -69,6 +69,8 @@ function iconf(){
 uci set firewall.@defaults[0].synflood_protect='1'
 uci set firewall.@defaults[0].flow_offloading='1'
 uci set firewall.@defaults[0].flow_offloading_hw='1'
+# uci set firewall.@defaults[0].drop_invalid='1'
+
 uci set firewall.@zone[1].network='wan wwan'
 	for i in {0..8};do
 		uci set firewall.@rule[$i].enabled='0'
