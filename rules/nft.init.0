@@ -82,7 +82,7 @@ uci set firewall.@rule[6].enabled='0'
 uci set firewall.@rule[7].enabled='0'
 uci set firewall.@rule[8].enabled='0'
 
-# uci set system.@system[0].hostname='xx'
+# uci set system.@system[0].hostname='op'
 uci set system.@system[0].timezone='HKT-8'
 uci set system.@system[0].zonename='Asia/Hong Kong'
 uci set system.ntp.enable_server='1'
@@ -93,6 +93,8 @@ uci set system.ntp.interface='lan'
 # uci set dropbear.@dropbear[0].Port='22'
 uci set dropbear.@dropbear[0].Interface='lan'
 uci set network.lan.dns='114.114.114.114'
+
+# uci delete network.wan6
 
 uci set network.lan.ip6assign='disabled'
 uci set dhcp.lan.ra='disabled'
