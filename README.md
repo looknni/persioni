@@ -300,6 +300,8 @@ xf86-video-vesa i3-wm dmenu xterm fcitx fcitx-configtool fcitx-googlepinyin
 exec_always --no-startup-id "fcitx -dr" 
 # exec_always --no-startup-id "ibus-daemon -drx"
 exec "xrdb -load ~/.Xresources"
+exec --no-startup-id "xset s 0 0"
+exec --no-startup-id "xset dpms 0 0 9999"
 xterm -u8 # fc-list :lang=zh
 
 pacman -Si|-Qi package ?? rpm -qi
