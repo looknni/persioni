@@ -99,13 +99,14 @@ uci set dhcp.lan.ra='disabled'
 uci set dhcp.lan.dhcpv6='disabled'
 
 uci set network.wwan=interface
-uci set network.wwan.proto='dhcp'
+uci set network.wwan.proto='dhcp' # static < ipaddr netmask >
 
 uci set wireless.radio1.cell_density='0'
 uci set wireless.radio1.country='US'
 uci set wireless.radio1.beacon_int='100'
+# uci set wireless.radio1.htmode='VHT20' # HT20 HE20
 uci set wireless.radio0.cell_density='0'
-uci set wireless.radio0.country='US'
+uci set wireless.radio0.country='US' # CN
 uci set wireless.radio0.beacon_int='100'
 
 uci set wireless.wifinet0=wifi-iface
@@ -114,7 +115,7 @@ uci set wireless.wifinet0.mode='sta'
 uci set wireless.wifinet0.network='wwan'
 uci set wireless.wifinet0.ssid='Openwrt'
 uci set wireless.wifinet0.bssid='00:00:00:00:02:01'
-uci set wireless.wifinet0.encryption='psk2'
+uci set wireless.wifinet0.encryption='psk2' # none sae sae-mixed psk2+tkip+ccmp psk2+tkip+aes psk2+tkip psk2+ccmp psk2+aes
 uci set wireless.wifinet0.key='12345678'
 # uci set wireless.wifinet0.ieee80211w='1'
 uci set wireless.wifinet0.wmm='1'

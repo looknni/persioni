@@ -22,63 +22,7 @@ ip tuntap del mode tap dev $LAN
 
 # https://openwrt.org/docs/start
 #
-# /etc/config/wireless
-# config wifi-device 'radio1'
-#	option band '5g' # 2g 6g
-#	option htmode 'VHT20' # HT20 VHT20 HE20
-#	option cell_density '0'
-# 	option beacon_int '100'
-# 	option country 'CN' # US
-#
-# config wifi-iface 'default_radio1'
-#	option device 'radio1'
-#	option network 'lan'
-#	option mode 'ap'
-#	option ssid 'Openwrt'
-#	option encryption 'sae-mixed'
-#	option key '12345678'
-#	option wmm '1'
-#
-# config wifi-iface 'wifinet2'
-#	option device 'radio1'
-#	option mode 'sta'
-#	option network 'wwan'
-#	option ssid 'Openwrt'
-#	option bssid '00:00:00:00:02:01'
-#	option encryption 'psk2' # none sae sae-mixed psk2+tkip+ccmp psk2+tkip+aes psk2+tkip psk2+ccmp psk2+aes
-#	option key '12345678'
-#	option ieee80211w '1'
-#	option wmm '1'
-#	option disabled '1'
-#
-
-# /etc/config/network
-# config interface 'wwan'
-#	option proto 'dhcp' # static < ipaddr netmask >
-#
-# service network reload/restart | ifdown/ifup wan | ifstatus wan | wifi down/up | ubus list network.interface.* | uci export/import /tmp/xx.uci | iwinfo phy0/phy1 scan | iw dev/phy phy0-sta0 scan
-
-# /etc/config/firewall
-# config defaults
-#	option synflood_protect '1'
-#	option flow_offloading '1'
-#	option flow_offloading_hw '1'
-# config rule
-# 	option enabled '0'
-
-# /etc/config/system
-# config system
-#	option timezone 'HKT-8'
-#	option zonename 'Asia/Hong Kong'
-# config timeserver 'ntp'
-#	option interface 'lan'
-
-# /etc/config/dropbear
-# config dropbear
-#	option PasswordAuth 'off'
-#	option RootPasswordAuth 'off'
-#	option Port '22'
-#	option Interface 'lan'
+# service network reload/restart | ifdown/ifup wan | ifstatus wan | wifi down/up | ubus list network.interface.* | uci export/import /tmp/xx.uci | iwinfo phy0/phy1 scan | iw dev/phy phy0-sta0/phy0 scan
 
 # /etc/rc.local # ip6tables-extra iptables-mod-iprange iptables-mod-filter iptables-mod-conntrack-extra iptables-mod-ipsec iperf3 iptables-mod-nat-extra
 
@@ -98,12 +42,7 @@ ip tuntap del mode tap dev $LAN
 
 # cat /tmp/dhcp.leases
 # iw dev phy1-sta0 scan | grep -iE "phy1-sta0|SSID|signal|channel width|VHT (RX|TX) highest supported|HE (RX|TX) MCS|streams: MCS"
-# iw phy phy0 info
 # iw phy phy0 interface add mon0 type monitor
-# ifconfig mon0 up
-# airodump mon0
-# airodump -w xxx -c 1 --bssid <ap_mac> mon0
-# aireplay -0 0 -a <ap_mac> -c <client_mac> mon
 # (tr -dc 'a-z0-9' < /dev/urandom |fold -w8 > 1 &);sleep 10;sudo kill -9 $(pgrep tr)
 # ubus list
 # ubus call network.interface.lan status|dump|up|down|reload
