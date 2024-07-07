@@ -83,6 +83,8 @@ uci set firewall.@rule[7].enabled='0'
 uci set firewall.@rule[8].enabled='0'
 
 # uci set system.@system[0].hostname='op'
+uci set system.ntp.server='ntp.org.cn'
+uci add_list system.ntp.server='edu.ntp.org.cn'
 uci set system.@system[0].timezone='HKT-8'
 uci set system.@system[0].zonename='Asia/Hong Kong'
 uci set system.ntp.enable_server='1'
