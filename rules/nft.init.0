@@ -94,13 +94,9 @@ uci set system.ntp.interface='lan'
 uci set dropbear.@dropbear[0].Interface='lan'
 uci set network.lan.dns='114.114.114.114'
 
-uci delete network.wan6=interface
-uci delete network.wan6.device
-uci delete network.wan6.proto='dhcpv6'
-uci delete etwork.lan.ip6assign
-uci delete hcp.lan.ra='server'
-uci delete hcp.lan.ra_flags
-uci delete dhcp.lan.dhcpv6='server'
+uci set network.lan.ip6assign='disabled'
+uci set dhcp.lan.ra='disabled'
+uci set dhcp.lan.dhcpv6='disabled'
 
 uci set network.wwan=interface
 uci set network.wwan.proto='dhcp'
