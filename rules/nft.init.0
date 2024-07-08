@@ -94,6 +94,7 @@ uci set system.ntp.interface='lan'
 # uci set dropbear.@dropbear[0].Port='22'
 uci set dropbear.@dropbear[0].Interface='lan'
 uci set network.lan.dns='114.114.114.114'
+# uci set network.globals.packet_steering='0'
 
 # uci delete network.wan6
 
