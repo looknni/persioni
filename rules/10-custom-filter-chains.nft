@@ -7,17 +7,14 @@
 set mccset {
 	type ipv4_addr
 	flags interval,timeout
-	counter
 }
 set mccset6 {
         type ipv6_addr
-        flags interval,timeout
-        counter
+	flags interval,timeout
 }
 set mccm {
 	type ether_addr
 	flags interval,timeout
-	counter
 }
 # chain user_pre_input {
 #     type filter hook input priority -1; policy accept;
