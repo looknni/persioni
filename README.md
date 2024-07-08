@@ -380,7 +380,7 @@ options root=/dev/xxx
 default gentoo.conf
 # bootctl update
 
-emerge -a app-portage/gentoolkit media-sound/alsa-utils sys-apps/dbus net-misc/dhcp
+emerge -a app-portage/gentoolkit media-sound/alsa-utils sys-apps/dbus net-misc/dhcp x11-apps/xset
 systemctl enable systemd-networkd
 ? https://www.freedesktop.org/software/systemd/man/latest/systemd.network.html
 # /etc/systemd/network/eth0.network
