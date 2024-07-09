@@ -82,19 +82,20 @@ uci set firewall.@rule[6].enabled='0'
 uci set firewall.@rule[7].enabled='0'
 uci set firewall.@rule[8].enabled='0'
 
-uci set system.@system[0].hostname='op'
+uci set system.@system[0].hostname="o$((RANDOM/330))"
 # uci add_list system.ntp.server='edu.ntp.org.cn'
 uci set system.@system[0].timezone='HKT-8'
 uci set system.@system[0].zonename='Asia/Hong Kong'
-# uci set system.ntp.enable_server='1' # error
+uci set system.ntp.enable_server='0'
 uci set system.ntp.interface='lan'
 
 # uci set dropbear.@dropbear[0].PasswordAuth='off'
 # uci set dropbear.@dropbear[0].RootPasswordAuth='off'
 # uci set dropbear.@dropbear[0].Port='22'
 uci set dropbear.@dropbear[0].Interface='lan'
+uci set network.lan.ipaddr="172.16.$((RANDOM/129)).1"
 uci set network.lan.dns='114.114.114.114'
-# uci set network.globals.packet_steering='0'
+uci set network.globals.packet_steering='0'
 
 # uci delete network.wan6
 
