@@ -21,6 +21,13 @@ ip tuntap del mode tap dev $LAN
 # qemu-img create -f qcow2 xx.img 10G
 
 # https://openwrt.org/docs/start
+# 
+# block-mount e2fsprogs kmod-usb-storage-uas kmod-usb3 kmod-fs-ext4 kmod-fs-exfat
+# block detect | uci import fstab
+# uci set fstab.@mount[0].enabled='1'
+# uci set fstab.@global[0].check_fs='1'
+# uci commit fstab
+# service fstab boot
 #
 # service network reload/restart | ifdown/ifup wan | ifstatus wan | wifi down/up | ubus list network.interface.* | uci export/import /tmp/xx.uci | iwinfo phy0/phy1 scan | iw dev/phy phy0-sta0/phy0 scan
 
