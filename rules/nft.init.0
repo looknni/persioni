@@ -142,6 +142,22 @@ uci commit
 sed -i 's/downloads.openwrt.org/mirrors.ustc.edu.cn\/openwrt/g' /etc/opkg/distfeeds.conf
 service uhttpd disable
 }
+function pppoe(){
+uci set network.wan.proto='pppoe'
+uci set network.wan.username='user'
+uci set network.wan.password='pass'
+uci set network.wan.keepalive='4 5'
+uci set network.wan.ipv6='0' # 1|auto
+uci commit
+}
+function unpppoe(){
+uci set network.wan.proto='dhcp'
+uci delete network.wan.username
+uci delete network.wan.password
+uci delete network.wan.keepalive
+uci delete network.wan.ipv6
+uci commit
+}
 if [ "$1" == "iconf" ];then
 	iconf
 fi
