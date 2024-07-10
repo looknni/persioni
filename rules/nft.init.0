@@ -138,6 +138,8 @@ uci set wireless.wifinet1.key='12345678'
 uci set wireless.wifinet1.wmm='1'
 uci set wireless.wifinet1.disabled='1'
 uci commit
+# sed -i 's_downloads.openwrt.org_mirrors.tuna.tsinghua.edu.cn/openwrt_' /etc/opkg/distfeeds.conf
+sed -i 's/downloads.openwrt.org/mirrors.ustc.edu.cn\/openwrt/g' /etc/opkg/distfeeds.conf
 service uhttpd disable
 }
 if [ "$1" == "iconf" ];then
