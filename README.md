@@ -443,7 +443,7 @@ net-firewall/nftables static-libs
 ? /usr/src/linux-6.6.13-gentoo/arch/x86_64/boot/bzImage -> vmlinuz-6.6.13-gentoo-x86_64
 
 ```
-##### [Openwrt](https://openwrt.org/)
+##### [Openwrt](https://lxr.openwrt.org/)
 ```
 xsltproc ecj fastjar java-propose-classpath libelf-dev libncursesw5-dev python3-setuptools \
 python3-dev subversion swig xsltproc zlib1g-dev build-essential clang flex g++ gawk gcc-multilib \
