@@ -116,12 +116,12 @@ uci set wireless.radio0.beacon_int='100'
 
 uci set system.@system[0].log_remote='0'
 uci set system.@system[0].zram_comp_algo='lz4' # zstd
-uci set system.@system[0].conloglevel='4' #7 0=less lt4=less.mesg 8=more.mesg
-uci set system.@system[0].cronloglevel='8' #5 gt9=error.mesg 8=command.exe 0=debug.mesg
+uci set system.@system[0].conloglevel='1' #7 0=less lt.4=less.mesg 8=more.mesg
+uci set system.@system[0].cronloglevel='8' #5 gt.9=error.mesg 8=command.exec 0=debug.mesg
 # uci set system.@system[0].klogconloglevel='7' # 0-8
 # uci set wireless.radio1.log_level='4'
 # uci set wireless.radio0.log_level='4' #2 0 = Verbose Debugging, 1 = Debugging, 2 = Informational Messages, 3 = Notification, 4 = Warning
-# uci set dhcp.odhcpd.loglevel='3' #4 0=emer, 1=alert, 2=crit, 3=err, 4=warn, 5=notice, 6=info, 7=debug
+uci set dhcp.odhcpd.loglevel='3' #4 0=emer, 1=alert, 2=crit, 3=err, 4=warn, 5=notice, 6=info, 7=debug
 
 uci set wireless.wifinet0=wifi-iface
 uci set wireless.wifinet0.device='radio0'
