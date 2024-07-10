@@ -451,9 +451,9 @@ gettext libncurses5-dev libssl-dev python3-distutils asciidoc binutils patch bis
 sharutils subversion ncurses-term zlib1g-dev libc6-dev-i386 uglifyjs msmtp libglib2.0-dev xmlto \
 qemu-utils libtool
 
-git clone https://github.com/openwrt/openwrt.git
+git clone https://github.com/openwrt/openwrt
 git checkout v23.05.3
-
+make clean
 ./feeds.conf.default
 src-git packages https://git.openwrt.org/feed/packages.git
 src-git luci https://git.openwrt.org/project/luci.git
@@ -465,7 +465,7 @@ src-git telephony https://git.openwrt.org/feed/telephony.git
 ./target/linux/ramips/dts # reg = <0x50000 0x1fb0000> # 32m
 ./target/linux/ramips/image # IMAGE_SIZE := 32m
 wget https://downloads.openwrt.org/releases/23.05.3/xx/config.buildinfo -O .config
-menuconfig
+make menuconfig
 make -j4 V=s
 ```
 ##### yum groupinstall 'Server with GUI' # systemctl set-default graphical.target 
