@@ -115,6 +115,7 @@ uci set wireless.radio0.country='US' # CN
 uci set wireless.radio0.beacon_int='100'
 
 uci set system.@system[0].log_remote='0'
+uci set system.@system[0].zram_comp_algo='lz4'
 uci set system.@system[0].conloglevel='4' #7 0=less lt4=less.mesg 8=more.mesg
 uci set system.@system[0].cronloglevel='8' #5 gt9=error.mesg 8=command.exe 0=debug.mesg
 # uci set system.@system[0].klogconloglevel='7' # 0-8
