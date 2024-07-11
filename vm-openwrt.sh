@@ -29,7 +29,7 @@ ip tuntap del mode tap dev $LAN
 # uci commit fstab
 # service fstab boot
 #
-# service network reload/restart | ifdown/ifup wan | ifstatus wan | wifi down/up | ubus list network.interface.* | uci export/import /tmp/xx.uci | iwinfo phy0/phy1 scan | iw dev/phy phy0-sta0/phy0 scan
+# ifdown/ifup wan | ifstatus wan | wifi down/up | ubus list network.interface.* | uci export/import /tmp/xx.uci | iwinfo phy0/phy1 scan | iw dev/phy phy0-sta0/phy0 scan | firstboot/jffs2reset | sysupgrade -T/-n/-F openwrt.bin 
 
 # /etc/rc.local # ip6tables-extra iptables-mod-iprange iptables-mod-filter iptables-mod-conntrack-extra iptables-mod-ipsec iperf3 iptables-mod-nat-extra
 
