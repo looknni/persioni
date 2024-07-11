@@ -64,7 +64,9 @@ case "$1" in
 		;;
 esac
 unset mdd mddm mangle
-
+function sttr(){
+echo $(head -c100 /dev/urandom | tr -dc 'a-z0-9' | head -c$1)
+}
 function iconf(){
 uci set firewall.@defaults[0].synflood_protect='1'
 uci set firewall.@defaults[0].flow_offloading='1'
@@ -82,7 +84,7 @@ uci set firewall.@rule[6].enabled='0'
 uci set firewall.@rule[7].enabled='0'
 uci set firewall.@rule[8].enabled='0'
 
-uci set system.@system[0].hostname="o$((RANDOM/330))"
+uci set system.@system[0].hostname="$(sttr 2)"
 # uci add_list system.ntp.server='edu.ntp.org.cn'
 uci set system.@system[0].timezone='HKT-8'
 uci set system.@system[0].zonename='Asia/Hong Kong'
@@ -122,6 +124,13 @@ uci set system.@system[0].cronloglevel='8' #5 gt.9=error.mesg 8=command.exec 0=d
 uci set wireless.radio1.log_level='4'
 uci set wireless.radio0.log_level='4' #2 0 = Verbose Debugging, 1 = Debugging, 2 = Informational Messages, 3 = Notification, 4 = Warning
 uci set dhcp.odhcpd.loglevel='3' #4 0=emer, 1=alert, 2=crit, 3=err, 4=warn, 5=notice, 6=info, 7=debug
+
+uci set wireless.radio0.disabled='0'
+uci set wireless.default_radio0.disabled='1'
+uci set wireless.radio1.disabled='0'
+uci set wireless.default_radio1.disabled='0'
+uci set wireless.default_radio0.ssid="xiaomi-$(sttr 4)"
+uci set wireless.default_radio1.ssid="xiaomi-$(sttr 4)"
 
 uci set wireless.wifinet0=wifi-iface
 uci set wireless.wifinet0.device='radio0'
