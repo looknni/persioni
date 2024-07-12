@@ -134,9 +134,9 @@ uci set wireless.default_radio1.ssid="xiaomi-$(sttr 4)"
 uci set wireless.default_radio0.max_listen_int='100' #65535   only.'ap'
 uci set wireless.default_radio1.max_listen_int='100' #65535   only.'ap'
 uci set wireless.default_radio0.short_preamble='1'
-# uci set wireless.default_radio0.sae_pwe='1' #0 0 = hunting-and-pecking only, 1 = hash-to-element only, 2 = both hunting-and-pecking and hash-to-element
+uci set wireless.default_radio0.sae_pwe='1' #0 0 = hunting-and-pecking only, 1 = hash-to-element only, 2 = both hunting-and-pecking and hash-to-element
 uci set wireless.default_radio1.short_preamble='1'
-# uci set wireless.default_radio1.sae_pwe='1' #0 2
+uci set wireless.default_radio1.sae_pwe='1' #0 2
 uci set wireless.default_radio0.wmm='1'
 uci set wireless.default_radio1.wmm='1'
 
@@ -150,7 +150,7 @@ uci set wireless.wifinet0.encryption='psk2' # none sae sae-mixed psk2+tkip+ccmp 
 uci set wireless.wifinet0.key='12345678'
 # uci set wireless.wifinet0.ieee80211w='1'
 uci set wireless.wifinet0.short_preamble='1'
-# uci set wireless.wifinet0.sae_pwe='1' #0 2
+uci set wireless.wifinet0.sae_pwe='1' #0 2
 uci set wireless.wifinet0.wmm='1'
 uci set wireless.wifinet0.disabled='1'
 
@@ -164,7 +164,7 @@ uci set wireless.wifinet1.encryption='psk2'
 uci set wireless.wifinet1.key='12345678'
 # uci set wireless.wifinet1.ieee80211w='1'
 uci set wireless.wifinet1.short_preamble='1'
-# uci set wireless.wifinet1.sae_pwe='1' #0 2
+uci set wireless.wifinet1.sae_pwe='1' #0 2
 uci set wireless.wifinet1.wmm='1'
 uci set wireless.wifinet1.disabled='1'
 uci commit
