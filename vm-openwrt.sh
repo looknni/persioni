@@ -22,7 +22,7 @@ ip tuntap del mode tap dev $LAN
 
 # https://openwrt.org/docs/start
 # 
-# block-mount e2fsprogs kmod-usb-storage-uas kmod-usb3 kmod-fs-ext4 kmod-fs-exfat libblkid
+# block-mount e2fsprogs kmod-usb-storage-uas kmod-usb3 kmod-fs-ext4 kmod-fs-exfat
 # block detect | uci import fstab
 # uci set fstab.@mount[0].enabled='1'
 # uci set fstab.@global[0].check_fs='1'
