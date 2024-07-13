@@ -111,34 +111,35 @@ uci set network.wwan.proto='dhcp' # static < ipaddr netmask >
 uci set wireless.radio1.cell_density='0'
 uci set wireless.radio1.country='US'
 uci set wireless.radio1.beacon_int='100'
+uci set wireless.radio1.log_level='4'
+uci set wireless.radio1.disabled='0'
 # uci set wireless.radio1.htmode='VHT20' # HT20 HE20
 uci set wireless.radio0.cell_density='0'
 uci set wireless.radio0.country='US' # CN
 uci set wireless.radio0.beacon_int='100'
+uci set wireless.radio0.log_level='4' #2 0 = Verbose Debugging, 1 = Debugging, 2 = Informational Messages, 3 = Notification, 4 = Warning
+uci set wireless.radio0.disabled='0'
 
 uci set system.@system[0].log_remote='0'
 uci set system.@system[0].zram_comp_algo='lz4' # zstd
 uci set system.@system[0].conloglevel='1' #7 0=less lt.4=less.mesg 8=more.mesg
 uci set system.@system[0].cronloglevel='8' #5 gt.9=error.mesg 8=command.exec 0=debug.mesg
 # uci set system.@system[0].klogconloglevel='7' # 0-8
-uci set wireless.radio1.log_level='4'
-uci set wireless.radio0.log_level='4' #2 0 = Verbose Debugging, 1 = Debugging, 2 = Informational Messages, 3 = Notification, 4 = Warning
 uci set dhcp.odhcpd.loglevel='3' #4 0=emer, 1=alert, 2=crit, 3=err, 4=warn, 5=notice, 6=info, 7=debug
 
-uci set wireless.radio0.disabled='0'
-uci set wireless.default_radio0.disabled='1'
-uci set wireless.radio1.disabled='0'
-uci set wireless.default_radio1.disabled='0'
 uci set wireless.default_radio0.ssid="xiaomi-$(sttr 4)"
-uci set wireless.default_radio1.ssid="xiaomi-$(sttr 4)"
 uci set wireless.default_radio0.max_listen_int='100' #65535   only.'ap'
-uci set wireless.default_radio1.max_listen_int='100' #65535   only.'ap'
 uci set wireless.default_radio0.short_preamble='1'
 uci set wireless.default_radio0.sae_pwe='1' #0 0 = hunting-and-pecking only, 1 = hash-to-element only, 2 = both hunting-and-pecking and hash-to-element
+uci set wireless.default_radio0.wmm='1'
+uci set wireless.default_radio0.disabled='1'
+
+uci set wireless.default_radio1.ssid="xiaomi-$(sttr 4)"
+uci set wireless.default_radio1.max_listen_int='100' #65535   only.'ap'
 uci set wireless.default_radio1.short_preamble='1'
 uci set wireless.default_radio1.sae_pwe='1' #0 2
-uci set wireless.default_radio0.wmm='1'
 uci set wireless.default_radio1.wmm='1'
+uci set wireless.default_radio1.disabled='0'
 
 uci set wireless.wifinet0=wifi-iface
 uci set wireless.wifinet0.device='radio0'
