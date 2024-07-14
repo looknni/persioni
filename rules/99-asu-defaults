@@ -137,111 +137,111 @@ EXO
 st2=$(dd if=/dev/urandom bs=1 count=1|hexdump -e '1 "%02x"')
 st4=$(dd if=/dev/urandom bs=2 count=1|hexdump -e '1 "%02x"')
 st40=$(dd if=/dev/urandom bs=2 count=1|hexdump -e '1 "%02x"')
-function iconf(){
-uci set firewall.@defaults[0].synflood_protect='1'
-uci set firewall.@defaults[0].flow_offloading='1'
-uci set firewall.@defaults[0].flow_offloading_hw='1'
-# uci set firewall.@defaults[0].drop_invalid='1'
-uci set firewall.@zone[1].network='wan wwan'
+uci batch <<EEOO
+set firewall.@defaults[0].synflood_protect='1'
+set firewall.@defaults[0].flow_offloading='1'
+set firewall.@defaults[0].flow_offloading_hw='1'
+# set firewall.@defaults[0].drop_invalid='1'
+set firewall.@zone[1].network='wan wwan'
 
-uci set firewall.@rule[0].enabled='0'
-uci set firewall.@rule[1].enabled='0'
-uci set firewall.@rule[2].enabled='0'
-uci set firewall.@rule[3].enabled='0'
-uci set firewall.@rule[4].enabled='0'
-uci set firewall.@rule[5].enabled='0'
-uci set firewall.@rule[6].enabled='0'
-uci set firewall.@rule[7].enabled='0'
-uci set firewall.@rule[8].enabled='0'
+set firewall.@rule[0].enabled='0'
+set firewall.@rule[1].enabled='0'
+set firewall.@rule[2].enabled='0'
+set firewall.@rule[3].enabled='0'
+set firewall.@rule[4].enabled='0'
+set firewall.@rule[5].enabled='0'
+set firewall.@rule[6].enabled='0'
+set firewall.@rule[7].enabled='0'
+set firewall.@rule[8].enabled='0'
 
-uci set system.@system[0].hostname="$st2"
-# uci add_list system.ntp.server='edu.ntp.org.cn'
-uci set system.@system[0].timezone='HKT-8'
-uci set system.@system[0].zonename='Asia/Hong Kong'
-uci set system.@system[0].log_remote='0'
-uci set system.@system[0].zram_comp_algo='lz4' # zstd
-uci set system.@system[0].conloglevel='1' #7 0=less lt.4=less.mesg 8=more.mesg
-uci set system.@system[0].cronloglevel='8' #5 gt.9=error.mesg 8=command.exec 0=debug.mesg
-uci set system.@system[0].klogconloglevel='7' # 0-8
-uci set dhcp.odhcpd.loglevel='3' #4 0=emer, 1=alert, 2=crit, 3=err, 4=warn, 5=notice, 6=info, 7=debug
-uci set system.ntp.enable_server='0'
-uci set system.ntp.interface='lan'
+set system.@system[0].hostname="$st2"
+# add_list system.ntp.server='edu.ntp.org.cn'
+set system.@system[0].timezone='HKT-8'
+set system.@system[0].zonename='Asia/Hong Kong'
+set system.@system[0].log_remote='0'
+set system.@system[0].zram_comp_algo='lz4' # zstd
+set system.@system[0].conloglevel='1' #7 0=less lt.4=less.mesg 8=more.mesg
+set system.@system[0].cronloglevel='8' #5 gt.9=error.mesg 8=command.exec 0=debug.mesg
+set system.@system[0].klogconloglevel='7' # 0-8
+set dhcp.odhcpd.loglevel='3' #4 0=emer, 1=alert, 2=crit, 3=err, 4=warn, 5=notice, 6=info, 7=debug
+set system.ntp.enable_server='0'
+set system.ntp.interface='lan'
 
-# uci set dropbear.@dropbear[0].PasswordAuth='off'
-# uci set dropbear.@dropbear[0].RootPasswordAuth='off'
-# uci set dropbear.@dropbear[0].Port='22'
-uci set dropbear.@dropbear[0].Interface='lan'
-uci set network.lan.ipaddr="172.16.$((RANDOM/129)).1"
-uci set network.globals.packet_steering='0'
+# set dropbear.@dropbear[0].PasswordAuth='off'
+# set dropbear.@dropbear[0].RootPasswordAuth='off'
+# set dropbear.@dropbear[0].Port='22'
+set dropbear.@dropbear[0].Interface='lan'
+set network.lan.ipaddr="172.16.$((RANDOM/129)).1"
+set network.globals.packet_steering='0'
 
-# uci delete network.wan6
+# delete network.wan6
 
-uci set network.lan.ip6assign='disabled'
-uci set dhcp.lan.dhcp_option='6,114.114.114.114'
-uci set dhcp.lan.ra='disabled'
-uci set dhcp.lan.dhcpv6='disabled'
+set network.lan.ip6assign='disabled'
+set dhcp.lan.dhcp_option='6,114.114.114.114'
+set dhcp.lan.ra='disabled'
+set dhcp.lan.dhcpv6='disabled'
 
-uci set network.wwan=interface
-uci set network.wwan.proto='dhcp' # static < ipaddr netmask >
+set network.wwan=interface
+set network.wwan.proto='dhcp' # static < ipaddr netmask >
 
-uci set wireless.radio1.cell_density='0'
-uci set wireless.radio1.country='US'
-uci set wireless.radio1.beacon_int='100'
-uci set wireless.radio1.log_level='4'
-uci set wireless.radio1.disabled='0'
-# uci set wireless.radio1.htmode='VHT20' # HT20 HE20
-uci set wireless.radio0.cell_density='0'
-uci set wireless.radio0.country='US' # CN
-uci set wireless.radio0.beacon_int='100'
-uci set wireless.radio0.log_level='4' #2 0 = Verbose Debugging, 1 = Debugging, 2 = Informational Messages, 3 = Notification, 4 = Warning
-uci set wireless.radio0.disabled='0'
+set wireless.radio1.cell_density='0'
+set wireless.radio1.country='US'
+set wireless.radio1.beacon_int='100'
+set wireless.radio1.log_level='4'
+set wireless.radio1.disabled='0'
+# set wireless.radio1.htmode='VHT20' # HT20 HE20
+set wireless.radio0.cell_density='0'
+set wireless.radio0.country='US' # CN
+set wireless.radio0.beacon_int='100'
+set wireless.radio0.log_level='4' #2 0 = Verbose Debugging, 1 = Debugging, 2 = Informational Messages, 3 = Notification, 4 = Warning
+set wireless.radio0.disabled='0'
 
-uci set wireless.default_radio0.ssid="xiaomi-$st4"
-uci set wireless.default_radio0.max_listen_int='100' #65535   only.'ap'
-uci set wireless.default_radio0.short_preamble='1'
-uci set wireless.default_radio0.sae_pwe='1' #0 0 = hunting-and-pecking only, 1 = hash-to-element only, 2 = both hunting-and-pecking and hash-to-element
-uci set wireless.default_radio0.wmm='1'
-uci set wireless.default_radio0.disabled='1'
+set wireless.default_radio0.ssid="xiaomi-$st4"
+set wireless.default_radio0.max_listen_int='100' #65535   only.'ap'
+set wireless.default_radio0.short_preamble='1'
+set wireless.default_radio0.sae_pwe='1' #0 0 = hunting-and-pecking only, 1 = hash-to-element only, 2 = both hunting-and-pecking and hash-to-element
+set wireless.default_radio0.wmm='1'
+set wireless.default_radio0.disabled='1'
 
-uci set wireless.default_radio1.ssid="xiaomi-$st40"
-uci set wireless.default_radio1.max_listen_int='100' #65535   only.'ap'
-uci set wireless.default_radio1.short_preamble='1'
-uci set wireless.default_radio1.sae_pwe='1' #0 2
-uci set wireless.default_radio1.wmm='1'
-uci set wireless.default_radio1.disabled='1'
+set wireless.default_radio1.ssid="xiaomi-$st40"
+set wireless.default_radio1.max_listen_int='100' #65535   only.'ap'
+set wireless.default_radio1.short_preamble='1'
+set wireless.default_radio1.sae_pwe='1' #0 2
+set wireless.default_radio1.wmm='1'
+set wireless.default_radio1.disabled='1'
 
-uci set wireless.wifinet0=wifi-iface
-uci set wireless.wifinet0.device='radio0'
-uci set wireless.wifinet0.mode='sta'
-uci set wireless.wifinet0.network='wwan'
-uci set wireless.wifinet0.ssid='Openwrt'
-uci set wireless.wifinet0.bssid='00:00:00:00:02:01'
-uci set wireless.wifinet0.encryption='psk2' # none sae sae-mixed psk2+tkip+ccmp psk2+tkip+aes psk2+tkip psk2+ccmp psk2+aes
-uci set wireless.wifinet0.key='12345678'
-# uci set wireless.wifinet0.ieee80211w='1'
-uci set wireless.wifinet0.short_preamble='1'
-uci set wireless.wifinet0.sae_pwe='1' #0 2
-uci set wireless.wifinet0.wmm='1'
-uci set wireless.wifinet0.disabled='1'
+set wireless.wifinet0=wifi-iface
+set wireless.wifinet0.device='radio0'
+set wireless.wifinet0.mode='sta'
+set wireless.wifinet0.network='wwan'
+set wireless.wifinet0.ssid='Openwrt'
+set wireless.wifinet0.bssid='00:00:00:00:02:01'
+set wireless.wifinet0.encryption='psk2' # none sae sae-mixed psk2+tkip+ccmp psk2+tkip+aes psk2+tkip psk2+ccmp psk2+aes
+set wireless.wifinet0.key='12345678'
+# set wireless.wifinet0.ieee80211w='1'
+set wireless.wifinet0.short_preamble='1'
+set wireless.wifinet0.sae_pwe='1' #0 2
+set wireless.wifinet0.wmm='1'
+set wireless.wifinet0.disabled='1'
 
-uci set wireless.wifinet1=wifi-iface
-uci set wireless.wifinet1.device='radio1'
-uci set wireless.wifinet1.mode='sta'
-uci set wireless.wifinet1.network='wwan'
-uci set wireless.wifinet1.ssid='Openwrt'
-uci set wireless.wifinet1.bssid='00:00:00:00:02:01'
-uci set wireless.wifinet1.encryption='psk2'
-uci set wireless.wifinet1.key='12345678'
-# uci set wireless.wifinet1.ieee80211w='1'
-uci set wireless.wifinet1.short_preamble='1'
-uci set wireless.wifinet1.sae_pwe='1' #0 2
-uci set wireless.wifinet1.wmm='1'
-uci set wireless.wifinet1.disabled='1'
-uci commit
+set wireless.wifinet1=wifi-iface
+set wireless.wifinet1.device='radio1'
+set wireless.wifinet1.mode='sta'
+set wireless.wifinet1.network='wwan'
+set wireless.wifinet1.ssid='Openwrt'
+set wireless.wifinet1.bssid='00:00:00:00:02:01'
+set wireless.wifinet1.encryption='psk2'
+set wireless.wifinet1.key='12345678'
+# set wireless.wifinet1.ieee80211w='1'
+set wireless.wifinet1.short_preamble='1'
+set wireless.wifinet1.sae_pwe='1' #0 2
+set wireless.wifinet1.wmm='1'
+set wireless.wifinet1.disabled='1'
+commit
+EEOO
 # sed -i 's_downloads.openwrt.org_mirrors.tuna.tsinghua.edu.cn/openwrt_' /etc/opkg/distfeeds.conf
 # sed -i 's/downloads.openwrt.org/mirrors.ustc.edu.cn\/openwrt/g' /etc/opkg/distfeeds.conf
 service uhttpd disable
-}
 function pppoe(){
 uci set network.wan.proto='pppoe'
 uci set network.wan.username='user'
@@ -258,8 +258,4 @@ uci delete network.wan.keepalive
 uci delete network.wan.ipv6
 uci commit
 }
-if [ "$1" == "iconf" ];then
-        iconf
-fi
-iconf
 exit 0 
