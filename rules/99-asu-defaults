@@ -134,12 +134,9 @@ esac
 unset mdd mddm mangle
 EXO
 
-function st2(){
-	echo $(dd if=/dev/urandom bs=1 count=1|hexdump -e '1 "%02x"')
-}
-function st4(){
-	echo $(dd if=/dev/urandom bs=2 count=1|hexdump -e '1 "%02x"')
-}
+st2=$(dd if=/dev/urandom bs=1 count=1|hexdump -e '1 "%02x"')
+st4=$(dd if=/dev/urandom bs=2 count=1|hexdump -e '1 "%02x"')
+st40=$(dd if=/dev/urandom bs=2 count=1|hexdump -e '1 "%02x"')
 function iconf(){
 uci set firewall.@defaults[0].synflood_protect='1'
 uci set firewall.@defaults[0].flow_offloading='1'
@@ -157,7 +154,7 @@ uci set firewall.@rule[6].enabled='0'
 uci set firewall.@rule[7].enabled='0'
 uci set firewall.@rule[8].enabled='0'
 
-uci set system.@system[0].hostname="$(st2)"
+uci set system.@system[0].hostname="$st2"
 # uci add_list system.ntp.server='edu.ntp.org.cn'
 uci set system.@system[0].timezone='HKT-8'
 uci set system.@system[0].zonename='Asia/Hong Kong'
@@ -199,14 +196,14 @@ uci set wireless.radio0.beacon_int='100'
 uci set wireless.radio0.log_level='4' #2 0 = Verbose Debugging, 1 = Debugging, 2 = Informational Messages, 3 = Notification, 4 = Warning
 uci set wireless.radio0.disabled='0'
 
-uci set wireless.default_radio0.ssid="xiaomi-$(st4)"
+uci set wireless.default_radio0.ssid="xiaomi-$st4"
 uci set wireless.default_radio0.max_listen_int='100' #65535   only.'ap'
 uci set wireless.default_radio0.short_preamble='1'
 uci set wireless.default_radio0.sae_pwe='1' #0 0 = hunting-and-pecking only, 1 = hash-to-element only, 2 = both hunting-and-pecking and hash-to-element
 uci set wireless.default_radio0.wmm='1'
 uci set wireless.default_radio0.disabled='1'
 
-uci set wireless.default_radio1.ssid="xiaomi-$(st4)"
+uci set wireless.default_radio1.ssid="xiaomi-$st40"
 uci set wireless.default_radio1.max_listen_int='100' #65535   only.'ap'
 uci set wireless.default_radio1.short_preamble='1'
 uci set wireless.default_radio1.sae_pwe='1' #0 2
