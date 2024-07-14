@@ -1,0 +1,264 @@
+#!/bin/sh
+cat > /etc/nftables.d/10-custom-filter-chains.nft << EXO
+## The firewall4 input, forward and output chains are registered with
+## priority filter (0).
+
+
+## Uncomment the chains below if you want to stage rules *before* the
+## default firewall input, forward and output chains.
+set mccset {
+        type ipv4_addr
+        flags interval,timeout
+}
+set mccset6 {
+        type ipv6_addr
+        flags interval,timeout
+}
+set mccm {
+        type ether_addr
+        flags interval,timeout
+}
+# chain user_pre_input {
+#     type filter hook input priority -1; policy accept;
+#     tcp dport ssh ct state new log prefix "SSH connection attempt: "
+# }
+#
+# chain user_pre_forward {
+#     type filter hook forward priority -1; policy accept;
+# }
+#
+# chain user_pre_output {
+#     type filter hook output priority -1; policy accept;
+# }
+
+
+## Uncomment the chains below if you want to stage rules *after* the
+## default firewall input, forward and output chains.
+
+# chain user_post_input {
+#     type filter hook input priority 1; policy accept;
+#     ct state new log prefix "Firewall4 accepted ingress: "
+# }
+#
+chain user_post_forward {
+        type filter hook forward priority 1; policy accept;
+#       ct state new log prefix "Firewall4 accepted forward: "
+        ip daddr @mccset drop
+        ip6 daddr @mccset6 drop
+        ether saddr @mccm drop
+}
+#
+# chain user_post_output {
+#     type filter hook output priority 1; policy accept;
+#     ct state new log prefix "Firewall4 accepted egress: "
+# }
+chain user_dstnat {
+        type nat hook prerouting priority dstnat; policy accept;
+#       iifname "br-lan" ip daddr {192.168.1.2} tcp dport {80,443} dnat to 192.168.1.1
+}
+
+chain user_srcnat {
+        type nat hook postrouting priority srcnat; policy accept;
+#       oifname "lan" ip saddr 192.168.1.0/24 snat to xxx
+#       oifname "lan" ip saddr 192.168.1.0/24 masquerade
+}
+EXO
+
+cat > /root/nft.init.0 << EXO
+#!/bin/sh
+
+        mdd='mccset' # local 'fccset'
+        mddm='mccm'
+        mangle='fw4' # local 'filter'
+function list(){
+        nft list set inet \$1 \$2
+}
+function add(){
+        case "\$1" in
+                add )
+                        nft add element inet \$mangle \$mdd {"\$2"}
+                        list \$mangle \$mdd
+                        ;;
+                add6 )
+                        nft add element inet \$mangle "\${mdd}6" {"\$2"}
+                        list \$mangle "\${mdd}6"
+                        ;;
+                addt )
+                        nft add element inet \$mangle \$mdd {"\$2" timeout \$3}
+                        list \$mangle \$mdd
+                        ;;
+                addm )
+                        nft add element inet \$mangle \$mddm { "\$2" }
+                        list \$mangle \$mddm
+                        ;;
+                addmt )
+                        nft add element inet \$mangle \$mddm { "\$2" timeout \$3 }
+                        list \$mangle \$mddm
+                        ;;
+        esac
+}
+function del(){
+        case "\$1" in
+                del )
+                        nft delete element inet \$mangle \$mdd {"\$2"}
+                        list \$mangle \$mdd
+                        ;;
+                del6 )
+                        nft delete element inet \$mangle "\${mdd}6" {"\$2"}
+                        list \$mangle "\${mdd}6"
+                        ;;
+                delm )
+                        nft delete element inet \$mangle \$mddm {"\$2"}
+                        list \$mangle \$mddm
+                        ;;
+        esac
+}
+case "\$1" in
+        add | add6 )
+                add \$1 \$2
+                ;;
+        del | del6 )
+                del \$1 \$2
+                ;;
+        addm )
+                add \$1 \$2
+                ;;
+        addt |addmt )
+                add \$1 \$2 \$3
+                ;;
+        delm )
+                del \$1 \$2
+                ;;
+esac
+unset mdd mddm mangle
+EXO
+
+function sttr(){
+echo $(head -c100 /dev/urandom | tr -dc 'a-z0-9' | head -c$1)
+}
+function iconf(){
+uci set firewall.@defaults[0].synflood_protect='1'
+uci set firewall.@defaults[0].flow_offloading='1'
+uci set firewall.@defaults[0].flow_offloading_hw='1'
+# uci set firewall.@defaults[0].drop_invalid='1'
+uci set firewall.@zone[1].network='wan wwan'
+
+uci set firewall.@rule[0].enabled='0'
+uci set firewall.@rule[1].enabled='0'
+uci set firewall.@rule[2].enabled='0'
+uci set firewall.@rule[3].enabled='0'
+uci set firewall.@rule[4].enabled='0'
+uci set firewall.@rule[5].enabled='0'
+uci set firewall.@rule[6].enabled='0'
+uci set firewall.@rule[7].enabled='0'
+uci set firewall.@rule[8].enabled='0'
+
+uci set system.@system[0].hostname="$(sttr 2)"
+# uci add_list system.ntp.server='edu.ntp.org.cn'
+uci set system.@system[0].timezone='HKT-8'
+uci set system.@system[0].zonename='Asia/Hong Kong'
+uci set system.@system[0].log_remote='0'
+uci set system.@system[0].zram_comp_algo='lz4' # zstd
+uci set system.@system[0].conloglevel='1' #7 0=less lt.4=less.mesg 8=more.mesg
+uci set system.@system[0].cronloglevel='8' #5 gt.9=error.mesg 8=command.exec 0=debug.mesg
+uci set system.@system[0].klogconloglevel='7' # 0-8
+uci set dhcp.odhcpd.loglevel='3' #4 0=emer, 1=alert, 2=crit, 3=err, 4=warn, 5=notice, 6=info, 7=debug
+uci set system.ntp.enable_server='0'
+uci set system.ntp.interface='lan'
+
+# uci set dropbear.@dropbear[0].PasswordAuth='off'
+# uci set dropbear.@dropbear[0].RootPasswordAuth='off'
+# uci set dropbear.@dropbear[0].Port='22'
+uci set dropbear.@dropbear[0].Interface='lan'
+uci set network.lan.ipaddr="172.16.$((RANDOM/129)).1"
+uci set network.globals.packet_steering='0'
+
+# uci delete network.wan6
+
+uci set network.lan.ip6assign='disabled'
+uci set dhcp.lan.dhcp_option='6,114.114.114.114'
+uci set dhcp.lan.ra='disabled'
+uci set dhcp.lan.dhcpv6='disabled'
+
+uci set network.wwan=interface
+uci set network.wwan.proto='dhcp' # static < ipaddr netmask >
+
+uci set wireless.radio1.cell_density='0'
+uci set wireless.radio1.country='US'
+uci set wireless.radio1.beacon_int='100'
+uci set wireless.radio1.log_level='4'
+uci set wireless.radio1.disabled='0'
+# uci set wireless.radio1.htmode='VHT20' # HT20 HE20
+uci set wireless.radio0.cell_density='0'
+uci set wireless.radio0.country='US' # CN
+uci set wireless.radio0.beacon_int='100'
+uci set wireless.radio0.log_level='4' #2 0 = Verbose Debugging, 1 = Debugging, 2 = Informational Messages, 3 = Notification, 4 = Warning
+uci set wireless.radio0.disabled='0'
+
+uci set wireless.default_radio0.ssid="xiaomi-$(sttr 4)"
+uci set wireless.default_radio0.max_listen_int='100' #65535   only.'ap'
+uci set wireless.default_radio0.short_preamble='1'
+uci set wireless.default_radio0.sae_pwe='1' #0 0 = hunting-and-pecking only, 1 = hash-to-element only, 2 = both hunting-and-pecking and hash-to-element
+uci set wireless.default_radio0.wmm='1'
+uci set wireless.default_radio0.disabled='1'
+
+uci set wireless.default_radio1.ssid="xiaomi-$(sttr 4)"
+uci set wireless.default_radio1.max_listen_int='100' #65535   only.'ap'
+uci set wireless.default_radio1.short_preamble='1'
+uci set wireless.default_radio1.sae_pwe='1' #0 2
+uci set wireless.default_radio1.wmm='1'
+uci set wireless.default_radio1.disabled='1'
+
+uci set wireless.wifinet0=wifi-iface
+uci set wireless.wifinet0.device='radio0'
+uci set wireless.wifinet0.mode='sta'
+uci set wireless.wifinet0.network='wwan'
+uci set wireless.wifinet0.ssid='Openwrt'
+uci set wireless.wifinet0.bssid='00:00:00:00:02:01'
+uci set wireless.wifinet0.encryption='psk2' # none sae sae-mixed psk2+tkip+ccmp psk2+tkip+aes psk2+tkip psk2+ccmp psk2+aes
+uci set wireless.wifinet0.key='12345678'
+# uci set wireless.wifinet0.ieee80211w='1'
+uci set wireless.wifinet0.short_preamble='1'
+uci set wireless.wifinet0.sae_pwe='1' #0 2
+uci set wireless.wifinet0.wmm='1'
+uci set wireless.wifinet0.disabled='1'
+
+uci set wireless.wifinet1=wifi-iface
+uci set wireless.wifinet1.device='radio1'
+uci set wireless.wifinet1.mode='sta'
+uci set wireless.wifinet1.network='wwan'
+uci set wireless.wifinet1.ssid='Openwrt'
+uci set wireless.wifinet1.bssid='00:00:00:00:02:01'
+uci set wireless.wifinet1.encryption='psk2'
+uci set wireless.wifinet1.key='12345678'
+# uci set wireless.wifinet1.ieee80211w='1'
+uci set wireless.wifinet1.short_preamble='1'
+uci set wireless.wifinet1.sae_pwe='1' #0 2
+uci set wireless.wifinet1.wmm='1'
+uci set wireless.wifinet1.disabled='1'
+uci commit
+# sed -i 's_downloads.openwrt.org_mirrors.tuna.tsinghua.edu.cn/openwrt_' /etc/opkg/distfeeds.conf
+# sed -i 's/downloads.openwrt.org/mirrors.ustc.edu.cn\/openwrt/g' /etc/opkg/distfeeds.conf
+service uhttpd disable
+}
+function pppoe(){
+uci set network.wan.proto='pppoe'
+uci set network.wan.username='user'
+uci set network.wan.password='pass'
+uci set network.wan.keepalive='4 5'
+uci set network.wan.ipv6='0' # 1|auto
+uci commit
+}
+function unpppoe(){
+uci set network.wan.proto='dhcp'
+uci delete network.wan.username
+uci delete network.wan.password
+uci delete network.wan.keepalive
+uci delete network.wan.ipv6
+uci commit
+}
+if [ "$1" == "iconf" ];then
+        iconf
+fi
+iconf
+exit 0 
