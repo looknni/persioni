@@ -1,4 +1,5 @@
 #!/bin/sh
+# /rom/etc/uci-defaults/
 cat > /etc/nftables.d/10-custom-filter-chains.nft << EXO
 ## The firewall4 input, forward and output chains are registered with
 ## priority filter (0).
