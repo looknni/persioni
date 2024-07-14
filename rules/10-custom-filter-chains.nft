@@ -1,5 +1,5 @@
 ## The firewall4 input, forward and output chains are registered with
-## priority `filter` (0).
+## priority filter (0).
 
 
 ## Uncomment the chains below if you want to stage rules *before* the
