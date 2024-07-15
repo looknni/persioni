@@ -178,7 +178,7 @@ set network.globals.packet_steering='0'
 # delete network.wan6
 
 set network.lan.ip6assign='disabled'
-set dhcp.lan.dhcp_option='6,114.114.114.114'
+add_list dhcp.lan.dhcp_option='6,114.114.114.114'
 set dhcp.lan.ra='disabled'
 set dhcp.lan.dhcpv6='disabled'
 
