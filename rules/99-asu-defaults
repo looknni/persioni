@@ -241,6 +241,7 @@ commit
 EEOO
 # sed -i 's_downloads.openwrt.org_mirrors.tuna.tsinghua.edu.cn/openwrt_' /etc/opkg/distfeeds.conf
 # sed -i 's/downloads.openwrt.org/mirrors.ustc.edu.cn\/openwrt/g' /etc/opkg/distfeeds.conf
+touch /etc/dropbear/authorized_keys
 service uhttpd disable
 function pppoe(){
 uci set network.wan.proto='pppoe'
