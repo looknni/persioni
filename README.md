@@ -388,11 +388,9 @@ systemctl enable systemd-networkd
 Name=eth0
 
 [Network]
-DHCP=no/yes
-Address=192.168.0.100/24
-Gateway=192.168.0.1
-DNS=8.8.4.4
-DNS=1.1.1.1
+DHCP=yes
+# Address=192.168.0.100/24
+# Gateway=192.168.0.1
 DNSSEC=allow-downgrade
 DNSOverTLS=opportunistic
 MulticastDNS=yes
