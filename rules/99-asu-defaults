@@ -5,7 +5,6 @@ cat > /etc/nftables.d/10-custom-filter-chains.nft << EXO
 ## The firewall4 input, forward and output chains are registered with
 ## priority filter (0).
 
-
 ## Uncomment the chains below if you want to stage rules *before* the
 ## default firewall input, forward and output chains.
 set mccset {
@@ -243,20 +242,10 @@ EEOO
 # sed -i 's/downloads.openwrt.org/mirrors.ustc.edu.cn\/openwrt/g' /etc/opkg/distfeeds.conf
 touch /etc/dropbear/authorized_keys
 service uhttpd disable
-function pppoe(){
-uci set network.wan.proto='pppoe'
-uci set network.wan.username='user'
-uci set network.wan.password='pass'
-uci set network.wan.keepalive='4 5'
-uci set network.wan.ipv6='0' # 1|auto
-uci commit
-}
-function unpppoe(){
-uci set network.wan.proto='dhcp'
-uci delete network.wan.username
-uci delete network.wan.password
-uci delete network.wan.keepalive
-uci delete network.wan.ipv6
-uci commit
-}
+# uci set network.wan.proto='pppoe'
+# uci set network.wan.username='user'
+# uci set network.wan.password='pass'
+# uci set network.wan.keepalive='4 5'
+# uci set network.wan.ipv6='0' # 1|auto
+# uci commit
 exit 0 
