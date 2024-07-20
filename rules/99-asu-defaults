@@ -72,63 +72,63 @@ cat > /root/nft.init.0 << 'EXO'
         mddm='mccm'
         mangle='fw4' # local 'filter'
 function list(){
-        nft list set inet \$1 \$2
+        nft list set inet $1 $2
 }
 function add(){
-        case "\$1" in
+        case "$1" in
                 add )
-                        nft add element inet \$mangle \$mdd {"\$2"}
-                        list \$mangle \$mdd
+                        nft add element inet $mangle $mdd {"$2"}
+                        list $mangle $mdd
                         ;;
                 add6 )
-                        nft add element inet \$mangle "\${mdd}6" {"\$2"}
-                        list \$mangle "\${mdd}6"
+                        nft add element inet $mangle "${mdd}6" {"$2"}
+                        list $mangle "${mdd}6"
                         ;;
                 addt )
-                        nft add element inet \$mangle \$mdd {"\$2" timeout \$3}
-                        list \$mangle \$mdd
+                        nft add element inet $mangle $mdd {"$2" timeout $3}
+                        list $mangle $mdd
                         ;;
                 addm )
-                        nft add element inet \$mangle \$mddm { "\$2" }
-                        list \$mangle \$mddm
+                        nft add element inet $mangle $mddm { "$2" }
+                        list $mangle $mddm
                         ;;
                 addmt )
-                        nft add element inet \$mangle \$mddm { "\$2" timeout \$3 }
-                        list \$mangle \$mddm
+                        nft add element inet $mangle $mddm { "$2" timeout $3 }
+                        list $mangle $mddm
                         ;;
         esac
 }
 function del(){
-        case "\$1" in
+        case "$1" in
                 del )
-                        nft delete element inet \$mangle \$mdd {"\$2"}
-                        list \$mangle \$mdd
+                        nft delete element inet $mangle $mdd {"$2"}
+                        list $mangle $mdd
                         ;;
                 del6 )
-                        nft delete element inet \$mangle "\${mdd}6" {"\$2"}
-                        list \$mangle "\${mdd}6"
+                        nft delete element inet $mangle "${mdd}6" {"$2"}
+                        list $mangle "${mdd}6"
                         ;;
                 delm )
-                        nft delete element inet \$mangle \$mddm {"\$2"}
-                        list \$mangle \$mddm
+                        nft delete element inet $mangle $mddm {"$2"}
+                        list $mangle $mddm
                         ;;
         esac
 }
-case "\$1" in
+case "$1" in
         add | add6 )
-                add \$1 \$2
+                add $1 $2
                 ;;
         del | del6 )
-                del \$1 \$2
+                del $1 $2
                 ;;
         addm )
-                add \$1 \$2
+                add $1 $2
                 ;;
         addt |addmt )
-                add \$1 \$2 \$3
+                add $1 $2 $3
                 ;;
         delm )
-                del \$1 \$2
+                del $1 $2
                 ;;
 esac
 unset mdd mddm mangle
@@ -137,7 +137,7 @@ EXO
 st2=$(dd if=/dev/urandom bs=1 count=1|hexdump -e '1 "%02x"')
 st4=$(dd if=/dev/urandom bs=2 count=1|hexdump -e '1 "%02x"')
 st40=$(dd if=/dev/urandom bs=2 count=1|hexdump -e '1 "%02x"')
-uci batch << 'EEOO'
+uci batch << EEOO
 set firewall.@defaults[0].synflood_protect='1'
 set firewall.@defaults[0].flow_offloading='1'
 set firewall.@defaults[0].flow_offloading_hw='1'
