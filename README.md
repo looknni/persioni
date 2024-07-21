@@ -462,7 +462,7 @@ src-git telephony https://git.openwrt.org/feed/telephony.git
 ./target/linux/ramips/dts # reg = <0x50000 0x1fb0000> # 32m
 ./target/linux/ramips/image # IMAGE_SIZE := 32m
 links https://downloads.openwrt.org/releases/23.05.3/xx/config.buildinfo
-make menuconfig
+make menuconfig # disable uhttpd,luci
 make clean;make -j4 V=s
 ```
 ##### yum groupinstall 'Server with GUI' # systemctl set-default graphical.target 
