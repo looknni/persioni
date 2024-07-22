@@ -450,7 +450,7 @@ sharutils subversion ncurses-term zlib1g-dev libc6-dev-i386 uglifyjs msmtp libgl
 qemu-utils libtool
 
 git clone https://github.com/openwrt/openwrt
-git checkout v23.05.4
+git branch v23.05.4 ; git checkout v23.05.4
 ./feeds.conf.default
 src-git packages https://git.openwrt.org/feed/packages.git
 # src-git luci https://git.openwrt.org/project/luci.git
