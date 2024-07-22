@@ -158,12 +158,7 @@ set system.@system[0].hostname="$st2"
 # add_list system.ntp.server='edu.ntp.org.cn'
 set system.@system[0].timezone='HKT-8'
 set system.@system[0].zonename='Asia/Hong Kong'
-set system.@system[0].log_remote='0'
 set system.@system[0].zram_comp_algo='lz4' # zstd
-set system.@system[0].conloglevel='1' #7 0=less lt.4=less.mesg 8=more.mesg
-set system.@system[0].cronloglevel='8' #5 gt.9=error.mesg 8=command.exec 0=debug.mesg
-set system.@system[0].klogconloglevel='7' # 0-8
-set dhcp.odhcpd.loglevel='3' #4 0=emer, 1=alert, 2=crit, 3=err, 4=warn, 5=notice, 6=info, 7=debug
 set system.ntp.enable_server='0'
 set system.ntp.interface='lan'
 
@@ -187,12 +182,10 @@ set network.wwan.proto='dhcp' # static < ipaddr netmask >
 set wireless.radio1.cell_density='0'
 set wireless.radio1.country='CN'
 set wireless.radio1.beacon_int='100'
-set wireless.radio1.log_level='4'
 set wireless.radio1.disabled='0'
 set wireless.radio0.cell_density='0'
 set wireless.radio0.country='CN' # US
 set wireless.radio0.beacon_int='100'
-set wireless.radio0.log_level='4' #2 0 = Verbose Debugging, 1 = Debugging, 2 = Informational Messages, 3 = Notification, 4 = Warning
 set wireless.radio0.disabled='0'
 
 set wireless.default_radio0.ssid="xiaomi-$st4"
