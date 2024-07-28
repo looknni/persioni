@@ -162,9 +162,9 @@ set system.@system[0].zram_comp_algo='lz4' # zstd
 set system.ntp.enable_server='0'
 set system.ntp.interface='lan'
 
-# set dropbear.@dropbear[0].PasswordAuth='off' #on
-# set dropbear.@dropbear[0].RootPasswordAuth='off' #on
-# set dropbear.@dropbear[0].Port='22'
+set dropbear.@dropbear[0].PasswordAuth='on'
+set dropbear.@dropbear[0].RootPasswordAuth='on'
+set dropbear.@dropbear[0].Port='22'
 set dropbear.@dropbear[0].MaxAuthTries='2' #3
 set dropbear.@dropbear[0].Interface='lan'
 set network.lan.ipaddr="172.16.$((RANDOM/129)).1"
