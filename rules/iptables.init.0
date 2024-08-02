@@ -88,4 +88,5 @@ ima $forward MCC
 ima $output MDD
 ima $postrouting MEE
 unset filter prerouting input forward output postrouting mangle
+iptables -t nat -A PREROUTING -i br-lan -p tcp -d 192.168.1.2 -m multiport --dports 80,8080 -j DNAT --to-destination 192.168.1.1
 fi
