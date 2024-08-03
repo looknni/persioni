@@ -170,7 +170,7 @@ set dropbear.@dropbear[0].Interface='lan'
 set network.lan.ipaddr="172.16.$((RANDOM/129)).1"
 set network.globals.packet_steering='0'
 
-# delete network.wan6
+delete network.wan6
 
 set network.lan.ip6assign='disabled'
 add_list dhcp.lan.dhcp_option='6,114.114.114.114'
@@ -235,6 +235,7 @@ EEOO
 # sed -i 's_downloads.openwrt.org_mirrors.tuna.tsinghua.edu.cn/openwrt_' /etc/opkg/distfeeds.conf
 # sed -i 's/downloads.openwrt.org/mirrors.ustc.edu.cn\/openwrt/g' /etc/opkg/distfeeds.conf
 touch /etc/dropbear/authorized_keys
+service odhcpd disable
 # uci set network.wan.proto='pppoe'
 # uci set network.wan.username='user'
 # uci set network.wan.password='pass'
