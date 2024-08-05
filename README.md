@@ -461,9 +461,9 @@ src-git packages https://git.openwrt.org/feed/packages.git
 # ./scripts/feeds update -a [luci]
 # ./scripts/feeds install -a [-p luci]
 
-./target/linux/ramips/dts # reg = <0x50000 0x1fb0000> # 32m
-./target/linux/ramips/image # IMAGE_SIZE := 32m
-links https://downloads.openwrt.org/releases/23.05.3/xx/config.buildinfo
+# ./target/linux/ramips/dts # reg = <0x50000 0x1fb0000> # 32m
+# ./target/linux/ramips/image # IMAGE_SIZE := 32m
+# links https://downloads.openwrt.org/releases/23.05.3/xx/config.buildinfo
 make defconfig && make menuconfig # disable uhttpd,luci
 make -j4 V=s
 ```
