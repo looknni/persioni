@@ -407,7 +407,7 @@ grub-install --target x86_64-efi --efi-directory /boot/efi --recheck [<--removab
 ? grub-install --target i386-pc --boot-directory /boot --recheck
 grub-mkconfig -o /boot/grub/grub.cfg
 
-? grub-mkstandalone --compress xz -o /efi/EFI/gentoo/xxx.efi -d /usr/lib/grub/x86_64-efi/ -O x86_64-efi /boot/grub/grub.cfg -v
+? grub-mkstandalone --compress gz -o /efi/EFI/gentoo/xxx.efi -d /usr/lib/grub/x86_64-efi/ -O x86_64-efi /boot/grub/grub.cfg -v
 ? efibootmgr -c -d /dev/sda -p 2 -L "Gentoo" -l "\EFI\gentoo\xxx.efi"
 ? efibootmgr -b 0002 -B
 
