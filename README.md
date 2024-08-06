@@ -369,7 +369,11 @@ mount -o remount,rw -t efivarfs efivarfs /sys/firmware/efi/efivars/
 emerge --ask sys-boot/grub sys-boot/efibootmgr
 
 sys-kernel/installkernel -systemd
-sys-apps/systemd boot # bootctl install && bootctl list
+sys-apps/systemd boot secureboot # bootctl install && bootctl list
+sys-boot/shim secureboot
+    # /etc/portage/make.conf # openssl req -new -nodes -utf8 -sha256 -x509 -outform PEM -out /efi/mok.pem -keyout /efi/mok.pem
+        SECUREBOOT_SIGN_KEY="/efi/mok.pem"
+        SECUREBOOT_SIGN_CERT="/efi/mok.pem"
 # /efi/loader/entries/gentoo.conf
 title gentoo
 linux /vmlinuz # /efi/
