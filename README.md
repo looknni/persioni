@@ -440,6 +440,16 @@ net-firewall/nftables static-libs
 ? .config -> config-6.6.13-gentoo-x86_64
 ? /usr/src/linux-6.6.13-gentoo/arch/x86_64/boot/bzImage -> vmlinuz-6.6.13-gentoo-x86_64
 
+# systemd-boot :Secure Boot
+emerge --ask sys-boot/shim sys-boot/mokutil app-crypt/sbsigntools
+## sbsign /efi/EFI/gentoo/grubx64.efi --key mok.pem --cert mok.pem --out /efi/EFI/gentoo/grubx64.efi
+## cp /usr/share/shim/BOOTX64.EFI /efi/EFI/gentoo/shimx64.efi
+## cp /usr/share/shim/mmx64.efi /efi/EFI/gentoo/mmx64.efi
+cp /usr/share/shim/mmx64.efi /efi/EFI/BOOT/mmx64.efi
+cp /efi/EFI/systemd/systemd-bootx64.efi /efi/EFI/BOOT/grubx64.efi
+openssl req -new -nodes -utf8 -sha256 -x509 -outform PEM -out mok.pem -keyout mok.pem
+openssl x509 -in mok.pem -inform PEM -out mok.der -outform DER
+mokutil --import mok.der
 ```
 ##### [Openwrt](https://lxr.openwrt.org/)
 ```
