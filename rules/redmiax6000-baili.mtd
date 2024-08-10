@@ -1,0 +1,128 @@
+# https://openwrt.org/toh/xiaomi/redmi_ax6000
+# OEM UI is only in Chinese. A quick startup (tested in verion 1.0.48) would be
+
+# Enable Development/Debug Mode
+# http://192.168.31.1/cgi-bin/luci/;stok={token}/api/misystem/set_sys_time?timezone=%20%27%20%3B%20echo%20pVoAAA%3D%3D%20%7C%20base64%20-d%20%7C%20mtd%20write%20-%20crash%20%3B%20
+# http://192.168.31.1/cgi-bin/luci/;stok={token}/api/misystem/set_sys_time?timezone=%20%27%20%3B%20echo%20pVoAAA%3D%3D%20%7C%20base64%20-d%20%7C%20mtd%20write%20-%20crash%20%3B%20
+
+# Set Bdataa Changing the telnet_en, ssh_en and uart_en in bdata will allow persistent access to the device.
+# http://192.168.31.1/cgi-bin/luci/;stok={token}/api/misystem/set_sys_time?timezone=%20%27%20%3B%20bdata%20set%20telnet_en%3D1%20%3B%20bdata%20set%20
+# http://192.168.31.1/cgi-bin/luci/;stok={token}/api/misystem/set_sys_time?timezone=%20%27%20%3b%20reboot%20%3b%20
+
+# Disable Development/Debug Mode
+# Sometimes features break if development/debug mode is left on. Let's disable it (access will still be permitted).
+# http://192.168.31.1/cgi-bin/luci/;stok={token}/api/misystem/set_sys_time?timezone=%20%27%20%3b%20mtd%20erase%20crash%20%3b%20 erases the crash partition by running mtd erase crash on the router.
+
+# Enable ssh access edit /etc/init.d/dropbear deleting the three lines
+# if [ "$flg_ssh" != "1" -o "$channel" = "release" ]; then
+#  return 0
+# fi
+
+# ~/.ssh/config adding
+# Host 192.168.31.1
+#  HostKeyAlgorithms=+ssh-rsa
+
+# Installing OpenWrt (stock layout)
+# 1. cat /proc/cmdline
+# 2. if firmware=1, current system is ubi1
+nvram set boot_wait=on
+nvram set uart_en=1
+nvram set flag_boot_rootfs=0 #else 1
+nvram set flag_last_success=0 #else 1
+nvram set flag_boot_success=1
+nvram set flag_try_sys1_failed=0
+nvram set flag_try_sys2_failed=0
+nvram commit
+
+3. Flash flash initramfs-factory.ubi if firmware=1, current system is ubi1, flash to ubi:
+ubiformat /dev/mtd8 -y -f /tmp/openwrt-{version}-mediatek-filogic-xiaomi_redmi-router-ax6000-stock-initramfs-factory.ubi
+# if firmware=0, current system is ubi, flash to ubi1:
+ubiformat /dev/mtd9 -y -f /tmp/openwrt-{version}-mediatek-filogic-xiaomi_redmi-router-ax6000-stock-initramfs-factory.ubi
+
+4. Reboot and setup uboot-env. It should boot to the openwrt initramfs system now, login ssh and setup:
+fw_setenv boot_wait on
+fw_setenv uart_en 1
+fw_setenv flag_boot_rootfs 0
+fw_setenv flag_last_success 1
+fw_setenv flag_boot_success 1
+fw_setenv flag_try_sys1_failed 8
+fw_setenv flag_try_sys2_failed 8
+fw_setenv mtdparts "nmbm0:1024k(bl2),256k(Nvram),256k(Bdata),2048k(factory),2048k(fip),256k(crash),256k(crash_log),30720k(ubi),30720k(ubi1),51200k(overlay)"
+
+5. Flash sysupgrade.bin via sysupgrade
+sysupgrade -n /tmp/openwrt-{version}-mediatek-filogic-xiaomi_redmi-router-ax6000-stock-squashfs-sysupgrade.bin
+
+# Installing OpenWrt (ubootmod layout)
+# 1. Your device should already running OpenWrt (stock layout) as per above instructions
+# 2. Backup BL2, Nvram, Bdata, Factory and FIP in case you break something or you want to go back to stock firmware one day.
+# cat /dev/mtdblock0 > /tmp/BL2.bin
+# cat /dev/mtdblock1 > /tmp/Nvram.bin
+# cat /dev/mtdblock2 > /tmp/Bdata.bin
+# cat /dev/mtdblock3 > /tmp/Factory.bin
+# cat /dev/mtdblock4 > /tmp/FIP.bin
+
+# 3. Run the following cmd to boot into an initramfs with the new OpenWrt U-Boot layout that expand ubi partion to the end of flash:
+ubiformat /dev/mtd7 -y -f /tmp/openwrt-{version}-mediatek-filogic-xiaomi_redmi-router-ax6000-ubootmod-initramfs-factory.ubi
+
+# 4. Reboot. It'll boot into initramfs, check mtd partion info. 
+cat /proc/mtd
+# 5. Load kmod-mtd-rw to temporarily make the bootloader partitions writable.
+opkg update && opkg install kmod-mtd-rw
+insmod /lib/modules/$(uname -r)/mtd-rw.ko i_want_a_brick=1
+
+# 6. Run the following cmd to clean all pending crash dumps in pstore, or OpenWrt U-Boot may boot into NAND recovery or tftp recovery.
+rm -f /sys/fs/pstore/*
+
+# 7. Format ubi and create new ubootenv volume:
+ubidetach -p /dev/mtd5; ubiformat /dev/mtd5 -y; ubiattach -p /dev/mtd5
+ubimkvol /dev/ubi0 -n 0 -N ubootenv -s 128KiB
+ubimkvol /dev/ubi0 -n 1 -N ubootenv2 -s 128KiB
+
+# 8. This is optional. Skip this if you do not want to have NAND recovery boot feature offered by OpenWrt U-Boot. Don't worry, you always have automatic tftp recovery feature enabled.
+# If your recovery image is larger than 10MiB, size the recovery partition accordingly to make it fit.
+ubimkvol /dev/ubi0 -n 2 -N recovery -s 10MiB
+ubiupdatevol /dev/ubi0_2 /tmp/ax6000-ubootmod-initramfs-recovery.itb
+
+# 9. Now, flash new U-Boot. Bye-bye ugly stock U-Boot.
+mtd write /tmp/ax6000-ubootmod-preloader.bin BL2
+mtd write /tmp/ax6000-ubootmod-bl31-uboot.fip FIP
+
+# 10. Flash the squashfs-sysupgrade.bin as usual:
+sysupgrade -n /tmp/openwrt-{version}-mediatek-filogic-xiaomi_redmi-router-ax6000-ubootmod-squashfs-sysupgrade.itb
+
+***************************************************************************************
+# https://git.openwrt.org/?p=openwrt/openwrt.git;a=commit;h=c0c3234e17207a9287a08757fc1752490144a1cd
+
+mediatek: add support for JDCloud RE-CP-03 # baili ax6000
+
+Hardware specification:
+  SoC: MediaTek MT7986A 4x A53
+  Flash: 128GB eMMC
+  RAM: 1GB DDR4
+  Ethernet: 4x 1GbE, 1x 2.5GbE (RTL8221B)
+  Switch: MediaTek MT7531AE
+  WiFi: MediaTek MT7976C
+  Button: Reset, Joylink
+  Power: DC 12V 2A
+
+Flash instructions:
+1. Download and flash the vendor migration firmware via webUI:
+   https://firmware.download.immortalwrt.eu.org/cnsztl/mediatek/filogic/openwrt-mediatek-mt7986-jdcloud_re-cp-03-vendor-migration.bin
+   (Default address is 192.168.68.1, user root, no password)
+2. After device has booted up, write new GPT table:
+   dd if=openwrt-mediatek-filogic-jdcloud_re-cp-03-gpt.bin of=/dev/mmcblk0 bs=512 seek=0 count=34 conv=fsync
+3. Erase and write new BL2:
+   echo 0 > /sys/block/mmcblk0boot0/force_ro
+   dd if=/dev/zero of=/dev/mmcblk0boot0 bs=512 count=8192 conv=fsync
+   dd if=openwrt-mediatek-filogic-jdcloud_re-cp-03-preloader.bin of=/dev/mmcblk0boot0 bs=512 conv=fsync
+4. Erase and write new FIP:
+   dd if=/dev/zero of=/dev/mmcblk0 bs=512 seek=13312 count=8192 conv=fsync
+   dd if=openwrt-mediatek-filogic-jdcloud_re-cp-03-bl31-uboot.fip of=/dev/mmcblk0 bs=512 seek=13312 conv=fsync
+5. Set static IP on your PC:
+   IP 192.168.1.254/24, GW 192.168.1.1
+6. Serve OpenWrt initramfs image using TFTP server.
+7. Cut off the power and re-engage, wait for TFTP recovery to complete.
+8. After OpenWrt has booted, perform sysupgrade.
+9. Additionally, if you want to have eMMC recovery boot feature:
+     (Don't worry! You will always have TFTP recovery boot feature.)
+   dd if=openwrt-mediatek-filogic-jdcloud_re-cp-03-initramfs-recovery.itb of=/dev/mmcblk0p4 bs=512 conv=fsync
