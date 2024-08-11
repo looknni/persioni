@@ -25,7 +25,7 @@
 ---
 > ##### $APT_{dpkg}^{apt-get} \Downarrow$ [Debian](https://www.debian.org/security/) ? [Kali](https://www.kali.org/tools/)
 ```
-ntp vim-gtk3 kaffeine audacious git traceroute locate smartmontools ntpdate fcitx fcitx-googlepinyin fcitx-config-gtk fcitx-table-wubi dnsutils wget bash-completion obs-studio aptitude links xterm net-tools wpasupplicant nmap tcpdump audacity inkscape gimp krita audacity libreoffice make gcc isc-dhcp-client rsync dnsmasq resolvconf hexcompare aircrack-ng firmware-realtek xxd xxhash qbittorrent aria2 hashcat flashrom
+ntp vim-gtk3 kaffeine audacious git traceroute locate smartmontools ntpdate fcitx fcitx-googlepinyin fcitx-config-gtk fcitx-table-wubi dnsutils wget bash-completion obs-studio aptitude links xterm net-tools wpasupplicant nmap tcpdump audacity inkscape gimp krita audacity libreoffice make gcc isc-dhcp-client rsync dnsmasq resolvconf hexcompare aircrack-ng firmware-realtek xxd xxhash qbittorrent aria2
 
 xset s 0 0 ; xset dpms 0 0 9999 ; xset q
 
@@ -83,6 +83,7 @@ systemctl enable systemd-networkd
 ip link set dev br0 type stp on
 ip link set dev br0 nomaster
 
+make localmodconfig ; make menuconfig ; make bzImage -j4 ; make modules -j4 && make modules_install ; make install # apt install linux-source
 sudo dpkg-reconfigure linux-image-$(uname -r)
 sudo update-initramfs -u -k all
 netstat -tuln|awk '{print $4}'|awk -F: '{print $2}'|grep -v '^$'|sort|uniq|xargs -I {} sudo lsof -i :{}
@@ -467,7 +468,7 @@ git clone https://github.com/openwrt/openwrt
 git checkout v23.05.4
 
 ./feeds.conf.default
-src-git packages https://git.openwrt.org/feed/packages.git
+## src-git packages https://git.openwrt.org/feed/packages.git
 # src-git luci https://git.openwrt.org/project/luci.git
 # src-git routing https://git.openwrt.org/feed/routing.git
 # src-git telephony https://git.openwrt.org/feed/telephony.git
