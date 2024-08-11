@@ -239,7 +239,7 @@ XTerm*color0: #000000
 XTerm*color1: #6A5ACD
 XTerm*color2: #f5f5f5
 XTerm*color3: #a85400
-XTerm*color4: #ff00ff
+XTerm*color4: #1E90FF
 XTerm*color5: #a800a8
 XTerm*color6: #00a8a8
 XTerm*color7: #ffeeaa
