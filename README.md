@@ -25,9 +25,10 @@
 ---
 > ##### $APT_{dpkg}^{apt-get} \Downarrow$ [Debian](https://www.debian.org/security/) ? [Kali](https://www.kali.org/tools/)
 ```
-lz4 ntp vim-gtk3 kaffeine audacious git traceroute locate smartmontools ntpdate fcitx fcitx-googlepinyin fcitx-config-gtk fcitx-table-wubi dnsutils wget bash-completion obs-studio aptitude links xterm net-tools wpasupplicant nmap tcpdump audacity inkscape gimp krita audacity libreoffice make gcc isc-dhcp-client rsync dnsmasq resolvconf hexcompare aircrack-ng firmware-realtek xxd xxhash qbittorrent aria2
-
-xset s 0 0 ; xset dpms 0 0 9999 ; xset q
+lz4 ntp vim-gtk3 kaffeine audacious git traceroute smartmontools fcitx fcitx-googlepinyin \
+fcitx-config-gtk fcitx-table-wubi dnsutils wget bash-completion obs-studio links xterm net-tools \
+wpasupplicant nmap tcpdump audacity inkscape gimp krita audacity libreoffice make gcc isc-dhcp-client \
+dnsmasq resolvconf hexcompare aircrack-ng xxd xxhash qbittorrent aria2
 
 ? connection wifi
 iwconfig
@@ -42,8 +43,8 @@ log-queries
 log-dhcp
 interface=wlan0
 dhcp-range=10.0.0.100,10.0.0.200,12h
-dhcp-option=6,192.168.0.1,1.1.1.1
 dhcp-option=3,192.168.0.1
+dhcp-option=6,192.168.0.1,8.8.4.4
 bind-interfaces
 except-interface=lo
 
@@ -83,9 +84,9 @@ systemctl enable systemd-networkd
 ip link set dev br0 type stp on
 ip link set dev br0 nomaster
 
-make localmodconfig ; make menuconfig ; make bzImage -j4 ; make modules -j4 && make modules_install ; make install # apt install linux-source
-sudo dpkg-reconfigure linux-image-$(uname -r)
-sudo update-initramfs -u -k all
+make localmodconfig ; make menuconfig ; make bzImage -j4 ; make modules_install && make install # apt install linux-source
+dpkg-reconfigure linux-image-$(uname -r)
+update-initramfs -u -k all
 netstat -tuln|awk '{print $4}'|awk -F: '{print $2}'|grep -v '^$'|sort|uniq|xargs -I {} sudo lsof -i :{}
 
 ```
@@ -106,7 +107,7 @@ FreeBSD: {
 }
 
 ## /etc/resolv.conf
-nameserver 1.0.0.1
+nameserver 8.8.8.8
 ## /etc/dhclient.conf
 interface "re0" {
     prepend domain-name-servers 64.6.64.6,8.8.4.4;
@@ -316,7 +317,7 @@ pacman -Qdtq | pacman -Rsn -
 ## ~~[Gentoo](https://www.gentoo.org/)~~
 ```
 mount | grep efi
-? gdisk cgdisk | fdisk cfdisk /dev/sda # m p g o n t d l w
+? fdisk /dev/sda # m p g o n t d l w
 mkfs.vfat -F 32 /dev/sda1
 mkfs.ext4 /dev/sda3
 mkswap /dev/sda2
@@ -413,7 +414,7 @@ grub-install --target x86_64-efi --efi-directory /boot/efi --recheck [<--removab
 grub-mkconfig -o /boot/grub/grub.cfg
 
 ? grub-mkstandalone --compress gz -o /efi/EFI/gentoo/xxx.efi -d /usr/lib/grub/x86_64-efi/ -O x86_64-efi /boot/grub/grub.cfg -v
-? efibootmgr -c -d /dev/sda -p 2 -L "Gentoo" -l "\EFI\gentoo\xxx.efi"
+? efibootmgr -c -d /dev/sda -p 2 -L "gentoo" -l "\EFI\gentoo\xxx.efi"
 ? efibootmgr -b 0002 -B
 
 useradd -m -G users,wheel,audio,video username
