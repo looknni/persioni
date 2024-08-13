@@ -182,12 +182,12 @@ EndSection
 
 #### ~/.Xresources
 ```
-XTerm*faceName: Monospace:style=Book:size=11:antialias=true
-XTerm*faceNameDoublesize: size=11
+XTerm*faceName: Monospace:style=Book:size=10:antialias=true
+XTerm*faceNameDoublesize: size=10
 XTerm*locale: true
 XTerm*utf8Title: true
 XTerm*utf8: 1
-xft.dpi: 96
+xft.dpi: 75
 xpdf.title: PDF
 xft.antialias: true
 xft.rgba: rgb
