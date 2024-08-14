@@ -1,0 +1,39 @@
+live_config_reload = true
+
+[font.normal]
+family = "Monospace"
+style = "Bold"
+
+[font]
+size = 10
+
+[scrolling]
+history = 2000
+multiplier = 10
+
+[selection]
+save_to_clipboard = true
+
+[cursor.style]
+shape = "Block"
+blinking= "on"
+
+[colors.cursor]
+cursor = "#DAA520" # compress
+
+[colors.normal]
+black = "#000000" # bottom
+blue = "#FFA500" # dir
+cyan = "#00CED1" # lrwx
+green = "#696969" # time exec
+magenta = "#FF00FF" # .png
+red = "#FF4500" # rws
+white = "#E1FFFF"
+yellow = "#FFD700" # $
+
+[colors.primary]
+background = "#1a1a1a"
+foreground = "#F5FFFA"
+
+[colors.selection]
+background = "#F0E68C"

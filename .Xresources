@@ -1,0 +1,126 @@
+XTerm*faceName: Monospace:style=:size=10:antialias=true
+XTerm*faceNameDoublesize: size=10
+XTerm*locale: true
+XTerm*utf8Title: true
+XTerm*utf8: 1
+xft.dpi: 100
+xpdf.title: PDF
+xft.antialias: true
+xft.rgba: rgb
+xft.hinting: true
+xft.hintstyle: hintslight
+XTerm*cursorColor: #ffa530
+
+XTerm*selectToClipboard: true
+
+*VT100*translations: #override \n\
+Ctrl <Key> g: larger-vt-font() \n\
+Ctrl <Key> h: smaller-vt-font()
+
+XTerm*renderFont: true
+XTerm*cjk_width: true
+XTerm*dynamicColors: true
+XTerm*eightBitInput: true
+XTerm*decTerminalID: vt340
+XTerm*rightScrollBar: false
+XTerm*jumpScroll: true
+XTerm*multiScroll: true
+XTerm*toolBar: false
+XTerm*Scrollbar*thickness: 10
+XTerm*Scrollbar*background: black
+XTerm*Scrollbar*foreground: gray90
+XTerm*ScrollKey: true
+XTerm*ScrollTtyOutput: false
+XTerm*ScrollBar: false
+
+XTerm*vt100*geometry: 80x30
+XTerm.vt100*fadeColor: #002b36
+XTerm.vt100*pointerColorBackground: #586e75
+XTerm.vt100*pointerColorForeground: #93a1a1
+XTerm*allowBoldFonts: true
+XTerm*boldMode: true
+XTerm*loginShell: false
+XTerm*saveLines: 2000
+XTerm*charClass: 33:48,35:48,37:48,43:48,45-47:48,64:48,95:48,126:48
+XTerm*colorBDMode: true
+XTerm*colorBD: #FF69B4
+
+XTerm*background: #1a1a1a
+XTerm*foreground: #d3d3d3
+! 0,bg 1,rws 2,ver 3,compressed-archive-exec 4,d777 5,n
+! 6,n 7,n 8,non-highlighted-parts 9,error-msg 10,prompt
+! 11,$ 12,d-x 13,.png .xpm .svg 14,l
+! 15,highlighted-parts
+XTerm*color0: #000000
+XTerm*color1: #6A5ACD
+XTerm*color2: #f5f5f5
+XTerm*color3: #a85400
+XTerm*color4: #1E90FF
+XTerm*color5: #a800a8
+XTerm*color6: #00a8a8
+XTerm*color7: #ffeeaa
+XTerm*color8: #4682b4
+XTerm*color9: #fc5454
+XTerm*color10: #54fc54
+XTerm*color11: #fcfc54
+XTerm*color12: #32cd32
+XTerm*color13: #fc54fc
+XTerm*color14: #54fcfc
+XTerm*color15: #000000
+
+UXTerm*faceName: Monospace:style=:size=10:antialias=true
+UXTerm*faceNameDoublesize: size=10
+UXTerm*locale: true
+UXTerm*utf8Title: true
+UXTerm*utf8: 1
+UXTerm*cursorColor: #ffa530
+UXTerm*showRoot: true
+
+UXTerm*selectToClipboard: true
+
+UXTerm*renderFont: true
+UXTerm*cjk_width: true
+UXTerm*dynamicColors: true
+UXTerm*eightBitInput: true
+UXTerm*decTerminalID: vt340
+UXTerm*rightScrollBar: false
+UXTerm*jumpScroll: true
+UXTerm*multiScroll: true
+UXTerm*toolBar: false
+UXTerm*Scrollbar*thickness: 10
+UXTerm*Scrollbar*background: black
+UXTerm*Scrollbar*foreground: gray90
+UXTerm*ScrollKey: true
+UXTerm*ScrollTtyOutput: false
+UXTerm*ScrollBar: false
+
+UXTerm*vt100*geometry: 80x30
+UXTerm.vt100*fadeColor: #002b36
+UXTerm.vt100*pointerColorBackground: #586e75
+UXTerm.vt100*pointerColorForeground: #93a1a1
+UXTerm*allowBoldFonts: true
+UXTerm*boldMode: true
+UXTerm*loginShell: false
+UXTerm*saveLines: 2000
+UXTerm*charClass: 33:48,35:48,37:48,43:48,45-47:48,64:48,95:48,126:48
+UXTerm*colorBDMode: true
+UXTerm*colorBD: #FF69B4
+
+UXTerm*background: #1a1a1a
+UXTerm*foreground: #D3D3D3
+UXTerm*color0: #000000
+UXTerm*color1: #6A5ACD
+UXTerm*color2: #f5f5f5
+UXTerm*color3: #a85400
+UXTerm*color4: #1E90FF
+UXTerm*color5: #a800a8
+UXTerm*color6: #00a8a8
+UXTerm*color7: #ffeeaa
+UXTerm*color8: #4682b4
+UXTerm*color9: #fc5454
+UXTerm*color10: #54fc54
+UXTerm*color11: #fcfc54
+UXTerm*color12: #32cd32
+UXTerm*color13: #fc54fc
+UXTerm*color14: #54fcfc
+UXTerm*color15: #000000
