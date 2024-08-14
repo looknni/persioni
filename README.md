@@ -256,42 +256,43 @@ XTerm*color15: #000000
 ```
 live_config_reload = true
 
-[colors.cursor]
-cursor = "#DAA520"
-
-[colors.normal]
-black = "#000000"
-blue = "#F0F8FF"
-cyan = "#FFA500"
-green = "#f0ffff"
-magenta = "#D4F2E7"
-red = "#FF4500"
-white = "#F5F5F5"
-yellow = "#FFD700"
-
-[colors.primary]
-background = "#1a1a1a"
-foreground = "#FFFFE0"
-
-[colors.selection]
-background = "#F0E68C"
-
-[cursor.style]
-shape = "Beam"
-
-[font]
-size = 10
-
 [font.normal]
 family = "Monospace"
 style = "Bold"
 
+[font]
+size = 10
+
 [scrolling]
 history = 5000
-multiplier = 4
+multiplier = 10
 
 [selection]
 save_to_clipboard = true
+
+[cursor.style]
+shape = "Block"
+blinking= "on"
+
+[colors.cursor]
+cursor = "#DAA520" # compress
+
+[colors.normal]
+black = "#000000" # bottom
+blue = "#1E90FF" # dir
+cyan = "#00CED1" # lrwx
+green = "#696969" # time exec
+magenta = "#FF00FF" # .png
+red = "#FF4500" # rws
+white = "#E1FFFF"
+yellow = "#FFD700" # $
+
+[colors.primary]
+background = "#1a1a1a"
+foreground = "#F5FFFA"
+
+[colors.selection]
+background = "#F0E68C"
 ```
 ## [Vim](https://ftp.nluug.nl/pub/vim/unix/)
 ```
