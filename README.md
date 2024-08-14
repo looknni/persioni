@@ -182,7 +182,7 @@ EndSection
 
 #### ~/.Xresources
 ```
-XTerm*faceName: Monospace:style=Book:size=10:antialias=true
+XTerm*faceName: Monospace:style=Bold:size=10:antialias=true
 XTerm*faceNameDoublesize: size=10
 XTerm*locale: true
 XTerm*utf8Title: true
@@ -251,6 +251,47 @@ XTerm*color12: #32cd32
 XTerm*color13: #fc54fc
 XTerm*color14: #54fcfc
 XTerm*color15: #000000
+```
+## ~/.alacritty.toml
+```
+live_config_reload = true
+
+[colors.cursor]
+cursor = "#DAA520"
+
+[colors.normal]
+black = "#000000"
+blue = "#F0F8FF"
+cyan = "#FFA500"
+green = "#f0ffff"
+magenta = "#D4F2E7"
+red = "#FF4500"
+white = "#F5F5F5"
+yellow = "#FFD700"
+
+[colors.primary]
+background = "#1a1a1a"
+foreground = "#FFFFE0"
+
+[colors.selection]
+background = "#F0E68C"
+
+[cursor.style]
+shape = "Beam"
+
+[font]
+size = 10
+
+[font.normal]
+family = "Monospace"
+style = "Bold"
+
+[scrolling]
+history = 5000
+multiplier = 4
+
+[selection]
+save_to_clipboard = true
 ```
 ## [Vim](https://ftp.nluug.nl/pub/vim/unix/)
 ```
