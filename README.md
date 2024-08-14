@@ -264,7 +264,7 @@ style = "Bold"
 size = 10
 
 [scrolling]
-history = 5000
+history = 2000
 multiplier = 10
 
 [selection]
