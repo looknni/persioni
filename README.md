@@ -182,12 +182,12 @@ EndSection
 
 #### ~/.Xresources
 ```
-XTerm*faceName: Monospace:style=Bold:size=10:antialias=true
+XTerm*faceName: Monospace:style=:size=10:antialias=true
 XTerm*faceNameDoublesize: size=10
 XTerm*locale: true
 XTerm*utf8Title: true
 XTerm*utf8: 1
-xft.dpi: 75
+xft.dpi: 100
 xpdf.title: PDF
 xft.antialias: true
 xft.rgba: rgb
@@ -279,7 +279,7 @@ cursor = "#DAA520" # compress
 
 [colors.normal]
 black = "#000000" # bottom
-blue = "#1E90FF" # dir
+blue = "#FFA500" # dir
 cyan = "#00CED1" # lrwx
 green = "#696969" # time exec
 magenta = "#FF00FF" # .png
