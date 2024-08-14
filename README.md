@@ -225,7 +225,7 @@ XTerm*allowBoldFonts: true
 XTerm*boldMode: true
 XTerm*loginShell: false
 XTerm*saveLines: 2000
-!XTerm*charClass: 33:48,35:48,37:48,43:48,45-47:48,64:48,95:48,126:48
+XTerm*charClass: 33:48,35:48,37:48,43:48,45-47:48,64:48,95:48,126:48
 XTerm*colorBDMode: true
 XTerm*colorBD: #FF69B4
 
@@ -251,6 +251,63 @@ XTerm*color12: #32cd32
 XTerm*color13: #fc54fc
 XTerm*color14: #54fcfc
 XTerm*color15: #000000
+
+UXTerm*faceName: Monospace:style=:size=10:antialias=true
+UXTerm*faceNameDoublesize: size=10
+UXTerm*locale: true
+UXTerm*utf8Title: true
+UXTerm*utf8: 1
+UXTerm*cursorColor: #ffa530
+UXTerm*showRoot: true
+
+UXTerm*selectToClipboard: true
+
+UXTerm*renderFont: true
+UXTerm*cjk_width: true
+UXTerm*dynamicColors: true
+UXTerm*eightBitInput: true
+UXTerm*decTerminalID: vt340
+UXTerm*rightScrollBar: false
+UXTerm*jumpScroll: true
+UXTerm*multiScroll: true
+UXTerm*toolBar: false
+UXTerm*Scrollbar*thickness: 10
+UXTerm*Scrollbar*background: black
+UXTerm*Scrollbar*foreground: gray90
+UXTerm*ScrollKey: true
+UXTerm*ScrollTtyOutput: false
+UXTerm*ScrollBar: false
+
+UXTerm*vt100*geometry: 80x30
+UXTerm.vt100*fadeColor: #002b36
+UXTerm.vt100*pointerColorBackground: #586e75
+UXTerm.vt100*pointerColorForeground: #93a1a1
+UXTerm*allowBoldFonts: true
+UXTerm*boldMode: true
+UXTerm*loginShell: false
+UXTerm*saveLines: 2000
+UXTerm*charClass: 33:48,35:48,37:48,43:48,45-47:48,64:48,95:48,126:48
+UXTerm*colorBDMode: true
+UXTerm*colorBD: #FF69B4
+
+UXTerm*background: #1a1a1a
+UXTerm*foreground: #D3D3D3
+UXTerm*color0: #000000
+UXTerm*color1: #6A5ACD
+UXTerm*color2: #f5f5f5
+UXTerm*color3: #a85400
+UXTerm*color4: #1E90FF
+UXTerm*color5: #a800a8
+UXTerm*color6: #00a8a8
+UXTerm*color7: #ffeeaa
+UXTerm*color8: #4682b4
+UXTerm*color9: #fc5454
+UXTerm*color10: #54fc54
+UXTerm*color11: #fcfc54
+UXTerm*color12: #32cd32
+UXTerm*color13: #fc54fc
+UXTerm*color14: #54fcfc
+UXTerm*color15: #000000
 ```
 ## ~/.alacritty.toml
 ```
