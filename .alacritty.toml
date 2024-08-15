@@ -1,8 +1,8 @@
 live_config_reload = true
 
 [font.normal]
-family = "Monospace"
-style = "Bold"
+family = "Mono"
+# style = "Bold"
 
 [font]
 size = 10

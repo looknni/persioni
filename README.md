@@ -326,7 +326,7 @@ passwd username
 umount -l /mnt/gentoo/dev{/shm,/pts,}
 ? mount -o remount,rw /
 ? emerge -avuDN @world
-? net-firewall/iptables net-firewall/nftables sys-process/lsof net-wireless/wpa_supplicant sys-fs/exfat-utils sys-fs/dosfstools dev-util/intel-ocl-sdk app-crypt/hashcat app-crypt/johntheripper media-gfx/flameshot
+? media-gfx/flameshot x11-libs/libXft net-firewall/iptables net-firewall/nftables sys-process/lsof net-wireless/wpa_supplicant sys-fs/exfat-utils sys-fs/dosfstools dev-util/intel-ocl-sdk app-crypt/hashcat app-crypt/johntheripper
 
 # /etc/portage/package.use/zz-autounmask
 net-libs/axtls cgi-php doc httpd savedconfig

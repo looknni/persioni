@@ -1,4 +1,4 @@
-XTerm*faceName: Monospace:style=:size=10:antialias=true
+XTerm*faceName: xft:Mono:style=:size=10:antialias=true
 XTerm*faceNameDoublesize: size=10
 XTerm*locale: true
 XTerm*utf8Title: true
@@ -21,10 +21,12 @@ XTerm*renderFont: true
 XTerm*cjk_width: true
 XTerm*dynamicColors: true
 XTerm*eightBitInput: true
-XTerm*decTerminalID: vt340
+! XTerm*decTerminalID: vt340
 XTerm*rightScrollBar: false
 XTerm*jumpScroll: true
 XTerm*multiScroll: true
+! XTerm*scrollLines: 30
+XTerm*scrollTtyOutput: true
 XTerm*toolBar: false
 XTerm*Scrollbar*thickness: 10
 XTerm*Scrollbar*background: black
@@ -68,7 +70,7 @@ XTerm*color13: #fc54fc
 XTerm*color14: #54fcfc
 XTerm*color15: #000000
 
-UXTerm*faceName: Monospace:style=:size=10:antialias=true
+UXTerm*faceName: xft:Mono:style=:size=10:antialias=true
 UXTerm*faceNameDoublesize: size=10
 UXTerm*locale: true
 UXTerm*utf8Title: true
@@ -82,7 +84,7 @@ UXTerm*renderFont: true
 UXTerm*cjk_width: true
 UXTerm*dynamicColors: true
 UXTerm*eightBitInput: true
-UXTerm*decTerminalID: vt340
+! UXTerm*decTerminalID: vt340
 UXTerm*rightScrollBar: false
 UXTerm*jumpScroll: true
 UXTerm*multiScroll: true
