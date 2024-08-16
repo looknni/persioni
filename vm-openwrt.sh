@@ -33,19 +33,59 @@ ip tuntap del mode tap dev $LAN
 
 # /etc/rc.local # ip6tables-extra iptables-mod-iprange iptables-mod-filter iptables-mod-conntrack-extra iptables-mod-ipsec iperf3 iptables-mod-nat-extra
 
-# ssh/scp -oHostKeyAlgorithms=ssh-rsa -oPubkeyAcceptedKeyTypes=+ssh-rsa
-
 # ssh-copy-id -i ~/.ssh/id_rsa.pub -p 22 root@192.168.1.1 # /etc/dropbear/authorized_keys
-# ~/.ssh/config # ssh xxx
-# Host xxx
-#	Hostname 192.168.1.1
-#	IdentityFile ~/.ssh/id_rsa
-#	User root
-#	Port 22
+:<< ssh-config
+Host xxx
+	Hostname 192.168.1.1
+	IdentityFile ~/.ssh/id_rsa
+	IdentitiesOnly yes
+	User root
+	Port 22
+	HostKeyAlgorithms ssh-rsa,ssh-ed25519
+ssh-config
 
 # ls -l /sys/class/net/
 # /usr/share/ucode/luci/
 # switch - interface - firewall #/etc/config/firewall @lan INPUT,REJECT OUTPUT,ACCEPT FORWARD,REJECT
+# alone [ lan or wan ]
+:<< phicommK2
+# config zone
+#	option network '... wan01'
+
+	config switch_vlan
+        option device 'switch0'
+        option vlan '1'
+        option ports '6t 2 1 0'
+        option vid '1'
+
+config switch_vlan
+        option device 'switch0'
+        option vlan '2'
+        option ports '6t 4'
+        option vid '2'
+
+config switch_vlan
+        option device 'switch0'
+        option vlan '3'
+        option ports '6t 3'
+        option vid '3'
+
+config interface 'wan01'
+        option proto 'dhcp'
+        option device 'eth0.3'
+phicommK2
+:<< cr660x
+config device
+        option name 'br-lan'
+        option type 'bridge'
+        list ports 'lan1'
+        list ports 'lan2'
+#       list ports 'lan3'
+
+config interface 'wan1'
+        option device 'lan3'
+        option proto 'dhcp'
+cr660x
 
 # cat /tmp/dhcp.leases
 # iw dev phy1-sta0 scan | grep -iE "phy1-sta0|SSID|signal|channel width|VHT (RX|TX) highest supported|HE (RX|TX) MCS|streams: MCS"
