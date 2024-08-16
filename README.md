@@ -329,12 +329,11 @@ umount -l /mnt/gentoo/dev{/shm,/pts,}
 ? media-gfx/flameshot x11-libs/libXft net-firewall/iptables net-firewall/nftables sys-process/lsof net-wireless/wpa_supplicant sys-fs/exfat-utils sys-fs/dosfstools dev-util/intel-ocl-sdk app-crypt/hashcat app-crypt/johntheripper
 
 # /etc/portage/package.use/zz-autounmask
-net-libs/axtls cgi-php doc httpd savedconfig
+net-libs/axtls cgi-php httpd
 dev-lang/php cgi apache2 fpm
 www-servers/lighttpd php
 app-misc/mime-types nginx
 x11-terms/xterm sixel xinerama 
-sys-devel/gcc objc objc++ objc-gc go
 app-editors/vim lua perl python racket ruby tcl
 dev-libs/openssl fips rfc3779
 net-firewall/iptables nftables
