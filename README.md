@@ -41,6 +41,7 @@ dhclient eth0
 ? dnsmasq.conf
 log-queries
 log-dhcp
+server=114.114.114.114
 interface=wlan0
 dhcp-range=10.0.0.100,10.0.0.200,12h
 dhcp-option=3,192.168.0.1
