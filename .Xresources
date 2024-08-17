@@ -55,7 +55,7 @@ XTerm*foreground: #d3d3d3
 ! 15,bottom
 XTerm*color0: #000000
 XTerm*color1: #6A5ACD
-XTerm*color2: #634F19
+XTerm*color2: #857333
 XTerm*color15: #F6D4D9
 XTerm*color3: #a85400
 XTerm*color4: #1E90FF
@@ -112,7 +112,7 @@ UXTerm*background: #1a1a1a
 UXTerm*foreground: #D3D3D3
 UXTerm*color0: #000000
 UXTerm*color1: #6A5ACD
-UXTerm*color2: #634F19
+UXTerm*color2: #857333
 UXTerm*color15: #F6D4D9
 UXTerm*color3: #a85400
 UXTerm*color4: #1E90FF
