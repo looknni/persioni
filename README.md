@@ -389,6 +389,7 @@ make -j4 V=s
 ##### yum groupinstall 'Server with GUI' # systemctl set-default graphical.target 
 ##### ` dpkg -l | grep ^rc | awk '{print $2}' | sudo xargs dpkg -P `
 ##### ` yum remove $(rpm -qa | grep kernel | grep -v $(uname -r)) `
+##### find / \( -path /proc -o -path /run \) -prune -type l ! -exec test -e {} \; -print
 ``` 
 PS1='\[\e[0;32m\]\A \[\e[1;95m\]\W \[\e[1;33m\]\$ \[\e[0m\]'
 
