@@ -49,14 +49,14 @@ XTerm*colorBD: #FF69B4
 
 XTerm*background: #1a1a1a
 XTerm*foreground: #d3d3d3
-! 0,bg 1,rws 2,ver 3,compressed-archive-exec 4,d777 5,n
-! 6,n 7,n 8,non-highlighted-parts 9,error-msg 10,prompt
+! 0,bg 1,rws 2,ver 3,compressed-exec 4,d777
+! 9,error-msg 10,prompt
 ! 11,$ 12,d-x 13,.png .xpm .svg 14,l
-! 15,bottom
+! 15,bottom 1-6,9-14:color 0,7,8,15:
 XTerm*color0: #000000
 XTerm*color1: #6A5ACD
-XTerm*color2: #857333
-XTerm*color15: #F6D4D9
+XTerm*color2: #f3f3c3
+XTerm*color15: #bb1f8a
 XTerm*color3: #a85400
 XTerm*color4: #1E90FF
 XTerm*color5: #a800a8
@@ -111,18 +111,19 @@ UXTerm*colorBD: #FF69B4
 UXTerm*background: #1a1a1a
 UXTerm*foreground: #D3D3D3
 UXTerm*color0: #000000
-UXTerm*color1: #6A5ACD
-UXTerm*color2: #857333
-UXTerm*color15: #F6D4D9
-UXTerm*color3: #a85400
-UXTerm*color4: #1E90FF
-UXTerm*color5: #a800a8
-UXTerm*color6: #00a8a8
-UXTerm*color7: #ffeeaa
+UXTerm*color1: #7D3D3D
+UXTerm*color2: #f3f3c3
+UXTerm*color15: #bb1f8a
+UXTerm*color3: #69944E
+UXTerm*color4: #68C391
+UXTerm*color5: #626FB5
+UXTerm*color6: #925AA2
+UXTerm*color7: #ffffff
+U
 UXTerm*color8: #4682b4
-UXTerm*color9: #fc5454
-UXTerm*color10: #54fc54
-UXTerm*color11: #fcfc54
-UXTerm*color12: #32cd32
-UXTerm*color13: #fc54fc
-UXTerm*color14: #54fcfc
+UXTerm*color9: #E67474
+UXTerm*color10: #F1D08E
+UXTerm*color11: #9FE276
+UXTerm*color12: #8CEEBA
+UXTerm*color13: #93A0E6
+UXTerm*color14: #D7A2E6
