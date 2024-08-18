@@ -108,22 +108,22 @@ UXTerm*charClass: 33:48,35:48,37:48,43:48,45-47:48,64:48,95:48,126:48
 ! UXTerm*colorBDMode: true
 ! UXTerm*colorBD: #FF69B4
 
-UXTerm*background: #b3b3b3
-UXTerm*foreground: #111111
-UXTerm*color0: #000000
-UXTerm*color1: #4d0d00
-UXTerm*color2: #4d4100
+UXTerm*background: #1a1a1a
+UXTerm*foreground: #D3D3D3
+UXTerm*color1: #7D3D3D
+UXTerm*color2: #f3f3c3
 UXTerm*color15: #bb1f8a
-UXTerm*color3: #57824d
-UXTerm*color4: #004d3f
-UXTerm*color5: #00094d
-UXTerm*color6: #4b0047
-UXTerm*color7: #fac500
+UXTerm*color3: #69944E
+UXTerm*color4: #68C391
+UXTerm*color5: #626FB5
+UXTerm*color6: #925AA2
+UXTerm*color7: #ffffff
 
-UXTerm*color8: #707070
-UXTerm*color9: #4d0d00
-UXTerm*color10: #4d4100
-UXTerm*color11: #0f4d00
-UXTerm*color12: #004d3f
-UXTerm*color13: #00094d
-UXTerm*color14: #4b0047
+UXTerm*color8: #4682b4
+UXTerm*color9: #E67474
+UXTerm*color10: #F1D08E
+UXTerm*color11: #9FE276
+UXTerm*color12: #8CEEBA
+UXTerm*color13: #93A0E6
+UXTerm*color14: #D7A2E6
+
