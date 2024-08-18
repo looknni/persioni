@@ -206,7 +206,7 @@ exec_always --no-startup-id "fcitx -dr"
 exec "xrdb -load ~/.Xresources"
 exec --no-startup-id "xset s 0 0"
 exec --no-startup-id "xset dpms 0 0 9999"
-xterm -u8 # fc-list :lang=zh
+bindsym $mod+Return exec "xterm -u8" # fc-list :lang=zh
 
 pacman -Si|-Qi package ?? rpm -qi
 pacman -Syu ?? apt upgrade
