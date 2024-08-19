@@ -52,7 +52,7 @@ ssh-config
 # config zone
 #	option network '... wan01'
 
-	config switch_vlan
+config switch_vlan
         option device 'switch0'
         option vlan '1'
         option ports '6t 2 1 0'
