@@ -181,7 +181,6 @@ EndSection
 ```
 ##### appres XTerm | grep -i utf8
 
-## [Vim](https://ftp.nluug.nl/pub/vim/unix/)
 ## ~~[Arch](https://archlinux.org/)~~
 ```
 # iwctl
