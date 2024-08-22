@@ -91,8 +91,7 @@ cr660x
 # iw dev phy1-sta0 scan | grep -iE "phy1-sta0|SSID|signal|channel width|VHT (RX|TX) highest supported|HE (RX|TX) MCS|streams: MCS"
 # iw phy phy0 interface add mon0 type monitor
 # (tr -dc 'a-z0-9' < /dev/urandom |fold -w8 > 1 &);sleep 10;sudo kill -9 $(pgrep tr)
-# ubus list
-# ubus call network.interface.lan status|dump|up|down|reload
+# iw dev phy1-ap0 station dump
 
 # iptables -nvL/-S/-F/-X/-Z [--line-numbers]
 # iptables -t raw/mangle/nat/filter/security -A/-I/-D/-R PREROUTING/INPUT/FORWARD/OUTPUT/POSTROUTING \
