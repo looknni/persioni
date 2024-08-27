@@ -187,11 +187,9 @@ add_list dhcp.lan.dhcp_option='6,114.114.114.114'
 set network.wwan=interface
 set network.wwan.proto='dhcp' # static < ipaddr netmask >
 
-set wireless.radio1.cell_density='0'
 set wireless.radio1.country='CN'
 set wireless.radio1.beacon_int='100'
 set wireless.radio1.disabled='0'
-set wireless.radio0.cell_density='0'
 set wireless.radio0.country='CN' # US
 set wireless.radio0.beacon_int='100'
 set wireless.radio0.disabled='0'
@@ -199,21 +197,17 @@ set wireless.radio0.disabled='0'
 set wireless.default_radio0.ssid="xiaomi-$st4"
 set wireless.default_radio0.encryption='none'
 set wireless.default_radio0.key='12345678'
-set wireless.default_radio0.max_listen_int='100' #65535 only.'ap'
-set wireless.default_radio0.short_preamble='1'
+set wireless.default_radio0.max_listen_int='5000' #65535 only.'ap'
 set wireless.default_radio0.sae_pwe='1' #0 2
 set wireless.default_radio0.wmm='1'
-set wireless.default_radio0.ieee80211w='0' # 1 2
 set wireless.default_radio0.disabled='1'
 
 set wireless.default_radio1.ssid="xiaomi-$st40"
 set wireless.default_radio1.encryption='none'
 set wireless.default_radio1.key='12345678'
-set wireless.default_radio1.max_listen_int='100' #65535 only.'ap'
-set wireless.default_radio1.short_preamble='1'
+set wireless.default_radio1.max_listen_int='5000' #65535 only.'ap'
 set wireless.default_radio1.sae_pwe='1' #0 2
 set wireless.default_radio1.wmm='1'
-set wireless.default_radio1.ieee80211w='0'
 set wireless.default_radio1.disabled='1'
 
 set wireless.wifinet0=wifi-iface
