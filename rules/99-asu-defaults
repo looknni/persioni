@@ -167,11 +167,11 @@ set system.ntp.interface='lan'
 # set dropbear.@dropbear[0].Port='22'
 set dropbear.@dropbear[0].MaxAuthTries='2' #3
 set dropbear.@dropbear[0].Interface='lan'
-set network.lan.ipaddr="172.16.$((RANDOM/129)).1"
+set network.lan.ipaddr="172.$((16+$RANDOM/2047)).$((RANDOM/129)).1"
 set network.globals.packet_steering='0'
 
 # delete network.wan6
-# set network.lan.ip6assign='disabled' #60 64 48
+# set network.lan.ip6assign='disabled' #60 64 56 52 48
 
 add_list dhcp.lan.dhcp_option='6,114.114.114.114'
 # set dhcp.lan.ra='disabled' #server relay
@@ -197,7 +197,7 @@ set wireless.radio0.disabled='0'
 set wireless.default_radio0.ssid="xiaomi-$st4"
 set wireless.default_radio0.encryption='none'
 set wireless.default_radio0.key='12345678'
-set wireless.default_radio0.max_listen_int='5000' #65535 only.'ap'
+set wireless.default_radio0.max_listen_int='3000' #65535 only.'ap'
 set wireless.default_radio0.sae_pwe='1' #0 2
 set wireless.default_radio0.wmm='1'
 set wireless.default_radio0.disabled='1'
@@ -205,7 +205,7 @@ set wireless.default_radio0.disabled='1'
 set wireless.default_radio1.ssid="xiaomi-$st40"
 set wireless.default_radio1.encryption='none'
 set wireless.default_radio1.key='12345678'
-set wireless.default_radio1.max_listen_int='5000' #65535 only.'ap'
+set wireless.default_radio1.max_listen_int='3000' #65535 only.'ap'
 set wireless.default_radio1.sae_pwe='1' #0 2
 set wireless.default_radio1.wmm='1'
 set wireless.default_radio1.disabled='1'
