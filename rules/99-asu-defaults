@@ -155,7 +155,6 @@ set firewall.@rule[7].enabled='0'
 set firewall.@rule[8].enabled='0'
 
 set system.@system[0].hostname="$st2"
-# add_list system.ntp.server='edu.ntp.org.cn'
 set system.@system[0].timezone='HKT-8'
 set system.@system[0].zonename='Asia/Hong Kong'
 set system.@system[0].zram_comp_algo='lz4' # zstd
