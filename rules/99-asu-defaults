@@ -72,7 +72,6 @@ EXO
 
 st2=$(dd if=/dev/urandom bs=1 count=1|hexdump -e '1 "%02x"')
 st4=$(dd if=/dev/urandom bs=2 count=1|hexdump -e '1 "%02x"')
-st40=$(dd if=/dev/urandom bs=2 count=1|hexdump -e '1 "%02x"')
 uci batch << EEOO
 set firewall.@defaults[0].synflood_protect='1'
 set firewall.@defaults[0].flow_offloading='1'
@@ -137,7 +136,7 @@ set wireless.default_radio0.sae_pwe='1' #0 2
 set wireless.default_radio0.wmm='1'
 set wireless.default_radio0.disabled='1'
 
-set wireless.default_radio1.ssid="xiaomi-$st40"
+set wireless.default_radio1.ssid="redmi-$st4"
 set wireless.default_radio1.encryption='none'
 set wireless.default_radio1.key='12345678'
 set wireless.default_radio1.max_listen_int='3000' #65535 only.'ap'
@@ -174,7 +173,7 @@ touch /etc/dropbear/authorized_keys
 /etc/init.d/odhcpd disable
 pd="openwrt-$(uci get network.lan.ipaddr)"
 (echo $pd;sleep 1;echo $pd) | passwd > /dev/null
-unset pd st2 st4 st40
+unset pd st2 st4
 # uci set network.wan.proto='pppoe'
 # uci set network.wan.username='user'
 # uci set network.wan.password='pass'
