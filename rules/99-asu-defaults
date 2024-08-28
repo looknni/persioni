@@ -174,7 +174,7 @@ touch /etc/dropbear/authorized_keys
 /etc/init.d/odhcpd disable
 pd="openwrt-$(uci get network.lan.ipaddr)"
 (echo $pd;sleep 1;echo $pd) | passwd > /dev/null
-unset pd
+unset pd st2 st4 st40
 # uci set network.wan.proto='pppoe'
 # uci set network.wan.username='user'
 # uci set network.wan.password='pass'
