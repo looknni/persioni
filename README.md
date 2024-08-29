@@ -102,16 +102,16 @@ google-droid-sans-fonts.noarch google-noto-sans-cjk-ttc-fonts.noarch bind-utils
 > ##### $PKG_{apt}^{dpkg} \Downarrow$ [FreeBSD](https://www.freebsd.org/)
 ```
 mkdir -p /usr/local/etc/pkg/repos && vi FreeBSD.conf
-    # quarterly [ latest ]
+	# quarterly [ latest ]
 FreeBSD: {
-  url: "https://mirrors.ustc.edu.cn/freebsd-pkg/${ABI}/quarterly",
+    url: "https://mirrors.ustc.edu.cn/freebsd-pkg/${ABI}/quarterly",
 }
 
 ## /etc/resolv.conf
 nameserver 8.8.8.8
 ## /etc/dhclient.conf
 interface "re0" {
-    prepend domain-name-servers 64.6.64.6,8.8.4.4;
+	prepend domain-name-servers 64.6.64.6,8.8.4.4;
 }
 ## service netif restart 
 ## dhclient re0
@@ -160,23 +160,23 @@ export XMODIFIERS=@im=fcitx
 #### /etc/X11/xorg.conf
 ```
 Section "Monitor"
-    Identifier "Monitor0"
-    VendorName "Monitor Vendor"
-    ModelName "Monitor Model"
-    HorizSync 30-107
-    VertRefresh 48-120
-    Option "DPMS"
+	Identifier "Monitor0"
+	VendorName "Monitor Vendor"
+	ModelName "Monitor Model"
+	HorizSync 30-107
+	VertRefresh 48-120
+	Option "DPMS"
 EndSection   
 Section "Screen"
-    Identifier "Screen0"
-    Device "Card0"
-    Monitor "Monitor0"
-    DefaultDepth 24
-    SubSection "Display"
-        Viewport 0 0
-        Depth 24
-        Modes "1024x768"
-    EndSubSection
+	Identifier "Screen0"
+	Device "Card0"
+	Monitor "Monitor0"
+	DefaultDepth 24
+	SubSection "Display"
+		Viewport 0 0
+		Depth 24
+		Modes "1024x768"
+	EndSubSection
 EndSection
 ```
 ##### appres XTerm | grep -i utf8
@@ -276,9 +276,9 @@ emerge --ask sys-boot/grub sys-boot/efibootmgr
 sys-kernel/installkernel -systemd
 sys-apps/systemd boot secureboot # bootctl install && bootctl list
 sys-boot/shim secureboot
-    # /etc/portage/make.conf # openssl req -new -nodes -utf8 -sha256 -x509 -outform PEM -out /efi/mok.pem -keyout /efi/mok.pem
-        SECUREBOOT_SIGN_KEY="/efi/mok.pem"
-        SECUREBOOT_SIGN_CERT="/efi/mok.pem"
+	# /etc/portage/make.conf # openssl req -new -nodes -utf8 -sha256 -x509 -outform PEM -out /efi/mok.pem -keyout /efi/mok.pem
+		SECUREBOOT_SIGN_KEY="/efi/mok.pem"
+		SECUREBOOT_SIGN_CERT="/efi/mok.pem"
 # /efi/loader/entries/gentoo.conf
 title gentoo
 linux /vmlinuz # /efi/
@@ -382,7 +382,7 @@ git checkout v23.05.4
 # ./target/linux/ramips/dts # reg = <0x50000 0x1fb0000> # 32m
 # ./target/linux/ramips/image # IMAGE_SIZE := 32m
 # links https://downloads.openwrt.org/releases/23.05.3/xx/config.buildinfo
-make defconfig && make menuconfig # disable uhttpd,luci
+rm .config* && make defconfig && make menuconfig && make clean # disable uhttpd,luci
 make -j4 V=s
 ```
 ##### yum groupinstall 'Server with GUI' # systemctl set-default graphical.target 

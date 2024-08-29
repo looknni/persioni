@@ -3,69 +3,68 @@
 # build.in -> package/base-files/files/etc/uci-defaults/
 cat > /root/nft.init.0 << 'EXO'
 #!/bin/sh
-
-        mdd='mccset' # local 'fccset'
-        mddm='mccm'
-        mangle='fw4' # local 'filter'
+	mdd='mccset' # local 'fccset'
+	mddm='mccm'
+	mangle='fw4' # local 'filter'
 function list(){
-        nft list set inet $1 $2
+	nft list set inet $1 $2
 }
 function add(){
-        case "$1" in
-                add )
-                        nft add element inet $mangle $mdd {"$2"}
-                        list $mangle $mdd
-                        ;;
-                add6 )
-                        nft add element inet $mangle "${mdd}6" {"$2"}
-                        list $mangle "${mdd}6"
-                        ;;
-                addt )
-                        nft add element inet $mangle $mdd {"$2" timeout $3}
-                        list $mangle $mdd
-                        ;;
-                addm )
-                        nft add element inet $mangle $mddm { "$2" }
-                        list $mangle $mddm
-                        ;;
-                addmt )
-                        nft add element inet $mangle $mddm { "$2" timeout $3 }
-                        list $mangle $mddm
-                        ;;
-        esac
+	case "$1" in
+		add )
+			nft add element inet $mangle $mdd {"$2"}
+			list $mangle $mdd
+			;;
+		add6 )
+			nft add element inet $mangle "${mdd}6" {"$2"}
+			list $mangle "${mdd}6"
+			;;
+		addt )
+			nft add element inet $mangle $mdd {"$2" timeout $3}
+			list $mangle $mdd
+			;;
+		addm )
+			nft add element inet $mangle $mddm { "$2" }
+			list $mangle $mddm
+			;;
+		addmt )
+			nft add element inet $mangle $mddm { "$2" timeout $3 }
+			list $mangle $mddm
+			;;
+	esac
 }
 function del(){
-        case "$1" in
-                del )
-                        nft delete element inet $mangle $mdd {"$2"}
-                        list $mangle $mdd
-                        ;;
-                del6 )
-                        nft delete element inet $mangle "${mdd}6" {"$2"}
-                        list $mangle "${mdd}6"
-                        ;;
-                delm )
-                        nft delete element inet $mangle $mddm {"$2"}
-                        list $mangle $mddm
-                        ;;
-        esac
+	case "$1" in
+		del )
+			nft delete element inet $mangle $mdd {"$2"}
+			list $mangle $mdd
+			;;
+		del6 )
+			nft delete element inet $mangle "${mdd}6" {"$2"}
+			list $mangle "${mdd}6"
+			;;
+		delm )
+			nft delete element inet $mangle $mddm {"$2"}
+			list $mangle $mddm
+			;;
+	esac
 }
 case "$1" in
-        add | add6 )
-                add $1 $2
-                ;;
-        del | del6 )
-                del $1 $2
-                ;;
-        addm )
-                add $1 $2
-                ;;
-        addt |addmt )
-                add $1 $2 $3
-                ;;
-        delm )
-                del $1 $2
-                ;;
+	add | add6 )
+		add $1 $2
+		;;
+	del | del6 )
+		del $1 $2
+		;;
+	addm )
+		add $1 $2
+		;;
+	addt |addmt )
+		add $1 $2 $3
+		;;
+	delm )
+		del $1 $2
+		;;
 esac
 unset mdd mddm mangle
 EXO
@@ -187,28 +186,28 @@ cat > /etc/nftables.d/10-custom-filter-chains.nft << EXO
 ## Uncomment the chains below if you want to stage rules *before* the
 ## default firewall input, forward and output chains.
 set mccset {
-        type ipv4_addr
-        flags interval,timeout
+	type ipv4_addr
+	flags interval,timeout
 }
 set mccset6 {
-        type ipv6_addr
-        flags interval,timeout
+	type ipv6_addr
+	flags interval,timeout
 }
 set mccm {
-        type ether_addr
-        flags interval,timeout
+	type ether_addr
+	flags interval,timeout
 }
 # chain user_pre_input {
-#     type filter hook input priority -1; policy accept;
-#     tcp dport ssh ct state new log prefix "SSH connection attempt: "
+#	type filter hook input priority -1; policy accept;
+#	tcp dport ssh ct state new log prefix "SSH connection attempt: "
 # }
 #
 # chain user_pre_forward {
-#     type filter hook forward priority -1; policy accept;
+#	type filter hook forward priority -1; policy accept;
 # }
 #
 # chain user_pre_output {
-#     type filter hook output priority -1; policy accept;
+#	type filter hook output priority -1; policy accept;
 # }
 
 
@@ -216,31 +215,31 @@ set mccm {
 ## default firewall input, forward and output chains.
 
 # chain user_post_input {
-#     type filter hook input priority 1; policy accept;
-#     ct state new log prefix "Firewall4 accepted ingress: "
+#	type filter hook input priority 1; policy accept;
+#	ct state new log prefix "Firewall4 accepted ingress: "
 # }
 #
 chain user_post_forward {
-        type filter hook forward priority 1; policy accept;
-#       ct state new log prefix "Firewall4 accepted forward: "
-        ip daddr @mccset drop
-        ip6 daddr @mccset6 drop
-        ether saddr @mccm drop
+	type filter hook forward priority 1; policy accept;
+#	ct state new log prefix "Firewall4 accepted forward: "
+	ip daddr @mccset drop
+	ip6 daddr @mccset6 drop
+	ether saddr @mccm drop
 }
 #
 # chain user_post_output {
-#     type filter hook output priority 1; policy accept;
-#     ct state new log prefix "Firewall4 accepted egress: "
+#	type filter hook output priority 1; policy accept;
+#	ct state new log prefix "Firewall4 accepted egress: "
 # }
 chain user_dstnat {
-        type nat hook prerouting priority dstnat; policy accept;
-#       iifname "br-lan" ip daddr {192.168.1.2} tcp dport {80,443} dnat to $(uci get network.lan.ipaddr)
+	type nat hook prerouting priority dstnat; policy accept;
+#	iifname "br-lan" ip daddr {192.168.1.2} tcp dport {80,443} dnat to $(uci get network.lan.ipaddr)
 }
 
 chain user_srcnat {
-        type nat hook postrouting priority srcnat; policy accept;
-#       oifname "lan" ip saddr 192.168.1.0/24 snat to xxx
-#       oifname "lan" ip saddr 192.168.1.0/24 masquerade
+	type nat hook postrouting priority srcnat; policy accept;
+#	oifname "lan" ip saddr 192.168.1.0/24 snat to xxx
+#	oifname "lan" ip saddr 192.168.1.0/24 masquerade
 }
 EXO
 exit 0 

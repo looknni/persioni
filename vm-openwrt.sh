@@ -7,12 +7,12 @@ ip link set dev $LAN up
 # configure interface with static ip to avoid overlapping routes
 ip addr add 192.168.1.241/24 dev $LAN
 qemu-system-x86_64 \
-    -device virtio-net-pci,netdev=lan \
-    -netdev tap,id=lan,ifname=$LAN,script=no,downscript=no \
-    -device virtio-net-pci,netdev=wan \
-    -netdev user,id=wan $IMAGE
-#    -M virt -nographic -m 512 -cpu cortex-a53 -smp 4  -kernel $IMAGE
-#     -m 2048 -smp 6 -enable-kvm xx.img -cdrom ./xx.iso
+	-device virtio-net-pci,netdev=lan \
+	-netdev tap,id=lan,ifname=$LAN,script=no,downscript=no \
+	-device virtio-net-pci,netdev=wan \
+	-netdev user,id=wan $IMAGE
+#	-M virt -nographic -m 512 -cpu cortex-a53 -smp 4  -kernel $IMAGE
+#	-m 2048 -smp 6 -enable-kvm xx.img -cdrom ./xx.iso
 # cleanup. delete tap interface created earlier
 ip addr flush dev $LAN
 ip link set dev $LAN down
@@ -53,38 +53,38 @@ ssh-config
 #	option network '... wan01'
 
 config switch_vlan
-        option device 'switch0'
-        option vlan '1'
-        option ports '6t 2 1 0'
-        option vid '1'
+	option device 'switch0'
+	option vlan '1'
+	option ports '6t 2 1 0'
+	option vid '1'
 
 config switch_vlan
-        option device 'switch0'
-        option vlan '2'
-        option ports '6t 4'
-        option vid '2'
+	option device 'switch0'
+	option vlan '2'
+	option ports '6t 4'
+	option vid '2'
 
 config switch_vlan
-        option device 'switch0'
-        option vlan '3'
-        option ports '6t 3'
-        option vid '3'
+	option device 'switch0'
+	option vlan '3'
+	option ports '6t 3'
+	option vid '3'
 
 config interface 'wan01'
-        option proto 'dhcp'
-        option device 'eth0.3'
+	option proto 'dhcp'
+	option device 'eth0.3'
 phicommK2
 :<< cr660x
 config device
-        option name 'br-lan'
-        option type 'bridge'
-        list ports 'lan1'
-        list ports 'lan2'
-#       list ports 'lan3'
+	option name 'br-lan'
+	option type 'bridge'
+	list ports 'lan1'
+	list ports 'lan2'
+#	list ports 'lan3'
 
 config interface 'wan1'
-        option device 'lan3'
-        option proto 'dhcp'
+	option device 'lan3'
+	option proto 'dhcp'
 cr660x
 
 # cat /tmp/dhcp.leases
