@@ -244,7 +244,7 @@ env-update && source /etc/profile && export PS1="(chroot) ${PS1}"
 
 mount /dev/sda1 /efi
 # /etc/sysctl.conf 
-vm.min_free_kbytes=300000
+vm.min_free_kbytes=1024000
 
 # /etc/portage/make.conf
 MAKEOPTS="-j6"
