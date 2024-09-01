@@ -25,9 +25,9 @@
 ---
 > ##### $APT_{dpkg}^{apt-get} \Downarrow$ [Debian](https://www.debian.org/security/) ? [Kali](https://www.kali.org/tools/)
 ```
-lz4 ntp vim-gtk3 kaffeine audacious git traceroute smartmontools fcitx fcitx-googlepinyin \
-fcitx-config-gtk fcitx-table-wubi dnsutils wget bash-completion obs-studio links xterm net-tools \
-wpasupplicant nmap tcpdump audacity inkscape gimp krita audacity libreoffice make gcc isc-dhcp-client \
+lz4 ntp vim-gtk3 vlc git traceroute smartmontools fcitx fcitx-googlepinyin \
+fcitx-config-gtk fcitx-table-wubi dnsutils wget bash-completion links xterm net-tools \
+wpasupplicant nmap tcpdump inkscape gimp krita audacity libreoffice make gcc isc-dhcp-client \
 dnsmasq resolvconf hexcompare aircrack-ng xxd xxhash qbittorrent aria2
 
 ? connection wifi
