@@ -338,6 +338,8 @@ app-editors/vim lua perl python racket ruby tcl
 dev-libs/openssl fips rfc3779
 net-firewall/iptables nftables
 net-firewall/nftables static-libs
+media-video/ffmpeg v4l
+media-video/vlc v4l
 
 ? touch /etc/portage/package.accept_keywords/zzz_autounmask
 ? emerge mypackage --autounmask-write --autounmask
