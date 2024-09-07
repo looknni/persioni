@@ -91,7 +91,7 @@ ip link set dev br0 nomaster
 make localmodconfig ; make menuconfig ; make bzImage -j4 ; make modules_install && make install # apt install linux-source
 dpkg-reconfigure linux-image-$(uname -r)
 update-initramfs -u -k all
-
+netstat -tuln|awk '{print $4}'|awk -F: '{print $2}'|grep -v '^$'|sort|uniq|xargs -I {} sudo lsof -i :{}
 ```
 ##### putty/SecureCRT tftpd # insmod ch34x,modprobe usbserial # CONFIG_USB_SERIAL CONFIG_USB_SERIAL_GENERIC # flashrom -p ch341a_spi [-E|-r <file>|-w <file>|-v <file>]
 
@@ -391,7 +391,6 @@ make -j4 V=s
 ##### ` dpkg -l | grep ^rc | awk '{print $2}' | sudo xargs dpkg -P `
 ##### ` yum remove $(rpm -qa | grep kernel | grep -v $(uname -r)) `
 ##### find / \( -path /proc -o -path /run \) -prune -o -type l ! -exec test -e {} \; -print
-##### netstat -tuln|awk '{print $4}'|awk -F: '{print $2}'|grep -v '^$'|sort|uniq|xargs -I {} sudo lsof -i :{}
 ``` 
 PS1='\[\e[0;32m\]\A \[\e[1;95m\]\W \[\e[1;33m\]\$ \[\e[0m\]'
 
