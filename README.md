@@ -1,5 +1,3 @@
-> - /biosboot ~($\displaystyle\lim_{31k\rightarrow\infty}1M$).../boot=/efi ~($\displaystyle\sum_{i \to 33M}^{n \to system} {i \times n+100M}$).../ ~($\frac{\infty}{0.96}$).../swap ~($\sqrt[i \to 2]{RAM}$) . /home
-
 ##### blkid /etc/default/grub /etc/fstab /boot/grub2/grub.cfg /boot/load/* 0^2^16 140177258^9
 ---
 ##### [Wolframalpha](https://www.wolframalpha.com/) . [Swisscows](https://swisscows.com/en) . [Maintaining and evolving HTML](https://whatwg.org/) . [Mmdn web docs](https://developer.mozilla.org/zh-CN/docs/Web/) . [Msi](https://us.msi.com/Motherboard/B560M-PRO/support) . [Comics](http://fjisu.top/)
@@ -8,23 +6,28 @@
 ---
 ##### [Gnu-command](https://www.gnu.org/software/) . [ ? ](https://quickref.cn/) . [Gentoo](https://wiki.gentoo.org/) . [Funtoo](https://www.funtoo.org/) . [Nftables](https://wiki.nftables.org/)
 ---
-> #### [SOURCES](https://cdimage.debian.org/images/) $\oint_{testing_{unstable}}^{stable} {debian}$
 > - https://mirrors.tuna.tsinghua.edu.cn
-> - https://mirrors.aliyun.com # [ freebsd 13,14 ]
-> - https://mirrors.ustc.edu.cn # [ freebsd 13,14 ]
-> - http://mirrors.nju.edu.cn/ # [ freebsd 13,14 ]
+> - https://mirrors.aliyun.com # freebsd 13,14
+> - https://mirrors.ustc.edu.cn # freebsd 13,14
+> - http://mirrors.nju.edu.cn # freebsd 13,14
 ---
-##### dig @ns1.google.com TXT o-o.myaddr.l.google.com | whoami.akamai.net. @ns1-1.akamaitech.net | myip.opendns.com @resolver1.opendns.com
-##### nslookup -type=TXT o-o.myaddr.l.google.com ns1.google.com | whoami.akamai.net. ns1-1.akamaitech.net | myip.opendns.com resolver1.opendns.com
+##### dig @ns1.google.com TXT o-o.myaddr.l.google.com
 ##### timedatectl set-timezone Asia/Chongqing # /etc/systemd/timesyncd.conf ? /etc/chrony.conf ? /etc/ntpsec/ntp.conf # server ntp.org.cn iburst ? server edu.ntp.org.cn iburst
 ##### sudo flatpak remote-modify flathub --url=https://mirror.sjtu.edu.cn/flathub
 ##### [On Flatpak error fonts](https://flatpak.org/setup/) ? cp -r /etc/fonts/* org.example.com/config/fontconfig
-##### `https://dl.google.com/linux/direct/google-chrome-stable[beta][unstable]_current_amd64.deb[x86_64.rpm]`
+##### `https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb` # beta|unstable x86_64.rpm
 ---
 ##### gdm ? [I3wm](https://i3wm.org/) ? [Sway](https://swaywm.org/) ? [Awesomewm](https://awesomewm.org/) ? [Dwm](#)
 ---
 > ##### $APT_{dpkg}^{apt-get} \Downarrow$ [Debian](https://www.debian.org/security/) ? [Kali](https://www.kali.org/tools/)
 ```
+deb https://mirrors.ustc.edu.cn/debian/ bookworm main non-free non-free-firmware
+deb-src https://mirrors.ustc.edu.cn/debian/ bookworm main non-free non-free-firmware
+deb https://mirrors.aliyun.com/debian-security/ bookworm-security main non-free non-free-firmware
+deb-src https://mirrors.aliyun.com/debian-security/ bookworm-security main non-free non-free-firmware
+deb https://mirrors.ustc.edu.cn/debian/ bookworm-updates main non-free non-free-firmware
+deb-src https://mirrors.ustc.edu.cn/debian/ bookworm-updates main non-free non-free-firmware
+
 lz4 ntp vim-gtk3 vlc git traceroute smartmontools fcitx fcitx-googlepinyin \
 fcitx-config-gtk fcitx-table-wubi dnsutils wget bash-completion links xterm net-tools \
 wpasupplicant nmap tcpdump inkscape gimp krita audacity libreoffice make gcc isc-dhcp-client \
@@ -88,7 +91,6 @@ ip link set dev br0 nomaster
 make localmodconfig ; make menuconfig ; make bzImage -j4 ; make modules_install && make install # apt install linux-source
 dpkg-reconfigure linux-image-$(uname -r)
 update-initramfs -u -k all
-netstat -tuln|awk '{print $4}'|awk -F: '{print $2}'|grep -v '^$'|sort|uniq|xargs -I {} sudo lsof -i :{}
 
 ```
 ##### putty/SecureCRT tftpd # insmod ch34x,modprobe usbserial # CONFIG_USB_SERIAL CONFIG_USB_SERIAL_GENERIC # flashrom -p ch341a_spi [-E|-r <file>|-w <file>|-v <file>]
@@ -229,7 +231,7 @@ tar xpvf stage3-*.tar.xz --xattrs-include='*.*' --numeric-owner
 
 mirrorselect -i -o >> /mnt/gentoo/etc/portage/make.conf
 cp -r /mnt/gentoo/usr/share/portage/config/repos.conf /mnt/gentoo/etc/portage/repos.conf/gentoo.conf
-cp --dereference /etc/resolv.conf /mnt/gentoo/etc/
+cp -L /etc/resolv.conf /mnt/gentoo/etc/
 
 mount --types proc /proc /mnt/gentoo/proc
 mount --bind /sys /mnt/gentoo/sys
@@ -326,7 +328,10 @@ passwd username
 umount -l /mnt/gentoo/dev{/shm,/pts,}
 ? mount -o remount,rw /
 ? emerge -avuDN @system
-? media-gfx/flameshot x11-libs/libXft net-firewall/iptables net-firewall/nftables sys-process/lsof net-wireless/wpa_supplicant sys-fs/exfat-utils sys-fs/dosfstools dev-util/intel-ocl-sdk app-crypt/hashcat app-crypt/johntheripper
+? media-gfx/flameshot x11-libs/libXft net-firewall/nftables net-firewall/iptables sys-process/lsof net-wireless/wpa_supplicant sys-fs/exfat-utils sys-fs/dosfstools dev-util/intel-ocl-sdk app-crypt/hashcat app-crypt/johntheripper
+
+# /etc/portage/package.mask/zz-mask
+>=app-i18n/fcitx-4.99
 
 # /etc/portage/package.use/zz-autounmask
 net-libs/axtls cgi-php httpd
@@ -344,11 +349,6 @@ media-video/vlc v4l
 ? touch /etc/portage/package.accept_keywords/zzz_autounmask
 ? emerge mypackage --autounmask-write --autounmask
 ? etc-update || dispatch-conf
-
-? /usr/src/linux-6.6.13-gentoo/System.map -> System.map-6.6.13-gentoo-x86_64
-? dracut --kver xxx -> initramfs-6.6.13-gentoo-x86_64.img
-? .config -> config-6.6.13-gentoo-x86_64
-? /usr/src/linux-6.6.13-gentoo/arch/x86_64/boot/bzImage -> vmlinuz-6.6.13-gentoo-x86_64
 
 # systemd-boot :Secure Boot
 emerge --ask sys-boot/shim sys-boot/mokutil app-crypt/sbsigntools
@@ -391,6 +391,7 @@ make -j4 V=s
 ##### ` dpkg -l | grep ^rc | awk '{print $2}' | sudo xargs dpkg -P `
 ##### ` yum remove $(rpm -qa | grep kernel | grep -v $(uname -r)) `
 ##### find / \( -path /proc -o -path /run \) -prune -o -type l ! -exec test -e {} \; -print
+##### netstat -tuln|awk '{print $4}'|awk -F: '{print $2}'|grep -v '^$'|sort|uniq|xargs -I {} sudo lsof -i :{}
 ``` 
 PS1='\[\e[0;32m\]\A \[\e[1;95m\]\W \[\e[1;33m\]\$ \[\e[0m\]'
 
