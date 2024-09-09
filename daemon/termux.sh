@@ -39,8 +39,6 @@ cat >> $termuxhome/.bashrc << "EOF"
 PS1='\[\e[0;32m\]\W\[\e[0m\] \[\e[1;31m\]? \[\e[0m\]'
 alias cdd="cd $PREFIX"
 export HISTTIMEFORMAT='%F %T]$ '
-#export HISTSIZE=5000
-#export HISTFILESIZE=10000
 PROMPT_COMMAND='history -a'
 export LESS_TERMCAP_mb=$'\E[01;35m'
 export LESS_TERMCAP_md=$'\E[01;35m'
