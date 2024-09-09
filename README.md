@@ -29,7 +29,7 @@ deb https://mirrors.ustc.edu.cn/debian/ bookworm-updates main non-free non-free-
 deb-src https://mirrors.ustc.edu.cn/debian/ bookworm-updates main non-free non-free-firmware
 
 lz4 ntp vim-gtk3 vlc git traceroute smartmontools fcitx fcitx-googlepinyin \
-fcitx-config-gtk fcitx-table-wubi dnsutils wget bash-completion links xterm net-tools \
+fcitx-config-gtk fcitx-table-wubi dnsutils wget links xterm net-tools \
 wpasupplicant nmap tcpdump inkscape gimp krita audacity libreoffice make gcc isc-dhcp-client \
 dnsmasq resolvconf hexcompare aircrack-ng xxd xxhash qbittorrent aria2
 
@@ -223,12 +223,10 @@ mount | grep efi
 ? fdisk /dev/sda # m p g o n t d l w
 mkfs.vfat -F 32 /dev/sda1
 mkfs.ext4 /dev/sda3
-mkswap /dev/sda2
-swapon /dev/sda2
+mkswap /dev/sda2 ; swapon /dev/sda2
+
 mount /dev/sda3 /mnt/gentoo
-
-tar xpvf stage3-*.tar.xz --xattrs-include='*.*' --numeric-owner
-
+cd /mn/gentoo ; tar xpvf stage3-*.tar.xz --xattrs-include='*.*' --numeric-owner
 mirrorselect -i -o >> /mnt/gentoo/etc/portage/make.conf
 cp -r /mnt/gentoo/usr/share/portage/config/repos.conf /mnt/gentoo/etc/portage/repos.conf/gentoo.conf
 cp -L /etc/resolv.conf /mnt/gentoo/etc/
@@ -243,28 +241,35 @@ mount --bind /run /mnt/gentoo/run
 chroot /mnt/gentoo /bin/bash
 emerge-webrsync # /var/db/repos/gentoo/
 env-update && source /etc/profile && export PS1="(chroot) ${PS1}"
-
 mount /dev/sda1 /efi
+
 # /etc/sysctl.conf 
 vm.min_free_kbytes=100000
 
-# /etc/portage/make.conf
+# /etc/portage/make.conf # openssl req -new -nodes -utf8 -sha256 -x509 -outform PEM -out /efi/mok.pem -keyout /efi/mok.pem
 MAKEOPTS="-j6"
 GRUB_PLATFORMS="efi-64"
+# SECUREBOOT_SIGN_KEY="/efi/mok.pem"
+# SECUREBOOT_SIGN_CERT="/efi/mok.pem"
 
 ln -sf /usr/share/zoneinfo/Europe/Brussels /etc/localtime
 ? /etc/locale.gen en_US.UTF-8 UTF-8 # locale-gen && env-update && source /etc/profile
 ? /etc/locale.conf LANG=en_US.UTF8
 
-emerge --ask sys-kernel/linux-firmware sys-apps/pciutils
+# /etc/portage/package.use/zz-autounmask
+sys-kernel/installkernel -systemd
+sys-apps/systemd boot # secureboot
+sys-boot/shim # secureboot
 
-emerge --ask sys-kernel/gentoo-sources
+touch /etc/portage/package.accept_keywords/zzz_autounmask
+emerge sys-kernel/linux-firmware --autounmask-write --autounmask
+etc-update # dispatch-conf
+emerge --ask sys-kernel/linux-firmware sys-apps/pciutils sys-kernel/gentoo-sources sys-kernel/installkernel sys-kernel/dracut bash-completion
 eselect kernel set 1
 make localmodconfig # menuconfig clean mrproper oldconfig
-? nouveau efi selinux iptable nf_tables IPVS conntrack exfat tun/tap
+# nouveau efi nf_tables exfat
 make -j6 && make modules_install
 make install
-emerge -a sys-kernel/dracut
 dracut --kver kernel.version
 
 # blkid mount
@@ -275,12 +280,6 @@ UUID=? / ext4 rw,noatime 0 1
 mount -o remount,rw -t efivarfs efivarfs /sys/firmware/efi/efivars/
 emerge --ask sys-boot/grub sys-boot/efibootmgr
 
-sys-kernel/installkernel -systemd
-sys-apps/systemd boot secureboot # bootctl install && bootctl list
-sys-boot/shim secureboot
-	# /etc/portage/make.conf # openssl req -new -nodes -utf8 -sha256 -x509 -outform PEM -out /efi/mok.pem -keyout /efi/mok.pem
-		SECUREBOOT_SIGN_KEY="/efi/mok.pem"
-		SECUREBOOT_SIGN_CERT="/efi/mok.pem"
 # /efi/loader/entries/gentoo.conf
 title gentoo
 linux /vmlinuz # /efi/
@@ -289,7 +288,7 @@ options root=/dev/xxx
 
 # /efi/loader/loader.conf
 default gentoo.conf
-# bootctl update
+# bootctl install && bootctl list ; bootctl update
 
 emerge -a app-portage/gentoolkit media-sound/alsa-utils sys-apps/dbus net-misc/dhcp x11-apps/xset
 systemctl enable systemd-networkd
@@ -345,10 +344,6 @@ net-firewall/iptables nftables
 net-firewall/nftables static-libs
 media-video/ffmpeg v4l
 media-video/vlc v4l
-
-? touch /etc/portage/package.accept_keywords/zzz_autounmask
-? emerge mypackage --autounmask-write --autounmask
-? etc-update || dispatch-conf
 
 # systemd-boot :Secure Boot
 emerge --ask sys-boot/shim sys-boot/mokutil app-crypt/sbsigntools
