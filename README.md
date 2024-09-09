@@ -264,7 +264,7 @@ sys-boot/shim # secureboot
 touch /etc/portage/package.accept_keywords/zzz_autounmask
 emerge sys-kernel/linux-firmware --autounmask-write --autounmask
 etc-update # dispatch-conf
-emerge --ask sys-kernel/linux-firmware sys-apps/pciutils sys-kernel/gentoo-sources sys-kernel/installkernel sys-kernel/dracut bash-completion
+emerge --ask sys-kernel/linux-firmware sys-apps/pciutils sys-kernel/gentoo-sources sys-kernel/installkernel sys-kernel/dracut bash-completion app-portage/gentoolkit media-sound/alsa-utils sys-apps/dbus net-misc/dhcp x11-apps/xset sys-boot/grub sys-boot/efibootmgr
 eselect kernel set 1
 make localmodconfig # menuconfig clean mrproper oldconfig
 # nouveau efi nf_tables exfat
@@ -278,7 +278,6 @@ UUID=? none swap sw 0 0
 UUID=? / ext4 rw,noatime 0 1
 
 mount -o remount,rw -t efivarfs efivarfs /sys/firmware/efi/efivars/
-emerge --ask sys-boot/grub sys-boot/efibootmgr
 
 # /efi/loader/entries/gentoo.conf
 title gentoo
@@ -290,8 +289,6 @@ options root=/dev/xxx
 default gentoo.conf
 # bootctl install && bootctl list ; bootctl update
 
-emerge -a app-portage/gentoolkit media-sound/alsa-utils sys-apps/dbus net-misc/dhcp x11-apps/xset
-systemctl enable systemd-networkd
 ? https://www.freedesktop.org/software/systemd/man/latest/systemd.network.html
 # /etc/systemd/network/eth0.network
 [Match]
@@ -367,7 +364,7 @@ qemu-utils libtool
 git clone https://github.com/openwrt/openwrt
 git checkout v23.05.4
 
-./feeds.conf.default
+# ./feeds.conf.default
 ## src-git packages https://git.openwrt.org/feed/packages.git
 # src-git luci https://git.openwrt.org/project/luci.git
 # src-git routing https://git.openwrt.org/feed/routing.git
