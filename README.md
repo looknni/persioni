@@ -228,8 +228,8 @@ mkswap /dev/sda2 ; swapon /dev/sda2
 mount /dev/sda3 /mnt/gentoo
 cd /mn/gentoo ; tar xpvf stage3-*.tar.xz --xattrs-include='*.*' --numeric-owner
 mirrorselect -i -o >> /mnt/gentoo/etc/portage/make.conf
-cp -r /mnt/gentoo/usr/share/portage/config/repos.conf /mnt/gentoo/etc/portage/repos.conf/gentoo.conf
-cp -L /etc/resolv.conf /mnt/gentoo/etc/
+cp -r usr/share/portage/config/repos.conf etc/portage/repos.conf/gentoo.conf
+cp -L /etc/resolv.conf etc/
 
 mount --types proc /proc /mnt/gentoo/proc
 mount --bind /sys /mnt/gentoo/sys
@@ -261,21 +261,19 @@ sys-kernel/installkernel -systemd
 sys-apps/systemd boot # secureboot
 sys-boot/shim # secureboot
 
-touch /etc/portage/package.accept_keywords/zzz_autounmask
+# touch /etc/portage/package.accept_keywords/zzz_autounmask
 emerge sys-kernel/linux-firmware --autounmask-write --autounmask
 etc-update # dispatch-conf
-emerge --ask sys-kernel/linux-firmware sys-apps/pciutils sys-kernel/gentoo-sources sys-kernel/installkernel sys-kernel/dracut bash-completion app-portage/gentoolkit media-sound/alsa-utils sys-apps/dbus net-misc/dhcp x11-apps/xset sys-boot/grub sys-boot/efibootmgr
-eselect kernel set 1
-make localmodconfig # menuconfig clean mrproper oldconfig
+emerge --ask sys-kernel/linux-firmware sys-apps/pciutils sys-kernel/gentoo-sources sys-kernel/installkernel sys-kernel/dracut app-shells/bash-completion app-portage/gentoolkit media-sound/alsa-utils sys-apps/dbus net-misc/dhcp x11-apps/xset sys-boot/os-prober sys-boot/grub sys-boot/efibootmgr
+eselect kernel set 1 ; make localmodconfig ; make menuconfig # clean mrproper oldconfig
 # nouveau efi nf_tables exfat
-make -j6 && make modules_install
-make install
+make -j6 && make modules_install && make install
 dracut --kver kernel.version
 
 # blkid mount
-UUID=? /efi vfat defaults 0 2
 UUID=? none swap sw 0 0
 UUID=? / ext4 rw,noatime 0 1
+UUID=? /efi vfat defaults 0 2
 
 mount -o remount,rw -t efivarfs efivarfs /sys/firmware/efi/efivars/
 
@@ -310,7 +308,7 @@ GRUB_SAVEDEFAULT=true
 GRUB_GFXMODE=1024x768
 GRUB_TERMINAL="console"
 
-grub-install --target x86_64-efi --efi-directory /boot/efi --recheck [<--removable>]
+grub-install --target x86_64-efi --efi-directory /efi --recheck --removable
 ? grub-install --target i386-pc --boot-directory /boot --recheck
 grub-mkconfig -o /boot/grub/grub.cfg
 
@@ -324,7 +322,7 @@ passwd username
 umount -l /mnt/gentoo/dev{/shm,/pts,}
 ? mount -o remount,rw /
 ? emerge -avuDN @system
-? media-gfx/flameshot x11-libs/libXft net-firewall/nftables net-firewall/iptables sys-process/lsof net-wireless/wpa_supplicant sys-fs/exfat-utils sys-fs/dosfstools dev-util/intel-ocl-sdk app-crypt/hashcat app-crypt/johntheripper
+? media-gfx/flameshot x11-libs/libXft net-dns/bind-tools net-firewall/nftables net-firewall/iptables sys-process/lsof net-wireless/wpa_supplicant sys-fs/exfat-utils sys-fs/dosfstools dev-util/intel-ocl-sdk app-crypt/hashcat app-crypt/johntheripper
 
 # /etc/portage/package.mask/zz-mask
 >=app-i18n/fcitx-4.99
@@ -352,6 +350,9 @@ cp /efi/EFI/systemd/systemd-bootx64.efi /efi/EFI/BOOT/grubx64.efi
 openssl req -new -nodes -utf8 -sha256 -x509 -outform PEM -out mok.pem -keyout mok.pem
 openssl x509 -in mok.pem -inform PEM -out mok.der -outform DER
 mokutil --import mok.der
+
+/etc/init.d/elogind start #openrc
+rc-update add elogind boot #openrc
 ```
 ##### [Openwrt](https://lxr.openwrt.org/)
 ```
