@@ -328,8 +328,8 @@ umount -l /mnt/gentoo/dev{/shm,/pts,}
 >=app-i18n/fcitx-4.99
 
 # /etc/portage/package.use/zz-autounmask
-net-libs/axtls cgi-php httpd
-dev-lang/php cgi apache2 fpm
+#net-libs/axtls cgi-php httpd
+#dev-lang/php cgi apache2 fpm
 www-servers/lighttpd php
 app-misc/mime-types nginx
 x11-terms/xterm sixel xinerama 
