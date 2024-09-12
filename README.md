@@ -28,7 +28,7 @@ deb-src https://mirrors.aliyun.com/debian-security/ bookworm-security main non-f
 deb https://mirrors.ustc.edu.cn/debian/ bookworm-updates main non-free non-free-firmware
 deb-src https://mirrors.ustc.edu.cn/debian/ bookworm-updates main non-free non-free-firmware
 
-lz4 ntp vim vlc git traceroute smartmontools fcitx fcitx-googlepinyin \
+ntp vim vlc git traceroute smartmontools fcitx fcitx-googlepinyin \
 fcitx-config-gtk fcitx-table-wubi dnsutils wget links xterm net-tools \
 wpasupplicant nmap tcpdump inkscape gimp krita audacity libreoffice make gcc isc-dhcp-client \
 dnsmasq resolvconf hexcompare aircrack-ng xxd xxhash qbittorrent aria2
@@ -343,6 +343,19 @@ mokutil --import mok.der
 
 /etc/init.d/elogind start #openrc
 rc-update add elogind boot #openrc
+emerge --ask sys-apps/ifplugd # /usr/share/doc/netifrc-<version_number>/net.example.bz2
+# Note: DHCP is the default behavior if /etc/conf.d/net is empty or missing
+config_eth0="dhcp"
+ethtool_offload_enp3s0="rx on tx on sg on tso on ufo on gso on gro on lro on"
+#modules_wlan0="wpa_supplicant"
+#config_wlan0="dhcp"
+#config_eth0="192.168.0.7/24"
+#routes_eth0="default via 192.168.0.1"
+#dns_servers_eth0="192.168.0.1 8.8.8.8"
+
+ln -s /etc/init.d/net.lo /etc/init.d/net.<interface_name>
+rc-service net.eth0 start
+rc-update add net.<interface_name> default
 ```
 ##### [Openwrt](https://lxr.openwrt.org/)
 ```
