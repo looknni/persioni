@@ -28,7 +28,7 @@ deb-src https://mirrors.aliyun.com/debian-security/ bookworm-security main non-f
 deb https://mirrors.ustc.edu.cn/debian/ bookworm-updates main non-free non-free-firmware
 deb-src https://mirrors.ustc.edu.cn/debian/ bookworm-updates main non-free non-free-firmware
 
-lz4 ntp vim-gtk3 vlc git traceroute smartmontools fcitx fcitx-googlepinyin \
+lz4 ntp vim vlc git traceroute smartmontools fcitx fcitx-googlepinyin \
 fcitx-config-gtk fcitx-table-wubi dnsutils wget links xterm net-tools \
 wpasupplicant nmap tcpdump inkscape gimp krita audacity libreoffice make gcc isc-dhcp-client \
 dnsmasq resolvconf hexcompare aircrack-ng xxd xxhash qbittorrent aria2
@@ -221,8 +221,8 @@ pacman -Qdtq | pacman -Rsn -
 ```
 mount | grep efi
 ? fdisk /dev/sda # m p g o n t d l w
-mkfs.vfat -F 32 /dev/sda1
-mkfs.ext4 /dev/sda3
+mkfs.vfat -F 32 /dev/sda1 # /efi
+mkfs.ext4 /dev/sda3 # / /boot
 mkswap /dev/sda2 ; swapon /dev/sda2
 
 mount /dev/sda3 /mnt/gentoo
@@ -235,8 +235,6 @@ mount --types proc /proc /mnt/gentoo/proc
 mount --bind /sys /mnt/gentoo/sys
 mount --bind /dev /mnt/gentoo/dev
 mount --bind /run /mnt/gentoo/run
-? mount --types tmpfs --options nosuid,nodev,noexec shm /dev/shm
-? chmod 1777 /dev/shm /run/shm
 
 chroot /mnt/gentoo /bin/bash
 emerge-webrsync # /var/db/repos/gentoo/
@@ -253,8 +251,8 @@ GRUB_PLATFORMS="efi-64"
 # SECUREBOOT_SIGN_CERT="/efi/mok.pem"
 
 ln -sf /usr/share/zoneinfo/Europe/Brussels /etc/localtime
-? /etc/locale.gen en_US.UTF-8 UTF-8 # locale-gen && env-update && source /etc/profile
-? /etc/locale.conf LANG=en_US.UTF8
+/etc/locale.gen en_US.UTF-8 UTF-8 # locale-gen && env-update && source /etc/profile
+/etc/locale.conf LANG=en_US.UTF8
 
 # /etc/portage/package.use/zz-autounmask
 sys-kernel/installkernel -systemd
@@ -309,7 +307,7 @@ GRUB_GFXMODE=1024x768
 GRUB_TERMINAL="console"
 
 grub-install --target x86_64-efi --efi-directory /efi --recheck --removable
-? grub-install --target i386-pc --boot-directory /boot --recheck
+? grub-install /dev/sda
 grub-mkconfig -o /boot/grub/grub.cfg
 
 ? grub-mkstandalone --compress gz -o /efi/EFI/gentoo/xxx.efi -d /usr/lib/grub/x86_64-efi/ -O x86_64-efi /boot/grub/grub.cfg -v
@@ -322,29 +320,21 @@ passwd username
 umount -l /mnt/gentoo/dev{/shm,/pts,}
 ? mount -o remount,rw /
 ? emerge -avuDN @system
-? media-gfx/flameshot x11-libs/libXft net-dns/bind-tools net-firewall/nftables net-firewall/iptables sys-process/lsof net-wireless/wpa_supplicant sys-fs/exfat-utils sys-fs/dosfstools dev-util/intel-ocl-sdk app-crypt/hashcat app-crypt/johntheripper
+? media-gfx/flameshot x11-libs/libXft net-dns/bind-tools net-firewall/nftables net-firewall/iptables sys-process/lsof net-wireless/wireless-tools sys-fs/exfat-utils sys-fs/dosfstools dev-util/intel-ocl-sdk app-crypt/hashcat app-crypt/johntheripper
 
 # /etc/portage/package.mask/zz-mask
 >=app-i18n/fcitx-4.99
 
 # /etc/portage/package.use/zz-autounmask
-#net-libs/axtls cgi-php httpd
-#dev-lang/php cgi apache2 fpm
-www-servers/lighttpd php
-app-misc/mime-types nginx
-x11-terms/xterm sixel xinerama 
-app-editors/vim lua perl python racket ruby tcl
-dev-libs/openssl fips rfc3779
+# net-libs/axtls cgi-php httpd
+# dev-lang/php cgi apache2 fpm
 net-firewall/iptables nftables
 net-firewall/nftables static-libs
 media-video/ffmpeg v4l
 media-video/vlc v4l
 
 # systemd-boot :Secure Boot
-emerge --ask sys-boot/shim sys-boot/mokutil app-crypt/sbsigntools
-## sbsign /efi/EFI/gentoo/grubx64.efi --key mok.pem --cert mok.pem --out /efi/EFI/gentoo/grubx64.efi
-## cp /usr/share/shim/BOOTX64.EFI /efi/EFI/gentoo/shimx64.efi
-## cp /usr/share/shim/mmx64.efi /efi/EFI/gentoo/mmx64.efi
+emerge --ask sys-boot/shim sys-boot/mokutil
 cp /usr/share/shim/mmx64.efi /efi/EFI/BOOT/mmx64.efi
 cp /efi/EFI/systemd/systemd-bootx64.efi /efi/EFI/BOOT/grubx64.efi
 openssl req -new -nodes -utf8 -sha256 -x509 -outform PEM -out mok.pem -keyout mok.pem

@@ -12,13 +12,13 @@ qemu-system-x86_64 \
 	-device virtio-net-pci,netdev=wan \
 	-netdev user,id=wan $IMAGE
 #	-M virt -nographic -m 512 -cpu cortex-a53 -smp 4  -kernel $IMAGE
-#	-m 2048 -smp 6 -enable-kvm xx.img -cdrom ./xx.iso
 # cleanup. delete tap interface created earlier
 ip addr flush dev $LAN
 ip link set dev $LAN down
 ip tuntap del mode tap dev $LAN
 
 # qemu-img create -f qcow2 xx.img 10G
+# qemu-system-x86_64 -m 2048 -smp 6 -enable-kvm xx.img -cdrom ./xx.iso
 
 # https://openwrt.org/docs/start
 # 
