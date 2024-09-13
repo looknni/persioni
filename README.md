@@ -238,6 +238,7 @@ mount --bind /run /mnt/gentoo/run
 
 chroot /mnt/gentoo /bin/bash
 emerge-webrsync # /var/db/repos/gentoo/
+emerge -av app-editors/vim app-shells/bash-completion
 env-update && source /etc/profile && export PS1="(chroot) ${PS1}"
 mount /dev/sda1 /efi
 
@@ -251,8 +252,8 @@ GRUB_PLATFORMS="efi-64"
 # SECUREBOOT_SIGN_CERT="/efi/mok.pem"
 
 ln -sf /usr/share/zoneinfo/Europe/Brussels /etc/localtime
-/etc/locale.gen en_US.UTF-8 UTF-8 # locale-gen && env-update && source /etc/profile
-/etc/locale.conf LANG=en_US.UTF8
+# /etc/locale.gen en_US.UTF-8 UTF-8 # locale-gen && env-update && source /etc/profile
+# /etc/locale.conf LANG=en_US.UTF8
 
 # /etc/portage/package.use/zz-autounmask
 sys-kernel/installkernel -systemd
@@ -262,7 +263,7 @@ sys-boot/shim # secureboot
 # touch /etc/portage/package.accept_keywords/zzz_autounmask
 emerge sys-kernel/linux-firmware --autounmask-write --autounmask
 etc-update # dispatch-conf
-emerge --ask sys-kernel/linux-firmware sys-apps/pciutils sys-kernel/gentoo-sources sys-kernel/installkernel sys-kernel/dracut app-shells/bash-completion app-portage/gentoolkit media-sound/alsa-utils sys-apps/dbus net-misc/dhcp x11-apps/xset sys-boot/os-prober sys-boot/grub sys-boot/efibootmgr
+emerge --ask sys-kernel/linux-firmware sys-apps/pciutils sys-kernel/gentoo-sources sys-kernel/installkernel sys-kernel/dracut app-portage/gentoolkit media-sound/alsa-utils sys-apps/dbus net-misc/dhcp x11-apps/xset sys-boot/os-prober sys-boot/grub sys-boot/efibootmgr
 eselect kernel set 1 ; make localmodconfig ; make menuconfig # clean mrproper oldconfig
 # nouveau efi nf_tables exfat
 make -j6 && make modules_install && make install
@@ -319,7 +320,7 @@ passwd username
 
 umount -l /mnt/gentoo/dev{/shm,/pts,}
 ? mount -o remount,rw /
-? emerge -avuDN @system
+? emerge -avuDN @system # /var/cache/distfiles/
 ? media-gfx/flameshot x11-libs/libXft net-dns/bind-tools net-firewall/nftables net-firewall/iptables sys-process/lsof net-wireless/wireless-tools sys-fs/exfat-utils sys-fs/dosfstools dev-util/intel-ocl-sdk app-crypt/hashcat app-crypt/johntheripper
 
 # /etc/portage/package.mask/zz-mask
@@ -356,6 +357,14 @@ ethtool_offload_eth0="rx on tx on sg on tso on ufo on gso on gro on lro on"
 ln -s /etc/init.d/net.lo /etc/init.d/net.<interface_name>
 rc-service net.eth0 start
 rc-update add net.<interface_name> default
+
+# .config/fcitx/config # app-i18n/fcitx app-i18n/fcitx-libpinyin
+ActivateKey=SHIFT_LSHIFT
+PrevPageKey=PGUP
+NextPageKey=PGDN
+ShowInputWindowOnlyWhenActive=True
+HideInputWindowWhenOnlyPreeditString=True
+
 ```
 ##### [Openwrt](https://lxr.openwrt.org/)
 ```
