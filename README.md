@@ -366,11 +366,12 @@ rc-service gpm start
 rc-update add gpm default
 
 # .config/fcitx/config # app-i18n/fcitx app-i18n/fcitx-libpinyin
-ActivateKey=SHIFT_LSHIFT
+ActivateKey=SHIFT_LSHIFT SHIFT_RSHIFT
+InactivateKey=SHIFT_RSHIFT
 PrevPageKey=PGUP
 NextPageKey=PGDN
-ShowInputWindowOnlyWhenActive=True
-HideInputWindowWhenOnlyPreeditString=True
+# .config/fcitx/conf/fcitx-classic-ui.config
+SkinType=classic
 
 ```
 ##### [Openwrt](https://lxr.openwrt.org/)
