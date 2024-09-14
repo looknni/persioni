@@ -23,7 +23,6 @@ XTerm*renderFont: true
 XTerm*cjk_width: true
 XTerm*dynamicColors: true
 XTerm*eightBitInput: true
-! XTerm*decTerminalID: vt340
 XTerm*rightScrollBar: false
 XTerm*jumpScroll: true
 XTerm*multiScroll: true
@@ -39,13 +38,10 @@ XTerm*ScrollBar: false
 
 XTerm*vt100*geometry: 80x30
 XTerm.vt100*fadeColor: #002b36
-! XTerm.vt100*pointerColorBackground: #586e75
-! XTerm.vt100*pointerColorForeground: #93a1a1
 XTerm*allowBoldFonts: true
 XTerm*boldMode: true
 XTerm*loginShell: false
 XTerm*saveLines: 2000
-XTerm*charClass: 33:48,35:48,37:48,43:48,45-47:48,64:48,95:48,126:48
 ! XTerm*colorBDMode: true
 ! XTerm*colorBD: #FF69B4
 
@@ -86,7 +82,6 @@ UXTerm*renderFont: true
 UXTerm*cjk_width: true
 UXTerm*dynamicColors: true
 UXTerm*eightBitInput: true
-! UXTerm*decTerminalID: vt340
 UXTerm*rightScrollBar: false
 UXTerm*jumpScroll: true
 UXTerm*multiScroll: true
@@ -100,13 +95,10 @@ UXTerm*ScrollBar: false
 
 UXTerm*vt100*geometry: 80x30
 UXTerm.vt100*fadeColor: #002b36
-! UXTerm.vt100*pointerColorBackground: #586e75
-! UXTerm.vt100*pointerColorForeground: #93a1a1
 UXTerm*allowBoldFonts: true
 UXTerm*boldMode: true
 UXTerm*loginShell: false
 UXTerm*saveLines: 2000
-UXTerm*charClass: 33:48,35:48,37:48,43:48,45-47:48,64:48,95:48,126:48
 ! UXTerm*colorBDMode: true
 ! UXTerm*colorBD: #FF69B4
 
