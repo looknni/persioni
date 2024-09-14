@@ -357,6 +357,9 @@ ethtool_offload_eth0="rx on tx on sg on tso on ufo on gso on gro on lro on"
 ln -s /etc/init.d/net.lo /etc/init.d/net.<interface_name>
 rc-service net.eth0 start
 rc-update add net.<interface_name> default
+# /etc/conf.d/gpm
+rc-service gpm start
+rc-update add gpm default
 
 # .config/fcitx/config # app-i18n/fcitx app-i18n/fcitx-libpinyin
 ActivateKey=SHIFT_LSHIFT
