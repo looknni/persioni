@@ -103,6 +103,10 @@ google-droid-sans-fonts.noarch google-noto-sans-cjk-ttc-fonts.noarch bind-utils
 ```
 > ##### $PKG_{apt}^{dpkg} \Downarrow$ [FreeBSD](https://www.freebsd.org/)
 ```
+sysctl net.wlan.devices # sysctl -a | grep net.wlan
+ifconfig wlan0 create wlandev xxx ; ifconfig wlan0 ssid wifiname
+service netif restart ; ifconfig wlan0 up ; dhclient wlan0
+
 mkdir -p /usr/local/etc/pkg/repos && vi FreeBSD.conf
 	# quarterly [ latest ]
 FreeBSD: {
