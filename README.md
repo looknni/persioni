@@ -4,7 +4,7 @@
 ---
 ##### [Ventoy](https://www.ventoy.net/en/index.html) . [Tempmail](https://tempmail.plus/en) . [.apk](https://www.malavida.com/en) . [Tracker.deb](https://tracker.debian.org/pkg/linux) . [Cppreference](https://cppreference.com/)
 ---
-##### [Gnu-command](https://www.gnu.org/software/) . [ ? ](https://quickref.cn/) . [Gentoo](https://wiki.gentoo.org/) . [Funtoo](https://www.funtoo.org/) . [Nftables](https://wiki.nftables.org/)
+##### [Gnu-command](https://www.gnu.org/software/) . [ ? ](https://quickref.cn/) . [Nftables](https://wiki.nftables.org/)
 ---
 > - https://mirrors.tuna.tsinghua.edu.cn
 > - https://mirrors.aliyun.com # freebsd 13,14
@@ -70,7 +70,7 @@ sysctl net.ipv4.ip_forward=1
 nft add rule ip filter forward iifname "eth0" oifname "wlan0" ip saddr 192.168.1.0/24 ct state new accept
 nft add rule ip filter forward ct state established,related accept
 nft add rule ip nat postrouting oifname "eth0" masquerade
-# clent.gateway set eth0.ip
+# client.gateway set eth0.ip
 # nft add rule ip nat prerouting iifname "at0" tcp dport 80 ip daddr 192.168.1.100 dnat to 192.168.0.2:443
 
 ?o /etc/network/interfaces # man interfaces
@@ -220,7 +220,7 @@ pacman -Qdtq | pacman -Rsn -
 ## ~~[Gentoo](https://www.gentoo.org/)~~
 ```
 mount | grep efi
-? fdisk /dev/sda # m p g o n t d l w
+? fdisk /dev/sda # m p g o n t d l w # lsblk -f
 mkfs.vfat -F 32 /dev/sda1 # /efi
 mkfs.ext4 /dev/sda3 # / /boot
 mkswap /dev/sda2 ; swapon /dev/sda2
@@ -343,7 +343,7 @@ openssl x509 -in mok.pem -inform PEM -out mok.der -outform DER
 mokutil --import mok.der
 
 /etc/init.d/elogind start #openrc
-rc-update add elogind boot #openrc
+rc-update add elogind default #openrc
 emerge --ask sys-apps/ifplugd # /usr/share/doc/netifrc-<version_number>/net.example.bz2
 # Note: DHCP is the default behavior if /etc/conf.d/net is empty or missing
 config_eth0="dhcp"
