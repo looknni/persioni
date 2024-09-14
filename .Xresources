@@ -1,5 +1,7 @@
-XTerm*faceName: xft:Mono:style=:size=10:antialias=true
-XTerm*faceNameDoublesize: size=10
+XTerm*faceName: xft:Mono
+XTerm*faceSize: 10
+XTerm*antialias: true
+XTerm*faceNameDoublesize: size=11
 XTerm*locale: true
 XTerm*utf8Title: true
 XTerm*utf8: 1
