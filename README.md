@@ -146,8 +146,6 @@ hald_enable="YES"
 gdm_enable="YES"
 gnome_enable="YES"
 
-# echo "exec dbus-launch --exit-with-session i3" >> ~/.xinitrc
-
 ## /boot/loader.conf
 if_re_load="YES"
 if_re_name="/boot/modules/if_re.ko"
@@ -159,6 +157,7 @@ kld_list="/boot/modules/nvidia.ko /boot/modules/nvidia-modeset.ko"
 
 ### zh-fcitx-libpinyin zh-fcitx-configtool
 ## ~/.xprofile ~/.xinitrc
+exec i3
 export GTK_IM_MODULE=fcitx
 export QT_IM_MODULE=fcitx
 export XMODIFIERS=@im=fcitx
