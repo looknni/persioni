@@ -153,7 +153,7 @@ set wireless.wifinet0.mode='sta'
 set wireless.wifinet0.network='wwan'
 set wireless.wifinet0.ssid='Openwrt'
 set wireless.wifinet0.bssid='00:00:00:00:02:01'
-set wireless.wifinet0.encryption='psk2' # none sae sae-mixed psk2+tkip+ccmp psk2+tkip+aes psk2+tkip psk2+ccmp psk2+aes
+set wireless.wifinet0.encryption='psk-mixed+ccmp' # none psk-mixed+tkip+aes psk2+tkip+ccmp psk2+tkip+aes
 set wireless.wifinet0.key='12345678'
 set wireless.wifinet0.disabled='1'
 
@@ -163,7 +163,7 @@ set wireless.wifinet1.mode='sta'
 set wireless.wifinet1.network='wwan'
 set wireless.wifinet1.ssid='Openwrt'
 set wireless.wifinet1.bssid='00:00:00:00:02:01'
-set wireless.wifinet1.encryption='psk2'
+set wireless.wifinet1.encryption='psk-mixed+ccmp'
 set wireless.wifinet1.key='12345678'
 set wireless.wifinet1.disabled='1'
 commit
