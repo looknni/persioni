@@ -1,6 +1,10 @@
 #!/bin/sh
 # /rom/etc/uci-defaults/
 # build.in -> package/base-files/files/etc/uci-defaults/
+cat > /etc/sysctl.conf << 'ARP'
+net.ipv4.conf.all.arp_ignore = 1
+net.ipv4.conf.all.arp_announce = 2
+ARP
 cat > /root/nft.init.0 << 'EXO'
 #!/bin/sh
 	mdd='mccset' # local 'fccset'
