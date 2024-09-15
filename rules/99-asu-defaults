@@ -110,6 +110,7 @@ set network.globals.packet_steering='0'
 # delete network.wan6
 # set network.lan.ip6assign='disabled' #60 64 56 52 48
 
+set dhcp.@dnsmasq[0].cachesize='150'
 add_list dhcp.lan.dhcp_option='6,114.114.114.114'
 # set dhcp.lan.ra='disabled' #server relay
 # set dhcp.lan.dhcpv6='disabled' #server relay
