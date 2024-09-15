@@ -33,6 +33,8 @@ fcitx-config-gtk fcitx-table-wubi dnsutils wget links xterm net-tools \
 wpasupplicant nmap tcpdump inkscape gimp krita audacity libreoffice make gcc isc-dhcp-client \
 dnsmasq resolvconf hexcompare aircrack-ng xxd xxhash qbittorrent aria2
 
+dpkg-reconfigure console-setup # VGA
+
 ? connection wifi
 iwconfig
 ifconfig eth0 up
