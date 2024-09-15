@@ -127,7 +127,7 @@ set network.wwan.proto='dhcp' # static < ipaddr netmask >
 set wireless.radio0.country='CN'
 set wireless.radio0.beacon_int='100'
 set wireless.radio0.disabled='0'
-set wireless.radio1.country='US'
+set wireless.radio1.country='CN'
 set wireless.radio1.beacon_int='100'
 set wireless.radio1.disabled='0'
 
