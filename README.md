@@ -157,10 +157,10 @@ kld_list="/boot/modules/nvidia.ko /boot/modules/nvidia-modeset.ko"
 
 ### zh-fcitx-libpinyin zh-fcitx-configtool
 ## ~/.xprofile ~/.xinitrc
-exec i3
 export GTK_IM_MODULE=fcitx
 export QT_IM_MODULE=fcitx
 export XMODIFIERS=@im=fcitx
+exec i3
 ```
 #### /etc/X11/xorg.conf
 ```
