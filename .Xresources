@@ -12,7 +12,7 @@ xft.rgba: rgb
 xft.hinting: true
 xft.hintstyle: hintslight
 XTerm*cursorColor: #ffa530
-
+XTerm*charClass: 33:48,35:48,37:48,43:48,45-47:48,64:48,95:48,126:48
 XTerm*selectToClipboard: true
 
 *VT100*translations: #override \n\
@@ -92,7 +92,7 @@ UXTerm*Scrollbar*foreground: gray90
 UXTerm*ScrollKey: true
 UXTerm*ScrollTtyOutput: false
 UXTerm*ScrollBar: false
-
+UXTerm*charClass: 33:48,35:48,37:48,43:48,45-47:48,64:48,95:48,126:48
 UXTerm*vt100*geometry: 80x30
 UXTerm.vt100*fadeColor: #002b36
 UXTerm*allowBoldFonts: true
