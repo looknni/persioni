@@ -99,8 +99,6 @@ set system.@system[0].zram_comp_algo='lz4' # zstd
 set system.ntp.enable_server='0'
 set system.ntp.interface='lan'
 
-# set dropbear.@dropbear[0].PasswordAuth='on'
-# set dropbear.@dropbear[0].RootPasswordAuth='on'
 set dropbear.@dropbear[0].Port="$((65430+$RANDOM%3))"
 set dropbear.@dropbear[0].MaxAuthTries='2' #3
 set dropbear.@dropbear[0].Interface='lan'
