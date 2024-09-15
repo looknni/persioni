@@ -28,7 +28,7 @@ deb-src https://mirrors.aliyun.com/debian-security/ bookworm-security main non-f
 deb https://mirrors.ustc.edu.cn/debian/ bookworm-updates main non-free non-free-firmware
 deb-src https://mirrors.ustc.edu.cn/debian/ bookworm-updates main non-free non-free-firmware
 
-ntp vim vlc git traceroute smartmontools fcitx fcitx-googlepinyin \
+gpm ntp vim vlc git traceroute smartmontools fcitx fcitx-googlepinyin \
 fcitx-config-gtk fcitx-table-wubi dnsutils wget links xterm net-tools \
 wpasupplicant nmap tcpdump inkscape gimp krita audacity libreoffice make gcc isc-dhcp-client \
 dnsmasq resolvconf hexcompare aircrack-ng xxd xxhash qbittorrent aria2
