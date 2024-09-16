@@ -44,8 +44,7 @@ wpa_supplicant -B -c wpa_supplicant.conf -i eth0
 dhclient eth0
 
 ? dnsmasq.conf
-log-queries
-log-dhcp
+cache-size=150
 server=114.114.114.114
 interface=wlan0
 dhcp-range=10.0.0.100,10.0.0.200,12h
