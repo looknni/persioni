@@ -349,9 +349,9 @@ mokutil --import mok.der
 
 /etc/init.d/elogind start #openrc
 rc-update add elogind default #openrc
-emerge --ask sys-apps/ifplugd app-admin/rsyslog # /usr/share/doc/netifrc-<version_number>/net.example.bz2
+emerge --ask sys-apps/ifplugd net-dns/dnsmasq app-admin/rsyslog # /usr/share/doc/netifrc-<version_number>/net.example.bz2
 # Note: DHCP is the default behavior if /etc/conf.d/net is empty or missing
-config_eth0="dhcp"
+#config_eth0="dhcp"
 ethtool_offload_eth0="rx on tx on sg on tso on ufo on gso on gro on lro on"
 #modules_wlan0="wpa_supplicant"
 #config_wlan0="dhcp"
