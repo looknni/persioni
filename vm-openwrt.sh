@@ -87,6 +87,38 @@ config interface 'wan1'
 	option proto 'dhcp'
 cr660x
 
+:<< WAN6
+config dhcp 'wan6'
+	option interface 'wan6'
+	option dhcpv6 'relay'
+	option ra 'relay'
+	option ndp 'relay'
+	option master '1'
+WAN6
+
+:<< PPPOE
+config interface 'wan'
+	option proto 'pppoe'
+	option device 'eth0'
+	option username 'user'
+	option password 'pass'
+	option keepalive '4 5'
+PPPOE
+
+:<< PPPOA-ADSL
+config adsl-device 'adsl'
+	option fwannex 'a'
+	option annex 'a'
+
+config interface 'wan'
+	option proto 'pppoa'
+	option username 'jbloggs@plusdsl.net'
+	option password 'XXXXXXXXX'
+	option vpi '0'
+	option vci '38'
+	option encaps 'vc'
+PPPOA-ADSL
+
 # cat /tmp/dhcp.leases
 # iw dev phy1-sta0 scan | grep -iE "phy1-sta0|SSID|signal|channel width|VHT (RX|TX) highest supported|HE (RX|TX) MCS|streams: MCS"
 # iw phy phy0 interface add mon0 type monitor

@@ -109,14 +109,6 @@ set dhcp.@dnsmasq[0].cachesize='150'
 set dhcp.@dnsmasq[0].filter_aaaa='1'
 add_list dhcp.lan.dhcp_option='6,114.114.114.114'
 
-# set dhcp.lan.ndp='disabled' # relay
-# set dhcp.wan6=dhcp
-# set dhcp.wan6.interface='wan6'
-# set dhcp.wan6.dhcpv6='disabled' # relay
-# set dhcp.wan6.ra='disabled' # relay
-# set dhcp.wan6.ndp='disabled' # relay
-# set dhcp.wan6.master='0' # 1
-
 set network.lan.ip6assign='64' #60 64 56 52 48
 set network.wwan=interface
 set network.wwan.proto='dhcp' # static < ipaddr netmask >
@@ -170,12 +162,7 @@ touch /etc/dropbear/authorized_keys
 pd="openwrt-$(uci get network.lan.ipaddr)"
 (echo $pd;sleep 1;echo $pd) | passwd > /dev/null
 unset pd st2 st4
-# uci set network.wan.proto='pppoe'
-# uci set network.wan.username='user'
-# uci set network.wan.password='pass'
-# uci set network.wan.keepalive='4 5'
-# uci set network.wan.ipv6='0' # 1|auto
-# uci commit
+
 cat > /etc/nftables.d/10-custom-filter-chains.nft << EXO
 ## The firewall4 input, forward and output chains are registered with
 ## priority filter (0).
