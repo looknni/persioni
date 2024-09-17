@@ -2,7 +2,7 @@
 ---
 ##### [Wolframalpha](https://www.wolframalpha.com/) . [Swisscows](https://swisscows.com/en) . [Maintaining and evolving HTML](https://whatwg.org/) . [Mmdn web docs](https://developer.mozilla.org/zh-CN/docs/Web/) . [Msi](https://us.msi.com/Motherboard/B560M-PRO/support) . [Comics](http://fjisu.top/)
 ---
-##### [Ventoy](https://www.ventoy.net/en/index.html) . [Tempmail](https://tempmail.plus/en) . [.apk](https://www.malavida.com/en) . [Tracker.deb](https://tracker.debian.org/pkg/linux) . [Cppreference](https://cppreference.com/)
+##### [Ventoy](https://www.ventoy.net/en/index.html) . [.apk](https://www.malavida.com/en) . [Tracker.deb](https://tracker.debian.org/pkg/linux) . [Cppreference](https://cppreference.com/)
 ---
 ##### [Gnu-command](https://www.gnu.org/software/) . [ ? ](https://quickref.cn/) . [Nftables](https://wiki.nftables.org/)
 ---
@@ -346,24 +346,19 @@ openssl req -new -nodes -utf8 -sha256 -x509 -outform PEM -out mok.pem -keyout mo
 openssl x509 -in mok.pem -inform PEM -out mok.der -outform DER
 mokutil --import mok.der
 
-/etc/init.d/elogind start #openrc
-rc-update add elogind default #openrc
-emerge --ask sys-apps/ifplugd net-dns/dnsmasq app-admin/rsyslog # /usr/share/doc/netifrc-<version_number>/net.example.bz2
+emerge --ask sys-apps/ifplugd net-dns/dnsmasq app-admin/rsyslog # /usr/share/doc/netifrc-<version_number>/net.example.bz2 #openrc
 # Note: DHCP is the default behavior if /etc/conf.d/net is empty or missing
-#config_eth0="dhcp"
+# config_eth0="dhcp"
 ethtool_offload_eth0="rx on tx on sg on tso on ufo on gso on gro on lro on"
-#modules_wlan0="wpa_supplicant"
-#config_wlan0="dhcp"
-#config_eth0="192.168.0.7/24"
-#routes_eth0="default via 192.168.0.1"
-#dns_servers_eth0="192.168.0.1 8.8.8.8"
+# modules_wlan0="wpa_supplicant"
+# config_wlan0="dhcp"
+# config_eth0="192.168.0.7/24"
+# routes_eth0="default via 192.168.0.1"
+# dns_servers_eth0="192.168.0.1 8.8.8.8"
 
 ln -s /etc/init.d/net.lo /etc/init.d/net.<interface_name>
-rc-service net.eth0 start
+rc-service net.eth0 start # elogind net.lo dnsmasq gpm rsyslog nftables
 rc-update add net.<interface_name> default
-# /etc/conf.d/gpm
-rc-service gpm start
-rc-update add gpm default
 
 # .config/fcitx/config # app-i18n/fcitx app-i18n/fcitx-libpinyin
 ActivateKey=SHIFT_LSHIFT SHIFT_RSHIFT
