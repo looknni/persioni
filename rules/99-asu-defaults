@@ -142,7 +142,7 @@ set wireless.wifinet0.mode='sta'
 set wireless.wifinet0.network='wwan'
 set wireless.wifinet0.ssid='Openwrt'
 set wireless.wifinet0.bssid='00:00:00:00:02:01'
-set wireless.wifinet0.encryption='psk-mixed+aes' # none sae-mixed
+set wireless.wifinet0.encryption='psk-mixed+aes' # none sae
 set wireless.wifinet0.key='12345678'
 set wireless.wifinet0.disabled='1'
 
