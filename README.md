@@ -231,7 +231,8 @@ mkswap /dev/sda2 ; swapon /dev/sda2
 
 mount /dev/sda3 /mnt/gentoo
 cd /mn/gentoo ; tar xpvf stage3-*.tar.xz --xattrs-include='*.*' --numeric-owner
-mirrorselect -i -o >> /mnt/gentoo/etc/portage/make.conf
+
+mirrorselect -i -o >> etc/portage/make.conf
 cp -r usr/share/portage/config/repos.conf etc/portage/repos.conf/gentoo.conf
 cp -L /etc/resolv.conf etc/
 
@@ -378,13 +379,7 @@ sharutils subversion ncurses-term zlib1g-dev libc6-dev-i386 uglifyjs msmtp libgl
 qemu-utils libtool
 
 git clone https://github.com/openwrt/openwrt
-git checkout v23.05.4
-
-# ./feeds.conf.default
-## src-git packages https://git.openwrt.org/feed/packages.git
-# src-git luci https://git.openwrt.org/project/luci.git
-# src-git routing https://git.openwrt.org/feed/routing.git
-# src-git telephony https://git.openwrt.org/feed/telephony.git
+git checkout v23.05.4 # git pull
 
 # ./scripts/feeds update -a [luci]
 # ./scripts/feeds install -a [-p luci]
@@ -392,7 +387,7 @@ git checkout v23.05.4
 # ./target/linux/ramips/dts # reg = <0x50000 0x1fb0000> # 32m
 # ./target/linux/ramips/image # IMAGE_SIZE := 32m
 # links https://downloads.openwrt.org/releases/23.05.3/xx/config.buildinfo
-rm .config* && make defconfig && make menuconfig && make clean # disable uhttpd,luci
+rm .config* && make defconfig && make menuconfig && make clean
 make -j4 V=s
 ```
 ##### yum groupinstall 'Server with GUI' # systemctl set-default graphical.target 
