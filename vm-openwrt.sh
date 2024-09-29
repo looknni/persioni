@@ -52,6 +52,10 @@ ssh-config
 # config zone
 #	option network '... wan01'
 
+# config dhcp 'wan01'
+#	option interface 'wan01'
+#	option ignore '1'
+
 config switch_vlan
 	option device 'switch0'
 	option vlan '1'
@@ -69,10 +73,14 @@ config switch_vlan
 	option vlan '3'
 	option ports '6t 3'
 	option vid '3'
+config device
+	option name 'eth0.3'
+	option macaddr '00:00:00:00:01:00'
 
 config interface 'wan01'
 	option proto 'dhcp'
 	option device 'eth0.3'
+
 phicommK2
 :<< cr660x
 config device
