@@ -86,7 +86,6 @@ uci batch << EEOO
 set firewall.@defaults[0].synflood_protect='1'
 set firewall.@defaults[0].flow_offloading='1'
 set firewall.@defaults[0].flow_offloading_hw='1'
-# set firewall.@defaults[0].drop_invalid='1'
 set firewall.@zone[1].network='wan wwan'
 
 set firewall.@rule[0].enabled='0'
@@ -107,12 +106,11 @@ set firewall.@zone[1].forward='DROP'
 set system.@system[0].hostname="$st2"
 set system.@system[0].timezone='HKT-8'
 set system.@system[0].zonename='Asia/Hong Kong'
-set system.@system[0].zram_comp_algo='lz4' # zstd
 set system.ntp.enable_server='0'
 set system.ntp.interface='lan'
 
 set dropbear.@dropbear[0].Port="$((65430+$RANDOM%3))"
-set dropbear.@dropbear[0].MaxAuthTries='2' #3
+set dropbear.@dropbear[0].MaxAuthTries='2'
 set dropbear.@dropbear[0].Interface='lan'
 set network.lan.ipaddr="172.$((16+$RANDOM%16)).$((RANDOM%255)).1"
 set network.globals.packet_steering='0'
@@ -136,7 +134,7 @@ set wireless.default_radio0.ssid="xiaomi-$st4"
 set wireless.default_radio0.encryption='psk2+ccmp'
 set wireless.default_radio0.key='12345678'
 set wireless.default_radio0.max_listen_int='1000'
-set wireless.default_radio0.sae_pwe='1' #0 2
+set wireless.default_radio0.sae_pwe='1'
 set wireless.default_radio0.wmm='1'
 set wireless.default_radio0.disabled='1'
 
@@ -154,7 +152,7 @@ set wireless.wifinet0.mode='sta'
 set wireless.wifinet0.network='wwan'
 set wireless.wifinet0.ssid='Openwrt'
 set wireless.wifinet0.bssid='00:00:00:00:02:01'
-set wireless.wifinet0.encryption='psk+aes' # none sae
+set wireless.wifinet0.encryption='psk+ccmp' # none sae
 set wireless.wifinet0.key='12345678'
 set wireless.wifinet0.disabled='1'
 
