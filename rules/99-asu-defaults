@@ -121,7 +121,7 @@ add_list dhcp.lan.dhcp_option='6,114.114.114.114'
 set dhcp.wwan=dhcp
 set dhcp.wwan.interface='wwan'
 set dhcp.wwan.ignore='1'
-set network.lan.ip6assign='64'
+set network.lan.ip6assign='0'
 set network.wwan=interface
 set network.wwan.proto='dhcp'
 
@@ -152,7 +152,7 @@ set wireless.wifinet0.mode='sta'
 set wireless.wifinet0.network='wwan'
 set wireless.wifinet0.ssid='Openwrt'
 set wireless.wifinet0.bssid='00:00:00:00:02:01'
-set wireless.wifinet0.encryption='psk+ccmp' # none sae
+set wireless.wifinet0.encryption='psk2+ccmp' # none sae
 set wireless.wifinet0.key='12345678'
 set wireless.wifinet0.disabled='1'
 
@@ -162,7 +162,7 @@ set wireless.wifinet1.mode='sta'
 set wireless.wifinet1.network='wwan'
 set wireless.wifinet1.ssid='Openwrt'
 set wireless.wifinet1.bssid='00:00:00:00:02:01'
-set wireless.wifinet1.encryption='psk+ccmp'
+set wireless.wifinet1.encryption='psk2+ccmp'
 set wireless.wifinet1.key='12345678'
 set wireless.wifinet1.disabled='1'
 commit
