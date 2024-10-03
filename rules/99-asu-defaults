@@ -171,6 +171,7 @@ EEOO
 # sed -i 's/downloads.openwrt.org/mirrors.ustc.edu.cn\/openwrt/g' /etc/opkg/distfeeds.conf
 touch /etc/dropbear/authorized_keys
 /etc/init.d/odhcpd disable
+sed -i 's/\toption ula_prefix/#\toption ula_prefix/g' /etc/config/network
 pd="openwrt-$(uci get network.lan.ipaddr)"
 (echo $pd;sleep 1;echo $pd) | passwd > /dev/null
 unset pd st2 st4
