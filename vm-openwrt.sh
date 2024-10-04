@@ -96,6 +96,14 @@ config interface 'wan1'
 cr660x
 
 :<< IPV6
+config dhcp 'lan'
+	option dhcpv6 'relay'
+	option ra 'relay'
+	option ndp 'relay'
+	option ra_slaac '1'
+	list ra_flags 'managed-config'
+	list ra_flags 'other-config'
+
 config dhcp 'wan6'
 	option interface 'wan6'
 	option dhcpv6 'relay'

@@ -118,6 +118,9 @@ set network.globals.packet_steering='0'
 
 set dhcp.@dnsmasq[0].cachesize='100'
 set dhcp.@dnsmasq[0].filter_aaaa='1'
+set dhcp.lan.ra_slaac='0'
+set dhcp.lan.ra='disabled'
+set dhcp.lan.dhcpv6='disabled'
 add_list dhcp.lan.dhcp_option='6,114.114.114.114'
 set dhcp.wwan=dhcp
 set dhcp.wwan.interface='wwan'
