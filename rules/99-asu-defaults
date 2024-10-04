@@ -83,6 +83,7 @@ EXO
 st2=$(dd if=/dev/urandom bs=1 count=1|hexdump -e '1 "%02x"')
 st4=$(dd if=/dev/urandom bs=2 count=1|hexdump -e '1 "%02x"')
 uci batch << EEOO
+delete network.wan6
 set firewall.@defaults[0].synflood_protect='1'
 set firewall.@defaults[0].flow_offloading='1'
 set firewall.@defaults[0].flow_offloading_hw='1'
@@ -167,11 +168,9 @@ set wireless.wifinet1.key='12345678'
 set wireless.wifinet1.disabled='1'
 commit
 EEOO
-# sed -i 's_downloads.openwrt.org_mirrors.tuna.tsinghua.edu.cn/openwrt_' /etc/opkg/distfeeds.conf
-# sed -i 's/downloads.openwrt.org/mirrors.ustc.edu.cn\/openwrt/g' /etc/opkg/distfeeds.conf
+
 touch /etc/dropbear/authorized_keys
 /etc/init.d/odhcpd disable
-sed -i 's/\toption ula_prefix/#\toption ula_prefix/g' /etc/config/network
 pd="openwrt-$(uci get network.lan.ipaddr)"
 (echo $pd;sleep 1;echo $pd) | passwd > /dev/null
 unset pd st2 st4
