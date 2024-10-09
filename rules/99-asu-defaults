@@ -27,16 +27,8 @@ function add(){
 			nft add element inet $mangle "${mdd}6" {"$2"}
 			list $mangle "${mdd}6"
 			;;
-		addt )
-			nft add element inet $mangle $mdd {"$2" timeout $3}
-			list $mangle $mdd
-			;;
 		addm )
 			nft add element inet $mangle $mddm { "$2" }
-			list $mangle $mddm
-			;;
-		addmt )
-			nft add element inet $mangle $mddm { "$2" timeout $3 }
 			list $mangle $mddm
 			;;
 	esac
@@ -58,19 +50,10 @@ function del(){
 	esac
 }
 case "$1" in
-	add | add6 )
+	add | add6 | addm )
 		add $1 $2
 		;;
-	del | del6 )
-		del $1 $2
-		;;
-	addm )
-		add $1 $2
-		;;
-	addt |addmt )
-		add $1 $2 $3
-		;;
-	delm )
+	del | del6 | delm )
 		del $1 $2
 		;;
 esac
@@ -186,15 +169,15 @@ cat > /etc/nftables.d/10-custom-filter-chains.nft << EXO
 ## default firewall input, forward and output chains.
 set mccset {
 	type ipv4_addr
-	flags interval,timeout
+	flags interval
 }
 set mccset6 {
 	type ipv6_addr
-	flags interval,timeout
+	flags interval
 }
 set mccm {
 	type ether_addr
-	flags interval,timeout
+	flags interval
 }
 # chain user_pre_input {
 #	type filter hook input priority -1; policy accept;
