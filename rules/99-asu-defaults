@@ -132,8 +132,15 @@ set wireless.default_radio1.sae_pwe='1'
 set wireless.default_radio1.wmm='1'
 set wireless.default_radio1.disabled='0'
 
+set wireless.radionet0=$(uci get wireless.radio0)
+set wireless.radionet0.type=$(uci get wireless.radio0.type)
+set wireless.radionet0.path=$(uci get wireless.radio0.path)
+set wireless.radionet0.band=$(uci get wireless.radio0.band)
+set wireless.radionet0.country='CN'
+set wireless.radionet0.disabled='1'
+
 set wireless.wifinet0=wifi-iface
-set wireless.wifinet0.device='radio0'
+set wireless.wifinet0.device='radionet0'
 set wireless.wifinet0.mode='sta'
 set wireless.wifinet0.network='wwan'
 set wireless.wifinet0.ssid='Openwrt'
@@ -142,8 +149,15 @@ set wireless.wifinet0.encryption='psk2+ccmp' # none sae
 set wireless.wifinet0.key='12345678'
 set wireless.wifinet0.disabled='1'
 
+set wireless.radionet1=$(uci get wireless.radio1)
+set wireless.radionet1.type=$(uci get wireless.radio1.type)
+set wireless.radionet1.path=$(uci get wireless.radio1.path)
+set wireless.radionet1.band=$(uci get wireless.radio1.band)
+set wireless.radionet1.country='CN'
+set wireless.radionet1.disabled='1'
+
 set wireless.wifinet1=wifi-iface
-set wireless.wifinet1.device='radio1'
+set wireless.wifinet1.device='radionet1'
 set wireless.wifinet1.mode='sta'
 set wireless.wifinet1.network='wwan'
 set wireless.wifinet1.ssid='Openwrt'
