@@ -2,7 +2,6 @@
 # /rom/etc/uci-defaults/
 # build.in -> package/base-files/files/etc/uci-defaults/
 cat > /etc/sysctl.conf << 'ARP'
-net.ipv4.conf.default.arp_announce = 2
 net.ipv4.route.max_size = 32
 net.ipv6.route.max_size = 32
 ARP
