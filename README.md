@@ -2,7 +2,7 @@
 ---
 ##### [Wolframalpha](https://www.wolframalpha.com/) . [Swisscows](https://swisscows.com/en) . [Maintaining and evolving HTML](https://whatwg.org/) . [Mmdn web docs](https://developer.mozilla.org/zh-CN/docs/Web/) . [Msi](https://us.msi.com/Motherboard/B560M-PRO/support) . [Comics](http://fjisu.top/)
 ---
-##### [Ventoy](https://www.ventoy.net/en/index.html) . [.apk](https://www.malavida.com/en) . [Tracker.deb](https://tracker.debian.org/pkg/linux) . [Cppreference](https://cppreference.com/)
+##### [Ventoy](https://www.ventoy.net/en/index.html) . [Tracker.deb](https://tracker.debian.org/pkg/linux) . [Cppreference](https://cppreference.com/)
 ---
 ##### [Gnu-command](https://www.gnu.org/software/) . [ ? ](https://quickref.cn/) . [Nftables](https://wiki.nftables.org/)
 ---
