@@ -1,6 +1,6 @@
 ##### blkid /etc/default/grub /etc/fstab /boot/grub2/grub.cfg /boot/load/* 0^2^16 140177258^9
 ---
-##### [Wolframalpha](https://www.wolframalpha.com/) . [Swisscows](https://swisscows.com/en) . [Maintaining and evolving HTML](https://whatwg.org/) . [Mmdn web docs](https://developer.mozilla.org/zh-CN/docs/Web/) . [Msi](https://us.msi.com/Motherboard/B560M-PRO/support) . [Comics](http://fjisu.top/)
+##### [Wolframalpha](https://www.wolframalpha.com/) . [Swisscows](https://swisscows.com/en) . [Maintaining and evolving HTML](https://whatwg.org/) . [Mmdn web docs](https://developer.mozilla.org/zh-CN/docs/Web/) . [Msi](https://us.msi.com/Motherboard/B560M-PRO/support)
 ---
 ##### [Ventoy](https://www.ventoy.net/en/index.html) . [Tracker.deb](https://tracker.debian.org/pkg/linux) . [Cppreference](https://cppreference.com/)
 ---
