@@ -69,20 +69,20 @@ delete dhcp.lan.ra
 set dhcp.lan.dhcpv6='disabled'
 set network.lan.ip6assign='0'
 
+delete firewall.@rule[0]
+delete firewall.@rule[0]
+delete firewall.@rule[0]
+delete firewall.@rule[0]
+delete firewall.@rule[0]
+delete firewall.@rule[0]
+delete firewall.@rule[0]
+delete firewall.@rule[0]
+delete firewall.@rule[0]
+
 set firewall.@defaults[0].synflood_protect='1'
 set firewall.@defaults[0].flow_offloading='1'
 set firewall.@defaults[0].flow_offloading_hw='1'
 set firewall.@zone[1].network='wan wwan'
-
-set firewall.@rule[0].enabled='0'
-set firewall.@rule[1].enabled='0'
-set firewall.@rule[2].enabled='0'
-set firewall.@rule[3].enabled='0'
-set firewall.@rule[4].enabled='0'
-set firewall.@rule[5].enabled='0'
-set firewall.@rule[6].enabled='0'
-set firewall.@rule[7].enabled='0'
-set firewall.@rule[8].enabled='0'
 
 set firewall.@defaults[0].input='DROP'
 set firewall.@defaults[0].forward='DROP'
