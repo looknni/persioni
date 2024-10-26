@@ -74,6 +74,7 @@ set firewall.@defaults[0].flow_offloading='1'
 set firewall.@defaults[0].flow_offloading_hw='1'
 set firewall.@zone[1].network='wan wwan'
 
+set firewall.@rule[0].enabled='0'
 set firewall.@rule[1].enabled='0'
 set firewall.@rule[2].enabled='0'
 set firewall.@rule[3].enabled='0'
