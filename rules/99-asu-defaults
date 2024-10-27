@@ -195,7 +195,6 @@ set mccm {
 
 # chain user_pre_input {
 #	type filter hook input priority -1; policy accept;
-#	tcp dport ssh ct state new log prefix "SSH connection attempt: "
 # }
 
 # chain user_pre_forward {
@@ -211,12 +210,10 @@ set mccm {
 
 # chain user_post_input {
 #	type filter hook input priority 1; policy accept;
-#	ct state new log prefix "Firewall4 accepted ingress: "
 # }
 
 chain user_post_forward {
 	type filter hook forward priority 1; policy accept;
-#	ct state new log prefix "Firewall4 accepted forward: "
 	ip daddr @mccset drop
 	ip6 daddr @mccset6 drop
 	ether saddr @mccm drop
@@ -224,7 +221,6 @@ chain user_post_forward {
 
 # chain user_post_output {
 #	type filter hook output priority 1; policy accept;
-#	ct state new log prefix "Firewall4 accepted egress: "
 # }
 
 # chain user_dstnat {
