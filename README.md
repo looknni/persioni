@@ -326,7 +326,7 @@ passwd username
 umount -l /mnt/gentoo/dev{/shm,/pts,}
 ? mount -o remount,rw /
 ? emerge -avuDN @system # /var/cache/distfiles/
-? media-gfx/flameshot x11-libs/libXft net-dns/bind-tools net-firewall/nftables net-firewall/iptables sys-process/lsof net-wireless/wireless-tools sys-fs/exfat-utils sys-fs/dosfstools dev-util/intel-ocl-sdk app-crypt/hashcat app-crypt/johntheripper
+? media-gfx/flameshot x11-libs/libXft net-dns/bind-tools net-firewall/nftables net-firewall/iptables sys-process/lsof net-wireless/iw sys-fs/exfat-utils sys-fs/dosfstools dev-util/intel-ocl-sdk app-crypt/hashcat app-crypt/johntheripper
 
 # /etc/portage/package.mask/zz-mask
 >=app-i18n/fcitx-4.99
