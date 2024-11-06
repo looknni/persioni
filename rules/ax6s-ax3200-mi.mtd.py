@@ -55,3 +55,12 @@ if __name__ == "__main__":
 
     serial = sys.argv[1]
     print(calc_passwd(serial))
+
+# openwrt 23.05 to 24
+# mount -o remount,ro /
+# mount -o remount,ro /overlay
+# cd /tmp
+# dd if=factory.bin bs=1M count=4 | mtd write - kernel
+# dd if=factory.bin bs=1M skip=4 | mtd -r write - ubi
+## option path 'platform/18000000.wmac' # 2g
+## option path '1a143000.pcie/pci0000:00/0000:00:00.0/0000:01:00.0' # 5g
