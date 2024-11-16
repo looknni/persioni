@@ -62,10 +62,10 @@ st4=$(dd if=/dev/urandom bs=2 count=1|hexdump -e '1 "%02x"')
 uci batch << EEOO
 delete network.globals.ula_prefix
 delete network.wan6
-set dhcp.@dnsmasq[0].filter_aaaa='1'
 delete dhcp.lan.ra_flags
 delete dhcp.lan.ra_slaac
 delete dhcp.lan.ra
+set dhcp.@dnsmasq[0].filter_aaaa='1'
 set dhcp.lan.dhcpv6='disabled'
 set network.lan.ip6assign='0'
 

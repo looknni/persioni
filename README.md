@@ -30,7 +30,7 @@ deb-src https://mirrors.ustc.edu.cn/debian/ bookworm-updates main non-free non-f
 
 gpm ntp vim vlc git traceroute smartmontools fcitx fcitx-googlepinyin \
 fcitx-config-gtk fcitx-table-wubi dnsutils wget links xterm net-tools \
-wpasupplicant nmap tcpdump inkscape gimp krita audacity libreoffice make gcc isc-dhcp-client \
+wpasupplicant nmap tcpdump inkscape gimp krita ffmpeg libreoffice make gcc isc-dhcp-client \
 dnsmasq resolvconf hexcompare aircrack-ng xxd xxhash qbittorrent aria2
 
 dpkg-reconfigure console-setup # VGA
