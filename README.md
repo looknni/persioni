@@ -19,7 +19,7 @@
 ---
 ##### gdm ? [I3wm](https://i3wm.org/) ? [Sway](https://swaywm.org/) ? [Awesomewm](https://awesomewm.org/) ? [Dwm](#)
 ---
-> ## ~~[Debian](https://www.debian.org/security/)~~
+## ~~[Debian](https://www.debian.org/security/)~~
 ```
 deb https://mirrors.ustc.edu.cn/debian/ bookworm main non-free non-free-firmware
 deb-src https://mirrors.ustc.edu.cn/debian/ bookworm main non-free non-free-firmware
@@ -96,13 +96,13 @@ netstat -tuln|awk '{print $4}'|awk -F: '{print $2}'|grep -v '^$'|sort|uniq|xargs
 ```
 ##### putty/SecureCRT tftpd # insmod ch34x,modprobe usbserial # CONFIG_USB_SERIAL CONFIG_USB_SERIAL_GENERIC # flashrom -p ch341a_spi [-E|-r <file>|-w <file>|-v <file>]
 
-> ## ~~[RockyLinux](https://rockylinux.org/)~~ ? [AlmaLinux](https://almalinux.org/)
+### ~~[RockyLinux](https://rockylinux.org/)~~ ? [AlmaLinux](https://almalinux.org/)
 ```
 epel-release.noarch epel-next-release.noarch ibus.x86_64 xorg-x11-server-Xorg.x86_64 \
 xorg-x11-xinit.x86_64 xorg-x11-xinit-session.x86_64
 google-droid-sans-fonts.noarch google-noto-sans-cjk-ttc-fonts.noarch bind-utils
 ```
-> ## ~~[FreeBSD](https://www.freebsd.org/)~~
+## ~~[FreeBSD](https://www.freebsd.org/)~~
 ```
 sysctl net.wlan.devices # sysctl -a | grep net.wlan
 ifconfig wlan0 create wlandev xxx ; ifconfig wlan0 ssid wifiname
@@ -370,7 +370,7 @@ NextPageKey=PGDN
 SkinType=classic
 
 ```
-##### [Openwrt](https://lxr.openwrt.org/)
+## ~~[Openwrt](https://lxr.openwrt.org/)~~
 ```
 xsltproc ecj fastjar java-propose-classpath libelf-dev libncursesw5-dev python3-setuptools \
 python3-dev subversion swig xsltproc zlib1g-dev build-essential clang flex g++ gawk gcc-multilib \
