@@ -57,8 +57,8 @@ esac
 unset mdd mddm mangle
 EXO
 
-st2=$(dd if=/dev/urandom bs=1 count=1|hexdump -e '1 "%02x"')
-st4=$(dd if=/dev/urandom bs=2 count=1|hexdump -e '1 "%02x"')
+st2=$(dd if=/dev/urandom bs=1 count=1|hexdump -e '1 "%03x"')
+st4=$(dd if=/dev/urandom bs=2 count=1|hexdump -e '2 "%04x"')
 uci batch << EEOO
 delete network.globals.ula_prefix
 delete network.wan6
