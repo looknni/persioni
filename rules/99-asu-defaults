@@ -115,12 +115,12 @@ set wireless.radio1.country='CN'
 set wireless.radio1.disabled='0'
 
 set wireless.default_radio0.ssid="xiaomi-$st4"
-set wireless.default_radio0.encryption='psk2+ccmp'
+set wireless.default_radio0.encryption='psk2'
 set wireless.default_radio0.key='12345678'
 set wireless.default_radio0.disabled='1'
 
 set wireless.default_radio1.ssid="redmi-$st4"
-set wireless.default_radio1.encryption='psk2+ccmp'
+set wireless.default_radio1.encryption='psk2'
 set wireless.default_radio1.key='12345678'
 set wireless.default_radio1.disabled='0'
 
@@ -137,7 +137,7 @@ set wireless.wifinet0.mode='sta'
 set wireless.wifinet0.network='wwan'
 set wireless.wifinet0.ssid='Openwrt'
 set wireless.wifinet0.bssid='00:00:00:00:02:01'
-set wireless.wifinet0.encryption='psk2+ccmp' # none sae
+set wireless.wifinet0.encryption='psk2' # none sae
 set wireless.wifinet0.key='12345678'
 set wireless.wifinet0.disabled='1'
 
@@ -154,7 +154,7 @@ set wireless.wifinet1.mode='sta'
 set wireless.wifinet1.network='wwan'
 set wireless.wifinet1.ssid='Openwrt'
 set wireless.wifinet1.bssid='00:00:00:00:02:01'
-set wireless.wifinet1.encryption='psk2+ccmp'
+set wireless.wifinet1.encryption='psk2'
 set wireless.wifinet1.key='12345678'
 set wireless.wifinet1.disabled='1'
 commit
