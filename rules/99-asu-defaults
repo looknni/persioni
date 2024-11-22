@@ -160,6 +160,17 @@ set wireless.wifinet1.disabled='1'
 commit
 EEOO
 
+[[ $(uci get wireless.radio0.channel) = '1' ]] && {
+	uci set wireless.radio0.channel=5
+	uci set wireless.radio1.channel=153
+	uci commit
+}
+[[ $(uci get wireless.radio1.channel) = '1' ]] && {
+	uci set wireless.radio1.channel=5
+	uci set wireless.radio0.channel=153
+	uci commit
+}
+
 touch /etc/dropbear/authorized_keys
 /etc/init.d/odhcpd disable
 pd="openwrt-$(uci get network.lan.ipaddr)"
