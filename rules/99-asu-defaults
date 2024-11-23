@@ -1,6 +1,9 @@
 #!/bin/sh
 # /rom/etc/uci-defaults/
 # build.in -> package/base-files/files/etc/uci-defaults/
+anft="/etc/nftables.d/m4ip"
+bnft="/etc/nftables.d/m6ip"
+cnft="/etc/nftables.d/mmac"
 cat > /etc/sysctl.conf << 'ARP'
 # net.ipv4.conf.default.arp_announce = 1
 net.ipv4.route.max_size = 32
@@ -11,22 +14,34 @@ cat > /root/nft.init.0 << 'EXO'
 	mdd='mccset' # local 'fccset'
 	mddm='mccm'
 	mangle='fw4' # local 'filter'
+	anft="/etc/nftables.d/m4ip"
+	bnft="/etc/nftables.d/m6ip"
+	cnft="/etc/nftables.d/mmac"
 function list(){
 	nft list set inet $1 $2
+}
+function dtb(){
+	sed -i -e '/table inet/d' -e '/^}$/d' $1
 }
 function add(){
 	case "$1" in
 		add )
 			nft add element inet $mangle $mdd {"$2"}
-			list $mangle $mdd
+			list $mangle $mdd > ${anft}
+			dtb ${anft}
+			cat ${anft}
 			;;
 		add6 )
 			nft add element inet $mangle "${mdd}6" {"$2"}
-			list $mangle "${mdd}6"
+			list $mangle "${mdd}6" > ${bnft}
+			dtb ${bnft}
+			cat ${bnft}
 			;;
 		addm )
 			nft add element inet $mangle $mddm { "$2" }
-			list $mangle $mddm
+			list $mangle $mddm > ${cnft}
+			dtb ${cnft}
+			cat ${cnft}
 			;;
 	esac
 }
@@ -34,15 +49,21 @@ function del(){
 	case "$1" in
 		del )
 			nft delete element inet $mangle $mdd {"$2"}
-			list $mangle $mdd
+			list $mangle $mdd > ${anft}
+			dtb ${anft}
+			cat ${anft}
 			;;
 		del6 )
 			nft delete element inet $mangle "${mdd}6" {"$2"}
-			list $mangle "${mdd}6"
+			list $mangle "${mdd}6" > ${bnft}
+			dtb ${bnft}
+			cat ${bnft}
 			;;
 		delm )
 			nft delete element inet $mangle $mddm {"$2"}
-			list $mangle $mddm
+			list $mangle $mddm > ${cnft}
+			dtb ${cnft}
+			cat ${cnft}
 			;;
 	esac
 }
@@ -177,27 +198,33 @@ pd="openwrt-$(uci get network.lan.ipaddr)"
 (echo $pd;sleep 1;echo $pd) | passwd > /dev/null
 unset pd st2 st4
 
+cat > ${anft} << NFTA
+set mccset {
+	type ipv4_addr
+	flags interval
+}
+NFTA
+cat > ${bnft} << NFTB
+set mccset6 {
+	type ipv6_addr
+	flags interval
+}
+NFTB
+cat > ${cnft} << NFTM
+set mccm {
+	type ether_addr
+	flags interval
+}
+NFTM
 cat > /etc/nftables.d/10-custom-filter-chains.nft << NFTC
 ## The firewall4 input, forward and output chains are registered with
 ## priority filter (0).
 
 ## Uncomment the chains below if you want to stage rules *before* the
 ## default firewall input, forward and output chains.
-set mccset {
-	type ipv4_addr
-	flags interval
-}
-
-set mccset6 {
-	type ipv6_addr
-	flags interval
-}
-
-set mccm {
-	type ether_addr
-	flags interval
-}
-
+include "${anft}"
+include "${bnft}"
+include "${cnft}"
 # chain user_pre_input {
 #	type filter hook input priority -1; policy accept;
 # }
@@ -239,4 +266,5 @@ chain user_post_forward {
 #	oifname "lan" ip saddr 192.168.1.0/24 masquerade
 # }
 NFTC
+unset anft bnft cnft
 exit 0 
