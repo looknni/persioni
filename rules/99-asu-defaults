@@ -161,8 +161,8 @@ commit
 EEOO
 
 [[ $(uci get wireless.radio0.channel) = '1' ]] && {
-	uci set wireless.radio0.channel=5
-	uci set wireless.radio1.channel=153
+	uci set wireless.radio0.channel=$((5+$RANDOM%5))
+	uci set wireless.radio1.channel=$((153+$RANDOM%3*4))
 	uci commit
 }
 [[ $(uci get wireless.radio1.channel) = '1' ]] && {
