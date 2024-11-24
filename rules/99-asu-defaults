@@ -123,19 +123,15 @@ set network.wwan=interface
 set network.wwan.proto='dhcp'
 
 set wireless.radio0.country='CN'
-set wireless.radio0.disabled='1'
 set wireless.radio1.country='CN'
-set wireless.radio1.disabled='0'
 
 set wireless.default_radio0.ssid="xiaomi-$st4"
 set wireless.default_radio0.encryption='psk2'
 set wireless.default_radio0.key='12345678'
-set wireless.default_radio0.disabled='1'
 
 set wireless.default_radio1.ssid="redmi-$st4"
 set wireless.default_radio1.encryption='psk2'
 set wireless.default_radio1.key='12345678'
-set wireless.default_radio1.disabled='0'
 
 set wireless.radionet0=$(uci get wireless.radio0)
 set wireless.radionet0.type=$(uci get wireless.radio0.type)
@@ -176,11 +172,15 @@ EEOO
 [[ $(uci get wireless.radio0.channel) = '1' ]] && {
 	uci set wireless.radio0.channel=$((5+$RANDOM%5))
 	uci set wireless.radio1.channel=$((153+$RANDOM%3*4))
+	uci set wireless.radio1.disabled='0'
+	uci set wireless.default_radio1.disabled='0'
 	uci commit
 }
 [[ $(uci get wireless.radio1.channel) = '1' ]] && {
 	uci set wireless.radio1.channel=5
 	uci set wireless.radio0.channel=153
+	uci set wireless.radio0.disabled='0'
+	uci set wireless.default_radio0.disabled='0'
 	uci commit
 }
 
