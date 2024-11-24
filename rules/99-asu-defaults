@@ -9,6 +9,7 @@ ARP
 cat > /root/nft.init.0 << 'EXO'
 #!/bin/sh
 	mdd='mccset' # local 'fccset'
+	m6dd='mcc6set'
 	mddm='mccm'
 	mangle='fw4' # local 'filter'
 	anft="/etc/nftables.d/m4ip"
@@ -29,8 +30,8 @@ function add(){
 			cat ${anft}
 			;;
 		add6 )
-			nft add element inet $mangle "${mdd}6" {"$2"}
-			list $mangle "${mdd}6" > ${bnft}
+			nft add element inet $mangle "${m6dd}" {"$2"}
+			list $mangle "${m6dd}" > ${bnft}
 			dtb ${bnft}
 			cat ${bnft}
 			;;
@@ -51,8 +52,8 @@ function del(){
 			cat ${anft}
 			;;
 		del6 )
-			nft delete element inet $mangle "${mdd}6" {"$2"}
-			list $mangle "${mdd}6" > ${bnft}
+			nft delete element inet $mangle "${m6dd}" {"$2"}
+			list $mangle "${m6dd}" > ${bnft}
 			dtb ${bnft}
 			cat ${bnft}
 			;;
@@ -205,7 +206,7 @@ set mccset {
 }
 NFTA
 cat > ${bnft} << NFTB
-set mccset6 {
+set mcc6set {
 	type ipv6_addr
 	flags interval
 }
@@ -247,7 +248,7 @@ include "${cnft}"
 chain user_post_forward {
 	type filter hook forward priority 1; policy accept;
 	ip daddr @mccset drop
-	ip6 daddr @mccset6 drop
+	ip6 daddr @mcc6set drop
 	ether saddr @mccm drop
 }
 
