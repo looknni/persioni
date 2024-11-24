@@ -103,6 +103,7 @@ set firewall.@zone[1].forward='DROP'
 
 set system.@system[0].hostname="$st2"
 set system.@system[0].timezone='HKT-8'
+set system.@system[0].log_size='64'
 set system.@system[0].zonename='Asia/Hong Kong'
 set system.ntp.enable_server='0'
 set system.ntp.interface='lan'
