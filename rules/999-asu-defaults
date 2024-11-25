@@ -75,20 +75,20 @@ uci batch << EEOO
 set network.globals.packet_steering='0'
 set dhcp.odhcpd.loglevel='1' #4
 
-delete firewall.@rule[0]
-delete firewall.@rule[0]
-delete firewall.@rule[0]
-delete firewall.@rule[0]
-delete firewall.@rule[0]
-delete firewall.@rule[0]
-delete firewall.@rule[0]
-delete firewall.@rule[0]
-delete firewall.@rule[0]
+set firewall.@rule[0].enabled='0'
+set firewall.@rule[1].enabled='0'
+set firewall.@rule[2].enabled='0'
+set firewall.@rule[3].enabled='1'
+set firewall.@rule[4].enabled='0'
+set firewall.@rule[5].enabled='0'
+set firewall.@rule[6].enabled='0'
+set firewall.@rule[7].enabled='0'
+set firewall.@rule[8].enabled='0'
 
 set firewall.@defaults[0].synflood_protect='1'
 set firewall.@defaults[0].flow_offloading='1'
 set firewall.@defaults[0].flow_offloading_hw='1'
-set firewall.@zone[1].network='wan wan6 wwan'
+add_list firewall.@zone[1].network='wwan'
 
 set firewall.@defaults[0].input='DROP'
 set firewall.@defaults[0].forward='DROP'

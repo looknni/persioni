@@ -106,8 +106,9 @@ config dhcp 'lan'
 
 config dhcp 'wan6'
 	option interface 'wan6'
-	option dhcpv6 'relay'
+	option ignore '1'
 	option ra 'relay'
+	option dhcpv6 'relay'
 	option ndp 'relay'
 	option master '1'
 IPV6
