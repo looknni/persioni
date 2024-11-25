@@ -93,6 +93,7 @@ make localmodconfig ; make menuconfig ; make bzImage -j4 ; make modules_install 
 dpkg-reconfigure linux-image-$(uname -r)
 update-initramfs -u -k all
 netstat -tuln|awk '{print $4}'|awk -F: '{print $2}'|grep -v '^$'|sort|uniq|xargs -I {} sudo lsof -i :{}
+dpkg -l | grep ^rc | awk '{print $2}' | sudo xargs dpkg -P
 ```
 ##### putty/SecureCRT tftpd # insmod ch34x,modprobe usbserial # CONFIG_USB_SERIAL CONFIG_USB_SERIAL_GENERIC # flashrom -p ch341a_spi [-E|-r <file>|-w <file>|-v <file>]
 
@@ -101,6 +102,9 @@ netstat -tuln|awk '{print $4}'|awk -F: '{print $2}'|grep -v '^$'|sort|uniq|xargs
 epel-release.noarch epel-next-release.noarch ibus.x86_64 xorg-x11-server-Xorg.x86_64 \
 xorg-x11-xinit.x86_64 xorg-x11-xinit-session.x86_64
 google-droid-sans-fonts.noarch google-noto-sans-cjk-ttc-fonts.noarch bind-utils
+
+yum groupinstall 'Server with GUI' # systemctl set-default graphical.target 
+yum remove $(rpm -qa | grep kernel | grep -v $(uname -r))
 ```
 ## ~~[FreeBSD](https://www.freebsd.org/)~~
 ```
@@ -381,17 +385,11 @@ qemu-utils libtool
 git clone https://github.com/openwrt/openwrt
 git checkout v24.10 # git pull
 
-# ./scripts/feeds update -a [luci]
-# ./scripts/feeds install -a [-p luci]
-
 # ./target/linux/ramips/dts # reg = <0x50000 0x1fb0000> # 32m
 # ./target/linux/ramips/image # IMAGE_SIZE := 32m
 rm .config* && make defconfig && make menuconfig && make clean
 make -j4 V=s
 ```
-##### yum groupinstall 'Server with GUI' # systemctl set-default graphical.target 
-##### ` dpkg -l | grep ^rc | awk '{print $2}' | sudo xargs dpkg -P `
-##### ` yum remove $(rpm -qa | grep kernel | grep -v $(uname -r)) `
 ##### find / \( -path /proc -o -path /run \) -prune -o -type l ! -exec test -e {} \; -print
 ``` 
 PS1='\[\e[0;32m\]\A \[\e[1;95m\]\W \[\e[1;33m\]\$ \[\e[0m\]'
