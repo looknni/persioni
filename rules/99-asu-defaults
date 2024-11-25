@@ -72,8 +72,9 @@ EXO
 st2=$(dd if=/dev/urandom bs=1 count=1|hexdump -e '1 "%03x"')
 st4=$(dd if=/dev/urandom bs=2 count=1|hexdump -e '1 "%04x"')
 uci batch << EEOO
-set dhcp.@dnsmasq[0].filter_aaaa='1'
+set dhcp.@dnsmasq[0].filter_aaaa='1' #0
 set network.globals.packet_steering='0'
+set dhcp.odhcpd.loglevel='1' #4
 
 delete firewall.@rule[0]
 delete firewall.@rule[0]
