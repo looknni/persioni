@@ -1,6 +1,6 @@
 #!/bin/sh
 # /rom/etc/uci-defaults/
-# build.in -> package/base-files/files/etc/uci-defaults/
+# built.in -> package/base-files/files/etc/uci-defaults/
 cat > /etc/sysctl.conf << 'ARP'
 # net.ipv4.conf.default.arp_announce = 1
 net.ipv4.route.max_size = 32
@@ -20,52 +20,33 @@ cat > /root/nft.init.0 << 'EXO'
 function list(){
 	nft list set inet $1 $2 | sed '1d;$d'
 }
-function add(){
-	case "$1" in
-		add )
-			nft add element inet $mangle $mdd {"$2"}
-			list $mangle $mdd > ${anft}
-			cat ${anft}
-			;;
-		add6 )
-			nft add element inet $mangle "${m6dd}" {"$2"}
-			list $mangle "${m6dd}" > ${bnft}
-			cat ${bnft}
-			;;
-		addm )
-			nft add element inet $mangle $mddm { "$2" }
-			list $mangle $mddm > ${cnft}
-			cat ${cnft}
-			;;
-	esac
-}
-function del(){
-	case "$1" in
-		del )
-			nft delete element inet $mangle $mdd {"$2"}
-			list $mangle $mdd > ${anft}
-			cat ${anft}
-			;;
-		del6 )
-			nft delete element inet $mangle "${m6dd}" {"$2"}
-			list $mangle "${m6dd}" > ${bnft}
-			cat ${bnft}
-			;;
-		delm )
-			nft delete element inet $mangle $mddm {"$2"}
-			list $mangle $mddm > ${cnft}
-			cat ${cnft}
-			;;
-	esac
-}
 case "$1" in
-	add | add6 | addm )
-		add $1 $2
+	add )
+		nft add element inet $mangle ${mdd} {"$2"}
+		list $mangle ${mdd} > ${anft}
 		;;
-	del | del6 | delm )
-		del $1 $2
+	add6 )
+		nft add element inet $mangle ${m6dd} {"$2"}
+		list $mangle ${m6dd} > ${bnft}
+		;;
+	addm )
+		nft add element inet $mangle ${mddm} { "$2" }
+		list $mangle ${mddm} > ${cnft}
+		;;
+	del )
+		nft delete element inet $mangle ${mdd} {"$2"}
+		list $mangle ${mdd} > ${anft}
+		;;
+	del6 )
+		nft delete element inet $mangle ${m6dd} {"$2"}
+		list $mangle ${m6dd} > ${bnft}
+		;;
+	delm )
+		nft delete element inet $mangle ${mddm} {"$2"}
+		list $mangle ${mddm} > ${cnft}
 		;;
 esac
+
 unset mdd mddm mangle
 EXO
 
