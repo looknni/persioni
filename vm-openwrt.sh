@@ -95,24 +95,6 @@ config interface 'wan1'
 	option proto 'dhcp'
 cr660x
 
-:<< IPV6
-config dhcp 'lan'
-	option dhcpv6 'relay'
-	option ra 'relay'
-	option ndp 'relay'
-	option ra_slaac '1'
-	list ra_flags 'managed-config'
-	list ra_flags 'other-config'
-
-config dhcp 'wan6'
-	option interface 'wan6'
-	option ignore '1'
-	option ra 'relay'
-	option dhcpv6 'relay'
-	option ndp 'relay'
-	option master '1'
-IPV6
-
 :<< PPPOE
 config interface 'wan'
 	option proto 'pppoe'
@@ -136,8 +118,6 @@ config interface 'wan'
 	option encaps 'vc'
 PPPOA-ADSL
 
-# cat /tmp/dhcp.leases
-# iw dev phy1-sta0 scan | grep -iE "phy1-sta0|SSID|signal|channel width|VHT (RX|TX) highest supported|HE (RX|TX) MCS|streams: MCS"
 # iw phy phy0 interface add mon0 type monitor
 # (tr -dc 'a-z0-9' < /dev/urandom |fold -w8 > 1 &);sleep 10;sudo kill -9 $(pgrep tr)
 # iw dev phy1-ap0 station dump
