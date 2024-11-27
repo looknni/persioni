@@ -23,31 +23,33 @@ function list(){
 case "$1" in
 	add )
 		nft add element inet $mangle ${mdd} {"$2"}
-		list $mangle ${mdd} > ${anft}
 		;;
 	add6 )
 		nft add element inet $mangle ${m6dd} {"$2"}
-		list $mangle ${m6dd} > ${bnft}
 		;;
 	addm )
 		nft add element inet $mangle ${mddm} { "$2" }
-		list $mangle ${mddm} > ${cnft}
 		;;
 	del )
 		nft delete element inet $mangle ${mdd} {"$2"}
-		list $mangle ${mdd} > ${anft}
 		;;
 	del6 )
 		nft delete element inet $mangle ${m6dd} {"$2"}
-		list $mangle ${m6dd} > ${bnft}
 		;;
 	delm )
 		nft delete element inet $mangle ${mddm} {"$2"}
+		;;
+	ipv4s )
+		list $mangle ${mdd} > ${anft}
+		;;
+	ipv6s )
+		list $mangle ${m6dd} > ${bnft}
+		;;
+	macs )
 		list $mangle ${mddm} > ${cnft}
 		;;
 esac
-
-unset mdd mddm mangle
+unset mdd mddm mangle anft bnft cnft
 EXO
 
 st2=$(dd if=/dev/urandom bs=1 count=1|hexdump -e '1 "%03x"')
