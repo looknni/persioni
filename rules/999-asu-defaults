@@ -18,35 +18,35 @@ cat > /root/nft.init.0 << 'EXO'
 	set -e
 	set -o pipefail
 function list(){
-	nft list set inet $1 $2 | sed '1d;$d'
+	nft list set inet $1 $2 | sed '1d;$d' > $3
 }
 case "$1" in
 	add )
-		nft add element inet $mangle ${mdd} {"$2"}
+		nft add element inet ${mangle} ${mdd} {"$2"}
 		;;
 	add6 )
-		nft add element inet $mangle ${m6dd} {"$2"}
+		nft add element inet ${mangle} ${m6dd} {"$2"}
 		;;
 	addm )
-		nft add element inet $mangle ${mddm} { "$2" }
+		nft add element inet ${mangle} ${mddm} { "$2" }
 		;;
 	del )
-		nft delete element inet $mangle ${mdd} {"$2"}
+		nft delete element inet ${mangle} ${mdd} {"$2"}
 		;;
 	del6 )
-		nft delete element inet $mangle ${m6dd} {"$2"}
+		nft delete element inet ${mangle} ${m6dd} {"$2"}
 		;;
 	delm )
-		nft delete element inet $mangle ${mddm} {"$2"}
+		nft delete element inet ${mangle} ${mddm} {"$2"}
 		;;
 	ipv4s )
-		list $mangle ${mdd} > ${anft}
+		list ${mangle} ${mdd} ${anft}
 		;;
 	ipv6s )
-		list $mangle ${m6dd} > ${bnft}
+		list ${mangle} ${m6dd} ${bnft}
 		;;
 	macs )
-		list $mangle ${mddm} > ${cnft}
+		list ${mangle} ${mddm} ${cnft}
 		;;
 esac
 unset mdd mddm mangle anft bnft cnft
