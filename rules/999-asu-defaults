@@ -6,83 +6,79 @@ cat > /etc/sysctl.conf << 'ARP'
 net.ipv4.route.max_size = 32
 net.ipv6.route.max_size = 32
 ARP
-cat > /root/nft.init.0 << 'EXO'
+idd='maaset'
+i6dd='maa6set'
+iddm='maam'
+fdd='mccset' # local 'fccset'
+f6dd='mcc6set'
+fddm='mccm'
+mangle='fw4' # local 'filter'
+ainft='/etc/nftables.d/i4ip'
+binft='/etc/nftables.d/i6ip'
+cinft='/etc/nftables.d/imac'
+anft='/etc/nftables.d/f4ip'
+bnft='/etc/nftables.d/f6ip'
+cnft='/etc/nftables.d/fmac'
+cat > /root/nft.init.0 << EXO
 #!/bin/sh
-	idd='maaset'
-	i6dd='maa6set'
-	iddm='maam'
-	fdd='mccset' # local 'fccset'
-	f6dd='mcc6set'
-	fddm='mccm'
-	mangle='fw4' # local 'filter'
-	ainft="/etc/nftables.d/i4ip"
-	binft="/etc/nftables.d/i6ip"
-	cinft="/etc/nftables.d/imac"
-	anft="/etc/nftables.d/f4ip"
-	bnft="/etc/nftables.d/f6ip"
-	cnft="/etc/nftables.d/fmac"
-	set -e
-	set -o pipefail
-function list(){
-	nft list set inet $1 $2 | sed '1d;$d' > $3
-}
-case "$1" in
+set -e
+set -o pipefail
+case "\$1" in
 	in4 )
-		nft add element inet ${mangle} ${idd} {"$2"}
+		nft add element inet ${mangle} ${idd} {"\$2"}
 		;;
 	in6 )
-		nft add element inet ${mangle} ${i6dd} {"$2"}
+		nft add element inet ${mangle} ${i6dd} {"\$2"}
 		;;
 	imac )
-		nft add element inet ${mangle} ${iddm} {"$2"}
+		nft add element inet ${mangle} ${iddm} {"\$2"}
 		;;
 	in4d ) 
-		nft delete element inet ${mangle} ${idd} {"$2"}
+		nft delete element inet ${mangle} ${idd} {"\$2"}
 		;;
 	in6d )
-		nft delete element inet ${mangle} ${i6dd} {"$2"}
+		nft delete element inet ${mangle} ${i6dd} {"\$2"}
 		;;
 	imacd )
-		nft delete element inet ${mangle} ${iddm} {"$2"}
+		nft delete element inet ${mangle} ${iddm} {"\$2"}
 		;;
 	add )
-		nft add element inet ${mangle} ${fdd} {"$2"}
+		nft add element inet ${mangle} ${fdd} {"\$2"}
 		;;
 	add6 )
-		nft add element inet ${mangle} ${f6dd} {"$2"}
+		nft add element inet ${mangle} ${f6dd} {"\$2"}
 		;;
 	addm )
-		nft add element inet ${mangle} ${fddm} {"$2"}
+		nft add element inet ${mangle} ${fddm} {"\$2"}
 		;;
 	del )
-		nft delete element inet ${mangle} ${fdd} {"$2"}
+		nft delete element inet ${mangle} ${fdd} {"\$2"}
 		;;
 	del6 )
-		nft delete element inet ${mangle} ${f6dd} {"$2"}
+		nft delete element inet ${mangle} ${f6dd} {"\$2"}
 		;;
 	delm )
-		nft delete element inet ${mangle} ${fddm} {"$2"}
+		nft delete element inet ${mangle} ${fddm} {"\$2"}
 		;;
 	i4s )
-		list ${mangle} ${idd} ${ainft}
+		nft list set inet ${mangle} ${idd} | sed '1d;\$d' > ${ainft}
 		;;
 	i6s )
-		list ${mangle} ${i6dd} ${binft}
+		nft list set inet ${mangle} ${i6dd} | sed '1d;\$d' > ${binft}
 		;;
 	imacs )
-		list ${mangle} ${iddm} ${cinft}
+		nft list set inet ${mangle} ${iddm} | sed '1d;\$d' > ${cinft}
 		;;
 	f4s )
-		list ${mangle} ${fdd} ${anft}
+		nft list set inet ${mangle} ${fdd} | sed '1d;\$d' > ${anft}
 		;;
 	f6s )
-		list ${mangle} ${f6dd} ${bnft}
+		nft list set inet ${mangle} ${f6dd} | sed '1d;\$d' > ${bnft}
 		;;
 	fmacs )
-		list ${mangle} ${fddm} ${cnft}
+		nft list set inet ${mangle} ${fddm} | sed '1d;\$d' > ${cnft}
 		;;
 esac
-unset mdd mddm mangle anft bnft cnft ainft binft cinft
 EXO
 
 st2=$(dd if=/dev/urandom bs=1 count=1|hexdump -e '1 "%03x"')
@@ -198,44 +194,38 @@ pd="openwrt-$(uci get network.lan.ipaddr)"
 (echo $pd;sleep 1;echo $pd) | passwd > /dev/null
 unset pd st2 st4
 
-ainft="/etc/nftables.d/i4ip"
-binft="/etc/nftables.d/i6ip"
-cinft="/etc/nftables.d/imac"
-anft="/etc/nftables.d/f4ip"
-bnft="/etc/nftables.d/f6ip"
-cnft="/etc/nftables.d/fmac"
 cat > ${ainft} << NFTAI
-set maaset {
+set ${idd} {
 	type ipv4_addr
 	flags interval
 }
 NFTAI
 cat > ${binft} << NFTBI
-set maa6set {
+set ${i6dd} {
 	type ipv6_addr
 	flags interval
 }
 NFTBI
 cat > ${cinft} << NFTCI
-set maam {
+set ${iddm} {
 	type ether_addr
 	flags interval
 }
 NFTCI
 cat > ${anft} << NFTA
-set mccset {
+set ${fdd} {
 	type ipv4_addr
 	flags interval
 }
 NFTA
 cat > ${bnft} << NFTB
-set mcc6set {
+set ${f6dd} {
 	type ipv6_addr
 	flags interval
 }
 NFTB
 cat > ${cnft} << NFTM
-set mccm {
+set ${fddm} {
 	type ether_addr
 	flags interval
 }
@@ -269,16 +259,16 @@ include "${cnft}"
 
 chain user_post_input {
 	type filter hook input priority 1; policy accept;
-	ip saddr @maaset drop
-	ip6 saddr @maa6set drop
-	ether saddr @maam drop
+	ip saddr @${idd} drop
+	ip6 saddr @${i6dd} drop
+	ether saddr @${iddm} drop
 }
 
 chain user_post_forward {
 	type filter hook forward priority 1; policy accept;
-	ip daddr @mccset drop
-	ip6 daddr @mcc6set drop
-	ether saddr @mccm drop
+	ip daddr @${fdd} drop
+	ip6 daddr @${f6dd} drop
+	ether saddr @${fddm} drop
 }
 
 # chain user_post_output {
@@ -296,5 +286,5 @@ chain user_post_forward {
 #	oifname "lan" ip saddr 192.168.1.0/24 masquerade
 # }
 NFTC
-unset anft bnft cnft ainft binft cinft
+unset idd i6dd iddm fdd f6dd fddm anft bnft cnft ainft binft cinft
 exit 0 
