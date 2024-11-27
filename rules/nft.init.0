@@ -2,6 +2,7 @@
 # nft add/delete element inet filter fccset { 192.168.0.2 }
 # nft add/delete element inet mangle mccset { 192.168.0.2 . 80 }
 # nft add/delete element inet filter fccmap { 00:00:00:00:02:01 : drop }
+# nft add/delete element inet mangle mmccset { 00:00:00:00:02:01 }
 #
 if [ "$1" == "init" ];then
 	nft flush ruleset
@@ -42,6 +43,7 @@ m6set=(maa6set mbb6set mcc6set mdd6set mee6set)
 fset=(faaset fbbset fccset)
 f6set=(faa6set fbb6set fcc6set)
 fmap=(faamap fbbmap fccmap)
+mmset=(mmaaset mmbbset mmccset mmddset mmeeset)
 for i in {0..2};do
 	nch $filter ${fnn[i]} $filter ${fnn[i]} $pc
 	nft add chain inet $filter ${chainf[i]}
@@ -61,6 +63,8 @@ for j in {0..4};do
 	nft add set inet $mangle ${m6set[j]} { type ipv6_addr . inet_service \;flags interval \; counter \;}
 	nft add rule inet $mangle ${chainm[j]} ip saddr . tcp dport @${mset[j]} drop
 	nft add rule inet $mangle ${chainm[j]} ip6 saddr . tcp dport @${m6set[j]} drop
+	nft add set inet $mangle ${mmset[j]} { type ether_addr \; flags interval \; counter \;}
+	nft add rule inet $mangle ${chainm[j]} ether saddr @${mmset[j]} drop
 done
 
 # nft add chian inet $filter syn_flood
