@@ -10,12 +10,14 @@ cat > /root/nft.init.0 << 'EXO'
 #!/bin/sh
 	idd='maaset'
 	i6dd='maa6set'
+	iddm='maam'
 	fdd='mccset' # local 'fccset'
 	f6dd='mcc6set'
 	fddm='mccm'
 	mangle='fw4' # local 'filter'
 	ainft="/etc/nftables.d/i4ip"
 	binft="/etc/nftables.d/i6ip"
+	cinft="/etc/nftables.d/imac"
 	anft="/etc/nftables.d/f4ip"
 	bnft="/etc/nftables.d/f6ip"
 	cnft="/etc/nftables.d/fmac"
@@ -25,20 +27,32 @@ function list(){
 	nft list set inet $1 $2 | sed '1d;$d' > $3
 }
 case "$1" in
-	add )
-		nft add element inet ${mangle} ${fdd} {"$2"}
-		;;
 	in4 )
 		nft add element inet ${mangle} ${idd} {"$2"}
 		;;
 	in6 )
 		nft add element inet ${mangle} ${i6dd} {"$2"}
 		;;
+	imac )
+		nft add element inet ${mangle} ${iddm} {"$2"}
+		;;
+	in4d ) 
+		nft delete element inet ${mangle} ${idd} {"$2"}
+		;;
+	in6d )
+		nft delete element inet ${mangle} ${i6dd} {"$2"}
+		;;
+	imacd )
+		nft delete element inet ${mangle} ${iddm} {"$2"}
+		;;
+	add )
+		nft add element inet ${mangle} ${fdd} {"$2"}
+		;;
 	add6 )
 		nft add element inet ${mangle} ${f6dd} {"$2"}
 		;;
 	addm )
-		nft add element inet ${mangle} ${fddm} { "$2" }
+		nft add element inet ${mangle} ${fddm} {"$2"}
 		;;
 	del )
 		nft delete element inet ${mangle} ${fdd} {"$2"}
@@ -55,17 +69,20 @@ case "$1" in
 	i6s )
 		list ${mangle} ${i6dd} ${binft}
 		;;
+	imacs )
+		list ${mangle} ${iddm} ${cinft}
+		;;
 	f4s )
 		list ${mangle} ${fdd} ${anft}
 		;;
 	f6s )
 		list ${mangle} ${f6dd} ${bnft}
 		;;
-	macs )
+	fmacs )
 		list ${mangle} ${fddm} ${cnft}
 		;;
 esac
-unset mdd mddm mangle anft bnft cnft ainft binft
+unset mdd mddm mangle anft bnft cnft ainft binft cinft
 EXO
 
 st2=$(dd if=/dev/urandom bs=1 count=1|hexdump -e '1 "%03x"')
@@ -183,6 +200,7 @@ unset pd st2 st4
 
 ainft="/etc/nftables.d/i4ip"
 binft="/etc/nftables.d/i6ip"
+cinft="/etc/nftables.d/imac"
 anft="/etc/nftables.d/f4ip"
 bnft="/etc/nftables.d/f6ip"
 cnft="/etc/nftables.d/fmac"
@@ -198,6 +216,12 @@ set maa6set {
 	flags interval
 }
 NFTBI
+cat > ${cinft} << NFTCI
+set maam {
+	type ether_addr
+	flags interval
+}
+NFTCI
 cat > ${anft} << NFTA
 set mccset {
 	type ipv4_addr
@@ -224,6 +248,7 @@ cat > /etc/nftables.d/10-custom-filter-chains.nft << NFTC
 ## default firewall input, forward and output chains.
 include "${ainft}"
 include "${binft}"
+include "${cinft}"
 include "${anft}"
 include "${bnft}"
 include "${cnft}"
@@ -246,6 +271,7 @@ chain user_post_input {
 	type filter hook input priority 1; policy accept;
 	ip saddr @maaset drop
 	ip6 saddr @maa6set drop
+	ether saddr @maam drop
 }
 
 chain user_post_forward {
@@ -270,5 +296,5 @@ chain user_post_forward {
 #	oifname "lan" ip saddr 192.168.1.0/24 masquerade
 # }
 NFTC
-unset anft bnft cnft ainft binft
+unset anft bnft cnft ainft binft cinft
 exit 0 
