@@ -8,13 +8,17 @@ net.ipv6.route.max_size = 32
 ARP
 cat > /root/nft.init.0 << 'EXO'
 #!/bin/sh
-	mdd='mccset' # local 'fccset'
-	m6dd='mcc6set'
-	mddm='mccm'
+	idd='maaset'
+	i6dd='maa6set'
+	fdd='mccset' # local 'fccset'
+	f6dd='mcc6set'
+	fddm='mccm'
 	mangle='fw4' # local 'filter'
-	anft="/etc/nftables.d/m4ip"
-	bnft="/etc/nftables.d/m6ip"
-	cnft="/etc/nftables.d/mmac"
+	ainft="/etc/nftables.d/i4ip"
+	binft="/etc/nftables.d/i6ip"
+	anft="/etc/nftables.d/f4ip"
+	bnft="/etc/nftables.d/f6ip"
+	cnft="/etc/nftables.d/fmac"
 	set -e
 	set -o pipefail
 function list(){
@@ -22,34 +26,46 @@ function list(){
 }
 case "$1" in
 	add )
-		nft add element inet ${mangle} ${mdd} {"$2"}
+		nft add element inet ${mangle} ${fdd} {"$2"}
+		;;
+	in4 )
+		nft add element inet ${mangle} ${idd} {"$2"}
+		;;
+	in6 )
+		nft add element inet ${mangle} ${i6dd} {"$2"}
 		;;
 	add6 )
-		nft add element inet ${mangle} ${m6dd} {"$2"}
+		nft add element inet ${mangle} ${f6dd} {"$2"}
 		;;
 	addm )
-		nft add element inet ${mangle} ${mddm} { "$2" }
+		nft add element inet ${mangle} ${fddm} { "$2" }
 		;;
 	del )
-		nft delete element inet ${mangle} ${mdd} {"$2"}
+		nft delete element inet ${mangle} ${fdd} {"$2"}
 		;;
 	del6 )
-		nft delete element inet ${mangle} ${m6dd} {"$2"}
+		nft delete element inet ${mangle} ${f6dd} {"$2"}
 		;;
 	delm )
-		nft delete element inet ${mangle} ${mddm} {"$2"}
+		nft delete element inet ${mangle} ${fddm} {"$2"}
 		;;
-	ipv4s )
-		list ${mangle} ${mdd} ${anft}
+	i4s )
+		list ${mangle} ${idd} ${ainft}
 		;;
-	ipv6s )
-		list ${mangle} ${m6dd} ${bnft}
+	i6s )
+		list ${mangle} ${i6dd} ${binft}
+		;;
+	f4s )
+		list ${mangle} ${fdd} ${anft}
+		;;
+	f6s )
+		list ${mangle} ${f6dd} ${bnft}
 		;;
 	macs )
-		list ${mangle} ${mddm} ${cnft}
+		list ${mangle} ${fddm} ${cnft}
 		;;
 esac
-unset mdd mddm mangle anft bnft cnft
+unset mdd mddm mangle anft bnft cnft ainft binft
 EXO
 
 st2=$(dd if=/dev/urandom bs=1 count=1|hexdump -e '1 "%03x"')
@@ -165,9 +181,23 @@ pd="openwrt-$(uci get network.lan.ipaddr)"
 (echo $pd;sleep 1;echo $pd) | passwd > /dev/null
 unset pd st2 st4
 
-anft="/etc/nftables.d/m4ip"
-bnft="/etc/nftables.d/m6ip"
-cnft="/etc/nftables.d/mmac"
+ainft="/etc/nftables.d/i4ip"
+binft="/etc/nftables.d/i6ip"
+anft="/etc/nftables.d/f4ip"
+bnft="/etc/nftables.d/f6ip"
+cnft="/etc/nftables.d/fmac"
+cat > ${ainft} << NFTAI
+set maaset {
+	type ipv4_addr
+	flags interval
+}
+NFTAI
+cat > ${binft} << NFTBI
+set maa6set {
+	type ipv6_addr
+	flags interval
+}
+NFTBI
 cat > ${anft} << NFTA
 set mccset {
 	type ipv4_addr
@@ -192,6 +222,8 @@ cat > /etc/nftables.d/10-custom-filter-chains.nft << NFTC
 
 ## Uncomment the chains below if you want to stage rules *before* the
 ## default firewall input, forward and output chains.
+include "${ainft}"
+include "${binft}"
 include "${anft}"
 include "${bnft}"
 include "${cnft}"
@@ -210,9 +242,11 @@ include "${cnft}"
 ## Uncomment the chains below if you want to stage rules *after* the
 ## default firewall input, forward and output chains.
 
-# chain user_post_input {
-#	type filter hook input priority 1; policy accept;
-# }
+chain user_post_input {
+	type filter hook input priority 1; policy accept;
+	ip saddr @maaset drop
+	ip6 saddr @maa6set drop
+}
 
 chain user_post_forward {
 	type filter hook forward priority 1; policy accept;
@@ -236,5 +270,5 @@ chain user_post_forward {
 #	oifname "lan" ip saddr 192.168.1.0/24 masquerade
 # }
 NFTC
-unset anft bnft cnft
+unset anft bnft cnft ainft binft
 exit 0 
