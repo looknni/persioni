@@ -1,18 +1,15 @@
-XTerm*faceName: xft:Mono
+XTerm*faceName: Mono
 XTerm*faceSize: 10
 XTerm*antialias: true
-XTerm*faceNameDoublesize: size=11
 XTerm*locale: true
 XTerm*utf8Title: true
 XTerm*utf8: 1
 xft.dpi: 100
-xpdf.title: PDF
-xft.antialias: true
 xft.rgba: rgb
 xft.hinting: true
 xft.hintstyle: hintslight
 XTerm*cursorColor: #ffa530
-XTerm*charClass: 33:48,35:48,37:48,43:48,45-47:48,64:48,95:48,126:48
+
 XTerm*selectToClipboard: true
 
 *VT100*translations: #override \n\
@@ -26,7 +23,6 @@ XTerm*eightBitInput: true
 XTerm*rightScrollBar: false
 XTerm*jumpScroll: true
 XTerm*multiScroll: true
-! XTerm*scrollLines: 30
 XTerm*scrollTtyOutput: true
 XTerm*toolBar: false
 XTerm*Scrollbar*thickness: 10
@@ -35,7 +31,7 @@ XTerm*Scrollbar*foreground: gray90
 XTerm*ScrollKey: true
 XTerm*ScrollTtyOutput: false
 XTerm*ScrollBar: false
-
+XTerm*charClass: 45-47:48,58:48,126:48,168-176:48,181:48
 XTerm*vt100*geometry: 80x30
 XTerm.vt100*fadeColor: #002b36
 XTerm*allowBoldFonts: true
@@ -68,11 +64,9 @@ XTerm*color12: #32cd32
 XTerm*color13: #fc54fc
 XTerm*color14: #54fcfc
 
-UXTerm*faceName: xft:Mono:style=:size=10:antialias=true
-UXTerm*faceNameDoublesize: size=10
-UXTerm*locale: true
-UXTerm*utf8Title: true
-UXTerm*utf8: 1
+UXTerm*faceName: xft:Mono
+UXTerm*faceSize: 10
+UXTerm*faceNameDoublesize: 10
 UXTerm*cursorColor: #ffa530
 UXTerm*showRoot: true
 
@@ -92,16 +86,14 @@ UXTerm*Scrollbar*foreground: gray90
 UXTerm*ScrollKey: true
 UXTerm*ScrollTtyOutput: false
 UXTerm*ScrollBar: false
-UXTerm*charClass: 33:48,35:48,37:48,43:48,45-47:48,64:48,95:48,126:48
+
 UXTerm*vt100*geometry: 80x30
 UXTerm.vt100*fadeColor: #002b36
 UXTerm*allowBoldFonts: true
 UXTerm*boldMode: true
 UXTerm*loginShell: false
 UXTerm*saveLines: 2000
-! UXTerm*colorBDMode: true
-! UXTerm*colorBD: #FF69B4
-
+UXTerm*charClass: 45-47:48,58:48,126:48,168-176:48,181:48
 UXTerm*background: #1a1a1a
 UXTerm*foreground: #D3D3D3
 UXTerm*color1: #7D3D3D
