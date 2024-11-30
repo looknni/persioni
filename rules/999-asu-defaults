@@ -24,40 +24,40 @@ cat > /root/nft.init.0 << EXO
 set -e
 set -o pipefail
 case "\$1" in
-	in4 )
+	i4 )
 		nft add element inet ${mangle} ${idd} {"\$2"}
 		;;
-	in6 )
+	i6 )
 		nft add element inet ${mangle} ${i6dd} {"\$2"}
 		;;
-	imac )
+	im )
 		nft add element inet ${mangle} ${iddm} {"\$2"}
 		;;
-	in4d ) 
+	i4d )
 		nft delete element inet ${mangle} ${idd} {"\$2"}
 		;;
-	in6d )
+	i6d )
 		nft delete element inet ${mangle} ${i6dd} {"\$2"}
 		;;
-	imacd )
+	imd )
 		nft delete element inet ${mangle} ${iddm} {"\$2"}
 		;;
-	add )
+	f4 )
 		nft add element inet ${mangle} ${fdd} {"\$2"}
 		;;
-	add6 )
+	f6 )
 		nft add element inet ${mangle} ${f6dd} {"\$2"}
 		;;
-	addm )
+	fm )
 		nft add element inet ${mangle} ${fddm} {"\$2"}
 		;;
-	del )
+	f4d )
 		nft delete element inet ${mangle} ${fdd} {"\$2"}
 		;;
-	del6 )
+	f6d )
 		nft delete element inet ${mangle} ${f6dd} {"\$2"}
 		;;
-	delm )
+	fmd )
 		nft delete element inet ${mangle} ${fddm} {"\$2"}
 		;;
 	i4s )
@@ -66,7 +66,7 @@ case "\$1" in
 	i6s )
 		nft list set inet ${mangle} ${i6dd} | sed '1d;\$d' > ${binft}
 		;;
-	imacs )
+	ims )
 		nft list set inet ${mangle} ${iddm} | sed '1d;\$d' > ${cinft}
 		;;
 	f4s )
@@ -75,7 +75,7 @@ case "\$1" in
 	f6s )
 		nft list set inet ${mangle} ${f6dd} | sed '1d;\$d' > ${bnft}
 		;;
-	fmacs )
+	fms )
 		nft list set inet ${mangle} ${fddm} | sed '1d;\$d' > ${cnft}
 		;;
 esac
