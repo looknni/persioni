@@ -33,7 +33,7 @@ fcitx-config-gtk fcitx-table-wubi dnsutils wget links xterm net-tools \
 wpasupplicant nmap tcpdump inkscape gimp krita ffmpeg libreoffice make gcc isc-dhcp-client \
 dnsmasq resolvconf hexcompare aircrack-ng xxd xxhash qbittorrent aria2
 
-dpkg-reconfigure console-setup # VGA
+dpkg-reconfigure console-setup # VGA # alsactl store
 
 ? connection wifi
 iwconfig
@@ -113,7 +113,6 @@ ifconfig wlan0 create wlandev xxx ; ifconfig wlan0 ssid wifiname
 service netif restart ; ifconfig wlan0 up ; dhclient wlan0
 
 mkdir -p /usr/local/etc/pkg/repos && vi FreeBSD.conf
-	# quarterly [ latest ]
 FreeBSD: {
     url: "https://mirrors.ustc.edu.cn/freebsd-pkg/${ABI}/quarterly",
 }
@@ -330,7 +329,7 @@ passwd username
 umount -l /mnt/gentoo/dev{/shm,/pts,}
 ? mount -o remount,rw /
 ? emerge -avuDN @system # /var/cache/distfiles/
-? media-gfx/flameshot x11-libs/libXft net-dns/bind-tools net-firewall/nftables sys-process/lsof net-wireless/iw sys-fs/exfat-utils sys-fs/dosfstools dev-util/intel-ocl-sdk app-crypt/hashcat app-crypt/johntheripper
+? media-gfx/flameshot x11-libs/libXft media-fonts/wqy-zenhei net-dns/bind-tools net-firewall/nftables sys-process/lsof net-wireless/iw sys-fs/exfat-utils sys-fs/dosfstools
 
 # /etc/portage/package.mask/zz-mask
 >=app-i18n/fcitx-4.99
@@ -342,6 +341,7 @@ net-firewall/iptables nftables
 net-firewall/nftables static-libs
 media-video/ffmpeg v4l
 media-video/vlc v4l
+net-misc/openssh libedit
 
 # systemd-boot :Secure Boot
 emerge --ask sys-boot/shim sys-boot/mokutil
