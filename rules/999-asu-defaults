@@ -238,8 +238,8 @@ chain user_pre_input {
 
 chain user_pre_forward {
 	type filter hook forward priority -1; policy accept;
-	ip saddr @${mf4m} drop
-	ip6 saddr @${mf6m} drop
+	ip daddr @${mf4m} drop
+	ip6 daddr @${mf6m} drop
 	ether saddr @${mfm} drop
 }
 
