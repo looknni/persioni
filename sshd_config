@@ -1,5 +1,9 @@
-# /etc/conf.d/dropbear: config file for /etc/init.d/dropbear
+# /etc/conf.d/dropbear: config file for /etc/init.d/dropbear # gentoo
 # DROPBEAR_OPTS="-w -s -g -p 22"
+
+# /etc/default/dropbear # debian
+# DROPBEAR_PORT=22
+# DROPBEAR_EXTRA_ARGS="-w -s -g"
 
 # touch ~/.ssh/authorized_keys ; chmod 700 ~/.ssh/ ; chmod 600 ~/.ssh/authorized_keys
 Port 22
