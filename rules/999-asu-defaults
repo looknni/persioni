@@ -6,77 +6,89 @@ cat > /etc/sysctl.conf << 'ARP'
 net.ipv4.route.max_size = 32
 net.ipv6.route.max_size = 32
 ARP
-idd='maaset'
-i6dd='maa6set'
-iddm='maam'
-fdd='mccset' # local 'fccset'
-f6dd='mcc6set'
-fddm='mccm'
-mangle='fw4' # local 'filter'
-ainft='/etc/nftables.d/i4ip'
-binft='/etc/nftables.d/i6ip'
-cinft='/etc/nftables.d/imac'
-anft='/etc/nftables.d/f4ip'
-bnft='/etc/nftables.d/f6ip'
-cnft='/etc/nftables.d/fmac'
+fi4f='i41m'
+fi6f='i61m'
+fimf='m1m'
+ff4f='i42m'
+ff6f='i62m'
+ffmf='m2m'
+mi4m='i43m'
+mi6m='i63m'
+mim='m3m'
+mf4m='i44m'
+mf6m='i64m'
+mfm='m4m'
+tables='fw4' # local 'filter'
+f1f='/etc/nftables.d/f1f'
+e1e='/etc/nftables.d/e1e'
+m1m='/etc/nftables.d/m1m'
+f2f='/etc/nftables.d/f2f'
+e2e='/etc/nftables.d/e2e'
+m2m='/etc/nftables.d/m2m'
+f3f='/etc/nftables.d/f3f'
+e3e='/etc/nftables.d/e3e'
+m3m='/etc/nftables.d/m3m'
+f4f='/etc/nftables.d/f4f'
+e4e='/etc/nftables.d/e4e'
+m4m='/etc/nftables.d/m4m'
 cat > /root/nft.init.0 << EXO
 #!/bin/sh
 set -e
 set -o pipefail
 case "\$1" in
 	i4 )
-		nft add element inet ${mangle} ${idd} {"\$2"}
+		nft add element inet ${tables} ${fi4f} {"\$2"}
 		;;
 	i6 )
-		nft add element inet ${mangle} ${i6dd} {"\$2"}
+		nft add element inet ${tables} ${fi6f} {"\$2"}
 		;;
 	im )
-		nft add element inet ${mangle} ${iddm} {"\$2"}
+		nft add element inet ${tables} ${fimf} {"\$2"}
 		;;
 	i4d )
-		nft delete element inet ${mangle} ${idd} {"\$2"}
+		nft delete element inet ${tables} ${fi4f} {"\$2"}
 		;;
 	i6d )
-		nft delete element inet ${mangle} ${i6dd} {"\$2"}
+		nft delete element inet ${tables} ${fi6f} {"\$2"}
 		;;
 	imd )
-		nft delete element inet ${mangle} ${iddm} {"\$2"}
+		nft delete element inet ${tables} ${fimf} {"\$2"}
 		;;
 	f4 )
-		nft add element inet ${mangle} ${fdd} {"\$2"}
+		nft add element inet ${tables} ${ff4f} {"\$2"}
 		;;
 	f6 )
-		nft add element inet ${mangle} ${f6dd} {"\$2"}
+		nft add element inet ${tables} ${ff6f} {"\$2"}
 		;;
 	fm )
-		nft add element inet ${mangle} ${fddm} {"\$2"}
+		nft add element inet ${tables} ${ffmf} {"\$2"}
 		;;
 	f4d )
-		nft delete element inet ${mangle} ${fdd} {"\$2"}
+		nft delete element inet ${tables} ${ff4f} {"\$2"}
 		;;
 	f6d )
-		nft delete element inet ${mangle} ${f6dd} {"\$2"}
+		nft delete element inet ${tables} ${ff6f} {"\$2"}
 		;;
 	fmd )
-		nft delete element inet ${mangle} ${fddm} {"\$2"}
+		nft delete element inet ${tables} ${ffmf} {"\$2"}
 		;;
 	i4s )
-		nft list set inet ${mangle} ${idd} | sed '1d;\$d' > ${ainft}
+		nft list set inet ${tables} ${fi4f} | sed '1d;\$d' > ${f1f}
 		;;
 	i6s )
-		nft list set inet ${mangle} ${i6dd} | sed '1d;\$d' > ${binft}
+		nft list set inet ${tables} ${fi6f} | sed '1d;\$d' > ${e1e}
 		;;
 	ims )
-		nft list set inet ${mangle} ${iddm} | sed '1d;\$d' > ${cinft}
+		nft list set inet ${tables} ${fimf} | sed '1d;\$d' > ${m1m}
 		;;
 	f4s )
-		nft list set inet ${mangle} ${fdd} | sed '1d;\$d' > ${anft}
+		nft list set inet ${tables} ${ff4f} | sed '1d;\$d' > ${f2f}
 		;;
 	f6s )
-		nft list set inet ${mangle} ${f6dd} | sed '1d;\$d' > ${bnft}
+		nft list set inet ${tables} ${ff6f} | sed '1d;\$d' > ${e2e}
 		;;
 	fms )
-		nft list set inet ${mangle} ${fddm} | sed '1d;\$d' > ${cnft}
+		nft list set inet ${tables} ${ffmf} | sed '1d;\$d' > ${m2m}
 		;;
 esac
 EXO
@@ -194,61 +206,42 @@ pd="openwrt-$(uci get network.lan.ipaddr)"
 (echo $pd;sleep 1;echo $pd) | passwd > /dev/null
 unset pd st2 st4
 
-cat > ${ainft} << NFTAI
-set ${idd} {
-	type ipv4_addr
-	flags interval
-}
-NFTAI
-cat > ${binft} << NFTBI
-set ${i6dd} {
-	type ipv6_addr
-	flags interval
-}
-NFTBI
-cat > ${cinft} << NFTCI
-set ${iddm} {
-	type ether_addr
-	flags interval
-}
-NFTCI
-cat > ${anft} << NFTA
-set ${fdd} {
-	type ipv4_addr
-	flags interval
-}
-NFTA
-cat > ${bnft} << NFTB
-set ${f6dd} {
-	type ipv6_addr
-	flags interval
-}
-NFTB
-cat > ${cnft} << NFTM
-set ${fddm} {
-	type ether_addr
-	flags interval
-}
-NFTM
+for i in $(seq 4);do
+	echo -e "set i4${i}m {\n\ttype ipv4_addr\n\tflags interval\n}" > /etc/nftables.d/"f${i}f"
+	echo -e "set i6${i}m {\n\ttype ipv6_addr\n\tflags interval\n}" > /etc/nftables.d/"e${i}e"
+	echo -e "set m${i}m {\n\ttype ether_addr\n\tflags interval\n}" > /etc/nftables.d/"m${i}m"
+done
 cat > /etc/nftables.d/10-custom-filter-chains.nft << NFTC
 ## The firewall4 input, forward and output chains are registered with
 ## priority filter (0).
 
 ## Uncomment the chains below if you want to stage rules *before* the
 ## default firewall input, forward and output chains.
-include "${ainft}"
-include "${binft}"
-include "${cinft}"
-include "${anft}"
-include "${bnft}"
-include "${cnft}"
-# chain user_pre_input {
-#	type filter hook input priority -1; policy accept;
-# }
+include "${f1f}"
+include "${f2f}"
+include "${f3f}"
+include "${f4f}"
+include "${e1e}"
+include "${e2e}"
+include "${e3e}"
+include "${e4e}"
+include "${m1m}"
+include "${m2m}"
+include "${m3m}"
+include "${m4m}"
+chain user_pre_input {
+	type filter hook input priority -1; policy accept;
+	ip saddr @${mi4m} drop
+	ip6 saddr @${mi6m} drop
+	ether saddr @${mim} drop
+}
 
-# chain user_pre_forward {
-#	type filter hook forward priority -1; policy accept;
-# }
+chain user_pre_forward {
+	type filter hook forward priority -1; policy accept;
+	ip saddr @${mf4m} drop
+	ip6 saddr @${mf6m} drop
+	ether saddr @${mfm} drop
+}
 
 # chain user_pre_output {
 #	type filter hook output priority -1; policy accept;
@@ -259,26 +252,26 @@ include "${cnft}"
 
 chain user_post_input {
 	type filter hook input priority 1; policy accept;
-	ip saddr @${idd} drop
-	ip6 saddr @${i6dd} drop
-	ether saddr @${iddm} drop
+	ip saddr @${fi4f} drop
+	ip6 saddr @${fi6f} drop
+	ether saddr @${fimf} drop
 }
 
 chain user_post_forward {
 	type filter hook forward priority 1; policy accept;
-	ip daddr @${fdd} drop
-	ip6 daddr @${f6dd} drop
-	ether saddr @${fddm} drop
+	ip daddr @${ff4f} drop
+	ip6 daddr @${ff6f} drop
+	ether saddr @${ffmf} drop
 }
 
 # chain user_post_output {
 #	type filter hook output priority 1; policy accept;
 # }
 
-# chain user_dstnat {
-#	type nat hook prerouting priority dstnat; policy accept;
+chain user_dstnat {
+	type nat hook prerouting priority dstnat; policy accept;
 #	iifname "br-lan" ip daddr {192.168.1.2} tcp dport {80,443} dnat to $(uci get network.lan.ipaddr)
-# }
+}
 
 # chain user_srcnat {
 #	type nat hook postrouting priority srcnat; policy accept;
@@ -286,5 +279,4 @@ chain user_post_forward {
 #	oifname "lan" ip saddr 192.168.1.0/24 masquerade
 # }
 NFTC
-unset idd i6dd iddm fdd f6dd fddm anft bnft cnft ainft binft cinft
 exit 0 
