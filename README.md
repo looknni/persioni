@@ -100,8 +100,7 @@ dpkg -l | grep ^rc | awk '{print $2}' | sudo xargs dpkg -P
 ### ~~[RockyLinux](https://rockylinux.org/)~~ ? [AlmaLinux](https://almalinux.org/)
 ```
 epel-release.noarch epel-next-release.noarch ibus.x86_64 xorg-x11-server-Xorg.x86_64 \
-xorg-x11-xinit.x86_64 xorg-x11-xinit-session.x86_64
-google-droid-sans-fonts.noarch google-noto-sans-cjk-ttc-fonts.noarch bind-utils
+xorg-x11-xinit.x86_64 xorg-x11-xinit-session.x86_64 google-droid-sans-fonts.noarch bind-utils
 
 yum groupinstall 'Server with GUI' # systemctl set-default graphical.target 
 yum remove $(rpm -qa | grep kernel | grep -v $(uname -r))
