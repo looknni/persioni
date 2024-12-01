@@ -33,6 +33,7 @@ dnsutils wget links xterm net-tools fcitx fcitx-googlepinyin fcitx-config-gtk fc
 wpasupplicant nmap tcpdump inkscape gimp krita ffmpeg libreoffice make gcc isc-dhcp-client \
 dnsmasq resolvconf hexcompare aircrack-ng xxd xxhash qbittorrent aria2
 
+systemctl disable cups ; systemctl disable exim4
 dpkg-reconfigure console-setup # VGA # alsactl store
 
 ? connection wifi
