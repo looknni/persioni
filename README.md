@@ -4,7 +4,7 @@
 ---
 ##### [Ventoy](https://www.ventoy.net/en/index.html) . [Tracker.deb](https://tracker.debian.org/pkg/linux) . [Cppreference](https://cppreference.com/)
 ---
-##### [Gnu-command](https://www.gnu.org/software/) . [ ? ](https://quickref.cn/) . [Nftables](https://wiki.nftables.org/)
+##### [Gnu-command](https://www.gnu.org/software/) . [Nftables](https://wiki.nftables.org/) . [ ? ](https://quickref.cn/)
 ---
 > - https://mirrors.tuna.tsinghua.edu.cn
 > - https://mirrors.aliyun.com # freebsd 13,14
@@ -45,16 +45,6 @@ wpa_passphrase name password > wpa_supplicant.conf
 wpa_supplicant -B -c wpa_supplicant.conf -i eth0
 dhclient eth0
 
-? dnsmasq.conf
-cache-size=150
-server=114.114.114.114
-interface=wlan0
-dhcp-range=10.0.0.100,10.0.0.200,12h
-dhcp-option=3,192.168.0.1
-dhcp-option=6,192.168.0.1,8.8.4.4
-bind-interfaces
-except-interface=lo
-
 ? set ap
 # /etc/dhcp/dhcpd.conf
 default-lease-time 600;
@@ -76,20 +66,15 @@ nft add rule ip nat postrouting oifname "eth0" masquerade
 # client.gateway set eth0.ip
 # nft add rule ip nat prerouting iifname "at0" tcp dport 80 ip daddr 192.168.1.100 dnat to 192.168.0.2:443
 
-?o /etc/network/interfaces # man interfaces
-#auto eth0
-#iface eth0 inet static/dhcp
+? /etc/network/interfaces # man interfaces
+auto eth0
+iface eth0 inet static/dhcp
 #address 192.168.1.100
 #network 192.168.1.0
 #netmask 255.255.255.0
 #gateway 192.168.1.1
 #broadcast 192.168.1.255
-systemctl disable networking
-systemctl enable systemd-networkd
-
-? ip route add default via 192.168.0.1 dev br0
-ip link set dev br0 type stp on
-ip link set dev br0 nomaster
+# systemctl disable networking # systemctl enable systemd-networkd
 
 make localmodconfig ; make menuconfig ; make bzImage -j4 ; make modules_install && make install # apt install linux-source
 dpkg-reconfigure linux-image-$(uname -r)
@@ -251,23 +236,14 @@ emerge -av app-editors/vim app-shells/bash-completion
 env-update && source /etc/profile && export PS1="(chroot) ${PS1}"
 mount /dev/sda1 /efi
 
-# /etc/sysctl.conf 
-vm.min_free_kbytes=100000
-
-# /etc/portage/make.conf # openssl req -new -nodes -utf8 -sha256 -x509 -outform PEM -out /efi/mok.pem -keyout /efi/mok.pem
+# /etc/portage/make.conf
 MAKEOPTS="-j6"
 GRUB_PLATFORMS="efi-64"
-# SECUREBOOT_SIGN_KEY="/efi/mok.pem"
-# SECUREBOOT_SIGN_CERT="/efi/mok.pem"
 
 ln -sf /usr/share/zoneinfo/Europe/Brussels /etc/localtime
-# /etc/locale.gen en_US.UTF-8 UTF-8 # locale-gen && env-update && source /etc/profile
-# /etc/locale.conf LANG=en_US.UTF8
 
 # /etc/portage/package.use/zz-autounmask
 sys-kernel/installkernel -systemd
-sys-apps/systemd boot # secureboot
-sys-boot/shim # secureboot
 
 # touch /etc/portage/package.accept_keywords/zzz_autounmask
 emerge sys-kernel/linux-firmware --autounmask-write --autounmask
@@ -283,18 +259,6 @@ UUID=? none swap sw 0 0
 UUID=? / ext4 rw,noatime 0 1
 UUID=? /efi vfat defaults 0 2
 
-mount -o remount,rw -t efivarfs efivarfs /sys/firmware/efi/efivars/
-
-# /efi/loader/entries/gentoo.conf
-title gentoo
-linux /vmlinuz # /efi/
-initrd /initramfs.img # /efi/
-options root=/dev/xxx
-
-# /efi/loader/loader.conf
-default gentoo.conf
-# bootctl install && bootctl list ; bootctl update
-
 ? https://www.freedesktop.org/software/systemd/man/latest/systemd.network.html
 # /etc/systemd/network/eth0.network
 [Match]
@@ -309,25 +273,15 @@ DNSOverTLS=opportunistic
 MulticastDNS=yes
 LLMNR=no
 
-# /etc/default/grub
-GRUB_DISABLE_OS_PROBER=false
-GRUB_DEFAULT=saved
-GRUB_SAVEDEFAULT=true
-GRUB_GFXMODE=1024x768
-GRUB_TERMINAL="console"
-
 grub-install --target x86_64-efi --efi-directory /efi --recheck --removable
 ? grub-install /dev/sda
 grub-mkconfig -o /boot/grub/grub.cfg
-
-? grub-mkstandalone --compress gz -o /efi/EFI/gentoo/xxx.efi -d /usr/lib/grub/x86_64-efi/ -O x86_64-efi /boot/grub/grub.cfg -v
-? efibootmgr -c -d /dev/sda -p 2 -L "gentoo" -l "\EFI\gentoo\xxx.efi"
-? efibootmgr -b 0002 -B
+mount -o remount,rw -t efivarfs efivarfs /sys/firmware/efi/efivars/
 
 useradd -m -G users,wheel,audio,video username
 passwd username
-
-umount -l /mnt/gentoo/dev{/shm,/pts,}
+umount -l /mnt/gentoo/dev{/shm,/pts,} ; reboot
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 ? mount -o remount,rw /
 ? emerge -avuDN @system # /var/cache/distfiles/
 ? media-gfx/flameshot x11-libs/libXft media-fonts/wqy-zenhei net-dns/bind-tools net-firewall/nftables sys-process/lsof net-wireless/iw sys-fs/exfat-utils sys-fs/dosfstools
@@ -344,13 +298,23 @@ media-video/ffmpeg v4l
 media-video/vlc v4l
 net-misc/openssh libedit
 
+# /etc/default/grub
+GRUB_DISABLE_OS_PROBER=false
+GRUB_DEFAULT=saved
+GRUB_SAVEDEFAULT=true
+GRUB_GFXMODE=1024x768
+GRUB_TERMINAL="console"
+
+# /efi/loader/entries/gentoo.conf
+title gentoo
+linux /vmlinuz # /efi/
+initrd /initramfs.img # /efi/
+options root=/dev/xxx
+
+# /efi/loader/loader.conf
+default gentoo.conf
+# bootctl install && bootctl list ; bootctl update
 # systemd-boot :Secure Boot
-emerge --ask sys-boot/shim sys-boot/mokutil
-cp /usr/share/shim/mmx64.efi /efi/EFI/BOOT/mmx64.efi
-cp /efi/EFI/systemd/systemd-bootx64.efi /efi/EFI/BOOT/grubx64.efi
-openssl req -new -nodes -utf8 -sha256 -x509 -outform PEM -out mok.pem -keyout mok.pem
-openssl x509 -in mok.pem -inform PEM -out mok.der -outform DER
-mokutil --import mok.der
 
 emerge --ask sys-apps/ifplugd net-dns/dnsmasq app-admin/rsyslog # /usr/share/doc/netifrc-<version_number>/net.example.bz2 #openrc
 # Note: DHCP is the default behavior if /etc/conf.d/net is empty or missing
@@ -374,6 +338,22 @@ NextPageKey=PGDN
 # .config/fcitx/conf/fcitx-classic-ui.config
 SkinType=classic
 
+# /etc/sysctl.conf 
+vm.min_free_kbytes=100000
+
+? dnsmasq.conf
+cache-size=150
+server=114.114.114.114
+interface=wlan0
+dhcp-range=10.0.0.100,10.0.0.200,12h
+dhcp-option=3,192.168.0.1
+dhcp-option=6,192.168.0.1,8.8.4.4
+bind-interfaces
+except-interface=lo
+
+? grub-mkstandalone --compress gz -o /efi/EFI/gentoo/xxx.efi -d /usr/lib/grub/x86_64-efi/ -O x86_64-efi /boot/grub/grub.cfg -v
+? efibootmgr -c -d /dev/sda -p 2 -L "gentoo" -l "\EFI\gentoo\xxx.efi"
+? efibootmgr -b 0002 -B
 ```
 ## ~~[Openwrt](https://lxr.openwrt.org/)~~
 ```
