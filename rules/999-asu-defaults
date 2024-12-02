@@ -234,6 +234,7 @@ chain user_pre_input {
 	ip saddr @${mi4m} drop
 	ip6 saddr @${mi6m} drop
 	ether saddr @${mim} drop
+#	ip saddr 192.168.0.2 tcp dport { 80, 443 } drop
 }
 
 chain user_pre_forward {
@@ -241,6 +242,7 @@ chain user_pre_forward {
 	ip daddr @${mf4m} drop
 	ip6 daddr @${mf6m} drop
 	ether saddr @${mfm} drop
+#	ip daddr 192.168.0.2 tcp dport { 80, 443 } drop
 }
 
 # chain user_pre_output {
