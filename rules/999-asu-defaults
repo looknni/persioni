@@ -255,6 +255,7 @@ chain user_post_input {
 	ip saddr @${fi4f} drop
 	ip6 saddr @${fi6f} drop
 	ether saddr @${fimf} drop
+#	ip saddr 192.168.0.2 tcp dport { 80, 443 } drop
 }
 
 chain user_post_forward {
@@ -262,6 +263,7 @@ chain user_post_forward {
 	ip daddr @${ff4f} drop
 	ip6 daddr @${ff6f} drop
 	ether saddr @${ffmf} drop
+#	ip daddr 192.168.0.2 tcp dport { 80, 443 } drop
 }
 
 # chain user_post_output {
