@@ -242,7 +242,7 @@ chain user_pre_forward {
 	ip daddr @${mf4m} drop
 	ip6 daddr @${mf6m} drop
 	ether saddr @${mfm} drop
-#	ip daddr 192.168.0.2 tcp dport { 80, 443 } drop
+#	ip daddr 192.168.0.2 tcp dport { 80, 443 } drop comment "drop ct state all"
 }
 
 # chain user_pre_output {
@@ -254,18 +254,18 @@ chain user_pre_forward {
 
 chain user_post_input {
 	type filter hook input priority 1; policy accept;
-	ip saddr @${fi4f} drop
+	ip saddr @${fi4f} drop comment "drop ct state all"
 	ip6 saddr @${fi6f} drop
-	ether saddr @${fimf} drop
-#	ip saddr 192.168.0.2 tcp dport { 80, 443 } drop
+	ether saddr @${fimf} drop comment "drop to LAN"
+#	ip saddr 192.168.0.2 tcp dport { 80, 443 } drop comment "drop to LAN"
 }
 
 chain user_post_forward {
 	type filter hook forward priority 1; policy accept;
-	ip daddr @${ff4f} drop
+	ip daddr @${ff4f} drop comment "drop ct state new"
 	ip6 daddr @${ff6f} drop
-	ether saddr @${ffmf} drop
-#	ip daddr 192.168.0.2 tcp dport { 80, 443 } drop
+	ether saddr @${ffmf} drop comment "drop network"
+#	ip daddr 192.168.0.2 tcp dport { 80, 443 } drop comment "drop ct state new"
 }
 
 # chain user_post_output {
