@@ -132,6 +132,7 @@ set dropbear.@dropbear[0].Interface='lan'
 set network.lan.ipaddr="172.$((16+$RANDOM%16)).$((RANDOM%255)).1"
 
 set dhcp.@dnsmasq[0].cachesize='100'
+set dhcp.@dnsmasq[0].interface='lan'
 add_list dhcp.lan.dhcp_option='6,114.114.114.114'
 set dhcp.wwan=dhcp
 set dhcp.wwan.interface='wwan'
