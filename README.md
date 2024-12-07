@@ -357,11 +357,7 @@ except-interface=lo
 ```
 ## ~~[Openwrt](https://lxr.openwrt.org/)~~
 ```
-xsltproc ecj fastjar java-propose-classpath libelf-dev libncursesw5-dev python3-setuptools \
-python3-dev subversion swig xsltproc zlib1g-dev build-essential clang flex g++ gawk gcc-multilib \
-gettext libncurses5-dev libssl-dev python3-distutils asciidoc binutils patch bison autoconf texinfo \
-sharutils subversion ncurses-term zlib1g-dev libc6-dev-i386 uglifyjs msmtp libglib2.0-dev xmlto \
-qemu-utils libtool
+build-essential libncurses5-dev
 
 git clone https://github.com/openwrt/openwrt
 git checkout v24.10 # git pull
