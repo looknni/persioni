@@ -359,8 +359,8 @@ except-interface=lo
 ```
 build-essential libncurses5-dev
 
-git clone https://github.com/openwrt/openwrt
-git checkout v24.10 # git pull
+git clone ssh://git@ssh.github.com/openwrt/openwrt
+git checkout v24.10 # git reset --hard <commit> ; git pull
 
 # ./target/linux/ramips/dts # reg = <0x50000 0x1fb0000> # 32m # echo $((16#A));printf '%x\n' 10;echo "ibase=10;obase=16;10"|bc
 # ./target/linux/ramips/image # IMAGE_SIZE := 32m
