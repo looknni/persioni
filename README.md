@@ -281,13 +281,15 @@ mount -o remount,rw -t efivarfs efivarfs /sys/firmware/efi/efivars/
 useradd -m -G users,wheel,audio,video username
 passwd username
 umount -l /mnt/gentoo/dev{/shm,/pts,} ; reboot
-!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+
 ? mount -o remount,rw /
 ? emerge -avuDN @system # /var/cache/distfiles/
 ? media-gfx/flameshot x11-libs/libXft media-fonts/wqy-zenhei net-dns/bind-tools net-firewall/nftables sys-process/lsof net-wireless/iw sys-fs/exfat-utils sys-fs/dosfstools
 
 # /etc/portage/package.mask/zz-mask
->=app-i18n/fcitx-4.99
+>=app-i18n/fcitx-4.9
 
 # /etc/portage/package.use/zz-autounmask
 # net-libs/axtls cgi-php httpd
