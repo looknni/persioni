@@ -128,7 +128,7 @@ set system.ntp.interface='lan'
 
 set dropbear.@dropbear[0].Port="$((65431+$RANDOM%2))"
 set dropbear.@dropbear[0].MaxAuthTries='2'
-set dropbear.@dropbear[0].Interface='lan'
+set dropbear.@dropbear[0].DirectInterface='lan'
 set network.lan.ipaddr="172.$((16+$RANDOM%16)).$((RANDOM%255)).1"
 
 set dhcp.@dnsmasq[0].cachesize='100'
