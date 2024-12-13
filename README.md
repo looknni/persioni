@@ -259,20 +259,6 @@ UUID=? none swap sw 0 0
 UUID=? / ext4 rw,noatime 0 1
 UUID=? /efi vfat defaults 0 2
 
-? https://www.freedesktop.org/software/systemd/man/latest/systemd.network.html
-# /etc/systemd/network/eth0.network
-[Match]
-Name=eth0
-
-[Network]
-DHCP=yes
-# Address=192.168.0.100/24
-# Gateway=192.168.0.1
-DNSSEC=allow-downgrade
-DNSOverTLS=opportunistic
-MulticastDNS=yes
-LLMNR=no
-
 grub-install --target x86_64-efi --efi-directory /efi --recheck --removable
 ? grub-install /dev/sda
 grub-mkconfig -o /boot/grub/grub.cfg
@@ -320,6 +306,20 @@ options root=/dev/xxx
 default gentoo.conf
 # bootctl install && bootctl list ; bootctl update
 # systemd-boot :Secure Boot
+
+? https://www.freedesktop.org/software/systemd/man/latest/systemd.network.html
+# /etc/systemd/network/eth0.network
+[Match]
+Name=eth0
+
+[Network]
+DHCP=yes
+# Address=192.168.0.100/24
+# Gateway=192.168.0.1
+# DNSSEC=allow-downgrade
+# DNSOverTLS=opportunistic
+# MulticastDNS=yes
+# LLMNR=no
 
 emerge --ask sys-apps/ifplugd net-dns/dnsmasq app-admin/rsyslog # /usr/share/doc/netifrc-<version_number>/net.example.bz2 #openrc
 # Note: DHCP is the default behavior if /etc/conf.d/net is empty or missing
