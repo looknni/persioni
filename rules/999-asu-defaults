@@ -126,9 +126,9 @@ set system.@system[0].zonename='Asia/Hong Kong'
 set system.ntp.enable_server='0'
 set system.ntp.interface='lan'
 
-set dropbear.@dropbear[0].Port="$((65431+$RANDOM%2))"
-set dropbear.@dropbear[0].MaxAuthTries='2'
-set dropbear.@dropbear[0].DirectInterface='lan'
+set dropbear.main.Port="$((65431+$RANDOM%2))"
+set dropbear.main.MaxAuthTries='2'
+set dropbear.main.DirectInterface='lan'
 set network.lan.ipaddr="172.$((16+$RANDOM%16)).$((RANDOM%255)).1"
 
 set dhcp.@dnsmasq[0].cachesize='100'
