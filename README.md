@@ -283,6 +283,7 @@ umount -l /mnt/gentoo/dev{/shm,/pts,} ; reboot
 # /etc/portage/package.use/zz-autounmask
 # net-libs/axtls cgi-php httpd
 # dev-lang/php cgi apache2 fpm
+<=app-i18n/fcitx-4.9
 net-firewall/iptables nftables
 net-firewall/nftables static-libs
 media-video/ffmpeg v4l
