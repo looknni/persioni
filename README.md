@@ -255,9 +255,10 @@ make -j6 && make modules_install && make install
 dracut --kver kernel.version
 
 # blkid mount
-UUID=? none swap sw 0 0
 UUID=? / ext4 rw,noatime 0 1
-UUID=? /efi vfat defaults 0 2
+UUID=? /boot ext4 defaults 0 2
+UUID=? /efi vfat defaults 0 1
+UUID=? none swap sw 0 0
 
 grub-install --target x86_64-efi --efi-directory /efi --recheck --removable
 ? grub-install /dev/sda
