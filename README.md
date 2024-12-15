@@ -76,6 +76,15 @@ iface eth0 inet static/dhcp
 #broadcast 192.168.1.255
 # systemctl disable networking # systemctl enable systemd-networkd
 
+? dnsmasq.conf
+cache-size=150
+interface=wlan0
+dhcp-range=10.0.0.100,10.0.0.200,12h
+dhcp-option=3,192.168.0.1
+dhcp-option=6,192.168.0.1,8.8.4.4
+bind-interfaces
+except-interface=lo
+
 make localmodconfig ; make menuconfig ; make bzImage -j4 ; make modules_install && make install # apt install linux-source
 dpkg-reconfigure linux-image-$(uname -r)
 update-initramfs -u -k all
@@ -276,7 +285,7 @@ umount -l /mnt/gentoo/dev{/shm,/pts,} ; reboot
 
 ? mount -o remount,rw /
 ? emerge -avuDN @system # /var/cache/distfiles/
-? media-gfx/flameshot x11-libs/libXft media-fonts/wqy-zenhei net-dns/bind-tools net-firewall/nftables sys-process/lsof net-wireless/iw sys-fs/exfat-utils sys-fs/dosfstools
+? media-gfx/flameshot media-fonts/wqy-zenhei net-dns/bind-tools net-firewall/nftables sys-process/lsof net-wireless/iw sys-fs/exfat-utils sys-fs/dosfstools
 
 # /etc/portage/package.mask/zz-mask
 >=app-i18n/fcitx-4.9
@@ -334,7 +343,7 @@ ethtool_offload_eth0="rx on tx on sg on tso on ufo on gso on gro on lro on"
 # dns_servers_eth0="192.168.0.1 8.8.8.8"
 
 ln -s /etc/init.d/net.lo /etc/init.d/net.<interface_name>
-rc-service net.eth0 start # elogind dbus net.lo dnsmasq gpm rsyslog nftables
+rc-service net.eth0 start # elogind dbus net.lo gpm rsyslog nftables
 rc-update add net.<interface_name> default
 
 # .config/fcitx/config # app-i18n/fcitx app-i18n/fcitx-libpinyin
@@ -348,16 +357,6 @@ SkinType=classic
 # /etc/sysctl.conf 
 vm.min_free_kbytes=100000
 
-? dnsmasq.conf
-cache-size=150
-server=114.114.114.114
-interface=wlan0
-dhcp-range=10.0.0.100,10.0.0.200,12h
-dhcp-option=3,192.168.0.1
-dhcp-option=6,192.168.0.1,8.8.4.4
-bind-interfaces
-except-interface=lo
-
 ? grub-mkstandalone --compress gz -o /efi/EFI/gentoo/xxx.efi -d /usr/lib/grub/x86_64-efi/ -O x86_64-efi /boot/grub/grub.cfg -v
 ? efibootmgr -c -d /dev/sda -p 2 -L "gentoo" -l "\EFI\gentoo\xxx.efi"
 ? efibootmgr -b 0002 -B
@@ -367,7 +366,7 @@ except-interface=lo
 build-essential libncurses5-dev
 
 git clone ssh://git@ssh.github.com/openwrt/openwrt
-git checkout v24.10 # git reset --hard <commit> ; git pull
+git checkout v24 # git reset --hard <commit> ; git pull
 
 # ./target/linux/ramips/dts # reg = <0x50000 0x1fb0000> # 32m # echo $((16#A));printf '%x\n' 10;echo "ibase=10;obase=16;10"|bc
 # ./target/linux/ramips/image # IMAGE_SIZE := 32m
