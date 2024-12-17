@@ -282,7 +282,7 @@ umount -l /mnt/gentoo/dev{/shm,/pts,} ; reboot
 
 chmod o-rwxt /bin/su
 # /etc/sudoers
-username ALL=(ALL:ALL) ALL, !/bin/su, !/usr/bin/su
+username ALL=(ALL:ALL) ALL, !/bin/su, !/bin/passwd
 
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
