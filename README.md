@@ -276,7 +276,7 @@ mount -o remount,rw -t efivarfs efivarfs /sys/firmware/efi/efivars/
 
 useradd name
 passwd name
-useradd -m -G users,wheel,audio,video username
+useradd -m -G users,audio,video username
 passwd username
 umount -l /mnt/gentoo/dev{/shm,/pts,} ; reboot
 
