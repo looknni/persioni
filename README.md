@@ -274,12 +274,15 @@ grub-install --target x86_64-efi --efi-directory /efi --recheck --removable
 grub-mkconfig -o /boot/grub/grub.cfg
 mount -o remount,rw -t efivarfs efivarfs /sys/firmware/efi/efivars/
 
-chmod o-rwxt /bin/su
 useradd name
 passwd name
 useradd -m -G users,wheel,audio,video username
 passwd username
 umount -l /mnt/gentoo/dev{/shm,/pts,} ; reboot
+
+chmod o-rwxt /bin/su
+# /etc/sudoers
+username ALL=(ALL:ALL) ALL, !/bin/su, !/usr/bin/su
 
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
