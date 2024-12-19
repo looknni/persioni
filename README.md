@@ -292,6 +292,7 @@ username ALL=(root) /usr/bin/*, /usr/sbin/*, !/bin/su, !/bin/passwd, !/usr/bin/s
 
 # /etc/portage/package.mask/zz-mask
 >=app-i18n/fcitx-4.9
+app-containers/docker
 
 # /etc/portage/package.use/zz-autounmask
 # net-libs/axtls cgi-php httpd
