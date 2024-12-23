@@ -246,6 +246,7 @@ env-update && source /etc/profile && export PS1="(chroot) ${PS1}"
 mount /dev/sda1 /efi
 
 # /etc/portage/make.conf
+COMMON_FLAGS="-O2 -march=native -pipe"
 MAKEOPTS="-j6"
 GRUB_PLATFORMS="efi-64"
 
@@ -258,7 +259,7 @@ sys-kernel/installkernel -systemd
 emerge sys-kernel/linux-firmware --autounmask-write --autounmask
 etc-update # dispatch-conf
 emerge --ask sys-kernel/linux-firmware sys-apps/pciutils sys-kernel/gentoo-sources sys-kernel/installkernel sys-kernel/dracut app-portage/gentoolkit media-sound/alsa-utils sys-apps/dbus net-misc/dhcp x11-apps/xset sys-boot/os-prober sys-boot/grub sys-boot/efibootmgr
-eselect kernel set 1 ; make localmodconfig ; make menuconfig # clean mrproper oldconfig
+eselect kernel set 1 ; make defconfig ; make menuconfig # clean mrproper oldconfig
 # nouveau efi nf_tables exfat
 make -j6 && make modules_install && make install
 dracut --kver kernel.version
