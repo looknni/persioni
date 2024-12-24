@@ -100,7 +100,6 @@ set dhcp.odhcpd.loglevel='1' #4
 set firewall.@rule[0].enabled='0'
 set firewall.@rule[1].enabled='0'
 set firewall.@rule[2].enabled='0'
-set firewall.@rule[3].enabled='1'
 set firewall.@rule[4].enabled='0'
 set firewall.@rule[5].enabled='0'
 set firewall.@rule[6].enabled='0'
@@ -119,7 +118,6 @@ set firewall.@zone[1].forward='DROP'
 
 set system.@system[0].hostname="$st2"
 set system.@system[0].timezone='HKT-8'
-set system.@system[0].log_size='64'
 set system.@system[0].zonename='Asia/Hong Kong'
 set system.ntp.enable_server='0'
 set system.ntp.interface='lan'
