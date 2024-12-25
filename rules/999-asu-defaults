@@ -207,6 +207,8 @@ for i in $(seq 4);do
 	echo -e "set i4${i}m {\n\ttype ipv4_addr\n\tflags interval\n}" > /etc/nftables.d/"f${i}f"
 	echo -e "set i6${i}m {\n\ttype ipv6_addr\n\tflags interval\n}" > /etc/nftables.d/"e${i}e"
 	echo -e "set m${i}m {\n\ttype ether_addr\n\tflags interval\n}" > /etc/nftables.d/"m${i}m"
+	echo -e "set d${i}p {\n\ttype ipv4_addr\n\tflags interval\n}" > /etc/nftables.d/"d${i}p"
+	echo -e "set d${i}d {\n\ttype inet_service\n\tflags interval\n}" > /etc/nftables.d/"d${i}d"
 done
 cat > /etc/nftables.d/10-custom-filter-chains.nft << NFTC
 ## The firewall4 input, forward and output chains are registered with
@@ -226,12 +228,20 @@ include "${m1m}"
 include "${m2m}"
 include "${m3m}"
 include "${m4m}"
+include "/etc/nftables.d/d1p"
+include "/etc/nftables.d/d1d"
+include "/etc/nftables.d/d2p"
+include "/etc/nftables.d/d2d"
+include "/etc/nftables.d/d3p"
+include "/etc/nftables.d/d3d"
+include "/etc/nftables.d/d4p"
+include "/etc/nftables.d/d4d"
 chain user_pre_input {
 	type filter hook input priority -1; policy accept;
 	ip saddr @${mi4m} drop
 	ip6 saddr @${mi6m} drop
 	ether saddr @${mim} drop
-#	ip saddr 192.168.0.2 tcp dport { 80, 443 } drop
+#	ip saddr @d1p tcp dport @d1d drop
 }
 
 chain user_pre_forward {
@@ -239,7 +249,7 @@ chain user_pre_forward {
 	ip daddr @${mf4m} drop
 	ip6 daddr @${mf6m} drop
 	ether saddr @${mfm} drop
-#	ip daddr 192.168.0.2 tcp dport { 80, 443 } drop comment "drop ct state all"
+#	ip daddr @d2p tcp dport @d2d drop comment "drop ct state all"
 }
 
 # chain user_pre_output {
@@ -254,7 +264,7 @@ chain user_post_input {
 	ip saddr @${fi4f} drop comment "drop ct state all"
 	ip6 saddr @${fi6f} drop
 	ether saddr @${fimf} drop comment "drop to LAN"
-#	ip saddr 192.168.0.2 tcp dport { 80, 443 } drop comment "drop to LAN"
+#	ip saddr @d3p tcp dport @d3d drop comment "drop to LAN"
 }
 
 chain user_post_forward {
@@ -262,7 +272,7 @@ chain user_post_forward {
 	ip daddr @${ff4f} drop comment "drop ct state new"
 	ip6 daddr @${ff6f} drop
 	ether saddr @${ffmf} drop comment "drop network"
-#	ip daddr 192.168.0.2 tcp dport { 80, 443 } drop comment "drop ct state new"
+#	ip daddr @d4p tcp dport @d4d drop comment "drop ct state new"
 }
 
 # chain user_post_output {
