@@ -207,8 +207,8 @@ for i in $(seq 4);do
 	echo -e "set i4${i}m {\n\ttype ipv4_addr\n\tflags interval\n}" > /etc/nftables.d/"f${i}f"
 	echo -e "set i6${i}m {\n\ttype ipv6_addr\n\tflags interval\n}" > /etc/nftables.d/"e${i}e"
 	echo -e "set m${i}m {\n\ttype ether_addr\n\tflags interval\n}" > /etc/nftables.d/"m${i}m"
-	echo -e "set d${i}p {\n\ttype ipv4_addr\n\tflags interval\n}" > /etc/nftables.d/"d${i}p"
-	echo -e "set d${i}d {\n\ttype inet_service\n\tflags interval\n}" > /etc/nftables.d/"d${i}d"
+	echo -e "set d${i}p {\n\ttype ipv4_addr\n\tflags interval\n\telements = { 192.168.0.3 }\n}" > /etc/nftables.d/"d${i}p"
+	echo -e "set d${i}d {\n\ttype inet_service\n\tflags interval\n\telements = { 80,443,22 }\n}" > /etc/nftables.d/"d${i}d"
 done
 cat > /etc/nftables.d/10-custom-filter-chains.nft << NFTC
 ## The firewall4 input, forward and output chains are registered with
