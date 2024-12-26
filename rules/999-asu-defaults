@@ -244,10 +244,10 @@ chain user_post_input {
 #	ip saddr @d3p tcp dport @d3d drop comment "drop to LAN"
 }
 
-chain user_post_forward {
-	type filter hook forward priority 1; policy accept;
+# chain user_post_forward {
+#	type filter hook forward priority 1; policy accept;
 #	"drop ct state new"
-}
+# }
 
 # chain user_post_output {
 #	type filter hook output priority 1; policy accept;
