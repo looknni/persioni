@@ -4,89 +4,71 @@
 echo -e "# net.ipv4.conf.default.arp_announce = 1\nnet.ipv4.route.max_size = 32\nnet.ipv6.route.max_size = 32" > /etc/sysctl.conf
 echo "umask 066" > /root/.profile
 
-fi4f='i41m'
-fi6f='i61m'
-fimf='m1m'
-ff4f='i42m'
-ff6f='i62m'
-ffmf='m2m'
-mi4m='i43m'
-mi6m='i63m'
-mim='m3m'
-mf4m='i44m'
-mf6m='i64m'
-mfm='m4m'
+i41p='i41p'
+i61p='i61p'
+m1m='m1m'
+i42p='i42p'
+i62p='i62p'
+m2m='m2m'
+i43p='i43p'
+i63p='i63p'
+m3m='m3m'
 tables='fw4' # local 'filter'
-f1f='/etc/nftables.d/f1f'
-e1e='/etc/nftables.d/e1e'
-m1m='/etc/nftables.d/m1m'
-f2f='/etc/nftables.d/f2f'
-e2e='/etc/nftables.d/e2e'
-m2m='/etc/nftables.d/m2m'
-f3f='/etc/nftables.d/f3f'
-e3e='/etc/nftables.d/e3e'
-m3m='/etc/nftables.d/m3m'
-f4f='/etc/nftables.d/f4f'
-e4e='/etc/nftables.d/e4e'
-m4m='/etc/nftables.d/m4m'
 cat > /root/nft.init.0 << EXO
 #!/bin/sh
 set -e
 set -o pipefail
 case "\$1" in
 	i4 )
-		nft add element inet ${tables} ${fi4f} {"\$2"}
+		nft add element inet ${tables} ${i43p} {"\$2"}
 		;;
 	i6 )
-		nft add element inet ${tables} ${fi6f} {"\$2"}
+		nft add element inet ${tables} ${i63p} {"\$2"}
 		;;
 	im )
-		nft add element inet ${tables} ${fimf} {"\$2"}
+		nft add element inet ${tables} ${m3m} {"\$2"}
 		;;
 	i4d )
-		nft delete element inet ${tables} ${fi4f} {"\$2"}
+		nft delete element inet ${tables} ${i43p} {"\$2"}
 		;;
 	i6d )
-		nft delete element inet ${tables} ${fi6f} {"\$2"}
+		nft delete element inet ${tables} ${i63p} {"\$2"}
 		;;
 	imd )
-		nft delete element inet ${tables} ${fimf} {"\$2"}
+		nft delete element inet ${tables} ${m3m} {"\$2"}
 		;;
 	f4 )
-		nft add element inet ${tables} ${ff4f} {"\$2"}
+		nft add element inet ${tables} ${i42p} {"\$2"}
 		;;
 	f6 )
-		nft add element inet ${tables} ${ff6f} {"\$2"}
+		nft add element inet ${tables} ${i62p} {"\$2"}
 		;;
 	fm )
-		nft add element inet ${tables} ${ffmf} {"\$2"}
+		nft add element inet ${tables} ${m2m} {"\$2"}
 		;;
 	f4d )
-		nft delete element inet ${tables} ${ff4f} {"\$2"}
+		nft delete element inet ${tables} ${i42p} {"\$2"}
 		;;
 	f6d )
-		nft delete element inet ${tables} ${ff6f} {"\$2"}
+		nft delete element inet ${tables} ${i62p} {"\$2"}
 		;;
 	fmd )
-		nft delete element inet ${tables} ${ffmf} {"\$2"}
+		nft delete element inet ${tables} ${m2m} {"\$2"}
 		;;
-	i4s )
-		nft list set inet ${tables} ${fi4f} | sed '1d;\$d' > ${f1f}
+	p1s )
+		nft list set inet ${tables} ${i41p} | sed '1d;\$d' > /etc/nftables.d/i41p
+		nft list set inet ${tables} ${i61p} | sed '1d;\$d' > /etc/nftables.d/i61p
+		nft list set inet ${tables} ${m1m} | sed '1d;\$d' > /etc/nftables.d/m1m
 		;;
-	i6s )
-		nft list set inet ${tables} ${fi6f} | sed '1d;\$d' > ${e1e}
+	p2s )
+		nft list set inet ${tables} ${i42p} | sed '1d;\$d' > /etc/nftables.d/i42p
+		nft list set inet ${tables} ${i62p} | sed '1d;\$d' > /etc/nftables.d/i62p
+		nft list set inet ${tables} ${m2m} | sed '1d;\$d' > /etc/nftables.d/m2m
 		;;
-	ims )
-		nft list set inet ${tables} ${fimf} | sed '1d;\$d' > ${m1m}
-		;;
-	f4s )
-		nft list set inet ${tables} ${ff4f} | sed '1d;\$d' > ${f2f}
-		;;
-	f6s )
-		nft list set inet ${tables} ${ff6f} | sed '1d;\$d' > ${e2e}
-		;;
-	fms )
-		nft list set inet ${tables} ${ffmf} | sed '1d;\$d' > ${m2m}
+	p3s )
+		nft list set inet ${tables} ${i43p} | sed '1d;\$d' > /etc/nftables.d/i43p
+		nft list set inet ${tables} ${i63p} | sed '1d;\$d' > /etc/nftables.d/i63p
+		nft list set inet ${tables} ${m3m} | sed '1d;\$d' > /etc/nftables.d/m3m
 		;;
 esac
 EXO
@@ -203,9 +185,9 @@ pd="openwrt-$(uci get network.lan.ipaddr)"
 (echo $pd;sleep 1;echo $pd) | passwd > /dev/null
 unset pd st2 st4
 
-for i in $(seq 4);do
-	echo -e "set i4${i}m {\n\ttype ipv4_addr\n\tflags interval\n}" > /etc/nftables.d/"f${i}f"
-	echo -e "set i6${i}m {\n\ttype ipv6_addr\n\tflags interval\n}" > /etc/nftables.d/"e${i}e"
+for i in $(seq 3);do
+	echo -e "set i4${i}m {\n\ttype ipv4_addr\n\tflags interval\n}" > /etc/nftables.d/"i4${i}p"
+	echo -e "set i6${i}m {\n\ttype ipv6_addr\n\tflags interval\n}" > /etc/nftables.d/"i6${i}p"
 	echo -e "set m${i}m {\n\ttype ether_addr\n\tflags interval\n}" > /etc/nftables.d/"m${i}m"
 	echo -e "set d${i}p {\n\ttype ipv4_addr\n\tflags interval\n\telements = { 192.168.0.3 }\n}" > /etc/nftables.d/"d${i}p"
 	echo -e "set d${i}d {\n\ttype inet_service\n\tflags interval\n\telements = { 80,443,22 }\n}" > /etc/nftables.d/"d${i}d"
@@ -216,39 +198,34 @@ cat > /etc/nftables.d/10-custom-filter-chains.nft << NFTC
 
 ## Uncomment the chains below if you want to stage rules *before* the
 ## default firewall input, forward and output chains.
-include "${f1f}"
-include "${f2f}"
-include "${f3f}"
-include "${f4f}"
-include "${e1e}"
-include "${e2e}"
-include "${e3e}"
-include "${e4e}"
-include "${m1m}"
-include "${m2m}"
-include "${m3m}"
-include "${m4m}"
+include "/etc/nftables.d/i41p"
+include "/etc/nftables.d/i61p"
+include "/etc/nftables.d/i42p"
+include "/etc/nftables.d/i62p"
+include "/etc/nftables.d/i43p"
+include "/etc/nftables.d/i63p"
+include "/etc/nftables.d/m1m"
+include "/etc/nftables.d/m2m"
+include "/etc/nftables.d/m3m"
 include "/etc/nftables.d/d1p"
 include "/etc/nftables.d/d1d"
 include "/etc/nftables.d/d2p"
 include "/etc/nftables.d/d2d"
 include "/etc/nftables.d/d3p"
 include "/etc/nftables.d/d3d"
-include "/etc/nftables.d/d4p"
-include "/etc/nftables.d/d4d"
 chain user_pre_input {
 	type filter hook input priority -1; policy accept;
-	ip saddr @${mi4m} drop
-	ip6 saddr @${mi6m} drop
-	ether saddr @${mim} drop
+	ip saddr @${i41p} drop
+	ip6 saddr @${i61p} drop
+	ether saddr @${m1m} drop
 #	ip saddr @d1p tcp dport @d1d drop
 }
 
 chain user_pre_forward {
 	type filter hook forward priority -1; policy accept;
-	ip daddr @${mf4m} drop
-	ip6 daddr @${mf6m} drop
-	ether saddr @${mfm} drop
+	ip daddr @${i42p} drop
+	ip6 daddr @${i62p} drop
+	ether saddr @${m2m} drop
 #	ip daddr @d2p tcp dport @d2d drop comment "drop ct state all"
 }
 
@@ -261,18 +238,15 @@ chain user_pre_forward {
 
 chain user_post_input {
 	type filter hook input priority 1; policy accept;
-	ip saddr @${fi4f} drop comment "drop ct state all"
-	ip6 saddr @${fi6f} drop
-	ether saddr @${fimf} drop comment "drop to LAN"
+	ip saddr @${i43p} drop comment "drop ct state all"
+	ip6 saddr @${i63p} drop
+	ether saddr @${m3m} drop comment "drop to LAN"
 #	ip saddr @d3p tcp dport @d3d drop comment "drop to LAN"
 }
 
 chain user_post_forward {
 	type filter hook forward priority 1; policy accept;
-	ip daddr @${ff4f} drop comment "drop ct state new"
-	ip6 daddr @${ff6f} drop
-	ether saddr @${ffmf} drop comment "drop network"
-#	ip daddr @d4p tcp dport @d4d drop comment "drop ct state new"
+#	"drop ct state new"
 }
 
 # chain user_post_output {
