@@ -341,7 +341,7 @@ DHCP=yes
 # MulticastDNS=yes
 # LLMNR=no
 
-emerge --ask sys-apps/ifplugd app-admin/rsyslog # /usr/share/doc/netifrc-<version_number>/net.example.bz2 #openrc
+emerge --ask app-admin/rsyslog # /usr/share/doc/netifrc-<version_number>/net.example.bz2 #openrc
 # Note: DHCP is the default behavior if /etc/conf.d/net is empty or missing
 config_eth0="dhcp"
 ethtool_offload_eth0="rx on tx on sg on tso on ufo on gso on gro on lro on"
@@ -352,8 +352,8 @@ ethtool_offload_eth0="rx on tx on sg on tso on ufo on gso on gro on lro on"
 # dns_servers_eth0="192.168.0.1 8.8.8.8"
 
 ln -s /etc/init.d/net.lo /etc/init.d/net.<interface_name>
-client eth0 
-rc-update add dhcpd default # elogind dbus net.lo gpm rsyslog nftables
+rc-service net.eth0 start
+rc-update add net.eth0 default # elogind dbus net.lo gpm rsyslog nftables
 
 # .config/fcitx/config # app-i18n/fcitx app-i18n/fcitx-libpinyin
 ActivateKey=SHIFT_LSHIFT SHIFT_RSHIFT
