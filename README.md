@@ -163,6 +163,10 @@ exec i3
 ```
 #### /etc/X11/xorg.conf
 ```
+Section "ServerFlags"
+    Option "noListen" "false"
+EndSection
+
 Section "Monitor"
 	Identifier "Monitor0"
 	VendorName "Monitor Vendor"
@@ -348,8 +352,8 @@ ethtool_offload_eth0="rx on tx on sg on tso on ufo on gso on gro on lro on"
 # dns_servers_eth0="192.168.0.1 8.8.8.8"
 
 ln -s /etc/init.d/net.lo /etc/init.d/net.<interface_name>
-rc-service net.eth0 start # elogind dbus net.lo gpm rsyslog nftables
-rc-update add net.<interface_name> default
+client eth0 
+rc-update add dhcpd default # elogind dbus net.lo gpm rsyslog nftables
 
 # .config/fcitx/config # app-i18n/fcitx app-i18n/fcitx-libpinyin
 ActivateKey=SHIFT_LSHIFT SHIFT_RSHIFT
