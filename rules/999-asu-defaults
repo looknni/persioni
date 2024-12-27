@@ -10,9 +10,6 @@ m1m='m1m'
 i42p='i42p'
 i62p='i62p'
 m2m='m2m'
-i43p='i43p'
-i63p='i63p'
-m3m='m3m'
 tables='fw4' # local 'filter'
 cat > /root/nft.init.0 << EXO
 #!/bin/sh
@@ -20,22 +17,22 @@ set -e
 set -o pipefail
 case "\$1" in
 	i4 )
-		nft add element inet ${tables} ${i43p} {"\$2"}
+		nft add element inet ${tables} ${i41p} {"\$2"}
 		;;
 	i6 )
-		nft add element inet ${tables} ${i63p} {"\$2"}
+		nft add element inet ${tables} ${i61p} {"\$2"}
 		;;
 	im )
-		nft add element inet ${tables} ${m3m} {"\$2"}
+		nft add element inet ${tables} ${m1m} {"\$2"}
 		;;
 	i4d )
-		nft delete element inet ${tables} ${i43p} {"\$2"}
+		nft delete element inet ${tables} ${i41p} {"\$2"}
 		;;
 	i6d )
-		nft delete element inet ${tables} ${i63p} {"\$2"}
+		nft delete element inet ${tables} ${i61p} {"\$2"}
 		;;
 	imd )
-		nft delete element inet ${tables} ${m3m} {"\$2"}
+		nft delete element inet ${tables} ${m1m} {"\$2"}
 		;;
 	f4 )
 		nft add element inet ${tables} ${i42p} {"\$2"}
@@ -55,20 +52,15 @@ case "\$1" in
 	fmd )
 		nft delete element inet ${tables} ${m2m} {"\$2"}
 		;;
-	p1s )
+	is )
 		nft list set inet ${tables} ${i41p} | sed '1d;\$d' > /etc/nftables.d/i41p
 		nft list set inet ${tables} ${i61p} | sed '1d;\$d' > /etc/nftables.d/i61p
 		nft list set inet ${tables} ${m1m} | sed '1d;\$d' > /etc/nftables.d/m1m
 		;;
-	p2s )
+	fs )
 		nft list set inet ${tables} ${i42p} | sed '1d;\$d' > /etc/nftables.d/i42p
 		nft list set inet ${tables} ${i62p} | sed '1d;\$d' > /etc/nftables.d/i62p
 		nft list set inet ${tables} ${m2m} | sed '1d;\$d' > /etc/nftables.d/m2m
-		;;
-	p3s )
-		nft list set inet ${tables} ${i43p} | sed '1d;\$d' > /etc/nftables.d/i43p
-		nft list set inet ${tables} ${i63p} | sed '1d;\$d' > /etc/nftables.d/i63p
-		nft list set inet ${tables} ${m3m} | sed '1d;\$d' > /etc/nftables.d/m3m
 		;;
 esac
 EXO
@@ -185,13 +177,13 @@ pd="openwrt-$(uci get network.lan.ipaddr)"
 (echo $pd;sleep 1;echo $pd) | passwd > /dev/null
 unset pd st2 st4
 
-for i in $(seq 3);do
+for i in $(seq 2);do
 	echo -e "set i4${i}p {\n\ttype ipv4_addr\n\tflags interval\n}" > /etc/nftables.d/"i4${i}p"
 	echo -e "set i6${i}p {\n\ttype ipv6_addr\n\tflags interval\n}" > /etc/nftables.d/"i6${i}p"
 	echo -e "set m${i}m {\n\ttype ether_addr\n\tflags interval\n}" > /etc/nftables.d/"m${i}m"
-	echo -e "set d${i}p {\n\ttype ipv4_addr\n\tflags interval\n\telements = { 192.168.0.3 }\n}" > /etc/nftables.d/"d${i}p"
-	echo -e "set d${i}d {\n\ttype inet_service\n\tflags interval\n\telements = { 80,443,22 }\n}" > /etc/nftables.d/"d${i}d"
 done
+	echo -e "set d2p {\n\ttype ipv4_addr\n\tflags interval\n\telements = { 192.168.0.3 }\n}" > /etc/nftables.d/"d2p"
+	echo -e "set d2d {\n\ttype inet_service\n\tflags interval\n\telements = { 80,443 }\n}" > /etc/nftables.d/"d2d"
 cat > /etc/nftables.d/10-custom-filter-chains.nft << NFTC
 ## The firewall4 input, forward and output chains are registered with
 ## priority filter (0).
@@ -202,30 +194,22 @@ include "/etc/nftables.d/i41p"
 include "/etc/nftables.d/i61p"
 include "/etc/nftables.d/i42p"
 include "/etc/nftables.d/i62p"
-include "/etc/nftables.d/i43p"
-include "/etc/nftables.d/i63p"
 include "/etc/nftables.d/m1m"
 include "/etc/nftables.d/m2m"
-include "/etc/nftables.d/m3m"
-include "/etc/nftables.d/d1p"
-include "/etc/nftables.d/d1d"
 include "/etc/nftables.d/d2p"
 include "/etc/nftables.d/d2d"
-include "/etc/nftables.d/d3p"
-include "/etc/nftables.d/d3d"
 chain user_pre_input {
 	type filter hook input priority -1; policy accept;
 	ip saddr @${i41p} drop
 	ip6 saddr @${i61p} drop
-	ether saddr @${m1m} drop
-#	ip saddr @d1p tcp dport @d1d drop
+#	ether saddr @${m1m} drop comment "drop to LAN SSH"
 }
 
 chain user_pre_forward {
 	type filter hook forward priority -1; policy accept;
-	ip daddr @${i42p} drop
+	ip daddr @${i42p} drop comment "drop ct state all"
 	ip6 daddr @${i62p} drop
-	ether saddr @${m2m} drop
+#	ether saddr @${m2m} drop comment "drop to LAN NETWORK"
 #	ip daddr @d2p tcp dport @d2d drop comment "drop ct state all"
 }
 
@@ -236,17 +220,13 @@ chain user_pre_forward {
 ## Uncomment the chains below if you want to stage rules *after* the
 ## default firewall input, forward and output chains.
 
-chain user_post_input {
-	type filter hook input priority 1; policy accept;
-	ip saddr @${i43p} drop comment "drop ct state all"
-	ip6 saddr @${i63p} drop
-	ether saddr @${m3m} drop comment "drop to LAN"
-#	ip saddr @d3p tcp dport @d3d drop comment "drop to LAN"
-}
+# chain user_post_input {
+#	type filter hook input priority 1; policy accept;
+# }
 
 # chain user_post_forward {
 #	type filter hook forward priority 1; policy accept;
-#	"drop ct state new"
+#	comment "drop ct state new"
 # }
 
 # chain user_post_output {
