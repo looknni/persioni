@@ -10,7 +10,7 @@ m1m='m1m'
 i42p='i42p'
 i62p='i62p'
 m2m='m2m'
-tables='fw4' # local 'filter'
+tables='fw4'
 cat > /root/nft.init.0 << EXO
 #!/bin/sh
 set -e
@@ -185,11 +185,6 @@ done
 	echo -e "set d2p {\n\ttype ipv4_addr\n\tflags interval\n\telements = { 192.168.0.3 }\n}" > /etc/nftables.d/"d2p"
 	echo -e "set d2d {\n\ttype inet_service\n\tflags interval\n\telements = { 80,443 }\n}" > /etc/nftables.d/"d2d"
 cat > /etc/nftables.d/10-custom-filter-chains.nft << NFTC
-## The firewall4 input, forward and output chains are registered with
-## priority filter (0).
-
-## Uncomment the chains below if you want to stage rules *before* the
-## default firewall input, forward and output chains.
 include "/etc/nftables.d/i41p"
 include "/etc/nftables.d/i61p"
 include "/etc/nftables.d/i42p"
@@ -215,22 +210,6 @@ chain user_pre_forward {
 
 # chain user_pre_output {
 #	type filter hook output priority -1; policy accept;
-# }
-
-## Uncomment the chains below if you want to stage rules *after* the
-## default firewall input, forward and output chains.
-
-# chain user_post_input {
-#	type filter hook input priority 1; policy accept;
-# }
-
-# chain user_post_forward {
-#	type filter hook forward priority 1; policy accept;
-#	comment "drop ct state new"
-# }
-
-# chain user_post_output {
-#	type filter hook output priority 1; policy accept;
 # }
 
 chain user_dstnat {
