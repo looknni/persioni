@@ -86,6 +86,7 @@ set firewall.@defaults[0].flow_offloading_hw='1'
 add_list firewall.@zone[1].network='wwan'
 
 set firewall.@defaults[0].input='DROP'
+set firewall.@defaults[0].output='DROP'
 set firewall.@defaults[0].forward='DROP'
 set firewall.@zone[1].input='DROP'
 set firewall.@zone[1].forward='DROP'
