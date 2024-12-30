@@ -198,7 +198,7 @@ chain user_pre_input {
 	type filter hook input priority -1; policy accept;
 	ip saddr @${i41p} drop
 	ip6 saddr @${i61p} drop
-#	ether saddr != @${m1m} tcp dport 22 drop comment "drop to LAN SSH"
+#	ether saddr != @${m1m} tcp dport 23 drop comment "drop to LAN SSH"
 }
 
 chain user_pre_forward {
