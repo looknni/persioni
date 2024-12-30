@@ -224,4 +224,5 @@ chain user_dstnat {
 #	oifname "lan" ip saddr 192.168.1.0/24 masquerade
 # }
 NFTC
+chmod -R g-rwx,o-rwx /etc/config/ /etc/nftables.d/ /root/
 exit 0 
