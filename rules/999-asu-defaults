@@ -122,39 +122,39 @@ set wireless.default_radio1.ssid="redmi-$st4"
 set wireless.default_radio1.encryption='psk2'
 set wireless.default_radio1.key='12345678'
 
-set wireless.r0n=$(uci get wireless.radio0)
-set wireless.r0n.type=$(uci get wireless.radio0.type)
-set wireless.r0n.path=$(uci get wireless.radio0.path)
-set wireless.r0n.band=$(uci get wireless.radio0.band)
-set wireless.r0n.country='CN'
-set wireless.r0n.disabled='1'
+set wireless.u=$(uci get wireless.radio0)
+set wireless.u.type=$(uci get wireless.radio0.type)
+set wireless.u.path=$(uci get wireless.radio0.path)
+set wireless.u.band=$(uci get wireless.radio0.band)
+set wireless.u.country='CN'
+set wireless.u.disabled='1'
 
-set wireless.w0n=wifi-iface
-set wireless.w0n.device='r0n'
-set wireless.w0n.mode='sta'
-set wireless.w0n.network='wwan'
-set wireless.w0n.ssid='Openwrt'
-set wireless.w0n.bssid='00:00:00:00:02:01'
-set wireless.w0n.encryption='psk2' # none sae
-set wireless.w0n.key='12345678'
-set wireless.w0n.disabled='1'
+set wireless.s=wifi-iface
+set wireless.s.device='u'
+set wireless.s.mode='sta'
+set wireless.s.network='wwan'
+set wireless.s.ssid='Openwrt'
+set wireless.s.bssid='00:00:00:00:02:01'
+set wireless.s.encryption='psk2' # none sae
+set wireless.s.key='12345678'
+set wireless.s.disabled='1'
 
-set wireless.r1n=$(uci get wireless.radio1)
-set wireless.r1n.type=$(uci get wireless.radio1.type)
-set wireless.r1n.path=$(uci get wireless.radio1.path)
-set wireless.r1n.band=$(uci get wireless.radio1.band)
-set wireless.r1n.country='CN'
-set wireless.r1n.disabled='1'
+set wireless.v=$(uci get wireless.radio1)
+set wireless.v.type=$(uci get wireless.radio1.type)
+set wireless.v.path=$(uci get wireless.radio1.path)
+set wireless.v.band=$(uci get wireless.radio1.band)
+set wireless.v.country='CN'
+set wireless.v.disabled='1'
 
-set wireless.w1n=wifi-iface
-set wireless.w1n.device='r1n'
-set wireless.w1n.mode='sta'
-set wireless.w1n.network='wwan'
-set wireless.w1n.ssid='Openwrt'
-set wireless.w1n.bssid='00:00:00:00:02:01'
-set wireless.w1n.encryption='psk2'
-set wireless.w1n.key='12345678'
-set wireless.w1n.disabled='1'
+set wireless.t=wifi-iface
+set wireless.t.device='v'
+set wireless.t.mode='sta'
+set wireless.t.network='wwan'
+set wireless.t.ssid='Openwrt'
+set wireless.t.bssid='00:00:00:00:02:01'
+set wireless.t.encryption='psk2'
+set wireless.t.key='12345678'
+set wireless.t.disabled='1'
 commit
 EEOO
 
@@ -224,6 +224,6 @@ chain user_dstnat {
 #	oifname "lan" ip saddr 192.168.1.0/24 masquerade
 # }
 NFTC
-sed -i -e 's/\<default_radio0\>/d0r/g' -e 's/\<default_radio1\>/d1r/g' -e 's/\<radio0\>/c0r/g' -e 's/\<radio1\>/c1r/g' /etc/config/wireless
+sed -i -e 's/\<default_radio0\>/z/g' -e 's/\<default_radio1\>/y/g' -e 's/\<radio0\>/x/g' -e 's/\<radio1\>/w/g' /etc/config/wireless
 chmod -R g-rwx,o-rwx /etc/config/ /etc/nftables.d/ /root/
 exit 0 
