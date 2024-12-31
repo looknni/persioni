@@ -122,39 +122,39 @@ set wireless.default_radio1.ssid="redmi-$st4"
 set wireless.default_radio1.encryption='psk2'
 set wireless.default_radio1.key='12345678'
 
-set wireless.r0net=$(uci get wireless.radio0)
-set wireless.r0net.type=$(uci get wireless.radio0.type)
-set wireless.r0net.path=$(uci get wireless.radio0.path)
-set wireless.r0net.band=$(uci get wireless.radio0.band)
-set wireless.r0net.country='CN'
-set wireless.r0net.disabled='1'
+set wireless.r0n=$(uci get wireless.radio0)
+set wireless.r0n.type=$(uci get wireless.radio0.type)
+set wireless.r0n.path=$(uci get wireless.radio0.path)
+set wireless.r0n.band=$(uci get wireless.radio0.band)
+set wireless.r0n.country='CN'
+set wireless.r0n.disabled='1'
 
-set wireless.wifinet0=wifi-iface
-set wireless.wifinet0.device='r0net'
-set wireless.wifinet0.mode='sta'
-set wireless.wifinet0.network='wwan'
-set wireless.wifinet0.ssid='Openwrt'
-set wireless.wifinet0.bssid='00:00:00:00:02:01'
-set wireless.wifinet0.encryption='psk2' # none sae
-set wireless.wifinet0.key='12345678'
-set wireless.wifinet0.disabled='1'
+set wireless.w0n=wifi-iface
+set wireless.w0n.device='r0n'
+set wireless.w0n.mode='sta'
+set wireless.w0n.network='wwan'
+set wireless.w0n.ssid='Openwrt'
+set wireless.w0n.bssid='00:00:00:00:02:01'
+set wireless.w0n.encryption='psk2' # none sae
+set wireless.w0n.key='12345678'
+set wireless.w0n.disabled='1'
 
-set wireless.r1net=$(uci get wireless.radio1)
-set wireless.r1net.type=$(uci get wireless.radio1.type)
-set wireless.r1net.path=$(uci get wireless.radio1.path)
-set wireless.r1net.band=$(uci get wireless.radio1.band)
-set wireless.r1net.country='CN'
-set wireless.r1net.disabled='1'
+set wireless.r1n=$(uci get wireless.radio1)
+set wireless.r1n.type=$(uci get wireless.radio1.type)
+set wireless.r1n.path=$(uci get wireless.radio1.path)
+set wireless.r1n.band=$(uci get wireless.radio1.band)
+set wireless.r1n.country='CN'
+set wireless.r1n.disabled='1'
 
-set wireless.wifinet1=wifi-iface
-set wireless.wifinet1.device='r1net'
-set wireless.wifinet1.mode='sta'
-set wireless.wifinet1.network='wwan'
-set wireless.wifinet1.ssid='Openwrt'
-set wireless.wifinet1.bssid='00:00:00:00:02:01'
-set wireless.wifinet1.encryption='psk2'
-set wireless.wifinet1.key='12345678'
-set wireless.wifinet1.disabled='1'
+set wireless.w1n=wifi-iface
+set wireless.w1n.device='r1n'
+set wireless.w1n.mode='sta'
+set wireless.w1n.network='wwan'
+set wireless.w1n.ssid='Openwrt'
+set wireless.w1n.bssid='00:00:00:00:02:01'
+set wireless.w1n.encryption='psk2'
+set wireless.w1n.key='12345678'
+set wireless.w1n.disabled='1'
 commit
 EEOO
 
