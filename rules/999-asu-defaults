@@ -183,8 +183,8 @@ for i in $(seq 2);do
 	echo -e "set i6${i}p {\n\ttype ipv6_addr\n\tflags interval\n}" > /etc/nftables.d/"i6${i}p"
 	echo -e "set m${i}m {\n\ttype ether_addr\n\tflags interval\n}" > /etc/nftables.d/"m${i}m"
 done
-	echo -e "set d2p {\n\ttype ipv4_addr\n\tflags interval\n\telements = { 192.168.0.3 }\n}" > /etc/nftables.d/"d2p"
-	echo -e "set d2d {\n\ttype inet_service\n\tflags interval\n\telements = { 80,443 }\n}" > /etc/nftables.d/"d2d"
+echo -e "set d2p {\n\ttype ipv4_addr\n\tflags interval\n\telements = { 192.168.0.3 }\n}" > /etc/nftables.d/"d2p"
+echo -e "set d2d {\n\ttype inet_service\n\tflags interval\n\telements = { 22,80,443 }\n}" > /etc/nftables.d/"d2d"
 cat > /etc/nftables.d/10-custom-filter-chains.nft << NFTC
 include "/etc/nftables.d/i41p"
 include "/etc/nftables.d/i61p"
