@@ -224,5 +224,6 @@ chain user_dstnat {
 #	oifname "lan" ip saddr 192.168.1.0/24 masquerade
 # }
 NFTC
+sed -i -e 's/\<default_radio0\>/d0r/g' -e 's/\<default_radio1\>/d1r/g' -e 's/\<radio0\>/c0r/g' -e 's/\<radio1\>/c1r/g' /etc/config/wireless
 chmod -R g-rwx,o-rwx /etc/config/ /etc/nftables.d/ /root/
 exit 0 
