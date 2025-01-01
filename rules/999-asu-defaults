@@ -1,7 +1,7 @@
 #!/bin/sh
 # /rom/etc/uci-defaults/
 # built.in -> package/base-files/files/etc/uci-defaults/
-echo -e "# net.ipv4.conf.default.arp_announce = 1\nnet.ipv4.route.max_size = 32\nnet.ipv6.route.max_size = 32" > /etc/sysctl.conf
+echo -e "# net.ipv4.conf.default.arp_announce = 1\nnet.ipv4.route.max_size = 64\nnet.ipv6.route.max_size = 64" > /etc/sysctl.conf
 echo "umask 066" > /root/.profile
 
 i41p='i41p'
