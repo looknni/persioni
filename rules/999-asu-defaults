@@ -6,7 +6,6 @@ echo "umask 066" > /root/.profile
 
 i41p='i41p'
 i61p='i61p'
-m1m='m1m'
 i42p='i42p'
 i62p='i62p'
 tables='fw4'
@@ -171,7 +170,6 @@ echo -e "set d2p {\n\ttype ipv4_addr\n\tflags interval\n\telements = { 192.168.0
 cat > /etc/nftables.d/10-custom-filter-chains.nft << NFTC
 include "/etc/nftables.d/i41p"
 include "/etc/nftables.d/i61p"
-include "/etc/nftables.d/m1m"
 include "/etc/nftables.d/i42p"
 include "/etc/nftables.d/i62p"
 include "/etc/nftables.d/d2p"
