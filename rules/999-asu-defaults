@@ -195,6 +195,7 @@ chain user_pre_forward {
 	ip daddr @${i42p} drop comment "drop ct state all"
 	ip6 daddr @${i62p} drop
 #	ip daddr @d2p tcp dport {80,443} log prefix "d2p " drop comment "drop ct state all"
+	ether saddr @${m1m} log prefix "errstatic " drop
 }
 
 # chain user_pre_output {
