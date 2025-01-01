@@ -6,6 +6,7 @@ echo "umask 066" > /root/.profile
 
 i41p='i41p'
 i61p='i61p'
+m1m='m1m'
 i42p='i42p'
 i62p='i62p'
 tables='fw4'
@@ -20,11 +21,17 @@ case "\$1" in
 	i6 )
 		nft add element inet ${tables} ${i61p} {"\$2"}
 		;;
+	im )
+		nft add element inet ${tables} ${m1m} {"\$2"}
+		;;
 	i4d )
 		nft delete element inet ${tables} ${i41p} {"\$2"}
 		;;
 	i6d )
 		nft delete element inet ${tables} ${i61p} {"\$2"}
+		;;
+	imd )
+		nft delete element inet ${tables} ${m1m} {"\$2"}
 		;;
 	f4 )
 		nft add element inet ${tables} ${i42p} {"\$2"}
@@ -41,6 +48,7 @@ case "\$1" in
 	is )
 		nft list set inet ${tables} ${i41p} | sed '1d;\$d' > /etc/nftables.d/i41p
 		nft list set inet ${tables} ${i61p} | sed '1d;\$d' > /etc/nftables.d/i61p
+		nft list set inet ${tables} ${m1m} | sed '1d;\$d' > /etc/nftables.d/m1m
 		;;
 	fs )
 		nft list set inet ${tables} ${i42p} | sed '1d;\$d' > /etc/nftables.d/i42p
@@ -166,10 +174,12 @@ for i in $(seq 2);do
 	echo -e "set i4${i}p {\n\ttype ipv4_addr\n\tflags interval\n}" > /etc/nftables.d/"i4${i}p"
 	echo -e "set i6${i}p {\n\ttype ipv6_addr\n\tflags interval\n}" > /etc/nftables.d/"i6${i}p"
 done
-echo -e "set d2p {\n\ttype ipv4_addr\n\tflags interval\n\telements = { 192.168.0.3 }\n}" > /etc/nftables.d/"d2p"
+echo -e "set m1m {\n\ttype ether_addr\n\tflags interval\n}" > /etc/nftables.d/m1m
+echo -e "set d2p {\n\ttype ipv4_addr\n\tflags interval\n\telements = { 192.168.0.3 }\n}" > /etc/nftables.d/d2p
 cat > /etc/nftables.d/10-custom-filter-chains.nft << NFTC
 include "/etc/nftables.d/i41p"
 include "/etc/nftables.d/i61p"
+include "/etc/nftables.d/m1m"
 include "/etc/nftables.d/i42p"
 include "/etc/nftables.d/i62p"
 include "/etc/nftables.d/d2p"
@@ -177,6 +187,7 @@ chain user_pre_input {
 	type filter hook input priority -1; policy accept;
 	ip saddr @${i41p} drop
 	ip6 saddr @${i61p} drop
+	ether saddr @${m1m} log prefix "errinput " drop
 }
 
 chain user_pre_forward {
