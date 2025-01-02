@@ -25,7 +25,7 @@ XTerm*toolBar: false
 XTerm*rightScrollBar: false
 XTerm*jumpScroll: true
 XTerm*multiScroll: true
-XTerm*charClass: 45-47:48,58:48,126:48,168-176:48,181:48
+XTerm*charClass: 42-47:48,58:48,126:48,168-176:48,181:48
 XTerm*allowBoldFonts: true
 XTerm*boldMode: true
 XTerm*loginShell: false
@@ -77,7 +77,7 @@ UXTerm*allowBoldFonts: true
 UXTerm*boldMode: true
 UXTerm*loginShell: false
 UXTerm*saveLines: 2000
-UXTerm*charClass: 45-47:48,58:48,126:48,168-176:48,181:48
+UXTerm*charClass: 42-47:48,58:48,126:48,168-176:48,181:48
 UXTerm*background: #1a1a1a
 UXTerm*foreground: #D3D3D3
 UXTerm*color1: #7D3D3D
