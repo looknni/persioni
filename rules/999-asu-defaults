@@ -177,9 +177,10 @@ chain user_pre_forward {
 	ether saddr @${m1m} drop
 }
 
-# chain user_pre_output {
-#	type filter hook output priority -1; policy accept;
-# }
+chain user_pre_output {
+	type filter hook output priority -1; policy accept;
+	tcp sport $(uci get dropbear.main.Port) limit rate 10/second
+}
 
 chain user_dstnat {
 	type nat hook prerouting priority dstnat; policy accept;
