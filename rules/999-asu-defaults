@@ -161,14 +161,14 @@ cat > /etc/nftables.d/10-custom-filter-chains.nft << NFTC
 include "/etc/nftables.d/i41p"
 include "/etc/nftables.d/i61p"
 include "/etc/nftables.d/m1m"
-chain user_pre_input {
+chain upi {
 	type filter hook input priority -1; policy accept;
 	ip saddr @${i41p} drop
 	ip6 saddr @${i61p} drop
 	ether saddr @${m1m} drop
 }
 
-chain user_pre_forward {
+chain upf {
 	type filter hook forward priority -1; policy accept;
 	ip daddr @${i41p} drop comment "drop ct state all"
 	ip6 daddr @${i61p} drop
@@ -177,17 +177,17 @@ chain user_pre_forward {
 	ether saddr @${m1m} drop
 }
 
-chain user_pre_output {
+chain upo {
 	type filter hook output priority -1; policy accept;
 	tcp sport $(uci get dropbear.main.Port) limit rate 10/second
 }
 
-chain user_dstnat {
+chain udn {
 	type nat hook prerouting priority dstnat; policy accept;
 #	iifname "br-lan" ip daddr {192.168.1.2} tcp dport {80,443} dnat to $(uci get network.lan.ipaddr)
 }
 
-# chain user_srcnat {
+# chain usn {
 #	type nat hook postrouting priority srcnat; policy accept;
 #	oifname "lan" ip saddr 192.168.1.0/24 snat to xxx
 #	oifname "lan" ip saddr 192.168.1.0/24 masquerade
