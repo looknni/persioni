@@ -33,6 +33,7 @@ dnsutils wget links xterm net-tools fcitx fcitx-googlepinyin fcitx-config-gtk fc
 iw wpasupplicant nmap tcpdump inkscape gimp krita ffmpeg libreoffice make gcc isc-dhcp-client \
 hexcompare aircrack-ng xxd xxhash qbittorrent aria2
 
+apt autopurge netcat-openbsd
 systemctl disable cups ; systemctl disable exim4 ; systemctl disable exim4-base.timer ; systemctl disable bluetooth
 systemctl disable man-db.timer ; systemctl disable apt-daily.timer ; systemctl disable apt-daily-upgrade.timer ; systemctl disable dpkg-db-backup.timer
 dpkg-reconfigure console-setup # VGA # alsactl store
