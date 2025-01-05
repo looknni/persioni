@@ -154,10 +154,11 @@ pd="openwrt-$(uci get network.lan.ipaddr)"
 (echo $pd;sleep 1;echo $pd) | passwd > /dev/null
 unset pd st2 st4
 
+rm /etc/nftables.d/*
 echo -e "set i41p {\n\ttype ipv4_addr\n\tflags interval\n}" > /etc/nftables.d/i41p
 echo -e "set i61p {\n\ttype ipv6_addr\n\tflags interval\n}" > /etc/nftables.d/i61p
 echo -e "set m1m {\n\ttype ether_addr\n\tflags interval\n}" > /etc/nftables.d/m1m
-cat > /etc/nftables.d/10-custom-filter-chains.nft << NFTC
+cat > /etc/nftables.d/u.nft << NFTC
 include "/etc/nftables.d/i41p"
 include "/etc/nftables.d/i61p"
 include "/etc/nftables.d/m1m"
