@@ -1,10 +1,12 @@
 #### REQ
-    openssl genrsa -out private.key 4096 #
-    openssl req -new -key private.key -out generate.csr -sha256
-    [openssl req -newkey rsa:4096 -nodes -keyout private.key -out generate.csr]
-    openssl req -in generate.csr -text [-verify] [-noout]
-    openssl req -new -x509 -keyout root.key -out root.crt -days 3650 -subj "/CN=example.com" -nodes -sha256 -extensions v3_req
-    openssl dhparam -out dhparams.pem 2048
+    openssl genpkey -algorithm RSA -out ca.key -aes256
+    openssl req -key ca.key -new -x509 -out ca.pem
+    openssl genpkey -algorithm RSA -out server.key -aes256
+    openssl req -key server.key -new -out server.csr
+    openssl x509 -req -in server.csr -CA ca.pem -CAkey ca.key -CAcreateserial -out cert.pem -days 365
+    openssl x509 -in ca.pem -text -noout
+    openssl x509 -in cert.pem -text -noout
+    openssl verify -CAfile ca.pem cert.pem
 #### GEN.PKEY
     openssl genpkey -algorithm RSA[X25519][ED448] -out private.key [-aes-128-cbc] [[-pkeyopt rsa_keygen_bits:4096] [-pkeyopt rsa_keygen_pubexp:3]] [-pass pass: ]
 #### DSA
