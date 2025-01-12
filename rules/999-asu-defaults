@@ -44,7 +44,7 @@ EXO
 st2=$(dd if=/dev/urandom bs=1 count=1|hexdump -e '1 "%03x"')
 st4=$(dd if=/dev/urandom bs=2 count=1|hexdump -e '1 "%04x"')
 
-if $(fw_printenv|grep -q 'model=RB03');then
+if $(fw_printenv|grep -q 'model=RB03') &&  [[ -z $(uci get wireless.radio1.path 2>/dev/null) ]];then
 uci set wireless.radio0.path='platform/18000000.wmac'
 uci set wireless.radio1.path='1a143000.pcie/pci0000:00/0000:00:00.0/0000:01:00.0'
 uci commit
