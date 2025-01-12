@@ -197,6 +197,6 @@ chain udn {
 # }
 NFTC
 sed -i -e 's/\<default_radio0\>/z/g' -e 's/\<default_radio1\>/y/g' -e 's/\<radio0\>/x/g' -e 's/\<radio1\>/w/g' /etc/config/wireless
-chmod -R g-rwx,o-rwx /etc/config/ /etc/nftables.d/ /root/
+chmod -R u=rwX,go= /etc/config/ /etc/nftables.d/ /root /etc/dropbear
 rm /usr/bin/nc
 exit 0 
