@@ -9,6 +9,16 @@
 # /usr/share/ucode/luci/
 
 # ssh-copy-id -i ~/.ssh/id_rsa.pub -p 22 root@192.168.1.1 # /etc/dropbear/authorized_keys
+:<< firewall-0
+config redirect
+	option name 'Allow-SSH-WAN-to-LAN'
+	option src 'wan'
+	option src_dport '22'
+	option dest 'lan'
+	option dest_ip '192.168.1.100'
+	option dest_port '22'
+	option proto 'tcp'
+firewall-0
 :<< ssh-config
 Host xxx
 	Hostname 192.168.1.1
