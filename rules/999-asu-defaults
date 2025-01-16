@@ -182,7 +182,7 @@ chain upf {
 	ip daddr @${i41p} drop comment "drop ct state all"
 	ip6 daddr @${i61p} drop
 #	ip daddr {192.168.0.3} tcp dport {80,443} drop comment "drop ct state all"
-#	ip daddr {192.168.0.3} tcp dport 22 limit rate 10/second log prefix "SSS "
+#	ip daddr {192.168.0.3} tcp dport 22 limit rate 10/second log prefix "--- "
 	ether saddr @${m1m} drop
 }
 
