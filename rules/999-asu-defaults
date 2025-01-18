@@ -119,12 +119,10 @@ set wireless.radio1.country='CN'
 set wireless.default_radio0.ssid="xiaomi-$st4"
 set wireless.default_radio0.encryption='sae-mixed'
 set wireless.default_radio0.key='12345678'
-set wireless.default_radio0.sae_pwe='2' #1
 
 set wireless.default_radio1.ssid="redmi-$st4"
 set wireless.default_radio1.encryption='sae-mixed'
 set wireless.default_radio1.key='12345678'
-set wireless.default_radio1.sae_pwe='2' #1
 
 set wireless.u=$(uci get wireless.radio0)
 set wireless.u.type=$(uci get wireless.radio0.type)
