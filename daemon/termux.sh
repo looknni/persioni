@@ -51,7 +51,7 @@ bin=${PREFIX}/bin/alpine
 cat > $bin <<- EOM
 #!/data/data/com.termux/files/usr/bin/bash -e
 unset LD_PRELOAD
-exec proot --link2symlink -0 -r \${PREFIX}/share/Alpine/ -b /dev/ -b /sys/ -b /proc/ -b /sdcard -b /storage -b \$HOME -w /home /usr/bin/env TMPDIR=/tmp HOME=/home PREFIX=/usr SHELL=/bin/sh TERM="\$TERM" LANG=\$LANG PATH=/bin:/usr/bin:/sbin:/usr/sbin /bin/sh --login
+exec proot --link2symlink -0 -r \${PREFIX}/share/Alpine/ -b /dev/ -b /sys/ -b /proc/ -b \$HOME -w /home /usr/bin/env TMPDIR=/tmp HOME=/home PREFIX=/usr SHELL=/bin/sh TERM="\$TERM" LANG=\$LANG PATH=/bin:/usr/bin:/sbin:/usr/sbin /bin/sh --login
 EOM
 chmod 700 $bin
 
