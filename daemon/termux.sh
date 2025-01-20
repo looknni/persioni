@@ -25,7 +25,7 @@ cat ~/.bash_history > ~/.bash_history
 cat ~/.ssh/known_hosts > ~/.ssh/known_hosts
 cat ~/.ssh/known_hosts > ~/.ssh/known_hosts.old
 EOF
-
+# https://gitcode.com/gh_mirrors/te/TermuxAlpine
 DESTINATION=${PREFIX}/share/Alpine
 mkdir ${DESTINATION}
 cd ${DESTINATION}
