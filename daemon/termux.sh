@@ -75,4 +75,3 @@ ${ht}/alpine/latest-stable/community/
 ${ht}/alpine/edge/testing/
 EOM
 printf "nameserver 223.5.5.5" > ${PREFIX}/share/Alpine/etc/resolv.conf
-rm ${PREFIX}/share/Alpine/home/.ash_history
