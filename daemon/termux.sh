@@ -55,17 +55,25 @@ proot --link2symlink -0 -r \${PREFIX}/share/Alpine/ -b /dev/ -b /sys/ -b /proc/ 
 EOM
 chmod 700 $bin
 
-cat > ${PREFIX}/share/Alpine/etc/profile <<- EOM
-	export CHARSET=UTF-8
-	export PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
-	export PAGER=less
-	export PS1='\[\e[0;32m\]\A \[\e[1;95m\]\W \[\e[1;33m\]\$ \[\e[0m\]'
-	umask 022
-	for script in /etc/profile.d/*.sh ; do
-	if [ -r \$script ] ; then
-	. \$script
+cat > ${PREFIX}/share/Alpine/etc/profile << 'EOM'
+export PS1='\[\e[0;32m\]\A \[\e[1;95m\]\W \[\e[1;33m\]\$ \[\e[0m\]'
+umask 022
+for i in /etc/profile.d/*.sh; do
+	if [ -r $i ]; then
+		. $i
 	fi
-	done
+done
+unset i
+if [ "$BASH" ]; then
+        if [[ "$-" == *"i"* ]]; then
+                if [ -r /etc/bash.bashrc ]; then
+                        . /etc/bash.bashrc
+                fi
+                if [ -r ~/.bashrc ]; then
+                        . ~/.bashrc
+                fi
+        fi
+fi
 EOM
 
 cp ${PREFIX}/share/Alpine/etc/apk/repositories ${PREFIX}/share/Alpine/etc/apk/repositories.bak
@@ -75,3 +83,4 @@ ${ht}/alpine/latest-stable/community/
 ${ht}/alpine/edge/testing/
 EOM
 printf "nameserver 223.5.5.5" > ${PREFIX}/share/Alpine/etc/resolv.conf
+export PS1='\[\e[0;32m\]\A \[\e[1;95m\]\W \[\e[1;33m\]$ \[\e[0m\]'
