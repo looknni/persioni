@@ -57,7 +57,6 @@ chmod 700 $bin
 
 cat > ${PREFIX}/share/Alpine/etc/profile << 'EOM'
 export PS1='\[\e[0;32m\]\A \[\e[1;95m\]\W \[\e[1;33m\]\$ \[\e[0m\]'
-umask 022
 for i in /etc/profile.d/*.sh; do
 	if [ -r $i ]; then
 		. $i
