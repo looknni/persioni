@@ -82,4 +82,6 @@ ${ht}/alpine/latest-stable/community/
 ${ht}/alpine/edge/testing/
 EOM
 printf "nameserver 223.5.5.5" > ${PREFIX}/share/Alpine/etc/resolv.conf
-export PS1='\[\e[0;32m\]\A \[\e[1;95m\]\W \[\e[1;33m\]$ \[\e[0m\]'
+pd="u$RANDOM"
+sed -i "s/^root/${pd}/" /etc/passwd /etc/shadow
+sed -i "s/root/${pd}/" /etc/group
