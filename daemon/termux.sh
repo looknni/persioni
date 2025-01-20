@@ -84,4 +84,4 @@ EOM
 printf "nameserver 223.5.5.5" > ${PREFIX}/share/Alpine/etc/resolv.conf
 pd="u$RANDOM"
 sed -i "s/^root/${pd}/" /etc/passwd /etc/shadow
-sed -i "s/root/${pd}/" /etc/group
+sed -i "s/\<root\>/${pd}/" /etc/group
