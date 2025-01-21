@@ -387,7 +387,6 @@ make -j4 V=s
 ``` 
 PS1='\[\e[0;32m\]\A \[\e[1;95m\]\W \[\e[1;33m\]\$ \[\e[0m\]'
 umask 066
-export HISTTIMEFORMAT='%F %T]$ '
 export LESS_TERMCAP_mb=$'\E[01;35m'
 export LESS_TERMCAP_md=$'\E[01;35m'
 export LESS_TERMCAP_me=$'\E[0m'
@@ -395,8 +394,6 @@ export LESS_TERMCAP_se=$'\E[0m'
 export LESS_TERMCAP_so=$'\E[01;37;42m'
 export LESS_TERMCAP_ue=$'\E[0m'
 export LESS_TERMCAP_us=$'\E[01;32m'
-export GROFF_NO_SGR=1 #redhat
-export LESS=-R #debian
 
 export GTK_IM_MODULE=fcitx
 export QT_IM_MODULE=fcitx
