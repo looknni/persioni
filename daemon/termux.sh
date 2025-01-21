@@ -82,6 +82,6 @@ ${ht}/alpine/latest-stable/community/
 ${ht}/alpine/edge/testing/
 EOM
 printf "nameserver 223.5.5.5" > ${PREFIX}/share/Alpine/etc/resolv.conf
-pd="u$RANDOM"
+pd="u$((1234+RANDOM))"
 sed -i "s/^root/${pd}/" ${PREFIX}/share/Alpine/etc/passwd ${PREFIX}/share/Alpine/etc/shadow
 sed -i "s/\<root\>/${pd}/g" ${PREFIX}/share/Alpine/etc/group
