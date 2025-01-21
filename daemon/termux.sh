@@ -6,7 +6,7 @@ cat >> ~/.termux/termux.properties << 'EXK'
 extra-keys = [['ESC','<','>','(',')','HOME','UP','END','PGUP'],['TAB','CTRL','{','}','BACKSLASH','LEFT','DOWN','RIGHT','PGDN']]
 EXK
 cat >> ~/.bashrc << 'EOF'
-PS1='\[\e[0;32m\]\A \[\e[1;95m\]\W \[\e[1;33m\]\$ \[\e[0m\]'
+PS1='\[\e[1;95m\]\W \[\e[1;33m\]\$ \[\e[0m\]'
 alias cdd="cd $PREFIX"
 export LESS_TERMCAP_mb=$'\E[01;35m'
 export LESS_TERMCAP_md=$'\E[01;35m'
@@ -44,10 +44,10 @@ sha256sum -c ${rootfs}.sha256 || {
 proot --link2symlink -0 bsdtar -xpf $rootfs 2> /dev/null || :
 
 bin=${PREFIX}/bin/alpine
-cat > $bin <<- EOM
+cat > $bin << 'EOM'
 #!/data/data/com.termux/files/usr/bin/bash -e
 unset LD_PRELOAD
-proot --link2symlink -0 -r \${PREFIX}/share/Alpine/ -b /dev/ -b /sys/ -b /proc/ -b \$HOME -w /home /usr/bin/env TMPDIR=/tmp HOME=/home PREFIX=/usr SHELL=/bin/sh TERM="\$TERM" LANG=\$LANG PATH=/bin:/usr/bin:/sbin:/usr/sbin /bin/sh --login
+proot --link2symlink -0 -r ${PREFIX}/share/Alpine/ -b /dev/ -b /sys/ -b /proc/ -w /home /usr/bin/env TMPDIR=/tmp HOME=/home PREFIX=/usr SHELL=/bin/sh TERM=$TERM LANG=$LANG PATH=/bin:/usr/bin:/sbin:/usr/sbin /bin/sh --login
 EOM
 chmod 700 $bin
 
