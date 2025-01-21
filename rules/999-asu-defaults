@@ -167,7 +167,8 @@ pd="openwrt-$(uci get network.lan.ipaddr)"
 (echo $pd;sleep 1;echo $pd) | passwd > /dev/null
 u0u='u000u'
 sed -i "s/^root/${u0u}/" /etc/passwd /etc/shadow
-sed -i "s/\<root:root\>/${u0u}:root/" /sbin/urandom_seed
+sed -i "s/^root:x:0:$/${u0u}:x:0:${u0u}/" /etc/group
+sed -i "s/\<root:root\>/${u0u}:${u0u}/" /sbin/urandom_seed
 
 rm /etc/nftables.d/*
 echo -e "set i41p {\n\ttype ipv4_addr\n\tflags interval\n}" > /etc/nftables.d/i41p
