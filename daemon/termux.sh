@@ -43,13 +43,11 @@ sha256sum -c ${rootfs}.sha256 || {
 
 proot --link2symlink -0 bsdtar -xpf $rootfs 2> /dev/null || :
 
-bin=${PREFIX}/bin/alpine
-cat > $bin << 'EOM'
+cat > ${PREFIX}/bin/alpine << 'EOM'
 #!/data/data/com.termux/files/usr/bin/bash -e
 unset LD_PRELOAD
 proot --link2symlink -0 -r ${PREFIX}/share/Alpine/ -b /dev/ -b /sys/ -b /proc/ -w /home /usr/bin/env TMPDIR=/tmp HOME=/home PREFIX=/usr SHELL=/bin/sh TERM=$TERM LANG=$LANG PATH=/bin:/usr/bin:/sbin:/usr/sbin /bin/sh --login
 EOM
-chmod 700 $bin
 
 cat > ${PREFIX}/share/Alpine/etc/profile << 'EOM'
 export PS1='\[\e[0;32m\]\A \[\e[1;95m\]\W \[\e[1;33m\]\$ \[\e[0m\]'
