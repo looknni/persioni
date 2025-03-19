@@ -5,7 +5,6 @@ echo -e "# net.ipv4.conf.default.arp_announce = 1\nnet.ipv4.route.max_size = 64\
 echo -e "umask 066\nexport LANG=en_US.UTF-8" > /root/.profile
 echo -e "set encoding=utf-8\nset fileencoding=utf-8" > /root/.vimrc
 
-
 i41p='i41p'
 i61p='i61p'
 m1m='m1m'
