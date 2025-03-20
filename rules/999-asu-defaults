@@ -84,8 +84,8 @@ delete firewall.@rule[0]
 delete firewall.@rule[0]
 
 set firewall.@defaults[0].synflood_protect='1'
-set firewall.@defaults[0].flow_offloading='1'
-set firewall.@defaults[0].flow_offloading_hw='1'
+set firewall.@defaults[0].flow_offloading='0'
+set firewall.@defaults[0].flow_offloading_hw='0'
 add_list firewall.@zone[1].network='wwan'
 
 set firewall.@defaults[0].input='DROP'
@@ -175,6 +175,14 @@ rm /etc/nftables.d/*
 echo -e "set i41p {\n\ttype ipv4_addr\n\tflags interval\n}" > /etc/nftables.d/i41p
 echo -e "set i61p {\n\ttype ipv6_addr\n\tflags interval\n}" > /etc/nftables.d/i61p
 echo -e "set m1m {\n\ttype ether_addr\n\tflags interval\n}" > /etc/nftables.d/m1m
+
+echo -e "chain ip04 {\n\ttype filter hook forward priority -1; policy accept;" > /etc/nftables.d/ip04.nft
+for i in `seq 2 254`;do
+	echo -e  "\tip daddr 172.${r16r}.${r255r}.$i counter" >> /etc/nftables.d/ip04.nft
+	echo -e  "\tip saddr 172.${r16r}.${r255r}.$i counter" >> /etc/nftables.d/ip04.nft
+done
+echo '}' >> /etc/nftables.d/ip04.nft
+
 cat > /etc/nftables.d/u.nft << NFTC
 include "/etc/nftables.d/i41p"
 include "/etc/nftables.d/i61p"
