@@ -48,7 +48,7 @@ cat > ${PREFIX}/bin/alpine << 'EOM'
 unset LD_PRELOAD
 proot --link2symlink -0 -r ${PREFIX}/share/Alpine/ -b /dev/ -b /sys/ -b /proc/ -w /home /usr/bin/env TMPDIR=/tmp HOME=/home PREFIX=/usr SHELL=/bin/sh TERM=$TERM LANG=$LANG PATH=/bin:/usr/bin:/sbin:/usr/sbin /bin/sh --login
 EOM
-
+chmod u+x ${PREFIX}/bin/alpine
 cat > ${PREFIX}/share/Alpine/etc/profile << 'EOM'
 export PS1='\[\e[0;32m\]\A \[\e[1;95m\]\W \[\e[1;33m\]\$ \[\e[0m\]'
 for i in /etc/profile.d/*.sh; do
