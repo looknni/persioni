@@ -187,8 +187,8 @@ cat > /root/counter << 'TEST'
 a=`cat /tmp/dhcp.leases | awk '{print $3}'`
 for i in $a;do
 	b=`cat /tmp/dhcp.leases | grep "$i"|awk '{print $4}'`
-	echo -n $b
-	nft list ruleset|grep "$i"|awk '{print $0,$8/(1024**2),$8/(1024**3)}'
+	echo -ne "\033[0;32m$b\033[0m"
+	nft list ruleset|grep "$i"|awk '{print $0,"\033[0;32m("$8/(1024**2)" MiB)","("$8/(1024**3)" GiB)\033[0m"}'
 done
 TEST
 
