@@ -195,14 +195,14 @@ for i in $a;do
 done
 for j in $c;do
 	d=`cat /tmp/dhcp.leases | grep $j|awk '{print $4}'`
-	echo -ne "\033[0;31m$d,\033[0m"
+	echo -ne "\033[0;36m$d,\033[0m"
 done
-echo -e "\033[0;33m2.4G\033[0m"
+echo -e "\e[0;33m2.4G\033[0m"
 for k in $e;do
 	d=`cat /tmp/dhcp.leases | grep $k|awk '{print $4}'`
-	echo -ne "\033[0;31m$d,\033[0m"
+	echo -ne "\033[0;36m$d,\033[0m"
 done
-echo -e "\033[0;33m5G\033[0m"
+echo -e "\e[0;33m5G\033[0m"
 TEST
 
 cat > /etc/nftables.d/u.nft << NFTC
