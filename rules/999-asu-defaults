@@ -97,11 +97,7 @@ set system.@system[0].zonename='Asia/Hong Kong'
 set system.ntp.enable_server='0'
 set system.ntp.interface='lan'
 
-set dropbear.main.Port="$((65431+$RANDOM%2))"
-set dropbear.main.MaxAuthTries='2'
-set dropbear.main.DirectInterface='lan'
 set network.lan.ipaddr="172.${r16r}.${r255r}.1"
-# set network.lan.gateway="172.${r16r}.${r255r}.1"
 
 set dhcp.@dnsmasq[0].cachesize='100'
 set dhcp.@dnsmasq[0].interface='lan'
@@ -224,7 +220,6 @@ chain upf {
 
 chain upo {
 	type filter hook output priority -1; policy accept;
-	tcp sport $(uci get dropbear.main.Port) limit rate 10/second
 }
 
 chain udn {
