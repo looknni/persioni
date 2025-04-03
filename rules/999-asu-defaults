@@ -100,9 +100,7 @@ set system.ntp.interface='lan'
 set network.lan.ipaddr="172.${r16r}.${r255r}.1"
 
 set dhcp.@dnsmasq[0].cachesize='100'
-set dhcp.@dnsmasq[0].interface='lan'
 add_list dhcp.lan.dhcp_option='6,114.114.114.114'
-set dhcp.lan.ra_default='2'
 set dhcp.wwan=dhcp
 set dhcp.wwan.interface='wwan'
 set dhcp.wwan.ignore='1'
