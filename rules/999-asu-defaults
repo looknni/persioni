@@ -85,12 +85,6 @@ set firewall.@defaults[0].flow_offloading='0'
 set firewall.@defaults[0].flow_offloading_hw='0'
 add_list firewall.@zone[1].network='wwan'
 
-set firewall.@defaults[0].input='DROP'
-set firewall.@defaults[0].output='DROP'
-set firewall.@defaults[0].forward='DROP'
-set firewall.@zone[1].input='DROP'
-set firewall.@zone[1].forward='DROP'
-
 set system.@system[0].hostname="$st2"
 set system.@system[0].timezone='HKT-8'
 set system.@system[0].zonename='Asia/Hong Kong'
