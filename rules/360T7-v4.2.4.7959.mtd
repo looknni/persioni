@@ -1,0 +1,47 @@
+# 360T7-v4.2.4.7959
+# debian, putty tftpd-hpa
+# TTL, RXD TXD GND
+
+4. Enter failsafe mode by pressing f and Enter.
+
+5. Connect to your PC via one of the LAN port of the router, set a static ip on the ethernet interface of your PC. (ip 192.168.1.254)
+
+6. Start tftpd-hpa vim /etc/default/tftpd-hpa with the following 4 files at its root directory:
+
+openwrt-mediatek-filogic-qihoo_360t7-bl31-uboot.fip
+openwrt-mediatek-filogic-qihoo_360t7-initramfs-recovery.itb
+openwrt-mediatek-filogic-qihoo_360t7-preloader.bin
+openwrt-mediatek-filogic-qihoo_360t7-squashfs-sysupgrade.itb
+# 7. Back up mtd partitions via tftp:
+
+ifconfig eth0 192.168.1.1 netmask 255.255.255.0 up
+
+# for i in $(seq 1 10); do tftp -p -l /dev/mtdblock$i -r mtd${i}.bin 192.168.1.254 ; done
+8. check if eeprom is at the right place. It should start with 81 79 like the following:
+
+hexdump -C -s 1572864 -n 256 /dev/mtdblock0
+00180000  81 79 00 00 00 0c 43 49  c3 57 00 00 00 00 00 00  |.y....CI.W......|
+00180010  00 00 00 00 00 00 00 00  00 00 00 00 00 00 00 00  |................|
+00180020  00 00 00 00 02 0c 43 49  c3 58 00 0c 43 49 c3 58 
+|......CI.X..CI.X|
+00180030  00 00 00 00 00 00 00 00  00 00 00 00 00 00 00 00  |................|
+If it's not, you will need to flash Factory/config/factory partitions back after firmware is flashed.
+
+9. Flash BL2 and FIP:
+
+root@(none):/# cd /tmp
+root@(none):/tmp# tftp -g -l bl2.bin -r openwrt-mediatek-filogic-qihoo_360t7-preloader.bin 192.168.1.254
+root@(none):/tmp# tftp -g -l fip.fip -r openwrt-mediatek-filogic-qihoo_360t7-bl31-uboot.fip 192.168.1.254
+root@(none):/tmp# mtd -p 0x380000 write fip.fip spi0.0
+Unlocking spi0.0 ...
+Seeking on mtd device 'spi0.0' to: 3670016
+
+Writing from fip.fip to spi0.0 ...
+root@(none):/tmp# mtd -r write bl2.bin spi0.0
+Unlocking spi0.0 ...
+
+Writing from bl2.bin to spi0.0 ...
+Rebooting ...
+10. Reset and u-boot will self-retrieve recovery file openwrt-mediatek-filogic-qihoo_360t7-initramfs-recovery.itb from TFTP Server (ip 192.168.1.254).
+
+11. Login to http://192.168.1.1 and upload file openwrt-mediatek-filogic-qihoo_360t7-squashfs-sysupgrade.itb for sysup
