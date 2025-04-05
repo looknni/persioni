@@ -118,7 +118,6 @@ set wireless.u=$(uci get wireless.radio0)
 set wireless.u.type=$(uci get wireless.radio0.type)
 set wireless.u.path=$(uci get wireless.radio0.path)
 set wireless.u.band=$(uci get wireless.radio0.band)
-set wireless.u.txpower='20'
 set wireless.u.country='CN'
 set wireless.u.disabled='1'
 
@@ -136,7 +135,6 @@ set wireless.v=$(uci get wireless.radio1)
 set wireless.v.type=$(uci get wireless.radio1.type)
 set wireless.v.path=$(uci get wireless.radio1.path)
 set wireless.v.band=$(uci get wireless.radio1.band)
-set wireless.v.txpower='20'
 set wireless.v.country='CN'
 set wireless.v.disabled='1'
 
