@@ -93,8 +93,6 @@ set network.wwan.proto='dhcp'
 
 set wireless.radio0.country='CN'
 set wireless.radio1.country='CN'
-set wireless.radio0.txpower='20'
-set wireless.radio1.txpower='20'
 
 set wireless.default_radio0.ssid="xiaomi-$st4"
 set wireless.default_radio0.encryption='psk2' #sae-mixed
