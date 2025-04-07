@@ -70,16 +70,6 @@ uci batch << EEOO
 set network.globals.packet_steering='0'
 set dhcp.odhcpd.loglevel='1' #4
 
-delete firewall.@rule[8]
-delete firewall.@rule[7]
-delete firewall.@rule[6]
-delete firewall.@rule[5]
-delete firewall.@rule[4]
-delete firewall.@rule[0]
-delete firewall.@rule[0]
-delete firewall.@rule[0]
-delete firewall.@rule[0]
-
 set firewall.@defaults[0].synflood_protect='1'
 set firewall.@defaults[0].flow_offloading='0'
 set firewall.@defaults[0].flow_offloading_hw='0'
