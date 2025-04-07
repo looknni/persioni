@@ -114,39 +114,6 @@ set wireless.default_radio1.ssid="redmi-$st4"
 set wireless.default_radio1.encryption='psk2'
 set wireless.default_radio1.key='12345678'
 
-set wireless.u=$(uci get wireless.radio0)
-set wireless.u.type=$(uci get wireless.radio0.type)
-set wireless.u.path=$(uci get wireless.radio0.path)
-set wireless.u.band=$(uci get wireless.radio0.band)
-set wireless.u.country='CN'
-set wireless.u.disabled='1'
-
-set wireless.s=wifi-iface
-set wireless.s.device='u'
-set wireless.s.mode='sta'
-set wireless.s.network='wwan'
-set wireless.s.ssid='Openwrt'
-set wireless.s.bssid='00:00:00:00:02:01'
-set wireless.s.encryption='psk2' # none sae
-set wireless.s.key='12345678'
-set wireless.s.disabled='1'
-
-set wireless.v=$(uci get wireless.radio1)
-set wireless.v.type=$(uci get wireless.radio1.type)
-set wireless.v.path=$(uci get wireless.radio1.path)
-set wireless.v.band=$(uci get wireless.radio1.band)
-set wireless.v.country='CN'
-set wireless.v.disabled='1'
-
-set wireless.t=wifi-iface
-set wireless.t.device='v'
-set wireless.t.mode='sta'
-set wireless.t.network='wwan'
-set wireless.t.ssid='Openwrt'
-set wireless.t.bssid='00:00:00:00:02:01'
-set wireless.t.encryption='psk2'
-set wireless.t.key='12345678'
-set wireless.t.disabled='1'
 commit
 EEOO
 
@@ -154,9 +121,6 @@ touch /etc/dropbear/authorized_keys
 pd="openwrt-$(uci get network.lan.ipaddr)"
 (echo $pd;sleep 1;echo $pd) | passwd > /dev/null
 u0u='u000u'
-sed -i "s/^root/${u0u}/" /etc/passwd /etc/shadow
-sed -i "s/^root:x:0:$/${u0u}:x:0:${u0u}/" /etc/group
-sed -i "s/\<root:root\>/${u0u}:${u0u}/" /sbin/urandom_seed
 
 rm /etc/nftables.d/*
 echo -e "set i41p {\n\ttype ipv4_addr\n\tflags interval\n}" > /etc/nftables.d/i41p
