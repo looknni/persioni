@@ -108,7 +108,6 @@ EEOO
 touch /etc/dropbear/authorized_keys
 pd="openwrt-$(uci get network.lan.ipaddr)"
 (echo $pd;sleep 1;echo $pd) | passwd > /dev/null
-u0u='u000u'
 
 rm /etc/nftables.d/*
 echo -e "set i41p {\n\ttype ipv4_addr\n\tflags interval\n}" > /etc/nftables.d/i41p
