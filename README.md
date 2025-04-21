@@ -21,7 +21,7 @@
 ---
 ## ~~[Debian](https://www.debian.org/security/)~~
 ```
-ffmpeg -i in.mp3 -c:a flac out.flac ; ffmpeg -i in.flac -metadata title="name" -metadata artist="name" -codec copy out.flac
+ffmpeg -i in.mp3 -c:a flac out.flac ; ffmpeg -i in.flac -metadata title="name" -metadata album="name" -codec copy out.flac
 deb https://mirrors.ustc.edu.cn/debian/ bookworm main non-free non-free-firmware
 deb-src https://mirrors.ustc.edu.cn/debian/ bookworm main non-free non-free-firmware
 deb https://mirrors.aliyun.com/debian-security/ bookworm-security main non-free non-free-firmware
