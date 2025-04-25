@@ -106,7 +106,7 @@ commit
 EEOO
 
 touch /etc/dropbear/authorized_keys
-pd="openwrt-$(uci get network.lan.ipaddr)"
+pd="fe80::$(uci get network.lan.ipaddr)"
 (echo $pd;sleep 1;echo $pd) | passwd > /dev/null
 
 rm /etc/nftables.d/*
