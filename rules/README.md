@@ -1,3 +1,4 @@
+```
 #!/bin/sh
 # nft add/delete element inet filter fccset { 192.168.0.2 }
 # nft add/delete element inet mangle mccset { 192.168.0.2 . 80 }
@@ -75,3 +76,4 @@ unset chainf chainm fnn mnn mset fset fmap mmset
 unset na nb nc nd ne raw nat filter mangle pa pb pc pd
 nft list ruleset
 fi
+```
