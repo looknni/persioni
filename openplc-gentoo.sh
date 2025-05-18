@@ -1,4 +1,3 @@
-https://github.com/hclara23/OpenPLC_Editor2/blob/master/install-gentoo.sh
 #!/bin/bash
 
 OPENPLC_DIR="$(dirname "$(readlink -f "$0")")"
@@ -28,9 +27,9 @@ system_packages=(
     "sys-devel/gcc" "dev-build/make" "dev-build/automake" "dev-build/autoconf"
     "sys-devel/bison" "sys-devel/flex" "dev-vcs/git" "x11-libs/gtk+:3"
     "dev-libs/libxml2" "dev-libs/libxslt" "dev-lang/python" "dev-python/pip"
-    "dev-python/wheel" "dev-python/jinja" "dev-python/lxml" "dev-python/requests-futures"
+    "dev-python/wheel" "dev-python/jinja2" "dev-python/lxml" "dev-python/requests-futures"
     "dev-python/matplotlib" "dev-python/pyserial"
-    "dev-python/Pyro5" "dev-python/wxpython:4.0"
+    "dev-python/pyro5" "dev-python/wxpython:4.0"
 )
 
 echo "Checking dependencies for OpenPLC Editor installation on Gentoo"
