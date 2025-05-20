@@ -1,3 +1,4 @@
+# git clone ssh://git@ssh.github.com/thiagoralves/OpenPLC_Editor
 #!/bin/bash
 
 OPENPLC_DIR="$(dirname "$(readlink -f "$0")")"
