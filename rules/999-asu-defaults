@@ -67,7 +67,6 @@ fi
 }
 
 uci batch << EEOO
-set network.globals.packet_steering='0'
 set dhcp.odhcpd.loglevel='1' #4
 
 set firewall.@defaults[0].synflood_protect='1'
