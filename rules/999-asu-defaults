@@ -70,6 +70,7 @@ uci batch << EEOO
 set network.globals.packet_steering='1'
 set network.globals.tcp_l3mdev='1'
 set network.globals.udp_l3mdev='1'
+set network.globals.steering_flows='128'
 set dhcp.odhcpd.loglevel='1' #4
 
 set firewall.@defaults[0].synflood_protect='1'
