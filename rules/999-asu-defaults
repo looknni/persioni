@@ -144,7 +144,7 @@ for k in $e;do
 	echo -ne "\033[0;36m$d,\033[0m"
 done
 echo -e "\e[0;33m5G\033[0m"
-cat /sys/class/thermal/thermal_zone0/temp
+# cat /sys/class/thermal/thermal_zone0/temp
 TEST
 
 cat > /etc/nftables.d/u.nft << NFTC
