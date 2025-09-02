@@ -316,7 +316,9 @@ GRUB_DISABLE_OS_PROBER=false
 GRUB_DEFAULT=saved
 GRUB_SAVEDEFAULT=true
 GRUB_GFXMODE=1024x768
-GRUB_TERMINAL="console"
+GRUB_TERMINAL=gfxterm # serial console normal
+GRUB_GFXPAYLOAD_LINUX=keep
+#GRUB_CMDLINE_LINUX="nouveau.modset=0 video=1024x768" # /etc/modprobe.d/blacklist-nouveau.conf blacklist nouveau
 
 # /efi/loader/entries/gentoo.conf
 title gentoo
