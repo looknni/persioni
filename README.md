@@ -22,12 +22,12 @@
 ## ~~[Debian](https://www.debian.org/security/)~~
 ```
 ffmpeg -i in.mp3 -c:a flac out.flac ; ffmpeg -i in.flac -metadata title="name" -metadata album="name" -codec copy out.flac
-deb https://mirrors.ustc.edu.cn/debian/ bookworm main non-free non-free-firmware
-deb-src https://mirrors.ustc.edu.cn/debian/ bookworm main non-free non-free-firmware
-deb https://mirrors.aliyun.com/debian-security/ bookworm-security main non-free non-free-firmware
-deb-src https://mirrors.aliyun.com/debian-security/ bookworm-security main non-free non-free-firmware
-deb https://mirrors.ustc.edu.cn/debian/ bookworm-updates main non-free non-free-firmware
-deb-src https://mirrors.ustc.edu.cn/debian/ bookworm-updates main non-free non-free-firmware
+deb https://mirrors.ustc.edu.cn/debian/ bookworm main contrib non-free non-free-firmware
+deb-src https://mirrors.ustc.edu.cn/debian/ bookworm main contrib non-free non-free-firmware
+deb https://mirrors.aliyun.com/debian-security/ bookworm-security main contrib non-free non-free-firmware
+deb-src https://mirrors.aliyun.com/debian-security/ bookworm-security main contrib non-free non-free-firmware
+deb https://mirrors.ustc.edu.cn/debian/ bookworm-updates main contrib non-free non-free-firmware
+deb-src https://mirrors.ustc.edu.cn/debian/ bookworm-updates main contrib non-free non-free-firmware
 
 gpm ntp vim vlc git traceroute smartmontools fonts-droid-fallback fonts-wqy-microhei fonts-wqy-zenhei \
 dnsutils wget links xterm net-tools fcitx fcitx-googlepinyin fcitx-config-gtk fcitx-table-wubi \
