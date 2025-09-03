@@ -247,7 +247,7 @@ mount --bind /run /mnt/gentoo/run
 
 chroot /mnt/gentoo /bin/bash
 emerge-webrsync # /var/db/repos/gentoo/
-emerge -av app-editors/vim app-shells/bash-completion
+emerge -av app-editors/vim app-shells/bash-completion x11-drivers/nvidia-drivers
 env-update && source /etc/profile && export PS1="(chroot) ${PS1}"
 mount /dev/sda1 /efi
 
