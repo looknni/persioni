@@ -185,7 +185,7 @@ Section "Screen"
 	SubSection "Display"
 		Viewport 0 0
 		Depth 24
-		Modes "1024x768"
+		Modes "1366x768"
 	EndSubSection
 EndSection
 ```
@@ -228,6 +228,7 @@ pacman -Qdtq | pacman -Rsn -
 ## ~~[Gentoo](https://www.gentoo.org/)~~
 ```
 mount | grep efi
+file --special-files /dev/sda | fdisk -l | lsblk --fs | df --print-type
 ? fdisk /dev/sda # m p g o n t d l w # lsblk -f
 mkfs.vfat -F 32 /dev/sda1 # /efi
 mkfs.ext4 /dev/sda3 # / /boot
@@ -315,10 +316,10 @@ net-misc/openssh libedit
 GRUB_DISABLE_OS_PROBER=false
 GRUB_DEFAULT=saved
 GRUB_SAVEDEFAULT=true
-GRUB_GFXMODE=1024x768
+GRUB_GFXMODE=1366x768
 GRUB_TERMINAL=gfxterm # serial console normal
 GRUB_GFXPAYLOAD_LINUX=keep
-#GRUB_CMDLINE_LINUX="nouveau.modset=0 video=1024x768" # /etc/modprobe.d/blacklist-nouveau.conf blacklist nouveau
+#GRUB_CMDLINE_LINUX="nouveau.modset=0 video=1366x768" # /etc/modprobe.d/blacklist-nouveau.conf blacklist nouveau
 
 # /efi/loader/entries/gentoo.conf
 title gentoo
@@ -379,11 +380,12 @@ vm.min_free_kbytes=100000
 build-essential libncurses5-dev
 
 GIT_SSH_COMMAND="ssh -i ~/.ssh/xxx" git clone ssh://git@ssh.github.com/openwrt/openwrt
-git checkout v24 # git reset --hard <commit> ; git pull
+git checkout v24 ; ./scripts/feeds update -a ; ./scripts/feeds install -a # git reset --hard <commit> ; git pull
 
 # ./target/linux/ramips/dts # reg = <0x50000 0x1fb0000> # 32m # echo $((16#A));printf '%x\n' 10;echo "ibase=10;obase=16;10"|bc
 # ./target/linux/ramips/image # IMAGE_SIZE := 32m
-rm .config* && make defconfig && make menuconfig && make clean
+rm .config* && make defconfig && make clean
+make menuconfig # libustream-wolfssl wpad-wolfssl
 make -j4 V=s
 ```
 ##### find / \( -path /proc -o -path /run \) -prune -o -type l ! -exec test -e {} \; -print

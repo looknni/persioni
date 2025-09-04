@@ -1,5 +1,5 @@
 XTerm*faceName: Mono
-XTerm*faceSize: 10
+XTerm*faceSize: 12
 XTerm*antialias: true
 XTerm*locale: true
 XTerm*utf8Title: true
@@ -57,7 +57,7 @@ XTerm*color13: #fc54fc
 XTerm*color14: #54fcfc
 
 UXTerm*faceName: xft:Mono
-UXTerm*faceSize: 10
+UXTerm*faceSize: 12
 UXTerm*faceNameDoublesize: 10
 UXTerm*cursorColor: #ffa530
 UXTerm*showRoot: true

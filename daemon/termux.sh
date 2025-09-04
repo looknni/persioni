@@ -5,6 +5,7 @@ RESO
 cat >> ~/.termux/termux.properties << 'EXK'
 extra-keys = [['ESC','<','>','(',')','HOME','UP','END','PGUP'],['TAB','CTRL','{','}','BACKSLASH','LEFT','DOWN','RIGHT','PGDN']]
 EXK
+apt install -y openssh vim bash-completion python && apt autopurge llvm -y
 cat >> ~/.bashrc << 'EOF'
 PS1='\[\e[1;95m\]\W \[\e[1;33m\]\$ \[\e[0m\]'
 alias cdd="cd $PREFIX"
