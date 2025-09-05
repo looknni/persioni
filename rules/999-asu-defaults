@@ -52,6 +52,8 @@ fi
 [[ $(uci get wireless.radio0.channel) = '1' ]] && {
 	uci set wireless.radio0.channel=$((5+$RANDOM%5))
 	uci set wireless.radio1.channel=$((153+$RANDOM%3*4))
+	uci set wireless.radio0.htmode='HT40'
+	uci set wireless.radio0.noscan='1'
 	uci set wireless.radio1.disabled='0'
 	uci set wireless.default_radio1.disabled='0'
 	uci set wireless.default_radio0.disabled='1'
@@ -60,6 +62,8 @@ fi
 [[ $(uci get wireless.radio1.channel) = '1' ]] && {
 	uci set wireless.radio1.channel=5
 	uci set wireless.radio0.channel=153
+	uci set wireless.radio1.htmode='HT40'
+	uci set wireless.radio1.noscan='1'
 	uci set wireless.radio0.disabled='0'
 	uci set wireless.default_radio0.disabled='0'
 	uci set wireless.default_radio1.disabled='1'
