@@ -77,6 +77,8 @@ set network.globals.udp_l3mdev='1'
 set network.globals.steering_flows='128'
 set dhcp.odhcpd.loglevel='1' #4
 set dhcp.lan.limit="$nl"
+set dhcp.@dnsmasq[0].dnsforwardmax="$((nl*10))"
+set dhcp.@dnsmasq[0].cachesize="$((nl*10))"
 set dhcp.lan.leasetime='1h'
 
 set firewall.@defaults[0].synflood_protect='1'
@@ -92,7 +94,6 @@ set system.ntp.interface='lan'
 
 set network.lan.ipaddr="172.${r16r}.${r255r}.1"
 
-set dhcp.@dnsmasq[0].cachesize="$((nl*10))"
 add_list dhcp.lan.dhcp_option='6,114.114.114.114'
 set dhcp.wwan=dhcp
 set dhcp.wwan.interface='wwan'
