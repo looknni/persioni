@@ -70,7 +70,7 @@ fi
 	uci commit
 }
 nl=25
-uci set set network.lan.ipaddr="172.${r16r}.${r255r}.1"
+uci set network.lan.ipaddr="172.${r16r}.${r255r}.1"
 uci commit
 uci batch << EEOO
 set network.globals.packet_steering='2'
