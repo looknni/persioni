@@ -1,15 +1,15 @@
 ##### blkid /etc/default/grub /etc/fstab /boot/grub2/grub.cfg /boot/load/* 0^2^16 140177258^9
 ---
-##### [Wolframalpha](https://www.wolframalpha.com/) . [Swisscows](https://swisscows.com/en) . [Maintaining and evolving HTML](https://whatwg.org/) . [Mmdn web docs](https://developer.mozilla.org/zh-CN/docs/Web/) . [Msi](https://us.msi.com/Motherboard/B560M-PRO/support)
+##### [Wolframalpha](https://www.wolframalpha.com/) . [Maintaining and evolving HTML](https://whatwg.org/) . [Mmdn web docs](https://developer.mozilla.org/zh-CN/docs/Web/) . [Msi](https://us.msi.com/Motherboard/B560M-PRO/support)
 ---
 ##### [Ventoy](https://www.ventoy.net/en/index.html) . [Tracker.deb](https://tracker.debian.org/pkg/linux) . [Cppreference](https://cppreference.com/)
 ---
 ##### [Gnu-command](https://www.gnu.org/software/) . [Nftables](https://wiki.nftables.org/) . [ ? ](https://quickref.cn/)
 ---
 > - https://mirrors.tuna.tsinghua.edu.cn
-> - https://mirrors.aliyun.com # freebsd 13,14
-> - https://mirrors.ustc.edu.cn # freebsd 13,14
-> - http://mirrors.nju.edu.cn # freebsd 13,14
+> - https://mirrors.aliyun.com
+> - https://mirrors.ustc.edu.cn
+> - http://mirrors.nju.edu.cn # ventoy
 ---
 ##### dig @ns1.google.com TXT o-o.myaddr.l.google.com
 ##### timedatectl set-timezone Asia/Chongqing # /etc/systemd/timesyncd.conf ? /etc/chrony.conf ? /etc/ntpsec/ntp.conf # server ntp.org.cn iburst ? server edu.ntp.org.cn iburst
