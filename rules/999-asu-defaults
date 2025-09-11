@@ -83,6 +83,7 @@ set dhcp.@dnsmasq[0].dnsforwardmax="$((nl*10))"
 set dhcp.@dnsmasq[0].cachesize="$((nl*10))"
 set dhcp.lan.leasetime='1h'
 set dhcp.lan.netmask='255.255.255.0'
+set dhcp.@dnsmasq[0].rapidcommit='1'
 
 set firewall.@defaults[0].synflood_protect='1'
 set firewall.@defaults[0].flow_offloading='0'
