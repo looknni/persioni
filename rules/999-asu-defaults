@@ -8,7 +8,11 @@ m1m='m1m'
 tables='fw4'
 cat > /root/hts.sh << 'GHTTPS'
 openssl req -new -newkey rsa:1024 -days 555 -nodes -x509 -keyout /etc/uhttpd.key -out /etc/uhttpd.crt -subj "/C=CN/ST=st/L=l/O=o/OU=ou/CN=cn/emailAddress=email@emil.com"
+openssl req -new -newkey rsa:1024 -days 555 -nodes -x509 -keyout /etc/radius/key.pem -out /etc/radius/cert.pem -subj "/C=CN/ST=st/L=l/O=o/OU=ou/CN=cn/emailAddress=email@emil.com"
+openssl req -new -newkey rsa:1024 -nodes -keyout /etc/radius/server.key -out /etc/radius/server.csr -subj "/C=CN/ST=sts/L=ls/O=os/CN=cn"
+openssl x509 -req -in /etc/radius/server.csr -CA /etc/radius/cert.pem -CAkey /etc/radius/key.pem -CAcreateserial -out /etc/radius/ca.pem -days 555
 uci batch << WW
+set radius.@radius[0].disabled='0'
 set uhttpd.main.redirect_https='1'
 set uhttpd.main.max_connections='3'
 set uhttpd.defaults.bits='1024'
