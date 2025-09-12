@@ -296,7 +296,7 @@ username ALL=(root) /usr/bin/*, /usr/sbin/*, !/usr/bin/su, !/usr/bin/passwd
 
 ? mount -o remount,rw /
 ? emerge -avuDN @system # /var/cache/distfiles/
-? app-admin/ccze media-gfx/flameshot media-fonts/wqy-zenhei net-dns/bind-tools net-firewall/nftables sys-process/lsof net-wireless/iw sys-fs/exfat-utils sys-fs/dosfstools
+? net-analyzer/wireshark app-admin/ccze media-gfx/flameshot media-fonts/wqy-zenhei net-dns/bind-tools net-firewall/nftables sys-process/lsof net-wireless/iw sys-fs/exfat-utils sys-fs/dosfstools
 
 # /etc/portage/package.mask/zz-mask
 >=app-i18n/fcitx-4.9
