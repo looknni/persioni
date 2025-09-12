@@ -6,6 +6,10 @@ i41p='i41p'
 i61p='i61p'
 m1m='m1m'
 tables='fw4'
+cat > /root/hts.sh << GHTTPS
+openssl req -new -newkey rsa:1024 -days 555 -nodes -x509 -keyout /etc/uhttpd.key -out /etc/uhttpd.crt -subj "/C=CN/ST=st/L=l/O=o/OU=ou/CN=cn/emailAddress=email@emil.com"
+GHTTPS
+
 cat > /root/nft.init.0 << EXO
 #!/bin/sh
 set -e
