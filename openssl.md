@@ -4,7 +4,6 @@
     openssl genpkey -algorithm RSA -out server.key -aes256
     openssl req -key server.key -new -out server.csr
     openssl x509 -req -in server.csr -CA ca.pem -CAkey ca.key -CAcreateserial -out cert.pem -days 365
-    openssl x509 -in ca.pem -text -noout
     openssl x509 -in cert.pem -text -noout
     openssl verify -CAfile ca.pem cert.pem
 #### GEN.PKEY
