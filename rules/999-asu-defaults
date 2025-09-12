@@ -81,7 +81,7 @@ set dhcp.odhcpd.loglevel='1' #4
 set dhcp.lan.limit="$nl"
 set dhcp.@dnsmasq[0].cachesize="$((nl*15))"
 set dhcp.@dnsmasq[0].dnsforwardmax="$((nl*10))"
-set dhcp.lan.leasetime='1h'
+set dhcp.lan.leasetime='3h'
 set dhcp.lan.netmask='255.255.255.0'
 
 set firewall.@defaults[0].synflood_protect='1'

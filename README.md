@@ -214,7 +214,7 @@ exec_always --no-startup-id "fcitx -dr"
 # exec_always --no-startup-id "ibus-daemon -drx"
 exec "xrdb -load ~/.Xresources"
 exec --no-startup-id "xset s 0 0"
-exec --no-startup-id "xset dpms 0 0 9999"
+exec --no-startup-id "xset dpms 0 0 1800"
 bindsym $mod+Return exec "xterm -u8" # fc-list :lang=zh
 
 pacman -Si|-Qi package ?? rpm -qi
