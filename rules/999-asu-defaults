@@ -6,6 +6,14 @@ i41p='i41p'
 i61p='i61p'
 m1m='m1m'
 tables='fw4'
+a="export PS1='\[\e[1;95m\]\W \[\e[1;33m\]\\$ \[\e[0m\]'"
+if [ -d "/etc/profile.d/" ] ; then
+	echo $a > /etc/profile.d/z99.sh
+else
+	mkdir /etc/profile.d
+	echo $a > /etc/profile.d/z99.sh
+fi
+unset a
 cat > /root/hts.sh << 'GHTTPS'
 openssl req -new -newkey rsa:1024 -days 555 -nodes -x509 -keyout /etc/uhttpd.key -out /etc/uhttpd.crt -subj "/C=CN/ST=st/L=l/O=o/OU=ou/CN=cn/emailAddress=email@emil.com"
 openssl req -new -newkey rsa:1024 -days 555 -nodes -x509 -keyout /etc/radius/key.pem -out /etc/radius/cert.pem -subj "/C=CN/ST=st/L=l/O=o/OU=ou/CN=cn/emailAddress=email@emil.com"
