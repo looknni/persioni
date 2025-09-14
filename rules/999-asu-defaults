@@ -15,9 +15,11 @@ else
 fi
 unset a
 cat > /root/hts.sh << 'GHTTPS'
-openssl req -new -newkey rsa:1024 -days 555 -nodes -x509 -keyout /etc/uhttpd.key -out /etc/uhttpd.crt -subj "/C=CN/ST=st/L=l/O=o/OU=ou/CN=cn/emailAddress=email@emil.com"
-openssl req -new -newkey rsa:1024 -days 555 -nodes -x509 -keyout /etc/radius/key.pem -out /etc/radius/cert.pem -subj "/C=CN/ST=st/L=l/O=o/OU=ou/CN=cn/emailAddress=email@emil.com"
-openssl req -new -newkey rsa:1024 -nodes -keyout /etc/radius/server.key -out /etc/radius/server.csr -subj "/C=CN/ST=sts/L=ls/O=os/CN=cn"
+openssl ecparam -name prime256v1 -out /etc/ecparam.pem
+openssl req -new -newkey ec:/etc/ecparam.pem -days 555 -nodes -x509 -keyout /etc/uhttpd.key -out /etc/uhttpd.crt -subj "/C=CN/ST=st/L=l/O=o/OU=ou/CN=cn/emailAddress=email@emil.com"
+openssl ecparam -name prime256v1 -out /etc/radius/ecparam.pem
+openssl req -new -newkey ec:/etc/radius/ecparam.pem -days 555 -nodes -x509 -keyout /etc/radius/key.pem -out /etc/radius/cert.pem -subj "/C=CN/ST=st/L=l/O=o/OU=ou/CN=cn/emailAddress=email@emil.com"
+openssl req -new -newkey ec:/etc/ecparam.pem -nodes -keyout /etc/radius/server.key -out /etc/radius/server.csr -subj "/C=US/ST=Denial/L=Springfield/O=Dis/CN=cn"
 openssl x509 -req -in /etc/radius/server.csr -CA /etc/radius/cert.pem -CAkey /etc/radius/key.pem -CAcreateserial -out /etc/radius/ca.pem -days 555
 uci batch << WW
 set uhttpd.main.redirect_https='1'
