@@ -6,7 +6,7 @@ i41p='i41p'
 i61p='i61p'
 m1m='m1m'
 tables='fw4'
-a="export PS1='\[\e[1;95m\]\W \[\e[1;33m\]\\$ \[\e[0m\]'"
+a="export PS1='\[\e[1;33m\]\\$ \[\e[0m\]'"
 if [ -d "/etc/profile.d/" ] ; then
 	echo $a > /etc/profile.d/z99.sh
 else
