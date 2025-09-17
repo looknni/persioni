@@ -32,7 +32,7 @@ deb-src https://mirrors.ustc.edu.cn/debian/ bookworm-updates main contrib non-fr
 gpm ntp vim vlc git traceroute smartmontools fonts-droid-fallback fonts-wqy-microhei fonts-wqy-zenhei \
 dnsutils wget links xterm net-tools fcitx fcitx-googlepinyin fcitx-config-gtk fcitx-table-wubi \
 iw wpasupplicant nmap tcpdump inkscape gimp krita ffmpeg libreoffice make gcc isc-dhcp-client \
-hexcompare aircrack-ng xxd xxhash qbittorrent aria2
+hexcompare aircrack-ng hashcat hcxtools nvidia-cuda-toolkit xxd xxhash qbittorrent aria2
 
 apt autopurge netcat-openbsd
 systemctl disable cups ; systemctl disable exim4 ; systemctl disable exim4-base.timer ; systemctl disable bluetooth
