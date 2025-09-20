@@ -1,3 +1,7 @@
+set encoding=utf-8
+set fileencodings=ucs-bom,utf-8,cp936,gb18030,latin1
+set fileencoding=utf-8
+set termencoding=utf-8
 set viminfofile=NONE
 syntax on
 set cursorcolumn
