@@ -3,8 +3,8 @@
 case "$1" in
 	* ) echo -e "help: bash $0 \$1\n\$1,[1..n]";;
 esac
-fill="o.$0"
-# tmpd="Y.Qo"
+fill="o-staname.txt"
+# tmpd="Y-Qo"
 function sstt(){
 fils=` find -maxdepth $1 -type f | grep -v ".git" `
 set -x
