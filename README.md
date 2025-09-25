@@ -390,7 +390,7 @@ make -j4 V=s
 ```
 ##### find / \( -path /proc -o -path /run \) -prune -o -type l ! -exec test -e {} \; -print
 ``` 
-PS1='\[\e[0;32m\]\A \[\e[1;95m\]\W \[\e[1;33m\]\$ \[\e[0m\]'
+PS1='\[\e[0;37m\]\l \[\e[0;32m\]\A \[\e[1;95m\]\W \[\e[1;33m\]\$ \[\e[0m\]'
 export LESS_TERMCAP_mb=$'\E[01;35m'
 export LESS_TERMCAP_md=$'\E[01;35m'
 export LESS_TERMCAP_me=$'\E[0m'

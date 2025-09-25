@@ -7,7 +7,7 @@ extra-keys = [['ESC','<','>','(',')','HOME','UP','END','PGUP'],['TAB','CTRL','{'
 EXK
 apt install -y openssh vim bash-completion python && apt autopurge llvm -y
 cat >> ~/.bashrc << 'EOF'
-PS1='\[\e[1;95m\]\W \[\e[1;33m\]\$ \[\e[0m\]'
+PS1='\[\e[1;32m\]\l \[\e[1;95m\]\W \[\e[1;33m\]\$ \[\e[0m\]'
 alias cdd="cd $PREFIX"
 export LESS_TERMCAP_mb=$'\E[01;35m'
 export LESS_TERMCAP_md=$'\E[01;35m'
@@ -51,7 +51,7 @@ proot --link2symlink -0 -r ${PREFIX}/share/Alpine/ -b /dev/ -b /sys/ -b /proc/ -
 EOM
 chmod u+x ${PREFIX}/bin/alpine
 cat > ${PREFIX}/share/Alpine/etc/profile << 'EOM'
-export PS1='\[\e[0;32m\]\A \[\e[1;95m\]\W \[\e[1;33m\]\$ \[\e[0m\]'
+export PS1='\[\e[0;32m\]\l \[\e[1;95m\]\W \[\e[1;33m\]\$ \[\e[0m\]'
 for i in /etc/profile.d/*.sh; do
 	if [ -r $i ]; then
 		. $i
