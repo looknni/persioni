@@ -22,8 +22,9 @@ openssl req -new -newkey ec:/etc/radius/ecparam.pem -days 555 -nodes -x509 -keyo
 openssl req -new -newkey ec:/etc/ecparam.pem -nodes -keyout /etc/radius/server.key -out /etc/radius/server.csr -subj "/C=US/ST=Denial/L=Springfield/O=Dis/CN=cn"
 openssl x509 -req -in /etc/radius/server.csr -CA /etc/radius/cert.pem -CAkey /etc/radius/key.pem -CAcreateserial -out /etc/radius/ca.pem -days 555
 uci batch << WW
+delete uhttpd.main.listen_http
 set uhttpd.main.redirect_https='1'
-set uhttpd.main.max_connections='2'
+set uhttpd.main.max_connections='1'
 set uhttpd.defaults.bits='1024'
 set uhttpd.defaults.country="$((RANDOM*33))"
 set uhttpd.defaults.state="$((RANDOM*44))"
