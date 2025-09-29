@@ -23,7 +23,7 @@ openssl req -new -newkey ec:/etc/ecparam.pem -nodes -keyout /etc/radius/server.k
 openssl x509 -req -in /etc/radius/server.csr -CA /etc/radius/cert.pem -CAkey /etc/radius/key.pem -CAcreateserial -out /etc/radius/ca.pem -days 555
 uci batch << WW
 set uhttpd.main.redirect_https='1'
-set uhttpd.main.max_connections='1'
+set uhttpd.main.max_connections='2'
 set uhttpd.defaults.bits='1024'
 set uhttpd.defaults.country="$((RANDOM*33))"
 set uhttpd.defaults.state="$((RANDOM*44))"
