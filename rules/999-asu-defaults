@@ -135,11 +135,11 @@ set wireless.radio1.country='CN'
 
 set wireless.default_radio0.ssid="xiaomi-$st4"
 set wireless.default_radio0.encryption='psk2+ccmp'
-set wireless.default_radio0.key='12345678'
+set wireless.default_radio0.key='00001111'
 
 set wireless.default_radio1.ssid="redmi-$st4"
 set wireless.default_radio1.encryption='psk2+ccmp'
-set wireless.default_radio1.key='12345678'
+set wireless.default_radio1.key='00001111'
 
 commit
 EEOO
