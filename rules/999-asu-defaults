@@ -108,33 +108,27 @@ set dhcp.@dnsmasq[0].cachesize="$((nl*15))"
 set dhcp.@dnsmasq[0].dnsforwardmax="$((nl*10))"
 set dhcp.lan.leasetime='3h'
 set dhcp.lan.netmask='255.255.255.0'
-
 set firewall.@defaults[0].synflood_protect='1'
 set firewall.@defaults[0].flow_offloading='0'
 set firewall.@defaults[0].flow_offloading_hw='0'
-
 set system.@system[0].hostname="$st2"
 set system.@system[0].timezone='HKT-8'
 set system.@system[0].zonename='Asia/Hong Kong'
 set system.ntp.enable_server='0'
 set system.ntp.interface='lan'
-
 set network.lan.ipaddr="172.${r16r}.${r255r}.1"
-
 add_list dhcp.lan.dhcp_option="3,$(uci get network.lan.ipaddr)"
 add_list dhcp.lan.dhcp_option='6,114.114.114.114'
-
 set wireless.radio0.country='CN'
 set wireless.radio1.country='CN'
-
 set wireless.default_radio0.ssid="xiaomi-$st4"
 set wireless.default_radio0.encryption='psk2+ccmp'
 set wireless.default_radio0.key='00001111'
-
+set wireless.default_radio0.wpa_disable_eapol_key_retries='1'
 set wireless.default_radio1.ssid="redmi-$st4"
 set wireless.default_radio1.encryption='psk2+ccmp'
 set wireless.default_radio1.key='00001111'
-
+set wireless.default_radio1.wpa_disable_eapol_key_retries='1'
 commit
 EEOO
 
