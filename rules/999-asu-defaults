@@ -64,7 +64,7 @@ case "\$1" in
 esac
 EXO
 
-st2=$(dd if=/dev/urandom bs=1 count=1|hexdump -e '1 "%03x"')
+st2=$(dd if=/dev/urandom bs=1 count=1|hexdump -e '1 "%01x"')
 st4=$(dd if=/dev/urandom bs=2 count=1|hexdump -e '1 "%04x"')
 r16r=$((16+$RANDOM%16))
 r255r=$((RANDOM%255))
@@ -104,6 +104,8 @@ set network.globals.udp_l3mdev='1'
 set network.globals.steering_flows='128'
 set dhcp.odhcpd.loglevel='1' #4
 set dhcp.lan.limit="$nl"
+set dhcp.@dnsmasq[0].domain='o'
+set dhcp.@dnsmasq[0].local='/o/'
 set dhcp.@dnsmasq[0].cachesize="$((nl*15))"
 set dhcp.@dnsmasq[0].dnsforwardmax="$((nl*10))"
 set dhcp.lan.leasetime='3h'
