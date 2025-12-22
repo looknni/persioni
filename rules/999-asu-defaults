@@ -98,6 +98,7 @@ nl=25
 uci set network.lan.ipaddr="172.${r16r}.${r255r}.1"
 uci commit
 uci batch << EEOO
+set dropbear.main.DirectInterface='lan'
 set network.globals.packet_steering='2'
 set network.globals.tcp_l3mdev='1'
 set network.globals.udp_l3mdev='1'
