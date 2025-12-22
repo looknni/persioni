@@ -20,7 +20,7 @@ pr=$(echo $RANDOM|md5sum)
 (echo $pr; echo $pr) | passwd > /dev/null
 cat ~/.bash_history > ~/.bash_history
 cat ~/.ssh/known_hosts > ~/.ssh/known_hosts
-cat ~/.ssh/known_hosts > ~/.ssh/known_hosts.old
+cat ~/.ssh/known_hosts.old > ~/.ssh/known_hosts.old
 EOF
 # https://gitcode.com/gh_mirrors/te/TermuxAlpine
 DESTINATION=${PREFIX}/share/Alpine
