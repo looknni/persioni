@@ -4,6 +4,11 @@ nameserver 223.6.6.6
 RESO
 cat >> ~/.termux/termux.properties << 'EXK'
 extra-keys = [['ESC','<','>','(',')','HOME','UP','END','PGUP'],['TAB','CTRL','{','}','BACKSLASH','LEFT','DOWN','RIGHT','PGDN']]
+terminal-margin-horizontal=1
+shortcut.create-session=ctrl + t
+shortcut.previous-session=ctrl + 1
+shortcut.next-session=ctrl + 2
+extra-keys-style = all
 EXK
 apt install -y openssh vim bash-completion python && apt autopurge llvm -y
 cat >> ~/.bashrc << 'EOF'
