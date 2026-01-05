@@ -161,7 +161,6 @@ set dhcp.lan.limit="${nl}"
 set dhcp.@dnsmasq[0].domain='o'
 set dhcp.@dnsmasq[0].local='/o/'
 set dhcp.@dnsmasq[0].cachesize="$((nl*15))"
-set dhcp.@dnsmasq[0].dnsforwardmax="$((nl*10))"
 set dhcp.lan.leasetime='3h'
 set firewall.@defaults[0].synflood_protect='1'
 set firewall.@defaults[0].flow_offloading='0'
