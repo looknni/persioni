@@ -181,7 +181,6 @@ set wireless.default_radio0.wpa_disable_eapol_key_retries='1'
 set wireless.default_radio0.ieee80211w='2'
 set wireless.default_radio0.ocv='1'
 set wireless.default_radio0.multicast_to_unicast_all='1'
-set wireless.default_radio0.isolate='1'
 set wireless.default_radio0.time_advertisement='2'
 set wireless.default_radio0.time_zone='HKT-8'
 set wireless.default_radio0.wnm_sleep_mode='1'
@@ -194,7 +193,6 @@ set wireless.default_radio1.wpa_disable_eapol_key_retries='1'
 set wireless.default_radio1.ieee80211w='2'
 set wireless.default_radio1.ocv='1'
 set wireless.default_radio1.multicast_to_unicast_all='1'
-set wireless.default_radio1.isolate='1'
 set wireless.default_radio1.time_advertisement='2'
 set wireless.default_radio1.time_zone='HKT-8'
 set wireless.default_radio1.wnm_sleep_mode='1'
@@ -202,12 +200,7 @@ set wireless.default_radio1.wnm_sleep_mode_no_keys='1'
 set wireless.default_radio1.bss_transition='1'
 commit
 EEOO
-
 verx=$(cat /etc/openwrt_version|awk -F '-' '{print $1}'|grep -Eo "[0-9]{5}")
 if [ "${verx}" -ge "32353" ] ;then
-	uci set wireless.default_radio0.bridge_isolate='1'
-	uci set wireless.default_radio1.bridge_isolate='1'
-	uci commit
 fi
-
 exit 0 
