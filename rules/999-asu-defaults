@@ -1,6 +1,5 @@
 #!/bin/sh
-# /rom/etc/uci-defaults/
-# built.in -> package/base-files/files/etc/uci-defaults/
+# /rom/etc/uci-defaults/ ./package/base-files/files/etc/uci-defaults/
 touch /root/.vimrc
 i41p='i41p'
 i61p='i61p'
@@ -50,7 +49,8 @@ set network.@device[0].igmpversion='3'
 set network.@device[0].mldversion='2'
 commit
 WW
-echo -e 'net.core.default_qdisc=fq\nnet.ipv4.tcp_congestion_control=bbr #hybla #bbr' >> /etc/sysctl.conf
+echo -e 'net.core.default_qdisc = fq\n# hybla bbr\nnet.ipv4.tcp_congestion_control = bbr' >> /etc/sysctl.conf
+sysctl -p
 GHTTPS
 
 cat > /root/nft.init.0 << EXO
