@@ -26,11 +26,6 @@ else
 	echo ${a} > /etc/profile.d/z99.sh
 fi
 unset a
-rm /etc/rc.local
-cat > /etc/rc.local << 'LOGF'
-logread -f &
-exit 0
-LOGF
 cat > /root/hts.sh << 'GHTTPS'
 openssl ecparam -name prime256v1 -out /etc/ecparam.pem
 openssl req -new -newkey ec:/etc/ecparam.pem -days 555 -nodes -x509 -keyout /etc/uhttpd.key -out /etc/uhttpd.crt -subj "/C=CN/ST=st/L=l/O=o/OU=ou/CN=cn/emailAddress=email@emil.com"
