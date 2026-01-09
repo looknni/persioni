@@ -368,7 +368,11 @@ NextPageKey=PGDN
 # .config/fcitx/conf/fcitx-classic-ui.config
 SkinType=classic
 
-# /etc/sysctl.conf 
+# /etc/sysctl.conf
+# pfifo_fast sfq codel fq_codel 
+net.core.default_qdisc = fq_codel
+# bbr hybla
+net.ipv4.tcp_congestion_control = bbr
 vm.min_free_kbytes=100000
 
 ? grub-mkstandalone --compress gz -o /efi/EFI/gentoo/xxx.efi -d /usr/lib/grub/x86_64-efi/ -O x86_64-efi /boot/grub/grub.cfg -v
