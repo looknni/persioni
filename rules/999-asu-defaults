@@ -49,7 +49,7 @@ set network.@device[0].igmpversion='3'
 set network.@device[0].mldversion='2'
 commit
 WW
-echo -e '# fq fq_codel cake\nnet.core.default_qdisc = fq_codel\n# hybla bbr\nnet.ipv4.tcp_congestion_control = bbr' >> /etc/sysctl.conf
+echo -e '# fq fq_codel\nnet.core.default_qdisc = fq_codel\n# hybla bbr\nnet.ipv4.tcp_congestion_control = bbr' >> /etc/sysctl.conf
 sysctl -p
 ssh-keygen -t ed25519
 cp /etc/dropbear/authorized_keys /root/.ssh
