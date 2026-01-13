@@ -47,13 +47,27 @@ set network.@device[0].rpfilter='strict'
 set network.@device[0].ip6segmentrouting='1'
 set network.@device[0].igmpversion='3'
 set network.@device[0].mldversion='2'
+delete dhcp.@dnsmasq[0].boguspriv
+delete dhcp.@dnsmasq[0].filterwin2k
+delete dhcp.@dnsmasq[0].nonegcache
+delete dhcp.@dnsmasq[0].nonwildcard
+add_list dhcp.@dnsmasq[0].cache_rr='A'
+add_list dhcp.@dnsmasq[0].cache_rr='AAAA'
+add_list dhcp.@dnsmasq[0].cache_rr='CNAME'
+add_list dhcp.@dnsmasq[0].cache_rr='MX'
+add_list dhcp.@dnsmasq[0].cache_rr='NS'
+add_list dhcp.@dnsmasq[0].cache_rr='PTR'
+add_list dhcp.@dnsmasq[0].cache_rr='SRV'
+add_list dhcp.@dnsmasq[0].cache_rr='TXT'
+set dhcp.@dnsmasq[0].sequential_ip='1'
+set dhcp.@dnsmasq[0].interface='lan'
 commit
 WW
 echo -e '# fq fq_codel\nnet.core.default_qdisc = fq_codel\n# hybla bbr\nnet.ipv4.tcp_congestion_control = bbr' >> /etc/sysctl.conf
 sysctl -p
-ssh-keygen -t ed25519
 cp /etc/dropbear/authorized_keys /root/.ssh
-# rm /etc/uci-defaults/99-asu-defaults
+rm /etc/uci-defaults/99-asu-defaults
+ssh-keygen -t ed25519
 GHTTPS
 
 cat > /root/nft.init.0 << EXO
