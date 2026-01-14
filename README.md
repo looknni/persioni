@@ -369,8 +369,8 @@ NextPageKey=PGDN
 SkinType=classic
 
 # /etc/sysctl.conf
-# pfifo_fast sfq codel fq_codel 
-net.core.default_qdisc = fq_codel
+# pfifo_fast sfq codel fq_codel fq_pie
+net.core.default_qdisc = fq_pie
 # bbr hybla
 net.ipv4.tcp_congestion_control = bbr
 vm.min_free_kbytes=100000
