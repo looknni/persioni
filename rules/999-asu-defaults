@@ -182,6 +182,7 @@ set dhcp.@dnsmasq[0].local='/o/'
 set dhcp.@dnsmasq[0].cachesize="$((nl*800))"
 set dhcp.@dnsmasq[0].min_cache_ttl='600'
 set dhcp.@dnsmasq[0].max_cache_ttl='3000'
+set dhcp.@dnsmasq[0].dnssec='1'
 set dhcp.lan.leasetime='3h'
 set firewall.@defaults[0].synflood_protect='1'
 set firewall.@defaults[0].flow_offloading='0'
