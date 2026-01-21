@@ -67,6 +67,7 @@ sysctl -p
 rm /etc/uci-defaults/99-asu-defaults
 ssh-keygen -t ed25519
 cp /etc/dropbear/authorized_keys /root/.ssh
+rm $0
 GHTTPS
 
 cat > /root/nft.init.0 << EXO
