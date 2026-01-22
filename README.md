@@ -369,8 +369,8 @@ NextPageKey=PGDN
 SkinType=classic
 
 # /etc/sysctl.conf
-# pfifo_fast sfq codel fq_codel fq_pie
-net.core.default_qdisc = fq_pie
+# pfifo_fast sfq codel fq_codel
+net.core.default_qdisc = fq_codel
 # bbr hybla
 net.ipv4.tcp_congestion_control = bbr
 vm.min_free_kbytes=100000
@@ -389,7 +389,7 @@ git checkout v24 ; ./scripts/feeds update -a ; ./scripts/feeds install -a # git 
 # ./target/linux/ramips/dts # reg = <0x50000 0x1fb0000> # 32m # echo $((16#A));printf '%x\n' 10;echo "ibase=10;obase=16;10"|bc
 # ./target/linux/ramips/image # IMAGE_SIZE := 32m
 rm .config* && make defconfig && make clean
-make menuconfig # dnsmasq-full libustream-wolfssl wpad-wolfssl vim aircrack-ng openssl-util hcxdumptool tcpdump openssh-server openssh-sftp-server openssh-client kmod-tcp-bbr kmod-tcp-hybla kmod-sched kmod-sched-fq-pie ustp unbound-daemon
+make menuconfig # dnsmasq-full libustream-wolfssl wpad-wolfssl vim aircrack-ng openssl-util hcxdumptool tcpdump openssh-server openssh-sftp-server openssh-client kmod-tcp-bbr kmod-tcp-hybla kmod-sched ustp unbound-daemon
 make -j4 V=s
 ```
 ##### find / \( -path /proc -o -path /run \) -prune -o -type l ! -exec test -e {} \; -print
