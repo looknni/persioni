@@ -1,5 +1,4 @@
 #!/bin/sh
-# /rom/etc/uci-defaults/ ./package/base-files/files/etc/uci-defaults/
 touch /root/.vimrc
 i41p='i41p'
 i61p='i61p'
