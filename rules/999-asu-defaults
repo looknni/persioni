@@ -50,21 +50,10 @@ delete dhcp.@dnsmasq[0].boguspriv
 delete dhcp.@dnsmasq[0].filterwin2k
 delete dhcp.@dnsmasq[0].nonegcache
 delete dhcp.@dnsmasq[0].nonwildcard
-add_list dhcp.@dnsmasq[0].cache_rr='A'
-add_list dhcp.@dnsmasq[0].cache_rr='AAAA'
-add_list dhcp.@dnsmasq[0].cache_rr='CNAME'
-add_list dhcp.@dnsmasq[0].cache_rr='MX'
-add_list dhcp.@dnsmasq[0].cache_rr='NS'
-add_list dhcp.@dnsmasq[0].cache_rr='PTR'
-add_list dhcp.@dnsmasq[0].cache_rr='SRV'
-add_list dhcp.@dnsmasq[0].cache_rr='TXT'
-set dhcp.@dnsmasq[0].sequential_ip='1'
-set dhcp.@dnsmasq[0].interface='lan'
 commit
 WW
-echo -e '# fq fq_codel\nnet.core.default_qdisc = fq_codel\n# hybla bbr\nnet.ipv4.tcp_congestion_control = bbr' >> /etc/sysctl.conf
-sysctl -p
-rm /etc/uci-defaults/99-asu-defaults
+# echo -e '# fq fq_codel\nnet.core.default_qdisc = fq_codel\n# hybla bbr\nnet.ipv4.tcp_congestion_control = bbr' >> /etc/sysctl.conf
+# sysctl -p
 ssh-keygen -t ed25519
 cp /etc/dropbear/authorized_keys /root/.ssh
 rm $0
@@ -103,6 +92,7 @@ case "\$1" in
 esac
 EXO
 
+rm /etc/uci-defaults/99-asu-defaults
 touch /etc/dropbear/authorized_keys
 pd="fe80::${nip}"
 (echo ${pd};sleep 1;echo ${pd}) | passwd > /dev/null
@@ -182,6 +172,8 @@ set dhcp.@dnsmasq[0].cachesize="9999"
 set dhcp.@dnsmasq[0].min_cache_ttl='600'
 set dhcp.@dnsmasq[0].max_cache_ttl='3000'
 set dhcp.@dnsmasq[0].dnssec='1'
+set dhcp.@dnsmasq[0].sequential_ip='1'
+set dhcp.@dnsmasq[0].interface='lan'
 set dhcp.lan.leasetime='3h'
 set firewall.@defaults[0].synflood_protect='1'
 set firewall.@defaults[0].flow_offloading='0'
