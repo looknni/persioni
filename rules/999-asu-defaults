@@ -207,7 +207,7 @@ if $(opkg list-installed | grep -q unbound-daemon) ; then
 	uci add_list unbound.ub_main.trigger_interface='lan'
 	uci add_list unbound.ub_main.trigger_interface='wan'
 	uci commit
-	echo 'server=/*.*/127.0.0.1#53' >> /etc/dnsmasq.conf
+	echo -e '\nserver=/#/127.0.0.1#53\nserver=/*.*/127.0.0.1#53' >> /etc/dnsmasq.conf
 fi
 verx=$(cat /etc/openwrt_version|awk -F '-' '{print $1}'|grep -Eo "[0-9]{5}")
 if [ "${verx}" -ge "32353" ] ;then
