@@ -213,7 +213,7 @@ cat > /root/unbound.conf << 'UNBOUND'
 
 server:
 	verbosity: 1
-	statistics-interval: 500
+	statistics-interval: 5555
 	shm-enable: yes
 	shm-key: 11777
 	# statistics-cumulative: no
