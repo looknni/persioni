@@ -539,7 +539,7 @@ forward-zone:
 #	forward-host: fwd.example.com
 UNBOUND
 fi
-verx=$(cat /etc/openwrt_version|awk -F '-' '{print $1}'|grep -Eo "[0-9]{5}")
-if [ "${verx}" -ge "32353" ] ;then
-fi
+# verx=$(cat /etc/openwrt_version|awk -F '-' '{print $1}'|grep -Eo "[0-9]{5}")
+# if [ "${verx}" -ge "32353" ] ;then
+# fi
 exit 0 
