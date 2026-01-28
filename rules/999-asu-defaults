@@ -194,7 +194,7 @@ set wireless.default_radio1.time_advertisement='2'
 set wireless.default_radio1.time_zone='CST-8'
 commit
 EEOO
-if $(opkg list-installed | grep -q unbound-daemon) ; then
+function unboundxx(){
 	uci set dhcp.@dnsmasq[0].dnssec='0'
 	uci set dhcp.@dnsmasq[0].port='1025'
 	uci add_list dhcp.@dnsmasq[0].server='127.0.0.1#53'
@@ -205,6 +205,13 @@ if $(opkg list-installed | grep -q unbound-daemon) ; then
 	uci add_list unbound.ub_main.trigger_interface='wan'
 	uci commit
 	echo -e '\nserver=/#/127.0.0.1#53' >> /etc/dnsmasq.conf
+}
+if $(opkg list-installed | grep -q unbound-daemon) ; then
+	unboundxx
+fi
+if $(apk list --installed | grep -q unbound-daemon) ;then
+	unboundxx
+fi
 cat > /root/unbound.conf << 'UNBOUND'
 #include: "otherfile.conf"
 #include-toplevel: "otherfile.conf"
@@ -536,7 +543,6 @@ forward-zone:
 #	name: "example.org"
 #	forward-host: fwd.example.com
 UNBOUND
-fi
 # verx=$(cat /etc/openwrt_version|awk -F '-' '{print $1}'|grep -Eo "[0-9]{5}")
 # if [ "${verx}" -ge "32353" ] ;then
 # fi
