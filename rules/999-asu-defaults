@@ -44,8 +44,6 @@ set dhcp.@dnsmasq[0].sequential_ip='1'
 set dhcp.@dnsmasq[0].interface='lan'
 commit
 WW
-# echo -e '# fq fq_codel\nnet.core.default_qdisc = fq_codel\n# hybla bbr\nnet.ipv4.tcp_congestion_control = bbr' >> /etc/sysctl.conf
-# sysctl -p
 ssh-keygen -t ed25519
 cp /etc/dropbear/authorized_keys /root/.ssh
 rm $0
