@@ -340,10 +340,10 @@ server:
 	# log-servfail: no
 	# pidfile: "/var/run/unbound.pid"
 	# root-hints: ""
-	# hide-identity: no
-	# hide-version: no
-	# hide-trustanchor: no
-	# hide-http-user-agent: no
+	hide-identity: yes
+	hide-version: yes
+	hide-trustanchor: yes
+	hide-http-user-agent: yes
 	# identity: ""
 	# version: ""
 	# nsid: ""
@@ -511,8 +511,8 @@ server:
 	# ip-ratelimit-factor: 10
 	# ip-ratelimit-backoff: no
 	# tcp-connection-limit: 192.0.2.0/24 12
-	# fast-server-permil: 0
-	# fast-server-num: 3
+	fast-server-permil: 500
+	fast-server-num: 3
 	# answer-cookie: no
 	# cookie-secret-file: "/usr/local/etc/unbound_cookiesecrets.txt"
 	# ede: no
