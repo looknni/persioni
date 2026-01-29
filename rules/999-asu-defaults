@@ -195,6 +195,7 @@ set wireless.default_radio1.time_zone='CST-8'
 commit
 EEOO
 function unboundxx(){
+	uci set dhcp.@dnsmasq[0].cachesize='0'
 	uci set dhcp.@dnsmasq[0].dnssec='0'
 	uci set dhcp.@dnsmasq[0].port='1025'
 	uci add_list dhcp.@dnsmasq[0].server='127.0.0.1#53'
