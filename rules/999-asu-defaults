@@ -196,14 +196,13 @@ function unboundxx(){
 	uci set dhcp.@dnsmasq[0].cachesize='0'
 	uci set dhcp.@dnsmasq[0].dnssec='0'
 	uci set dhcp.@dnsmasq[0].port='1025'
-	uci add_list dhcp.@dnsmasq[0].server='127.0.0.1#53'
 	uci set dhcp.@dnsmasq[0].noresolv='1'
 	uci set unbound.ub_main.listen_port='53'
 	uci set unbound.ub_main.manual_conf='1'
 	uci add_list unbound.ub_main.trigger_interface='lan'
 	uci add_list unbound.ub_main.trigger_interface='wan'
 	uci commit
-	echo -e '\nserver=/#/127.0.0.1#53' >> /etc/dnsmasq.conf
+	echo -e '\nserver=/#/127.0.0.1#53\nserver=/#/::1#53' >> /etc/dnsmasq.conf
 }
 if $(opkg list-installed | grep -q unbound-daemon) ; then
 	unboundxx
@@ -211,7 +210,7 @@ fi
 if $(apk list --installed | grep -q unbound-daemon) ;then
 	unboundxx
 fi
-cat > /root/unbound.conf << 'UNBOUND'
+cat > /root/unbound.conf << UNBOUND
 #include: "otherfile.conf"
 #include-toplevel: "otherfile.conf"
 
@@ -234,7 +233,7 @@ server:
 	port: 53
 	interface: 0.0.0.0
 	interface: ::0
-	# outgoing-interface: 192.0.2.153
+	outgoing-interface: 172.${r16r}.${r255r}.1
 	# outgoing-interface: 2001:DB8::5
 	# outgoing-interface: 2001:DB8::6
 	# outgoing-interface: 2001:DB8::/64
