@@ -253,7 +253,7 @@ server:
 	max-udp-size: 1232
 	stream-wait-size: 4m
 	msg-buffer-size: 65552
-	msg-cache-size: 4m
+	msg-cache-size: 8m
 	msg-cache-slabs: 4
 	num-queries-per-thread: 2048
 	jostle-timeout: 200
@@ -274,12 +274,12 @@ server:
 	wait-limit-netblock: ::1/128 -1
 	wait-limit-cookie-netblock: 127.0.0.0/8 -1
 	wait-limit-cookie-netblock: ::1/128 -1
-	rrset-cache-size: 4m
+	rrset-cache-size: 8m
 	rrset-cache-slabs: 4
-	cache-min-ttl: 3600
+	cache-min-ttl: 43200
 	cache-max-ttl: 86400
-	# cache-max-negative-ttl: 3600
-	# cache-min-negative-ttl: 0
+	cache-max-negative-ttl: 3600
+	cache-min-negative-ttl: 0
 	# infra-host-ttl: 900
 	# infra-cache-min-rtt: 50
 	# infra-cache-max-rtt: 120000
@@ -374,7 +374,7 @@ server:
 	# do-not-query-address: 127.0.0.1/8
 	# do-not-query-address: ::1
 	# do-not-query-localhost: yes
-	# prefetch: no
+	prefetch: yes
 	# prefetch-key: no
 	# deny-any: no
 	rrset-roundrobin: yes
