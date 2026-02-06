@@ -241,8 +241,8 @@ server:
 	outgoing-range: 4096
 	# outgoing-port-permit: 32768
 	# outgoing-port-avoid: "3200-3208"
-	outgoing-num-tcp: 10
-	incoming-num-tcp: 10
+	outgoing-num-tcp: 100
+	incoming-num-tcp: 100
 	so-rcvbuf: 0
 	so-sndbuf: 4m
 	so-reuseport: yes
