@@ -42,7 +42,6 @@ delete dhcp.@dnsmasq[0].filterwin2k
 delete dhcp.@dnsmasq[0].nonegcache
 delete dhcp.@dnsmasq[0].nonwildcard
 set dhcp.@dnsmasq[0].sequential_ip='1'
-set dhcp.@dnsmasq[0].interface='lan'
 commit
 WW
 ssh-keygen -t ed25519
