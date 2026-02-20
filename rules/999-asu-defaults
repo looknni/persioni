@@ -42,6 +42,7 @@ delete dhcp.@dnsmasq[0].filterwin2k
 delete dhcp.@dnsmasq[0].nonegcache
 delete dhcp.@dnsmasq[0].nonwildcard
 set dhcp.@dnsmasq[0].sequential_ip='1'
+set dhcp.@dnsmasq[0].quietdhcp='1'
 delete system.ntp.server
 add_list system.ntp.server='edu.ntp.org.cn'
 add_list system.ntp.server='ntp.org.cn'
