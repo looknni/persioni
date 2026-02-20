@@ -45,6 +45,7 @@ set dhcp.@dnsmasq[0].sequential_ip='1'
 delete system.ntp.server
 add_list system.ntp.server='edu.ntp.org.cn'
 add_list system.ntp.server='ntp.org.cn'
+add_list system.ntp.server='ntp.cnnic.cn'
 commit
 WW
 ssh-keygen -t ed25519
