@@ -247,7 +247,7 @@ server:
 	# outgoing-port-avoid: "3200-3208"
 	outgoing-num-tcp: 10
 	incoming-num-tcp: 10
-	so-rcvbuf: 0
+	so-rcvbuf: 4m
 	so-sndbuf: 4m
 	so-reuseport: yes
 	# ip-transparent: no
@@ -278,7 +278,7 @@ server:
 	wait-limit-netblock: ::1/128 -1
 	wait-limit-cookie-netblock: 127.0.0.0/8 -1
 	wait-limit-cookie-netblock: ::1/128 -1
-	rrset-cache-size: 8m
+	rrset-cache-size: 16m
 	rrset-cache-slabs: 4
 	cache-min-ttl: 43200
 	cache-max-ttl: 86400
