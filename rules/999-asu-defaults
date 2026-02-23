@@ -284,12 +284,12 @@ server:
 	cache-max-ttl: 86400
 	cache-max-negative-ttl: 3600
 	cache-min-negative-ttl: 0
-	# infra-host-ttl: 900
-	# infra-cache-min-rtt: 50
-	# infra-cache-max-rtt: 120000
-	# infra-keep-probing: no
-	# infra-cache-slabs: 4
-	# infra-cache-numhosts: 10000
+	infra-host-ttl: 900
+	infra-cache-min-rtt: 50
+	infra-cache-max-rtt: 120000
+	infra-keep-probing: no
+	infra-cache-slabs: 4
+	infra-cache-numhosts: 10000
 	# define-tag: "tag1 tag2 tag3"
 	do-ip4: yes
 	do-ip6: yes
@@ -499,19 +499,19 @@ server:
 	# quic-size: 8m
 	# dns64-prefix: 64:ff9b::0/96
 	# dns64-ignore-aaaa: "example.com"
-	# ratelimit: 0
-	# ratelimit-size: 4m
-	# ratelimit-slabs: 4
-	# ratelimit-factor: 10
-	# ratelimit-backoff: no
+	ratelimit: 1000
+	ratelimit-size: 4m
+	ratelimit-slabs: 4
+	ratelimit-factor: 10
+	ratelimit-backoff: yes
 	# ratelimit-for-domain: example.com 1000
 	# ratelimit-below-domain: com 1000
-	# ip-ratelimit: 0
-	# ip-ratelimit-cookie: 0
-	# ip-ratelimit-size: 4m
-	# ip-ratelimit-slabs: 4
-	# ip-ratelimit-factor: 10
-	# ip-ratelimit-backoff: no
+	ip-ratelimit: 20
+	ip-ratelimit-cookie: 0
+	ip-ratelimit-size: 4m
+	ip-ratelimit-slabs: 4
+	ip-ratelimit-factor: 10
+	ip-ratelimit-backoff: yes
 	# tcp-connection-limit: 192.0.2.0/24 12
 	fast-server-permil: 500
 	fast-server-num: 3
