@@ -227,7 +227,6 @@ server:
 	statistics-inhibit-zero: yes
 	num-threads: 2
 	# interface: 192.0.2.153
-	# interface: 192.0.2.154
 	# interface: 192.0.2.154@5003
 	# interface: 2001:DB8::5
 	# interface: eth0@5003
@@ -238,7 +237,6 @@ server:
 	interface: ::0
 	outgoing-interface: 172.${r16r}.${r255r}.1
 	# outgoing-interface: 2001:DB8::5
-	# outgoing-interface: 2001:DB8::6
 	# outgoing-interface: 2001:DB8::/64
 	# prefer-ip6: no
 	# prefer-ip4: no
@@ -284,12 +282,12 @@ server:
 	cache-max-ttl: 86400
 	cache-max-negative-ttl: 3600
 	cache-min-negative-ttl: 0
-	infra-host-ttl: 900
-	infra-cache-min-rtt: 50
-	infra-cache-max-rtt: 120000
-	infra-keep-probing: no
-	infra-cache-slabs: 4
-	infra-cache-numhosts: 10000
+	# infra-host-ttl: 900
+	# infra-cache-min-rtt: 50
+	# infra-cache-max-rtt: 120000
+	# infra-keep-probing: no
+	# infra-cache-slabs: 4
+	# infra-cache-numhosts: 10000
 	# define-tag: "tag1 tag2 tag3"
 	do-ip4: yes
 	do-ip6: yes
@@ -318,7 +316,6 @@ server:
 	# access-control-tag-data: 192.0.2.0/24 tag2 "A 127.0.0.1"
 	# access-control-view: 192.0.2.0/24 viewname
 	# interface-action: 192.0.2.153 allow
-	# interface-action: 192.0.2.154 allow
 	# interface-action: 192.0.2.154@5003 allow
 	# interface-action: 2001:DB8::5 allow
 	# interface-action: eth0@5003 allow
