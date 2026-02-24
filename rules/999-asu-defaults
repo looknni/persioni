@@ -51,6 +51,7 @@ commit
 WW
 ssh-keygen -t ed25519
 cp /etc/dropbear/authorized_keys /root/.ssh
+sed -i '/^\t#/{5,$d;}' unbound.conf
 rm $0
 GHTTPS
 
