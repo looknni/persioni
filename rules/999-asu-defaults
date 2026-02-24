@@ -506,7 +506,7 @@ server:
 	ratelimit-backoff: yes
 	# ratelimit-for-domain: example.com 1000
 	# ratelimit-below-domain: com 1000
-	ip-ratelimit: 20
+	ip-ratelimit: 100
 	ip-ratelimit-cookie: 0
 	ip-ratelimit-size: 4m
 	ip-ratelimit-slabs: 4
