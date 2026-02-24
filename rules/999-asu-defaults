@@ -26,11 +26,11 @@ fi
 unset a
 cat > /root/hts.sh << 'GHTTPS'
 openssl ecparam -name prime256v1 -out /etc/ecparam.pem
-openssl req -new -newkey ec:/etc/ecparam.pem -days 555 -nodes -x509 -keyout /etc/uhttpd.key -out /etc/uhttpd.crt -subj "/C=CN/ST=st/L=l/O=o/OU=ou/CN=cn/emailAddress=email@emil.com"
+openssl req -new -newkey ec:/etc/ecparam.pem -days 5555 -nodes -x509 -keyout /etc/uhttpd.key -out /etc/uhttpd.crt -subj "/C=CN/ST=st/L=l/O=o/OU=ou/CN=cn/emailAddress=email@emil.com"
 openssl ecparam -name prime256v1 -out /etc/radius/ecparam.pem
-openssl req -new -newkey ec:/etc/radius/ecparam.pem -days 555 -nodes -x509 -keyout /etc/radius/key.pem -out /etc/radius/cert.pem -subj "/C=CN/ST=st/L=l/O=o/OU=ou/CN=cn/emailAddress=email@emil.com"
+openssl req -new -newkey ec:/etc/radius/ecparam.pem -days 5555 -nodes -x509 -keyout /etc/radius/key.pem -out /etc/radius/cert.pem -subj "/C=CN/ST=st/L=l/O=o/OU=ou/CN=cn/emailAddress=email@emil.com"
 openssl req -new -newkey ec:/etc/ecparam.pem -nodes -keyout /etc/radius/server.key -out /etc/radius/server.csr -subj "/C=US/ST=Denial/L=Springfield/O=Dis/CN=cn"
-openssl x509 -req -in /etc/radius/server.csr -CA /etc/radius/cert.pem -CAkey /etc/radius/key.pem -CAcreateserial -out /etc/radius/ca.pem -days 555
+openssl x509 -req -in /etc/radius/server.csr -CA /etc/radius/cert.pem -CAkey /etc/radius/key.pem -CAcreateserial -out /etc/radius/ca.pem -days 5555
 uci batch << WW
 delete uhttpd.main.listen_http
 del_list uhttpd.main.listen_https='[::]:443'
@@ -414,8 +414,8 @@ server:
 	key-cache-size: 4m
 	key-cache-slabs: 4
 	neg-cache-size: 1m
-	trust-anchor: "nlnetlabs.nl. DNSKEY 257 3 5 AQPzzTWMz8qSWIQlfRnPckx2BiVmkVN6LPupO3mbz7FhLSnm26n6iG9N Lby97Ji453aWZY3M5/xJBSOS2vWtco2t8C0+xeO1bc/d6ZTy32DHchpW 6rDH1vp86Ll+ha0tmwyy9QP7y2bVw5zSbFCrefk8qCUBgfHm9bHzMG1U BYtEIQ=="
-	trust-anchor: "jelte.nlnetlabs.nl. DS 42860 5 1 14D739EB566D2B1A5E216A0BA4D17FA9B038BE4A"
+	# trust-anchor: "nlnetlabs.nl. DNSKEY 257 3 5 AQPzzTWMz8qSWIQlfRnPckx2BiVmkVN6LPupO3mbz7FhLSnm26n6iG9N Lby97Ji453aWZY3M5/xJBSOS2vWtco2t8C0+xeO1bc/d6ZTy32DHchpW 6rDH1vp86Ll+ha0tmwyy9QP7y2bVw5zSbFCrefk8qCUBgfHm9bHzMG1U BYtEIQ=="
+	# trust-anchor: "jelte.nlnetlabs.nl. DS 42860 5 1 14D739EB566D2B1A5E216A0BA4D17FA9B038BE4A"
 	local-zone: "localhost." nodefault
 	local-zone: "127.in-addr.arpa." nodefault
 	local-zone: "1.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.ip6.arpa." nodefault
