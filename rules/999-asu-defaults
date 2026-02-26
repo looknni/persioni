@@ -337,7 +337,7 @@ server:
 	log-local-actions: no
 	log-servfail: no
 	pidfile: "/var/run/unbound.pid"
-	root-hints: ""
+	root-hints: "root.hints"
 	hide-identity: yes
 	hide-version: yes
 	hide-trustanchor: yes
