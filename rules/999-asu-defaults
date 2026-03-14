@@ -162,7 +162,6 @@ set network.globals.tcp_l3mdev='1'
 set network.globals.udp_l3mdev='1'
 set network.globals.steering_flows='128'
 set dhcp.odhcpd.loglevel='1' #4
-set dhcp.@dnsmasq[0].cachesize="9999"
 set firewall.@defaults[0].synflood_protect='1'
 set firewall.@defaults[0].flow_offloading='0'
 set firewall.@defaults[0].flow_offloading_hw='0'
