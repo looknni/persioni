@@ -200,7 +200,10 @@ function unboundxx(){
 	uci set dhcp.@dnsmasq[0].port='1025'
 	uci set dhcp.@dnsmasq[0].noresolv='1'
 	uci set unbound.ub_main.listen_port='53'
+	uci set unbound.ub_main.num_threads='2'
 	uci set unbound.ub_main.manual_conf='1'
+	uci set unbound.ub_main.query_minimize='1'
+	uci set unbound.ub_main.rebind_localhost='1'
 	uci add_list unbound.ub_main.trigger_interface='lan'
 	uci add_list unbound.ub_main.trigger_interface='wan'
 	uci commit
