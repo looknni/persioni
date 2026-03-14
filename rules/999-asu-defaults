@@ -357,7 +357,7 @@ server:
 	harden-algo-downgrade: yes
 	harden-unknown-additional: yes
 	qname-minimisation: yes
-	qname-minimisation-strict: yes
+	qname-minimisation-strict: no
 	aggressive-nsec: yes
 	use-caps-for-id: yes
 	# caps-exempt: "licdn.com"
