@@ -256,7 +256,7 @@ server:
 	max-udp-size: 1232
 	stream-wait-size: 4m
 	msg-buffer-size: 65552
-	msg-cache-size: 8m
+	msg-cache-size: 4m
 	msg-cache-slabs: 4
 	num-queries-per-thread: 2048
 	jostle-timeout: 200
@@ -277,7 +277,7 @@ server:
 	wait-limit-netblock: ::1/128 -1
 	wait-limit-cookie-netblock: 127.0.0.0/8 -1
 	wait-limit-cookie-netblock: ::1/128 -1
-	rrset-cache-size: 16m
+	rrset-cache-size: 4m
 	rrset-cache-slabs: 4
 	cache-min-ttl: 43200
 	cache-max-ttl: 86400
