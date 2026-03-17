@@ -194,12 +194,13 @@ set wireless.default_radio1.time_advertisement='2'
 set wireless.default_radio1.time_zone='CST-8'
 commit
 EEOO
+nkers=2
 function unboundxx(){
 	uci set dhcp.@dnsmasq[0].dnssec='0'
 	uci set dhcp.@dnsmasq[0].port='1025'
 	uci set dhcp.@dnsmasq[0].noresolv='1'
 	uci set unbound.ub_main.listen_port='53'
-	uci set unbound.ub_main.num_threads='2'
+	uci set unbound.ub_main.num_threads="${nkers}"
 	uci set unbound.ub_main.manual_conf='1'
 	uci set unbound.ub_main.query_minimize='1'
 	uci set unbound.ub_main.rebind_localhost='1'
@@ -226,7 +227,7 @@ server:
 	# statistics-cumulative: no
 	# extended-statistics: no
 	statistics-inhibit-zero: yes
-	num-threads: 2
+	num-threads: ${nkers}
 	# interface: 192.0.2.153
 	# interface: 192.0.2.154@5003
 	# interface: 2001:DB8::5
@@ -244,20 +245,20 @@ server:
 	outgoing-range: 4096
 	# outgoing-port-permit: 32768
 	# outgoing-port-avoid: "3200-3208"
-	outgoing-num-tcp: 10
-	incoming-num-tcp: 10
-	so-rcvbuf: 2m
-	so-sndbuf: 4m
+	outgoing-num-tcp: 30
+	incoming-num-tcp: 30
+	so-rcvbuf: 8m
+	so-sndbuf: 8m
 	so-reuseport: yes
 	# ip-transparent: no
 	# ip-freebind: no
 	# ip-dscp: 0
 	edns-buffer-size: 1232
 	max-udp-size: 1232
-	stream-wait-size: 4m
+	stream-wait-size: 8m
 	msg-buffer-size: 65552
-	msg-cache-size: 4m
-	msg-cache-slabs: 4
+	msg-cache-size: 8m
+	msg-cache-slabs: ${nkers}
 	num-queries-per-thread: 2048
 	jostle-timeout: 200
 	# delay-close: 0
@@ -277,8 +278,8 @@ server:
 	wait-limit-netblock: ::1/128 -1
 	wait-limit-cookie-netblock: 127.0.0.0/8 -1
 	wait-limit-cookie-netblock: ::1/128 -1
-	rrset-cache-size: 4m
-	rrset-cache-slabs: 4
+	rrset-cache-size: 8m
+	rrset-cache-slabs: ${nkers}
 	cache-min-ttl: 43200
 	cache-max-ttl: 86400
 	cache-max-negative-ttl: 3600
@@ -353,7 +354,7 @@ server:
 	harden-large-queries: yes
 	harden-glue: yes
 	# harden-unverified-glue: no
-	harden-dnssec-stripped: yes
+	harden-dnssec-stripped: no
 	harden-below-nxdomain: yes
 	harden-referral-path: yes
 	harden-algo-downgrade: yes
@@ -411,9 +412,9 @@ server:
 	# del-holddown: 2592000 # 30 days
 	# keep-missing: 31622400 # 366 days
 	# permit-small-holddown: no
-	key-cache-size: 4m
-	key-cache-slabs: 4
-	neg-cache-size: 1m
+	key-cache-size: 8m
+	key-cache-slabs: ${nkers}
+	neg-cache-size: 8m
 	# trust-anchor: "nlnetlabs.nl. DNSKEY 257 3 5 AQPzzTWMz8qSWIQlfRnPckx2BiVmkVN6LPupO3mbz7FhLSnm26n6iG9N Lby97Ji453aWZY3M5/xJBSOS2vWtco2t8C0+xeO1bc/d6ZTy32DHchpW 6rDH1vp86Ll+ha0tmwyy9QP7y2bVw5zSbFCrefk8qCUBgfHm9bHzMG1U BYtEIQ=="
 	# trust-anchor: "jelte.nlnetlabs.nl. DS 42860 5 1 14D739EB566D2B1A5E216A0BA4D17FA9B038BE4A"
 	local-zone: "localhost." nodefault
@@ -499,7 +500,7 @@ server:
 	# dns64-ignore-aaaa: "example.com"
 	ratelimit: 0
 	ratelimit-size: 4m
-	ratelimit-slabs: 4
+	ratelimit-slabs: ${nkers}
 	ratelimit-factor: 10
 	ratelimit-backoff: yes
 	# ratelimit-for-domain: example.com 1000
@@ -507,7 +508,7 @@ server:
 	ip-ratelimit: 0
 	ip-ratelimit-cookie: 0
 	ip-ratelimit-size: 4m
-	ip-ratelimit-slabs: 4
+	ip-ratelimit-slabs: ${nkers}
 	ip-ratelimit-factor: 10
 	ip-ratelimit-backoff: yes
 	# tcp-connection-limit: 192.0.2.0/24 12
