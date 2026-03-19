@@ -207,7 +207,7 @@ function unboundxx(){
 	uci add_list unbound.ub_main.trigger_interface='lan'
 	uci add_list unbound.ub_main.trigger_interface='wan'
 	uci commit
-	echo -e '\nserver=/#/127.0.0.1#53\nserver=/#/::1#53' >> /etc/dnsmasq.conf
+	echo -e '\nlisten-address=127.0.0.1\nlisten-address=::1\nserver=/#/127.0.0.1#53\nserver=/#/::1#53' >> /etc/dnsmasq.conf
 }
 if $(opkg list-installed | grep -q unbound-daemon) ; then
 	unboundxx
