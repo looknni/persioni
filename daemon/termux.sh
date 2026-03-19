@@ -1,7 +1,6 @@
 #!/data/data/com.termux/files/usr/bin/bash -e
-cat > $PREFIX/etc/resolv.conf << 'RESO'
-nameserver 223.6.6.6
-RESO
+dnsx=`routel |grep "default"|grep -oE "[0-9]{3}.[0-9]{2,3}.[0-9]{1,3}.[0-9]{1,3}"`
+echo "nameserver ${dnsx}\nnameserver 223.5.5.5" > /data/data/com.termux/files/usr/etc/resolv.conf
 cat >> ~/.termux/termux.properties << 'EXK'
 extra-keys = [['ESC','<','>','(',')','HOME','UP','END','PGUP'],['TAB','CTRL','{','}','BACKSLASH','LEFT','DOWN','RIGHT','PGDN']]
 terminal-margin-horizontal=1
