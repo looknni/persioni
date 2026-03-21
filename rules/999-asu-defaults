@@ -349,7 +349,7 @@ server:
 	# version: ""
 	# nsid: ""
 	# http-user-agent: ""
-	target-fetch-policy: "3 2 1 0 0"
+	target-fetch-policy: "3 1 0 0 0 0"
 	harden-short-bufsize: yes
 	harden-large-queries: yes
 	harden-glue: yes
