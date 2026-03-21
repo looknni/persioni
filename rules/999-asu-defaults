@@ -242,7 +242,7 @@ server:
 	# outgoing-interface: 2001:DB8::/64
 	# prefer-ip6: no
 	# prefer-ip4: no
-	outgoing-range: 4096
+	outgoing-range: 450
 	# outgoing-port-permit: 32768
 	# outgoing-port-avoid: "3200-3208"
 	outgoing-num-tcp: 30
@@ -257,9 +257,9 @@ server:
 	max-udp-size: 1232
 	stream-wait-size: 8m
 	msg-buffer-size: 65552
-	msg-cache-size: 8m
+	msg-cache-size: 4m
 	msg-cache-slabs: ${nkers}
-	num-queries-per-thread: 2048
+	num-queries-per-thread: 225
 	jostle-timeout: 200
 	# delay-close: 0
 	udp-connect: yes
