@@ -378,6 +378,9 @@ vm.min_free_kbytes=100000
 ? grub-mkstandalone --compress gz -o /efi/EFI/gentoo/xxx.efi -d /usr/lib/grub/x86_64-efi/ -O x86_64-efi /boot/grub/grub.cfg -v
 ? efibootmgr -c -d /dev/sda -p 2 -L "gentoo" -l "\EFI\gentoo\xxx.efi"
 ? efibootmgr -b 0002 -B
+
+# wayland # dbus-run-session sway --unsupport-gpu
+emerge -av gui-wm/sway gui-apps/foot gui-apps/wmenu
 ```
 ## ~~[Openwrt](https://lxr.openwrt.org/)~~
 ```
