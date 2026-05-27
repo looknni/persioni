@@ -379,7 +379,7 @@ vm.min_free_kbytes=100000
 ? efibootmgr -c -d /dev/sda -p 2 -L "gentoo" -l "\EFI\gentoo\xxx.efi"
 ? efibootmgr -b 0002 -B
 
-# wayland # dbus-run-session sway --unsupport-gpu
+# wayland # dbus-run-session sway --unsupported-gpu
 emerge -av gui-wm/sway gui-apps/foot gui-apps/wmenu
 ```
 ## ~~[Openwrt](https://lxr.openwrt.org/)~~
