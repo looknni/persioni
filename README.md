@@ -161,7 +161,7 @@ kld_list="/boot/modules/nvidia.ko /boot/modules/nvidia-modeset.ko"
 export GTK_IM_MODULE=xim
 export QT_IM_MODULE=xim
 export XMODIFIERS=@im=fcitx
-exec i3
+exec dbus-run-session i3
 ```
 #### /etc/X11/xorg.conf
 ```
