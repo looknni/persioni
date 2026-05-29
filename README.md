@@ -254,7 +254,8 @@ mount /dev/sda1 /efi
 
 # /etc/portage/make.conf
 COMMON_FLAGS="-O2 -march=native -pipe"
-MAKEOPTS="-j6"
+MAKEOPTS="-j4"
+VIDEO_CARDS="nvidia"
 GRUB_PLATFORMS="efi-64"
 
 ln -sf /usr/share/zoneinfo/Europe/Brussels /etc/localtime
