@@ -406,10 +406,10 @@ export LESS_TERMCAP_so=$'\E[01;37;42m'
 export LESS_TERMCAP_ue=$'\E[0m'
 export LESS_TERMCAP_us=$'\E[01;32m'
 
-export XMODIFIERS=@im=fcitx5
-export GTK_IM_MODULE=fcitx5
+export XMODIFIERS=@im=fcitx
+export GTK_IM_MODULE=fcitx
 export QT_QPA_PLATFORM=xcb
-export QT_IM_MODULE=fcitx5
+export QT_IM_MODULE=fcitx
 export IM_MODULE_CLASSNAME=fcitx::QFcitxPlatformInputContext
 $(xrdb -load ~/.Xresources)
 cat ~/.bash_history > ~/.bash_history
