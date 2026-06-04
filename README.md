@@ -227,6 +227,7 @@ pacman -Qdtq | pacman -Rsn -
 ```
 ## ~~[Gentoo](https://www.gentoo.org/)~~
 ```
+fast boot : off
 mount | grep efi
 file --special-files /dev/sda | fdisk -l | lsblk --fs | df --print-type
 ? fdisk /dev/sda # m p g o n t d l w # lsblk -f
@@ -245,6 +246,8 @@ mount --types proc /proc /mnt/gentoo/proc
 mount --bind /sys /mnt/gentoo/sys
 mount --bind /dev /mnt/gentoo/dev
 mount --bind /run /mnt/gentoo/run
+mkdir -p /mnt/gentoo/sys/firmware/efi/efivars/
+mount --bind /sys/firmware/efi/efivars/ /mnt/gentoo/sys/firmware/efi/efivars/
 
 chroot /mnt/gentoo /bin/bash
 emerge-webrsync # /var/db/repos/gentoo/
@@ -277,7 +280,8 @@ UUID=? /boot ext4 defaults 0 2
 UUID=? /efi vfat defaults 0 1
 UUID=? none swap sw 0 0
 
-grub-install --target x86_64-efi --efi-directory /efi --recheck --removable
+grub-install --target x86_64-efi --efi-directory /boot/efi --recheck
+grub-install --target x86_64-efi --efi-directory /boot/efi --recheck --removable
 ? grub-install /dev/sda
 grub-mkconfig -o /boot/grub/grub.cfg
 mount -o remount,rw -t efivarfs efivarfs /sys/firmware/efi/efivars/
