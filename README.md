@@ -207,7 +207,7 @@ genfstab -U /mnt >> /mnt/etc/fstab
 
 arch-chroot /mnt
 pacman -S grub efibootmgr os-prober vim sudo dhcp wqy-microhei xorg-server xorg-xinit \
-xf86-video-vesa i3-wm xterm fcitx fcitx-configtool fcitx-googlepinyin
+xf86-video-vesa i3-wm xterm fcitx-configtool fcitx-googlepinyin
 
 # ~/.config/i3/config
 exec_always --no-startup-id "fcitx -dr" 
