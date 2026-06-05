@@ -19,7 +19,7 @@
 ---
 ##### gdm ? [I3wm](https://i3wm.org/) ? [Sway](https://swaywm.org/) ? [Awesomewm](https://awesomewm.org/) ? [Dwm](#)
 ---
-## ~~[Debian](https://www.debian.org/security/)~~
+## ~~[Debian](https://cdimage.debian.org/cdimage/archive/)~~
 ```
 ffmpeg -i in.mp3 -c:a flac out.flac ; ffmpeg -i in.flac -metadata title="name" -metadata album="name" -codec copy out.flac
 deb https://mirrors.ustc.edu.cn/debian/ bookworm main contrib non-free non-free-firmware
@@ -30,7 +30,7 @@ deb https://mirrors.ustc.edu.cn/debian/ bookworm-updates main contrib non-free n
 deb-src https://mirrors.ustc.edu.cn/debian/ bookworm-updates main contrib non-free non-free-firmware
 
 gpm ntp vim vlc git traceroute smartmontools fonts-droid-fallback fonts-wqy-microhei fonts-wqy-zenhei \
-dnsutils wget links xterm net-tools fcitx fcitx-googlepinyin fcitx-config-gtk fcitx-table-wubi \
+dnsutils wget links xterm net-tools fcitx-googlepinyin fcitx-config-gtk fcitx-table-wubi \
 iw wpasupplicant nmap tcpdump inkscape gimp krita ffmpeg libreoffice make gcc isc-dhcp-client \
 hexcompare aircrack-ng hashcat hcxtools hcxdumptool nvidia-cuda-toolkit xxd xxhash qbittorrent aria2
 
