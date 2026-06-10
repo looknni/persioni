@@ -228,7 +228,7 @@ pacman -Qdtq | pacman -Rsn -
 ## ~~[Gentoo](https://www.gentoo.org/)~~
 ```
 fast boot:off # max tolud:4G
-mount | grep efi
+mount | grep efi ; /boot : /boo/efi = 7:3 or 6:4
 file --special-files /dev/sda | fdisk -l | lsblk --fs | df --print-type
 ? fdisk /dev/sda # m p g o n t d l w # lsblk -f
 mkfs.vfat -F 32 /dev/sda1 # /efi
