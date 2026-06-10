@@ -270,6 +270,7 @@ sys-kernel/installkernel -systemd
 emerge sys-kernel/linux-firmware --autounmask-write --autounmask
 etc-update # dispatch-conf
 emerge --ask sys-kernel/linux-firmware sys-apps/pciutils sys-kernel/gentoo-sources sys-kernel/installkernel sys-kernel/dracut app-portage/gentoolkit media-sound/alsa-utils sys-apps/dbus net-misc/dhcp x11-apps/xset sys-boot/os-prober sys-boot/grub sys-boot/efibootmgr
+# /etc/dracut.conf : i18n_vars="LANG=en_US.UTF-8 KEYTABLE=us"
 make defconfig ; make menuconfig # clean mrproper oldconfig
 # nouveau efi nf_tables exfat
 eselect kernel set linux-6.6.6 && ake -j6 && make modules_install && make install && dracut --kver kernel.version
