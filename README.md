@@ -227,7 +227,7 @@ pacman -Qdtq | pacman -Rsn -
 ```
 ## ~~[Gentoo](https://www.gentoo.org/)~~
 ```
-fast boot : off
+fast boot:off # max tolud:4G
 mount | grep efi
 file --special-files /dev/sda | fdisk -l | lsblk --fs | df --print-type
 ? fdisk /dev/sda # m p g o n t d l w # lsblk -f
