@@ -273,7 +273,7 @@ emerge --ask sys-kernel/linux-firmware sys-apps/pciutils sys-kernel/gentoo-sourc
 # /etc/dracut.conf : i18n_vars="LANG=en_US.UTF-8 KEYTABLE=us"
 make defconfig ; make menuconfig # clean mrproper oldconfig
 # nouveau efi nf_tables exfat
-eselect kernel set linux-6.6.6 && ake -j6 && make modules_install && make install && dracut --kver kernel.version
+eselect kernel set linux-6.6.6 && make -j6 && make modules_install && make install && dracut --kver kernel.version
 
 # blkid mount
 UUID=? / ext4 rw,noatime 0 1
