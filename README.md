@@ -308,14 +308,8 @@ username ALL=(root) /usr/bin/*, /usr/sbin/*, !/usr/bin/su, !/usr/bin/passwd
 app-containers/docker
 
 # /etc/portage/package.use/zz-autounmask
-# net-libs/axtls cgi-php httpd
-# dev-lang/php cgi apache2 fpm
-<=app-i18n/fcitx-4.9
-net-firewall/iptables nftables
-net-firewall/nftables static-libs
-media-video/ffmpeg v4l
-media-video/vlc v4l
-net-misc/openssh libedit
+#net-libs/axtls cgi-php httpd
+#dev-lang/php cgi apache2 fpm
 
 # /etc/default/grub
 GRUB_DISABLE_OS_PROBER=false
