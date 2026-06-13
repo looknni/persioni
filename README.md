@@ -92,6 +92,10 @@ dpkg-reconfigure linux-image-$(uname -r)
 update-initramfs -u -k all
 netstat -tuln|awk '{print $4}'|awk -F: '{print $2}'|grep -v '^$'|sort|uniq|xargs -I {} sudo lsof -i :{}
 dpkg -l | grep ^rc | awk '{print $2}' | sudo xargs dpkg -P
+
+xrandr --listmonitors
+xrandr --output HDMI-0 --right-of DIV-0
+xrandr --output DVI-0 --same-as HDMI-0
 ```
 ##### Linux minicom,putty ,Windows SecureCRT tftpd # insmod ch34x,modprobe usbserial # CONFIG_USB_SERIAL CONFIG_USB_SERIAL_GENERIC # flashrom -p ch341a_spi [-E|-r <file>|-w <file>|-v <file>]
 
