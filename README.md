@@ -97,8 +97,8 @@ xrandr --listmonitors
 xrandr --output HDMI-0 --right-of DIV-0
 xrandr --output DVI-0 --same-as HDMI-0
 
-ffplay -rtsp_transport tcp -acodec pcm_s16le -fflags +nobuffer+discardcorrupt -flags low_delay -framedrop -analyzeduration 1000000 -probesize 32 -vcodec h264 rtsp://admin:password@ip:554/Streaming/Channels/101
-ffplay -rtsp_transport tcp -fflags +discardcorrupt+igndts -flags low_delay -framedrop -analyzeduration 1000000 -probesize 32 -vcodec h264 rtsp://admin:password@ip:554/Streaming/Channels/101
+ffplay -rtsp_transport tcp -acodec pcm_s16le -fflags +nobuffer+discardcorrupt -flags low_delay -framedrop -analyzeduration 1000000 -probesize 32 -vcodec h264 rtsp://admin:password@ip:554/Streaming/Channels/101 # Local
+ffplay -rtsp_transport tcp -fflags +discardcorrupt+igndts -flags low_delay -framedrop -analyzeduration 1000000 -probesize 32 -vcodec h264 rtsp://admin:password@ip:554/Streaming/Channels/101 # Internet
 
 ```
 ##### Linux minicom,putty ,Windows SecureCRT tftpd # insmod ch34x,modprobe usbserial # CONFIG_USB_SERIAL CONFIG_USB_SERIAL_GENERIC # flashrom -p ch341a_spi [-E|-r <file>|-w <file>|-v <file>]
