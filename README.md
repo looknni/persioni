@@ -96,6 +96,10 @@ dpkg -l | grep ^rc | awk '{print $2}' | sudo xargs dpkg -P
 xrandr --listmonitors
 xrandr --output HDMI-0 --right-of DIV-0
 xrandr --output DVI-0 --same-as HDMI-0
+
+ffplay -rtsp_transport tcp rtsp://admin:password@ip:554/Streaming/Channels/101
+ffplay -rtsp_transport tcp rtsp://admin:password@ip:554/h264/ch1/main/av_stream
+
 ```
 ##### Linux minicom,putty ,Windows SecureCRT tftpd # insmod ch34x,modprobe usbserial # CONFIG_USB_SERIAL CONFIG_USB_SERIAL_GENERIC # flashrom -p ch341a_spi [-E|-r <file>|-w <file>|-v <file>]
 
