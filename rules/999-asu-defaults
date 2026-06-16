@@ -114,8 +114,8 @@ chain upf {
 #	ip daddr {192.168.0.3} tcp dport {80,443} drop comment "drop ct state all"
 #	ip daddr {192.168.0.3} tcp dport 22 limit rate 10/second log prefix "--- "
 	ether saddr @${m1m} drop
-	ip saddr 192.168.0.3 counter
-	ip daddr 192.168.0.3 counter
+#	ip saddr 192.168.0.3 counter
+#	ip daddr 192.168.0.3 counter
 }
 
 chain upo {
