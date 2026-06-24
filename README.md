@@ -420,7 +420,7 @@ $(xrdb -load ~/.Xresources)
 cat ~/.bash_history > ~/.bash_history
 export XDG_CONFIG_HOME=~/.config
 alias pgrep='pgrep -d " "'
-if [ ! -z "$(ls -A ~/.cache/google-chrome/Default/Cache/Cache_Data/ > /dev/null 2>&1)" ];then
+if [ ! -z ~/.cache/google-chrome/Default/Cache/Cache_Data/ ];then
         rm -rf ~/.cache/google-chrome/Default/Cache/Cache_Data/*
 fi
 if ls .config/google-chrome/Default/.com.google.Chrome.* > /dev/null 2>&1;then
