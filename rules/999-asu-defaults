@@ -195,6 +195,7 @@ set wireless.default_radio1.ocv='1'
 set wireless.default_radio1.multicast_to_unicast_all='1'
 commit
 EEOO
+echo "$(uci get network.lan.ipaddr) $(uci get system.@system[0].hostname)" >> /etc/hosts
 nkers=2
 function unboundxx(){
 	uci set dhcp.@dnsmasq[0].dnssec='0'
