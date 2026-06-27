@@ -196,6 +196,7 @@ set wireless.default_radio1.multicast_to_unicast_all='1'
 commit
 EEOO
 echo -e "\n$(uci get network.lan.ipaddr) $(uci get system.@system[0].hostname)\n$(uci get network.globals.ula_prefix | awk -F '::' '{print $1}')::1 $(uci get system.@system[0].hostname)" >> /etc/hosts
+for i in `seq 2 255`;do echo "172.${r16r}.${r255r}.$i e.$i" >> /etc/hosts ; done
 nkers=2
 function unboundxx(){
 	uci set dhcp.@dnsmasq[0].dnssec='0'
