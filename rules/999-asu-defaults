@@ -387,10 +387,7 @@ server:
 	rrset-roundrobin: yes
 	minimal-responses: yes
 	# disable-dnssec-lame-check: no
-	module-config: "dns64 iterator"
-        dns64-prefix: 64:ff9b::/96
-        dns64-synthall: yes
-        dns64-ignore-aaaa: yes
+	module-config: "iterator"
 	auto-trust-anchor-file: "/var/lib/unbound/root.key"
 	# trust-anchor-signaling: yes
 	# root-key-sentinel: yes
