@@ -538,7 +538,7 @@ forward-zone:
 	name: "."
 	forward-addr: 114.114.114.114
 	forward-addr: 223.5.5.5
-	forward-addr: 1.2.4.8
+	forward-addr: 119.29.29.29
 	forward-first: no
 	forward-tcp-upstream: no
 	forward-tls-upstream: no
