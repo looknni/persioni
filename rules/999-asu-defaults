@@ -106,8 +106,6 @@ chain upi {
 	ip6 saddr @${i61p} drop
 	ether saddr @${m1m} drop
 	ip daddr 172.${r16r}.${r255r}.1 counter
-	ip6 saddr ::1 counter
-	ip6 saddr fe80:: counter
 	ip6 saddr $(uci get network.globals.ula_prefix) counter
 }
 
@@ -118,8 +116,6 @@ chain upf {
 #	ip daddr {192.168.0.3} tcp dport {80,443} drop comment "drop ct state all"
 #	ip daddr {192.168.0.3} tcp dport 22 limit rate 10/second log prefix "--- "
 	ether saddr @${m1m} drop
-	ip saddr 172.${r16r}.${r255r}.1 counter
-	ip daddr 172.${r16r}.${r255r}.1 counter
 }
 
 chain upo {
