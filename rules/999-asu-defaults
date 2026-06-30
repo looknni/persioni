@@ -105,8 +105,6 @@ chain upi {
 	ip saddr @${i41p} drop
 	ip6 saddr @${i61p} drop
 	ether saddr @${m1m} drop
-	ip daddr 172.${r16r}.${r255r}.1 counter
-	ip6 saddr $(uci get network.globals.ula_prefix) counter
 }
 
 chain upf {
@@ -232,12 +230,11 @@ server:
 	# interface: 192.0.2.154@5003
 	# interface: 2001:DB8::5
 	# interface: eth0@5003
-	# interface-automatic: no
+	interface-automatic: no
 	# interface-automatic-ports: ""
 	port: 53
-	interface: 0.0.0.0
-	interface: ::0
-	outgoing-interface: 172.${r16r}.${r255r}.1
+	interface: 172.${r16r}.${r255r}.1
+	interface: $(uci get network.globals.ula_prefix | awk -F '::' '{print $1}')::1
 	# outgoing-interface: 2001:DB8::5
 	# outgoing-interface: 2001:DB8::/64
 	# prefer-ip6: no
@@ -250,9 +247,9 @@ server:
 	so-rcvbuf: 8m
 	so-sndbuf: 8m
 	so-reuseport: yes
-	# ip-transparent: no
-	# ip-freebind: no
-	# ip-dscp: 0
+	ip-transparent: no
+	ip-freebind: no
+	ip-dscp: 0
 	edns-buffer-size: 1232
 	max-udp-size: 1232
 	stream-wait-size: 8m
@@ -306,7 +303,7 @@ server:
 	# edns-tcp-keepalive-timeout: 120000
 	# sock-queue-timeout: 0
 	# use-systemd: no
-	# do-daemonize: yes
+	do-daemonize: yes
 	access-control: 127.0.0.0/8 allow
 	access-control: ::1 allow
 	access-control: ::ffff:127.0.0.1 allow
@@ -365,10 +362,10 @@ server:
 	use-caps-for-id: yes
 	# caps-exempt: "licdn.com"
 	# caps-exempt: "senderbase.org"
-	# private-address: 10.0.0.0/8
+	private-address: 10.0.0.0/8
 	private-address: 172.16.0.0/12
-	# private-address: 192.168.0.0/16
-	# private-address: 169.254.0.0/16
+	private-address: 192.168.0.0/16
+	private-address: 169.254.0.0/16
 	private-address: fd00::/8
 	private-address: fe80::/10
 	private-address: ::ffff:0:0/96
@@ -380,8 +377,8 @@ server:
 	rrset-roundrobin: yes
 	minimal-responses: yes
 	# disable-dnssec-lame-check: no
-	module-config: "iterator"
-	auto-trust-anchor-file: "/var/lib/unbound/root.key"
+	module-config: "dns64 respip iterator"
+	# auto-trust-anchor-file: "/var/lib/unbound/root.key"
 	# trust-anchor-signaling: yes
 	# root-key-sentinel: yes
 	# trust-anchor-file: ""
@@ -394,9 +391,9 @@ server:
 	# val-max-restart: 5
 	# val-clean-additional: yes
 	# val-permissive-mode: no
-	# ignore-cd-flag: no
-	# disable-edns-do: no
-	# serve-original-ttl: no
+	ignore-cd-flag: yes
+	disable-edns-do: yes
+	serve-original-ttl: no
 	# val-log-level: 0
 	# val-nsec3-keysize-iterations: "1024 150 2048 150 4096 150"
 	# zonemd-permissive-mode: no
@@ -508,9 +505,9 @@ server:
 	fast-server-num: 3
 	# answer-cookie: no
 	# cookie-secret-file: "/usr/local/etc/unbound_cookiesecrets.txt"
-	# ede: no
-	# ede-serve-expired: no
-	# dns-error-reporting: no
+	ede: no
+	ede-serve-expired: no
+	dns-error-reporting: no
 	# ipsecmod-enabled: yes
 	# ipsecmod-hook: "./my_executable"
 	# ipsecmod-strict: no
