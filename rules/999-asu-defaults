@@ -233,8 +233,9 @@ server:
 	interface-automatic: no
 	# interface-automatic-ports: ""
 	port: 53
-	interface: 0.0.0.0
-	interface: ::0
+	interface: 127.0.0.1
+	interface: 172.${r16r}.${r255r}.1
+	interface: $(uci get network.globals.ula_prefix | awk -F '::' '{print $1}')::1
 	# outgoing-interface: 2001:DB8::5
 	# outgoing-interface: 2001:DB8::/64
 	# prefer-ip6: no
@@ -308,6 +309,9 @@ server:
 	access-control: ::1 allow
 	access-control: ::ffff:127.0.0.1 allow
 	access-control: 172.16.0.0/12 allow
+	access-control: $(uci get network.globals.ula_prefix) allow
+	access-control: 0.0.0.0/0 deny
+	access-control: ::/0 deny
 	# access-control: 192.168.0.0/16 allow
 	# access-control: 10.0.0.0/8 allow
 	# access-control-tag: 192.0.2.0/24 "tag2 tag3"
@@ -523,8 +527,8 @@ server:
 	serve-expired-ttl-reset: yes
 	serve-expired-reply-ttl: 30
 	serve-expired-client-timeout: 1800
-	do-not-query-address: 127.0.0.1/8
-	do-not-query-address: ::1
+	# do-not-query-address: 127.0.0.1/8
+	# do-not-query-address: ::1
 	do-not-query-localhost: no
 
 forward-zone:
