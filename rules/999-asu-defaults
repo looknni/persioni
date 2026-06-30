@@ -280,10 +280,10 @@ server:
 	wait-limit-cookie-netblock: ::1/128 -1
 	rrset-cache-size: 8m
 	rrset-cache-slabs: ${nkers}
-	cache-min-ttl: 43200
-	cache-max-ttl: 86400
+	cache-min-ttl: 300
+	cache-max-ttl: 43200
 	cache-max-negative-ttl: 3600
-	cache-min-negative-ttl: 0
+	cache-min-negative-ttl: 60
 	# infra-host-ttl: 900
 	# infra-cache-min-rtt: 50
 	# infra-cache-max-rtt: 120000
@@ -374,9 +374,6 @@ server:
 	private-address: ::ffff:0:0/96
 	# private-domain: "example.com"
 	# unwanted-reply-threshold: 0
-	# do-not-query-address: 127.0.0.1/8
-	# do-not-query-address: ::1
-	# do-not-query-localhost: yes
 	prefetch: yes
 	# prefetch-key: no
 	# deny-any: no
@@ -399,11 +396,6 @@ server:
 	# val-permissive-mode: no
 	# ignore-cd-flag: no
 	# disable-edns-do: no
-	# serve-expired: no
-	# serve-expired-ttl: 86400
-	# serve-expired-ttl-reset: no
-	# serve-expired-reply-ttl: 30
-	# serve-expired-client-timeout: 1800
 	# serve-original-ttl: no
 	# val-log-level: 0
 	# val-nsec3-keysize-iterations: "1024 150 2048 150 4096 150"
@@ -529,6 +521,14 @@ server:
 	# tcp-reuse-timeout: 60000
 	# max-reuse-tcp-queries: 200
 	# tcp-auth-query-timeout: 3000
+	serve-expired: yes
+	serve-expired-ttl: 300
+	serve-expired-ttl-reset: yes
+	serve-expired-reply-ttl: 30
+	serve-expired-client-timeout: 1800
+	do-not-query-address: 127.0.0.1/8
+	do-not-query-address: ::1
+	do-not-query-localhost: no
 
 forward-zone:
 	name: "."
