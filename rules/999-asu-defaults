@@ -529,7 +529,7 @@ server:
 	serve-expired-client-timeout: 1800
 	# do-not-query-address: 127.0.0.1/8
 	# do-not-query-address: ::1
-	do-not-query-localhost: no
+	# do-not-query-localhost: yes
 
 forward-zone:
 	name: "."
