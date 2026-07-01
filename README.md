@@ -352,6 +352,7 @@ DHCP=yes
 
 emerge --ask app-admin/syslog-ng # /usr/share/doc/netifrc-<version_number>/net.example.bz2 #openrc
 # Note: DHCP is the default behavior if /etc/conf.d/net is empty or missing
+modules="dhclient"
 config_eth0="dhcp"
 ethtool_offload_eth0="rx on tx on sg on tso on ufo on gso on gro on lro on"
 # modules_wlan0="wpa_supplicant"
