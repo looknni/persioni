@@ -171,6 +171,7 @@ set system.ntp.enable_server='0'
 set system.ntp.interface='lan'
 add_list dhcp.lan.dhcp_option="3,${nip}"
 add_list dhcp.lan.dhcp_option="6,${nip}"
+add_list dhcp.lan.dhcp_option="23,$(uci get network.globals.ula_prefix | awk -F '::' '{print $1}')::1"
 set wireless.radio0.country='CN'
 set wireless.radio1.country='CN'
 set wireless.default_radio0.ssid="xiaomi-${st4}"
