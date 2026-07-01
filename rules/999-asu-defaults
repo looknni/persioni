@@ -202,8 +202,6 @@ function unboundxx(){
 	uci set unbound.ub_main.manual_conf='1'
 	uci set unbound.ub_main.query_minimize='1'
 	uci set unbound.ub_main.rebind_localhost='1'
-	uci add_list unbound.ub_main.trigger_interface='lan'
-	uci add_list unbound.ub_main.trigger_interface='wan'
 	uci commit
 	echo -e '\nserver=/#/127.0.0.1#53\nserver=/#/::1#53' >> /etc/dnsmasq.conf
 }
