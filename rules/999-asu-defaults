@@ -48,7 +48,7 @@ commit
 WW
 ssh-keygen -t ed25519
 cp /etc/dropbear/authorized_keys /root/.ssh
-sed -i '/^\t#/{5,$d;}' /etc/unbound/unbound.conf
+sed -i '/^\t#/{17,$d;}' /etc/unbound/unbound.conf
 # wget https://www.internic.net/domain/named.root -O /etc/unbound/root.hints
 rm $0
 GHTTPS
@@ -221,20 +221,16 @@ server:
 	statistics-interval: 14400
 	shm-enable: yes
 	shm-key: 11777
-	# statistics-cumulative: no
-	# extended-statistics: no
+	statistics-cumulative: no
+	extended-statistics: no
 	statistics-inhibit-zero: yes
 	num-threads: ${nkers}
-	# interface: 192.0.2.153
-	# interface: 192.0.2.154@5003
-	# interface: 2001:DB8::5
-	# interface: eth0@5003
 	interface-automatic: no
 	# interface-automatic-ports: ""
 	port: 53
 	interface: 127.0.0.1
-	interface: 172.${r16r}.${r255r}.1
 	interface: ::1
+	interface: 172.${r16r}.${r255r}.1
 	interface: $(uci get network.globals.ula_prefix | awk -F '::' '{print $1}')::1
 	# outgoing-interface: 2001:DB8::5
 	# outgoing-interface: 2001:DB8::/64
