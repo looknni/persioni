@@ -228,8 +228,8 @@ server:
 	interface-automatic: no
 	# interface-automatic-ports: ""
 	port: 53
-	interface: 127.0.0.1
-	interface: ::1
+#	interface: 127.0.0.1
+#	interface: ::1
 	interface: 172.${r16r}.${r255r}.1
 	interface: $(uci get network.globals.ula_prefix | awk -F '::' '{print $1}')::1
 	# outgoing-interface: 2001:DB8::5
