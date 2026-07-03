@@ -350,6 +350,11 @@ DHCP=yes
 # MulticastDNS=yes
 # LLMNR=no
 
+# net-misc/dhcpcd
+/etc/conf.d/netmount rc_need="dhcpcd"
+/etc/dhcpcd.conf interface eth0
+
+##### s OLD ####
 emerge --ask app-admin/syslog-ng # /usr/share/doc/netifrc-<version_number>/net.example.bz2 #openrc
 # Note: DHCP is the default behavior if /etc/conf.d/net is empty or missing
 modules="dhclient"
@@ -360,10 +365,10 @@ ethtool_offload_eth0="rx on tx on sg on tso on ufo on gso on gro on lro on"
 # config_eth0="192.168.0.7/24"
 # routes_eth0="default via 192.168.0.1"
 # dns_servers_eth0="192.168.0.1 8.8.8.8"
-
 ln -s /etc/init.d/net.lo /etc/init.d/net.<interface_name>
 rc-service net.eth0 start
 rc-update add net.eth0 default # elogind dbus net.lo gpm rsyslog nftables
+##### e OLD ####
 
 # .config/fcitx/config # app-i18n/fcitx app-i18n/fcitx-libpinyin
 ActivateKey=SHIFT_LSHIFT SHIFT_RSHIFT
