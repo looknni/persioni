@@ -507,7 +507,7 @@ server:
 	# cookie-secret-file: "/usr/local/etc/unbound_cookiesecrets.txt"
 	ede: no
 	ede-serve-expired: no
-	dns-error-reporting: no
+	dns-error-reporting: yes
 	# ipsecmod-enabled: yes
 	# ipsecmod-hook: "./my_executable"
 	# ipsecmod-strict: no
