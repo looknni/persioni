@@ -153,7 +153,6 @@ fi
 	uci commit
 }
 uci batch << EEOO
-set dropbear.main.DirectInterface='lan'
 set dropbear.main.Port='12345'
 set dropbear.main.GatewayPorts='0'
 set network.globals.packet_steering='2'
@@ -167,8 +166,7 @@ set firewall.@defaults[0].flow_offloading_hw='0'
 set system.@system[0].hostname="${st2}"
 set system.@system[0].timezone='CST-8'
 set system.@system[0].zonename='Asia/Shanghai'
-set system.ntp.enable_server='0'
-set system.ntp.interface='lan'
+set system.ntp.enable_server='1'
 add_list dhcp.lan.dhcp_option="3,${nip}"
 add_list dhcp.lan.dhcp_option="6,${nip}"
 add_list dhcp.lan.dhcp_option="23,$(uci get network.globals.ula_prefix | awk -F '::' '{print $1}')::1"
