@@ -249,7 +249,7 @@ server:
 	max-udp-size: 1232
 	stream-wait-size: 8m
 	msg-buffer-size: 65552
-	msg-cache-size: 4m
+	msg-cache-size: 16m
 	msg-cache-slabs: ${nkers}
 	num-queries-per-thread: 225
 	jostle-timeout: 200
@@ -401,7 +401,7 @@ server:
 	# permit-small-holddown: no
 	key-cache-size: 8m
 	key-cache-slabs: ${nkers}
-	neg-cache-size: 8m
+	neg-cache-size: 4m
 	# trust-anchor: "nlnetlabs.nl. DNSKEY 257 3 5 AQPzzTWMz8qSWIQlfRnPckx2BiVmkVN6LPupO3mbz7FhLSnm26n6iG9N Lby97Ji453aWZY3M5/xJBSOS2vWtco2t8C0+xeO1bc/d6ZTy32DHchpW 6rDH1vp86Ll+ha0tmwyy9QP7y2bVw5zSbFCrefk8qCUBgfHm9bHzMG1U BYtEIQ=="
 	# trust-anchor: "jelte.nlnetlabs.nl. DS 42860 5 1 14D739EB566D2B1A5E216A0BA4D17FA9B038BE4A"
 	local-zone: "localhost." nodefault
