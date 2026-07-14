@@ -485,15 +485,15 @@ server:
 	# quic-size: 8m
 	# dns64-prefix: 64:ff9b::0/96
 	# dns64-ignore-aaaa: "example.com"
-	ratelimit: 3000
+	ratelimit: 5000
 	ratelimit-size: 4m
 	ratelimit-slabs: ${nkers}
 	ratelimit-factor: 10
 	ratelimit-backoff: yes
 	# ratelimit-for-domain: example.com 1000
 	# ratelimit-below-domain: com 1000
-	ip-ratelimit: 50
-	ip-ratelimit-cookie: 5000
+	ip-ratelimit: 100
+	ip-ratelimit-cookie: 10000
 	ip-ratelimit-size: 4m
 	ip-ratelimit-slabs: ${nkers}
 	ip-ratelimit-factor: 10
