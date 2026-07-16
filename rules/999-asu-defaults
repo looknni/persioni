@@ -493,7 +493,7 @@ server:
 	# ratelimit-for-domain: example.com 1000
 	# ratelimit-below-domain: com 1000
 	ip-ratelimit: 100
-	ip-ratelimit-cookie: 10000
+	ip-ratelimit-cookie: 2000
 	ip-ratelimit-size: 4m
 	ip-ratelimit-slabs: ${nkers}
 	ip-ratelimit-factor: 10
