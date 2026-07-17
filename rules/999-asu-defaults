@@ -49,6 +49,7 @@ WW
 ssh-keygen -t ed25519
 cp /etc/dropbear/authorized_keys /root/.ssh
 sed -i '/^\t#/{17,$d;}' /etc/unbound/unbound.conf
+echo -e "config unbound 'ub_main'\n\toption manual_conf '1'" > /etc/config/unbound
 # wget https://www.internic.net/domain/named.root -O /etc/unbound/root.hints
 rm $0
 GHTTPS
@@ -195,11 +196,6 @@ function unboundxx(){
 	uci set dhcp.@dnsmasq[0].dnssec='0'
 	uci set dhcp.@dnsmasq[0].port='1025'
 	uci set dhcp.@dnsmasq[0].noresolv='1'
-	uci set unbound.ub_main.listen_port='53'
-	uci set unbound.ub_main.num_threads="${nkers}"
-	uci set unbound.ub_main.manual_conf='1'
-	uci set unbound.ub_main.query_minimize='1'
-	uci set unbound.ub_main.rebind_localhost='1'
 	uci commit
 	echo -e '\nserver=/#/127.0.0.1#53\nserver=/#/::1#53' >> /etc/dnsmasq.conf
 }
