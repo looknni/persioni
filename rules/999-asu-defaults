@@ -43,7 +43,7 @@ delete dhcp.@dnsmasq[0].nonwildcard
 set dhcp.@dnsmasq[0].quietdhcp='1'
 delete system.ntp.server
 add_list system.ntp.server='edu.ntp.org.cn'
-add_list system.ntp.server='ntp.cnnic.cn'
+add_list system.ntp.server='2.openwrt.pool.ntp.org'
 commit
 WW
 ssh-keygen -t ed25519
