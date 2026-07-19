@@ -195,7 +195,7 @@ for i in `seq 2 255`;do echo "172.${r16r}.${r255r}.$i e.$i" >> /etc/hosts ; done
 nkers=2
 function unboundxx(){
 	uci set dhcp.@dnsmasq[0].dnssec='0'
-	uci set dhcp.@dnsmasq[0].port='1025'
+	uci set dhcp.@dnsmasq[0].port='0'
 	uci set dhcp.@dnsmasq[0].noresolv='1'
 	uci set unbound.ub_main.listen_port='53'
 	uci set unbound.ub_main.num_threads="${nkers}"
