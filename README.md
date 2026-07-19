@@ -29,7 +29,7 @@ deb-src https://mirrors.aliyun.com/debian-security/ bookworm-security main contr
 deb https://mirrors.ustc.edu.cn/debian/ bookworm-updates main contrib non-free non-free-firmware
 deb-src https://mirrors.ustc.edu.cn/debian/ bookworm-updates main contrib non-free non-free-firmware
 
-gpm ntp vim vlc git traceroute smartmontools fonts-droid-fallback fonts-wqy-microhei fonts-wqy-zenhei \
+gpm chrony vim vlc git traceroute smartmontools fonts-droid-fallback fonts-wqy-microhei fonts-wqy-zenhei \
 dnsutils wget links xterm net-tools fcitx-googlepinyin fcitx-config-gtk fcitx-table-wubi \
 iw wpasupplicant nmap tcpdump inkscape gimp krita ffmpeg libreoffice make gcc isc-dhcp-client \
 hexcompare aircrack-ng hashcat hcxtools hcxdumptool nvidia-cuda-toolkit xxd xxhash qbittorrent aria2
