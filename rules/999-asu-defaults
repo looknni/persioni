@@ -36,11 +36,6 @@ del_list uhttpd.main.listen_https='[::]:443'
 delete uhttpd.defaults
 set uhttpd.main.redirect_https='0'
 set uhttpd.main.max_connections='1'
-#delete dhcp.@dnsmasq[0].boguspriv
-#delete dhcp.@dnsmasq[0].filterwin2k
-#delete dhcp.@dnsmasq[0].nonegcache
-#delete dhcp.@dnsmasq[0].nonwildcard
-#set dhcp.@dnsmasq[0].quietdhcp='1'
 delete system.ntp.server
 add_list system.ntp.server='edu.ntp.org.cn'
 add_list system.ntp.server='2.openwrt.pool.ntp.org'
@@ -154,8 +149,6 @@ fi
 	uci commit
 }
 uci batch << EEOO
-delete dhcp.@dnsmasq[0]
-set dhcp.odhcpd.maindhcp="1"
 set dropbear.main.Port='12345'
 set dropbear.main.GatewayPorts='0'
 set network.globals.packet_steering='2'
@@ -199,6 +192,11 @@ function unboundxx(){
 #	uci set dhcp.@dnsmasq[0].dnssec='0'
 #	uci set dhcp.@dnsmasq[0].port='0'
 #	uci set dhcp.@dnsmasq[0].noresolv='1'
+#	uci delete dhcp.@dnsmasq[0].boguspriv
+#	uci delete dhcp.@dnsmasq[0].filterwin2k
+#	uci delete dhcp.@dnsmasq[0].nonegcache
+#	uci delete dhcp.@dnsmasq[0].nonwildcard
+#	uci set dhcp.@dnsmasq[0].quietdhcp='1'
 	uci set unbound.ub_main.listen_port='53'
 	uci set unbound.ub_main.num_threads="${nkers}"
 	uci set unbound.ub_main.manual_conf='1'
@@ -207,6 +205,11 @@ function unboundxx(){
 	uci commit
 #	echo -e '\nserver=/#/127.0.0.1#53\nserver=/#/::1#53' >> /etc/dnsmasq.conf
 }
+if ! $(opkg list-installed | grep -q dnsmasq) ; then
+	uci delete dhcp.@dnsmasq[0]
+	uci set dhcp.odhcpd.maindhcp="1"
+	uci commit
+fi
 if $(opkg list-installed | grep -q unbound-daemon) ; then
 	unboundxx
 fi
