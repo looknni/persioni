@@ -215,6 +215,12 @@ if ! $(opkg list-installed | grep -q dnsmasq) ; then
 	uci set dhcp.odhcpd.maindhcp="1"
 	uci commit
 fi
+if ! $(apk list --installed | grep -q dnsmasq) ;then
+	uci delete dhcp.@dnsmasq[0]
+	uci set dhcp.odhcpd.maindhcp="1"
+	uci commit
+
+fi
 if $(opkg list-installed | grep -q unbound-daemon) ; then
 	unboundxx
 fi
