@@ -292,8 +292,8 @@ server:
 	rrset-cache-slabs: ${nkers}
 	cache-min-ttl: 300
 	cache-max-ttl: 43200
+	cache-min-negative-ttl: 300
 	cache-max-negative-ttl: 3600
-	cache-min-negative-ttl: 60
 	# infra-host-ttl: 900
 	# infra-cache-min-rtt: 50
 	# infra-cache-max-rtt: 120000
@@ -537,7 +537,7 @@ server:
 	serve-expired: yes
 	serve-expired-ttl: 300
 	serve-expired-ttl-reset: yes
-	serve-expired-reply-ttl: 30
+	serve-expired-reply-ttl: 60
 	serve-expired-client-timeout: 1800
 	# do-not-query-address: 127.0.0.1/8
 	# do-not-query-address: ::1
