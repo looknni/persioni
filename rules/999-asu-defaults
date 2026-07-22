@@ -252,9 +252,9 @@ server:
 	# outgoing-interface: 2001:DB8::/64
 	# prefer-ip6: no
 	# prefer-ip4: no
-	outgoing-range: 450
-	# outgoing-port-permit: 32768
-	# outgoing-port-avoid: "3200-3208"
+	outgoing-range: 900
+	outgoing-port-permit: 32768
+	outgoing-port-avoid: "1-3000"
 	outgoing-num-tcp: 30
 	incoming-num-tcp: 30
 	so-rcvbuf: 8m
@@ -294,12 +294,12 @@ server:
 	cache-max-ttl: 43200
 	cache-min-negative-ttl: 300
 	cache-max-negative-ttl: 3600
-	# infra-host-ttl: 900
-	# infra-cache-min-rtt: 50
-	# infra-cache-max-rtt: 120000
-	# infra-keep-probing: no
-	# infra-cache-slabs: 4
-	# infra-cache-numhosts: 10000
+	infra-host-ttl: 900
+	infra-cache-min-rtt: 50
+	infra-cache-max-rtt: 120000
+	infra-keep-probing: no
+	infra-cache-slabs: 4
+	infra-cache-numhosts: 10000
 	# define-tag: "tag1 tag2 tag3"
 	do-ip4: yes
 	do-ip6: yes
