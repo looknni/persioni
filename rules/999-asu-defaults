@@ -297,7 +297,7 @@ server:
 	infra-host-ttl: 900
 	infra-cache-min-rtt: 50
 	infra-cache-max-rtt: 120000
-	infra-keep-probing: no
+	infra-keep-probing: yes
 	infra-cache-slabs: 4
 	infra-cache-numhosts: 10000
 	# define-tag: "tag1 tag2 tag3"
@@ -307,13 +307,13 @@ server:
 	# nat64-prefix: 64:ff9b::0/96
 	do-udp: yes
 	do-tcp: yes
-	# tcp-upstream: no
-	# udp-upstream-without-downstream: no
+	tcp-upstream: no
+	udp-upstream-without-downstream: no
 	# tcp-mss: 0
 	# outgoing-tcp-mss: 0
 	# tcp-idle-timeout: 30000
-	# edns-tcp-keepalive: no
-	# edns-tcp-keepalive-timeout: 120000
+	edns-tcp-keepalive: yes
+	edns-tcp-keepalive-timeout: 120000
 	# sock-queue-timeout: 0
 	# use-systemd: no
 	do-daemonize: yes
@@ -412,11 +412,11 @@ server:
 	serve-original-ttl: no
 	# val-log-level: 0
 	# val-nsec3-keysize-iterations: "1024 150 2048 150 4096 150"
-	# zonemd-permissive-mode: no
-	# add-holddown: 2592000 # 30 days
-	# del-holddown: 2592000 # 30 days
-	# keep-missing: 31622400 # 366 days
-	# permit-small-holddown: no
+	zonemd-permissive-mode: no
+	add-holddown: 2592000
+	del-holddown: 2592000
+	keep-missing: 31622400
+	permit-small-holddown: no
 	key-cache-size: 8m
 	key-cache-slabs: ${nkers}
 	neg-cache-size: 4m
