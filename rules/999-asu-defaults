@@ -228,6 +228,26 @@ if $(apk list --installed | grep -q unbound-daemon) ;then
 	unboundxx
 fi
 mv /etc/unbound/unbound.conf /tmp/
+mv /etc/ssh/sshd_config /tmp/
+cat > /etc/ssh/sshd_config << SSHD
+Include /etc/ssh/sshd_config.d/*.conf
+Port 22
+AddressFamily any
+ListenAddress 172.${r16r}.${r255r}.1
+HostKey /etc/ssh/ssh_host_ed25519_key
+SyslogFacility AUTH
+LogLevel INFO
+LoginGraceTime 2m
+PermitRootLogin yes
+StrictModes yes
+MaxAuthTries 6
+MaxSessions 10
+PubkeyAuthentication yes
+AuthorizedKeysFile	.ssh/authorized_keys
+PasswordAuthentication yes
+PermitEmptyPasswords no
+Subsystem	sftp	/usr/lib/sftp-server
+SSHD
 cat > /etc/unbound/unbound.conf << UNBOUND
 #include: "otherfile.conf"
 #include-toplevel: "otherfile.conf"
@@ -649,4 +669,4 @@ HINTS
 # verx=$(cat /etc/openwrt_version|awk -F '-' '{print $1}'|grep -Eo "[0-9]{5}")
 # if [ "${verx}" -ge "32353" ] ;then
 # fi
-exit 0 
+exit 0
