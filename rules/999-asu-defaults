@@ -318,7 +318,7 @@ server:
 	infra-cache-min-rtt: 50
 	infra-cache-max-rtt: 120000
 	infra-keep-probing: yes
-	infra-cache-slabs: 4
+	infra-cache-slabs: ${nkers}
 	infra-cache-numhosts: 10000
 	# define-tag: "tag1 tag2 tag3"
 	do-ip4: yes
