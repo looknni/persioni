@@ -270,8 +270,8 @@ server:
 	interface: $(uci get network.globals.ula_prefix | awk -F '::' '{print $1}')::1
 	# outgoing-interface: 2001:DB8::5
 	# outgoing-interface: 2001:DB8::/64
-	# prefer-ip6: no
-	# prefer-ip4: no
+	prefer-ip6: no
+	prefer-ip4: yes
 	outgoing-range: 900
 	outgoing-port-permit: 32768
 	outgoing-port-avoid: "1-3000"
