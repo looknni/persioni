@@ -189,7 +189,8 @@ commit
 EEOO
 echo -e "\n$(uci get network.lan.ipaddr) $(uci get system.@system[0].hostname)\n$(uci get network.globals.ula_prefix | awk -F '::' '{print $1}')::1 $(uci get system.@system[0].hostname)" >> /etc/hosts
 for i in `seq 2 255`;do echo "172.${r16r}.${r255r}.$i e.$i" >> /etc/hosts ; done
-nkers=4
+nkers=3
+nslabs=2
 function unboundxx(){
 	if $(opkg list-installed | grep -q dnsmasq) ; then
 		uci set dhcp.@dnsmasq[0].dnssec='0'
@@ -288,7 +289,7 @@ server:
 	stream-wait-size: 8m
 	msg-buffer-size: 65552
 	msg-cache-size: 16m
-	msg-cache-slabs: ${nkers}
+	msg-cache-slabs: ${nslabs}
 	num-queries-per-thread: 225
 	jostle-timeout: 200
 	# delay-close: 0
@@ -309,7 +310,7 @@ server:
 	wait-limit-cookie-netblock: 127.0.0.0/8 -1
 	wait-limit-cookie-netblock: ::1/128 -1
 	rrset-cache-size: 8m
-	rrset-cache-slabs: ${nkers}
+	rrset-cache-slabs: ${nslabs}
 	cache-min-ttl: 300
 	cache-max-ttl: 43200
 	cache-min-negative-ttl: 300
@@ -318,7 +319,7 @@ server:
 	infra-cache-min-rtt: 50
 	infra-cache-max-rtt: 120000
 	infra-keep-probing: yes
-	infra-cache-slabs: ${nkers}
+	infra-cache-slabs: ${nslabs}
 	infra-cache-numhosts: 10000
 	# define-tag: "tag1 tag2 tag3"
 	do-ip4: yes
@@ -438,7 +439,7 @@ server:
 	keep-missing: 31622400
 	permit-small-holddown: no
 	key-cache-size: 8m
-	key-cache-slabs: ${nkers}
+	key-cache-slabs: ${nslabs}
 	neg-cache-size: 4m
 	# trust-anchor: "nlnetlabs.nl. DNSKEY 257 3 5 AQPzzTWMz8qSWIQlfRnPckx2BiVmkVN6LPupO3mbz7FhLSnm26n6iG9N Lby97Ji453aWZY3M5/xJBSOS2vWtco2t8C0+xeO1bc/d6ZTy32DHchpW 6rDH1vp86Ll+ha0tmwyy9QP7y2bVw5zSbFCrefk8qCUBgfHm9bHzMG1U BYtEIQ=="
 	# trust-anchor: "jelte.nlnetlabs.nl. DS 42860 5 1 14D739EB566D2B1A5E216A0BA4D17FA9B038BE4A"
@@ -525,7 +526,7 @@ server:
 	# dns64-ignore-aaaa: "example.com"
 	ratelimit: 5000
 	ratelimit-size: 4m
-	ratelimit-slabs: ${nkers}
+	ratelimit-slabs: ${nslabs}
 	ratelimit-factor: 10
 	ratelimit-backoff: yes
 	# ratelimit-for-domain: example.com 1000
@@ -533,7 +534,7 @@ server:
 	ip-ratelimit: 100
 	ip-ratelimit-cookie: 2000
 	ip-ratelimit-size: 4m
-	ip-ratelimit-slabs: ${nkers}
+	ip-ratelimit-slabs: ${nslabs}
 	ip-ratelimit-factor: 10
 	ip-ratelimit-backoff: yes
 	# tcp-connection-limit: 192.0.2.0/24 12
