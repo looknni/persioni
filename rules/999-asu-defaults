@@ -409,7 +409,7 @@ server:
 	# unwanted-reply-threshold: 0
 	prefetch: yes
 	# prefetch-key: no
-	# deny-any: no
+	deny-any: yes
 	rrset-roundrobin: yes
 	minimal-responses: yes
 	# disable-dnssec-lame-check: no
