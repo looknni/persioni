@@ -158,6 +158,9 @@ set network.globals.tcp_l3mdev='1'
 set network.globals.udp_l3mdev='1'
 set network.globals.steering_flows='128'
 set dhcp.odhcpd.loglevel='1' #4
+add_list dhcp.lan.dhcp_option="3,${nip}"
+add_list dhcp.lan.dhcp_option="6,${nip}"
+add_list dhcp.lan.dhcp_option="23,$(uci get network.globals.ula_prefix | awk -F '::' '{print $1}')::1"
 set firewall.@defaults[0].synflood_protect='1'
 set firewall.@defaults[0].flow_offloading='0'
 set firewall.@defaults[0].flow_offloading_hw='0'
@@ -198,9 +201,6 @@ function unboundxx(){
 		uci delete dhcp.@dnsmasq[0].nonegcache
 		uci delete dhcp.@dnsmasq[0].nonwildcard
 		uci set dhcp.@dnsmasq[0].quietdhcp='1'
-		uci add_list dhcp.lan.dhcp_option="3,${nip}"
-		uci add_list dhcp.lan.dhcp_option="6,${nip}"
-		uci add_list dhcp.lan.dhcp_option="23,$(uci get network.globals.ula_prefix | awk -F '::' '{print $1}')::1"
 		uci commit
 	fi
 	uci set unbound.ub_main.listen_port='53'
