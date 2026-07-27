@@ -221,10 +221,10 @@ function odhcpdxx(){
 	uci add_list dhcp.lan.dns="$(uci get network.globals.ula_prefix | awk -F '::' '{print $1}')::1"
 	uci commit
 }
-if $(opkg list-installed | grep -wq "odhcpd ") ; then
+if $(opkg list-installed | grep -wq "^odhcpd ") ; then
 	odhcpdxx
 fi
-if $(apk list --installed | grep -wq "odhcpd ") ;then
+if $(apk list --installed | grep -wq "^odhcpd ") ;then
 	odhcpdxx
 fi
 if $(opkg list-installed | grep -q unbound-daemon) ; then
