@@ -214,15 +214,13 @@ function unboundxx(){
 if ! $(opkg list-installed | grep -q dnsmasq) ; then
 	uci delete dhcp.@dnsmasq[0]
 	uci set dhcp.odhcpd.maindhcp="1"
-	uci add_list dhcp.lan.dns="${nip}"
-	uci add_list dhcp.lan.dns="$(uci get network.globals.ula_prefix | awk -F '::' '{print $1}')::1"
+#	uci add_list dhcp.lan.dns="${nip}"
+#	uci add_list dhcp.lan.dns="$(uci get network.globals.ula_prefix | awk -F '::' '{print $1}')::1"
 	uci commit
 fi
 if ! $(apk list --installed | grep -q dnsmasq) ;then
 	uci delete dhcp.@dnsmasq[0]
 	uci set dhcp.odhcpd.maindhcp="1"
-	uci add_list dhcp.lan.dns="${nip}"
-	uci add_list dhcp.lan.dns="$(uci get network.globals.ula_prefix | awk -F '::' '{print $1}')::1"
 	uci commit
 
 fi
