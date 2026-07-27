@@ -166,9 +166,6 @@ set system.@system[0].timezone='CST-8'
 set system.@system[0].zonename='Asia/Shanghai'
 set system.ntp.enabled='0'
 set system.ntp.enable_server='0'
-add_list dhcp.lan.dhcp_option="3,${nip}"
-add_list dhcp.lan.dhcp_option="6,${nip}"
-add_list dhcp.lan.dhcp_option="23,$(uci get network.globals.ula_prefix | awk -F '::' '{print $1}')::1"
 set wireless.radio0.country='CN'
 set wireless.radio1.country='CN'
 set wireless.default_radio0.ssid="xiaomi-${st4}"
@@ -201,6 +198,9 @@ function unboundxx(){
 		uci delete dhcp.@dnsmasq[0].nonegcache
 		uci delete dhcp.@dnsmasq[0].nonwildcard
 		uci set dhcp.@dnsmasq[0].quietdhcp='1'
+		uci add_list dhcp.lan.dhcp_option="3,${nip}"
+		uci add_list dhcp.lan.dhcp_option="6,${nip}"
+		uci add_list dhcp.lan.dhcp_option="23,$(uci get network.globals.ula_prefix | awk -F '::' '{print $1}')::1"
 		uci commit
 	fi
 	uci set unbound.ub_main.listen_port='53'
@@ -214,6 +214,8 @@ function unboundxx(){
 if ! $(opkg list-installed | grep -q dnsmasq) ; then
 	uci delete dhcp.@dnsmasq[0]
 	uci set dhcp.odhcpd.maindhcp="1"
+	uci add_list dhcp.lan.dns="${nip}"
+	uci add_list dhcp.lan.dns="$(uci get network.globals.ula_prefix | awk -F '::' '{print $1}')::1"
 	uci commit
 fi
 if ! $(apk list --installed | grep -q dnsmasq) ;then
