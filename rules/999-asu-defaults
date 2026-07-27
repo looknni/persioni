@@ -227,10 +227,10 @@ fi
 if $(apk list --installed | grep -wq "^odhcpd ") ;then
 	odhcpdxx
 fi
-if $(opkg list-installed | grep -q unbound-daemon) ; then
+if $(opkg list-installed | grep -wq "^unbound-daemon ") ; then
 	unboundxx
 fi
-if $(apk list --installed | grep -q unbound-daemon) ;then
+if $(apk list --installed | grep -wq "^unbound-daemon ") ;then
 	unboundxx
 fi
 mv /etc/unbound/unbound.conf /tmp/
