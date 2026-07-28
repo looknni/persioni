@@ -191,8 +191,10 @@ echo -e "\n$(uci get network.lan.ipaddr) $(uci get system.@system[0].hostname)\n
 for i in `seq 2 255`;do echo "172.${r16r}.${r255r}.$i e.$i" >> /etc/hosts ; done
 nkers=3
 nslabs=2
+opkg list-installed > /tmp/installed.opkg
+apk list --installed > /tmp/installed.apk
 function unboundxx(){
-	if $(opkg list-installed | grep -q dnsmasq) ; then
+	if $(grep -q dnsmasq /tmp/installed.opkg) ; then
 		uci set dhcp.@dnsmasq[0].dnssec='0'
 		uci set dhcp.@dnsmasq[0].port='0'
 		uci set dhcp.@dnsmasq[0].noresolv='1'
@@ -221,16 +223,16 @@ function odhcpdxx(){
 	uci add_list dhcp.lan.dns="$(uci get network.globals.ula_prefix | awk -F '::' '{print $1}')::1"
 	uci commit
 }
-if $(opkg list-installed | grep -wq "^odhcpd ") ; then
+if $(grep -q "^odhcpd " /tmp/installed.opkg) ; then
 	odhcpdxx
 fi
-if $(apk list --installed | grep -wq "^odhcpd ") ;then
+if $(grep -q "^odhcpd " /tmp/installed.apk) ;then
 	odhcpdxx
 fi
-if $(opkg list-installed | grep -wq "^unbound-daemon ") ; then
+if $(grep -q "^unbound-daemon " /tmp/installed.opkg) ; then
 	unboundxx
 fi
-if $(apk list --installed | grep -wq "^unbound-daemon ") ;then
+if $(grep -q "^unbound-daemon " /tmp/installed.apk) ;then
 	unboundxx
 fi
 mv /etc/unbound/unbound.conf /tmp/
