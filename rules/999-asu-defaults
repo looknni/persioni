@@ -41,8 +41,6 @@ delete system.ntp.server
 add_list system.ntp.server='edu.ntp.org.cn'
 add_list system.ntp.server='2.openwrt.pool.ntp.org'
 set chrony.@pool[0].hostname='edu.ntp.org.cn'
-set unbound.@unbound[0].dhcp_link="odhcpd"
-set unbound.@unbound[0].dhcp4_slaac6="1"
 commit
 WW
 ssh-keygen -t ed25519
