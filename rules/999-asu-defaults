@@ -47,7 +47,7 @@ ssh-keygen -t ed25519
 cp /etc/dropbear/authorized_keys /root/.ssh
 sed -i '/^\t#/{17,$d;}' /etc/unbound/unbound.conf
 service openssl disable ; service radius disable ; service sysntpd disable ; service uhttpd disable ; service sshd disable
-# wget https://www.internic.net/domain/named.root -O /etc/unbound/root.hints
+echo '* * 9 * * /usr/bin/wget https://www.internic.net/domain/named.root -O /etc/unbound/root.hints' > /etc/crontabs/root
 rm $0
 GHTTPS
 
