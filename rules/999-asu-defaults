@@ -279,8 +279,6 @@ server:
 	prefer-ip6: no
 	prefer-ip4: no
 	outgoing-range: 900
-	outgoing-port-permit: 32768
-	outgoing-port-avoid: "1-3000"
 	outgoing-num-tcp: 30
 	incoming-num-tcp: 30
 	so-rcvbuf: 8m
