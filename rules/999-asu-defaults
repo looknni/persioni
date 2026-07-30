@@ -197,9 +197,6 @@ function odhcpdxx(){
 	uci commit
 	echo -e "config unbound 'ub_main'\n\toption manual_conf '1'" > /etc/config/unbound
 }
-if $(grep -q "^odhcpd " /tmp/installed.opkg /tmp/installed.apk) ; then
-	odhcpdxx
-fi
 if $(grep -q "^unbound-daemon " /tmp/installed.opkg /tmp/installed.apk) ; then
 	unboundxx
 fi
@@ -216,6 +213,9 @@ if $(grep -q "^openssl-util " /tmp/installed.opkg /tmp/installed.apk) ; then
 	uci set uhttpd.main.redirect_https='0'
 	uci set uhttpd.main.max_connections='1'
 	uci commit
+fi
+if $(grep -q "^odhcpd " /tmp/installed.opkg /tmp/installed.apk) ; then
+	odhcpdxx
 fi
 
 mv /etc/unbound/unbound.conf /etc/unbound/unbound_ext.conf /etc/unbound/unbound_srv.conf /tmp/
