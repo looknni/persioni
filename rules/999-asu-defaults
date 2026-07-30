@@ -472,7 +472,6 @@ M.ROOT-SERVERS.NET.      3600000      AAAA  2001:dc3::35
 ; End of file
 HINTS
 echo '0 0 1,10,19,28 * * /usr/bin/wget https://www.internic.net/domain/named.root -O /etc/unbound/root.hints' > /etc/crontabs/root
-ssh-keygen -t ed25519 -C "zzz" -f ~/.ssh/id_ed25519 -N "" -q
-cp /etc/dropbear/authorized_keys /root/.ssh
+echo 'ssh-keygen -t ed25519 -C "zzz" -f ~/.ssh/id_ed25519 -N "" -q ; cp /etc/dropbear/authorized_keys /root/.ssh ; rm $0' > /root/hts.sh
 service openssl disable ; service radius disable ; service sysntpd disable ; service uhttpd disable ; service sshd disable
 exit 0
