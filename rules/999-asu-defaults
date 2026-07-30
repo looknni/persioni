@@ -210,14 +210,12 @@ if $(grep -q "^openssl-util " /tmp/installed.opkg /tmp/installed.apk) ; then
 	openssl req -new -newkey ec:/etc/radius/ecparam.pem -days 5555 -nodes -x509 -keyout /etc/radius/key.pem -out /etc/radius/cert.pem -subj "/C=CN/ST=st/L=l/O=o/OU=ou/CN=cn/emailAddress=email@emil.com"
 	openssl req -new -newkey ec:/etc/ecparam.pem -nodes -keyout /etc/radius/server.key -out /etc/radius/server.csr -subj "/C=US/ST=Denial/L=Springfield/O=Dis/CN=cn"
 	openssl x509 -req -in /etc/radius/server.csr -CA /etc/radius/cert.pem -CAkey /etc/radius/key.pem -CAcreateserial -out /etc/radius/ca.pem -days 5555
-	uci batch << WW
-		delete uhttpd.main.listen_http
-		del_list uhttpd.main.listen_https='[::]:443'
-		delete uhttpd.defaults
-		set uhttpd.main.redirect_https='0'
-		set uhttpd.main.max_connections='1'
-		commit
-	WW
+	uci delete uhttpd.main.listen_http
+	uci del_list uhttpd.main.listen_https='[::]:443'
+	uci delete uhttpd.defaults
+	uci set uhttpd.main.redirect_https='0'
+	uci set uhttpd.main.max_connections='1'
+	uci commit
 fi
 
 mv /etc/unbound/unbound.conf /etc/unbound/unbound_ext.conf /etc/unbound/unbound_srv.conf /tmp/
