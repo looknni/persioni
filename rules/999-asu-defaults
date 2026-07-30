@@ -23,33 +23,6 @@ else
 	echo ${a} > /etc/profile.d/z99.sh
 fi
 unset a
-cat > /root/hts.sh << 'GHTTPS'
-openssl ecparam -name prime256v1 -out /etc/ecparam.pem
-openssl req -new -newkey ec:/etc/ecparam.pem -days 5555 -nodes -x509 -keyout /etc/uhttpd.key -out /etc/uhttpd.crt -subj "/C=CN/ST=st/L=l/O=o/OU=ou/CN=cn/emailAddress=email@emil.com"
-openssl ecparam -name prime256v1 -out /etc/radius/ecparam.pem
-openssl req -new -newkey ec:/etc/radius/ecparam.pem -days 5555 -nodes -x509 -keyout /etc/radius/key.pem -out /etc/radius/cert.pem -subj "/C=CN/ST=st/L=l/O=o/OU=ou/CN=cn/emailAddress=email@emil.com"
-openssl req -new -newkey ec:/etc/ecparam.pem -nodes -keyout /etc/radius/server.key -out /etc/radius/server.csr -subj "/C=US/ST=Denial/L=Springfield/O=Dis/CN=cn"
-openssl x509 -req -in /etc/radius/server.csr -CA /etc/radius/cert.pem -CAkey /etc/radius/key.pem -CAcreateserial -out /etc/radius/ca.pem -days 5555
-echo -e "config unbound 'ub_main'\n\toption manual_conf '1'" > /etc/config/unbound
-uci batch << WW
-delete uhttpd.main.listen_http
-del_list uhttpd.main.listen_https='[::]:443'
-delete uhttpd.defaults
-set uhttpd.main.redirect_https='0'
-set uhttpd.main.max_connections='1'
-delete system.ntp.server
-add_list system.ntp.server='edu.ntp.org.cn'
-add_list system.ntp.server='2.openwrt.pool.ntp.org'
-set chrony.@pool[0].hostname='edu.ntp.org.cn'
-commit
-WW
-ssh-keygen -t ed25519
-cp /etc/dropbear/authorized_keys /root/.ssh
-sed -i '/^\t#/{17,$d;}' /etc/unbound/unbound.conf
-service openssl disable ; service radius disable ; service sysntpd disable ; service uhttpd disable ; service sshd disable
-echo '0 0 1,10,19,28 * * /usr/bin/wget https://www.internic.net/domain/named.root -O /etc/unbound/root.hints' > /etc/crontabs/root
-rm $0
-GHTTPS
 
 cat > /root/nft.init.0 << EXO
 #!/bin/sh
@@ -167,6 +140,8 @@ set system.@system[0].timezone='CST-8'
 set system.@system[0].zonename='Asia/Shanghai'
 set system.ntp.enabled='0'
 set system.ntp.enable_server='0'
+add_list system.ntp.server='edu.ntp.org.cn'
+set chrony.@pool[0].hostname='edu.ntp.org.cn'
 set wireless.radio0.country='CN'
 set wireless.radio1.country='CN'
 set wireless.default_radio0.ssid="xiaomi-${st4}"
@@ -220,20 +195,32 @@ function odhcpdxx(){
 	uci add_list dhcp.lan.dns="${nip}"
 	uci add_list dhcp.lan.dns="$(uci get network.globals.ula_prefix | awk -F '::' '{print $1}')::1"
 	uci commit
+	echo -e "config unbound 'ub_main'\n\toption manual_conf '1'" > /etc/config/unbound
 }
-if $(grep -q "^odhcpd " /tmp/installed.opkg) ; then
+if $(grep -q "^odhcpd " /tmp/installed.opkg /tmp/installed.apk) ; then
 	odhcpdxx
 fi
-if $(grep -q "^odhcpd " /tmp/installed.apk) ;then
-	odhcpdxx
-fi
-if $(grep -q "^unbound-daemon " /tmp/installed.opkg) ; then
+if $(grep -q "^unbound-daemon " /tmp/installed.opkg /tmp/installed.apk) ; then
 	unboundxx
 fi
-if $(grep -q "^unbound-daemon " /tmp/installed.apk) ;then
-	unboundxx
+if $(grep -q "^openssl-util " /tmp/installed.opkg /tmp/installed.apk) ; then
+	openssl ecparam -name prime256v1 -out /etc/ecparam.pem
+	openssl req -new -newkey ec:/etc/ecparam.pem -days 5555 -nodes -x509 -keyout /etc/uhttpd.key -out /etc/uhttpd.crt -subj "/C=CN/ST=st/L=l/O=o/OU=ou/CN=cn/emailAddress=email@emil.com"
+	openssl ecparam -name prime256v1 -out /etc/radius/ecparam.pem
+	openssl req -new -newkey ec:/etc/radius/ecparam.pem -days 5555 -nodes -x509 -keyout /etc/radius/key.pem -out /etc/radius/cert.pem -subj "/C=CN/ST=st/L=l/O=o/OU=ou/CN=cn/emailAddress=email@emil.com"
+	openssl req -new -newkey ec:/etc/ecparam.pem -nodes -keyout /etc/radius/server.key -out /etc/radius/server.csr -subj "/C=US/ST=Denial/L=Springfield/O=Dis/CN=cn"
+	openssl x509 -req -in /etc/radius/server.csr -CA /etc/radius/cert.pem -CAkey /etc/radius/key.pem -CAcreateserial -out /etc/radius/ca.pem -days 5555
+	uci batch << WW
+		delete uhttpd.main.listen_http
+		del_list uhttpd.main.listen_https='[::]:443'
+		delete uhttpd.defaults
+		set uhttpd.main.redirect_https='0'
+		set uhttpd.main.max_connections='1'
+		commit
+	WW
 fi
-mv /etc/unbound/unbound.conf /tmp/
+
+mv /etc/unbound/unbound.conf /etc/unbound/unbound_ext.conf /etc/unbound/unbound_srv.conf /tmp/
 mv /etc/ssh/sshd_config /tmp/
 cat > /etc/ssh/sshd_config << SSHD
 Include /etc/ssh/sshd_config.d/*.conf
@@ -255,9 +242,6 @@ PermitEmptyPasswords no
 Subsystem	sftp	/usr/lib/sftp-server
 SSHD
 cat > /etc/unbound/unbound.conf << UNBOUND
-#include: "otherfile.conf"
-#include-toplevel: "otherfile.conf"
-
 server:
 	verbosity: 1
 	statistics-interval: 14400
@@ -268,14 +252,11 @@ server:
 	statistics-inhibit-zero: yes
 	num-threads: ${nkers}
 	interface-automatic: no
-	# interface-automatic-ports: ""
 	port: 53
 	interface: 127.0.0.1
 	interface: ::1
 	interface: 172.${r16r}.${r255r}.1
 	interface: $(uci get network.globals.ula_prefix | awk -F '::' '{print $1}')::1
-	# outgoing-interface: 2001:DB8::5
-	# outgoing-interface: 2001:DB8::/64
 	prefer-ip6: no
 	prefer-ip4: no
 	outgoing-range: 900
@@ -295,7 +276,7 @@ server:
 	msg-cache-slabs: ${nslabs}
 	num-queries-per-thread: 225
 	jostle-timeout: 200
-	# delay-close: 0
+	delay-close: 0
 	udp-connect: yes
 	outbound-msg-retry: 5
 	max-sent-count: 32
@@ -324,22 +305,14 @@ server:
 	infra-keep-probing: yes
 	infra-cache-slabs: ${nslabs}
 	infra-cache-numhosts: 10000
-	# define-tag: "tag1 tag2 tag3"
 	do-ip4: yes
 	do-ip6: yes
-	# do-nat64: no
-	# nat64-prefix: 64:ff9b::0/96
 	do-udp: yes
 	do-tcp: yes
 	tcp-upstream: no
 	udp-upstream-without-downstream: no
-	# tcp-mss: 0
-	# outgoing-tcp-mss: 0
-	# tcp-idle-timeout: 30000
 	edns-tcp-keepalive: yes
 	edns-tcp-keepalive-timeout: 120000
-	# sock-queue-timeout: 0
-	# use-systemd: no
 	do-daemonize: yes
 	access-control: 127.0.0.0/8 allow
 	access-control: ::1 allow
@@ -348,23 +321,6 @@ server:
 	access-control: $(uci get network.globals.ula_prefix) allow
 	access-control: 0.0.0.0/0 deny
 	access-control: ::/0 deny
-	# access-control: 192.168.0.0/16 allow
-	# access-control: 10.0.0.0/8 allow
-	# access-control-tag: 192.0.2.0/24 "tag2 tag3"
-	# access-control-tag-action: 192.0.2.0/24 tag3 refuse
-	# access-control-tag-data: 192.0.2.0/24 tag2 "A 127.0.0.1"
-	# access-control-view: 192.0.2.0/24 viewname
-	# interface-action: 192.0.2.153 allow
-	# interface-action: 192.0.2.154@5003 allow
-	# interface-action: 2001:DB8::5 allow
-	# interface-action: eth0@5003 allow
-	# interface-tag: eth0@5003 "tag2 tag3"
-	# interface-tag-action: eth0@5003 tag3 refuse
-	# interface-tag-data: eth0@5003 tag2 "A 127.0.0.1"
-	# interface-view: eth0@5003 viewname
-	# chroot: "/var/lib/unbound"
-	# username: "unbound"
-	# directory: "/var/lib/unbound"
 	logfile: ""
 	use-syslog: yes
 	log-identity: ""
@@ -382,15 +338,10 @@ server:
 	hide-version: yes
 	hide-trustanchor: yes
 	hide-http-user-agent: yes
-	# identity: ""
-	# version: ""
-	# nsid: ""
-	# http-user-agent: ""
 	target-fetch-policy: "3 1 0 0 0 0"
 	harden-short-bufsize: yes
 	harden-large-queries: yes
 	harden-glue: yes
-	# harden-unverified-glue: no
 	harden-dnssec-stripped: no
 	harden-below-nxdomain: yes
 	harden-referral-path: yes
@@ -400,8 +351,6 @@ server:
 	qname-minimisation-strict: no
 	aggressive-nsec: yes
 	use-caps-for-id: yes
-	# caps-exempt: "licdn.com"
-	# caps-exempt: "senderbase.org"
 	private-address: 10.0.0.0/8
 	private-address: 172.16.0.0/12
 	private-address: 192.168.0.0/16
@@ -409,33 +358,16 @@ server:
 	private-address: fd00::/8
 	private-address: fe80::/10
 	private-address: ::ffff:0:0/96
-	# private-domain: "example.com"
-	# unwanted-reply-threshold: 0
 	prefetch: yes
-	# prefetch-key: no
+	prefetch-key: no
 	deny-any: yes
 	rrset-roundrobin: yes
 	minimal-responses: yes
-	# disable-dnssec-lame-check: no
+	disable-dnssec-lame-check: no
 	module-config: "dns64 respip iterator"
-	# auto-trust-anchor-file: "/var/lib/unbound/root.key"
-	# trust-anchor-signaling: yes
-	# root-key-sentinel: yes
-	# trust-anchor-file: ""
-	# trusted-keys-file: ""
-	# domain-insecure: "example.com"
-	# val-override-date: ""
-	# val-bogus-ttl: 60
-	# val-sig-skew-min: 3600
-	# val-sig-skew-max: 86400
-	# val-max-restart: 5
-	# val-clean-additional: yes
-	# val-permissive-mode: no
 	ignore-cd-flag: yes
 	disable-edns-do: yes
 	serve-original-ttl: no
-	# val-log-level: 0
-	# val-nsec3-keysize-iterations: "1024 150 2048 150 4096 150"
 	zonemd-permissive-mode: no
 	add-holddown: 2592000
 	del-holddown: 2592000
@@ -444,8 +376,6 @@ server:
 	key-cache-size: 8m
 	key-cache-slabs: ${nslabs}
 	neg-cache-size: 4m
-	# trust-anchor: "nlnetlabs.nl. DNSKEY 257 3 5 AQPzzTWMz8qSWIQlfRnPckx2BiVmkVN6LPupO3mbz7FhLSnm26n6iG9N Lby97Ji453aWZY3M5/xJBSOS2vWtco2t8C0+xeO1bc/d6ZTy32DHchpW 6rDH1vp86Ll+ha0tmwyy9QP7y2bVw5zSbFCrefk8qCUBgfHm9bHzMG1U BYtEIQ=="
-	# trust-anchor: "jelte.nlnetlabs.nl. DS 42860 5 1 14D739EB566D2B1A5E216A0BA4D17FA9B038BE4A"
 	local-zone: "localhost." nodefault
 	local-zone: "127.in-addr.arpa." nodefault
 	local-zone: "1.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.ip6.arpa." nodefault
@@ -486,86 +416,27 @@ server:
 	local-zone: "a.e.f.ip6.arpa." nodefault
 	local-zone: "b.e.f.ip6.arpa." nodefault
 	local-zone: "8.b.d.0.1.0.0.2.ip6.arpa." nodefault
-	# local-zone: "example.com" ipset
-	# unblock-lan-zones: no
-	# insecure-lan-zones: no
-	#       local-zone: <zone> <type>
-	#       local-data: "<resource record string>"
-	# local-zone: "local." static
-	# local-data: "mycomputer.local. IN A 192.0.2.51"
-	# local-data: 'mytext.local TXT "content of text record"'
-	# local-data: "adserver.example.com A 127.0.0.1"
-	# local-zone: "example.com" redirect
-	# local-data: "example.com A 192.0.2.3"
-	# local-data-ptr: "192.0.2.3 www.example.com"
-	# local-zone-tag: "example.com" "tag2 tag3"
-	# local-zone-override: "example.com" 192.0.2.0/24 refuse
-	# tls-service-key: "path/to/privatekeyfile.key"
-	# tls-service-pem: "path/to/publiccertfile.pem"
-	# tls-port: 853
-	# https-port: 443
-	# quic-port: 853
-	# tls-ciphers: "DHE-RSA-AES256-GCM-SHA384:DHE-RSA-AES128-GCM-SHA256:ECDHE-RSA-AES256-GCM-SHA384:ECDHE-RSA-AES128-GCM-SHA256:DHE-RSA-AES256-SHA256:DHE-RSA-AES128-SHA256:ECDHE-RSA-AES256-SHA384:ECDHE-RSA-AES128-SHA256"
-	# tls-ciphersuites: "TLS_AES_128_GCM_SHA256:TLS_AES_128_CCM_8_SHA256:TLS_AES_128_CCM_SHA256:TLS_AES_256_GCM_SHA384:TLS_CHACHA20_POLY1305_SHA256"
-	# pad-responses: yes
-	# pad-responses-block-size: 468
-	# tls-use-sni: yes
-	# tls-session-ticket-keys: "path/to/secret_file1"
-	# tls-session-ticket-keys: "path/to/secret_file2"
-	# tls-upstream: no
-	# tls-cert-bundle: ""
-	# tls-win-cert: no
-	# tls-system-cert: no
-	# pad-queries: yes
-	# pad-queries-block-size: 128
-	# http-endpoint: "/dns-query"
-	# http-max-streams: 100
-	# http-query-buffer-size: 4m
-	# http-response-buffer-size: 4m
-	# http-nodelay: yes
-	# http-notls-downstream: no
-	# quic-size: 8m
-	# dns64-prefix: 64:ff9b::0/96
-	# dns64-ignore-aaaa: "example.com"
 	ratelimit: 5000
 	ratelimit-size: 4m
 	ratelimit-slabs: ${nslabs}
 	ratelimit-factor: 10
 	ratelimit-backoff: yes
-	# ratelimit-for-domain: example.com 1000
-	# ratelimit-below-domain: com 1000
 	ip-ratelimit: 100
 	ip-ratelimit-cookie: 2000
 	ip-ratelimit-size: 4m
 	ip-ratelimit-slabs: ${nslabs}
 	ip-ratelimit-factor: 10
 	ip-ratelimit-backoff: yes
-	# tcp-connection-limit: 192.0.2.0/24 12
 	fast-server-permil: 500
 	fast-server-num: 3
-	# answer-cookie: no
-	# cookie-secret-file: "/usr/local/etc/unbound_cookiesecrets.txt"
 	ede: no
 	ede-serve-expired: no
 	dns-error-reporting: yes
-	# ipsecmod-enabled: yes
-	# ipsecmod-hook: "./my_executable"
-	# ipsecmod-strict: no
-	# ipsecmod-max-ttl: 3600
-	# ipsecmod-ignore-bogus: no
-	# ipsecmod-allow: "example.com"
-	# ipsecmod-allow: "nlnetlabs.nl"
-	# tcp-reuse-timeout: 60000
-	# max-reuse-tcp-queries: 200
-	# tcp-auth-query-timeout: 3000
 	serve-expired: yes
 	serve-expired-ttl: 300
 	serve-expired-ttl-reset: yes
 	serve-expired-reply-ttl: 60
 	serve-expired-client-timeout: 1800
-	# do-not-query-address: 127.0.0.1/8
-	# do-not-query-address: ::1
-	# do-not-query-localhost: yes
 
 forward-zone:
 	name: "."
@@ -577,79 +448,11 @@ forward-zone:
 	forward-no-cache: no
 UNBOUND
 cat > /etc/unbound/root.hints << 'HINTS'
-;       This file holds the information on root name servers needed to
-;       initialize cache of Internet domain name servers
-;       (e.g. reference this file in the "cache  .  <file>"
-;       configuration file of BIND domain name servers).
-;
-;       This file is made available by InterNIC
-;       under anonymous FTP as
-;           file                /domain/named.cache
-;           on server           FTP.INTERNIC.NET
-;       -OR-                    RS.INTERNIC.NET
-;
-;       last update:     February 19, 2026
-;       related version of root zone:     2026021901
-;
-; FORMERLY NS.INTERNIC.NET
-;
-.                        3600000      NS    A.ROOT-SERVERS.NET.
-A.ROOT-SERVERS.NET.      3600000      A     198.41.0.4
-A.ROOT-SERVERS.NET.      3600000      AAAA  2001:503:ba3e::2:30
-;
-; FORMERLY NS1.ISI.EDU
-;
-.                        3600000      NS    B.ROOT-SERVERS.NET.
-B.ROOT-SERVERS.NET.      3600000      A     170.247.170.2
-B.ROOT-SERVERS.NET.      3600000      AAAA  2801:1b8:10::b
-;
-; FORMERLY C.PSI.NET
-;
-.                        3600000      NS    C.ROOT-SERVERS.NET.
-C.ROOT-SERVERS.NET.      3600000      A     192.33.4.12
-C.ROOT-SERVERS.NET.      3600000      AAAA  2001:500:2::c
-;
-; FORMERLY TERP.UMD.EDU
-;
-.                        3600000      NS    D.ROOT-SERVERS.NET.
-D.ROOT-SERVERS.NET.      3600000      A     199.7.91.13
-D.ROOT-SERVERS.NET.      3600000      AAAA  2001:500:2d::d
-;
-; FORMERLY NS.NASA.GOV
-;
-.                        3600000      NS    E.ROOT-SERVERS.NET.
-E.ROOT-SERVERS.NET.      3600000      A     192.203.230.10
-E.ROOT-SERVERS.NET.      3600000      AAAA  2001:500:a8::e
-;
 ; FORMERLY NS.ISC.ORG
 ;
 .                        3600000      NS    F.ROOT-SERVERS.NET.
 F.ROOT-SERVERS.NET.      3600000      A     192.5.5.241
 F.ROOT-SERVERS.NET.      3600000      AAAA  2001:500:2f::f
-;
-; FORMERLY NS.NIC.DDN.MIL
-;
-.                        3600000      NS    G.ROOT-SERVERS.NET.
-G.ROOT-SERVERS.NET.      3600000      A     192.112.36.4
-G.ROOT-SERVERS.NET.      3600000      AAAA  2001:500:12::d0d
-;
-; FORMERLY AOS.ARL.ARMY.MIL
-;
-.                        3600000      NS    H.ROOT-SERVERS.NET.
-H.ROOT-SERVERS.NET.      3600000      A     198.97.190.53
-H.ROOT-SERVERS.NET.      3600000      AAAA  2001:500:1::53
-;
-; FORMERLY NIC.NORDU.NET
-;
-.                        3600000      NS    I.ROOT-SERVERS.NET.
-I.ROOT-SERVERS.NET.      3600000      A     192.36.148.17
-I.ROOT-SERVERS.NET.      3600000      AAAA  2001:7fe::53
-;
-; OPERATED BY VERISIGN, INC.
-;
-.                        3600000      NS    J.ROOT-SERVERS.NET.
-J.ROOT-SERVERS.NET.      3600000      A     192.58.128.30
-J.ROOT-SERVERS.NET.      3600000      AAAA  2001:503:c27::2:30
 ;
 ; OPERATED BY RIPE NCC
 ;
@@ -670,7 +473,8 @@ M.ROOT-SERVERS.NET.      3600000      A     202.12.27.33
 M.ROOT-SERVERS.NET.      3600000      AAAA  2001:dc3::35
 ; End of file
 HINTS
-# verx=$(cat /etc/openwrt_version|awk -F '-' '{print $1}'|grep -Eo "[0-9]{5}")
-# if [ "${verx}" -ge "32353" ] ;then
-# fi
+echo '0 0 1,10,19,28 * * /usr/bin/wget https://www.internic.net/domain/named.root -O /etc/unbound/root.hints' > /etc/crontabs/root
+ssh-keygen -t ed25519 -C "zzz" -f ~/.ssh/id_ed25519 -N "" -q
+cp /etc/dropbear/authorized_keys /root/.ssh
+service openssl disable ; service radius disable ; service sysntpd disable ; service uhttpd disable ; service sshd disable
 exit 0
