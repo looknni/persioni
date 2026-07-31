@@ -208,7 +208,7 @@ if $(grep -q "^openssl-util " /tmp/installed.opkg /tmp/installed.apk) ; then
 	openssl req -new -newkey ec:/etc/ecparam.pem -nodes -keyout /etc/radius/server.key -out /etc/radius/server.csr -subj "/C=US/ST=Denial/L=Springfield/O=Dis/CN=cn"
 	openssl x509 -req -in /etc/radius/server.csr -CA /etc/radius/cert.pem -CAkey /etc/radius/key.pem -CAcreateserial -out /etc/radius/ca.pem -days 5555
 	uci delete uhttpd.main.listen_http
-	uci del_list uhttpd.main.listen_https='[::]:443'
+	uci del_list uhttpd.main.listen_https='0.0.0.0:443'
 	uci delete uhttpd.defaults
 	uci set uhttpd.main.redirect_https='0'
 	uci set uhttpd.main.max_connections='1'
@@ -224,15 +224,15 @@ cat > /etc/ssh/sshd_config << SSHD
 Include /etc/ssh/sshd_config.d/*.conf
 Port 22
 AddressFamily any
-ListenAddress 172.${r16r}.${r255r}.1
+ListenAddress $(uci get network.globals.ula_prefix | awk -F '::' '{print $1}')::1
 HostKey /etc/ssh/ssh_host_ed25519_key
 SyslogFacility AUTH
 LogLevel INFO
 LoginGraceTime 2m
 PermitRootLogin yes
 StrictModes yes
-MaxAuthTries 6
-MaxSessions 10
+MaxAuthTries 3
+MaxSessions 2
 PubkeyAuthentication yes
 AuthorizedKeysFile	.ssh/authorized_keys
 PasswordAuthentication yes
