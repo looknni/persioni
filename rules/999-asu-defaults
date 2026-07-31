@@ -253,7 +253,7 @@ server:
 	port: 53
 	interface: 127.0.0.1
 	interface: ::1
-	interface: 172.${r16r}.${r255r}.1
+#	interface: 172.${r16r}.${r255r}.1
 	interface: $(uci get network.globals.ula_prefix | awk -F '::' '{print $1}')::1
 	prefer-ip6: no
 	prefer-ip4: no
