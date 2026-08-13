@@ -285,8 +285,8 @@ server:
 	iter-scrub-promiscuous: yes
 	unknown-server-time-limit: 376
 	discard-timeout: 1900
-	wait-limit: 1000
-	wait-limit-cookie: 10000
+	wait-limit: 500
+	wait-limit-cookie: 5000
 	wait-limit-netblock: 127.0.0.0/8 -1
 	wait-limit-netblock: ::1/128 -1
 	wait-limit-cookie-netblock: 127.0.0.0/8 -1
