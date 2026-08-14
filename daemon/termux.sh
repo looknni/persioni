@@ -13,7 +13,7 @@ apt install -y openssh vim bash-completion python && apt autopurge llvm -y
 cat >> ~/.bashrc << 'EOF'
 PS1='\[\e[1;32m\]\l \[\e[1;95m\]\W \[\e[1;33m\]\$ \[\e[0m\]'
 alias cdd="cd $PREFIX"
-alias ip='ip -s -s'
+alias ip='ip -s -s -h'
 export LESS_TERMCAP_mb=$'\E[01;35m'
 export LESS_TERMCAP_md=$'\E[01;35m'
 export LESS_TERMCAP_me=$'\E[0m'
