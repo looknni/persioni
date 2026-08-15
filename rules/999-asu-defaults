@@ -309,7 +309,7 @@ server:
 	do-tcp: yes
 	tcp-upstream: no
 	udp-upstream-without-downstream: no
-	edns-tcp-keepalive: yes
+	edns-tcp-keepalive: no
 	edns-tcp-keepalive-timeout: 120000
 	do-daemonize: yes
 	access-control: 127.0.0.0/8 allow
@@ -338,7 +338,7 @@ server:
 	hide-http-user-agent: yes
 	target-fetch-policy: "3 1 0 0 0 0"
 	harden-short-bufsize: yes
-	harden-large-queries: yes
+	harden-large-queries: no
 	harden-glue: yes
 	harden-dnssec-stripped: no
 	harden-below-nxdomain: yes
@@ -429,7 +429,7 @@ server:
 	fast-server-num: 3
 	ede: no
 	ede-serve-expired: no
-	dns-error-reporting: yes
+	dns-error-reporting: no
 	serve-expired: yes
 	serve-expired-ttl: 300
 	serve-expired-ttl-reset: yes
