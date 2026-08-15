@@ -364,7 +364,6 @@ server:
 	disable-dnssec-lame-check: no
 	module-config: "dns64 respip iterator"
 	ignore-cd-flag: yes
-	disable-edns-do: yes
 	serve-original-ttl: no
 	zonemd-permissive-mode: no
 	add-holddown: 2592000
