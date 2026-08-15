@@ -362,7 +362,8 @@ server:
 	rrset-roundrobin: yes
 	minimal-responses: yes
 	disable-dnssec-lame-check: no
-	module-config: "dns64 respip iterator"
+	module-config: "dns64 respip validator iterator"
+	auto-trust-anchor-file: "/var/lib/unbound/root.key"
 	ignore-cd-flag: yes
 	serve-original-ttl: no
 	zonemd-permissive-mode: no
