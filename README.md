@@ -2,7 +2,7 @@
 ---
 ##### [Wolframalpha](https://www.wolframalpha.com/) . [Maintaining and evolving HTML](https://whatwg.org/) . [Mmdn web docs](https://developer.mozilla.org/zh-CN/docs/Web/) . [Msi](https://us.msi.com/Motherboard/B560M-PRO/support)
 ---
-##### [Ventoy](https://www.ventoy.net/en/index.html) . [Tracker.deb](https://tracker.debian.org/pkg/linux) . [Cppreference](https://cppreference.com/)
+##### [Ventoy](https://www.ventoy.net/en/index.html) . [Tracker.deb](https://tracker.debian.org/pkg/linux) . [Cppreference](https://cppreference.com/) . [Firefox](https://ftp.mozilla.org/pub/fenix/)
 ---
 ##### [Gnu-command](https://www.gnu.org/software/) . [Nftables](https://wiki.nftables.org/) . [ ? ](https://quickref.cn/) [Unbound-doc](https://unbound.docs.nlnetlabs.nl/en/latest/manpages/unbound.conf.html)
 ---
