@@ -340,11 +340,11 @@ server:
 	harden-short-bufsize: yes
 	harden-large-queries: no
 	harden-glue: yes
-	harden-dnssec-stripped: no
+	harden-dnssec-stripped: yes
 	harden-below-nxdomain: yes
-	harden-referral-path: yes
+	harden-referral-path: no
 	harden-algo-downgrade: yes
-	harden-unknown-additional: yes
+	harden-unknown-additional: no
 	qname-minimisation: yes
 	qname-minimisation-strict: no
 	aggressive-nsec: yes
