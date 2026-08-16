@@ -209,8 +209,6 @@ if $(grep -q "^openssl-util " /tmp/installed.opkg /tmp/installed.apk) ; then
 	uci delete uhttpd.main.listen_http
 	uci del_list uhttpd.main.listen_https='0.0.0.0:443'
 	uci delete uhttpd.defaults
-	uci set uhttpd.main.redirect_https='0'
-	uci set uhttpd.main.max_connections='1'
 	uci commit
 fi
 if $(grep -q "^odhcpd " /tmp/installed.opkg /tmp/installed.apk) ; then
