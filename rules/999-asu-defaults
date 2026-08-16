@@ -141,7 +141,6 @@ set system.@system[0].zonename='Asia/Shanghai'
 set system.ntp.enabled='0'
 set system.ntp.enable_server='0'
 add_list system.ntp.server='edu.ntp.org.cn'
-set chrony.@pool[0].hostname='edu.ntp.org.cn'
 set wireless.radio0.country='CN'
 set wireless.radio1.country='CN'
 set wireless.default_radio0.ssid="xiaomi-${st4}"
@@ -471,6 +470,7 @@ M.ROOT-SERVERS.NET.      3600000      A     202.12.27.33
 M.ROOT-SERVERS.NET.      3600000      AAAA  2001:dc3::35
 ; End of file
 HINTS
+echo -e '\nserver edu.ntp.org.cn iburst\nmakestep 1.0 3\nrtcsync\nlocal stratum 10' >> /etc/chrony/chrony.conf
 echo '0 0 1,10,19,28 * * /usr/bin/wget https://www.internic.net/domain/named.root -O /etc/unbound/root.hints' > /etc/crontabs/root
 echo 'ssh-keygen -t ed25519 -C "zzz" -f ~/.ssh/id_ed25519 -N "" -q ; cp /etc/dropbear/authorized_keys /root/.ssh ; service openssl disable ; service radius disable ; service sysntpd disable ; service uhttpd disable ; service sshd disable ; rm $0' > /root/hts.sh
 exit 0
