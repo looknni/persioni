@@ -244,9 +244,6 @@ server:
 	statistics-interval: 14400
 	shm-enable: yes
 	shm-key: 11777
-	statistics-cumulative: no
-	extended-statistics: no
-	statistics-inhibit-zero: yes
 	num-threads: ${nkers}
 	interface-automatic: no
 	port: 53
@@ -308,8 +305,6 @@ server:
 	do-tcp: yes
 	tcp-upstream: no
 	udp-upstream-without-downstream: no
-	edns-tcp-keepalive: no
-	edns-tcp-keepalive-timeout: 120000
 	do-daemonize: yes
 	access-control: 127.0.0.0/8 allow
 	access-control: ::1 allow
@@ -336,18 +331,8 @@ server:
 	hide-trustanchor: yes
 	hide-http-user-agent: yes
 	target-fetch-policy: "3 1 0 0 0 0"
-	harden-short-bufsize: yes
-	harden-large-queries: no
-	harden-glue: yes
-	harden-dnssec-stripped: yes
-	harden-below-nxdomain: yes
-	harden-referral-path: no
-	harden-algo-downgrade: yes
-	harden-unknown-additional: no
 	qname-minimisation: yes
 	qname-minimisation-strict: no
-	aggressive-nsec: yes
-	use-caps-for-id: yes
 	private-address: 10.0.0.0/8
 	private-address: 172.16.0.0/12
 	private-address: 192.168.0.0/16
@@ -355,21 +340,14 @@ server:
 	private-address: fd00::/8
 	private-address: fe80::/10
 	private-address: ::ffff:0:0/96
-	prefetch: yes
+	prefetch: no
 	prefetch-key: no
-	deny-any: yes
+	deny-any: no
 	rrset-roundrobin: yes
 	minimal-responses: yes
 	disable-dnssec-lame-check: no
-	module-config: "dns64 respip validator iterator"
+	module-config: "dns64 respip iterator"
 	auto-trust-anchor-file: "/var/lib/unbound/root.key"
-	ignore-cd-flag: yes
-	serve-original-ttl: no
-	zonemd-permissive-mode: no
-	add-holddown: 2592000
-	del-holddown: 2592000
-	keep-missing: 31622400
-	permit-small-holddown: no
 	key-cache-size: 8m
 	key-cache-slabs: ${nslabs}
 	neg-cache-size: 4m
@@ -424,16 +402,9 @@ server:
 	ip-ratelimit-slabs: ${nslabs}
 	ip-ratelimit-factor: 10
 	ip-ratelimit-backoff: yes
-	fast-server-permil: 500
-	fast-server-num: 3
 	ede: no
 	ede-serve-expired: no
 	dns-error-reporting: no
-	serve-expired: yes
-	serve-expired-ttl: 300
-	serve-expired-ttl-reset: yes
-	serve-expired-reply-ttl: 60
-	serve-expired-client-timeout: 1800
 
 forward-zone:
 	name: "."
