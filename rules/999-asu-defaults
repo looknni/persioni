@@ -309,8 +309,6 @@ server:
 	access-control: ::ffff:127.0.0.1 allow
 	access-control: 172.16.0.0/12 allow
 	access-control: $(uci get network.globals.ula_prefix) allow
-	access-control: 0.0.0.0/0 deny
-	access-control: ::/0 deny
 	logfile: ""
 	use-syslog: yes
 	log-identity: ""
