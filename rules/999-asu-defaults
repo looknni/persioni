@@ -126,15 +126,8 @@ fi
 uci batch << EEOO
 set dropbear.main.Port='12345'
 set dropbear.main.GatewayPorts='0'
-set network.globals.packet_steering='2'
-set network.globals.tcp_l3mdev='1'
-set network.globals.udp_l3mdev='1'
-set network.globals.steering_flows='128'
 set dhcp.odhcpd.loglevel='1' #4
 set dhcp.lan.ra_dns='1'
-set firewall.@defaults[0].synflood_protect='1'
-set firewall.@defaults[0].flow_offloading='0'
-set firewall.@defaults[0].flow_offloading_hw='0'
 set system.@system[0].hostname="${st2}"
 set system.@system[0].timezone='CST-8'
 set system.@system[0].zonename='Asia/Shanghai'
@@ -219,8 +212,9 @@ mv /etc/unbound/unbound.conf /etc/unbound/unbound_ext.conf /etc/unbound/unbound_
 mv /etc/ssh/sshd_config /tmp/
 cat > /etc/ssh/sshd_config << SSHD
 Include /etc/ssh/sshd_config.d/*.conf
-Port 22
+Port 54321
 AddressFamily any
+ListenAddress 172.${r16r}.${r255r}.1
 ListenAddress $(uci get network.globals.ula_prefix | awk -F '::' '{print $1}')::1
 HostKey /etc/ssh/ssh_host_ed25519_key
 SyslogFacility AUTH
