@@ -239,10 +239,8 @@ server:
 	num-threads: ${nkers}
 	interface-automatic: no
 	port: 53
-	interface: 127.0.0.1
-	interface: ::1
-	interface: 172.${r16r}.${r255r}.1
-	interface: $(uci get network.globals.ula_prefix | awk -F '::' '{print $1}')::1
+	interface: lo
+	interface: br-lan
 	prefer-ip6: no
 	prefer-ip4: no
 	outgoing-range: 900
@@ -302,7 +300,7 @@ server:
 	access-control: ::1 allow
 	access-control: ::ffff:127.0.0.1 allow
 	access-control: 172.16.0.0/12 allow
-	access-control: $(uci get network.globals.ula_prefix) allow
+	access-control: fd00::/8 allow
 	logfile: ""
 	use-syslog: yes
 	log-identity: ""
