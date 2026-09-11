@@ -208,7 +208,7 @@ if $(grep -q "^odhcpd " /tmp/installed.opkg /tmp/installed.apk) ; then
 	odhcpdxx
 fi
 
-mv /etc/unbound/unbound.conf /etc/unbound/unbound_ext.conf /etc/unbound/unbound_srv.conf /tmp/
+mv /etc/unbound/unbound.conf /tmp/
 mv /etc/ssh/sshd_config /tmp/
 cat > /etc/ssh/sshd_config << SSHD
 Include /etc/ssh/sshd_config.d/*.conf
