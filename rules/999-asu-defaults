@@ -241,7 +241,7 @@ server:
 	interface: br-lan
 	prefer-ip6: no
 	prefer-ip4: no
-	outgoing-range: 900
+	outgoing-range: 512
 	outgoing-num-tcp: 30
 	incoming-num-tcp: 30
 	so-rcvbuf: 8m
