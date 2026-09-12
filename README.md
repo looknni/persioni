@@ -9,6 +9,7 @@
 > - https://mirrors.tuna.tsinghua.edu.cn
 > - https://mirrors.aliyun.com
 > - https://mirrors.ustc.edu.cn
+> - https://mirrors.cernet.edu.cn
 > - http://mirrors.nju.edu.cn # ventoy
 ---
 ##### dig @ns1.google.com TXT o-o.myaddr.l.google.com
