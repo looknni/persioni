@@ -254,7 +254,7 @@ server:
 	max-udp-size: 1232
 	stream-wait-size: 8m
 	msg-buffer-size: 65552
-	msg-cache-size: 16m
+	msg-cache-size: 6m
 	msg-cache-slabs: ${nslabs}
 	num-queries-per-thread: 225
 	jostle-timeout: 200
@@ -275,7 +275,7 @@ server:
 	wait-limit-netblock: ::1/128 -1
 	wait-limit-cookie-netblock: 127.0.0.0/8 -1
 	wait-limit-cookie-netblock: ::1/128 -1
-	rrset-cache-size: 8m
+	rrset-cache-size: 12m
 	rrset-cache-slabs: ${nslabs}
 	cache-min-ttl: 300
 	cache-max-ttl: 43200
@@ -334,7 +334,7 @@ server:
 	disable-dnssec-lame-check: no
 	module-config: "dns64 respip iterator"
 	auto-trust-anchor-file: "/var/lib/unbound/root.key"
-	key-cache-size: 8m
+	key-cache-size: 4m
 	key-cache-slabs: ${nslabs}
 	neg-cache-size: 4m
 	ratelimit: 0
