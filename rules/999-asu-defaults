@@ -283,7 +283,7 @@ server:
 	cache-max-negative-ttl: 3600
 	infra-host-ttl: 900
 	infra-cache-min-rtt: 50
-	infra-cache-max-rtt: 80000
+	infra-cache-max-rtt: 60000
 	infra-keep-probing: yes
 	infra-cache-slabs: ${nslabs}
 	infra-cache-numhosts: 10000
