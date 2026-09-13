@@ -337,12 +337,12 @@ server:
 	key-cache-size: 8m
 	key-cache-slabs: ${nslabs}
 	neg-cache-size: 4m
-	ratelimit: 5000
+	ratelimit: 0
 	ratelimit-size: 4m
 	ratelimit-slabs: ${nslabs}
 	ratelimit-factor: 10
 	ratelimit-backoff: yes
-	ip-ratelimit: 100
+	ip-ratelimit: 0
 	ip-ratelimit-cookie: 2000
 	ip-ratelimit-size: 4m
 	ip-ratelimit-slabs: ${nslabs}
