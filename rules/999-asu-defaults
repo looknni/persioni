@@ -265,7 +265,7 @@ server:
 	max-query-restarts: 11
 	iter-scrub-ns: 20
 	iter-scrub-cname: 11
-	max-global-quota: 200
+	max-global-quota: 500
 	iter-scrub-promiscuous: yes
 	unknown-server-time-limit: 376
 	discard-timeout: 1900
