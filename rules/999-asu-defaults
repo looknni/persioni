@@ -281,7 +281,7 @@ server:
 	cache-max-ttl: 43200
 	cache-min-negative-ttl: 300
 	cache-max-negative-ttl: 3600
-	infra-host-ttl: 900
+	infra-host-ttl: 3600
 	infra-cache-min-rtt: 50
 	infra-cache-max-rtt: 60000
 	infra-keep-probing: yes
