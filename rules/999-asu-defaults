@@ -250,8 +250,6 @@ server:
 	ip-transparent: no
 	ip-freebind: no
 	ip-dscp: 0
-	edns-buffer-size: 1232
-	max-udp-size: 1232
 	stream-wait-size: 8m
 	msg-buffer-size: 65552
 	msg-cache-size: 6m
