@@ -159,7 +159,7 @@ nslabs=2
 opkg list-installed > /tmp/installed.opkg
 apk list --installed > /tmp/installed.apk
 function unboundxx(){
-	if $(grep -q dnsmasq /tmp/installed.opkg) ; then
+	if $(grep -q dnsmasq /tmp/installed.opkg /tmp/installed.apk) ; then
 		uci set dhcp.@dnsmasq[0].dnssec='0'
 		uci set dhcp.@dnsmasq[0].port='0'
 		uci set dhcp.@dnsmasq[0].noresolv='1'
@@ -199,12 +199,8 @@ if $(grep -q "^openssl-util " /tmp/installed.opkg /tmp/installed.apk) ; then
 	openssl req -new -newkey ec:/etc/radius/ecparam.pem -days 5555 -nodes -x509 -keyout /etc/radius/key.pem -out /etc/radius/cert.pem -subj "/C=CN/ST=st/L=l/O=o/OU=ou/CN=cn/emailAddress=email@emil.com"
 	openssl req -new -newkey ec:/etc/ecparam.pem -nodes -keyout /etc/radius/server.key -out /etc/radius/server.csr -subj "/C=US/ST=Denial/L=Springfield/O=Dis/CN=cn"
 	openssl x509 -req -in /etc/radius/server.csr -CA /etc/radius/cert.pem -CAkey /etc/radius/key.pem -CAcreateserial -out /etc/radius/ca.pem -days 5555
-	uci delete uhttpd.main.listen_http
-	uci del_list uhttpd.main.listen_https='0.0.0.0:443'
-	uci delete uhttpd.defaults
-	uci commit
 fi
-if $(grep -q "^odhcpd " /tmp/installed.opkg /tmp/installed.apk) ; then
+if $(grep -qE "^odhcpd |^odhcpd-2" /tmp/installed.opkg /tmp/installed.apk) ; then
 	odhcpdxx
 fi
 
