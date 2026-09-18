@@ -1,7 +1,7 @@
 #!/data/data/com.termux/files/usr/bin/bash -e
 dnsx=`routel |grep "default"|grep -oE "[0-9]{3}.[0-9]{2,3}.[0-9]{1,3}.[0-9]{1,3}"`
-if [ $dnsx > 0 ] ; then
-	echo -e "nameserver ${dnsx}" > /data/data/com.termux/files/usr/etc/resolv.conf
+if [[ $dnsx > 0 ]] ; then
+	echo "nameserver ${dnsx}" > /data/data/com.termux/files/usr/etc/resolv.conf
 else
 	echo "nameserver 223.5.5.5" > /data/data/com.termux/files/usr/etc/resolv.conf
 fi
