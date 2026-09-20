@@ -192,7 +192,7 @@ Include /etc/ssh/sshd_config.d/*.conf
 Port 54321
 AddressFamily any
 ListenAddress 172.${r16r}.${r255r}.1
-# ListenAddress ::
+ListenAddress $(uci get network.globals.ula_prefix | awk -F '::' '{print $1}')::1
 HostKey /etc/ssh/ssh_host_ed25519_key
 SyslogFacility AUTH
 LogLevel INFO
