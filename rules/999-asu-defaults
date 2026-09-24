@@ -191,6 +191,7 @@ fi
 
 mv /etc/unbound/unbound.conf /tmp/
 mv /etc/ssh/sshd_config /tmp/
+wmm0=$(cat /proc/sys/net/core/wmem_max)
 cat > /etc/ssh/sshd_config << SSHD
 Include /etc/ssh/sshd_config.d/*.conf
 Port 54321
@@ -225,15 +226,15 @@ server:
 	outgoing-range: 512
 	outgoing-num-tcp: 30
 	incoming-num-tcp: 30
-	so-rcvbuf: 8m
-	so-sndbuf: 8m
+	so-rcvbuf: ${wmm0}
+	so-sndbuf: ${wmm0}
 	so-reuseport: yes
 	ip-transparent: no
 	ip-freebind: no
 	ip-dscp: 0
-	stream-wait-size: 8m
+	stream-wait-size: ${wmm0}
 	msg-buffer-size: 65552
-	msg-cache-size: 6m
+	msg-cache-size: 4m
 	msg-cache-slabs: ${nslabs}
 	num-queries-per-thread: 225
 	jostle-timeout: 200
@@ -254,7 +255,7 @@ server:
 	wait-limit-netblock: ::1/128 -1
 	wait-limit-cookie-netblock: 127.0.0.0/8 -1
 	wait-limit-cookie-netblock: ::1/128 -1
-	rrset-cache-size: 12m
+	rrset-cache-size: 8m
 	rrset-cache-slabs: ${nslabs}
 	cache-min-ttl: 300
 	cache-max-ttl: 43200
@@ -273,11 +274,7 @@ server:
 	tcp-upstream: no
 	udp-upstream-without-downstream: no
 	do-daemonize: yes
-	access-control: 127.0.0.0/8 allow
-	access-control: ::1 allow
-	access-control: ::ffff:127.0.0.1 allow
 	access-control: 172.16.0.0/12 allow
-	access-control: fd00::/8 allow
 	logfile: ""
 	use-syslog: yes
 	log-identity: ""
@@ -298,13 +295,6 @@ server:
 	target-fetch-policy: "3 1 0 0 0 0"
 	qname-minimisation: yes
 	qname-minimisation-strict: no
-	private-address: 10.0.0.0/8
-	private-address: 172.16.0.0/12
-	private-address: 192.168.0.0/16
-	private-address: 169.254.0.0/16
-	private-address: fd00::/8
-	private-address: fe80::/10
-	private-address: ::ffff:0:0/96
 	prefetch: no
 	prefetch-key: no
 	deny-any: yes
@@ -313,9 +303,9 @@ server:
 	disable-dnssec-lame-check: no
 	module-config: "dns64 respip iterator"
 	auto-trust-anchor-file: "/var/lib/unbound/root.key"
-	key-cache-size: 4m
+	key-cache-size: 1m
 	key-cache-slabs: ${nslabs}
-	neg-cache-size: 4m
+	neg-cache-size: 1m
 	ratelimit: 0
 	ratelimit-size: 4m
 	ratelimit-slabs: ${nslabs}
