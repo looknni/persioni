@@ -260,6 +260,11 @@ server:
 	tcp-upstream: no
 	udp-upstream-without-downstream: no
 	do-daemonize: yes
+	access-control: 127.0.0.0/8 allow
+	access-control: ::1 allow
+	access-control: ::ffff:127.0.0.1 allow
+	access-control: fd00::/8 allow
+	access-control: ::ffff:0:0/96 allow
 	access-control: 172.16.0.0/12 allow
 	logfile: ""
 	use-syslog: yes
@@ -281,6 +286,13 @@ server:
 	target-fetch-policy: "3 1 0 0 0 0"
 	qname-minimisation: yes
 	qname-minimisation-strict: no
+	private-address: 10.0.0.0/8
+	private-address: 172.16.0.0/12
+	private-address: 192.168.0.0/16
+	private-address: 169.254.0.0/16
+	private-address: fd00::/8
+	private-address: fe80::/10
+	private-address: ::ffff:0:0/96
 	prefetch: no
 	prefetch-key: no
 	deny-any: yes
@@ -292,6 +304,46 @@ server:
 	key-cache-size: 1m
 	key-cache-slabs: ${nslabs}
 	neg-cache-size: 1m
+	local-zone: "localhost." nodefault
+	local-zone: "127.in-addr.arpa." nodefault
+	local-zone: "1.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.ip6.arpa." nodefault
+	local-zone: "home.arpa." nodefault
+	local-zone: "resolver.arpa." nodefault
+	local-zone: "service.arpa." nodefault
+	local-zone: "onion." nodefault
+	local-zone: "test." nodefault
+	local-zone: "invalid." nodefault
+	local-zone: "10.in-addr.arpa." nodefault
+	local-zone: "16.172.in-addr.arpa." nodefault
+	local-zone: "17.172.in-addr.arpa." nodefault
+	local-zone: "18.172.in-addr.arpa." nodefault
+	local-zone: "19.172.in-addr.arpa." nodefault
+	local-zone: "20.172.in-addr.arpa." nodefault
+	local-zone: "21.172.in-addr.arpa." nodefault
+	local-zone: "22.172.in-addr.arpa." nodefault
+	local-zone: "23.172.in-addr.arpa." nodefault
+	local-zone: "24.172.in-addr.arpa." nodefault
+	local-zone: "25.172.in-addr.arpa." nodefault
+	local-zone: "26.172.in-addr.arpa." nodefault
+	local-zone: "27.172.in-addr.arpa." nodefault
+	local-zone: "28.172.in-addr.arpa." nodefault
+	local-zone: "29.172.in-addr.arpa." nodefault
+	local-zone: "30.172.in-addr.arpa." nodefault
+	local-zone: "31.172.in-addr.arpa." nodefault
+	local-zone: "168.192.in-addr.arpa." nodefault
+	local-zone: "0.in-addr.arpa." nodefault
+	local-zone: "254.169.in-addr.arpa." nodefault
+	local-zone: "2.0.192.in-addr.arpa." nodefault
+	local-zone: "100.51.198.in-addr.arpa." nodefault
+	local-zone: "113.0.203.in-addr.arpa." nodefault
+	local-zone: "255.255.255.255.in-addr.arpa." nodefault
+	local-zone: "0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.ip6.arpa." nodefault
+	local-zone: "d.f.ip6.arpa." nodefault
+	local-zone: "8.e.f.ip6.arpa." nodefault
+	local-zone: "9.e.f.ip6.arpa." nodefault
+	local-zone: "a.e.f.ip6.arpa." nodefault
+	local-zone: "b.e.f.ip6.arpa." nodefault
+	local-zone: "8.b.d.0.1.0.0.2.ip6.arpa." nodefault
 	ratelimit: 0
 	ratelimit-size: 4m
 	ratelimit-slabs: ${nslabs}
