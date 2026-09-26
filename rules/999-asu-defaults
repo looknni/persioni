@@ -299,7 +299,7 @@ server:
 	rrset-roundrobin: yes
 	minimal-responses: yes
 	disable-dnssec-lame-check: no
-	module-config: "respip iterator"
+	module-config: "respip dns64 iterator"
 	auto-trust-anchor-file: "/var/lib/unbound/root.key"
 	key-cache-size: 1m
 	key-cache-slabs: ${nslabs}
