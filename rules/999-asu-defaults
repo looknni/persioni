@@ -299,7 +299,7 @@ server:
 	rrset-roundrobin: yes
 	minimal-responses: yes
 	disable-dnssec-lame-check: no
-	module-config: "dns64 respip iterator"
+	module-config: "respip iterator"
 	auto-trust-anchor-file: "/var/lib/unbound/root.key"
 	key-cache-size: 1m
 	key-cache-slabs: ${nslabs}
@@ -367,6 +367,11 @@ forward-zone:
 	forward-tcp-upstream: no
 	forward-tls-upstream: no
 	forward-no-cache: no
+
+remote-control:
+	control-enable: yes
+	control-interface: "/var/run/unbound.sock"
+	control-port: 8953
 UNBOUND
 cat > /etc/unbound/root.hints << 'HINTS'
 ; FORMERLY NS.ISC.ORG
