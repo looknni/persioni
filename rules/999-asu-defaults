@@ -344,6 +344,13 @@ server:
 	local-zone: "a.e.f.ip6.arpa." nodefault
 	local-zone: "b.e.f.ip6.arpa." nodefault
 	local-zone: "8.b.d.0.1.0.0.2.ip6.arpa." nodefault
+	# static transparent refuse
+	local-zone: "ip6.arpa." static
+	local-zone: "lan." static
+	local-data: "home.lan. A 172.${r16r}.${r255r}.1"
+	local-data-ptr: "172.${r16r}.${r255r}.1 home.lan"
+	local-data: "home.lan. AAAA $(uci get network.globals.ula_prefix | awk -F '::' '{print $1}')::1"
+	local-data-ptr: "$(uci get network.globals.ula_prefix | awk -F '::' '{print $1}')::1 home.lan"
 	ratelimit: 0
 	ratelimit-size: 4m
 	ratelimit-slabs: ${nslabs}
