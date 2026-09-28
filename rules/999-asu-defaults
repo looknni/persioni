@@ -379,6 +379,13 @@ remote-control:
 	control-enable: yes
 	control-interface: "/var/run/unbound.sock"
 	control-port: 8953
+
+rpz:
+	name: rpz.nlnetlabs.nl
+	zonefile: rpz.nlnetlabs.nl
+	rpz-action-override: nxdomain
+	rpz-log: yes
+	# rpz-log-name: nlnetlabs
 UNBOUND
 cat > /etc/unbound/root.hints << 'HINTS'
 ; FORMERLY NS.ISC.ORG
@@ -406,9 +413,21 @@ M.ROOT-SERVERS.NET.      3600000      A     202.12.27.33
 M.ROOT-SERVERS.NET.      3600000      AAAA  2001:dc3::35
 ; End of file
 HINTS
+
+cat > /etc/unbound/rpz.nlnetlabs.nl << 'RPZS'
+$ORIGIN rpz.nlnetlabs.nl.
+*.ads.cars.com	CNAME	.
+*.ads.blog.com	CNAME	.
+RPZS
+
 echo -e '\nserver edu.ntp.org.cn iburst\nmakestep 1.0 3\nrtcsync\nlocal stratum 10' >> /etc/chrony/chrony.conf
 echo '0 0 1,10,19,28 * * /usr/bin/wget https://www.internic.net/domain/named.root -O /etc/unbound/root.hints' > /etc/crontabs/root
 echo 'ssh-keygen -t ed25519 -C "zzz" -f ~/.ssh/id_ed25519 -N "" -q ; cp /etc/dropbear/authorized_keys /root/.ssh ; service openssl disable ; service radius disable ; service sysntpd disable ; service uhttpd disable ; service sshd disable ; rm $0' > /root/hts.sh
 echo "iw dev phy0-ap0 station dump | grep -E 'Station |\tsignal:|rx|tx|connected time:'" > /root/iwdump
-echo -e 'sleep 10s ; service sshd restart\nexit 0' > /etc/rc.local
+
+cat > /etc/rc.local << RCLOCAL
+sleep 10s ; service sshd restart
+cp /etc/unbound/rpz.nlnetlabs.nl /var/lib/unbound/
+exit 0
+RCLOCAL
 exit 0
