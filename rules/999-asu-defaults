@@ -427,7 +427,7 @@ echo "iw dev phy0-ap0 station dump | grep -E 'Station |\tsignal:|rx|tx|connected
 
 cat > /etc/rc.local << RCLOCAL
 sleep 10s ; service sshd restart
-cp /etc/unbound/rpz.nlnetlabs.nl /var/lib/unbound/
+mv /etc/unbound/rpz.nlnetlabs.nl /var/lib/unbound/
 exit 0
 RCLOCAL
 exit 0
