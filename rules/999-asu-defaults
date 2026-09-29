@@ -414,12 +414,12 @@ M.ROOT-SERVERS.NET.      3600000      AAAA  2001:dc3::35
 ; End of file
 HINTS
 cat > /etc/unbound/rpz.nlnetlabs.nl << 'RPZS'
-# NXDOMAIN	CNAME .
-# NODATA	CNAME *.
-# PASSTHRU	CNAME rpz-passthru.
-# DROP		CNAME rpz-drop.
-# TCP-Only	CNAME rpz-tcp-only.
-#
+; NXDOMAIN	CNAME .
+; NODATA	CNAME *.
+; PASSTHRU	CNAME rpz-passthru.
+; DROP		CNAME rpz-drop.
+; TCP-Only	CNAME rpz-tcp-only.
+;
 $ORIGIN rpz.nlnetlabs.nl.
 *.ads.cars.com	CNAME	.
 *.ads.blog.com	CNAME	.
