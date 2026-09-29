@@ -382,7 +382,7 @@ remote-control:
 
 rpz:
 	name: rpz.nlnetlabs.nl
-	zonefile: rpz.nlnetlabs.nl
+	zonefile: /var/lib/unbound/rpz.nlnetlabs.nl
 	rpz-action-override: nxdomain
 	rpz-log: yes
 	# rpz-log-name: nlnetlabs
