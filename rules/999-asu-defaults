@@ -385,7 +385,7 @@ rpz:
 	zonefile: /var/lib/unbound/rpz.nlnetlabs.nl
 	rpz-action-override: nxdomain
 	rpz-log: yes
-	# rpz-log-name: nlnetlabs
+	rpz-log-name: nlnetlabs
 UNBOUND
 cat > /etc/unbound/root.hints << 'HINTS'
 ; FORMERLY NS.ISC.ORG
