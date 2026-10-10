@@ -27,9 +27,6 @@ export LESS_TERMCAP_ue=$'\E[0m'
 export LESS_TERMCAP_us=$'\E[01;32m'
 pr=$(echo $RANDOM|md5sum)
 (echo $pr; echo $pr) | passwd > /dev/null
-cat ~/.bash_history > ~/.bash_history
-cat ~/.ssh/known_hosts > ~/.ssh/known_hosts
-cat ~/.ssh/known_hosts.old > ~/.ssh/known_hosts.old
 EOF
 # https://gitcode.com/gh_mirrors/te/TermuxAlpine
 DESTINATION=${PREFIX}/share/Alpine

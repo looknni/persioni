@@ -425,7 +425,6 @@ export QT_QPA_PLATFORM=xcb
 export QT_IM_MODULE=fcitx
 export IM_MODULE_CLASSNAME=fcitx::QFcitxPlatformInputContext
 $(xrdb -load ~/.Xresources)
-cat ~/.bash_history > ~/.bash_history
 export XDG_CONFIG_HOME=~/.config
 alias pgrep='pgrep -d " "'
 if [ ! -z ~/.cache/google-chrome/Default/Cache/Cache_Data/ ];then
