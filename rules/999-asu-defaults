@@ -417,6 +417,7 @@ M.ROOT-SERVERS.NET.      3600000      AAAA  2001:dc3::35
 HINTS
 cat > /etc/unbound/rpz.nlnetlabs.nl << 'RPZS'
 $ORIGIN rpz.nlnetlabs.nl.
+ads.xxx.com	CNAME	.
 *.ads.xxx.com	CNAME	.
 RPZS
 
