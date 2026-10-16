@@ -435,6 +435,7 @@ ssh-keygen -t ed25519 -C "zzz" -f ~/.ssh/id_ed25519 -N "" -q
 cp /etc/dropbear/authorized_keys /root/.ssh
 service openssl disable ; service radius disable
 service sysntpd disable ; service uhttpd disable
+service tailscale disable ; service tailscale stop
 service sshd disable
 if $(grep -q "tailscale" /tmp/installed.opkg /tmp/installed.apk) ; then
 	uci set system.@system[0].log_size='512'
