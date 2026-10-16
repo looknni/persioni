@@ -424,7 +424,10 @@ RPZS
 echo -e '\nserver edu.ntp.org.cn iburst\nmakestep 1.0 3\nrtcsync\nlocal stratum 10' >> /etc/chrony/chrony.conf
 echo '0 0 1,10,19,28 * * /usr/bin/wget https://www.internic.net/domain/named.root -O /etc/unbound/root.hints' > /etc/crontabs/root
 cat > /etc/rc.local << 'RCLOCAL'
-sleep 10s ; service sshd restart
+sleep 10s
+if pgrep "sshd" > /dev/null ; then
+	service sshd restart
+fi
 cp /etc/unbound/rpz.nlnetlabs.nl /var/lib/unbound/
 RCLOCAL
 cat > /root/hts << 'HTS'
@@ -438,7 +441,7 @@ if $(grep -q "tailscale" /tmp/installed.opkg /tmp/installed.apk) ; then
 	uci set tailscale.settings.log_stderr='null'
 	uci set tailscale.settings.log_stdout='system'
 	uci commit
-	echo -e "tailscale set --accept-dns=false ; /etc/init.d/tailscale restart" >> /etc/rc.local
+	echo -e "if pgrep "tailscale" > /dev/null ; then\n\ttailscale set --accept-dns=false ; /etc/init.d/tailscale restart\nfi" >> /etc/rc.local
 else
 	echo "exit 0" >> /etc/rc.local
 fi
