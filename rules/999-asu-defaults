@@ -439,8 +439,6 @@ service tailscale disable ; service tailscale stop
 service sshd disable
 if $(grep -q "tailscale" /tmp/installed.opkg /tmp/installed.apk) ; then
 	uci set system.@system[0].log_size='512'
-	uci set tailscale.settings.log_stderr='null'
-	uci set tailscale.settings.log_stdout='system'
 	uci commit
 	echo -e "if pgrep "tailscale" > /dev/null ; then\n\ttailscale set --accept-dns=false ; /etc/init.d/tailscale restart\nfi" >> /etc/rc.local
 else
