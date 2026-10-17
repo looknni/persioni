@@ -447,5 +447,4 @@ fi
 rm $0
 HTS
 echo "iw dev phy0-ap0 station dump | grep -E 'Station |\tsignal:|rx|tx|connected time:'" > /root/iwdump
-
 exit 0
