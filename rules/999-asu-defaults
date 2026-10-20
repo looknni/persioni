@@ -429,21 +429,14 @@ if pgrep "sshd" > /dev/null ; then
 	service sshd restart
 fi
 cp /etc/unbound/rpz.nlnetlabs.nl /var/lib/unbound/
+exit 0
 RCLOCAL
 cat > /root/hts << 'HTS'
 ssh-keygen -t ed25519 -C "zzz" -f ~/.ssh/id_ed25519 -N "" -q
 cp /etc/dropbear/authorized_keys /root/.ssh
 service openssl disable ; service radius disable
 service sysntpd disable ; service uhttpd disable
-service tailscale disable ; service tailscale stop
 service sshd disable
-if $(grep -q "tailscale" /tmp/installed.opkg /tmp/installed.apk) ; then
-	uci set system.@system[0].log_size='512'
-	uci commit
-	echo -e "if pgrep "tailscale" > /dev/null ; then\n\ttailscale set --accept-dns=false ; /etc/init.d/tailscale restart\nfi\nexit 0" >> /etc/rc.local
-else
-	echo "exit 0" >> /etc/rc.local
-fi
 rm $0
 HTS
 echo "iw dev phy0-ap0 station dump | grep -E 'Station |\tsignal:|rx|tx|connected time:'" > /root/iwdump
