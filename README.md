@@ -405,6 +405,10 @@ git checkout v24 ; ./scripts/feeds update -a ; ./scripts/feeds install -a # git 
 make distclean
 make menuconfig # dnsmasq-full libustream-openssl wpad-openssl vim aircrack-ng openssl-util hcxdumptool tcpdump openssh-server openssh-sftp-server openssh-client unbound-daemon chrony unbound-control unbound-control-setup unbound-host unbound-checkconf unbound-anchor
 tailscale
+# /etc/rc.local
+if pgrep tailscale > /dev/null ; then
+    tailscale set --accept-dns=false ; /etc/init.d/tailscale restart
+fi
 make download -j4;make -j4 V=s
 ```
 ##### find / \( -path /proc -o -path /run \) -prune -o -type l ! -exec test -e {} \; -print
