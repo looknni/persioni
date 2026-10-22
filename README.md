@@ -410,6 +410,7 @@ if pgrep tailscale > /dev/null ; then
     tailscale set --accept-dns=false ; /etc/init.d/tailscale restart
 fi
 make download -j4;make -j4 V=s
+# tailscale up --auth-key=tskey-xxxxxxxxxxxx
 ```
 ##### find / \( -path /proc -o -path /run \) -prune -o -type l ! -exec test -e {} \; -print
 ``` 
