@@ -437,7 +437,27 @@ cp /etc/dropbear/authorized_keys /root/.ssh
 service openssl disable ; service radius disable
 service sysntpd disable ; service uhttpd disable
 service sshd disable
+if $(grep -q "^tailscale" /tmp/installed.opkg /tmp/installed.apk) ; then
+	uci set tailscale.settings.log_stderr='0'
+	uci set tailscale.settings.log_stdout='0'
+	uci commit
+fi
 rm $0
 HTS
+cat > /root/swinet << 'SWINET'
+#!/bin/sh
+ip r | grep 'default via' | grep -q 'wan'
+if [ "$?" -eq 0 ]; then
+	nslookup baidu.com
+	if [ "$?" -ne 0 ];then
+		ifdown wan ; ifup wwan
+	fi
+else
+	nslookup sogou.com
+	if [ "$?" -ne 0 ];then
+		ifdown wwan ; ifup wan
+	fi
+fi
+SWINET
 echo "iw dev phy0-ap0 station dump | grep -E 'Station |\tsignal:|rx|tx|connected time:'" > /root/iwdump
 exit 0
