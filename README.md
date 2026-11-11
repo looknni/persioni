@@ -407,7 +407,8 @@ make menuconfig # dnsmasq-full libustream-openssl wpad-openssl vim aircrack-ng o
 tailscale
 # /etc/rc.local
 if pgrep tailscale > /dev/null ; then
-    tailscale set --accept-dns=false ; /etc/init.d/tailscale restart
+#    tailscale set --accept-dns=false ; /etc/init.d/tailscale restart
+    tailscale up --accept-dns=false --ssh
 fi
 make download -j4;make -j4 V=s
 # tailscale up --auth-key=tskey-xxxxxxxxxxxx
