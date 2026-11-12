@@ -446,18 +446,27 @@ rm $0
 HTS
 cat > /root/swinet << 'SWINET'
 #!/bin/sh
-ip r | grep 'default via' | grep -q 'wan'
-if [ "$?" -eq 0 ]; then
-	nslookup baidu.com
-	if [ "$?" -ne 0 ];then
-		ifdown wan ; ifup wwan
-	fi
-else
-	nslookup sogou.com
-	if [ "$?" -ne 0 ];then
-		ifdown wwan ; ifup wan
-	fi
-fi
+curr=`ip r | grep 'default via'|awk '{print $5}'`
+case ${curr} in
+	wan )
+		nslookup baidu.com
+		if [ "$?" -ne 0 ];then
+			ifdown wan ; ifup wwan
+		fi
+		;;
+	phy1-sta0 )
+		nslookup sougou.com
+		if [ "$?" -ne 0 ];then
+			ifdown wwan ; ifup wwan0
+		fi
+		;;
+	phy0-sta0 )
+		nslookup qq.com
+		if [ "$?" -ne 0 ];then
+			ifdown wwan0 ; ifup wan
+		fi
+		;;
+esac
 SWINET
 echo "iw dev phy0-ap0 station dump | grep -E 'Station |\tsignal:|rx|tx|connected time:'" > /root/iwdump
 exit 0
