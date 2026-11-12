@@ -114,6 +114,8 @@ fi
 	uci commit
 }
 uci batch << EEOO
+set network.wan.metric='0'
+set network.wan6.metric='1'
 set dropbear.main.Port='12345'
 set dropbear.main.GatewayPorts='0'
 set dhcp.odhcpd.loglevel='1' #4
@@ -448,7 +450,7 @@ cat > /root/swinet << 'SWINET'
 #!/bin/sh
 nslookup sougou.com
 if [ "$?" -ne 0 ];then
-	ifup wan
+	/etc/init.d/network reload wan
 fi
 nslookup baidu.com
 if [ "$?" -ne 0 ];then
