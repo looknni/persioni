@@ -454,14 +454,18 @@ nslookup baidu.com
 if [ "$?" -ne 0 ];then
 	if [[ $(uci get wireless.wifinet1.disabled) = 0 ]] ;then
 		uci set wireless.wifinet1.disabled='1'
-		uci set wireless.wifinet1.disabled='0'
+		uci set wireless.wifinet2.disabled='0'
+		uci set network.wwan.metric='4'
+		uci set network.wwan0.metric='3'
 		uci commit
-		ifdown wwan ; ifup wwan0
+		/etc/init.d/network reload wwan0
 	elif [[ $(uci get wireless.wifinet2.disabled) = 0 ]] ;then
 		uci set wireless.wifinet1.disabled='0'
 		uci set wireless.wifinet1.disabled='1'
+		uci set network.wwan.metric='3'
+		uci set network.wwan0.metric='4'
 		uci commit
-		ifdown wwan0 ; ifup wwan
+		/etc/init.d/network reload wwan
 	fi
 fi
 SWINET
