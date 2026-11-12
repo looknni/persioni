@@ -446,7 +446,10 @@ rm $0
 HTS
 cat > /root/swinet << 'SWINET'
 #!/bin/sh
-ifup wan ; sleep 3
+nslookup sougou.com
+if [ "$?" -ne 0 ];then
+	ifup wan
+fi
 nslookup baidu.com
 if [ "$?" -ne 0 ];then
 	if [[ $(uci get wireless.wifinet1.disabled) = 0 ]] ;then
