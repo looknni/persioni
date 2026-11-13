@@ -449,21 +449,21 @@ HTS
 cat > /root/swinet << 'SWINET'
 #!/bin/sh
 if ! wget --spider -T 1 -q --no-check-certificate https://qq.com >/dev/null 2>&1 ;then
-	/etc/init.d/network reload wan
+	ifup wan
 fi
 if ! wget --spider -T 1 -q --no-check-certificate https://baidu.com >/dev/null 2>&1 ;then
 	uci set wireless.wifinet2.disabled='0'
 	uci set wireless.wifinet3.disabled='1'
 	uci set network.wwan.metric='10'
 	uci commit
-	/etc/init.d/network reload wwan
+	/etc/init.d/network reload
 fi
 if ! wget --spider -T 1 -q --no-check-certificate https://sougou.com >/dev/null 2>&1 ;then
 	uci set wireless.wifinet2.disabled='1'
 	uci set wireless.wifinet3.disabled='0'
 	uci set network.wwan0.metric='20'
 	uci commit
-	/etc/init.d/network reload wwan0
+	/etc/init.d/network reload
 fi
 SWINET
 echo "iw dev phy0-ap0 station dump | grep -E 'Station |\tsignal:|rx|tx|connected time:'" > /root/iwdump
