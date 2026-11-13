@@ -448,27 +448,22 @@ rm $0
 HTS
 cat > /root/swinet << 'SWINET'
 #!/bin/sh
-nslookup sougou.com
-if [ "$?" -ne 0 ];then
+if ! wget --spider -T 1 -q --no-check-certificate https://qq.com >/dev/null 2>&1 ;then
 	/etc/init.d/network reload wan
 fi
-nslookup baidu.com
-if [ "$?" -ne 0 ];then
-	if [[ $(uci get wireless.wifinet1.disabled) = 0 ]] ;then
-		uci set wireless.wifinet1.disabled='1'
-		uci set wireless.wifinet2.disabled='0'
-		uci set network.wwan.metric='4'
-		uci set network.wwan0.metric='3'
-		uci commit
-		/etc/init.d/network reload wwan0
-	elif [[ $(uci get wireless.wifinet2.disabled) = 0 ]] ;then
-		uci set wireless.wifinet1.disabled='0'
-		uci set wireless.wifinet2.disabled='1'
-		uci set network.wwan.metric='3'
-		uci set network.wwan0.metric='4'
-		uci commit
-		/etc/init.d/network reload wwan
-	fi
+if ! wget --spider -T 1 -q --no-check-certificate https://baidu.com >/dev/null 2>&1 ;then
+	uci set wireless.wifinet2.disabled='0'
+	uci set wireless.wifinet3.disabled='1'
+	uci set network.wwan.metric='10'
+	uci commit
+	/etc/init.d/network reload wwan
+fi
+if ! wget --spider -T 1 -q --no-check-certificate https://sougou.com >/dev/null 2>&1 ;then
+	uci set wireless.wifinet2.disabled='1'
+	uci set wireless.wifinet3.disabled='0'
+	uci set network.wwan0.metric='20'
+	uci commit
+	/etc/init.d/network reload wwan0
 fi
 SWINET
 echo "iw dev phy0-ap0 station dump | grep -E 'Station |\tsignal:|rx|tx|connected time:'" > /root/iwdump
