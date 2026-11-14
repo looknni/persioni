@@ -192,7 +192,7 @@ fi
 if $(grep -qE "^odhcpd |^odhcpd-2" /tmp/installed.opkg /tmp/installed.apk) ; then
 	odhcpdxx
 fi
-if $(grep -q 'luci-theme-footstrap' /tmp/installed.opkg /tmp/installed.apk) ; then
+if $(grep -q '^luci-theme-footstrap' /tmp/installed.opkg /tmp/installed.apk) ; then
 	uci set luci.main.mediaurlbase='/luci-static/footstrap'
 	uci commit luci
 fi
